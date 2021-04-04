@@ -2,7 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://liuzhongzhen.github.io/books/</loc>
+    <lastmod>2021-04-04T23:04:05+08:00</lastmod>
+  </url><url>
     <loc>https://liuzhongzhen.github.io/post/20210403-Http-Cookies/</loc>
+    <lastmod>2021-04-03T22:44:53+08:00</lastmod>
+  </url><url>
+    <loc>https://liuzhongzhen.github.io/categories/</loc>
+    <lastmod>2021-04-03T22:44:53+08:00</lastmod>
+  </url><url>
+    <loc>https://liuzhongzhen.github.io/categories/Http/</loc>
     <lastmod>2021-04-03T22:44:53+08:00</lastmod>
   </url><url>
     <loc>https://liuzhongzhen.github.io/tags/http/</loc>
@@ -23,6 +32,7 @@
     <loc>https://liuzhongzhen.github.io/about/</loc>
     <lastmod>2021-04-01T20:42:01+08:00</lastmod>
   </url><url>
-    <loc>https://liuzhongzhen.github.io/categories/</loc>
+    <loc>https://liuzhongzhen.github.io/archives/</loc>
+    <lastmod>2021-04-01T20:37:26+08:00</lastmod>
   </url>
 </urlset>
