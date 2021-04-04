@@ -9,24 +9,24 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>个人简介 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="个人简介 - Liuzhongzhen的博客">
+    <title>20210403 Http Cookies | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="20210403 Http Cookies - Liuzhongzhen的博客">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2021-04-01T20:42:01&#43;08:00'>
+    <meta property="article:published_time" content='2021-04-03T22:44:53&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2021-04-01T20:42:01&#43;08:00'>
+    <meta property="article:modified_time" content='2021-04-03T22:44:53&#43;08:00'>
         
     <meta name="Keywords" content="java python php sql">
-    <meta name="description" content="数据工程师">
+    <meta name="description" content="20210403 Http Cookies">
         
     <meta name="author" content="liuzhongzhen">
-    <meta property="og:url" content="https://liuzhongzhen.github.io/about/">
-    <link rel="shortcut icon" href='../favicon.ico'  type="image/x-icon">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/20210403-Http-Cookies/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
 
-    <link rel="stylesheet" href='../css/normalize.css'>
-    <link rel="stylesheet" href='../css/style.css'>
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
     <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
@@ -35,9 +35,9 @@
     
     
     
-        <link rel="stylesheet" href='../css/douban.css'>
+        <link rel="stylesheet" href='../../css/douban.css'>
     
-        <link rel="stylesheet" href='../css/other.css'>
+        <link rel="stylesheet" href='../../css/other.css'>
     
 </head>
 
@@ -56,13 +56,13 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="" href="https://liuzhongzhen.github.io/">首页</a>
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a class="current" href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -145,10 +145,10 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#关于作者">关于作者</a></li>
-        <li><a href="#专业技能">专业技能</a></li>
-        <li><a href="#联系方式">联系方式</a></li>
-        <li><a href="#其他信息">其他信息</a></li>
+        <li><a href="#什么是cookie">什么是Cookie</a></li>
+        <li><a href="#response-中的-cookie">response 中的 Cookie</a></li>
+        <li><a href="#request-中的-cookie">request 中的 Cookie</a></li>
+        <li><a href="#关于-session">关于 session</a></li>
       </ul>
     </li>
   </ul>
@@ -184,10 +184,10 @@
 </script>
     <article class="post">
         <header>
-            <h1 class="post-title">个人简介</h1>
+            <h1 class="post-title">20210403 Http Cookies</h1>
         </header>
         <date class="post-meta meta-date">
-            2021年4月1日
+            2021年4月3日
         </date>
         
         
@@ -198,38 +198,63 @@
         
         
         <div class="post-content">
-            <h3 id="关于作者">关于作者</h3>
-<p>沈维燕(Steven Shen)，一个 90 后的广东人，熟悉粤语、国语，略懂英语。本人 2013 年毕业于南方医科大学（原中国人民解放军第一军医大学）基础医学学院生物信息学专业。现工作生活于广州，主要从事 Bio IT 的一些相关工作。平时喜欢逛逛技术论坛，玩玩羽毛球，看看电影，瞎折腾一下技术，不务正业之余喜欢记录一些生活工作学习中的一些想法。喜欢分享，喜欢把事情简单化，程序化。</p>
-<h3 id="专业技能">专业技能</h3>
-<ol>
-<li>熟悉 Python、R、Perl、LaTeX、Html .etc. 编程。</li>
-<li>熟悉 Galaxy 生物信息学平台相关部署与定制化工具开发。</li>
-<li>熟悉常用生物信息学数据分析与可视化，了解 web 相关应用开发。</li>
-<li>擅长 Linux，尤其是 CentOS，熟悉 LSF、SGE 集群相关运维。</li>
-</ol>
-<h3 id="联系方式">联系方式</h3>
+            <h3 id="什么是cookie">什么是Cookie</h3>
+<p>Cookie用于存储http请求中的用户认证信息，用户在通过登录认证后，服务器在response header中设置Cookie，用户浏览器自动带Cookie访问该网站。</p>
+<h3 id="response-中的-cookie">response 中的 Cookie</h3>
+<p>response header 中添加 <code>Set-Cookie</code>信息，cookie是一组key，value值。</p>
+<pre><code>Set-Cookie: &lt;name&gt;=&lt;value&gt;[; &lt;name&gt;=&lt;value&gt;]...
+            [; expires=&lt;date&gt;][; domain=&lt;domain_name&gt;]
+            [; path=&lt;some_path&gt;][; secure][; httponly]
+</code></pre>
 <ul>
-<li>微信：ishenweiyan</li>
-<li>地址：广州市黄埔区科学城科学大道182号创新大厦</li>
-<li>邮箱：<a href="mailto:ishenwieyan@qq.com">ishenwieyan@qq.com</a></li>
+<li>expires Cookie过期时间</li>
+<li>domain Cookie的生效域</li>
+<li>path Cookie的生效路径</li>
+<li>secure 表示cookie只能被发送到http服务器</li>
+<li>httponly 表示cookie不能被客户端脚本获取到</li>
 </ul>
-<h3 id="其他信息">其他信息</h3>
-<ul>
-<li>参与 &ldquo;<a href="http://std.samr.gov.cn/gb/search/gbDetailed?id=71F772D821E0D3A7E05397BE0A0AB82A">国家标准|GB/T 34798-2017 核酸数据库序列格式规范</a>&rdquo; 起草。</li>
-<li>参与《生物信息数据库建设使用与管理指南》一书编写。</li>
-</ul>
-
+<p>不带expires的Cookie表示临时Cookie只在当前会话有效，关闭浏览器Cookie实效。</p>
+<h3 id="request-中的-cookie">request 中的 Cookie</h3>
+<p>浏览器在接受的response中如果发现有<code>Set-Cookie</code>头，则在下一个request中设置<code>Cookie</code>头，如果有expires还要判断Cookie是否过期，reqeust中的cookie没有expires字段，
+如果是临时Cookie，浏览器直接保存在内存中，带expire的cookie如果未过期保存硬盘中，浏览器自动删除过期的Cookie，所有服务器要删除Cookie就是重新发送带<code>Set-Cookie</code>并且expires
+早与当前时间的Cookie。</p>
+<h3 id="关于-session">关于 session</h3>
+<p>session是保存在服务端的会话控制，一般服务器会发送包含sessionid的临时Cookie给浏览器，服务器根据sessionid获取保存的用户信息，自行维护过期时间等信息。</p>
         </div>
 
         
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liuzhongzhen.github.io/">liuzhongzhen</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liuzhongzhen.github.io/post/20210403-Http-Cookies/">https://liuzhongzhen.github.io/post/20210403-Http-Cookies/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
 
 
         
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../about/">个人简介</a></li>
+        
+    </ul>
+</div>
 
 
         <div class="post-meta meta-tags">
             
-            没有标签
+            <ul class="clearfix">
+                
+                <li><a href='../../tags/http'>http</a></li>
+                
+                <li><a href='../../tags/web'>web</a></li>
+                
+            </ul>
             
         </div>
     </article>
@@ -301,7 +326,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 <a id="rocket" href="#top"></a>
-<script type="text/javascript" src='../js/totop.js?v=0.0.0' async=""></script>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
 
 
 
@@ -310,7 +335,7 @@
 
 
 
-    <script src='../js/douban.js'></script>
+    <script src='../../js/douban.js'></script>
 
                 </div>
 
@@ -338,14 +363,14 @@
     
 
     <section class="widget">
-        <h3 class="widget-title"><a href='../categories/'>分类</a></h3>
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
 <ul class="widget-list">
     
 </ul>
     </section>
 
     <section class="widget">
-        <h3 class="widget-title"><a href='../tags/'>标签</a></h3>
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
 <div class="tagcloud">
     
     <a href="https://liuzhongzhen.github.io/tags/http/">http</a>

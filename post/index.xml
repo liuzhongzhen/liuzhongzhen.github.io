@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Liuzhongzhen的博客</title>
-    <link>https://liuzhongzhen.github.io/</link>
-    <description>Recent content on Liuzhongzhen的博客</description>
+    <title>Posts on Liuzhongzhen的博客</title>
+    <link>https://liuzhongzhen.github.io/post/</link>
+    <description>Recent content in Posts on Liuzhongzhen的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Sat, 03 Apr 2021 22:44:53 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Apr 2021 22:44:53 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>20210403 Http Cookies</title>
       <link>https://liuzhongzhen.github.io/post/20210403-Http-Cookies/</link>
@@ -22,15 +22,6 @@
             [; expires=&amp;lt;date&amp;gt;][; domain=&amp;lt;domain_name&amp;gt;]
             [; path=&amp;lt;some_path&amp;gt;][; secure][; httponly]
 &lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-    
-    <item>
-      <title>个人简介</title>
-      <link>https://liuzhongzhen.github.io/about/</link>
-      <pubDate>Thu, 01 Apr 2021 20:42:01 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/about/</guid>
-      <description>关于作者 沈维燕(Steven Shen)，一个 90 后的广东人，熟悉粤语、国语，略懂英语。本人 2013 年毕业于南</description>
     </item>
     
   </channel>
