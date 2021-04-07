@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>数据结构-20200401-12文件操作 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="数据结构-20200401-12文件操作 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-04-07T22:33:58&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-04-07T22:33:58&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="数据结构-20200401-12文件操作">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-12%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一文件">一、文件</a></li>
+    <li><a href="#二顺序文件">二、顺序文件</a></li>
+    <li><a href="#三索引文件">三、索引文件</a></li>
+    <li><a href="#四isam文件和vsam文件">四、ISAM文件和VSAM文件</a></li>
+    <li><a href="#五直接存取文件散列文件">五、直接存取文件（散列文件）</a></li>
+    <li><a href="#六多关键字文件">六、多关键字文件</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">数据结构-20200401-12文件操作</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月7日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84'>数据结构</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="一文件">一、文件</h2>
+<pre><code>1. 文件是由大量性质相同对记录组成对集合.按其记录对类型不同而分成两类：操作系统对文件和数据库文件.
+   习惯上称存储在主存储器中对记录集合为表，称存储在二级存储器中对记录集合为文件。
+2. 定长记录文件和不定长记录文件
+3. 数据库文件还可以按照记录中关键字对多少分成单关键字文件和多关键字文件。记录中所有非关键字对数据项称为
+   记录对属性
+4. 记录的逻辑结构是指记录在用户或应用程序员面前呈现对方式，是用户对数据对表示和存取方式。
+5. 记录的物理结构是数据在物理存储器上存储的方式，是数据的物理表示和组织。
+6. 物理记录和逻辑记录有3种可能的关系：
+    a. 一个物理记录存放一个逻辑记录
+    b. 一个物理记录存放多个逻辑记录
+    c. 多个物理记录存放一个逻辑记录
+7. 文件的操作有两类:检索和修改
+8. 文件的检索有3种方式:
+    a. 顺序存取：存取下一个逻辑记录
+    b. 直接存储：存取第i个逻辑记录
+    c. 按关键字存取：给定一个值，查询一个或一批关键字与给定值相关的记录。
+9. 对数据库文件可以有如下4种查询方式:
+    a. 简单查询
+    b. 区域范围查询
+    c. 函数查询,max,avg,min
+    d. 布尔查询
+10. 文件在存储界质上对组织方式称为文件对物理结构，其基本组织方式有3种：顺序组织、随机组织、链组织.
+</code></pre>
+<h2 id="二顺序文件">二、顺序文件</h2>
+<pre><code>1. 顺序文件是记录按其在文件中对逻辑顺序依次进入存储介质而建立的，即顺序文件中物理记录的顺序和逻辑记录的顺序是一致的.
+2. 若次序相继的两个物理记录在存储介质上的位置是相邻的，则称连续文件
+3. 若物理记录之间的次序由指针相链表示，则称串联文件
+主文件，事务文件，归并合并成新的主文件
+</code></pre>
+<h2 id="三索引文件">三、索引文件</h2>
+<pre><code>1. 除了文件本身之外，另建立一张指示逻辑记录和物理记录之间一一对应关系的表-索引表。
+   这类包括文件数据区和索引表两大部分的文件称做索引文件.
+2. 索引表中的每一项称作索引项.不论主文件是否按关键字有序，索引表中的索引项总是按关键字顺序排列。
+   若数据区中的记录也按关键字顺序排列，则称索引顺序文件，反之，若数据区中记录不按关键字顺序排列，则称索引非顺序文件。
+3. 索引表是由系统程序自动生成的。在记录输入建立数据区的同时建立一个索引表。
+4. 索引文件的检索方式为直接存取或按关键字存取。索引表是有序的，查找可以采用二分查找。
+5. 数据太多，可以建立多级索引。
+6. 静态索引：各级索引均为顺序表结构
+7. 动态索引：二叉排序树、二叉平衡树、B-树、键树，这些树表接哦股，插入、删除索引很方便。
+8. 由于数据文件中的记录不按关键字顺序排列，则必须对每个记录建立一个索引项，如此建立的索引表称之为稠密索引。
+   如果数据文件中的记录按关键字顺序有序，则可对一组记录建立一个索引项目，这种索引表称之为非稠密索引。
+</code></pre>
+<h2 id="四isam文件和vsam文件">四、ISAM文件和VSAM文件</h2>
+<pre><code>1. ISAM：索引顺序存取方法，专门为磁盘存取设计的文件组织方式。由于磁盘是以盘组、柱面和磁道三级地址存取数据的设备，
+   可以对磁盘上的数据文件建立盘组，柱面和磁道三级索引。
+   柱面基本区采用顺序存储结构，溢出区采用链表结构。
+2. VSAM：虚拟存储存取方法,这种存取方法利用了操作系统的虚拟存储器的功能，对用户来说，文件只有控制区间和控制区域等
+   逻辑存储单位，与外存储器中柱面、磁道等具体存储单位没有必然的联系
+   3部分组成：索引集，顺序集，数据集
+   文件记录存放在数据集中。顺序集和索引集一起构成一棵B+树，为文件的索引部分。
+   VSAM文件既可在顺序集中进行顺序存取，又可从最高层的索引（B+树的根结点）出发进行按关机字存取。
+   顺序集中一个结点连同其对应的所有控制区间形成一个整体，称做控制区域。
+   每个控制区间可视为一个逻辑磁道，而每个控制区域可视为一个逻辑柱面。
+</code></pre>
+<h2 id="五直接存取文件散列文件">五、直接存取文件（散列文件）</h2>
+<pre><code>1. 利用hash发进行组织的文件。若干个记录组成一个存储单位，在散列文件中，这个存储单位叫做桶bucket.
+2. 处理溢出主要采用链地址法。
+3. 桶编号，基桶，溢出桶
+4. 直接存取文件的优点：文件随机存放，记录不需要进行排序，插入删除方便，存取速度快，不需要索引区节省存储空间
+5. 直接存取文件的缺点：只能按关键字随机存取；进行简单查询；多次插入和删除之后，可能造成文件结构不合理
+</code></pre>
+<h2 id="六多关键字文件">六、多关键字文件</h2>
+<pre><code>1. 多关键字文件的特点是在对文件进行检索操作时,不仅对主关键字进行简单询问，还经常需要对次关键字进行其他类型的询问检索。
+2. 多重表文件：记录按主关键字顺序构成一个串联文件，并建立主关键字的索引（主索引），对每一个次关键字建立次关键字索引（次索引），
+   所有具有统一次关键字的记录构成一个链表。每个索引项包含关键字，头指针，链表长度
+3. 倒排文件：倒排文件和多重表文件的区别在于次关键字索引的结构不通。称倒排文件中的次关键字索引为倒排表。
+   具有相同次关键字的记录之间不设指针相链，而在倒排表中该次关键字的一项中存放这些记录的物理记录号。
+   倒排表中具有同一次关键字的记录号是有序排列的，修改时要做相应的移动。
+</code></pre>
+
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liuzhongzhen.github.io/">liuzhongzhen</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-12%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-12%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-11%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F/">数据结构-20200401-11外部排序</a></li>
+        
+        <li><a href="../../post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-10%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F/">数据结构-20200401-10内部排序</a></li>
+        
+        <li><a href="../../post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-09%E6%9F%A5%E6%89%BE/">数据结构-20200401-09查找</a></li>
+        
+        <li><a href="../../post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-08%E5%8A%A8%E6%80%81%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/">数据结构-20200401-08动态存储管理</a></li>
+        
+        <li><a href="../../post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-07%E5%9B%BE/">数据结构-20200401-07图</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Http-20210302-%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86/" title="Http-20210302-协议原理">Http-20210302-协议原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Http-20210301-Cookies/" title="Http-20210301-Cookies介绍">Http-20210301-Cookies介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/" title="Mysql-索引原理介绍">Mysql-索引原理介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Nginx-%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/" title="Nginx-详细介绍">Nginx-详细介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-12%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" title="数据结构-20200401-12文件操作">数据结构-20200401-12文件操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-11%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F/" title="数据结构-20200401-11外部排序">数据结构-20200401-11外部排序</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-10%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F/" title="数据结构-20200401-10内部排序">数据结构-20200401-10内部排序</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-09%E6%9F%A5%E6%89%BE/" title="数据结构-20200401-09查找">数据结构-20200401-09查找</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-08%E5%8A%A8%E6%80%81%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/" title="数据结构-20200401-08动态存储管理">数据结构-20200401-08动态存储管理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-07%E5%9B%BE/" title="数据结构-20200401-07图">数据结构-20200401-07图</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Http/">Http (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Mysql/">Mysql (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Nginx/">Nginx (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://liuzhongzhen.github.io/tags/Http/">Http</a>
+    
+    <a href="https://liuzhongzhen.github.io/tags/Web/">Web</a>
+    
+    <a href="https://liuzhongzhen.github.io/tags/sql/">sql</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://www.flysnow.org/" title="flysnow">flysnow</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://shenweiyan.github.io/ics-hugo-theme/" title="shenweiyan">shenweiyan</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

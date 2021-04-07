@@ -7,22 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Sat, 03 Apr 2021 22:44:53 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Mar 2021 22:44:53 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>http</title>
-      <link>https://liuzhongzhen.github.io/tags/http/</link>
-      <pubDate>Sat, 03 Apr 2021 22:44:53 +0800</pubDate>
+      <title>Http</title>
+      <link>https://liuzhongzhen.github.io/tags/Http/</link>
+      <pubDate>Mon, 01 Mar 2021 22:44:53 +0800</pubDate>
       
-      <guid>https://liuzhongzhen.github.io/tags/http/</guid>
+      <guid>https://liuzhongzhen.github.io/tags/Http/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>web</title>
-      <link>https://liuzhongzhen.github.io/tags/web/</link>
-      <pubDate>Sat, 03 Apr 2021 22:44:53 +0800</pubDate>
+      <title>Web</title>
+      <link>https://liuzhongzhen.github.io/tags/Web/</link>
+      <pubDate>Mon, 01 Mar 2021 22:44:53 +0800</pubDate>
       
-      <guid>https://liuzhongzhen.github.io/tags/web/</guid>
+      <guid>https://liuzhongzhen.github.io/tags/Web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sql</title>
+      <link>https://liuzhongzhen.github.io/tags/sql/</link>
+      <pubDate>Mon, 01 Feb 2021 22:57:04 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/tags/sql/</guid>
       <description></description>
     </item>
     

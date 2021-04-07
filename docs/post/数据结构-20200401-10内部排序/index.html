@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>数据结构-20200401-10内部排序 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="数据结构-20200401-10内部排序 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-04-07T22:28:11&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-04-07T22:28:11&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="数据结构-20200401-10内部排序">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-10%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一内部排序">一、内部排序</a></li>
+    <li><a href="#二插入排序">二、插入排序</a></li>
+    <li><a href="#三快速排序">三、快速排序</a></li>
+    <li><a href="#四选择排序不稳定">四、选择排序,不稳定</a></li>
+    <li><a href="#五归并排序mergingsort稳定">五、归并排序(MergingSort)，稳定</a></li>
+    <li><a href="#六基数排序">六、基数排序</a></li>
+    <li><a href="#七总结">七、总结</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">数据结构-20200401-10内部排序</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月7日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84'>数据结构</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="一内部排序">一、内部排序</h2>
+<pre><code>1. 排序sorting是计算机程序设计中的一种重要操作，它的功能是将一个数据元素或记录的任意序列，冲洗排列称一个
+   按关键字有序的序列。有序表可以进行二分查找，构造树（二叉排序或B-树）的过程本身是一个排序的过程
+2. 稳定的排序方法，两个或多个关键字相等,序号i&lt;j,排序后i&lt;j
+   不稳定的排序方法，会出现i&gt;j
+3. 内部排序：排序的记录数量很少，待排序记录存放在计算机随机存储器内存中进行排序的过程
+   外部排序：排序的记录数量很大，以致内存一次不能容纳全部记录，在排序过程中尚需对外存进行访问的排序过程。
+4. 依据不通的原则对内部排序方法进行分类，大致可分为:
+    a. 插入排序
+    b. 交换排序
+    c. 选择排序
+    d. 归并排序
+    e. 计数排序
+5. 依据内部排序过程中所需工作量来区分：
+    a. 简单对排序方法 O(n2)
+    b. 先进对排序方法 O(nlogn)
+    c. 基数排序O(d*n)
+6. 排序对过程中序进行下列两种基本操作：
+    a. 比较两个关键字对大小,必要的
+    b. 将记录从一个位置移动到另一个位置，根据选择的存储方式，可选
+7. 待排序的记录序列又如下三种存储方式:
+    a. 顺序存储,数组，要移动
+    b. 一组待排序记录存放在静态链表中，修改指针，链表排序
+    c. 待排序记录存放在一组地址连续的存储单元内，同时另设一个指示各个记录存储位置的地址向量，
+       在排序过程中不移动记录本身，而移动地址向量中这些记录的地址，在排序结束后再按照地址向量
+       中的值调整记录的存储位置。地址排序
+</code></pre>
+<h2 id="二插入排序">二、插入排序</h2>
+<pre><code>1. 直接插入排序，基本操作是将一个记录插入到已排好序的有序表中，从而得到一个新的、记录数增1的有序表。
+   n个记录，走n-1趟，每次比较移动, 时间复杂度O(n2)
+2. 折半插入排序：减少查找操作O(n2)
+3. 2-路插入排序: 中间，比较，之前或之后O(n2)
+4. 表插入排序: 静态链表，0表头结点，表头结点取关键字最大整数，首先标记地址，其次重新排列
+5. 希尔排序：缩小增量排序，基本思想：先将整个待排记录序列分割成为若干个子序列分别进行直接插入排序，
+           待整个序列中的记录基本有序时，再对全体记录进行一次直接插入排序。
+           2个一组，全部。增量序列可以有各种取法，但需要注意，应使增量序列中的值美誉除1之外的公因子，
+           并且最后一个增量值必须是1。 增量序列:..,9,5,3,2,1 或40,13,4,1
+</code></pre>
+<h2 id="三快速排序">三、快速排序</h2>
+<pre><code>0. 借助“交换”进行排序的方法，不稳定
+1. 冒泡排序(bubble sort):n-1次循环，交换，每次找出最大的 O(n2)
+2. 快速排序：是对冒泡排序对改进，基本思想是，通过一趟排序将待排记录分割成独立对两部分，其中一部分记录的
+           关键字均比另一部分记录的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。
+   关键字，low指针，high指针，递归，1分为2，数量级O(nlogn)
+   通常快速排序被认为是，在所有同数量级的排序方法中，其平均性能最好。
+   枢纽选取：r[s].key,r[t].key r[(r+t)/2].key取三者中关键字取中值的记录为枢纽。
+   若初始记录序列按关键字有序或基本有序时，快速排序将蜕化为冒泡排序O(n2)
+   需要栈空间,如果没有交换记录的操作，则可以不在进行排序
+</code></pre>
+<h2 id="四选择排序不稳定">四、选择排序,不稳定</h2>
+<pre><code>1. 基本思想：每一趟在n-i+1个记录中选取关键字最小的记录作为有序序列中第i个记录。
+2. 简单选择排序：每次 从n-i+1个记录中通过n-i次关机字间的比较，选出关键字最小的记录，并和第i个记录交换，O(n2)
+3. 树形选择排序：又称锦标赛排序，是一种按照锦标赛的思想进行选择排序的方法。首先对n个记录关键字进行两两比较，
+              然后在其中n/2个较小者之间在进行两两比较，如此重复，直至选出最小关键字的记录为止。
+              完全二叉树表示。O(nlogn),需要较多的辅助存储空间
+4. 堆排序(Heap Sort)只需要一个记录大小的辅助空间，每个待排序的记录仅占有一个存储空间。
+   可以用数组表示，完全二叉树，每次都构造一个小顶堆或大顶堆。
+   两个问题：如何由一个无序序列建成一个堆，如何调整剩余元素成为一个新的堆
+   从n/2个元素开始进行筛选，序列最后一个元素调整，heapSort函数和headAdjust函数
+   堆排序方法堆记录数量较小的文件并不值得提倡，对n记录数量较大对文件还是很有效的。
+   堆排序在最坏的情况下，其时间复杂度也为O(nlogn)，此外堆排序仅需一个记录大小供交换用的辅助存储空间。
+</code></pre>
+<h2 id="五归并排序mergingsort稳定">五、归并排序(MergingSort)，稳定</h2>
+<pre><code>1. 基本思想，将两个或两个以上的有序表组合成一个新的有序表。总体时间复杂度O(nlogn)
+   无论是顺序存储结构还是链表存储结构，一趟时间复杂度都是O(m+n)
+2. 2路归并排序：核心操作是将一维数组中前后相邻的两个有序序列归并成为一个有序序列.
+3. 递归实现和非递归实现，递归的实现性很差,MSort,MergeSort
+</code></pre>
+<h2 id="六基数排序">六、基数排序</h2>
+<pre><code>1. 基数排序是一种借助多关键字进行排序的思想，
+2. 基数排序是借助分配和收集两种操作堆单逻辑关键字进行排序的一种内部排序方法。
+3. 多关键字，扑克花色和大小，主排序，次排序
+4. 链式基数排序，静态链表，时间复杂度O(d(n+rd))
+</code></pre>
+<h2 id="七总结">七、总结</h2>
+<pre><code>    排序方法    平均时间       最差情况        辅助空间
+    简单排序    o(n2)         o(n2)          o(1)
+    快速排序    o(nlogn)      o(n2)          o(logn)
+    堆排序      o(nlogn)      o(nlogn)       o(1)
+    归并排序    o(nlogn)      o(nlogn)       o(n)
+    基数排序    o(d(n+rd))    o(d(n+rd))     o(rd)
+1. 从平均时间性能而言，快速排序最佳，最快情况下不如（堆排序和归并排序)
+2. 堆排序和归并排序，在n较大的时候，归并排序所需时间较省，但需要较多的存储空间
+3. 简单排序包括除希尔排序的所有插入排序，冒泡排序，简单选择排序，都比较简单，n较小时或基本有序，可用
+4. 基数排序的时间复杂度O(d*n),它适用于n值较大而关键字较小的序列。
+</code></pre>
+
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liuzhongzhen.github.io/">liuzhongzhen</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-10%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F/">https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-10%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-09%E6%9F%A5%E6%89%BE/">数据结构-20200401-09查找</a></li>
+        
+        <li><a href="../../post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-08%E5%8A%A8%E6%80%81%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/">数据结构-20200401-08动态存储管理</a></li>
+        
+        <li><a href="../../post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-07%E5%9B%BE/">数据结构-20200401-07图</a></li>
+        
+        <li><a href="../../post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-06%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91/">数据结构-20200401-06树与二叉树</a></li>
+        
+        <li><a href="../../post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-05%E6%95%B0%E7%BB%84%E5%92%8C%E5%B9%BF%E4%B9%89%E8%A1%A8/">数据结构-20200401-05数组和广义表</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Http-20210302-%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86/" title="Http-20210302-协议原理">Http-20210302-协议原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Http-20210301-Cookies/" title="Http-20210301-Cookies介绍">Http-20210301-Cookies介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/" title="Mysql-索引原理介绍">Mysql-索引原理介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Nginx-%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/" title="Nginx-详细介绍">Nginx-详细介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-12%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" title="数据结构-20200401-12文件操作">数据结构-20200401-12文件操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-11%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F/" title="数据结构-20200401-11外部排序">数据结构-20200401-11外部排序</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-10%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F/" title="数据结构-20200401-10内部排序">数据结构-20200401-10内部排序</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-09%E6%9F%A5%E6%89%BE/" title="数据结构-20200401-09查找">数据结构-20200401-09查找</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-08%E5%8A%A8%E6%80%81%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/" title="数据结构-20200401-08动态存储管理">数据结构-20200401-08动态存储管理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-07%E5%9B%BE/" title="数据结构-20200401-07图">数据结构-20200401-07图</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Http/">Http (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Mysql/">Mysql (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Nginx/">Nginx (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://liuzhongzhen.github.io/tags/Http/">Http</a>
+    
+    <a href="https://liuzhongzhen.github.io/tags/Web/">Web</a>
+    
+    <a href="https://liuzhongzhen.github.io/tags/sql/">sql</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://www.flysnow.org/" title="flysnow">flysnow</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="https://shenweiyan.github.io/ics-hugo-theme/" title="shenweiyan">shenweiyan</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
