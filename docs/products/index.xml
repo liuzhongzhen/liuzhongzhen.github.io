@@ -27,6 +27,15 @@
     </item>
     
     <item>
+      <title>网心-数据平台架构</title>
+      <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/</link>
+      <pubDate>Tue, 15 Oct 2019 23:04:55 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/</guid>
+      <description>大数据平台整体架构 数据流转图</description>
+    </item>
+    
+    <item>
       <title>网心-Asima基于impala的动态入库系统</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Asima%E5%9F%BA%E4%BA%8Eimpala%E7%9A%84%E5%8A%A8%E6%80%81%E5%85%A5%E5%BA%93%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Sun, 01 Oct 2017 00:38:40 +0800</pubDate>
@@ -50,7 +59,16 @@
       <pubDate>Mon, 02 Jan 2017 02:10:14 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
-      <description>角色 设计开发负责人 背景 开发测试的，未完成的产品 开发工具 后台开发语言:php7 后台开发框架:自己仿照c</description>
+      <description>角色 设计开发负责人 背景 开发测试的，未完成的产品 开发工具 前台开发语言:html5,css3,js,jq</description>
+    </item>
+    
+    <item>
+      <title>腾讯-ABTest效果评估系统</title>
+      <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-ABTest%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Tue, 10 Feb 2015 23:20:00 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-ABTest%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0%E7%B3%BB%E7%BB%9F/</guid>
+      <description>角色 设计开发负责人 开发工具 后台开发语言php5,CodeIgniter 前端开发语言html5,css</description>
     </item>
     
     <item>

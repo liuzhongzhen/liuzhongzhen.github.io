@@ -148,8 +148,13 @@
     <li><a href="#角色">角色</a></li>
     <li><a href="#背景">背景</a></li>
     <li><a href="#开发工具">开发工具</a></li>
-    <li><a href="#功能列表">功能列表</a></li>
-    <li><a href="#系统架构">系统架构</a></li>
+    <li><a href="#功能模块">功能模块</a></li>
+    <li><a href="#系统架构">系统架构</a>
+      <ul>
+        <li><a href="#dc接入配置管理系统架构图">DC接入配置管理系统架构图</a></li>
+        <li><a href="#dc采集系统整体架构图">DC采集系统整体架构图</a></li>
+      </ul>
+    </li>
     <li><a href="#使用情况">使用情况</a></li>
     <li><a href="#系统截图">系统截图</a></li>
   </ul>
@@ -215,7 +220,7 @@
 <li>配置缓存memcache</li>
 <li>负责均衡nginx + keepalived + vip</li>
 </ul>
-<h2 id="功能列表">功能列表</h2>
+<h2 id="功能模块">功能模块</h2>
 <ul>
 <li>上报接口管理</li>
 <li>字段维度配置管理</li>
@@ -233,6 +238,33 @@
 <li>帮助中心</li>
 </ul>
 <h2 id="系统架构">系统架构</h2>
+<h3 id="dc接入配置管理系统架构图">DC接入配置管理系统架构图</h3>
+<p>
+        <img class="mx-auto" alt="dcwebserver" src="../../imgs/txua/dcwebserver.jpg" />   
+    </p>
+<h4 id="模块列表">模块列表</h4>
+<ol>
+<li>memcache负责配置缓存，session缓存</li>
+<li>dcManager提供配置下发更新查询管理服务</li>
+<li>tdwServer模块:python开发,负责创建tdw表，增改字段，查询字段信息</li>
+<li>LhotseServer模块:负责创建表入库相关的任务(推送任务，文件到达任务，入库任务等)</li>
+<li>logQueryServer模块:负责提供实时流水查询服务和离线流水查询服务</li>
+</ol>
+<h3 id="dc采集系统整体架构图">DC采集系统整体架构图</h3>
+<p>
+        <img class="mx-auto" alt="dcserver" src="../../imgs/txua/dcserver.png" />   
+    </p>
+<h4 id="模块列表-1">模块列表</h4>
+<ol>
+<li>dcWebServer模块：负责接口管理，配置管理与下发，流水查询，表管理，任务创建等</li>
+<li>dcManagerServer模块：负责配置、路由、心跳、状态的管理</li>
+<li>dcAgentServer模块：负责数据采集，接收，发送，容灾处理，数据发送到dcProxyServer</li>
+<li>dcProxyServer模块：负责网络数据接收、解析、合成、落地、发送到</li>
+<li>dcLogProxyServer模块：负责文件接收、推送到hdfs集群</li>
+<li>L5负载均衡模块：负责机器路由管理</li>
+<li>hdfs存储模块：负责文件的存储</li>
+<li>tdwLoad模块：负责文件入库，创建内表或外表，形成可访问的hive表</li>
+</ol>
 <h2 id="使用情况">使用情况</h2>
 <p>接入SNG中QQ,空间,会员,开平,音乐,视频,应用宝,广点通绝大部分业务<br>
 2500多个接口,包含dc实时接口,nrt文件上报接口,ads上报接口,db配置数据
