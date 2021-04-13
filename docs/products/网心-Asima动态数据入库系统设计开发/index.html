@@ -147,10 +147,11 @@
   <ul>
     <li><a href="#角色">角色</a></li>
     <li><a href="#背景">背景</a></li>
+    <li><a href="#版本变更">版本变更</a></li>
+    <li><a href="#面临的问题10和20">面临的问题(1.0和2.0)</a></li>
     <li><a href="#开发工具">开发工具</a></li>
-    <li><a href="#系统设计思想">系统设计思想</a></li>
     <li><a href="#系统架构">系统架构</a></li>
-    <li><a href="#功能模块图">功能模块图</a></li>
+    <li><a href="#功能模块">功能模块</a></li>
     <li><a href="#使用情况">使用情况</a></li>
   </ul>
 </nav>
@@ -216,18 +217,66 @@
 <ul>
 <li>增加了flumeParquetSink组件，直接写ImpalaParquet表</li>
 <li>增加了flumeKuduSink组件，直接写ImpalaKudu表</li>
-<li>增加了flumeMysqlSink组件，直接写入mysql表</li>
+<li>增加了flumeMysqlSink组件，直接写入mysql/tidb表</li>
 <li>增加了flumeClickhouseSink组件，直接写入clickhouse表</li>
 </ul>
+<h2 id="版本变更">版本变更</h2>
+<p>先后经历过1.0, 2.0, 3.0三个大版本</p>
+<h2 id="面临的问题10和20">面临的问题(1.0和2.0)</h2>
+<ol>
+<li>数据晚到（网络故障，采集延迟，消费延迟，数据堆积，时钟错误，上报问题)</li>
+<li>集群故障 (不丢失数据，不重复入数据)</li>
+<li>280多个接口如何保证在1分钟内入完</li>
+<li>分区太多，如何清理，减少元数据占用，小文件占用资源</li>
+<li>如何在入库的过程中过滤掉异常数据(历史数据，未来数据，脏数据)</li>
+<li>入库执行情况跟踪</li>
+<li>是否可以根据目录切割粒度进行入库</li>
+<li>如何兼容多个不同的集群配置</li>
+<li>如何让重要的任务先入库
+&hellip;&hellip;</li>
+</ol>
 <h2 id="开发工具">开发工具</h2>
 <ol>
 <li>开发语言python2.7.13</li>
+<li>开发框架Flask,MySQL-python,requests,click,impyla等</li>
 <li>数据存储mysql5.7</li>
+<li>数据缓存redis</li>
 </ol>
-<h2 id="系统设计思想">系统设计思想</h2>
 <h2 id="系统架构">系统架构</h2>
-<h2 id="功能模块图">功能模块图</h2>
+<p>
+        <img class="mx-auto" alt="ua003" src="../../imgs/wxasima/wx_asima_jiagou.jpg" />   
+    
+项目采用Master/Worker模式，部署两条Master，多台Worker<br>
+Master负责提供服务，操作数据，操作缓存<br>
+Worker负责执行具体的入库任务，清理任务，补录任务等<br>
+数据存储核心有两张表，任务配置表，Job配置表</p>
+<ol>
+<li>任务生成进程：负责每分钟调用接口，生成需要入库的任务实例，写入DB，同时写入Redis缓存队列</li>
+<li>任务补录进程：是手工调用或监控调用，生成缺失的Job实例</li>
+<li>监控告警进程：负责统计入库任务堆积情况，runner并发情况，失败情况</li>
+<li>分区维护进程：负责Job表分区的增加和删除工作</li>
+<li>Worker上面进程：从Master请求Job，进行实际的入库，并上报各种状态到Master</li>
+<li>监控重启进程：负责Worker健康状态检查</li>
+</ol>
+<h2 id="功能模块">功能模块</h2>
+<ol>
+<li>任务管理</li>
+<li>Job管理</li>
+<li>分区管理</li>
+<li>监控告警管理</li>
+<li>心跳管理</li>
+<li>worker控制</li>
+<li>runner开发</li>
+</ol>
 <h2 id="使用情况">使用情况</h2>
+<p>asima动态入库系统是数平在由Hadoop1.0老集群往CDH自建集群迁移的过程中，<br>
+需要解决数据使用效率的问题而发起的一个项目。<br>
+系统历经三次大的版本迭代，期间前两个版本出现重启丢失数据，数据无法补录，入库效率低，脏数据等问题，<br>
+从2018年6月开始重新设计新的入库架构，2018年07月开始开发，2018年10月完成开发，开始灰度， <br>
+2018年11月灰度完成，新的入库系统3.0正式、上线，解决了之前遇到的各种问题。 <br>
+新入库系统每分钟完成数平281个接口的准实时动态入库，接入配置化，每分钟入库峰值3.7亿条，<br>
+每天入库2470亿，最大接口每分钟7750万，每天560亿，系统可用性99.99%，<br>
+监控，告警，重启，日志，入库数据分析等很多功能做到自动化处理。</p>
 
         </div>
 
@@ -244,11 +293,11 @@
         
         <li><a href="../../products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">网心-数据接入管理系统</a></li>
         
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-Eagle%E5%8F%AF%E8%A7%86%E5%8C%96%E9%82%AE%E4%BB%B6%E9%85%8D%E7%BD%AE%E6%8E%A8%E9%80%81%E7%B3%BB%E7%BB%9F/">网心-Eagle可视化邮件配置推送系统</a></li>
+        
         <li><a href="../../products/%E8%85%BE%E8%AE%AF-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/">腾讯-数据平台架构</a></li>
         
         <li><a href="../../products/%E8%85%BE%E8%AE%AF-ABTest%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0%E7%B3%BB%E7%BB%9F/">腾讯-ABTest效果评估系统</a></li>
-        
-        <li><a href="../../products/%E8%85%BE%E8%AE%AF-DC%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E5%B9%B3%E5%8F%B0/">腾讯-DC数据接入平台</a></li>
         
     </ul>
 </div>
