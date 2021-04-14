@@ -159,6 +159,12 @@
     <li><a href="#使用情况">使用情况</a></li>
     <li><a href="#系统截图">系统截图</a></li>
     <li><a href="#待优化点">待优化点</a></li>
+    <li><a href="#核心表">核心表</a></li>
+    <li><a href="#任务job生成模块">任务Job生成模块</a></li>
+    <li><a href="#任务实例获取模块">任务实例获取模块</a></li>
+    <li><a href="#启动runner模块">启动runner模块</a></li>
+    <li><a href="#提交任务状态模块">提交任务状态模块</a></li>
+    <li><a href="#命令执行模块">命令执行模块</a></li>
   </ul>
 </nav>
     </div>
@@ -241,6 +247,62 @@ TaskRunnerLoader是常驻Daemon进程，用多线程来处理每个taskJob，<br
 <h2 id="使用情况">使用情况</h2>
 <h2 id="系统截图">系统截图</h2>
 <h2 id="待优化点">待优化点</h2>
+<h2 id="核心表">核心表</h2>
+<pre><code>create table lb_task(
+    task_id     任务id
+    task_type   任务类型
+    task_cycle  取值分钟60,小时3600,天86400等
+    start_date
+    end_date
+    task_status 任务状态
+    task_action 任务命令
+)
+create table lb_task_run(
+    task_id
+    curr_run_date  当前Job运行时间
+    next_run_date  Job下个周期时间
+    job_status     Job状态
+    primary key (task_id,curr_run_date)
+)
+job_staus取值Enum(
+    Rough              草稿中
+    Ready              准备就绪
+    Running            运行中
+    Succ               运行成功
+    Failed             运行失败
+    Dokill             收到kill命令
+    Killing            正在kill
+    Killed             kill完成
+    Hanged             挂起
+    StopSchedule       停止调度
+    DependenceFinish   依赖完成
+)
+</code></pre><h2 id="任务job生成模块">任务Job生成模块</h2>
+<pre><code>select a.task_id       as task_id,
+       a.task_cycle    as task_cycle,
+       a.start_date    as start_date,
+       a.end_date      as end_date
+       b.max_run_date  as max_run_date
+  from lb_task a
+  left join (select task_id,
+                    max(curr_run_date) max_run_date
+               from lb_task_run
+              group by task_id
+            ) b
+    on (a.task_id=b.task_id)
+max_run_date+task_cycle则是下一个周期Job的时间,job_status=Ready
+</code></pre><h2 id="任务实例获取模块">任务实例获取模块</h2>
+<h2 id="启动runner模块">启动runner模块</h2>
+<h2 id="提交任务状态模块">提交任务状态模块</h2>
+<h2 id="命令执行模块">命令执行模块</h2>
+<ol>
+<li>批量kill任务Job</li>
+<li>批量冻结下线任务</li>
+<li>批量强制任务Job成功</li>
+<li>批量补录任务Job</li>
+<li>批量重做任务Job</li>
+<li>批量修改任务信息</li>
+</ol>
 
         </div>
 
