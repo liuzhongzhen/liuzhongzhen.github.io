@@ -145,7 +145,16 @@
 <div class="post-toc" style="position: absolute; top: 188px;">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#角色">角色</a></li>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#开发工具">开发工具</a></li>
+    <li><a href="#整体架构">整体架构</a></li>
+    <li><a href="#功能模块">功能模块</a></li>
+    <li><a href="#使用情况">使用情况</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 <script type="text/javascript">
@@ -191,7 +200,38 @@
         
         
         <div class="post-content">
-            
+            <h2 id="角色">角色</h2>
+<p>设计开发负责人</p>
+<h2 id="背景">背景</h2>
+<p>为支持sdk上报，web上报，小程序上报，插件上报，模调上报，快速数据上报开发的快速灵活的数据接入方式</p>
+<h2 id="开发工具">开发工具</h2>
+<ol>
+<li>后端开发语言:lua</li>
+<li>后端程序组件:openResty</li>
+</ol>
+<h2 id="整体架构">整体架构</h2>
+<p>
+        <img class="mx-auto" alt="ua003" src="../../imgs/wxapana/wx_apana_jg.jpg" />   
+    </p>
+<h2 id="功能模块">功能模块</h2>
+<ol>
+<li>单条上报/批量上报</li>
+<li>ip解析，uri解析</li>
+<li>post多种数据格式支持</li>
+<li>lz4,zlib压缩接入</li>
+<li>数据加密和签名</li>
+<li>请求限流</li>
+<li>请求统计</li>
+<li>日志自定义输出</li>
+<li>监控告警，自动重启，拨测</li>
+<li>跨域</li>
+</ol>
+<h2 id="使用情况">使用情况</h2>
+<p>系统接入90多个接口，覆盖多个业务模块<br>
+写入140个表，峰值每分钟5000万请求, 1.6亿条数据 <br>
+每天450亿次请求，1200多亿记录<br>
+单机QPS平均2w/s，支撑了千万级sdk的上报</p>
+
         </div>
 
         
