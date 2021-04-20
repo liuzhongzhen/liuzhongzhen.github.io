@@ -62,5 +62,41 @@
       <description></description>
     </item>
     
+    <item>
+      <title>大数据-003hive</title>
+      <link>https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/</link>
+      <pubDate>Tue, 01 Mar 2016 23:05:23 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>大数据-002hadoop之yarn</title>
+      <link>https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/</link>
+      <pubDate>Mon, 01 Feb 2016 23:04:07 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>大数据-001hadoop之hdfs</title>
+      <link>https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/</link>
+      <pubDate>Fri, 01 Jan 2016 23:02:51 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>腾讯</title>
+      <link>https://liuzhongzhen.github.io/categories/%E8%85%BE%E8%AE%AF/</link>
+      <pubDate>Tue, 20 Jan 2015 22:13:04 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/categories/%E8%85%BE%E8%AE%AF/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
