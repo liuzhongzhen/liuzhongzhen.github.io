@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>腾讯004TDW与PostgreSQL数据互访问功能 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="腾讯004TDW与PostgreSQL数据互访问功能 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2014-01-18T22:48:02&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2014-01-18T22:48:02&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="腾讯004TDW与PostgreSQL数据互访问功能">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF004TDW%E4%B8%8EPostgreSQL%E6%95%B0%E6%8D%AE%E4%BA%92%E8%AE%BF%E9%97%AE%E5%8A%9F%E8%83%BD/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents"></nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">腾讯004TDW与PostgreSQL数据互访问功能</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2014年1月18日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E7%BD%91%E7%BB%9CPPT'>网络PPT</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <p><strong>来源网络整理</strong></p>
+<p>前言</p>
+<p>TDW作为一个离线数据分析系统，在处理海量数据方面，通过并行计算，有很好的性能优势。<br>
+但是想用一个大而全的系统解决所有问题一般也是不现实的，同样，TDW也有它的劣势，<br>
+比如对小数据处理性能低，update/delete性能差、接口不丰富等。<br>
+因此，TDW引入了一个强大的开源数据库PostgreSQL，并对其做一些功能扩展，使之有访问TDW数据的能力； <br>
+同时在TDW中开发了一种新的存储引擎——“pgdata存储引擎”，使得TDW具备读写PostgreSQL中的数据的能力。</p>
+<p>TDW作为一个离线数据分析系统，在处理海量数据方面，通过并行计算，有很好的性能优势。<br>
+但是我们知道，想用一个大而全的系统解决所有问题一般也是不现实的，<br>
+同样，TDW也有它的劣势,比如对小数据处理性能低，update/delete性能差、接口不丰富等。<br>
+因此我们引入一个强大的开源数据库PostgreSQL，并对其做一些功能扩展，使之有访问TDW数据的能力；<br>
+同时我们在TDW中开发了一种新的存储引擎，我们称之为pgdata存储引擎，使得TDW具备读写PostgreSQL中的数据的能力。<br>
+TDW与PostgreSQL互访问功能的实现，对TDW是一个强有力的补充，这些主要体现在如下3点：</p>
+<ol>
+<li>弥补TDW接口不丰富的短板
+TDW缺乏标准化的JDBC/ODBC，编程接口也不丰富，而PostgreSQL有社区强大的力量，提供了JDBC/ODBC, shell,C/C++, C#, python, perl等各种语言的接口，用户通过这些丰富的接口和我们开发的PostgreSQL的TDW桥接工具tdwlink，访问TDW中的数据。</li>
+<li>弥补TDW小数据分析效率底的短板
+TDW在海量数据处理时，可以发挥它并行执行的优势。但是对于小数据分析，它的性能反而不如传统的DB。使用PostgreSQL，对于10GB以内的数据分析，可以获得更好的性能和时间响应，一般可以在秒级返回结果，相比TDW分钟级的响应，tPG在这种场景下更有优势。</li>
+<li>作为TDW的pgdata存储引擎，弥补TDW update/delete效率底下的短板
+TDW作为数据仓库系统，对于记录级的update/delete支持不是很好。在TDW中记录级的update/delete，会导致整个表的重写，也就是说，即使delete一条数据，也会导致整个表重写一遍，耗费大量系统资源。而tPG作为传统数据库，记录级的update和delete效率非常高。
+PostgreSQL系统在TDW生态圈中的位置如下图所示，tPG是我们对扩充之后的PostgreSQL的一个叫法.</li>
+</ol>
+<p>下面我们分两个部分对TDW与PostgreSQL的互访问功能做一个介绍，也即是pgdata存储引擎以及tdwlink功能。</p>
+<p>一、pgdata存储引擎</p>
+<p>TDW本身支持多种存储格式，包括textfile， rcfile，pbfile，在这个基础上，<br>
+我们开发一种新的存储引擎，也即pgdata存储引擎，能够透明的存储以及访问PostgreSQL中的数据，<br>
+具体情况如下图<br>
+在使用上，只需要在创建表的时候指定为pgdata存储引擎即可，<br>
+例如使用如下语句就可以创建此类型的外表</p>
+<pre><code>create external tablefoo(idx bigint, str string) stored as pgdata
+</code></pre><p>在后续访问过程中就和使用其他TDW表一般即可，在此简单说明一下访问的实现方式，</p>
+<pre><code>访问的数据流大致如下
+1. 在解析SQL查询语句时，先分解出每个子查询，然后对每个子查询总是会首先判断当前查询涉
+   及的表中是pgdata外表，如果没有DB外表则走正常的查询语句执行流程；
+2. 如果有pgdata外表, 接着再检查在本次查询中涉及到的外表数据是否已经导入，
+   如果导入则直接复用已经导入的数据，如果没有则对相应的子查询进行加工，
+   将其转换为相应的标准关系型数据库SQL语句，然后从表中获取连接信息，使用JDBC执行查询语句；
+3. 将查询结果的数据从数据库中导入到位于tmp目录下的一个随机HDFS目录中，这个随机目录使用UUID生成，
+   因此可以保证唯一性，而不与其他查询语句产生冲突，然后将其设置为外表的数据所在的HDFS文件路径，
+   Mapreduce任务会自动读取该路径作为任务的输入路径；
+4. 在该条查询执行结束以后，并且查询结果已经获取成功，则清除掉这个临时文件。
+   如果查询出现了异常也会自动的清理到已经导入的垃圾数据信息。
+</code></pre>
+<p>二、tdwlink功能<br>
+SQL标准中包含了一个名为SQL/MED也即&quot;SQL Management of External Data&quot;的功能，<br>
+PostgreSQL在2011年的9.1版本使用一种叫Foreign Data Wrappers的机制对此标准做了只读支持，<br>
+开发人员只需要对相应的数据源开发相应的插件即可通过PostgreSQL对远端数据源进行访问。<br>
+目前社区已经有很多基于此功能开发的插件，诸如oracle_fdw，mysql_fdw，redis_fdw等，<br>
+我们团队基于PostgreSQL的这个特性，开发了具备访问TDW数据能力的插件，称之为tdw_fdw，<br>
+可以参考下图
+为了方便用户使用此功能，我们开发了一个存储过程tdwlink，<br>
+用户只需要事先配置好对应的Foreign server以及认证信息，即可很方便的使用，<br>
+例如我们已经定义好了tdw_svr这个server，想访问tdw里的test库的test表，<br>
+我们只需要<code>select tdw_meta.tdwlink(‘tdw_svr’, ‘test’, ‘select col1, col2 from test’)</code>即可。<br>
+由于此函数是通过PostgreSQL提供的，因此我们可以使用PostgreSQL提供的任意接口来使用，<br>
+这样也间接的扩充了TDW所具备的访问接口。<br>
+这里补充一点，我们的tdw_fdw插件是基于PostgreSQL 9.1版本开发的，<br>
+这个版本的Foreign Data Wrappers只能对外部数据源提供只读访问，<br>
+因此我们的tdw_fdw只能够提供对TDW的只读访问，<br>
+而最新发布的PostgreSQL9.3版本的Foreign Data Wrappers已经提供写支持，<br>
+这个也是我们的tdw_fdw插件后续可以进行功能扩充的地方。</p>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/txtdw/p01.png" />   
+    
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/txtdw/p02.png" />   
+    
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/txtdw/p03.png" />   
+    
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/txtdw/p04.png" />   
+    
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/txtdw/p05.png" />   
+    
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/txtdw/p06.png" />   
+    
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/txtdw/p07.png" />   
+    
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/txtdw/p08.png" />   
+    
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/txtdw/p09.png" />   
+    
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/txtdw/p10.png" />   
+    
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/txtdw/p11.png" />   
+    
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/txtdw/p12.png" />   
+    
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/txtdw/p13.png" />   
+    
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/txtdw/p14.png" />   
+    
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/txtdw/p15.png" />   
+    </p>
+
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liuzhongzhen.github.io/">liuzhongzhen</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF004TDW%E4%B8%8EPostgreSQL%E6%95%B0%E6%8D%AE%E4%BA%92%E8%AE%BF%E9%97%AE%E5%8A%9F%E8%83%BD/">https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF004TDW%E4%B8%8EPostgreSQL%E6%95%B0%E6%8D%AE%E4%BA%92%E8%AE%BF%E9%97%AE%E5%8A%9F%E8%83%BD/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF003%E5%85%83%E6%95%B0%E6%8D%AE%E9%87%8D%E6%9E%84%E6%96%B9%E6%A1%88%E4%B8%8E%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA/">腾讯003元数据重构方案与效果展示</a></li>
+        
+        <li><a href="../../post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF002%E5%A4%A7%E8%A7%84%E6%A8%A1hadoop%E9%9B%86%E7%BE%A4%E5%AE%9E%E8%B7%B5/">腾讯002大规模hadoop集群实践</a></li>
+        
+        <li><a href="../../post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF001%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%83%BD%E5%8A%9B%E8%BE%93%E5%87%BA%E4%B9%8B%E8%B7%AF/">腾讯001大数据能力输出之路</a></li>
+        
+        <li><a href="../../products/%E8%85%BE%E8%AE%AF-%E7%BD%97%E7%9B%98BI%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/">腾讯-罗盘BI可视化平台</a></li>
+        
+        <li><a href="../../products/%E8%85%BE%E8%AE%AF-lhotse%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/">腾讯-Lhotse调度系统</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/" title="几种序列化协议的介绍(转)">几种序列化协议的介绍(转)</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Http-20210302-%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86/" title="Http-20210302-协议原理">Http-20210302-协议原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Http-20210301-Cookies/" title="Http-20210301-Cookies介绍">Http-20210301-Cookies介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/" title="Mysql-索引原理介绍">Mysql-索引原理介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Nginx-%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/" title="Nginx-详细介绍">Nginx-详细介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/python-%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" title="Python-学习资料">Python-学习资料</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-12%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" title="数据结构-20200401-12文件操作">数据结构-20200401-12文件操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-11%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F/" title="数据结构-20200401-11外部排序">数据结构-20200401-11外部排序</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-10%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F/" title="数据结构-20200401-10内部排序">数据结构-20200401-10内部排序</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-09%E6%9F%A5%E6%89%BE/" title="数据结构-20200401-09查找">数据结构-20200401-09查找</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Http/">Http (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Mysql/">Mysql (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Nginx/">Nginx (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-python/">语言-python (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://liuzhongzhen.github.io/tags/Http/">Http</a>
+    
+    <a href="https://liuzhongzhen.github.io/tags/Web/">Web</a>
+    
+    <a href="https://liuzhongzhen.github.io/tags/sql/">sql</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
