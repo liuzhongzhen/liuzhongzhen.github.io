@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>网络PPT-奇虎360Xmanager集群管理系统介绍 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="网络PPT-奇虎360Xmanager集群管理系统介绍 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2014-01-13T22:48:02&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2014-01-13T22:48:02&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="网络PPT-奇虎360Xmanager集群管理系统介绍">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-360Xmanager%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#简介">简介</a></li>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#功能介绍及主要设计">功能介绍及主要设计</a>
+      <ul>
+        <li><a href="#00-概览">00. 概览</a></li>
+        <li><a href="#01-自身向导式安装">01. 自身向导式安装</a></li>
+        <li><a href="#02-manageragent设计">02. Manager/Agent设计</a></li>
+        <li><a href="#03-服务管理">03. 服务管理</a></li>
+        <li><a href="#04-数据收集">04. 数据收集</a></li>
+        <li><a href="#05-风控中心">05. 风控中心</a></li>
+        <li><a href="#06-运维工具">06. 运维工具</a></li>
+        <li><a href="#07-安全审计">07. 安全审计</a></li>
+        <li><a href="#08-其他">08. 其他</a></li>
+        <li><a href="#09-写在最后">09. 写在最后</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">网络PPT-奇虎360Xmanager集群管理系统介绍</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2014年1月13日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E7%BD%91%E7%BB%9CPPT'>网络PPT</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <p><strong><a href="http://lxw1234.com/archives/2020/03/935.htm">转载自外部-lxw的大数据田地 » xManager–通用产品集成、快速交付、监控运维解决方案</a></strong></p>
+<h1 id="xmanager通用产品集成快速交付监控运维解决方案">xManager–通用产品集成、快速交付、监控运维解决方案</h1>
+<h2 id="简介">简介</h2>
+<p>为将360大数据能力赋能给更多的政企用户，360系统部构筑了通用运维解决方案——xManager，<br>
+用于在政企项目交付中实现快速安装部署及运维，降低交付与运维成本<br>
+这是一套类似CDH，HDP的大数据集成解决方案</p>
+<h2 id="概述">概述</h2>
+<p>xManager 经过一年多的迭代研发，以及在多个政企项目中的实践，已经进化成一款支持任意产品集成，实现快速私有化安装部署、监控运维的解决方案。</p>
+<p>作为一个面向企业级复杂业务系统、数据化驱动的智能运维平台，xManager核心功能模块包括集群管理、服务管理、数据收集、风控中心、智能运维中心、数据分析与可视化、安全审计、基础管理，功能架构如图所示：</p>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a01.png" />   
+    </p>
+<p>主要特性：</p>
+<ol>
+<li>负载能力：支持数万台节点（服务器）的管理，并可以横向扩展；</li>
+<li>产品集成能力：支持任意产品（软件）的集成，并进行图形化快速安装部署、监控运维；</li>
+<li>服务管理与运维能力：具备服务的日常运维、配置变更、状态监控、数据收集等能力；</li>
+<li>数据收集能力：内置多个数据收集器，包括机器基础指标收集，大数据基础设施组件指标收集等；同时支持用户自定义收集，日志数据收集等；</li>
+<li>安全审计能力：从细粒度权限控制、安全巡检、违规阻断、操作审计等维度，全方位保障平台安全；</li>
+<li>数据分析与可视化能力：支持固定报表、多维分析、自助报表的数据分析与可视化能力；</li>
+<li>风控能力：支持对服务状态及收集上来的指标数据进行风控规则的配置，当触发风控规则，实现精准告警，必要时，实现问题与故障的自愈；</li>
+<li>文件分发与命令执行能力：可在秒级完成对数万节点的文件分发及命令下发执行；</li>
+<li>国产环境适配能力：支持国产麒麟操作系统、飞腾CPU、GBase8s数据库；</li>
+</ol>
+<h2 id="功能介绍及主要设计">功能介绍及主要设计</h2>
+<h3 id="00-概览">00. 概览</h3>
+<h4 id="分成如下层次">分成如下层次:</h4>
+<table>
+<thead>
+<tr>
+<th>机器(节点)</th>
+<th>集群名</th>
+<th>分组名</th>
+<th>应用名</th>
+<th>程序角色</th>
+<th>进程id(父进程)</th>
+<th>端口列表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tw06a371</td>
+<td>lichen</td>
+<td>mata</td>
+<td>yarn</td>
+<td>jobtracker</td>
+<td>12320</td>
+<td>8081，8082，8083</td>
+</tr>
+</tbody>
+</table>
+<h4 id="整体架构">整体架构：</h4>
+<ul>
+<li>JavaWeb后端，前端，Nginx，数据库，Agent(Python和虚拟环境)</li>
+<li>Agent和JavaWeb后端api进行交互，中间有消息队列通信</li>
+</ul>
+<p>  和CDH架构基本一致，cdh服务器端采用javaWeb开发，采用mysql存储配置数据，采用nginx提供接入服务，<br>
+agent端同样采用python开发，提供虚拟环境；<br>
+采用supervisord管理后台服务。</p>
+<h3 id="01-自身向导式安装">01. 自身向导式安装</h3>
+<p>  xManager系统由JavaWeb后端、前端、Nginx、数据库等核心组件构成，其自身的安装亦有一定的复杂性。为此我们设计了用于安装XManager自身的安装向导。在设计初衷，安装向导甚至可以运行在一台笔记本电脑上，通过安装向导提供的页面，将XManager安装到远程主机上。</p>
+<p>启动安装向导
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a02.gif" />   
+    </p>
+<p>使用安装向导页面，安装XManager
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a03.gif" />   
+    </p>
+<h3 id="02-manageragent设计">02. Manager/Agent设计</h3>
+<p>  xManager为了能够管理各个节点（主机），需要将Agent安装到各个节点上。Agent使用Python开发，集成了Python虚拟环境及运行时的必要包，不依赖节点系统的软件环境。安装后占用磁盘大小大约40M，运行时占用内存不超过80M。</p>
+<p>Manager/Agent设计
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a04.jpg" />   
+    
+Agent的主要职责包括：</p>
+<ol>
+<li>上报心跳给Manager；</li>
+<li>采集并上报节点指标（CPU/内存/磁盘/网络等）；</li>
+<li>采集并上报节点的进程信息；</li>
+<li>接收并执行Manager下发的命令，上报执行结果；</li>
+<li>定时执行Agent上的定时任务；</li>
+</ol>
+<p>  一般情况下，Manager向Agent下发任务的方式为主动并发推送，因此可以使得大量节点第一时间获得并执行任务。 <br>
+Manager端包含两部分，<br>
+一部分由Java WEB构建，负责页面系统及元数据的交互；<br>
+另一部分由OpenResty +Lua 构建，主要负责Agent上报任务状态及数据的接收和处理，这一部分，可以横向扩展，<br>
+因此得以支撑数万台节点规模的管理。</p>
+<h3 id="03-服务管理">03. 服务管理</h3>
+<p>  在xManager的设计中，服务即软件，可安装运行在一个或多个节点上。 <br>
+一个服务主要由安装包、组件（模块）、配置文件、相关脚本（安装，操作）、监控信息（端口，进程名）等组成；<br>
+xManager内置集成了系统部的大数据基础服务，也可以通过自定义服务，将自己需要集成和私有化部署的软件产品集成进来，统一进行交付；</p>
+<p>服务(软件)市场
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a05.jpg" />   
+    </p>
+<p>安装服务的过程主要包括：</p>
+<ol>
+<li>为服务的每一个组件（模块），选择要安装的节点；</li>
+<li>修改服务的默认配置；</li>
+<li>确认并进行安装；</li>
+</ol>
+<p>  开始安装后，Manager会将服务的相关安装信息以任务的方式下发给所选节点的Agent，<br>
+Agent执行安装任务并汇报状态给Manager，在此过程中，可以通过界面查看实时的安装进度和安装日志（输出）。</p>
+<p>服务的界面化快速安装
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a06.gif" />   
+    </p>
+<p>服务安装好后，可以对服务进行日常的运维，包括：</p>
+<ol>
+<li>服务的状态监控；</li>
+<li>服务的启动、停止、重启；</li>
+<li>服务配置的变更与下发；</li>
+<li>服务监控的配置：端口和进程；</li>
+<li>服务安装节点的健康状态和指标监控；</li>
+<li>服务操作的事件审计和告警信息查看；</li>
+</ol>
+<p>服务的日常运维
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a07.gif" />   
+    </p>
+<h3 id="04-数据收集">04. 数据收集</h3>
+<p>  xManager中，内置了对节点，HDFS/HBase/YARN大数据服务的相关数据收集，同时提供了自定义指标数据收集和日志数据收集功能，方便用户将自己的业务指标及日志数据进行统一的收集存储与展示。</p>
+<p>  将一台节点接入XManager进行管理后，Agent会定时将节点的性能指标数据及进程数据采集上报，后续可直接进行监控分析。节点性能指标数据包括CPU、负载、内存、磁盘、IO、网络6个维度，共60余个常用指标，并可以根据需求进行扩展。</p>
+<p>节点性能指标
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a08.gif" />   
+    </p>
+<p>  节点进程信息包括进程ID、父进程ID、用户、进程名称、线程数、cpu使用率、物理内存、虚拟内存、文件描述符数、IO等进程相关信息。</p>
+<p>节点进程指标
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a09.gif" />   
+    </p>
+<p>  xManager上安装好大数据基础服务之后，通过服务提供的JMX，将服务运行时的指标进行采集并存储。<br>
+需要采集的指标及采集间隔可进行灵活配置，通过这些数据，XManager对这些服务进行状态监控、异常分析、风控告警等。<br>
+运维人员亦可通过分析这些数据进行异常定位，服务优化等。</p>
+<p>大数据基础服务指标
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a10.gif" />   
+    </p>
+<p>xManager支持用户创建一个指标数据收集任务来定义、收集、存储自己的指标数据。<br>
+任务创建好后，可以由XManager管理并定时运行该任务，也可以由用户自己执行任务，将数据上报到XManager；<br>
+如图所示：</p>
+<p>自定义指标数据收集任务
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a11.png" />   
+    </p>
+<p>自定义指标数据收集任务运行流程
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a12.png" />   
+    </p>
+<p>由Agent或者用户自己定时执行数据收集任务脚本，将收集到的数据进行上报，<br>
+Manager一方面根据任务所选存储类型进行数据存储，<br>
+另一方面，根据风控中心的相关配置，判断是否将该任务的数据上报至风控中心。<br>
+xManager提供了性能较好的日志采集器，通过界面化的配置，即可完成对业务日志数据的采集。<br>
+日志采集器的大致架构如图所示：</p>
+<p>日志采集器
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a13.png" />   
+    </p>
+<p>日志采集器运行在Agent安装节点上，由Manager提供界面进行统一管控，包括安装、启停、修改、扩容等。<br>
+在采集器内部，包含四个主要模块：</p>
+<ol>
+<li>采集模块：负责从数据源中采集数据，数据源支持：文本文件、MySQL、MSSQL、Elasticsearch、Redis、HTTP等；</li>
+<li>解析模块：负责将采集到的数据进行格式解析，比如：json格式解析、Nginx日志格式解析、KV格式解析等，当然，可以选择不解析，直接原始日志发送；</li>
+<li>转换模块：负责将解析后的数据进行字段转换，比如：IP转换、日期转换、字符串替换、字符串拼接、字符串过滤等等。当然，可以选择不转换，直接原始日志发送；</li>
+<li>发送模块：负责将数据发送至接收方，支持：Kafka、Elasticsearch、HTTP、本地文件、InfluxDB、MySQL等；</li>
+</ol>
+<p>  该采集器运行占用资源较小（测试数据：文本文件-&gt;Kafka，1小时采集和发送13G文件，1亿记录数，单核CPU使用率20%以下，内存使用70M以下），支持在采集端进行一些数据解析和转换（边缘计算），降低发送数据的网络及存储消耗，当然，在采集端进行解析和转换，会带来一定的资源消耗。采集器也可通过各种参数限制采集端的资源使用，比如，限制每次读取的数据量。</p>
+<p>  在xManager提供的页面上，可以很方便的添加和配置一个日志数据收集任务，将采集器安装并运行到多个节点上。</p>
+<p>界面化创建日志收集任务
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a14.gif" />   
+    </p>
+<p>  在采集器运行过程中，可以在界面上实时看到每个节点上采集到的日志大小、记录数、读取条数、发送条数、速率等信息，另外，可以通过界面扩容采集器到其他节点上。</p>
+<p>采集器运行指标实时监控
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a15.png" />   
+    </p>
+<h3 id="05-风控中心">05. 风控中心</h3>
+<p>  xManager提供的风控中心，通过实时或者准实时的方式，获取各类指标数据，根据配置的风控规则，对于触发风控规则的指标，一方面进行告警，另一方面，可以执行风控策略，实现问题或故障的自愈。</p>
+<p>风控中心运作流程
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a16.png" />   
+    </p>
+<p>目前风控中心基于之前的告警中心正在逐步完善，包括完善风控规则的配置以及风控策略的执行。
+简单风控规则
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a17.png" />   
+    </p>
+<h3 id="06-运维工具">06. 运维工具</h3>
+<p>  运维工具是运维中心提供的向大量节点分发文件或者执行命令/脚本的工具，具有操作简单，响应快等特点。以远程执行命令为例，在界面上输入要执行的命令，选择要执行的节点，输入执行用户，开始执行。</p>
+<p>运维工具–执行命令
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a18.png" />   
+    </p>
+<p>任务控制台
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a19.gif" />   
+    </p>
+<h3 id="07-安全审计">07. 安全审计</h3>
+<p>xManager目前通过以下方面确保平台安全：</p>
+<ol>
+<li>操作审计：记录用户XManager上的一切行为；</li>
+<li>违规阻断：通过配置阻断规则，阻断用户提交的危险操作；</li>
+<li>安全巡检：定时检查节点上的安全风险，生成巡检报告；</li>
+<li>权限控制：菜单、功能、数据三级权限控制；</li>
+</ol>
+<p>安全审计
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/qihu360/a20.gif" />   
+    </p>
+<p>xManager目前已经设计了安全中心，在已有的安全保障方面的能力基础之上，增加了对大数据平台安全审计、其他业务系统安全审计方面的支持能力。</p>
+<h3 id="08-其他">08. 其他</h3>
+<p>除了上面介绍到的功能模块，XManager还包括了支持接入第三方认证系统的用户认证模块；<br>
+方便用户和运维人员沟通记录的工单模块；<br>
+支持邮件、短信、电话等通知方式的消息中心；<br>
+用于知识沉淀、可供搜索和查询的运维知识库等等。</p>
+<h3 id="09-写在最后">09. 写在最后</h3>
+<p>在过去的2019年，集成了360大数据基础平台能力的XManager，在南京、重庆、天津等地落地实施了多个政企项目，<br>
+同时，并作为客户方的产品集成解决方案，在客户方的对外项目集成交付中起到了很大的作用。
+在未来，XManager希望能在解决大数据基础平台快速交付的基础上，将分布式安装部署监控管理的能力扩展到数据平台、AI平台、安全平台等其他业务平台，形成了统一的大数据全栈平台的一站式交付与运维解决方案，为后续支撑公司政企安全新战略，构建快速交付能力和低成本运维能力。</p>
+
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liuzhongzhen.github.io/">liuzhongzhen</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-360Xmanager%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D/">https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-360Xmanager%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../products/%E8%85%BE%E8%AE%AF-%E7%BD%97%E7%9B%98BI%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/">腾讯-罗盘BI可视化平台</a></li>
+        
+        <li><a href="../../products/%E8%85%BE%E8%AE%AF-lhotse%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/">腾讯-Lhotse调度系统</a></li>
+        
+        <li><a href="../../products/%E5%AD%A6%E6%A0%A1-%E8%AF%BE%E5%A4%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/">学校-课外实践项目</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/" title="几种序列化协议的介绍(转)">几种序列化协议的介绍(转)</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-002%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/" title="Mysql-002索引原理介绍">Mysql-002索引原理介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/" title="Mysql-001建表语句">Mysql-001建表语句</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/" title="Nginx-001详细介绍">Nginx-001详细介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/python-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" title="Python-001学习资料">Python-001学习资料</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-12%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" title="数据结构-20200401-12文件操作">数据结构-20200401-12文件操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-11%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F/" title="数据结构-20200401-11外部排序">数据结构-20200401-11外部排序</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-10%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F/" title="数据结构-20200401-10内部排序">数据结构-20200401-10内部排序</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-09%E6%9F%A5%E6%89%BE/" title="数据结构-20200401-09查找">数据结构-20200401-09查找</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-08%E5%8A%A8%E6%80%81%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/" title="数据结构-20200401-08动态存储管理">数据结构-20200401-08动态存储管理</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Http/">Http (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Mysql/">Mysql (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Nginx/">Nginx (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-python/">语言-python (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://liuzhongzhen.github.io/tags/Http/">Http</a>
+    
+    <a href="https://liuzhongzhen.github.io/tags/Web/">Web</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
