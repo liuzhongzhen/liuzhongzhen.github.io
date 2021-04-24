@@ -9,11 +9,11 @@
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
     <lastBuildDate>Fri, 01 Jan 2021 18:38:16 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-python/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Python-学习资料</title>
-      <link>https://liuzhongzhen.github.io/post/python-%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</link>
+      <title>Python-001学习资料</title>
+      <link>https://liuzhongzhen.github.io/post/python-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</link>
       <pubDate>Fri, 01 Jan 2021 18:38:16 +0800</pubDate>
       
-      <guid>https://liuzhongzhen.github.io/post/python-%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</guid>
+      <guid>https://liuzhongzhen.github.io/post/python-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</guid>
       <description>常用开发框架 名字 链接 项目 备注 django https://www.djangoproject.com/ hue flask https://flask.palletsprojects.com/en/1.1.x/ redash,superset,flaskbb tornado https://www.tornadoweb.org/en/stable/# twisted https://twistedmatrix.com/trac/ sanic https://sanic.readthedocs.io/en/latest/ fastapi https://fastapi.tiangolo.com/ vibora https://github.com/vibora-io/vibora pyramid https://www.trypyramid.com/ cherryPy https://cherrypy.org/ hue的WebServer bottlePy http://www.bottlepy.com/docs/dev/ webpy</description>
     </item>
     

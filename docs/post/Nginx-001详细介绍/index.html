@@ -9,20 +9,20 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>腾讯-Lhotse调度系统 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="腾讯-Lhotse调度系统 - Liuzhongzhen的博客">
+    <title>Nginx-001详细介绍 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="Nginx-001详细介绍 - Liuzhongzhen的博客">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2013-03-01T23:07:09&#43;08:00'>
+    <meta property="article:published_time" content='2021-01-07T22:57:56&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2013-03-01T23:07:09&#43;08:00'>
+    <meta property="article:modified_time" content='2021-01-07T22:57:56&#43;08:00'>
         
     <meta name="Keywords" content="java python php sql">
-    <meta name="description" content="腾讯-Lhotse调度系统">
+    <meta name="description" content="Nginx-001详细介绍">
         
     <meta name="author" content="liuzhongzhen">
-    <meta property="og:url" content="https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-lhotse%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/">
     <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='../../css/normalize.css'>
@@ -56,7 +56,7 @@
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
-                    <a class="" href="https://liuzhongzhen.github.io/">首页</a>
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
                     <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
                     
@@ -145,27 +145,7 @@
 <div class="post-toc" style="position: absolute; top: 188px;">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-        <nav id="TableOfContents">
-  <ul>
-    <li><a href="#角色">角色</a></li>
-    <li><a href="#背景">背景</a></li>
-    <li><a href="#开发工具">开发工具</a></li>
-    <li><a href="#整体架构">整体架构</a>
-      <ul>
-        <li></li>
-      </ul>
-    </li>
-    <li><a href="#功能模块">功能模块</a></li>
-    <li><a href="#使用情况">使用情况</a></li>
-    <li><a href="#核心表">核心表</a></li>
-    <li><a href="#请求分发模块">请求分发模块</a></li>
-    <li><a href="#任务job生成模块">任务Job生成模块</a></li>
-    <li><a href="#任务实例获取模块">任务实例获取模块</a></li>
-    <li><a href="#依赖检查线程模块">依赖检查线程模块</a></li>
-    <li><a href="#命令执行模块">命令执行模块</a></li>
-    <li><a href="#维护线程模块">维护线程模块</a></li>
-  </ul>
-</nav>
+        <nav id="TableOfContents"></nav>
     </div>
 </div>
 <script type="text/javascript">
@@ -197,11 +177,18 @@
 </script>
     <article class="post">
         <header>
-            <h1 class="post-title">腾讯-Lhotse调度系统</h1>
+            <h1 class="post-title">Nginx-001详细介绍</h1>
         </header>
         <date class="post-meta meta-date">
-            2013年3月1日
+            2021年1月7日
         </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/Nginx'>Nginx</a></span>
+            
+        </div>
         
         
         <div class="post-meta">
@@ -210,163 +197,27 @@
         </div>
         
         
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
         <div class="post-content">
-            <h2 id="角色">角色</h2>
-<p>参与者，负责其中某些runner的设计开发</p>
-<h2 id="背景">背景</h2>
-<p>周期性运行离线计算任务，用来替代Oracle中的Job(旧)-&gt;Scheduler(10g)周期任务;<br>
-支持多种任务类型，可以进行任务依赖管理，按照先后顺序执行</p>
-<h2 id="开发工具">开发工具</h2>
-<ol>
-<li>后台开发语言: java,多线程,socket服务,本地缓存服务</li>
-<li>通信协议: protobuf</li>
-<li>后端数据存储: mysql5.5</li>
-<li>runner开发: java,c++,python,php</li>
-</ol>
-<h2 id="整体架构">整体架构</h2>
-<p>
-        <img class="mx-auto" alt="ua001" src="../../imgs/txlhotse/lhotse_jiagou.jpg" />   
-    </p>
-<h4 id="baseserver架构">BaseServer架构</h4>
-<p>
-        <img class="mx-auto" alt="ua001" src="../../imgs/txlhotse/lhotse_base.jpg" />   
-    </p>
-<h4 id="taskbroker结构">TaskBroker结构</h4>
-<p>
-        <img class="mx-auto" alt="ua001" src="../../imgs/txlhotse/lhotse_runner.jpg" />   
-    </p>
-<h4 id="约定">约定</h4>
-<p>用一台或多台机器部署BaseServer，提供Socket服务和CGI服务<br>
-用多台机器当作TaskBroker，<br>
-每台TaskBroker机器上面可以部署多个TaskRunnerLoader进程，用来处理不同任务类型的taskJob。<br>
-TaskRunnerLoader是常驻Daemon进程，用多线程来处理每个taskJob，<br>
-每请求得到一个Job实例，则启动一个线程来处理，<br>
-处理过程中和处理完，此线程负责把Job实例的心跳和状态信息报告发送给BaseServer。<br>
-一中taskType类型对应一种taskRunner，一种taskRunner可以运行在多个broker机器上面。<br>
-每个taskRunnerLoader都可以独立向BaseServer请求获取需要执行的任务和上报任务状态。<br>
-每次taskRunner向BaseServer请求任务实例,baseServer都能获取请求的任务类型和客户端IP。<br>
-taskRunner可以向BaseServer请求需要执行的Job和需要Kill的Job两种状态的实例。<br>
-taskRunner可以向BaseServer报告自己任务执行的进度和状态，执行的成功失败，kill的成功失败。</p>
-<h2 id="功能模块">功能模块</h2>
-<ol>
-<li>网络请求分发线程模块，负责路由socket请求，一个代理brokerIp一个线程处理,worker线程池</li>
-<li>任务实例下发线程模块，负责任务请求处理和任务下发</li>
-<li>任务实例排序和依赖检查线程模块，负责从众多任务实例中找出优先被下发的</li>
-<li>依赖处理线程模块，负责找出满足依赖的任务实例，并更新状态</li>
-<li>任务实例化线程模块，负责任务实例化工作</li>
-<li>状态提交线程模块，负责实例状态更改写入db</li>
-<li>参数请求处理线程，负责各个runner插件的参数请求处理,每种任务类型插件都有自己的扩展参数</li>
-<li>runner插件启动模块，负责runner插件配置检查，状态更新，实例状态更新</li>
-<li>命令干预执行线程模块，负责执行用户的命令，包括任务重做，补录，强制成功，杀死等</li>
-<li>维护线程模块，负责清理过期任务，过期Job实例，数据统计，滚动分区</li>
-<li>web用户使用界面模块，负责给数据开发人员提供可视化的工作流配置</li>
-<li>管理控制台，负责给管理和运维维护人员进行插件注册管理，任务干预等处理</li>
-</ol>
-<h2 id="使用情况">使用情况</h2>
-<h2 id="核心表">核心表</h2>
-<pre><code>create table lb_task(
-    task_id     任务id
-    task_type   任务类型
-    task_cycle  取值分钟60,小时3600,天86400等
-    start_date
-    end_date
-    task_status 任务状态
-    task_action 任务命令
-)
-create table lb_task_run(
-    task_id
-    curr_run_date  当前Job运行时间
-    next_run_date  Job下个周期时间
-    job_status     Job状态
-    primary key (task_id,curr_run_date)
-)
-create table lb_task_link(
-    task_from_id   父任务id
-    task_to_id     子任务id
-    depend_type    依赖类型
-)
-job_staus取值Enum(
-    Rough              草稿中
-    Ready              就绪态,任务可调度且没有调度过
-    Running            运行态，任务正在运行
-    Succ               正常结束状态，任务成功结束
-    Failed             异常结束状态，任务失败结束
-    WaitKill           等待终止
-    Killing            正在终止
-    Killed             终止成功
-    Hanged             终止失败
-    StopSchedule       停止调度，即重试次数达到上限
-    DependenceFinish   满足依赖，实例依赖已满足，可调度
-)
-depend_type取值Enum(
-    1  同周期依赖
-    2  大周期依赖小周期
-    3  小周期依赖大周期
-    -n 依赖前面第n个周期任务
-)
-</code></pre><h2 id="请求分发模块">请求分发模块</h2>
-<pre><code>1. broker代理发起请求 
-2. base服务器taskServer模块根据客户端ip，找到具体的taskWorker线程来处理
-3. taskWorker解析broker请求，获取请求类型和请求内容
-4. 如果是启动runner请求，则交给启动runner插件处理
-5. 如果是状态提交请求，则交给状态处理线程模块
-6. 如果是请求插件参数请求，则交给插件参数处理线程
-7. 如果是请求新的任务，则交给任务下发线程处理
-在各个线程中响应broker请求   
-</code></pre><h2 id="任务job生成模块">任务Job生成模块</h2>
-<pre><code>select a.task_id       as task_id,
-       a.task_cycle    as task_cycle,
-       a.start_date    as start_date,
-       a.end_date      as end_date
-       b.max_run_date  as max_run_date
-  from lb_task a
-  left join (select task_id,
-                    max(curr_run_date) max_run_date
-               from lb_task_run
-              group by task_id
-            ) b
-    on (a.task_id=b.task_id)
-max_run_date+task_cycle则是下一个周期Job的时间,job_status=Ready
-此方案在任务多，实例多会有性能问题，因为要扫描实例表全表
-</code></pre><h2 id="任务实例获取模块">任务实例获取模块</h2>
-<pre><code>1. 根据taskType和clientIP获取等待UnSuccess的job实例列表
-2. 遍历任务实例列表，如果碰到实例状态为等待kill的job，则不作任何检查，更新状态，直接下发
-3. 如果任务状态不是有效态，则忽略对该任务接下来的检查，从列表中移除
-4. 将实例按照优先级分配到不同的线程进行检查
-5. 在每个优先级处理线程中遍历每个job，如果碰到状态为-1Rough的job，则不做任何检查，直接下发
-6. 检查线程第一轮遍历会记录那些Running的任务，killing的任务，满足运行条件的任务，  
-   Running和Killing任务记录是为了计算任务并发度，服务器并发度和代理并发度；
-7. 对满足运行条件的任务进行第二轮遍历，  
-   在任务列表里面找出满足并发度检查，实例正确性验证，任务正确性验证的实例生成新的排序列表
-8. 对新对排序列表进行遍历，找到第一个满足依赖检查的Job就下发
-</code></pre><h2 id="依赖检查线程模块">依赖检查线程模块</h2>
-<pre><code>该线程的主要目的是在任务下发之前，先检查任务实例的依赖状态。  
-如果一个任务实例的所有依赖关系都满足，则将该任务实例的状态置为DependenceFinish 
-</code></pre><h2 id="命令执行模块">命令执行模块</h2>
-<pre><code>1. 批量冻结下线任务
-2. 批量解冻任务
-3. 批量补录任务Job
-4. 批量重做任务Job
-5. 批量修改任务Job
-6. 批量kill任务Job
-7. 批量强制任务Job成功
-8. 批量调整任务优先级
-9. 注册命令
-   1.  更新server信息；
-   2.  更新任务类型信息
-   3.  更新插件信息
-   4.  更新下发器的日志级别
-</code></pre><h2 id="维护线程模块">维护线程模块</h2>
-<pre><code>1. 已经实例化的一次性任务修改为下线或清理
-2. 任务结束时间已经超过当前时间的任务修改为下线或清理
-3. 将实例执行时长已经超过alive_wait的任务实例状态强制设置为失败
-5. 删除Job实例表中过期的任务实例
-6. 为日志表滚动生成新的分区
-7. 数据统计记录
-</code></pre>
+            <p><strong>转发</strong> <a href="https://mp.weixin.qq.com/s/GjAe4V4zyw3D0troRbc9ww">万字总结，体系化带你全面认识 Nginx</a></p>
+
         </div>
 
         
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liuzhongzhen.github.io/">liuzhongzhen</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liuzhongzhen.github.io/post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/">https://liuzhongzhen.github.io/post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
 
 
         
@@ -375,7 +226,15 @@ max_run_date+task_cycle则是下一个周期Job的时间,job_status=Ready
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="../../products/%E5%AD%A6%E6%A0%A1-%E8%AF%BE%E5%A4%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/">学校-课外实践项目</a></li>
+        <li><a href="../../about/">个人简介</a></li>
+        
+        <li><a href="../../post/python-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/">Python-001学习资料</a></li>
+        
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-Angela%E5%9F%BA%E4%BA%8Espark%E7%9A%84%E5%AE%9E%E6%97%B6%E5%BC%80%E5%8F%91%E7%B3%BB%E7%BB%9F/">网心-Angela基于spark的实时开发系统</a></li>
+        
+        <li><a href="../../post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-12%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">数据结构-20200401-12文件操作</a></li>
+        
+        <li><a href="../../post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-11%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F/">数据结构-20200401-11外部排序</a></li>
         
     </ul>
 </div>

@@ -7,13 +7,13 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Mon, 01 Mar 2021 22:44:53 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/tags/Web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Jan 2020 22:44:53 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/tags/Web/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Http-20210301-Cookies介绍</title>
-      <link>https://liuzhongzhen.github.io/post/Http-20210301-Cookies/</link>
-      <pubDate>Mon, 01 Mar 2021 22:44:53 +0800</pubDate>
+      <title>Http-002Cookies介绍</title>
+      <link>https://liuzhongzhen.github.io/post/Http-002Cookies/</link>
+      <pubDate>Thu, 02 Jan 2020 22:44:53 +0800</pubDate>
       
-      <guid>https://liuzhongzhen.github.io/post/Http-20210301-Cookies/</guid>
+      <guid>https://liuzhongzhen.github.io/post/Http-002Cookies/</guid>
       <description>&lt;p&gt;&lt;strong&gt;转载外部&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&#34;什么是cookie&#34;&gt;什么是Cookie&lt;/h3&gt;
 &lt;p&gt;Cookie用于存储http请求中的用户认证信息，用户在通过登录认证后，服务器在response header中设置Cookie，用户浏览器自动带Cookie访问该网站。&lt;/p&gt;

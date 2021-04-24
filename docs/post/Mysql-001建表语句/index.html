@@ -1,0 +1,1140 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Mysql-001建表语句 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="Mysql-001建表语句 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-02-01T11:17:16&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-02-01T11:17:16&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="Mysql-001建表语句">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents"></nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Mysql-001建表语句</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年2月1日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/Mysql'>Mysql</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <p>常用附加信息</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql">ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB
+<span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4
+<span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci
+<span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;任务类型扩展配置信息&#39;</span>
+ROW_FORMAT <span style="color:#000;font-weight:bold">=</span> Compact <span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">压缩固定长度</span>
+ROW_FORMAT <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">Dynamic</span> <span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">可变长度</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">108
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">109
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">110
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">111
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">112
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">113
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">114
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">115
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">116
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">117
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">118
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">119
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">120
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">121
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">122
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">123
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">124
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">125
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">126
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">127
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">128
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">129
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">130
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">131
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">132
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">133
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">134
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">135
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">136
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">137
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">138
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">139
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">140
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">141
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">142
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">143
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">144
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">145
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">146
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">147
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">148
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">149
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">150
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">151
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">152
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">153
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">154
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">155
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">156
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">157
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">158
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">159
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">160
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">161
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">162
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">163
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">164
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">165
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">166
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">167
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">168
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">169
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">170
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">171
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">172
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">173
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">174
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">175
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">176
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">177
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">178
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">179
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">180
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">181
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">182
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">183
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">184
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">185
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">186
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">187
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">188
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">189
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">190
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">191
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">192
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">193
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">194
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">195
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">196
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">197
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">198
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">199
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">200
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">201
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">202
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">203
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">204
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">205
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">206
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">207
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">208
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">209
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">210
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">211
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">212
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">213
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">214
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">215
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">216
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">217
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">218
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">219
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">220
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">221
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">222
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">223
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">224
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">225
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">226
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">227
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">228
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">229
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">230
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">231
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">232
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">233
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">234
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">235
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">236
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">237
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">238
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">239
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">240
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">241
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">242
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">243
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">244
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">245
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">246
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">247
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">248
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">249
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">250
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">251
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">252
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">253
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">254
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">255
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">256
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">257
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">258
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">259
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">260
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">261
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">262
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">263
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">264
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">265
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">266
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">267
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">268
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">269
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">270
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">271
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">272
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">273
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">274
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">275
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">276
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">277
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">278
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">279
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">280
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">281
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">282
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">283
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">284
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">285
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">286
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">287
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">288
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">289
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">290
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">291
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">292
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">293
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">294
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">295
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">296
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">297
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">298
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">299
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">300
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">301
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">302
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">303
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">304
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">305
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">306
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">307
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">308
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">309
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">310
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">311
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">312
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">313
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">314
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">315
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">316
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">317
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">318
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">319
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">320
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">321
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">322
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">323
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">324
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">325
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">326
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">327
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">328
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">329
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">330
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">331
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">332
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">333
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">334
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">335
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">336
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">337
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">338
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">339
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">340
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">341
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">342
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">343
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">344
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">345
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">346
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">347
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SET</span> <span style="color:#000;font-weight:bold">NAMES</span> utf8mb4;
+<span style="color:#000;font-weight:bold">SET</span> FOREIGN_KEY_CHECKS <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>;
+
+<span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">database</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lhotse <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> utf8mb4_general_ci;
+use lhotse;
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_task_type;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_task_type (
+   type_id              <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;类型ID&#39;</span>,
+   type_desc            <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;类型描述&#39;</span>,
+   type_sort            <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;所属大类&#39;</span>,
+   in_charge            <span style="color:#0086b3">varchar</span>(<span style="color:#099">30</span>)  <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;负责人&#39;</span>,
+   create_time          datetime     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+   killable             <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;可KILL&#39;</span>,
+   global_parallelism   <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">20</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;全局并发度&#39;</span>,
+   broker_parallelism   <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">20</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;每个Broker上并发度&#39;</span>,
+   task_parallelism     <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">10</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;每个任务最大并发度&#39;</span>,
+   server_parallelism   <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">10</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;server并发度&#39;</span>,
+   default_alive_wait   <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">30</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;默认存活等待(分钟)&#39;</span>,
+   polling_seconds      <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">60</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;轮询周期(秒)&#39;</span>,
+   retry_wait           <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;重试等待(分钟)&#39;</span>,
+   source_server_type   <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;源服务器类型&#39;</span>,
+   target_server_type   <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;目标服务器类型&#39;</span>,
+   bg_special           <span style="color:#0086b3">varchar</span>(<span style="color:#099">10</span>)     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#d14">&#39;all&#39;</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;BG专用&#39;</span>,
+   param_list           <span style="color:#0086b3">varchar</span>(<span style="color:#099">10240</span>)  <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;参数列表XML&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (type_id)
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;任务类型&#39;</span> ROW_FORMAT <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">Dynamic</span>;
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_task_type_ext;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_task_type_ext (
+   type_id              <span style="color:#0086b3">smallint</span>       <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务类型ID&#39;</span>,
+   prop_name            <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;属性名&#39;</span>,
+   prop_tag             <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>)   <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;属性标签(UI展示用)&#39;</span>,
+   prop_desc            <span style="color:#0086b3">varchar</span>(<span style="color:#099">500</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;描述提示信息(UI展示用)&#39;</span>,
+   rank_id              <span style="color:#0086b3">smallint</span>       <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;排列ID&#39;</span>,
+   input_type           <span style="color:#0086b3">varchar</span>(<span style="color:#099">50</span>)    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;控件类型&#39;</span>,
+   value_type           <span style="color:#0086b3">varchar</span>(<span style="color:#099">50</span>)    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;值类型(integer,string)&#39;</span>,
+   default_value        <span style="color:#0086b3">varchar</span>(<span style="color:#099">1000</span>)  <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;缺省值&#39;</span>,
+   candidate_values     <span style="color:#0086b3">varchar</span>(<span style="color:#099">1000</span>)  <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;候选值列表(,分隔)&#39;</span>,
+   candidate_texts      <span style="color:#0086b3">varchar</span>(<span style="color:#099">2000</span>)  <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;候选文本列表(,分隔)&#39;</span>,
+   is_mandatory         <span style="color:#0086b3">smallint</span>       <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;是否必填&#39;</span>,
+   max_value            <span style="color:#0086b3">int</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;最大值&#39;</span>,
+   min_value            <span style="color:#0086b3">int</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;最小值&#39;</span>,
+   conf_level           <span style="color:#0086b3">smallint</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;配置等级(1-普通,2-高级,3-管理员)&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (type_id, prop_name),
+   <span style="color:#000;font-weight:bold">constraint</span> fk_task_type_ext_ref_task_type <span style="color:#000;font-weight:bold">foreign</span> <span style="color:#000;font-weight:bold">key</span> (type_id) <span style="color:#000;font-weight:bold">references</span> lb_task_type (type_id)
+           <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">restrict</span> <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">restrict</span>
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;任务类型扩展配置信息&#39;</span>;
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_server;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_server (
+   server_tag           <span style="color:#0086b3">varchar</span>(<span style="color:#099">200</span>)         <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;服务器名&#39;</span>,
+   server_type          <span style="color:#0086b3">varchar</span>(<span style="color:#099">20</span>)          <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;服务器类型&#39;</span>,
+   server_alias         <span style="color:#0086b3">varchar</span>(<span style="color:#099">50</span>)          <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;服务器别名&#39;</span>,
+   is_group             <span style="color:#0086b3">smallint</span>             <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;是否为组&#39;</span>,
+   <span style="color:#000;font-weight:bold">host</span>                 <span style="color:#0086b3">varchar</span>(<span style="color:#099">2000</span>)  <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;主机名&#39;</span>,
+   port                 <span style="color:#0086b3">int</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;端口&#39;</span>,
+   service              <span style="color:#0086b3">varchar</span>(<span style="color:#099">30</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;服务名&#39;</span>,
+   user_name            <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;用户名&#39;</span>,
+   user_group           <span style="color:#0086b3">varchar</span>(<span style="color:#099">30</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;用户组&#39;</span>,
+   password             <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;密码&#39;</span>,
+   in_charge            <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>)   <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;负责人&#39;</span>,
+   create_time          datetime       <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+   parallelism          <span style="color:#0086b3">smallint</span>       <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">5</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;最大并发度(每种任务类型独立)&#39;</span>,
+   server_version       <span style="color:#0086b3">varchar</span>(<span style="color:#099">50</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;服务器版本&#39;</span>,
+   special_reserve      <span style="color:#0086b3">smallint</span>       <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">10</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;特殊保留百分比&#39;</span>,
+   special_priority     <span style="color:#0086b3">smallint</span>       <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">1</span>  <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;特殊保留的优先级限制&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (server_tag)
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;服务器信息&#39;</span>;
+
+<span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_server_group (
+   group_tag            <span style="color:#0086b3">varchar</span>(<span style="color:#099">200</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;组标签&#39;</span>,
+   server_tag           <span style="color:#0086b3">varchar</span>(<span style="color:#099">200</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;服务器标签&#39;</span>,
+   order_id             <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;排序ID&#39;</span>,
+   create_time          datetime     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+   in_charge            <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;负责人&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (group_tag, server_tag),
+   <span style="color:#000;font-weight:bold">constraint</span> fk_serv_group_ref_serv_1 <span style="color:#000;font-weight:bold">foreign</span> <span style="color:#000;font-weight:bold">key</span> (group_tag) <span style="color:#000;font-weight:bold">references</span> lb_server (server_tag)
+           <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">restrict</span> <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">restrict</span>,
+   <span style="color:#000;font-weight:bold">constraint</span> fk_serv_group_ref_serv_2 <span style="color:#000;font-weight:bold">foreign</span> <span style="color:#000;font-weight:bold">key</span> (server_tag) <span style="color:#000;font-weight:bold">references</span> lb_server (server_tag)
+           <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">restrict</span> <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">restrict</span>
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;Server组与Sever关系&#39;</span>;
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_task;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_task (
+   task_id              <span style="color:#0086b3">char</span>(<span style="color:#099">17</span>)     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务ID&#39;</span>,
+   task_type            <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;类型ID&#39;</span>,
+   task_name            <span style="color:#0086b3">varchar</span>(<span style="color:#099">200</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务描述&#39;</span>,
+   broker_ip            <span style="color:#0086b3">varchar</span>(<span style="color:#099">20</span>)  <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#d14">&#39;any&#39;</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;broker机器IP&#39;</span>,
+   source_server        <span style="color:#0086b3">varchar</span>(<span style="color:#099">200</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;源Server&#39;</span>,
+   target_server        <span style="color:#0086b3">varchar</span>(<span style="color:#099">200</span>)          <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;目标Server&#39;</span>,
+   cycle_unit           <span style="color:#0086b3">char</span>(<span style="color:#099">1</span>)      <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;周期单位(M/W/D/H/I)&#39;</span>,
+   cycle_num            <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;周期数&#39;</span>,
+   start_date           datetime     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;生效日期&#39;</span>,
+   end_date             datetime              <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;失效日期&#39;</span>,
+   self_depend          <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;自身依赖(1-时序/2-非时序/3-并行)&#39;</span>,
+   task_action          <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务执行目标&#39;</span>,
+   delay_time           <span style="color:#0086b3">int</span>          <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;延迟时间(分)&#39;</span>,
+   startup_time         <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;启动时间(分)&#39;</span>,
+   alive_wait           <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">60</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;最长存活等待(分钟)&#39;</span>,
+   try_limit            <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;可尝试次数上限&#39;</span>,
+   status               <span style="color:#0086b3">char</span>(<span style="color:#099">1</span>)      <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#d14">&#39;C&#39;</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;状态(F:冻结/C:草稿/Y:正常/N:删除)&#39;</span>,
+   task_priority        <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">4</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;优先级(0,1,2,3)，越小优先级越高&#39;</span>,
+   task_group           <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)  <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;所属组&#39;</span>,
+   notes                <span style="color:#0086b3">varchar</span>(<span style="color:#099">1000</span>) <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;备注&#39;</span>,
+   in_charge            <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;负责人&#39;</span>,
+   create_time          datetime     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+   last_update          datetime     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#000;font-weight:bold">current_timestamp</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;最后修改时间&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> pk_task_id(task_id),
+   <span style="color:#000;font-weight:bold">unique</span> <span style="color:#000;font-weight:bold">key</span> uq_task_name(task_name),
+   <span style="color:#000;font-weight:bold">constraint</span> fk_task_ref_serv_1 <span style="color:#000;font-weight:bold">foreign</span> <span style="color:#000;font-weight:bold">key</span> (source_server) <span style="color:#000;font-weight:bold">references</span> lb_server (server_tag)
+           <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">restrict</span> <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">restrict</span>,
+   <span style="color:#000;font-weight:bold">constraint</span> fk_task_ref_serv_2 <span style="color:#000;font-weight:bold">foreign</span> <span style="color:#000;font-weight:bold">key</span> (target_server) <span style="color:#000;font-weight:bold">references</span> lb_server (server_tag)
+           <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">restrict</span> <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">restrict</span>,
+   <span style="color:#000;font-weight:bold">constraint</span> fk_task_ref_task_type <span style="color:#000;font-weight:bold">foreign</span> <span style="color:#000;font-weight:bold">key</span> (task_type)  <span style="color:#000;font-weight:bold">references</span> lb_task_type (type_id)
+           <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">restrict</span> <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">restrict</span>
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;任务配置表&#39;</span>;
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_task_ext;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_task_ext (
+   task_id              <span style="color:#0086b3">char</span>(<span style="color:#099">17</span>)       <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务ID&#39;</span>,
+   prop_name            <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;扩展属性名&#39;</span>,
+   prop_value           <span style="color:#0086b3">varchar</span>(<span style="color:#099">10240</span>) <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;扩展属性值&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (task_id, prop_name),
+   <span style="color:#000;font-weight:bold">constraint</span> fk_task_ext_ref_task <span style="color:#000;font-weight:bold">foreign</span> <span style="color:#000;font-weight:bold">key</span> (task_id) <span style="color:#000;font-weight:bold">references</span> lb_task (task_id)
+           <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">restrict</span> <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">restrict</span>
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;任务扩展属性&#39;</span>;
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_task_link;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_task_link (
+   task_from            <span style="color:#0086b3">char</span>(<span style="color:#099">17</span>)    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;前置任务ID&#39;</span>,
+   task_to              <span style="color:#0086b3">char</span>(<span style="color:#099">17</span>)    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;后置任务ID&#39;</span>,
+   dependence_type      <span style="color:#0086b3">smallint</span>    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;依赖类型(1-同周期,2-大依赖小,3-小依赖大)&#39;</span>,
+   in_charge            <span style="color:#0086b3">varchar</span>(<span style="color:#099">30</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;负责人&#39;</span>,
+   create_time          datetime    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+   status               <span style="color:#0086b3">char</span>(<span style="color:#099">1</span>)     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#d14">&#39;Y&#39;</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;状态&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (task_from, task_to),
+   <span style="color:#000;font-weight:bold">constraint</span> fk_task_link_ref_task_1 <span style="color:#000;font-weight:bold">foreign</span> <span style="color:#000;font-weight:bold">key</span> (task_from) <span style="color:#000;font-weight:bold">references</span> lb_task (task_id)
+           <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">cascade</span> <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">cascade</span>,
+   <span style="color:#000;font-weight:bold">constraint</span> fk_task_link_ref_task_2 <span style="color:#000;font-weight:bold">foreign</span> <span style="color:#000;font-weight:bold">key</span> (task_to) <span style="color:#000;font-weight:bold">references</span> lb_task (task_id)
+           <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">cascade</span> <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">cascade</span>
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;任务依赖关系表&#39;</span> ROW_FORMAT <span style="color:#000;font-weight:bold">=</span> Compact;
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_task_run;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_task_run (
+   task_id              <span style="color:#0086b3">char</span>(<span style="color:#099">17</span>)    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务ID&#39;</span>,
+   task_type            <span style="color:#0086b3">smallint</span>    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务类型(分区)&#39;</span>,
+   cur_run_date         datetime    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;当前运行时间&#39;</span>,
+   next_run_date        datetime    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;下一运行时间&#39;</span>,
+   <span style="color:#000;font-weight:bold">state</span>                <span style="color:#0086b3">smallint</span>    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;状态&#39;</span>,
+   redo_flag            <span style="color:#0086b3">smallint</span>    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;重做标记(1-重做,0-非重做)&#39;</span>,
+   tries                <span style="color:#0086b3">smallint</span>    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;尝试次数&#39;</span>,
+   try_limit            <span style="color:#0086b3">smallint</span>    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#000;font-weight:bold">-</span><span style="color:#099">1</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;可尝试次数上限&#39;</span>,
+   start_time           datetime    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;开始时间&#39;</span>,
+   end_time             datetime    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;截止时间&#39;</span>,
+   run_priority         <span style="color:#0086b3">smallint</span>    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">9</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;运行优先级&#39;</span>,
+   runtime_broker       <span style="color:#0086b3">varchar</span>(<span style="color:#099">20</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;运行时Broker&#39;</span>,
+   runtime_id           <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>)  <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;运行时ID&#39;</span>,
+   last_update          datetime <span style="color:#000;font-weight:bold">default</span> <span style="color:#000;font-weight:bold">current_timestamp</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;最后更新时间&#39;</span>,
+   last_log             <span style="color:#0086b3">varchar</span>(<span style="color:#099">4000</span>) <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;最后日志&#39;</span>,
+   create_time          datetime      <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建实际&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (task_id, cur_run_date, task_type)
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;任务运行实例表&#39;</span>
+partition <span style="color:#000;font-weight:bold">by</span> list(task_type)(
+    partition p_1 <span style="color:#000;font-weight:bold">values</span> <span style="color:#000;font-weight:bold">in</span> (<span style="color:#099">1</span>),
+    partition p_2 <span style="color:#000;font-weight:bold">values</span> <span style="color:#000;font-weight:bold">in</span> (<span style="color:#099">2</span>)
+);
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_command;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_command(
+   command_id           <span style="color:#0086b3">bigint</span> unsigned <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> auto_increment <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;命令ID&#39;</span>,
+   command_name         <span style="color:#0086b3">varchar</span>(<span style="color:#099">30</span>)     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;命令名&#39;</span>,
+   set_time             datetime        <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;设置时间&#39;</span>,
+   setter               <span style="color:#0086b3">varchar</span>(<span style="color:#099">20</span>)     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;命令提交者&#39;</span>,
+   task_id              <span style="color:#0086b3">varchar</span>(<span style="color:#099">17</span>)     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务ID&#39;</span>,
+   date_from            datetime                 <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;起始时间&#39;</span>,
+   date_to              datetime                 <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;截止时间&#39;</span>,
+   param1               <span style="color:#0086b3">varchar</span>(<span style="color:#099">30</span>)              <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;参数1&#39;</span>,
+   <span style="color:#000;font-weight:bold">state</span>                <span style="color:#0086b3">smallint</span>       <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;状态&#39;</span>,
+   start_time           datetime                 <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;执行开始日期&#39;</span>,
+   end_time             datetime                 <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;执行截止日期&#39;</span>,
+   exec_desc            <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>)             <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;执行描述&#39;</span>,
+   last_update          datetime                 <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;更新时间&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (command_id)
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB AUTO_INCREMENT <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;命令执行表&#39;</span>;
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_parameter;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_parameter(
+   param_name           <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;参数名&#39;</span>,
+   param_desc           <span style="color:#0086b3">varchar</span>(<span style="color:#099">500</span>)          <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;参数描述&#39;</span>,
+   param_owner          <span style="color:#0086b3">varchar</span>(<span style="color:#099">30</span>)  <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;参数所有者(BASE/RUNNER)&#39;</span>,
+   param_value          <span style="color:#0086b3">varchar</span>(<span style="color:#099">200</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;参数值&#39;</span>,
+   value_type           <span style="color:#0086b3">varchar</span>(<span style="color:#099">10</span>)  <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;值类型&#39;</span>,
+   in_charge            <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;所有者&#39;</span>,
+   create_time          datetime     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (param_name)
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;系统参数表&#39;</span>;
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_runner;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_runner (
+   type_id              <span style="color:#0086b3">smallint</span>     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务类型ID&#39;</span>,
+   broker_ip            <span style="color:#0086b3">varchar</span>(<span style="color:#099">30</span>)  <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;部署BrokerIP&#39;</span>,
+   executable_path      <span style="color:#0086b3">varchar</span>(<span style="color:#099">500</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;可执行程序路径&#39;</span>,
+   in_charge            <span style="color:#0086b3">varchar</span>(<span style="color:#099">30</span>)  <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;负责人&#39;</span>,
+   status               <span style="color:#0086b3">char</span>(<span style="color:#099">1</span>)      <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#d14">&#39;Y&#39;</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;状态(Y-启用/N-未启用)&#39;</span>,
+   startup_time         datetime              <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;启动时间&#39;</span>,
+   last_heartbeat       datetime              <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;最后心跳时间&#39;</span>,
+   priority_limit       <span style="color:#0086b3">smallint</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">default</span> <span style="color:#099">9</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务优先级上限&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (type_id, broker_ip),
+   <span style="color:#000;font-weight:bold">constraint</span> fk_runner_ref_task_type <span style="color:#000;font-weight:bold">foreign</span> <span style="color:#000;font-weight:bold">key</span> (type_id) <span style="color:#000;font-weight:bold">references</span> lb_task_type (type_id)
+           <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">restrict</span> <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">restrict</span>
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;任务Runner部署及运行情况&#39;</span>;
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_run_stat;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_run_stat (
+   task_id              <span style="color:#0086b3">char</span>(<span style="color:#099">17</span>)       <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务ID&#39;</span>,
+   task_type            <span style="color:#0086b3">smallint</span>       <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务类型&#39;</span>,
+   cur_run_date         datetime       <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;统计日期&#39;</span>,
+   order_id             <span style="color:#0086b3">smallint</span>       <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;排序ID&#39;</span>,
+   cycle_unit           <span style="color:#0086b3">char</span>(<span style="color:#099">1</span>)                 <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务周期&#39;</span>,
+   in_charge            <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>)   <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务ID&#39;</span>,
+   task_name            <span style="color:#0086b3">varchar</span>(<span style="color:#099">200</span>)            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务名&#39;</span>,
+   duration_range_id    <span style="color:#0086b3">smallint</span>                <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;运行时长范围ID&#39;</span>,
+   duration_range       <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>)   <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;运行时长范围描述&#39;</span>,
+   flutter_range_id     <span style="color:#0086b3">smallint</span>       <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;波动率范围ID&#39;</span>,
+   flutter_range        <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>)   <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;波动率范围描述&#39;</span>,
+   duration             <span style="color:#0086b3">float</span>          <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;运行时长(分钟)&#39;</span>,
+   flutter              <span style="color:#0086b3">float</span>          <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;波动率(百分比)&#39;</span>,
+   last_update          datetime       <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;数据更新时间&#39;</span>
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;运行统计明细&#39;</span>
+partition <span style="color:#000;font-weight:bold">by</span> range(order_id) (
+    partition p_1 <span style="color:#000;font-weight:bold">values</span> <span style="color:#000;font-weight:bold">less</span> <span style="color:#000;font-weight:bold">than</span> (<span style="color:#099">2</span>),
+    partition p_max <span style="color:#000;font-weight:bold">values</span> <span style="color:#000;font-weight:bold">less</span> <span style="color:#000;font-weight:bold">than</span> (<span style="color:#000;font-weight:bold">maxvalue</span>)
+);
+
+<span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_sys_log (
+   log_source           <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>) <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;产生源&#39;</span>,
+   log_tigger           <span style="color:#0086b3">varchar</span>(<span style="color:#099">20</span>) <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;触发者&#39;</span>,
+   log_type             <span style="color:#0086b3">varchar</span>(<span style="color:#099">10</span>) <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;类型&#39;</span>,
+   log_desc             <span style="color:#0086b3">varchar</span>(<span style="color:#099">4000</span>) <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;描述&#39;</span>,
+   broker_ip            <span style="color:#0086b3">varchar</span>(<span style="color:#099">30</span>) <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;BROKER地址&#39;</span>,
+   task_type            <span style="color:#0086b3">smallint</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务类型&#39;</span>,
+   time_elapsed         <span style="color:#0086b3">int</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;时间消耗(毫秒)&#39;</span>,
+   log_time             datetime <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;日志时间&#39;</span>,
+   log_time_ms          <span style="color:#0086b3">smallint</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;日志时间(毫秒)&#39;</span>
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;系统日志&#39;</span>
+partition <span style="color:#000;font-weight:bold">by</span> range columns(log_time)(
+    partition p19700101 <span style="color:#000;font-weight:bold">values</span> <span style="color:#000;font-weight:bold">less</span> <span style="color:#000;font-weight:bold">than</span> (<span style="color:#d14">&#39;1970-01-02 00:00:00&#39;</span>),
+    partition p_max <span style="color:#000;font-weight:bold">values</span> <span style="color:#000;font-weight:bold">less</span> <span style="color:#000;font-weight:bold">than</span> (<span style="color:#000;font-weight:bold">maxvalue</span>)
+);
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_task_log;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_task_log (
+   task_id              <span style="color:#0086b3">char</span>(<span style="color:#099">17</span>)      <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务ID&#39;</span>,
+   cur_run_date         datetime      <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;运行日期&#39;</span>,
+   next_run_date        datetime      <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;下一周期&#39;</span>,
+   log_type             <span style="color:#0086b3">varchar</span>(<span style="color:#099">10</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;类型&#39;</span>,
+   tries                <span style="color:#0086b3">smallint</span>      <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;尝试次数&#39;</span>,
+   <span style="color:#000;font-weight:bold">state</span>                <span style="color:#0086b3">smallint</span>      <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;状态&#39;</span>,
+   log_desc             <span style="color:#0086b3">varchar</span>(<span style="color:#099">4000</span>) <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;日志描述&#39;</span>,
+   runtime_broker       <span style="color:#0086b3">varchar</span>(<span style="color:#099">20</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;运行时Broker&#39;</span>,
+   runtime_id           <span style="color:#0086b3">varchar</span>(<span style="color:#099">100</span>)  <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;运行时ID&#39;</span>,
+   log_time             datetime      <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;日志时间&#39;</span>,
+   log_time_ms          <span style="color:#0086b3">smallint</span>      <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;日志时间(毫秒)&#39;</span>,
+   <span style="color:#000;font-weight:bold">key</span> idx_task_id(task_id)
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;任务运行日志&#39;</span>
+partition <span style="color:#000;font-weight:bold">by</span> range columns(log_time)(
+    partition p19700101 <span style="color:#000;font-weight:bold">values</span> <span style="color:#000;font-weight:bold">less</span> <span style="color:#000;font-weight:bold">than</span> (<span style="color:#d14">&#39;1970-01-02 00:00:00&#39;</span>),
+    partition p_max <span style="color:#000;font-weight:bold">values</span> <span style="color:#000;font-weight:bold">less</span> <span style="color:#000;font-weight:bold">than</span> (<span style="color:#000;font-weight:bold">maxvalue</span>)
+);
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_role_server;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_role_server (
+   role_name            <span style="color:#0086b3">varchar</span>(<span style="color:#099">50</span>)  <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;角色名&#39;</span>,
+   server_tag           <span style="color:#0086b3">varchar</span>(<span style="color:#099">200</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;服务器标识&#39;</span>,
+   in_charge            <span style="color:#0086b3">varchar</span>(<span style="color:#099">50</span>)  <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;负责人&#39;</span>,
+   create_time          datetime     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (role_name, server_tag),
+   <span style="color:#000;font-weight:bold">constraint</span> fk_role_serv_ref_serv <span style="color:#000;font-weight:bold">foreign</span> <span style="color:#000;font-weight:bold">key</span> (server_tag) <span style="color:#000;font-weight:bold">references</span> lb_server (server_tag)
+           <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">restrict</span> <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">restrict</span>
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;角色与server对照关系表&#39;</span>;
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_user_role;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_user_role (
+   user_name            <span style="color:#0086b3">varchar</span>(<span style="color:#099">50</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;用户名&#39;</span>,
+   role_name            <span style="color:#0086b3">varchar</span>(<span style="color:#099">50</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;角色名&#39;</span>,
+   server_tag           <span style="color:#0086b3">varchar</span>(<span style="color:#099">200</span>) <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;服务器标识&#39;</span>,
+   in_charge            <span style="color:#0086b3">varchar</span>(<span style="color:#099">50</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;负责人&#39;</span>,
+   create_time          datetime <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (user_name, role_name),
+   <span style="color:#000;font-weight:bold">constraint</span> fk_user_role_ref_role <span style="color:#000;font-weight:bold">foreign</span> <span style="color:#000;font-weight:bold">key</span> (role_name, server_tag) <span style="color:#000;font-weight:bold">references</span> lb_role_server (role_name, server_tag)
+           <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">restrict</span> <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">restrict</span>
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;用户与角色对照关系表&#39;</span>;
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_user_server;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_user_server (
+   user_name            <span style="color:#0086b3">varchar</span>(<span style="color:#099">50</span>)  <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;用户名&#39;</span>,
+   server_tag           <span style="color:#0086b3">varchar</span>(<span style="color:#099">200</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;服务器标识&#39;</span>,
+   in_charge            <span style="color:#0086b3">varchar</span>(<span style="color:#099">50</span>)  <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;负责人&#39;</span>,
+   create_time          datetime     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (user_name, server_tag),
+   <span style="color:#000;font-weight:bold">constraint</span> fk_user_serv_ref_serv <span style="color:#000;font-weight:bold">foreign</span> <span style="color:#000;font-weight:bold">key</span> (server_tag) <span style="color:#000;font-weight:bold">references</span> lb_server (server_tag)
+           <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">restrict</span> <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">restrict</span>
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;用户与服务器对照关系表&#39;</span>;
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_view;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_view (
+   view_id              <span style="color:#0086b3">char</span>(<span style="color:#099">14</span>)     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;试图ID(yyyyMMddHHmmss)&#39;</span>,
+   view_desc            <span style="color:#0086b3">varchar</span>(<span style="color:#099">200</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;试图描述&#39;</span>,
+   in_charge            <span style="color:#0086b3">varchar</span>(<span style="color:#099">30</span>)  <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;所有者&#39;</span>,
+   create_time          datetime     <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (view_id)
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;视图信息&#39;</span>;
+
+<span style="color:#998;font-style:italic">-- drop table if exists lb_view_task;
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> lb_view_task (
+   view_id              <span style="color:#0086b3">char</span>(<span style="color:#099">14</span>)    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;试图ID&#39;</span>,
+   task_id              <span style="color:#0086b3">char</span>(<span style="color:#099">17</span>)    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;任务ID&#39;</span>,
+   pos_x                <span style="color:#0086b3">int</span>         <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;X坐标&#39;</span>,
+   pos_y                <span style="color:#0086b3">int</span>         <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;Y坐标&#39;</span>,
+   in_charge            <span style="color:#0086b3">varchar</span>(<span style="color:#099">30</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;负责人&#39;</span>,
+   create_time          datetime    <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (view_id, task_id),
+   <span style="color:#000;font-weight:bold">constraint</span> fk_task_view_ref_task <span style="color:#000;font-weight:bold">foreign</span> <span style="color:#000;font-weight:bold">key</span> (task_id) <span style="color:#000;font-weight:bold">references</span> lb_task (task_id)
+           <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">restrict</span> <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">restrict</span>,
+   <span style="color:#000;font-weight:bold">constraint</span> fk_task_view_ref_view <span style="color:#000;font-weight:bold">foreign</span> <span style="color:#000;font-weight:bold">key</span> (view_id) <span style="color:#000;font-weight:bold">references</span> lb_view (view_id)
+           <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">delete</span> <span style="color:#000;font-weight:bold">restrict</span> <span style="color:#000;font-weight:bold">on</span> <span style="color:#000;font-weight:bold">update</span> <span style="color:#000;font-weight:bold">restrict</span>
+) ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB <span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4 <span style="color:#000;font-weight:bold">collate</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci <span style="color:#000;font-weight:bold">comment</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;视图与任务对照表&#39;</span>;
+
+<span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> t_data_conn (
+    f_id         <span style="color:#0086b3">int</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> AUTO_INCREMENT  <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;集群id，自动增长&#39;</span>,
+    f_name       <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span>  <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;集群名称，有前缀&#39;</span>,
+    f_type       <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span>  <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;集群类型&#39;</span>,
+    f_principal  <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>) <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span>  <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;集群负责人&#39;</span>,
+    f_host       <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;连接ip地址或域名&#39;</span>,
+    f_port       <span style="color:#0086b3">int</span>                    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;连接端口&#39;</span>,
+    f_user       <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;连接用户名&#39;</span>,
+    f_password   <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;加密密码&#39;</span>,
+    <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> (f_id)
+)
+ENGINE<span style="color:#000;font-weight:bold">=</span>InnoDB
+<span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">character</span> <span style="color:#000;font-weight:bold">set</span><span style="color:#000;font-weight:bold">=</span>utf8mb4
+<span style="color:#000;font-weight:bold">collate</span><span style="color:#000;font-weight:bold">=</span>utf8mb4_unicode_ci
+AUTO_INCREMENT<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1000</span>
+<span style="color:#000;font-weight:bold">comment</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;数据源连接信息&#39;</span>;
+
+<span style="color:#000;font-weight:bold">SET</span> FOREIGN_KEY_CHECKS <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">1</span>;
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liuzhongzhen.github.io/">liuzhongzhen</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/">https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/">Nginx-001详细介绍</a></li>
+        
+        <li><a href="../../about/">个人简介</a></li>
+        
+        <li><a href="../../post/python-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/">Python-001学习资料</a></li>
+        
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-Angela%E5%9F%BA%E4%BA%8Espark%E7%9A%84%E5%AE%9E%E6%97%B6%E5%BC%80%E5%8F%91%E7%B3%BB%E7%BB%9F/">网心-Angela基于spark的实时开发系统</a></li>
+        
+        <li><a href="../../post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-12%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/">数据结构-20200401-12文件操作</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/" title="几种序列化协议的介绍(转)">几种序列化协议的介绍(转)</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-002%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/" title="Mysql-002索引原理介绍">Mysql-002索引原理介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/" title="Mysql-001建表语句">Mysql-001建表语句</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/" title="Nginx-001详细介绍">Nginx-001详细介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/python-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" title="Python-001学习资料">Python-001学习资料</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-12%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" title="数据结构-20200401-12文件操作">数据结构-20200401-12文件操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-11%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F/" title="数据结构-20200401-11外部排序">数据结构-20200401-11外部排序</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-10%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F/" title="数据结构-20200401-10内部排序">数据结构-20200401-10内部排序</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-09%E6%9F%A5%E6%89%BE/" title="数据结构-20200401-09查找">数据结构-20200401-09查找</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-08%E5%8A%A8%E6%80%81%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/" title="数据结构-20200401-08动态存储管理">数据结构-20200401-08动态存储管理</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Http/">Http (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Mysql/">Mysql (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Nginx/">Nginx (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-python/">语言-python (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://liuzhongzhen.github.io/tags/Http/">Http</a>
+    
+    <a href="https://liuzhongzhen.github.io/tags/Web/">Web</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
