@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Mysql-003如何正确高效使用Mysql索引 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="Mysql-003如何正确高效使用Mysql索引 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-02-03T11:17:16&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-02-03T11:17:16&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="Mysql-003如何正确高效使用Mysql索引">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/Mysql-003%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8Mysql%E7%B4%A2%E5%BC%95/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#索引的优点">索引的优点</a></li>
+    <li><a href="#索引的创建">索引的创建</a></li>
+    <li><a href="#b树的索引规则">B+树的索引规则</a></li>
+    <li><a href="#41索引有效的查询">4.1索引有效的查询</a></li>
+    <li><a href="#42索引的限制">4.2索引的限制</a></li>
+    <li><a href="#高效的索引策略">高效的索引策略</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#总结">总结</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Mysql-003如何正确高效使用Mysql索引</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年2月3日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/Mysql'>Mysql</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <p><strong><a href="https://mp.weixin.qq.com/s/8Rfe12UTEywz3IuEv_1sbg">转载外部-如何理解并正确高效的使用MySQL索引</a></strong></p>
+<h2 id="概述">概述</h2>
+<p>索引是存储引擎用于快速查找记录的一种数据结构，通过合理的使用数据库索引可以大大提高系统的访问性能，接下来主要介绍在MySql数据库中索引类型，以及如何创建出更加合理且高效的索引技巧。</p>
+<p>注：这里主要针对的是InnoDB存储引擎的B+Tree索引数据结构</p>
+<h2 id="索引的优点">索引的优点</h2>
+<ol>
+<li>大大减轻了服务器需要扫描的数据量，从而提高了数据的检索速度</li>
+<li>帮助服务器避免排序和临时表</li>
+<li>可以将随机I/O变为顺序I/O</li>
+</ol>
+<h2 id="索引的创建">索引的创建</h2>
+<p>3.1、主键索引</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#d14">&#39;table_name&#39;</span> <span style="color:#000;font-weight:bold">ADD</span> <span style="color:#000;font-weight:bold">PRIMARY</span> <span style="color:#000;font-weight:bold">KEY</span> <span style="color:#d14">&#39;index_name&#39;</span> (<span style="color:#d14">&#39;column&#39;</span>);
+<span style="color:#a61717;background-color:#e3d2d2">建表时候</span> <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> pk_ (<span style="color:#d14">&#39;column1&#39;</span>,<span style="color:#d14">&#39;column2&#39;</span>...)
+</code></pre></td></tr></table>
+</div>
+</div><p>3.2、唯一索引</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#d14">&#39;table_name&#39;</span> <span style="color:#000;font-weight:bold">ADD</span> <span style="color:#000;font-weight:bold">UNIQUE</span> <span style="color:#d14">&#39;index_name&#39;</span> (<span style="color:#d14">&#39;column&#39;</span>);
+<span style="color:#a61717;background-color:#e3d2d2">建表时候</span> <span style="color:#000;font-weight:bold">unique</span> <span style="color:#000;font-weight:bold">key</span> uidx_ (<span style="color:#000;font-weight:bold">`</span><span style="color:#000;font-weight:bold">column</span><span style="color:#000;font-weight:bold">`</span>);
+</code></pre></td></tr></table>
+</div>
+</div><p>3.3、普通索引</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#d14">&#39;table_name&#39;</span> <span style="color:#000;font-weight:bold">ADD</span> <span style="color:#000;font-weight:bold">INDEX</span> <span style="color:#d14">&#39;index_name&#39;</span> (<span style="color:#d14">&#39;column&#39;</span>);
+<span style="color:#a61717;background-color:#e3d2d2">建表时候</span> <span style="color:#000;font-weight:bold">key</span> idx_ (<span style="color:#d14">&#39;column&#39;</span>)
+</code></pre></td></tr></table>
+</div>
+</div><p>3.4、全文索引</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#d14">&#39;table_name&#39;</span> <span style="color:#000;font-weight:bold">ADD</span> FULLTEXT <span style="color:#d14">&#39;index_name&#39;</span> (<span style="color:#d14">&#39;column&#39;</span>);
+</code></pre></td></tr></table>
+</div>
+</div><p>3.5、组合索引</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#d14">&#39;table_name&#39;</span> <span style="color:#000;font-weight:bold">ADD</span> <span style="color:#000;font-weight:bold">INDEX</span> <span style="color:#d14">&#39;index_name&#39;</span> (<span style="color:#d14">&#39;column1&#39;</span>, <span style="color:#d14">&#39;column2&#39;</span>, ...);
+<span style="color:#a61717;background-color:#e3d2d2">建表时候</span> <span style="color:#000;font-weight:bold">key</span> idx_ (<span style="color:#d14">&#39;column1&#39;</span>,<span style="color:#d14">&#39;column2&#39;</span>,...)
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="b树的索引规则">B+树的索引规则</h2>
+<p>创建一个测试的用户表</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">DROP</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#000;font-weight:bold">IF</span> <span style="color:#000;font-weight:bold">EXISTS</span> user_test;
+<span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">TABLE</span> user_test(
+    id        <span style="color:#0086b3">int</span>         AUTO_INCREMENT <span style="color:#000;font-weight:bold">PRIMARY</span> <span style="color:#000;font-weight:bold">KEY</span>,
+    user_name <span style="color:#0086b3">varchar</span>(<span style="color:#099">30</span>) <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span>,
+    sex       <span style="color:#0086b3">bit</span>(<span style="color:#099">1</span>)      <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> <span style="color:#000;font-weight:bold">DEFAULT</span> b<span style="color:#d14">&#39;1&#39;</span>,
+    city      <span style="color:#0086b3">varchar</span>(<span style="color:#099">50</span>) <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span>,
+    age       <span style="color:#0086b3">int</span>         <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span>
+) 
+ENGINE<span style="color:#000;font-weight:bold">=</span>InnoDB <span style="color:#000;font-weight:bold">DEFAULT</span> CHARSET<span style="color:#000;font-weight:bold">=</span>utf8;
+</code></pre></td></tr></table>
+</div>
+</div><p>创建一个组合索引：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> user_test <span style="color:#000;font-weight:bold">ADD</span> <span style="color:#000;font-weight:bold">INDEX</span> idx_user(user_name , city , age);
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="41索引有效的查询">4.1索引有效的查询</h2>
+<p>4.1.1、全值匹配</p>
+<p>全值匹配指的是和索引中的所有列进行匹配，如：以上面创建的索引为例，在where条件后可同时查询（user_name，city，age）为条件的数据。</p>
+<p>注：与where后查询条件的顺序无关，这里是很多同学容易误解的一个地方</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> <span style="color:#000;font-weight:bold">*</span> 
+  <span style="color:#000;font-weight:bold">FROM</span> user_test
+ <span style="color:#000;font-weight:bold">WHERE</span> user_name <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;feinik&#39;</span>
+   <span style="color:#000;font-weight:bold">AND</span> age <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">26</span>
+   <span style="color:#000;font-weight:bold">AND</span> city <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;广州&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>4.1.2、匹配最左前缀</p>
+<p>匹配最左前缀是指优先匹配最左索引列，如：上面创建的索引可用于查询条件为：（user_name ）、（user_name, city）、（user_name , city , age）</p>
+<p>注：满足最左前缀查询条件的顺序与索引列的顺序无关，如：（city, user_name）、（age, city, user_name）</p>
+<p>4.1.3、匹配列前缀</p>
+<p>指匹配列值的开头部分，如：查询用户名以feinik开头的所有用户</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> <span style="color:#000;font-weight:bold">*</span> 
+  <span style="color:#000;font-weight:bold">FROM</span> user_test
+ <span style="color:#000;font-weight:bold">WHERE</span> user_name <span style="color:#000;font-weight:bold">LIKE</span> <span style="color:#d14">&#39;feinik%&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>4.1.4、匹配范围值</p>
+<p>如：查询用户名以feinik开头的所有用户，这里使用了索引的第一列</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> <span style="color:#000;font-weight:bold">*</span> 
+  <span style="color:#000;font-weight:bold">FROM</span> user_test
+ <span style="color:#000;font-weight:bold">WHERE</span> user_name <span style="color:#000;font-weight:bold">LIKE</span> <span style="color:#d14">&#39;feinik%&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="42索引的限制">4.2索引的限制</h2>
+<p>1、where查询条件中不包含索引列中的最左索引列，则无法使用到索引查询，如：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">FROM</span> user_test <span style="color:#000;font-weight:bold">WHERE</span> city <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;广州&#39;</span>;
+<span style="color:#a61717;background-color:#e3d2d2">或</span>
+<span style="color:#000;font-weight:bold">SELECT</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">FROM</span> user_test <span style="color:#000;font-weight:bold">WHERE</span> age<span style="color:#000;font-weight:bold">=</span> <span style="color:#099">26</span>;
+<span style="color:#a61717;background-color:#e3d2d2">或</span>
+<span style="color:#000;font-weight:bold">SELECT</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">FROM</span> user_test <span style="color:#000;font-weight:bold">WHERE</span> city <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;广州&#39;</span> <span style="color:#000;font-weight:bold">AND</span> age <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;26&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>2、即使where的查询条件是最左索引列，也无法使用索引查询用户名以feinik结尾的用户</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">FROM</span> user_test <span style="color:#000;font-weight:bold">WHERE</span> user_name <span style="color:#000;font-weight:bold">like</span> <span style="color:#d14">&#39;%feinik&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>3、如果where查询条件中有某个列的范围查询，则其右边的所有列都无法使用索引优化查询，如：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> <span style="color:#000;font-weight:bold">*</span> 
+  <span style="color:#000;font-weight:bold">FROM</span> user_test
+ <span style="color:#000;font-weight:bold">WHERE</span> user_name <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;feinik&#39;</span>
+   <span style="color:#000;font-weight:bold">AND</span> city <span style="color:#000;font-weight:bold">LIKE</span> <span style="color:#d14">&#39;广州%&#39;</span>
+   <span style="color:#000;font-weight:bold">AND</span> age <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">26</span>;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="高效的索引策略">高效的索引策略</h2>
+<p>5.1、索引列不能是表达式的一部分，也不能作为函数的参数，否则无法使用索引查询。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">FROM</span> user_test <span style="color:#000;font-weight:bold">WHERE</span> user_name <span style="color:#000;font-weight:bold">=</span> concat(user_name, <span style="color:#a61717;background-color:#e3d2d2">‘</span>fei<span style="color:#a61717;background-color:#e3d2d2">’</span>);
+</code></pre></td></tr></table>
+</div>
+</div><p>5.2、前缀索引</p>
+<p>有时候需要索引很长的字符列，这会增加索引的存储空间以及降低索引的效率，一种策略是可以使用哈希索引，还有一种就是可以使用前缀索引，前缀索引是选择字符列的前n个字符作为索引，这样可以大大节约索引空间，从而提高索引效率。</p>
+<p>5.2.1、前缀索引的选择性</p>
+<p>前缀索引要选择足够长的前缀以保证高的选择性，同时又不能太长，我们可以通过以下方式来计算出合适的前缀索引的选择长度值：</p>
+<p>(1)</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> <span style="color:#000;font-weight:bold">COUNT</span>(<span style="color:#000;font-weight:bold">DISTINCT</span> index_column)<span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">COUNT</span>(<span style="color:#000;font-weight:bold">*</span>)
+<span style="color:#000;font-weight:bold">FROM</span> <span style="color:#000;font-weight:bold">table_name</span>;
+<span style="color:#998;font-style:italic">-- index_column代表要添加前缀索引的列
+</span></code></pre></td></tr></table>
+</div>
+</div><p>注：通过以上方式来计算出前缀索引的选择性比值，比值越高说明索引的效率也就越高效。</p>
+<p>(2)</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span>  <span style="color:#000;font-weight:bold">COUNT</span>(<span style="color:#000;font-weight:bold">DISTINCT</span> <span style="color:#000;font-weight:bold">LEFT</span>(index_column,<span style="color:#099">1</span>))<span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">COUNT</span>(<span style="color:#000;font-weight:bold">*</span>),
+        <span style="color:#000;font-weight:bold">COUNT</span>(<span style="color:#000;font-weight:bold">DISTINCT</span> <span style="color:#000;font-weight:bold">LEFT</span>(index_column,<span style="color:#099">2</span>))<span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">COUNT</span>(<span style="color:#000;font-weight:bold">*</span>),
+        <span style="color:#000;font-weight:bold">COUNT</span>(<span style="color:#000;font-weight:bold">DISTINCT</span> <span style="color:#000;font-weight:bold">LEFT</span>(index_column,<span style="color:#099">3</span>))<span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">COUNT</span>(<span style="color:#000;font-weight:bold">*</span>)
+        ...
+  <span style="color:#000;font-weight:bold">FROM</span> <span style="color:#000;font-weight:bold">table_name</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>注：通过以上语句逐步找到最接近于（1）中的前缀索引的选择性比值，那么就可以使用对应的字符截取长度来做前缀索引了</p>
+<p>5.2.2、前缀索引的创建</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#000;font-weight:bold">table_name</span> <span style="color:#000;font-weight:bold">ADD</span> <span style="color:#000;font-weight:bold">INDEX</span> index_name (index_column(<span style="color:#000;font-weight:bold">length</span>));
+</code></pre></td></tr></table>
+</div>
+</div><p>5.2.3、使用前缀索引的注意点</p>
+<p>前缀索引是一种能使索引更小，更快的有效办法，但是MySql无法使用前缀索引做ORDER BY 和 GROUP BY以及使用前缀索引做覆盖扫描。</p>
+<p>5.3、选择合适的索引列顺序</p>
+<p>在组合索引的创建中索引列的顺序非常重要，正确的索引顺序依赖于使用该索引的查询方式，对于组合索引的索引顺序可以通过经验法则来帮助我们完成：将选择性最高的列放到索引最前列，该法则与前缀索引的选择性方法一致，但并不是说所有的组合索引的顺序都使用该法则就能确定，还需要根据具体的查询场景来确定具体的索引顺序。</p>
+<p>5.4 聚集索引与非聚集索引</p>
+<p>1、聚集索引</p>
+<p>聚集索引决定数据在物理磁盘上的物理排序，一个表只能有一个聚集索引，如果定义了主键，那么InnoDB会通过主键来聚集数据，如果没有定义主键，InnoDB会选择一个唯一的非空索引代替，如果没有唯一的非空索引，InnoDB会隐式定义一个主键来作为聚集索引。</p>
+<p>聚集索引可以很大程度的提高访问速度，因为聚集索引将索引和行数据保存在了同一个B-Tree中，所以找到了索引也就相应的找到了对应的行数据，但在使用聚集索引的时候需注意避免随机的聚集索引（一般指主键值不连续，且分布范围不均匀），如使用UUID来作为聚集索引性能会很差，因为UUID值的不连续会导致增加很多的索引碎片和随机I/O，最终导致查询的性能急剧下降。</p>
+<p>2、非聚集索引</p>
+<p>与聚集索引不同的是非聚集索引并不决定数据在磁盘上的物理排序，且在B-Tree中包含索引但不包含行数据，行数据只是通过保存在B-Tree中的索引对应的指针来指向行数据，如：上面在（user_name，city, age）上建立的索引就是非聚集索引。</p>
+<p>5.5、覆盖索引</p>
+<p>如果一个索引（如：组合索引）中包含所有要查询的字段的值，那么就称之为覆盖索引，如：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> user_name, city, age
+  <span style="color:#000;font-weight:bold">FROM</span> user_test
+ <span style="color:#000;font-weight:bold">WHERE</span> user_name <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;feinik&#39;</span>
+   <span style="color:#000;font-weight:bold">AND</span> age <span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#099">25</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>因为要查询的字段（user_name, city, age）都包含在组合索引的索引列中，所以就使用了覆盖索引查询，查看是否使用了覆盖索引可以通过执行计划中的Extra中的值为Using index则证明使用了覆盖索引，覆盖索引可以极大的提高访问性能。</p>
+<p>5.6、如何使用索引来排序</p>
+<p>在排序操作中如果能使用到索引来排序，那么可以极大的提高排序的速度，要使用索引来排序需要满足以下两点即可。</p>
+<ol>
+<li>ORDER BY子句后的列顺序要与组合索引的列顺序一致，且所有排序列的排序方向（正序/倒序）需一致</li>
+<li>所查询的字段值需要包含在索引列中，及满足覆盖索引</li>
+</ol>
+<p>通过例子来具体分析</p>
+<p>在user_test表上创建一个组合索引</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> user_test <span style="color:#000;font-weight:bold">ADD</span> <span style="color:#000;font-weight:bold">INDEX</span> index_user(user_name , city , age);
+</code></pre></td></tr></table>
+</div>
+</div><p>可以使用到索引排序的案例</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#099">1</span><span style="color:#a61717;background-color:#e3d2d2">、</span><span style="color:#000;font-weight:bold">SELECT</span> user_name, city, age
+<span style="color:#000;font-weight:bold">FROM</span> user_test
+<span style="color:#000;font-weight:bold">ORDER</span> <span style="color:#000;font-weight:bold">BY</span> user_name;
+
+<span style="color:#099">2</span><span style="color:#a61717;background-color:#e3d2d2">、</span><span style="color:#000;font-weight:bold">SELECT</span> user_name, city, age
+<span style="color:#000;font-weight:bold">FROM</span> user_test
+<span style="color:#000;font-weight:bold">ORDER</span> <span style="color:#000;font-weight:bold">BY</span> user_name, city;
+
+<span style="color:#099">3</span><span style="color:#a61717;background-color:#e3d2d2">、</span><span style="color:#000;font-weight:bold">SELECT</span> user_name, city, age
+<span style="color:#000;font-weight:bold">FROM</span> user_test
+<span style="color:#000;font-weight:bold">ORDER</span> <span style="color:#000;font-weight:bold">BY</span> user_name <span style="color:#000;font-weight:bold">DESC</span>, city <span style="color:#000;font-weight:bold">DESC</span>;
+
+<span style="color:#099">4</span><span style="color:#a61717;background-color:#e3d2d2">、</span><span style="color:#000;font-weight:bold">SELECT</span> user_name, city, age
+<span style="color:#000;font-weight:bold">FROM</span> user_test
+<span style="color:#000;font-weight:bold">WHERE</span> user_name <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;feinik&#39;</span>
+<span style="color:#000;font-weight:bold">ORDER</span> <span style="color:#000;font-weight:bold">BY</span> city;
+</code></pre></td></tr></table>
+</div>
+</div><p>注：第4点比较特殊一点，如果where查询条件为索引列的第一列，且为常量条件，那么也可以使用到索引</p>
+<h4 id="无法使用索引排序的案例">无法使用索引排序的案例</h4>
+<p>1、sex不在索引列中</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> user_name, city, age
+<span style="color:#000;font-weight:bold">FROM</span> user_test
+<span style="color:#000;font-weight:bold">ORDER</span> <span style="color:#000;font-weight:bold">BY</span> user_name, sex;
+</code></pre></td></tr></table>
+</div>
+</div><p>2、排序列的方向不一致</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> user_name, city, age
+<span style="color:#000;font-weight:bold">FROM</span> user_test
+<span style="color:#000;font-weight:bold">ORDER</span> <span style="color:#000;font-weight:bold">BY</span> user_name <span style="color:#000;font-weight:bold">ASC</span>, city <span style="color:#000;font-weight:bold">DESC</span>;
+</code></pre></td></tr></table>
+</div>
+</div><p>3、所要查询的字段列sex没有包含在索引列中</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> user_name, city, age, sex
+<span style="color:#000;font-weight:bold">FROM</span> user_test
+<span style="color:#000;font-weight:bold">ORDER</span> <span style="color:#000;font-weight:bold">BY</span> user_name;
+</code></pre></td></tr></table>
+</div>
+</div><p>4、where查询条件后的user_name为范围查询，所以无法使用到索引的其他列</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> user_name, city, age
+<span style="color:#000;font-weight:bold">FROM</span> user_test
+<span style="color:#000;font-weight:bold">WHERE</span> user_name <span style="color:#000;font-weight:bold">LIKE</span> <span style="color:#d14">&#39;feinik%&#39;</span>
+<span style="color:#000;font-weight:bold">ORDER</span> <span style="color:#000;font-weight:bold">BY</span> city;
+</code></pre></td></tr></table>
+</div>
+</div><p>5、多表连接查询时，只有当ORDER BY后的排序字段都是第一个表中的索引列（需要满足以上索引排序的两个规则）时，方可使用索引排序。</p>
+<p>如：再创建一个用户的扩展表user_test_ext，并建立uid的索引。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">DROP</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#000;font-weight:bold">IF</span> <span style="color:#000;font-weight:bold">EXISTS</span> user_test_ext;
+<span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">TABLE</span> user_test_ext(
+   id         <span style="color:#0086b3">int</span> AUTO_INCREMENT <span style="color:#000;font-weight:bold">PRIMARY</span> <span style="color:#000;font-weight:bold">KEY</span>,
+   uid        <span style="color:#0086b3">int</span> <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span>,
+   u_password <span style="color:#0086b3">VARCHAR</span>(<span style="color:#099">64</span>) <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span>
+) ENGINE<span style="color:#000;font-weight:bold">=</span>InnoDB <span style="color:#000;font-weight:bold">DEFAULT</span> CHARSET<span style="color:#000;font-weight:bold">=</span>utf8;
+<span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> user_test_ext <span style="color:#000;font-weight:bold">ADD</span> <span style="color:#000;font-weight:bold">INDEX</span> index_user_ext(uid);
+</code></pre></td></tr></table>
+</div>
+</div><p>走索引排序</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> user_name, city, age
+<span style="color:#000;font-weight:bold">FROM</span> user_test u
+<span style="color:#000;font-weight:bold">LEFT</span> <span style="color:#000;font-weight:bold">JOIN</span> user_test_ext ue
+<span style="color:#000;font-weight:bold">ON</span> u.id <span style="color:#000;font-weight:bold">=</span> ue.uid
+<span style="color:#000;font-weight:bold">ORDER</span> <span style="color:#000;font-weight:bold">BY</span> u.user_name;
+</code></pre></td></tr></table>
+</div>
+</div><p>不走索引排序</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">SELECT</span> user_name, city, age
+<span style="color:#000;font-weight:bold">FROM</span> user_test u
+<span style="color:#000;font-weight:bold">LEFT</span> <span style="color:#000;font-weight:bold">JOIN</span> user_test_ext ue
+<span style="color:#000;font-weight:bold">ON</span> u.id <span style="color:#000;font-weight:bold">=</span> ue.uid
+<span style="color:#000;font-weight:bold">ORDER</span> <span style="color:#000;font-weight:bold">BY</span> ue.uid;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="总结">总结</h2>
+<p>本文主要讲了B+Tree树结构的索引规则，不同索引的创建，以及如何正确的创建出高效的索引技巧来尽可能的提高查询速度，当然了关于索引的使用技巧不单单只有这些，关于索引的更多技巧还需平时不断的积累相关经验。</p>
+
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liuzhongzhen.github.io/">liuzhongzhen</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liuzhongzhen.github.io/post/Mysql-003%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8Mysql%E7%B4%A2%E5%BC%95/">https://liuzhongzhen.github.io/post/Mysql-003%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8Mysql%E7%B4%A2%E5%BC%95/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/Mysql-004Mysql%E4%BC%98%E5%8C%96/">Mysql 004Mysql优化</a></li>
+        
+        <li><a href="../../post/Mysql-002%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/">Mysql-002索引原理介绍</a></li>
+        
+        <li><a href="../../post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/">Mysql-001建表语句</a></li>
+        
+        <li><a href="../../post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/">Nginx-001详细介绍</a></li>
+        
+        <li><a href="../../about/">个人简介</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/" title="几种序列化协议的介绍(转)">几种序列化协议的介绍(转)</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-004Mysql%E4%BC%98%E5%8C%96/" title="Mysql 004Mysql优化">Mysql 004Mysql优化</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-003%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8Mysql%E7%B4%A2%E5%BC%95/" title="Mysql-003如何正确高效使用Mysql索引">Mysql-003如何正确高效使用Mysql索引</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-002%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/" title="Mysql-002索引原理介绍">Mysql-002索引原理介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/" title="Mysql-001建表语句">Mysql-001建表语句</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/" title="Nginx-001详细介绍">Nginx-001详细介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/python-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/" title="Python-001学习资料">Python-001学习资料</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-12%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" title="数据结构-20200401-12文件操作">数据结构-20200401-12文件操作</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-11%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F/" title="数据结构-20200401-11外部排序">数据结构-20200401-11外部排序</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-10%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F/" title="数据结构-20200401-10内部排序">数据结构-20200401-10内部排序</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Http/">Http (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Mysql/">Mysql (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Nginx/">Nginx (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-python/">语言-python (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+    <a href="https://liuzhongzhen.github.io/tags/Http/">Http</a>
+    
+    <a href="https://liuzhongzhen.github.io/tags/Web/">Web</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

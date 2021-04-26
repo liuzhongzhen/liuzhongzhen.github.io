@@ -18,12 +18,30 @@
     </item>
     
     <item>
+      <title>Mysql 004Mysql优化</title>
+      <link>https://liuzhongzhen.github.io/post/Mysql-004Mysql%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Wed, 03 Feb 2021 11:17:16 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Mysql-004Mysql%E4%BC%98%E5%8C%96/</guid>
+      <description>MySQL优化 配置优化 配置优化指的MySQL 的 server端的配置，一般对于业务方而言，可以不用关注</description>
+    </item>
+    
+    <item>
+      <title>Mysql-003如何正确高效使用Mysql索引</title>
+      <link>https://liuzhongzhen.github.io/post/Mysql-003%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8Mysql%E7%B4%A2%E5%BC%95/</link>
+      <pubDate>Wed, 03 Feb 2021 11:17:16 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Mysql-003%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8Mysql%E7%B4%A2%E5%BC%95/</guid>
+      <description>转载外部-如何理解并正确高效的使用MySQL索引 概述 索引是存储引擎用于快速查找记录的一种数据结构，通</description>
+    </item>
+    
+    <item>
       <title>Mysql-002索引原理介绍</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-002%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Tue, 02 Feb 2021 22:57:04 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/Mysql-002%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/</guid>
-      <description>转发 深入剖析 MySQL 索引和 SQL 调优实战</description>
+      <description>转自外部深入剖析MySQL索引和SQL调优实战 MySQL索引 MySQL支持诸多存储引擎，而各种存储引</description>
     </item>
     
     <item>
