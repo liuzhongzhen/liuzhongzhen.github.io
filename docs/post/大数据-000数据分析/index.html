@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>大数据-000数据分析 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="大数据-000数据分析 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-01-01T01:10:13&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-01-01T01:10:13&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="大数据-000数据分析">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents"></nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">大数据-000数据分析</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年1月1日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90'>大数据-000数据分析</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <p><strong><a href="https://www.niaogebiji.com/article-19268-1.html">转载外部-细分十一步,助你构建完整的数据运营体系</a></strong></p>
+<blockquote>
+<p>未来30年数据将成为生产资料，计算会是生产力，互联网是一种生产关系。如果我们不数据化，不和互联网相连，那么会比过去30年不通电显得更为可怕。未来30年，互联网将不再是互联网公司的互联网，互联网是所有人的互联网。如果说过去20年互联网从无到有，那么未来30年，互联网将“从有到无”，这个“无”是无处不在的“无”，没有人能够离开网络而存在。——马云，第四届世界互联网大会</p>
+</blockquote>
+<p>在我的18年的互联网行业工作经历中，很大一部分时间的工作是数据运营，从QQ秀到YY语音，再到迅雷，都经历了产品数据运营的流程优化、平台构建、分析应用等过程，亲历了数据运营在产品成长中发挥的重要作用。</p>
+<p>不少人对数据运营的理解，局限于数据统计、原因分析等，其实这些只是数据运营工作的一小部分，数据最终是为产品服务的，数据运营，重点在运营，数据是载体。</p>
+<p><strong>数据运营是做什么的？</strong> 个人的理解是：</p>
+<p><em>推动团队明确产品目标，定义产品数据指标，创建数据上报通道和规则流程，高效的推动实现数据需求，观测产品数据，做好数据预警，分析数据变化原因，根据分析结果进行产品迭代和运营，为产品决策提供依据，用数据驱动产品和组织成长，达成组织目标。</em></p>
+<p>通俗点说，数据运营搞清楚以下5个问题：</p>
+<ol>
+<li>
+<p>我们要做什么？——目标数据制订；</p>
+</li>
+<li>
+<p>现状是什么？——行业分析，产品数据报表输出；</p>
+</li>
+<li>
+<p>数据变化的原因？——数据预警，数据变化的原因分析；</p>
+</li>
+<li>
+<p>未来会怎样？——数据预测；</p>
+</li>
+<li>
+<p>我们应该做什么？——决策与数据的产品应用。</p>
+</li>
+</ol>
+<p>大致梳理了一下数据运营需要掌握的技能：
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a01.png" />   
+    </p>
+<p>上面的这些技能概念较多，其实最基本的就是，先学好统计学，再深入进行业务实践，熟练掌握分析工具，例如最常用的Excel，再多学一个数据挖掘工具，个人使用的是SPSS。</p>
+<p>SPSS的功能包括数据管理、统计分析、图表分析、输出管理等。SPSS统计分析过程包括描述性统计、均值比较、一般线性模型、相关分析、回归分析、对数线性模型、聚类分析、数据简化、生存分析、时间序列分析、多重响应等。</p>
+<p>工具不难学，重要的是学习统计学，知道不同场景选用什么分析方法，如何进行分析结果的解读和应用。</p>
+<p>后来，我把自己数据运营工作经历整理了一份企业构建数据运营体系的层级图：</p>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a02.png" />   
+    </p>
+<p>如何才能构建一个完整的产品数据运营体系？我根据自己的工作实践经验进行了梳理和总结，整个过程可以分为如下的11步，供大家参考。</p>
+<p>第一步，制订产品目标
+这是数据运营的起点，也是产品上线运营后进行评估的标准，以此形成闭环。</p>
+<p>制订目标绝不能拍脑袋，可以根据业务发展、行业发展、竞品分析、往年产品发展走势、产品转化规律等综合计算得出。制订目标常用SMART原则来衡量。</p>
+<ol>
+<li>
+<p>S代表具体(Specific)
+指工作指标要具体可评，不能笼统。例如我们制定YY语音基础体验的产品目标，如果是提升产品体验，则不够具体，每个人的理解不一致，当时我们的基础产品目标则是提升新用户次日留存，则非常具体。</p>
+</li>
+<li>
+<p>M代表可度量(Measurable)
+指绩效指标是数量化或者行为化的，验证这些绩效指标的数据或者信息是可以获得的；提升新用户次日留存率，则需要给出具体的数值。</p>
+</li>
+<li>
+<p>A代表可实现(Attainable)
+指绩效指标在付出努力的情况下可以实现，避免设立过高或过低的目标；新注册用户的次日留存率，也不是拍脑袋得出的，当时我们基于YY新用户次日留存率的历史数据和游戏用户的新注册用户留存率的行业参考数值，制订了一个相对有挑战性的目标，从新注册用户次日留存率从25%提升到35%。</p>
+</li>
+<li>
+<p>R代表相关性(Relevant)
+是与工作的其它目标是相关联的；绩效指标是与本职工作相关联的；新用户的次日留存率，和用户行为息息相关，例如用户对语音工具的认可程度，用户对YY平台的内容喜好程度等，所以新用户的次日留存和产品的性能、内容受欢迎程有较强的相关性。</p>
+</li>
+<li>
+<p>T代表有时限(Time-bound)
+注重完成目标的特定期限。</p>
+</li>
+</ol>
+<p>产品目标可以这样制订：在2013年12月31日前，将YY语音新注册用户的次日留存率从25%提升到35%。</p>
+<p>新用户次日留存率的提升，意味着更多用户的活跃转化，带动整个用户活跃数量的增长。</p>
+<p>这里需要注意，需要洞察目标背后的本质，不能唯数据论，例如我做过的提高YY语音新注册用户留存率的项目，如果只是看留存率的数据变化，是很容易达到的。</p>
+<p>记得当时我用的一个方法是用户分类，把不同渠道、不同行为的用户进行分类，发现有部分垃圾新用户大大影响了整体留存率数据，这部分用户很多是机器注册产生，并非真正的用户，剔除掉这部分用户，留存数据高了很多，但这不能说，我们就完成了任务。</p>
+<p>因为这个目标的背后，实际是需要获得活跃用户的增长，新用户留存率，只是一个数据体现，所以不能只看新用户留存率这个单一指标，必须从提高新用户注册数量、有效用户留存、用户活跃、付费转化等多个指标来衡量工作价值。</p>
+<p>第二步，定义产品数据指标
+沿着上面的目标制订，就需要考虑数据指标，上面的案例，我们给出的目标是新用户留存率，做好了新用户留存率，需要去判断这个数据指标的实现是否真的促进了整个产品活跃用户的增长。</p>
+<p>产品数据指标是反应产品健康发展的具体的数值，我们需要对数据指标给出明确定义，还包括数据上报方法、计算公式等。</p>
+<p>例如上文的次日留存率，可以定义为：次日留存率是一个比率，分母是当天新注册并在当天登录YY客户端的YY帐户数，分子是分母当中在第二天再次登录YY客户端的YY帐户数。</p>
+<p>注意这里的细节，第一天和第二天，需要有明确的时间点，例如0点到24点，计算为一天；问题来了，一个新用户在第一天的23点注册并登录YY客户端，到第二天的凌晨1点下线；按照上面的定义，这个用户或许将不会被记录为次日留存用户，因为这里没有定义清楚数据上报细节。</p>
+<p>定义是第二天再次登录YY客户端，上面案例的用户在第二天是没有登录行为的，但他确实是连续两天都在登录状态的用户。</p>
+<p>所以针对这个定义，需要补充细节：用户登录状态，如果是5分钟进行一次心跳包的上报，那么这位新用户就可以被上报为第二天的登录状态用户，如果在0点5分之前下线之后，持续到第二天的24点，仍未有登录状态，那么将不被记录为留存用户。</p>
+<p>我们根据产品目标来选择数据指标，例如网页产品，经常用PV、UV、崩失率、人均PV、停留时长等数据进行产品度量。定义产品指标体系，需要产品、开发等各个团队达成共识，数据指标的定义是清晰的，并且有据可查，不会引起数据解读的理解差异。</p>
+<p>产品在不同生命周期，关注的数据指标侧重点也会不同，下表大致列出了一些各个阶段需要重点关注的指标，除了常见的用户指标、收入指标，我们还必须重视技术层面的性能指标。</p>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a03.png" />   
+    </p>
+<p>好的数据指标，有五个要点可供参考：</p>
+<p>（1）能够反映用户需求的满足、产品核心价值以及发展趋势。这些指标变好了能说明公司是在往好的方向上发展。</p>
+<p>（2）好的数据指标是可比较的。比较在不同的时间段，用户群体，竞争产品之间的表现，可以更好的洞察产品的实际走向。</p>
+<p>（3）易懂、可控。很容易地理解、记住，方便统计。</p>
+<p>（4）好的数据指标多数时候是一个比率。</p>
+<p>（5）指标随业务而进化。不同阶段的关键性指标应该是随着业务的变化而变化的。</p>
+<p>第三步，构建产品数据指标体系
+在数据指标提出的基础上，我们按照产品逻辑进行指标的归纳整理，使之条理化。</p>
+<p>新用户的次日留存率是我们订制的一个核心目标，但实际上，只看次日留存率还是不够的，还需要综合考察影响用户留存率的多种因素，才能更准确的了解产品的健康发展。如图1所示，是常用的一种指标体系，包含：用户新增、用户活跃、付费、其他数据。</p>
+<p>图1 互联网产品常用数据指标体系
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a04.png" />   
+    </p>
+<p>在我们做YY语音客户端产品的时候，会用到下面的指标体系，包括：账号体系、关系链数据、状态感知数据、沟通能力等四大方面。</p>
+<p>具体指标有：好友的个数分布、观看频道节目的时长、IM聊天时长、个人状态的切换与时长等，如图2所示：</p>
+<p>图2 IM即时通讯产品数据指标体系
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a05.png" />   
+    </p>
+<p>第四步，提出产品数据需求
+产品指标体系的建立不是一蹴而就的，产品经理根据产品发展的不同阶段，有所侧重的进行数据需求的提出，一般的公司都会有产品需求文档的模板，方便产品和数据上报开发、数据平台等部门同事沟通，进行数据建设。</p>
+<p>创业型中小企业，产品数据的需求提出到上报或许就是1-2人的事情，但同样建议做好数据文档的建设，例如数据指标的定义，数据计算逻辑等。</p>
+<p>图3是我在YY语音客户端团队建立的基础产品数据需求实现流程。</p>
+<p>其实在大多数时候，并不需要这么一个数据需求流程，只是当时我们在数据需求刚刚开始进行规范化，数据需求评审过程，也是培训过程，让更多同事有数据意识，到后面，数据需求是融入到产品需求流程的。</p>
+<p>图3 YY事业部基础产品数据需求实现流程图（施行）
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a06.jpg" />   
+    </p>
+<p>常见的数据上报需求，有两类：</p>
+<ol>
+<li>
+<p>标准协议上报，例如按钮点击上报；</p>
+</li>
+<li>
+<p>自定义协议上报。</p>
+</li>
+<li>
+<p>标准协议上报数据需求范例
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a07.png" />   
+    </p>
+</li>
+<li>
+<p>自定义协议上报数据需求范例
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a08.png" />   
+    
+报表名称：YY事业部——基础产品组——游戏直播运营日报。</p>
+</li>
+</ol>
+<p>第五步，上报数据
+这个步骤就是开发根据产品经理的数据需求，按照数据上报规范，完成上报开发，将数据上报到数据服务器。</p>
+<p>上报数据的关键是数据上报通道的建设，原来在腾讯工作时候，没有体会到这个环节的艰辛，因为数据平台部门已经做了完备的数据通道搭建，开发按照一定规则，使用统一的数据SDK进行数据上报就可以了。</p>
+<p>后来在YY，属于发展型公司，则是从上报通道开始进行建设，也让我得到更多锻炼提升的机会。其中很关键的一个环节，就是数据上报测试，曾经因为该环节的测试资源没到位，造成不必要的麻烦。</p>
+<p>很多创业公司没有自己的数据平台，可以利用第三方的数据平台：网页产品，可以使用百度统计（tongji.baidu.com）；移动端产品，可以使用友盟(<a href="http://www.umeng.com">www.umeng.com</a>)、TalkingData(<a href="http://www.talkingdata.com">www.talkingdata.com</a>)  等平台。</p>
+<p>例如下表，就是页面流量数据上报的发送函数send_web_pv，源于迅雷哈勃数据平台规范。</p>
+<p>表3 页面流量数据上报的发送函数send_web_pv
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a09.png" />   
+    </p>
+<p>下表是某直播做APP数据上报的埋点范例。（数据埋点，就是在功能逻辑中添加统计逻辑）。</p>
+<p>表4 某直播APP数据上报范例
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a10.png" />   
+    </p>
+<p>目前也有无埋点的数据上报方式，参见这篇文章《揭开GrowingIO无埋点的神秘面纱》。</p>
+<p>第六-八步，数据采集与接入、存储、调度与运算
+每一步都是一门学问，例如采集数据涉及接口创建，要考虑数据字段的拓展性，数据采集过程中的ETL数据清洗流程，客户端数据上报的正确性校验等；数据存储与调度、运算，在大数据时代，更是很有挑战性的技术活。</p>
+<ol>
+<li>数据的采集与接入
+ETL，是英文 Extract-Transform-Load 的缩写，用来描述将数据从来源端经过抽取（extract）、转换（transform）、加载（load）至目的端的过程。</li>
+</ol>
+<p>ETL一词较常用在数据仓库，但其对象并不限于数据仓库。ETL是构建数据仓库的重要一环，用户从数据源抽取出所需的数据，经过数据清洗，最终按照预先定义好的数据仓库模型，将数据加载到数据仓库中去。</p>
+<p>下图是产品数据体系的一个常见流程图，数据采集、存储、运算，通常就在图中的数据中心完成。</p>
+<p>图4 数据体系流程
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a11.jpg" />   
+    </p>
+<p>确认完数据上报之后，接下来几个事情就比较偏技术化了。首先需要上报的数据通过什么样的方式采集和存储到我们的数据中心。</p>
+<p>数据采集分为两步，第一步从业务系统上报到服务器，这部分主要是通过cgi或者后台server，通过统一的logAPI调用之后，汇总在logServer中进行原始流水数据的存储。当这部分数据量大了之后，需要考虑用分布式的文件存储来做，外部常用的分布式文件存储主要是HDFS。这里就不细展开。</p>
+<p>图5 原始数据上报存储到文件的架构图
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a12.jpg" />   
+    
+数据存储到文件之后，第二步就进入到ETL的环节，ETL就是指通过抽取（extract）、转换（transform）、加载（load）把日志从文本中，基于分析的需求和数据纬度进行清洗，然后存储在数据仓库中。</p>
+
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://liuzhongzhen.github.io/">liuzhongzhen</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-Arfa%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/">网心-Arfa离线数据开发平台</a></li>
+        
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/">网心-数据平台架构</a></li>
+        
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-Asima%E5%8A%A8%E6%80%81%E6%95%B0%E6%8D%AE%E5%85%A5%E5%BA%93%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/">网心-Asima动态数据入库系统设计开发</a></li>
+        
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-Apana%E5%9F%BA%E4%BA%8EopenResty%E7%9A%84http%E6%95%B0%E6%8D%AE%E4%B8%8A%E6%8A%A5%E7%B3%BB%E7%BB%9F/">网心-Apana基于openResty的http数据上报系统</a></li>
+        
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">网心-数据接入管理系统</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/" title="Mysql-006解读事务和MVVC原理">Mysql-006解读事务和MVVC原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/" title="Mysql-005浅谈Mysql架构体系">Mysql-005浅谈Mysql架构体系</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 010flume基础知识">大数据 010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 009kafka基础知识">大数据 009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 008hbase基础知识">大数据 008hbase基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 007clickhouse基础知识">大数据 007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 006impala基础知识">大数据 006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 005flink基础知识">大数据 005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 004spark基础知识">大数据 004spark基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/" title="几种序列化协议的介绍(转)">几种序列化协议的介绍(转)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Http/">Http (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Mysql/">Mysql (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Nginx/">Nginx (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-python/">语言-python (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
