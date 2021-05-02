@@ -287,12 +287,21 @@
     </item>
     
     <item>
-      <title>大数据-000数据分析</title>
-      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</link>
-      <pubDate>Wed, 01 Jan 2020 01:10:13 +0800</pubDate>
+      <title>Java-002初识Servlet并发处理与线程安全</title>
+      <link>https://liuzhongzhen.github.io/post/Java-002%E5%88%9D%E8%AF%86Servlet%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86%E4%B8%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</link>
+      <pubDate>Fri, 02 Jun 2017 16:53:49 +0800</pubDate>
       
-      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</guid>
-      <description>转载外部-细分十一步,助你构建完整的数据运营体系 未来30年数据将成为生产资料，计算会是生产力，互联网</description>
+      <guid>https://liuzhongzhen.github.io/post/Java-002%E5%88%9D%E8%AF%86Servlet%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86%E4%B8%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</guid>
+      <description>转载自外部-初识Servlet并发处理与线程安全</description>
+    </item>
+    
+    <item>
+      <title>Java-001基础学习资源</title>
+      <link>https://liuzhongzhen.github.io/post/Java-001%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/</link>
+      <pubDate>Thu, 01 Jun 2017 16:53:49 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Java-001%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/</guid>
+      <description>Java资源大全中文版 JavaWeb基础知识</description>
     </item>
     
     <item>
@@ -320,6 +329,51 @@
       
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>HDFS系统架构 HDFS数据安全性如何保证 存储在HDFS系统上的文件，会分割成128M大小的bloc</description>
+    </item>
+    
+    <item>
+      <title>Php 005发送http请求</title>
+      <link>https://liuzhongzhen.github.io/post/Php-005%E5%8F%91%E9%80%81http%E8%AF%B7%E6%B1%82/</link>
+      <pubDate>Tue, 05 Aug 2014 11:47:39 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Php-005%E5%8F%91%E9%80%81http%E8%AF%B7%E6%B1%82/</guid>
+      <description>PHP发送HTTP请求的6种方法 1.用file_get_contents以get方式获取内容 1 2 3 4</description>
+    </item>
+    
+    <item>
+      <title>Php 004redis库介绍</title>
+      <link>https://liuzhongzhen.github.io/post/Php-004redis%E5%BA%93%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Mon, 04 Aug 2014 11:47:39 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Php-004redis%E5%BA%93%E4%BB%8B%E7%BB%8D/</guid>
+      <description>PHP 使用 Redis php pecl redis扩展下载页面 安装redis服务程序 开始在 PHP 中使用 Redis 前， 我们需要确保已经安装了 redis</description>
+    </item>
+    
+    <item>
+      <title>Php-003mysql库介绍</title>
+      <link>https://liuzhongzhen.github.io/post/Php-003mysql%E5%BA%93%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Sun, 03 Aug 2014 11:47:39 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Php-003mysql%E5%BA%93%E4%BB%8B%E7%BB%8D/</guid>
+      <description>PHP连接MySQL数据库的几种方法 1. 最简单的方式-mysql（面向过程） 1 2 3 4 5 6 7 8 9 10 11 12 13</description>
+    </item>
+    
+    <item>
+      <title>Php-002memcache库介绍</title>
+      <link>https://liuzhongzhen.github.io/post/Php-002memcache%E5%BA%93%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Sat, 02 Aug 2014 11:47:39 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Php-002memcache%E5%BA%93%E4%BB%8B%E7%BB%8D/</guid>
+      <description>Memcache 和 Memcached 有什么区别 Memcache 和 Memcached 看起来只是相差一个字母，平时老是搞混，今天整理下两者之间的区别。 Memcach</description>
+    </item>
+    
+    <item>
+      <title>Php-001学习资料整理</title>
+      <link>https://liuzhongzhen.github.io/post/Php-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/</link>
+      <pubDate>Fri, 01 Aug 2014 11:47:39 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Php-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/</guid>
+      <description>Php官网 Swoole官网 Pecl Pear Lamp一键安装包 oneinstack Composer Laravel workerman ampps wampserver PhpStudy php编程之道 php手册 smarty模</description>
     </item>
     
     <item>
@@ -392,6 +446,24 @@
       
       <guid>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-360Xmanager%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D/</guid>
       <description>转载自外部-lxw的大数据田地 » xManager–通用产品集成、快速交付、监控运维解决方案 xMana</description>
+    </item>
+    
+    <item>
+      <title>大数据-001数据分析操作</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Mon, 02 Jul 2012 01:10:13 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%93%8D%E4%BD%9C/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>大数据-000数据分析</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</link>
+      <pubDate>Sun, 01 Jul 2012 01:10:13 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</guid>
+      <description>转载外部-细分十一步,助你构建完整的数据运营体系 未来30年数据将成为生产资料，计算会是生产力，互联网</description>
     </item>
     
   </channel>
