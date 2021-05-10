@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>大数据 000数据分析方法论 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="大数据 000数据分析方法论 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2012-07-03T01:10:13&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2012-07-03T01:10:13&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="大数据 000数据分析方法论">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E8%AE%BA/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一业务分析类">一、业务分析类</a>
+      <ul>
+        <li><a href="#1杜邦分析法">1.杜邦分析法</a></li>
+        <li><a href="#2同比热力图分析法">2.同比热力图分析法</a></li>
+        <li><a href="#3类bcg矩阵">3.类BCG矩阵</a></li>
+      </ul>
+    </li>
+    <li><a href="#二用户分析类">二、用户分析类</a>
+      <ul>
+        <li><a href="#1tgi指数">1.TGI指数</a></li>
+        <li><a href="#2lrfmc模型">2.LRFMC模型</a></li>
+      </ul>
+    </li>
+    <li><a href="#三产品运营类">三、产品运营类</a></li>
+    <li><a href="#四结语">四、结语</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">大数据 000数据分析方法论</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2012年7月3日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90'>大数据-000数据分析</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <p><strong><a href="https://www.niaogebiji.com/article-18606-1.html">转载外部-数据分析方法论</a></strong></p>
+<p>产品经理的概念在不断泛化。近些年来，随着互联网行业的发展，越来越多的企业意识到了大数据和精细化运营的重要性，为了更好地挖掘数据的价值，指导业务的优化和发展，数据产品经理应运而生，他们基于数据分析方法发现问题，并提炼关键要素，设计产品来实现商业价值。</p>
+<p>虽为产品经理，但要真正解决核心问题，不免要在前期和中期进行大量的数据分析工作，那么，实用的数据分析方法有哪些呢？</p>
+<h2 id="一业务分析类">一、业务分析类</h2>
+<h3 id="1杜邦分析法">1.杜邦分析法</h3>
+<p>杜邦分析法目前主要用于财务领域，通过财务比率的关系来分析财务状况，其核心要点是将一个大的问题拆分为更小粒度的指标，以此了解问题出在了哪儿，从而对症下药。</p>
+<p>以电商行业为例，GMV（网站成交金额）是考核业绩最直观的指标，当GMV同比或环比出现下滑时候，需要找到影响GMV的因素并逐一拆解。
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a32.png" />   
+    </p>
+<p>GMV下降如果是因下单用户减少所造成的，那么是访客数（流量）减少了，还是转化率下降了呢？如果是访客数减少了，那是因为自然流量减少了，还是因为营销流量不足？</p>
+<p>如果是自然流量下降的话，可能需要在用户运营和产品运营端发力，如果是营销流量不足，那么可以通过营销活动或者站外引流的形式增加曝光量。</p>
+<p>同样，如果是转化率的问题，那么需要对用户进行细分，针对不同阶段的用户采取不同的运营策略，关于用户的部分，这里不做赘述，有兴趣的朋友可以关注后面的文章。</p>
+<p>最后，如果是因为客单价不高，那么需要进行定价及促销的方案优化，比如识别具有GMV提升潜力的商品进行定价优化，评估当前促销的ROI，针对选品、力度和促销形式进行优化。同时通过关联商品的推荐或商品套装促销的形式，激发用户购买多件商品，也可以有效提高客单价。</p>
+<h3 id="2同比热力图分析法">2.同比热力图分析法</h3>
+<p>同比热力图分析法这个名称是我自己造的，其实无非是把各个业务线的同比数据放到一起进行比较，这样能更为直观地了解各个业务的状况。
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a33.jpg" />   
+    </p>
+<p>构建一张同比热力图大致需要三步：</p>
+<p>第一步，按照杜邦分析法将核心问题进行拆解，这里仍以电商为例，我们将GMV拆成了流量、转化率、商品均价和人均购买量，</p>
+<p>即GMV=流量<em>转化率</em>商品均价*人均购买量；</p>
+<p>第二步，计算每个业务各项指标的同比数据；</p>
+<p>第三步，针对每一项指标，对比各业务的同比高低并设定颜色渐变的条件格式，以上图中的转化率同比为例，业务5转化率同比最高，为深橙底色，业务3转化率同比最低且为负值，因此设定为蓝色底色加红色字体。</p>
+<p>通过同比热力图的分析，首先，可以通过纵向对比了解业务自身的同比趋势，其次，可以通过横向对比了解自身在同类业务中的位置，此外，还可以综合分析GMV等核心指标变动的原因。</p>
+<p>除了电商业务的分析以外，同比热力图同样适用于互联网产品数据指标的监控及分析，该分析方法的关键点在于拆解核心指标，在本文后面的产品运营类方法中将会介绍相关指标的拆解方法。</p>
+<h3 id="3类bcg矩阵">3.类BCG矩阵</h3>
+<p>BCG矩阵大家都非常熟悉了，以市场占有率和增长率为轴，将坐标系划分为四个象限，用于判断各项业务所处的位置。</p>
+<p>这里想讲的并非传统的BCG矩阵，而是BCG矩阵的变阵，或者叫类BCG矩阵。根据不同的业务场景和业务需求，我们可以将任意两个指标作为坐标轴，从而把各类业务或者用户划分为不同的类型。</p>
+<p>比如可以以品牌GMV增长率和占有率构建坐标系，来分析各品牌的状况，从而帮助业务方了解到哪些品牌是未来的明星品牌，可以重点发力，哪些品牌处于弱势且增长匮乏，需要优化品牌内的产品布局。
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a34.png" />   
+    </p>
+<p>除此之外，我们还可以根据以下场景构建类BCG矩阵：</p>
+<p>1）分析商品引流能力和转化率：流量份额-转化率</p>
+<p>2）分析商品对毛利/GMV的贡献：毛利率-销售额</p>
+<p>3）基于RFM分析用户的价值：访问频率-消费金额</p>
+<p>按照上述方法，大家可以根据需求大开脑洞，按照一定标准对研究对象进行分类分析。</p>
+<h2 id="二用户分析类">二、用户分析类</h2>
+<h3 id="1tgi指数">1.TGI指数</h3>
+<p>在分析用户时，通常的做法是将目标用户进行分类，然后对比各类用户与总体之间的差异性，TGI指数提供了一个很好的方法，来反映各类用户群体在特定研究范围(如地理区域、人口统计、媒体偏好等)内的强势或弱势。</p>
+<p>TGI指数=用户分类中具有某一特征的群体所占比例/总体中具有相同特征的群体所占比例*100。</p>
+<p>比如在分析用户的年龄段时，可以通过TGI指数对比各用户分类与总体在各年龄段的差异，设用户分类1中16-25岁的用户占比为4%，而总体中16-25岁的用户占比为8.3%，那么用户分类1在16-25岁用户中的TGI指数为4%/8.3%*100=48。依照这一方法，我们可以对各类用户在各年龄段的TGI指数进行对比。
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_da/a35.png" />   
+    </p>
+<p>如上图所示，各类目标用户在16-25岁这个年龄段的占比都比总体小（TGI指数&lt;100），其中分类1的用户年龄偏大，因为该类用户在36岁以上各个年龄段的TGI指数都明显高于100，且同时高于其他三类用户。</p>
+<p>当前在互联网领域，除了用户实名数据以外，其他用户的画像维度一般都通过建立模型进行判断，因此无法完全保证准确性，但不同于小样本调研，大数据分析是能容忍一定数据误差的，不过，这一切都要建立在对比的基础上。</p>
+<p>所以，在分析用户画像时，需要根据场景进行用户分类，并对比各类用户与总体间的差异，这样才能保证分析结果的可信性和适用性，而TGI指数就是很好的对比指标。</p>
+<h3 id="2lrfmc模型">2.LRFMC模型</h3>
+<p>RFM模型是客户关系管理中最常用的模型，但这一模型还不够完善，比如对于M(Money)，即消费金额相等的两个用户而言，一个是注册两年的老用户，一个是刚注册的新用户，对于企业来说，这两个用户的类型和价值就完全不同，因此我们需要更全面的模型。</p>
+<p>LRFMC模型提供了一个更完整的视角，能更全面地了解一个用户的特征，LRFMC各个维度的释义如下：</p>
+<p>L(lifetime):代表从用户第一次消费算起, 至今的时间，代表了与用户建立关系的时间长度，也反映了用户可能的活跃总时间。</p>
+<p>R(Recency) :代表用户最近一次消费至今的时间长度，反映了用户当前的活跃状态。</p>
+<p>F(Frequency) :代表用户在一定时间内的消费频率，反映了用户的忠诚度。</p>
+<p>M(Monetary) :代表用户在一定时间内的消费金额，反映了用户的购买能力。</p>
+<p>C(CostRatio):代表用户在一定时间内消费的折扣系数，反映了用户对促销的偏好性。</p>
+<p>以去哪儿的业务为例，通过LRFMC模型可以综合分析用户的习惯偏好和当前状态，从而指导精准营销方案的实施。</p>
+<p>L(lifetime):用户来多久了？</p>
+<p>R(Recency) :用户最近是否有消费，如果来了很长时间都未消费，是否需要进行唤醒？</p>
+<p>F(Frequency) :用户出行的频率如何，如果是固定周期出行，是否应该进行复购提醒？</p>
+<p>M(Monetary) :用户的消费金额是多少，是单价高（购买头等舱），还是频次高？</p>
+<p>C(CostRatio):用户对折扣的偏好如何，是为用户增加权益还是降价促销？</p>
+<h2 id="三产品运营类">三、产品运营类</h2>
+<p>产品运营是一个长期的过程，需要定期对产品的使用数据进行监控，以便发现问题，从而确定运营的方向，同时也可以用于评估运营的效果。</p>
+<p>产品运营的常用指标如下：</p>
+<p>1）使用广度：总用户数，月活</p>
+<p>2）使用深度：每人每天平均浏览次数，平均访问时长</p>
+<p>3）使用粘性：人均使用天数</p>
+<p>4）综合指标：月访问时长=月活<em>人均使用天数</em>每人每天平均浏览次数*平均访问时长</p>
+<p>产品所处阶段不同，运营的侧重点也会有所不同。在产品初期，核心的工作是拉新，应该更加关注产品的使用广度，而产品的中后期，应该更加注重使用深度和使用粘性的提升。</p>
+<p>对于不同的产品也需根据产品的性质来确定核心指标，比如，对于社交类产品，使用广度和使用粘性至关重要，而对于一些中台分析类产品，提升使用深度和使用粘性更有意义。</p>
+<h2 id="四结语">四、结语</h2>
+<p>在一款数据产品诞生前，应该是先有数据，再有分析，然后才是产品，分析的广度和深度直接决定了产品的定位和价值。如果是做一款数据报表类的产品，那么需要了解核心指标，并建立综合指标的评估体系，如果是做一款分析决策类产品，那么还需要基于业务需求，将现有数据指标进行解构再重构。</p>
+<p>以上内容仅仅是提供了一些基础工具和思考方向，数据产品经理是一个新兴的分支，目前还没有成熟的学习体系，未来还需继续深入浅出，和大家共同成长。</p>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%93%8D%E4%BD%9C/">大数据-000数据分析操作</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析</a></li>
+        
+        <li><a href="../../products/%E5%AD%A6%E6%A0%A1-%E8%AF%BE%E5%A4%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/">学校-课外实践项目</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/" title="Mysql-006解读事务和MVVC原理">Mysql-006解读事务和MVVC原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/" title="Mysql-005浅谈Mysql架构体系">Mysql-005浅谈Mysql架构体系</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 010flume基础知识">大数据 010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 009kafka基础知识">大数据 009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 008hbase基础知识">大数据 008hbase基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 007clickhouse基础知识">大数据 007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 006impala基础知识">大数据 006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 005flink基础知识">大数据 005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 004spark基础知识">大数据 004spark基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/" title="几种序列化协议的介绍(转)">几种序列化协议的介绍(转)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Http/">Http (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Java/">Java (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Mysql/">Mysql (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Nginx/">Nginx (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Php/">Php (9)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-python/">语言-python (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

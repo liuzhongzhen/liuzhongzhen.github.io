@@ -14,7 +14,7 @@
       <pubDate>Wed, 28 Apr 2021 22:20:44 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/</guid>
-      <description>转载外部-解读数据库原理</description>
+      <description>转载外部-解读数据库原理 一、事务 概念 事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使</description>
     </item>
     
     <item>

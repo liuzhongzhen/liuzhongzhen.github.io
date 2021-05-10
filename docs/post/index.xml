@@ -14,7 +14,7 @@
       <pubDate>Wed, 28 Apr 2021 22:20:44 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/</guid>
-      <description>转载外部-解读数据库原理</description>
+      <description>转载外部-解读数据库原理 一、事务 概念 事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使</description>
     </item>
     
     <item>
@@ -292,7 +292,7 @@
       <pubDate>Fri, 02 Jun 2017 16:53:49 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/Java-002%E5%88%9D%E8%AF%86Servlet%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86%E4%B8%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</guid>
-      <description>转载自外部-初识Servlet并发处理与线程安全</description>
+      <description>转载自外部-初识Servlet并发处理与线程安全 并发处理概念 在实际开发过程中，我们开发出来的web应</description>
     </item>
     
     <item>
@@ -301,7 +301,7 @@
       <pubDate>Thu, 01 Jun 2017 16:53:49 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/Java-001%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/</guid>
-      <description>Java资源大全中文版 JavaWeb基础知识</description>
+      <description>Java资源大全中文版 JavaWeb基础知识 SpringBoot Spring Web MVC Spring WebFlux Hutool</description>
     </item>
     
     <item>
@@ -329,6 +329,42 @@
       
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>HDFS系统架构 HDFS数据安全性如何保证 存储在HDFS系统上的文件，会分割成128M大小的bloc</description>
+    </item>
+    
+    <item>
+      <title>Php-009提高php效率50点</title>
+      <link>https://liuzhongzhen.github.io/post/Php-009%E6%8F%90%E9%AB%98php%E6%95%88%E7%8E%8750%E7%82%B9/</link>
+      <pubDate>Sat, 09 Aug 2014 11:47:39 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Php-009%E6%8F%90%E9%AB%98php%E6%95%88%E7%8E%8750%E7%82%B9/</guid>
+      <description>0、用单引号代替双引号来包含字符串，这样做会更快一些。因为PHP会在双引号包围的字符串中搜寻变量，单</description>
+    </item>
+    
+    <item>
+      <title>Php-008高流量站点NGINX与php-Fpm配置优化</title>
+      <link>https://liuzhongzhen.github.io/post/Php-008%E9%AB%98%E6%B5%81%E9%87%8F%E7%AB%99%E7%82%B9NGINX%E4%B8%8Ephp-fpm%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Fri, 08 Aug 2014 11:47:39 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Php-008%E9%AB%98%E6%B5%81%E9%87%8F%E7%AB%99%E7%82%B9NGINX%E4%B8%8Ephp-fpm%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96/</guid>
+      <description>1. 将TCP切换为UNIX域套接字 UNIX域套接字相比TCP套接字在loopback接口上能提供更好的</description>
+    </item>
+    
+    <item>
+      <title>Php-007深入pack和unpack</title>
+      <link>https://liuzhongzhen.github.io/post/Php-007%E6%B7%B1%E5%85%A5pack%E5%92%8Cunpack/</link>
+      <pubDate>Thu, 07 Aug 2014 11:47:39 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Php-007%E6%B7%B1%E5%85%A5pack%E5%92%8Cunpack/</guid>
+      <description>PHP作为一门为web而生的服务器端开发语言，被越来越多的公司所采用。其中不乏大公司，如腾迅、盛大、</description>
+    </item>
+    
+    <item>
+      <title>Php-006输入流php Input介绍</title>
+      <link>https://liuzhongzhen.github.io/post/Php-006%E8%BE%93%E5%85%A5%E6%B5%81php-input%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Wed, 06 Aug 2014 11:47:39 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Php-006%E8%BE%93%E5%85%A5%E6%B5%81php-input%E4%BB%8B%E7%BB%8D/</guid>
+      <description>在使用xml-rpc的时候，server端获取client数据，主要是通过php输入流input，而</description>
     </item>
     
     <item>
@@ -373,7 +409,7 @@
       <pubDate>Fri, 01 Aug 2014 11:47:39 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/Php-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/</guid>
-      <description>Php官网 Swoole官网 Pecl Pear Lamp一键安装包 oneinstack Composer Laravel workerman ampps wampserver PhpStudy php编程之道 php手册 smarty模</description>
+      <description>Php官网 Swoole官网 Pecl Pear Lamp一键安装包 Lnmp一键安装包 oneinstack Composer Laravel workerman ampps wampserver PhpStudy php编程之道 php</description>
     </item>
     
     <item>
@@ -449,11 +485,20 @@
     </item>
     
     <item>
-      <title>大数据-001数据分析操作</title>
-      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%93%8D%E4%BD%9C/</link>
+      <title>大数据 000数据分析方法论</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E8%AE%BA/</link>
+      <pubDate>Tue, 03 Jul 2012 01:10:13 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E8%AE%BA/</guid>
+      <description>转载外部-数据分析方法论 产品经理的概念在不断泛化。近些年来，随着互联网行业的发展，越来越多的企业意识</description>
+    </item>
+    
+    <item>
+      <title>大数据-000数据分析操作</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Mon, 02 Jul 2012 01:10:13 +0800</pubDate>
       
-      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%93%8D%E4%BD%9C/</guid>
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%93%8D%E4%BD%9C/</guid>
       <description></description>
     </item>
     

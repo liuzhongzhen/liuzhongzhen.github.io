@@ -14,7 +14,7 @@
       <pubDate>Fri, 02 Jun 2017 16:53:49 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/Java-002%E5%88%9D%E8%AF%86Servlet%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86%E4%B8%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</guid>
-      <description>转载自外部-初识Servlet并发处理与线程安全</description>
+      <description>转载自外部-初识Servlet并发处理与线程安全 并发处理概念 在实际开发过程中，我们开发出来的web应</description>
     </item>
     
     <item>
@@ -23,7 +23,7 @@
       <pubDate>Thu, 01 Jun 2017 16:53:49 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/Java-001%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/</guid>
-      <description>Java资源大全中文版 JavaWeb基础知识</description>
+      <description>Java资源大全中文版 JavaWeb基础知识 SpringBoot Spring Web MVC Spring WebFlux Hutool</description>
     </item>
     
   </channel>

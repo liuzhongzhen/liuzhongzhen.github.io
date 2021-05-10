@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Php-006输入流php Input介绍 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="Php-006输入流php Input介绍 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2014-08-06T11:47:39&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2014-08-06T11:47:39&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="Php-006输入流php Input介绍">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/Php-006%E8%BE%93%E5%85%A5%E6%B5%81php-input%E4%BB%8B%E7%BB%8D/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#读取post数据">读取POST数据</a></li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#phpinput-vs-http_raw_post_data">php://input VS $http_raw_post_data</a></li>
+    <li><a href="#学习笔记">学习笔记</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Php-006输入流php Input介绍</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2014年8月6日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/Php'>Php</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <blockquote>
+<p>在使用xml-rpc的时候，server端获取client数据，主要是通过php输入流input，而不是$_POST数组。所以，这里主要探讨php输入流php://input</p>
+</blockquote>
+<p>对一php://input介绍，PHP官方手册文档有一段话对它进行了很明确地概述。</p>
+<blockquote>
+<p>“php://input allows you to read raw POST data. It is a less memory intensive alternative to $HTTP_RAW_POST_DATA and does not need any special php.ini directives. php://input is not available with enctype=”multipart/form-data”.</p>
+</blockquote>
+<p>翻译过来，是这样：“php://input可以读取没有处理过的POST数据。相较于$HTTP_RAW_POST_DATA而言，它给内存带来的压力较小，并且不需要特殊的php.ini设置。php://input不能用于enctype=multipart/form-data”</p>
+<p>我们应该怎么去理解这段概述呢?!我把它划分为三部分，逐步去理解。</p>
+<ul>
+<li>读取POST数据</li>
+<li>不能用于multipart/form-data类型</li>
+<li>php://input VS $HTTP_RAW_POST_DATA</li>
+</ul>
+<h2 id="读取post数据">读取POST数据</h2>
+<p>PHPer们一定很熟悉<code>$_POST这个内置变量。$_POST与</code> php://input存在哪些关联与区别呢?另外，客户端向服务端交互数据，最常用的方法除了POST之外，还有GET。既然php://input作 为PHP输入流，它能读取GET数据吗？这二个问题正是我们这节需要探讨的主要内容。
+经验告诉我们，从测试与观察中总结，会是一个很凑效的方法。这里，我写了几个脚本来帮助我们测试。</p>
+<p>@file 192.168.0.6:/phpinput_server.php 打印出接收到的数据
+@file 192.168.0.8:/phpinput_post.php 模拟以POST方法提交表单数据
+@file 192.168.0.8:/phpinput_xmlrpc.php 模拟以POST方法发出xmlrpc请求.
+@file 192.168.0.8:/phpinput_get.php 模拟以GET方法提交表单表数</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<span style="color:#998;font-style:italic">//@file phpinput_server.php
+</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$raw_post_data</span> <span style="color:#000;font-weight:bold">=</span> file_get_contents(<span style="color:#d14">&#39;php://input&#39;</span>, <span style="color:#d14">&#39;r&#39;</span>);
+<span style="color:#000;font-weight:bold">echo</span> <span style="color:#d14">&#34;-------</span><span style="color:#d14">\$</span><span style="color:#d14">_POST------------------</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>;
+<span style="color:#000;font-weight:bold">echo</span> var_dump(<span style="color:#008080">$_POST</span>) <span style="color:#000;font-weight:bold">.</span> <span style="color:#d14">&#34;</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>;
+<span style="color:#000;font-weight:bold">echo</span> <span style="color:#d14">&#34;-------php://input-------------</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>;
+<span style="color:#000;font-weight:bold">echo</span> <span style="color:#008080">$raw_post_data</span> <span style="color:#000;font-weight:bold">.</span> <span style="color:#d14">&#34;</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>;
+<span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<span style="color:#998;font-style:italic">//@file phpinput_post.php
+</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$http_entity_body</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;n=&#39;</span> <span style="color:#000;font-weight:bold">.</span> urldecode(<span style="color:#d14">&#39;perfgeeks&#39;</span>) <span style="color:#000;font-weight:bold">.</span> <span style="color:#d14">&#39;&amp;amp;p=&#39;</span> <span style="color:#000;font-weight:bold">.</span> urldecode(<span style="color:#d14">&#39;7788&#39;</span>);
+<span style="color:#008080">$http_entity_type</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;application/x-www-form-urlencoded&#39;</span>;
+<span style="color:#008080">$http_entity_length</span> <span style="color:#000;font-weight:bold">=</span> strlen(<span style="color:#008080">$http_entity_body</span>);
+<span style="color:#008080">$host</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;192.168.0.6&#39;</span>;
+<span style="color:#008080">$port</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">80</span>;
+<span style="color:#008080">$path</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;/phpinput_server.php&#39;</span>;
+<span style="color:#008080">$fp</span> <span style="color:#000;font-weight:bold">=</span> fsockopen(<span style="color:#008080">$host</span>, <span style="color:#008080">$port</span>, <span style="color:#008080">$error_no</span>, <span style="color:#008080">$error_desc</span>, <span style="color:#099">30</span>);
+<span style="color:#000;font-weight:bold">if</span> (<span style="color:#008080">$fp</span>) {
+    fputs(<span style="color:#008080">$fp</span>, <span style="color:#d14">&#34;POST </span><span style="color:#d14">{</span><span style="color:#008080">$path</span><span style="color:#d14">}</span><span style="color:#d14"> HTTP/1.1</span><span style="color:#d14">\r\n</span><span style="color:#d14">&#34;</span>);
+    fputs(<span style="color:#008080">$fp</span>, <span style="color:#d14">&#34;Host: </span><span style="color:#d14">{</span><span style="color:#008080">$host</span><span style="color:#d14">}</span><span style="color:#d14">\r\n</span><span style="color:#d14">&#34;</span>);
+    fputs(<span style="color:#008080">$fp</span>, <span style="color:#d14">&#34;Content-Type: </span><span style="color:#d14">{</span><span style="color:#008080">$http_entity_type</span><span style="color:#d14">}</span><span style="color:#d14">\r\n</span><span style="color:#d14">&#34;</span>);
+    fputs(<span style="color:#008080">$fp</span>, <span style="color:#d14">&#34;Content-Length: </span><span style="color:#d14">{</span><span style="color:#008080">$http_entity_length</span><span style="color:#d14">}</span><span style="color:#d14">\r\n</span><span style="color:#d14">&#34;</span>);
+    fputs(<span style="color:#008080">$fp</span>, <span style="color:#d14">&#34;Connection: close</span><span style="color:#d14">\r\n\r\n</span><span style="color:#d14">&#34;</span>);
+    fputs(<span style="color:#008080">$fp</span>, <span style="color:#008080">$http_entity_body</span> <span style="color:#000;font-weight:bold">.</span> <span style="color:#d14">&#34;</span><span style="color:#d14">\r\n\r\n</span><span style="color:#d14">&#34;</span>);
+    <span style="color:#000;font-weight:bold">while</span> (<span style="color:#000;font-weight:bold">!</span>feof(<span style="color:#008080">$fp</span>)) {
+        <span style="color:#008080">$d</span> <span style="color:#000;font-weight:bold">.=</span> fgets(<span style="color:#008080">$fp</span>, <span style="color:#099">4096</span>);
+    }
+    fclose(<span style="color:#008080">$fp</span>);
+    <span style="color:#000;font-weight:bold">echo</span> <span style="color:#008080">$d</span>;
+}
+<span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>我们可以通过使用工具ngrep抓取http请求包（因为我们需要探知的是php://input，所以我们这里只抓取http Request数据包）。我们来执行测试脚本phpinput_post.php</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">@php /phpinput_post.php
+HTTP/1.1 <span style="color:#099">200</span> OK
+Date: Thu, <span style="color:#099">08</span> Apr <span style="color:#099">2010</span> 03:23:36 GMT
+Server: Apache/2.2.3 <span style="color:#000;font-weight:bold">(</span>CentOS<span style="color:#000;font-weight:bold">)</span>
+X-Powered-By: PHP/5.1.6
+Content-Length: <span style="color:#099">160</span>
+Connection: close
+Content-Type: text/html; <span style="color:#008080">charset</span><span style="color:#000;font-weight:bold">=</span>UTF-8
+-------<span style="color:#008080">$_POST</span>------------------
+array<span style="color:#000;font-weight:bold">(</span>2<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#34;n&#34;</span><span style="color:#000;font-weight:bold">]=</span>&gt; string<span style="color:#000;font-weight:bold">(</span>9<span style="color:#000;font-weight:bold">)</span> <span style="color:#d14">&#34;perfgeeks&#34;</span>
+<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#34;p&#34;</span><span style="color:#000;font-weight:bold">]=</span>&gt; string<span style="color:#000;font-weight:bold">(</span>4<span style="color:#000;font-weight:bold">)</span> <span style="color:#d14">&#34;7788&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+-------php://input-------------
+<span style="color:#008080">n</span><span style="color:#000;font-weight:bold">=</span>perfgeeks&amp;<span style="color:#008080">p</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">7788</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>通过ngrep抓到的http请求包如下:</p>
+<pre><code>T 192.168.0.8:57846 -&gt; 192.168.0.6:80 [AP]
+POST /phpinput_server.php HTTP/1.1..
+Host: 192.168.0.6..Content-Type: application/x-www-form-urlencoded..Co
+ntent-Length: 18..Connection: close....n=perfgeeks&amp;p=7788....
+</code></pre><p>仔细观察，我们不难发现</p>
+<ol>
+<li>$_POST数据,php://input 数据与httpd entity body数据是“一致”的</li>
+<li>http请求中的Content-Type是application/x-www-form-urlencoded ，它表示http请求body中的数据是使用http的post方法提交的表单数据，并且进行了urlencode()处理。
+(注:注意加粗部分内容，下文不再提示).</li>
+</ol>
+<p>我们再来看看脚本phpinput_xmlrpc.php的原文件内容，它模拟了一个POST方法提交的xml-rpc请求。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<span style="color:#998;font-style:italic">//@file phpinput_xmlrpc.php
+</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$http_entity_body</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;</span><span style="color:#d14">\n\n</span><span style="color:#d14"> jt_userinfo</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>;
+<span style="color:#008080">$http_entity_type</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;text/html&#39;</span>;
+<span style="color:#008080">$http_entity_length</span> <span style="color:#000;font-weight:bold">=</span> strlen(<span style="color:#008080">$http_entity_body</span>);
+<span style="color:#008080">$host</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;192.168.0.6&#39;</span>;
+<span style="color:#008080">$port</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">80</span>;
+<span style="color:#008080">$path</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;/phpinput_server.php&#39;</span>;
+<span style="color:#008080">$fp</span> <span style="color:#000;font-weight:bold">=</span> fsockopen(<span style="color:#008080">$host</span>, <span style="color:#008080">$port</span>, <span style="color:#008080">$error_no</span>, <span style="color:#008080">$error_desc</span>, <span style="color:#099">30</span>);
+<span style="color:#000;font-weight:bold">if</span> (<span style="color:#008080">$fp</span>) {
+    fputs(<span style="color:#008080">$fp</span>, <span style="color:#d14">&#34;POST </span><span style="color:#d14">{</span><span style="color:#008080">$path</span><span style="color:#d14">}</span><span style="color:#d14"> HTTP/1.1</span><span style="color:#d14">\r\n</span><span style="color:#d14">&#34;</span>);
+    fputs(<span style="color:#008080">$fp</span>, <span style="color:#d14">&#34;Host: </span><span style="color:#d14">{</span><span style="color:#008080">$host</span><span style="color:#d14">}</span><span style="color:#d14">\r\n</span><span style="color:#d14">&#34;</span>);
+    fputs(<span style="color:#008080">$fp</span>, <span style="color:#d14">&#34;Content-Type: </span><span style="color:#d14">{</span><span style="color:#008080">$http_entity_type</span><span style="color:#d14">}</span><span style="color:#d14">\r\n</span><span style="color:#d14">&#34;</span>);
+    fputs(<span style="color:#008080">$fp</span>, <span style="color:#d14">&#34;Content-Length: </span><span style="color:#d14">{</span><span style="color:#008080">$http_entity_length</span><span style="color:#d14">}</span><span style="color:#d14">\r\n</span><span style="color:#d14">&#34;</span>);
+    fputs(<span style="color:#008080">$fp</span>, <span style="color:#d14">&#34;Connection: close</span><span style="color:#d14">\r\n\r\n</span><span style="color:#d14">&#34;</span>);
+    fputs(<span style="color:#008080">$fp</span>, <span style="color:#008080">$http_entity_body</span> <span style="color:#000;font-weight:bold">.</span> <span style="color:#d14">&#34;</span><span style="color:#d14">\r\n\r\n</span><span style="color:#d14">&#34;</span>);
+    <span style="color:#000;font-weight:bold">while</span> (<span style="color:#000;font-weight:bold">!</span>feof(<span style="color:#008080">$fp</span>)) {
+        <span style="color:#008080">$d</span> <span style="color:#000;font-weight:bold">.=</span> fgets(<span style="color:#008080">$fp</span>, <span style="color:#099">4096</span>);
+    }
+    fclose(<span style="color:#008080">$fp</span>);
+    <span style="color:#000;font-weight:bold">echo</span> <span style="color:#008080">$d</span>;
+}
+<span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>同样地，让我们来执行这个测试脚本</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">@php /phpinput_xmlrcp.php
+HTTP/1.1 <span style="color:#099">200</span> OK
+Date: Thu, <span style="color:#099">08</span> Apr <span style="color:#099">2010</span> 03:47:18 GMT
+Server: Apache/2.2.3 <span style="color:#000;font-weight:bold">(</span>CentOS<span style="color:#000;font-weight:bold">)</span>
+X-Powered-By: PHP/5.1.6
+Content-Length: <span style="color:#099">154</span>
+Connection: close
+Content-Type: text/html; <span style="color:#008080">charset</span><span style="color:#000;font-weight:bold">=</span>UTF-8
+
+-------<span style="color:#008080">$_POST</span>------------------
+array<span style="color:#000;font-weight:bold">(</span>0<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+-------php://input-------------
+&lt;?xml <span style="color:#008080">version</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;1.0&#34;</span>&gt;
+&lt;methodcall&gt;
+&lt;name&gt;jt_userinfo&lt;/name&gt;
+&lt;/methodcall&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>执行这个脚本的时候，我们通过ngrep抓取的http请求数据包如下</p>
+<pre><code>T 192.168.0.8:45570 -&gt; 192.168.0.6:80 [AP]
+POST /phpinput_server.php HTTP/1.1..
+Host: 192.168.0.6..Content-Type: text/html..Content-Length: 75..Connec
+tion: close....&lt;?xml version=&quot;1.0&quot;&gt;.&lt;methodcall&gt;. &lt;name&gt;jt_userinfo&lt;
+/name&gt;.&lt;/methodcall&gt;....
+</code></pre><p>同样，我样也可以很容易地发现:</p>
+<ol>
+<li>http请求中的Content-Type是text/xml。它表示http请求中的body数据是xml数据格式。</li>
+<li>服务端$_POST打印出来的是一个空数组，即与http entity body不一致了。这跟上个例子不一样了，这里的Content-Type是text/xml,而不是application/x-www-form-urlencoded</li>
+<li>而php://input数据还是跟http entity body数据一致。也就是php://input数据和$_POST数据不一致了。</li>
+</ol>
+<p>我们再来看看通过GET方法提交表单数据的情况，<code>php://input</code>能不能读取到GET方法的表单数据？在这里，我们稍加改动一下<code>phpinput_server.php文件，将$_POST改成$_GET</code>。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<span style="color:#998;font-style:italic">//@file phpinput_server.php
+</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$raw_post_data</span> <span style="color:#000;font-weight:bold">=</span> file_get_contents(<span style="color:#d14">&#39;php://input&#39;</span>, <span style="color:#d14">&#39;r&#39;</span>);
+<span style="color:#000;font-weight:bold">echo</span> <span style="color:#d14">&#34;-------</span><span style="color:#d14">\$</span><span style="color:#d14">_GET------------------</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>;
+<span style="color:#000;font-weight:bold">echo</span> var_dump(<span style="color:#008080">$_GET</span>) <span style="color:#000;font-weight:bold">.</span> <span style="color:#d14">&#34;</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>;
+<span style="color:#000;font-weight:bold">echo</span> <span style="color:#d14">&#34;-------php://input-------------</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>;
+<span style="color:#000;font-weight:bold">echo</span> <span style="color:#008080">$raw_post_data</span> <span style="color:#000;font-weight:bold">.</span> <span style="color:#d14">&#34;</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>;
+<span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2">&lt;?php
+</span><span style="color:#a61717;background-color:#e3d2d2">//@file phpinput_get.php
+</span><span style="color:#a61717;background-color:#e3d2d2">$query_path = &#39;n=&#39; . urldecode(&#39;perfgeeks&#39;) . &#39;&amp;amp;p=&#39; . urldecode(&#39;7788&#39;);
+</span><span style="color:#a61717;background-color:#e3d2d2">$host = &#39;192.168.0.6&#39;;
+</span><span style="color:#a61717;background-color:#e3d2d2">$port = 80;
+</span><span style="color:#a61717;background-color:#e3d2d2">$path = &#39;/phpinput_server.php&#39;;
+</span><span style="color:#a61717;background-color:#e3d2d2">$d = &#39;&#39;;
+</span><span style="color:#a61717;background-color:#e3d2d2">$fp = fsockopen($host, $port, $error_no, $error_desc, 30);
+</span><span style="color:#a61717;background-color:#e3d2d2">if ($fp) {
+</span><span style="color:#a61717;background-color:#e3d2d2">    fputs($fp, &#34;GET {$path}?{$query_path} HTTP/1.1\r\n&#34;);
+</span><span style="color:#a61717;background-color:#e3d2d2">    fputs($fp, &#34;Host: {$host}\r\n&#34;);
+</span><span style="color:#a61717;background-color:#e3d2d2">    fputs($fp, &#34;Connection: close\r\n\r\n&#34;);
+</span><span style="color:#a61717;background-color:#e3d2d2">    while (!feof($fp)) {
+</span><span style="color:#a61717;background-color:#e3d2d2">        $d .= fgets($fp, 4096);
+</span><span style="color:#a61717;background-color:#e3d2d2">    }
+</span><span style="color:#a61717;background-color:#e3d2d2">    fclose($fp);
+</span><span style="color:#a61717;background-color:#e3d2d2">    echo $d;
+</span><span style="color:#a61717;background-color:#e3d2d2">}
+</span><span style="color:#a61717;background-color:#e3d2d2">?&gt;
+</span></code></pre></td></tr></table>
+</div>
+</div><p>同样，我们执行下一phpinput_get.php测试脚本，它模拟了一个通常情况下的GET方法提交表单数据。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">@php /phpinput_get.php
+HTTP/1.1 <span style="color:#099">200</span> OK
+Date: Thu, <span style="color:#099">08</span> Apr <span style="color:#099">2010</span> 07:38:15 GMT
+Server: Apache/2.2.3 <span style="color:#000;font-weight:bold">(</span>CentOS<span style="color:#000;font-weight:bold">)</span>
+X-Powered-By: PHP/5.1.6
+Content-Length: <span style="color:#099">141</span>
+Connection: close
+Content-Type: text/html; <span style="color:#008080">charset</span><span style="color:#000;font-weight:bold">=</span>UTF-8
+
+-------<span style="color:#008080">$_GET</span>------------------
+array<span style="color:#000;font-weight:bold">(</span>2<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#34;n&#34;</span><span style="color:#000;font-weight:bold">]=</span>&gt;
+string<span style="color:#000;font-weight:bold">(</span>9<span style="color:#000;font-weight:bold">)</span> <span style="color:#d14">&#34;perfgeeks&#34;</span>
+<span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#34;p&#34;</span><span style="color:#000;font-weight:bold">]=</span>&gt;
+string<span style="color:#000;font-weight:bold">(</span>4<span style="color:#000;font-weight:bold">)</span> <span style="color:#d14">&#34;7788&#34;</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+-------php://input-------------
+</code></pre></td></tr></table>
+</div>
+</div><p>在这个时候，使用ngrep工具，捕获的相应的http请求数据包如下</p>
+<pre><code>T 192.168.0.8:36775 -&gt; 192.168.0.6:80 [AP]
+GET /phpinput_server.php?n=perfgeeks&amp;p=7788 HTTP/1.1..
+Host: 192.168.0.6..Connection: close....
+</code></pre><p>比较POST方法提交的http请求，通常GET方法提交的请求中，entity body为空。同时，不会指定Content-Type和Content-Length。但是，如果强硬数据http entity body，并指明正确地Content-Type和Content-Length,那么php://input还可是读取得到http entity body数据，但不是$_GET数据。</p>
+<h2 id="总结">总结</h2>
+<p>所根据，上面几个探测，我们可以作出以下总结:</p>
+<ol>
+<li>Content-Type取值为application/x-www-form-urlencoded时，php会将http请求body相应数据会填入到数 组$_POST，填入到$_POST数组中的数据是进行urldecode()解析的结果。（其实，除了该Content-Type，还有 multipart/form-data表示数据是表单数据，稍后我们介绍）</li>
+<li>php://input数据，只要Content-Type不为 multipart/form-data(该条件限制稍后会介绍)。那么php://input数据与http entity body部分数据是一致的。该部分相一致的数据的长度由Content-Length指定。</li>
+<li>仅当Content-Type为application/x-www-form-urlencoded且提交方法是POST方法时，$_POST数据与php://input数据才是”一致”（打上引号，表示它们格式不一致，内容一致）的。其它情况，它们都不一致。</li>
+<li>php://input读取不到$_GET数据。是因为$_GET数据作为query_path写在http请求头部(header)的PATH字段，而不是写在http请求的body部分。</li>
+</ol>
+<p>这也帮助我们理解了，为什么xml_rpc服务端读取数据都是通过file_get_contents(‘php://input', ‘r')。而不是从$_POST中读取，正是因为xml_rpc数据规格是xml，它的Content-Type是text/xml。
+php://input碰到了multipart/form-data上传文件的时候，表单的写法是这样的</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">form</span> <span style="color:#008080">enctype</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;multipart/form-data&#34;</span> <span style="color:#008080">action</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;phpinput_server.php&#34;</span> <span style="color:#008080">method</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;POST&#34;</span> &gt;
+&lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;text&#34;</span> <span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;n&#34;</span> /&gt;
+&lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;file&#34;</span> <span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;f&#34;</span> /&gt;
+&lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;submit&#34;</span> <span style="color:#008080">value</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;upload now&#34;</span> /&gt;
+&lt;/<span style="color:#000080">form</span>&gt;
+</code></pre></td></tr></table>
+</div>
+</div><p>那么，enctype=multipart/form-data这里的意义，就是将该次http请求头部(head)中的Content-Type设置为multipart/form-data。请查阅RFC1867对 它的描述。multipart/form-data也表示以POST方法提交表单数据，它还伴随了文件上传，所以会跟application/x- www-form-urlencoded数据格式不一样。它会以一更种更合理的，更高效的数据格式传递给服务端。我们提交该表单数据，并且打印出响应结果，如下:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-------<span style="color:#008080">$_POST</span>------------------
+array<span style="color:#000;font-weight:bold">(</span>1<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#34;n&#34;</span><span style="color:#000;font-weight:bold">]=</span>&gt; string<span style="color:#000;font-weight:bold">(</span>9<span style="color:#000;font-weight:bold">)</span> <span style="color:#d14">&#34;perfgeeks&#34;</span> <span style="color:#000;font-weight:bold">}</span>
+-------php://input-------------
+</code></pre></td></tr></table>
+</div>
+</div><p>同时，我们通过ngrep抓取的相应的http请求数据包如下:</p>
+<pre><code>########
+T 192.168.0.8:3981 -&gt; 192.168.0.6:80 [AP]
+POST /phpinput_server.php HTTP/1.1..Host: 192.168.0.6..Connection: kee
+p-alive..User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/533.2 (KHTML, like Gecko) Chrome/5.0.342.3 Safari/533.2..Re
+ferer: http://192.168.0.6/phpinput_server.php..Content-Length: 306..Ca
+che-Control: max-age=0..Origin: http://192.168.0.6..Content-Type: mult
+ipart/form-data; boundary=----WebKitFormBoundarybLQwkp4opIEZn1fA..Accept: application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q
+=0.8,image/png,*/*;q=0.5..Accept-Encoding: gzip,deflate,sdch..Accept-L
+anguage: zh-CN,zh;q=0.8..Accept-Charset: GBK,utf-8;q=0.7,*;q=0.3..Cook
+ie: SESS3b0e658f87cf58240de13ab43a399df6=lju6o5bg8u04lv1ojugm2ccic6...
+.
+##
+T 192.168.0.8:3981 -&gt; 192.168.0.6:80 [AP]
+------WebKitFormBoundarybLQwkp4opIEZn1fA..Content-Disposition: form-da
+ta; name=&quot;n&quot;....perfgeeks..------WebKitFormBoundarybLQwkp4opIEZn1fA..C
+ontent-Disposition: form-data; name=&quot;f&quot;; filename=&quot;test.txt&quot;..Content-
+Type: text/plain....i am file..multipart/form-data..------WebKitFormBo
+undarybLQwkp4opIEZn1fA--..
+##
+</code></pre><p>从响应输出来比对，<code>$_POST数据跟请求提交数据相符，即$_POST = array(‘n' =&gt; ‘perfgeeks')。</code>这也跟http请求body中的数据相呼应，同时说明PHP把相应的数据填入$_POST全局变量。而php://input 输出为空，没有输出任何东西，尽管http请求数据包中body不为空。这表示，当Content-Type为multipart/form-data的 时候，即便http请求body中存在数据，php://input也为空，PHP此时，不会把数据填入php://input流。所以，可以确定: php://input不能用于读取enctype=multipart/form-data数据。</p>
+<p>我们再比较这次通过ngrep抓取的http请求数据包，我们会发现，最大不同的一 点是Content-Type后面跟了boundary定义了数据的分界符，bounday是随机生成的。另外一个大不一样的，就是http entity body中的数据组织结构不一样了。</p>
+<p>上一节，我们概述了，<code>当Content-Type为application/x- www-form-urlencoded时，php://input和$_POST数据是“一致”的，为其它Content-Type的时候，php: //input和$_POST数据数据是不一致的。因为只有在Content-Type为application/x-www-form- urlencoded或者为multipart/form-data的时候，PHP才会将http请求数据包中的body相应部分数据填入$_POST全 局变量中,其它情况PHP都忽略。而php://input除了在数据类型为multipart/form-data之外为空外，其它情况都可能不为空。 通过这一节，我们更加明白了php://input与$_POST的区别与联系。所以，再次确认，php://input无法读取 enctype=multipart/form-data数据，当php://input遇到它时，永远为空，即便http entity body有数据。</code></p>
+<h2 id="phpinput-vs-http_raw_post_data">php://input VS $http_raw_post_data</h2>
+<p><code>相信大家对php://input已经有一定深度地了解了。那 么$http_raw_post_data是什么呢？$http_raw_post_data是PHP内置的一个全局变量。它用于，PHP在无法识别的 Content-Type的情况下，将POST过来的数据原样地填入变量$http_raw_post_data。它同样无法读取Content- Type为multipart/form-data的POST数据。需要设置php.ini中的 always_populate_raw_post_data值为On，PHP才会总把POST数据填入变量$http_raw_post_data。</code></p>
+<p>把脚本phpinput_server.php改变一下，可以验证上述内容</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<span style="color:#008080">$raw_post_data</span> <span style="color:#000;font-weight:bold">=</span> file_get_contents(<span style="color:#d14">&#39;php://input&#39;</span>, <span style="color:#d14">&#39;r&#39;</span>);
+<span style="color:#008080">$rtn</span> <span style="color:#000;font-weight:bold">=</span> (<span style="color:#008080">$raw_post_data</span> <span style="color:#000;font-weight:bold">==</span> <span style="color:#008080">$HTTP_RAW_POST_DATA</span>) <span style="color:#000;font-weight:bold">?</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">:</span> <span style="color:#099">0</span>;
+<span style="color:#000;font-weight:bold">echo</span> <span style="color:#008080">$rtn</span>;
+<span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
+</span></code></pre></td></tr></table>
+</div>
+</div><p>执行测试脚本</p>
+<p>@php phpinput_post.php
+@php phpinput_get.php
+@php phpinput_xmlrpc.php</p>
+<p>得出的结果输出都是一样的，即都为1，表示php://input和$HTTP_RAW_POST_DATA是相同的。至于对内存的压力，我们这里就不做细致地测试了。有兴趣的，可以通过xhprof进行测试和观察。</p>
+<p>以此，我们这节可以总结如下:</p>
+<ol>
+<li>php://input 可以读取http entity body中指定长度的值,由Content-Length指定长度,不管是POST方式或者GET方法提交过来的数据。但是，一般GET方法提交数据 时，http request entity body部分都为空。</li>
+<li>php://input 与$HTTP_RAW_POST_DATA读取的数据是一样的，都只读取Content-Type不为multipart/form-data的数据。</li>
+</ol>
+<h2 id="学习笔记">学习笔记</h2>
+<ol>
+<li>Content-Type仅在取值为application/x-www-data-urlencoded和multipart/form-data两种情况下，PHP才会将http请求数据包中相应的数据填入全局变量$_POST</li>
+<li>PHP不能识别的Content-Type类型的时候，会将http请求包中相应的数据填入变量$HTTP_RAW_POST_DATA</li>
+<li>只有Coentent-Type不为multipart/form-data的时候，PHP不会将http请求数据包中的相应数据填入php://input，否则其它情况都会。填入的长度，由Coentent-Length指定。</li>
+<li>只有Content-Type为application/x-www-data-urlencoded时，php://input数据才跟$_POST数据相一致。</li>
+<li>php://input数据总是跟$HTTP_RAW_POST_DATA相同，但是php://input比$HTTP_RAW_POST_DATA更凑效，且不需要特殊设置php.ini</li>
+<li>PHP会将PATH字段的query_path部分，填入全局变量$_GET。通常情况下，GET方法提交的http请求，body为空。</li>
+</ol>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/Php-005%E5%8F%91%E9%80%81http%E8%AF%B7%E6%B1%82/">Php 005发送http请求</a></li>
+        
+        <li><a href="../../post/Php-004redis%E5%BA%93%E4%BB%8B%E7%BB%8D/">Php 004redis库介绍</a></li>
+        
+        <li><a href="../../post/Php-003mysql%E5%BA%93%E4%BB%8B%E7%BB%8D/">Php-003mysql库介绍</a></li>
+        
+        <li><a href="../../post/Php-002memcache%E5%BA%93%E4%BB%8B%E7%BB%8D/">Php-002memcache库介绍</a></li>
+        
+        <li><a href="../../post/Php-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/">Php-001学习资料整理</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/" title="Mysql-006解读事务和MVVC原理">Mysql-006解读事务和MVVC原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/" title="Mysql-005浅谈Mysql架构体系">Mysql-005浅谈Mysql架构体系</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 010flume基础知识">大数据 010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 009kafka基础知识">大数据 009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 008hbase基础知识">大数据 008hbase基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 007clickhouse基础知识">大数据 007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 006impala基础知识">大数据 006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 005flink基础知识">大数据 005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 004spark基础知识">大数据 004spark基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/" title="几种序列化协议的介绍(转)">几种序列化协议的介绍(转)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Http/">Http (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Java/">Java (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Mysql/">Mysql (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Nginx/">Nginx (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Php/">Php (9)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-python/">语言-python (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

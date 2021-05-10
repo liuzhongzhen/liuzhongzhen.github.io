@@ -7,11 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 04 Apr 2021 23:02:30 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/books/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Jul 2018 21:37:38 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/books/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java编程的逻辑</title>
+      <link>https://liuzhongzhen.github.io/books/Java%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91/</link>
+      <pubDate>Sun, 01 Jul 2018 21:37:38 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/Java%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Java编程思想</title>
       <link>https://liuzhongzhen.github.io/books/Java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/</link>
-      <pubDate>Sun, 04 Apr 2021 23:02:30 +0800</pubDate>
+      <pubDate>Mon, 01 Jan 2018 23:02:30 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/books/Java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/</guid>
       <description></description>
@@ -20,7 +29,7 @@
     <item>
       <title>百年孤独</title>
       <link>https://liuzhongzhen.github.io/books/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/</link>
-      <pubDate>Sun, 04 Apr 2021 20:39:32 +0800</pubDate>
+      <pubDate>Mon, 02 Sep 2013 20:39:32 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/books/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/</guid>
       <description>作者 加西亚·马尔克斯 简介 背影是真的人是假的 没什么执著 一百年前你不是你我不是我 悲哀是真的泪是假的 本来没</description>

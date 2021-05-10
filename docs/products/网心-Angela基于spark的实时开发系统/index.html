@@ -152,6 +152,7 @@
     <li><a href="#开发工具">开发工具</a></li>
     <li><a href="#整体架构">整体架构</a></li>
     <li><a href="#功能模块">功能模块</a></li>
+    <li><a href="#使用情况">使用情况</a></li>
   </ul>
 </nav>
     </div>
@@ -202,13 +203,28 @@
             <h2 id="角色">角色</h2>
 <p>设计开发负责人</p>
 <h2 id="背景">背景</h2>
+<p>sparkSQL实时开发每次都要写代码，打包，调试，发布，上线比较繁琐，耗时长。</p>
+<p>所有的逻辑都是读取kafka，关联维表，计算，写入mysql，tidb，kudu或者clickhouse。</p>
+<p>实时计算的代码不好管理，和血缘关系，数据治理割裂开了。</p>
+<p>开发一个实时计算框架，可以管理实时计算任务，便于管理，便于开发，提高开发效率。</p>
 <h2 id="开发工具">开发工具</h2>
 <ol>
-<li>后台开发语言: scala,java,spark</li>
+<li>后台开发语言: scala,java,sparksql</li>
 <li>工具脚本语言: python</li>
+<li>配置管理平台: python,flask,vue,elmentui</li>
 </ol>
 <h2 id="整体架构">整体架构</h2>
+<p>
+        <img class="mx-auto" alt="001" src="../../imgs/wxangela/a01.jpg" />   
+    </p>
 <h2 id="功能模块">功能模块</h2>
+<ol>
+<li>配置管理模块：负责实时sql任务配置，数据源配置，目标表配置，维表配置，属性配置，spark参数配置</li>
+<li>监控重启模块：负责周期启动监控任务是否在运行，是否堆积，是否失败进行相关干预和告诫</li>
+<li>angela计算模块：负责根据api拉取sparksql配置，解析配置，生成计算任务</li>
+</ol>
+<h2 id="使用情况">使用情况</h2>
+<p>运行管理25个实时计算任务，主要用于带宽，节点，状态码等的实时监控，配合grafana做监控大屏</p>
 
         </div>
 
@@ -374,9 +390,9 @@
     
     <li><a href="https://liuzhongzhen.github.io/categories/Nginx/">Nginx (1)</a></li>
     
-    <li><a href="https://liuzhongzhen.github.io/categories/Php/">Php (5)</a></li>
+    <li><a href="https://liuzhongzhen.github.io/categories/Php/">Php (9)</a></li>
     
-    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (2)</a></li>
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
     
     <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
     

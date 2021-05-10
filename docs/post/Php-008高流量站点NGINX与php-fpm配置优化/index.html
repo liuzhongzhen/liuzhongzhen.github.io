@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Php-008高流量站点NGINX与php-Fpm配置优化 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="Php-008高流量站点NGINX与php-Fpm配置优化 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2014-08-08T11:47:39&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2014-08-08T11:47:39&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="Php-008高流量站点NGINX与php-Fpm配置优化">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/Php-008%E9%AB%98%E6%B5%81%E9%87%8F%E7%AB%99%E7%82%B9NGINX%E4%B8%8Ephp-fpm%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-将tcp切换为unix域套接字">1. 将TCP切换为UNIX域套接字</a></li>
+    <li><a href="#2-调整工作进程数">2. 调整工作进程数</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#4-禁用访问日志文件">4. 禁用访问日志文件</a></li>
+    <li><a href="#5-启用gzip">5. 启用GZip</a></li>
+    <li><a href="#6-缓存被频繁访问的文件相关的信息">6. 缓存被频繁访问的文件相关的信息</a></li>
+    <li><a href="#7-调整客户端超时时间">7. 调整客户端超时时间</a></li>
+    <li><a href="#8-调整输出缓冲区大小">8. 调整输出缓冲区大小</a></li>
+    <li><a href="#9-etcsysctlconf调优">9. /etc/sysctl.conf调优</a></li>
+    <li><a href="#10-监控">10. 监控</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Php-008高流量站点NGINX与php-Fpm配置优化</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2014年8月8日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/Php'>Php</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="1-将tcp切换为unix域套接字">1. 将TCP切换为UNIX域套接字</h2>
+<p>UNIX域套接字相比TCP套接字在loopback接口上能提供更好的性能（更少的数据拷贝和上下文切换）。</p>
+<p>但有一点需要牢记：仅运行在同一台服务器上的程序可以访问UNIX域套接字（显然没有网络支持）。</p>
+<pre><code class="language-conf" data-lang="conf">upstream backend
+{
+    # UNIX domain sockets
+    server unix:/var/run/fastcgi.sock;
+
+    # TCP sockets
+    # server 127.0.0.1:8080;
+}
+</code></pre><h2 id="2-调整工作进程数">2. 调整工作进程数</h2>
+<p>现代计算机硬件是多处理器的，NGINX可以利用多物理或虚拟处理器。</p>
+<p>多数情况下，你的Web服务器都不会配置为处理多种任务（比如作为Web服务器提供服务的同时也是一个打印服务器），你可以配置NGINX使用所有可用的处理器，NGINX工作进程并不是多线程的。</p>
+<p>运行以下命令可以获知你的机器有多少个处理器：</p>
+<p>Linux上 -</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /proc/cpuinfo | grep processor
+</code></pre></td></tr></table>
+</div>
+</div><p>FreeBSD上 -</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sysctl dev .cpu | grep location
+</code></pre></td></tr></table>
+</div>
+</div><p>将nginx.conf文件中work_processes的值设置为机器的处理器核数。</p>
+<p>同时，增大worker_connections（每个处理器核心可以处理多少个连接）的值，以及将&quot;multi_accept&quot;设置为ON，如果你使用的是Linux，则也使用&quot;epoll&quot;：</p>
+<pre><code class="language-conf" data-lang="conf"># We have 16 cores
+worker_processes 16;
+
+# connections per worker
+events
+{
+    worker_connections 4096;
+    multi_accept on;
+}
+</code></pre><h1 id="3-设置upstream负载均衡">3. 设置upstream负载均衡</h1>
+<p>以我们的经验来看，同一台机器上多个upstream后端相比单个upstream后端能够带来更高的吞吐量。</p>
+<p>例如，如果你想支持最大1000个PHP-fpm子进程（children），可以将该数字平均分配到两个upstream后端，各自处理500个PHP-fpm子进程：</p>
+<pre><code class="language-conf" data-lang="conf">upstream backend {
+    server unix:/var/run/php5-fpm.sock1 weight=100 max_fails=5 fail_timeout=5;
+    server unix:/var/run/php5-fpm.sock2 weight=100 max_fails=5 fail_timeout=5;
+}
+</code></pre><p>以下是两个来自php-fpm.conf的进程池：</p>
+<pre><code class="language-conf" data-lang="conf">&lt;section name=&quot;pool&quot;&gt;
+
+    &lt;value name=&quot;name&quot;&gt;www1&lt;/value&gt;
+    &lt;value name=&quot;listen_address&quot;&gt;/var/run/php5-fpm.sock1&lt;/value&gt;
+
+    &lt;value name=&quot;listen_options&quot;&gt;
+        &lt;value name=&quot;backlog&quot;&gt;-1&lt;/value&gt;
+        &lt;value name=&quot;owner&quot;&gt;&lt;/value&gt;
+        &lt;value name=&quot;group&quot;&gt;&lt;/value&gt;
+        &lt;value name=&quot;mode&quot;&gt;0666&lt;/value&gt;
+    &lt;/value&gt;
+
+    &lt;value name=&quot;user&quot;&gt;www&lt;/value&gt;
+    &lt;value name=&quot;group&quot;&gt;www&lt;/value&gt;
+
+    &lt;value name=&quot;pm&quot;&gt;
+        &lt;value name=&quot;style&quot;&gt;static&lt;/value&gt;
+        &lt;value name=&quot;max_children&quot;&gt;500&lt;/value&gt;
+    &lt;/value&gt;
+
+    &lt;value name=&quot;rlimit_files&quot;&gt;50000&lt;/value&gt;
+    &lt;value name=&quot;rlimit_core&quot;&gt;0&lt;/value&gt;
+    &lt;value name=&quot;request_slowlog_timeout&quot;&gt;20s&lt;/value&gt;
+    &lt;value name=&quot;slowlog&quot;&gt;/var/log/php-slow.log&lt;/value&gt;
+    &lt;value name=&quot;chroot&quot;&gt;&lt;/value&gt;
+    &lt;value name=&quot;chdir&quot;&gt;&lt;/value&gt;
+    &lt;value name=&quot;catch_workers_output&quot;&gt;no&lt;/value&gt;
+    &lt;value name=&quot;max_requests&quot;&gt;5000&lt;/value&gt;
+    &lt;value name=&quot;allowed_clients&quot;&gt;127.0.0.1&lt;/value&gt;
+
+    &lt;value name=&quot;environment&quot;&gt;
+        &lt;value name=&quot;HOSTNAME&quot;&gt;$HOSTNAME&lt;/value&gt;
+        &lt;value name=&quot;PATH&quot;&gt;/usr/local/bin:/usr/bin:/bin&lt;/value&gt;
+        &lt;value name=&quot;TMP&quot;&gt;/usr/tmp&lt;/value&gt;
+        &lt;value name=&quot;TMPDIR&quot;&gt;/usr/tmp&lt;/value&gt;
+        &lt;value name=&quot;TEMP&quot;&gt;/usr/tmp&lt;/value&gt;
+        &lt;value name=&quot;OSTYPE&quot;&gt;$OSTYPE&lt;/value&gt;
+        &lt;value name=&quot;MACHTYPE&quot;&gt;$MACHTYPE&lt;/value&gt;
+        &lt;value name=&quot;MALLOC_CHECK_&quot;&gt;2&lt;/value&gt;
+    &lt;/value&gt;
+
+&lt;/section&gt;
+
+&lt;section name=&quot;pool&quot;&gt;
+
+    &lt;value name=&quot;name&quot;&gt;www2&lt;/value&gt;
+    &lt;value name=&quot;listen_address&quot;&gt;/var/run/php5-fpm.sock2&lt;/value&gt;
+
+    &lt;value name=&quot;listen_options&quot;&gt;
+        &lt;value name=&quot;backlog&quot;&gt;-1&lt;/value&gt;
+        &lt;value name=&quot;owner&quot;&gt;&lt;/value&gt;
+        &lt;value name=&quot;group&quot;&gt;&lt;/value&gt;
+        &lt;value name=&quot;mode&quot;&gt;0666&lt;/value&gt;
+    &lt;/value&gt;
+
+    &lt;value name=&quot;user&quot;&gt;www&lt;/value&gt;
+    &lt;value name=&quot;group&quot;&gt;www&lt;/value&gt;
+
+    &lt;value name=&quot;pm&quot;&gt;
+        &lt;value name=&quot;style&quot;&gt;static&lt;/value&gt;
+        &lt;value name=&quot;max_children&quot;&gt;500&lt;/value&gt;
+    &lt;/value&gt;
+
+    &lt;value name=&quot;rlimit_files&quot;&gt;50000&lt;/value&gt;
+    &lt;value name=&quot;rlimit_core&quot;&gt;0&lt;/value&gt;
+    &lt;value name=&quot;request_slowlog_timeout&quot;&gt;20s&lt;/value&gt;
+    &lt;value name=&quot;slowlog&quot;&gt;/var/log/php-slow.log&lt;/value&gt;
+    &lt;value name=&quot;chroot&quot;&gt;&lt;/value&gt;
+    &lt;value name=&quot;chdir&quot;&gt;&lt;/value&gt;
+    &lt;value name=&quot;catch_workers_output&quot;&gt;no&lt;/value&gt;
+    &lt;value name=&quot;max_requests&quot;&gt;5000&lt;/value&gt;
+    &lt;value name=&quot;allowed_clients&quot;&gt;127.0.0.1&lt;/value&gt;
+
+    &lt;value name=&quot;environment&quot;&gt;
+        &lt;value name=&quot;HOSTNAME&quot;&gt;$HOSTNAME&lt;/value&gt;
+        &lt;value name=&quot;PATH&quot;&gt;/usr/local/bin:/usr/bin:/bin&lt;/value&gt;
+        &lt;value name=&quot;TMP&quot;&gt;/usr/tmp&lt;/value&gt;
+        &lt;value name=&quot;TMPDIR&quot;&gt;/usr/tmp&lt;/value&gt;
+        &lt;value name=&quot;TEMP&quot;&gt;/usr/tmp&lt;/value&gt;
+        &lt;value name=&quot;OSTYPE&quot;&gt;$OSTYPE&lt;/value&gt;
+        &lt;value name=&quot;MACHTYPE&quot;&gt;$MACHTYPE&lt;/value&gt;
+        &lt;value name=&quot;MALLOC_CHECK_&quot;&gt;2&lt;/value&gt;
+    &lt;/value&gt;
+
+&lt;/section&gt;
+</code></pre><h2 id="4-禁用访问日志文件">4. 禁用访问日志文件</h2>
+<p>这一点影响较大，因为高流量站点上的日志文件涉及大量必须在所有线程之间同步的IO操作。</p>
+<pre><code class="language-conf" data-lang="conf">access_log off;
+log_not_found off;
+error_log /var/log/nginx-error.log warn;
+</code></pre><p>若你不能关闭访问日志文件，至少应该使用缓冲：</p>
+<pre><code class="language-conf" data-lang="conf">access_log /var/log/nginx/access.log main buffer=16k;
+</code></pre><h2 id="5-启用gzip">5. 启用GZip</h2>
+<pre><code class="language-conf" data-lang="conf">gzip on;
+gzip_disable &quot;msie6&quot;;
+gzip_vary on;
+gzip_proxied any;
+gzip_comp_level 6;
+gzip_min_length 1100;
+gzip_buffers 16 8k;
+gzip_http_version 1.1;
+gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+</code></pre><h2 id="6-缓存被频繁访问的文件相关的信息">6. 缓存被频繁访问的文件相关的信息</h2>
+<pre><code class="language-conf" data-lang="conf">open_file_cache max=200000 inactive=20s;
+open_file_cache_valid 30s;
+open_file_cache_min_uses 2;
+open_file_cache_errors on;
+</code></pre><h2 id="7-调整客户端超时时间">7. 调整客户端超时时间</h2>
+<pre><code class="language-conf" data-lang="conf">client_max_body_size 500M;
+client_body_buffer_size 1m;
+client_body_timeout 15;
+client_header_timeout 15;
+keepalive_timeout 2 2;
+send_timeout 15;
+sendfile on;
+tcp_nopush on;
+tcp_nodelay on;
+</code></pre><h2 id="8-调整输出缓冲区大小">8. 调整输出缓冲区大小</h2>
+<pre><code class="language-conf" data-lang="conf">fastcgi_buffers 256 16k;
+fastcgi_buffer_size 128k;
+fastcgi_connect_timeout 3s;
+fastcgi_send_timeout 120s;
+fastcgi_read_timeout 120s;
+reset_timedout_connection on;
+server_names_hash_bucket_size 100;
+</code></pre><h2 id="9-etcsysctlconf调优">9. /etc/sysctl.conf调优</h2>
+<pre><code class="language-conf" data-lang="conf"># Recycle Zombie connections
+net.inet.tcp.fast_finwait2_recycle=1
+net.inet.tcp.maxtcptw=200000
+
+# Increase number of files
+kern.maxfiles=65535
+kern.maxfilesperproc=16384
+
+# Increase page share factor per process
+vm.pmap.pv_entry_max=54272521
+vm.pmap.shpgperproc=20000
+
+# Increase number of connections
+vfs.vmiodirenable=1
+kern.ipc.somaxconn=3240000
+net.inet.tcp.rfc1323=1
+net.inet.tcp.delayed_ack=0
+net.inet.tcp.restrict_rst=1
+kern.ipc.maxsockbuf=2097152
+kern.ipc.shmmax=268435456
+
+# Host cache
+net.inet.tcp.hostcache.hashsize=4096
+net.inet.tcp.hostcache.cachelimit=131072
+net.inet.tcp.hostcache.bucketlimit=120
+
+# Increase number of ports
+net.inet.ip.portrange.first=2000
+net.inet.ip.portrange.last=100000
+net.inet.ip.portrange.hifirst=2000
+net.inet.ip.portrange.hilast=100000
+kern.ipc.semvmx=131068
+
+# Disable Ping-flood attacks
+net.inet.tcp.msl=2000
+net.inet.icmp.bmcastecho=1
+net.inet.icmp.icmplim=1
+net.inet.tcp.blackhole=2
+net.inet.udp.blackhole=1
+</code></pre><h2 id="10-监控">10. 监控</h2>
+<p>持续监控打开连接的数目，空闲内存以及等待状态线程的数目。</p>
+<p>设置警报在超出阈值时通知你。你可以自己构建这些警报，或者使用类似ServerDensity的东西。</p>
+<p>确认安装了NGINX的stub_status模块。该模块默认并不会编译进NGINX，所以可能你需要重新编译NGINX -</p>
+<pre><code class="language-conf" data-lang="conf">./configure --with-http_ssl_module --with-http_stub_status_module --without-mail_pop3_module
+--without-mail_imap_module --without-mail_smtp_module
+make install BATCH=yes
+</code></pre>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/Php-007%E6%B7%B1%E5%85%A5pack%E5%92%8Cunpack/">Php-007深入pack和unpack</a></li>
+        
+        <li><a href="../../post/Php-006%E8%BE%93%E5%85%A5%E6%B5%81php-input%E4%BB%8B%E7%BB%8D/">Php-006输入流php Input介绍</a></li>
+        
+        <li><a href="../../post/Php-005%E5%8F%91%E9%80%81http%E8%AF%B7%E6%B1%82/">Php 005发送http请求</a></li>
+        
+        <li><a href="../../post/Php-004redis%E5%BA%93%E4%BB%8B%E7%BB%8D/">Php 004redis库介绍</a></li>
+        
+        <li><a href="../../post/Php-003mysql%E5%BA%93%E4%BB%8B%E7%BB%8D/">Php-003mysql库介绍</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/" title="Mysql-006解读事务和MVVC原理">Mysql-006解读事务和MVVC原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/" title="Mysql-005浅谈Mysql架构体系">Mysql-005浅谈Mysql架构体系</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 010flume基础知识">大数据 010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 009kafka基础知识">大数据 009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 008hbase基础知识">大数据 008hbase基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 007clickhouse基础知识">大数据 007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 006impala基础知识">大数据 006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 005flink基础知识">大数据 005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 004spark基础知识">大数据 004spark基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/" title="几种序列化协议的介绍(转)">几种序列化协议的介绍(转)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Http/">Http (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Java/">Java (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Mysql/">Mysql (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Nginx/">Nginx (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Php/">Php (9)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-python/">语言-python (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
