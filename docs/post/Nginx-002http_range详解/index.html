@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Nginx 002http_range详解 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="Nginx 002http_range详解 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2018-01-08T22:57:56&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2018-01-08T22:57:56&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="Nginx 002http_range详解">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/Nginx-002http_range%E8%AF%A6%E8%A7%A3/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents"></nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Nginx 002http_range详解</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2018年1月8日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/Nginx'>Nginx</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <p>Range，是在 HTTP/1.1（http://www.w3.org/Protocols/rfc2616/rfc2616.html）里新增的一个 header field，也是现在众多号称多线程下载工具（如 FlashGet、迅雷等）实现多线程下载的核心所在。</p>
+<p>Range 的规范定义如下：</p>
+<pre><code>ranges-specifier = byte-ranges-specifier
+byte-ranges-specifier = bytes-unit “=” byte-range-set
+byte-range-set = 1#( byte-range-spec | suffix-byte-range-spec )
+byte-range-spec = first-byte-pos “-” [last-byte-pos]
+first-byte-pos = 1*DIGIT
+last-byte-pos = 1*DIGIT
+</code></pre>
+<p>（RFC2616 里充斥着这种形式的定义，一开始觉得挺乱，后来习惯了就发现其实挺科学，挺好理解的:)）</p>
+<p>值得注意的就是 byte-range-set 是一个 byte-range 的集合，所以在实际请求中完全可能会出现如下这种形式：</p>
+<p>Range: bytes=123-567,789-</p>
+<p>这个数据区间是个闭合区间，起始值是 0，所以“Range: bytes=0-1”这样一个请求实际上是在请求开头的 2 个字节。</p>
+<p>byte-range-spec 里的 last-byte-pos 可以省略，代表从 first-byte-pos 一直请求到结束位置。其实 first-byte-pos 也是可以省略的，只不过就不叫 byte-range-spec 了，而是叫 suffix-byte-range-spec，</p>
+<p>规范如下：</p>
+<ul>
+<li>suffix-byte-range-spec = “-” suffix-length</li>
+<li>suffix-length = 1*DIGIT</li>
+</ul>
+<p>比如“Range: bytes=-200”，它不是表示请求文件开始位置的 201 个字节，而是表示要请求文件结尾处的 200 个字节。</p>
+<p>如果 byte-range-spec 的 last-byte-pos 小于 first-byte-pos，那么这个 Range 请求就是无效请求，server 需要忽略这个 Range 请求，然后回应一个 200 OK，把整个文件发给 client。</p>
+<p>如果 byte-range-spec 里的 first-byte-pos 大于文件长度，或者 suffix-byte-range-spec 里的 suffix-length 等于 0，那么这个 Range 请求被认为是不能满足的，server 需要回应一个 416 Requested range not satisfiable。</p>
+<p>server 除了要能理解 Range 请求之外，在回应 client 时还要使用 Content-Range 来告诉 client 他到底发送了多少数据，Content-Range 的规范定义如下：</p>
+<ul>
+<li>Content-Range = “Content-Range” “:” content-range-spec</li>
+<li>content-range-spec = byte-content-range-spec</li>
+<li>byte-content-range-spec = bytes-unit SP byte-range-resp-spec “/” ( instance-length | “*” )</li>
+<li>byte-range-resp-spec = (first-byte-pos “-” last-byte-pos) | “*”</li>
+<li>instance-length = 1*DIGIT</li>
+</ul>
+<p>详尽的细枝末节就不在这里记述了，</p>
+<p>举个例子说明一下，比如某文件的大小是 1000 字节，client 请求这个文件时用了 “Range: bytes=0-500”，那么 server 应该把这个文件开头的 501 个字节发回给 client，
+同时回应头要有如下内容：</p>
+<pre><code>Content-Range: bytes 0-500/1000
+</code></pre><p>Range 请求的一些注意事项：</p>
+<ol>
+<li>不支持 Range 请求的 server 要用“Accept-Ranges: none”对 client 表明心意；server 也可以主动告诉 client “Accept-Ranges: bytes”，但是 client 也可以在没有收到这个指示的前提下向 server 发 Range 请求。</li>
+<li>byte-range-set 中的区间可以是“有洞”的，也可以是部分重叠的</li>
+<li>单区间的 byte-range-set 正常回应就可以了，但是多区间 byte-range-set 需要 server 使用 multipart/byterange 来回应</li>
+</ol>
+<p>Range头域</p>
+<ol>
+<li>Range头域可以请求实体的一个或者多个子范围。例如，</li>
+<li>表示头500个字节：bytes=0-499</li>
+<li>表示第二个500字节：bytes=500-999</li>
+<li>表示最后500个字节：bytes=-500</li>
+<li>表示500字节以后的范围：bytes=500-</li>
+<li>第一个和最后一个字节：bytes=0-0,-1</li>
+<li>同时指定几个范围：bytes=500-600,601-999</li>
+</ol>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/">Nginx-001详细介绍</a></li>
+        
+        <li><a href="../../books/Java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/">Java编程思想</a></li>
+        
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-Asima%E5%8A%A8%E6%80%81%E6%95%B0%E6%8D%AE%E5%85%A5%E5%BA%93%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/">网心-Asima动态数据入库系统设计开发</a></li>
+        
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-Apana%E5%9F%BA%E4%BA%8EopenResty%E7%9A%84http%E6%95%B0%E6%8D%AE%E4%B8%8A%E6%8A%A5%E7%B3%BB%E7%BB%9F/">网心-Apana基于openResty的http数据上报系统</a></li>
+        
+        <li><a href="../../post/Java-002%E5%88%9D%E8%AF%86Servlet%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86%E4%B8%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">Java-002初识Servlet并发处理与线程安全</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/" title="Mysql-006解读事务和MVVC原理">Mysql-006解读事务和MVVC原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/" title="Mysql-005浅谈Mysql架构体系">Mysql-005浅谈Mysql架构体系</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 010flume基础知识">大数据 010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 009kafka基础知识">大数据 009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 008hbase基础知识">大数据 008hbase基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 007clickhouse基础知识">大数据 007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 006impala基础知识">大数据 006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 005flink基础知识">大数据 005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 004spark基础知识">大数据 004spark基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/" title="几种序列化协议的介绍(转)">几种序列化协议的介绍(转)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Http/">Http (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Java/">Java (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Mysql/">Mysql (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Nginx/">Nginx (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Php/">Php (9)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-python/">语言-python (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

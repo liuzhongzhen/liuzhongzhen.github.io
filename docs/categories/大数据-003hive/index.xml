@@ -14,7 +14,7 @@
       <pubDate>Tue, 01 Mar 2016 23:05:23 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description></description>
+      <description>1.大表join小表产生的问题，怎么解决？ mapjoin方案 join因为空值导致长尾(key为空值是</description>
     </item>
     
   </channel>
