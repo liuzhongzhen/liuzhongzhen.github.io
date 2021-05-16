@@ -323,12 +323,30 @@
     </item>
     
     <item>
+      <title>大数据-003hive基础知识2</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/</link>
+      <pubDate>Tue, 01 Mar 2016 23:15:23 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/</guid>
+      <description>1.大表join小表产生的问题，怎么解决？ mapjoin方案 join因为空值导致长尾(key为空值是</description>
+    </item>
+    
+    <item>
       <title>大数据-003hive基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 01 Mar 2016 23:05:23 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description>1.大表join小表产生的问题，怎么解决？ mapjoin方案 join因为空值导致长尾(key为空值是</description>
+      <description>转载外部-数仓-hive核心知识点 1.什么是Hive Hive是由Facebook开源用于解决海量结构</description>
+    </item>
+    
+    <item>
+      <title>大数据 003hive概念原理</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E6%A6%82%E5%BF%B5%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Tue, 01 Mar 2016 13:05:23 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E6%A6%82%E5%BF%B5%E5%8E%9F%E7%90%86/</guid>
+      <description>转载外部 技术背景 因为mapreduce继承类和重写方法的固定化，导致编程代码模板化而且非常繁琐， 学习</description>
     </item>
     
     <item>
@@ -347,6 +365,15 @@
       
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>HDFS系统架构 HDFS数据安全性如何保证 存储在HDFS系统上的文件，会分割成128M大小的bloc</description>
+    </item>
+    
+    <item>
+      <title>Php-010基础面试题</title>
+      <link>https://liuzhongzhen.github.io/post/Php-010%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Sat, 09 Aug 2014 13:47:39 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Php-010%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <description>1、PHP语言的一大优势是跨平台，什么是跨平台？ PHP的运行环境最优搭配为Apache+MySQL+</description>
     </item>
     
     <item>

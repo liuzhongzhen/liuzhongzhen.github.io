@@ -1,0 +1,974 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Php-010基础面试题 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="Php-010基础面试题 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2014-08-09T13:47:39&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2014-08-09T13:47:39&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="Php-010基础面试题">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/Php-010%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1php语言的一大优势是跨平台什么是跨平台">1、PHP语言的一大优势是跨平台，什么是跨平台？</a></li>
+    <li><a href="#2web开发中数据提交方式有几种有什么区别百度使用哪种方式">2、WEB开发中数据提交方式有几种？有什么区别？百度使用哪种方式？</a></li>
+    <li><a href="#3掌握php的哪些框架模板引擎系统等">3、掌握PHP的哪些框架、模板引擎、系统等</a></li>
+    <li><a href="#4说一下你所掌握的网页前端技术有哪些">4、说一下你所掌握的网页前端技术有哪些？</a></li>
+    <li><a href="#5-ajax的优势是什么">5. AJAX的优势是什么？</a></li>
+    <li><a href="#6-安全对一套程序来说至关重要请说说在开发中应该注意哪些安全机制">6. 安全对一套程序来说至关重要，请说说在开发中应该注意哪些安全机制？</a></li>
+    <li><a href="#5-在程序的开发中如何提高程序的运行效率">5. 在程序的开发中，如何提高程序的运行效率？</a></li>
+    <li><a href="#6-php可否与其它的数据库搭配使用">6. PHP可否与其它的数据库搭配使用？</a></li>
+    <li><a href="#7-现在编程中经常采取mvc三层结构请问mvc分别指哪三层有什么关系有什么优点">7. 现在编程中经常采取MVC三层结构，请问MVC分别指哪三层，有什么关系，有什么优点？</a></li>
+    <li><a href="#8对json数据格式的理解">8.对json数据格式的理解？</a></li>
+    <li><a href="#9printechoprint_r有什么区别">9.Print、echo、print_r有什么区别？</a></li>
+    <li><a href="#10-session与cookie的区别">10. SESSION与COOKIE的区别？</a></li>
+    <li><a href="#11-php处理数组的常用函数重点看函数的参数和返回值">11. PHP处理数组的常用函数？（重点看函数的‘参数’和‘返回值’）</a></li>
+    <li><a href="#12php处理字符串的常用函数重点看函数的参数和返回值">12.PHP处理字符串的常用函数？（重点看函数的‘参数’和‘返回值’）</a></li>
+    <li><a href="#13php处理时间的常用函数重点看函数的参数和返回值">13.PHP处理时间的常用函数？（重点看函数的‘参数’和‘返回值’）</a></li>
+    <li><a href="#14php处理数据库的常用函数重点看函数的参数和返回值">14.PHP处理数据库的常用函数？（重点看函数的‘参数’和‘返回值’）</a></li>
+    <li><a href="#15php操作文件的常用函数重点看函数的参数和返回值">15.PHP操作文件的常用函数？（重点看函数的‘参数’和‘返回值’）</a></li>
+    <li><a href="#16php操作目录文件夹的常用函数重点看函数的参数和返回值">16.PHP操作目录（文件夹）的常用函数？（重点看函数的‘参数’和‘返回值’）</a></li>
+    <li><a href="#17laravel有那些特点">17.laravel有那些特点?</a></li>
+    <li><a href="#18请简述一下数据库的优化">18.请简述一下数据库的优化?</a></li>
+    <li><a href="#19自定义session处理函数要处理那些东西">19.自定义session处理函数要处理那些东西</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Php-010基础面试题</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2014年8月9日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/Php'>Php</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="1php语言的一大优势是跨平台什么是跨平台">1、PHP语言的一大优势是跨平台，什么是跨平台？</h2>
+<p>PHP的运行环境最优搭配为Apache+MySQL+PHP，此运行环境可以在不同操作系统（例如windows、Linux等）上配置，不受操作系统的限制，所以叫跨平台</p>
+<h2 id="2web开发中数据提交方式有几种有什么区别百度使用哪种方式">2、WEB开发中数据提交方式有几种？有什么区别？百度使用哪种方式？</h2>
+<p>Get与post两种方式
+区别：</p>
+<ol>
+<li>Get从服务器获取数据，post向服务器传送数据</li>
+<li>Get传值在url中可见，post在url中不可见</li>
+<li>Get传值一般在2KB以内，post传值大小可以在php.ini中进行设置</li>
+<li>get安全性非低，post安全性较高，执行效率却比Post高</li>
+</ol>
+<p>建议：</p>
+<ol>
+<li>get式安全性较Post式要差些包含机密信息建议用Post数据提交式；</li>
+<li>做数据查询建议用Get式；做数据添加、修改或删除建议用Post方式；</li>
+</ol>
+<p>百度使用的get方式，因为可以从它的URL中看出</p>
+<h2 id="3掌握php的哪些框架模板引擎系统等">3、掌握PHP的哪些框架、模板引擎、系统等</h2>
+<ul>
+<li>
+<p>框架：框架有很多，例如zendframe、CI、Yii、Laravel等等，学过的thinkphp</p>
+</li>
+<li>
+<p>模板引擎：有很多，例如Smarty、Plates、Twig、Liquid、Mustache</p>
+</li>
+<li>
+<p>系统：有很多，例如：</p>
+<p>康盛的产品（uchome、supesite、discuzX等），
+帝国系统、DEDECMS(织梦)、Ecshop等
+PHPWind、ZenTao(禅道)项目管理</p>
+</li>
+</ul>
+<h2 id="4说一下你所掌握的网页前端技术有哪些">4、说一下你所掌握的网页前端技术有哪些？</h2>
+<p>熟练掌握DIV+CSS网页布局,html5,JavaScript,jQuery框架,photoshop图片处理</p>
+<h2 id="5-ajax的优势是什么">5. AJAX的优势是什么？</h2>
+<p>ajax是异步传输技术，可以通过javascript实现，也可以通过JQuery框架实现，实现局部刷新，减轻了服务器的压力，也提高了用户体验</p>
+<h2 id="6-安全对一套程序来说至关重要请说说在开发中应该注意哪些安全机制">6. 安全对一套程序来说至关重要，请说说在开发中应该注意哪些安全机制？</h2>
+<ol>
+<li>防远程提交；</li>
+<li>防SQL注入，对特殊代码进行过滤；</li>
+<li>防止注册机灌水，使用验证码；</li>
+</ol>
+<h2 id="5-在程序的开发中如何提高程序的运行效率">5. 在程序的开发中，如何提高程序的运行效率？</h2>
+<ol>
+<li>优化SQL语句，查询语句中尽量不使用select *，用哪个字段查哪个字段；
+少用子查询可用表连接代替；少用模糊查询；</li>
+<li>数据表中创建索引；</li>
+<li>对程序中经常用到的数据生成缓存；</li>
+</ol>
+<h2 id="6-php可否与其它的数据库搭配使用">6. PHP可否与其它的数据库搭配使用？</h2>
+<p>PHP与MYSQL数据库是最优搭配，当然PHP也可以去其它的数据库搭配使用，例如MSSQL等，PHP中预留了操作MSSQL的函数，只要开启就可以使用</p>
+<h2 id="7-现在编程中经常采取mvc三层结构请问mvc分别指哪三层有什么关系有什么优点">7. 现在编程中经常采取MVC三层结构，请问MVC分别指哪三层，有什么关系，有什么优点？</h2>
+<p>MVC是一种开发模式,主要分为三部分:</p>
+<ul>
+<li>m(model),也就是业务模型,负责数据的操作;</li>
+<li>v(view),也就是视图,负责前后台的显示;</li>
+<li>c(controller),也就是控制器,负责业务逻辑</li>
+</ul>
+<p>由控制器层调用模型处理数据，然后将数据映射到视图层进行显示</p>
+<p>客户端请求项目的控制器,如果执行过程中需要用到数据,控制器就会到模型中获取数据,再将获取到的数据通过视图显示出来</p>
+<p>优点是：</p>
+<ol>
+<li>可以实现代码的重用性，避免产生代码冗余；</li>
+<li>M和V的实现代码分离，从而使同一个程序可以使用不同的表现形式</li>
+</ol>
+<h2 id="8对json数据格式的理解">8.对json数据格式的理解？</h2>
+<p>JSON(JavaScript Object Notation)是一种轻量级的数据交换格式，json数据格式固定，可以被多种语言用作数据的传递</p>
+<p>PHP中处理json格式的函数为json_decode( string $json [, bool $assoc ] ) ，接受一个JSON格式的字符串并且把它转换为PHP变量，参数json待解码的json string格式的字符串。assoc当该参数为TRUE时，将返回array而非object；</p>
+<p>Json_encode：将PHP变量转换成json格式</p>
+<h2 id="9printechoprint_r有什么区别">9.Print、echo、print_r有什么区别？</h2>
+<ol>
+<li>echo和print都可以做输出，不同的是，echo不是函数，没有返回值，而print是一个函数有返回值，所以相对而言如果只是输出echo会更快，而print_r通常用于打印变量的相关信息，通常在调试中使用。</li>
+<li>print   是打印字符串</li>
+<li>print_r 则是打印复合类型  如数组 对象</li>
+</ol>
+<h2 id="10-session与cookie的区别">10. SESSION与COOKIE的区别？</h2>
+<ol>
+<li>存储位置：session存储于服务器，cookie存储于浏览器</li>
+<li>安全性：session安全性比cookie高</li>
+<li>session为‘会话服务’，在使用时需要开启服务，cookie不需要开启，可以直接用</li>
+</ol>
+<h2 id="11-php处理数组的常用函数重点看函数的参数和返回值">11. PHP处理数组的常用函数？（重点看函数的‘参数’和‘返回值’）</h2>
+<ol>
+<li>array()创建数组；</li>
+<li>count()返回数组中元素的数目；</li>
+<li>array_push()将一个或多个元素插入数组的末尾（入栈）；</li>
+<li>array_column()返回输入数组中某个单一列的值；</li>
+<li>array_combine()通过合并两个数组来创建一个新数组；</li>
+<li>array_reverse()以相反的顺序返回数组；</li>
+<li>array_unique()删除数组中的重复值；</li>
+<li>in_array()检查数组中是否存在指定的值；</li>
+</ol>
+<h2 id="12php处理字符串的常用函数重点看函数的参数和返回值">12.PHP处理字符串的常用函数？（重点看函数的‘参数’和‘返回值’）</h2>
+<ol>
+<li>trim()移除字符串两侧的空白字符和其他字符；</li>
+<li>substr_replace()把字符串的一部分替换为另一个字符串；</li>
+<li>substr_count()计算子串在字符串中出现的次数；</li>
+<li>substr()返回字符串的一部分；</li>
+<li>strtolower()把字符串转换为小写字母；</li>
+<li>strtoupper()把字符串转换为大写字母；</li>
+<li>strtr()转换字符串中特定的字符；</li>
+<li>strrchr()查找字符串在另一个字符串中最后一次出现；</li>
+<li>strstr()查找字符串在另一字符串中的第一次出现（对大小写敏感）；</li>
+<li>strrev()反转字符串；</li>
+<li>strlen()返回字符串的长度；</li>
+<li>str_replace()替换字符串中的一些字符（对大小写敏感）；</li>
+<li>print()输出一个或多个字符串；</li>
+<li>explode()把字符串打散为数组；</li>
+<li>is_string()检测变量是否是字符串；</li>
+<li>strip_tags()从一个字符串中去除HTML标签；</li>
+<li>mb_substr()用来截中文与英文的函数</li>
+</ol>
+<h2 id="13php处理时间的常用函数重点看函数的参数和返回值">13.PHP处理时间的常用函数？（重点看函数的‘参数’和‘返回值’）</h2>
+<ol>
+<li>date_default_timezone_get()返回默认时区。</li>
+<li>date_default_timezone_set()设置默认时区。</li>
+<li>date()格式化本地时间／日期。</li>
+<li>getdate()返回日期／时间信息。</li>
+<li>gettimeofday()返回当前时间信息。</li>
+<li>microtime()返回当前时间的微秒数。</li>
+<li>mktime()返回一个日期的 Unix时间戳。</li>
+<li>strtotime()将任何英文文本的日期或时间描述解析为 Unix时间戳。</li>
+<li>time()返回当前时间的 Unix时间戳。</li>
+</ol>
+<h2 id="14php处理数据库的常用函数重点看函数的参数和返回值">14.PHP处理数据库的常用函数？（重点看函数的‘参数’和‘返回值’）</h2>
+<p><a href="https://www.php.net/manual/zh/set.mysqlinfo.php">请参照php手册，认真查看，此项非常重要</a></p>
+<h2 id="15php操作文件的常用函数重点看函数的参数和返回值">15.PHP操作文件的常用函数？（重点看函数的‘参数’和‘返回值’）</h2>
+<ol>
+<li>打开文件；</li>
+<li>删除文件；</li>
+<li>读取文件；</li>
+<li>写入文件；</li>
+<li>修改文件；</li>
+<li>关闭文件；</li>
+<li>创建文件等等，</li>
+</ol>
+<p>此项非常重要，在工作中经常用来生成缓存或者静态文件，请参照<a href="https://www.php.net/manual/zh/refs.fileprocess.file.php">php手册，认真查看</a></p>
+<h2 id="16php操作目录文件夹的常用函数重点看函数的参数和返回值">16.PHP操作目录（文件夹）的常用函数？（重点看函数的‘参数’和‘返回值’）</h2>
+<ol>
+<li>打开目录；</li>
+<li>删除目录；</li>
+<li>读取目录；</li>
+<li>创建目录；</li>
+<li>修改目录；</li>
+<li>关闭目录等等，
+此项非常重要，在工作中经常用来</li>
+</ol>
+<ul>
+<li>创建或者删除上传文件的目录，</li>
+<li>创建或者删除缓存、</li>
+<li>静态页面的目录，</li>
+</ul>
+<p>请参照php手册，<a href="https://www.php.net/manual/zh/features.file-upload.php">认真查看</a></p>
+<h2 id="17laravel有那些特点">17.laravel有那些特点?</h2>
+<p>laravel框架引入了门面,依赖注入,Ioc模式,以及各种各样的设计模式等</p>
+<p>主要优点如下：</p>
+<ol>
+<li>强大的rest router:用简单的回调函数就可以调用,快速绑定controller和router</li>
+<li>artisan:命令行工具,很多手动的工作都自动化</li>
+<li>可继承的模板,简化view的开发和管理</li>
+<li>blade模板:渲染速度更快</li>
+<li>ORM操作数据库</li>
+<li>migration:管理数据库和版本控制</li>
+<li>测试功能也很强大</li>
+<li>composer也是亮点</li>
+</ol>
+<h2 id="18请简述一下数据库的优化">18.请简述一下数据库的优化?</h2>
+<p>数据库的优化可以从四个方面来优化:</p>
+<ol>
+<li>从结构层: web服务器采用负载均衡服务器,mysql服务器采用主从复制,读写分离</li>
+<li>从储存层: 采用合适的存储引擎,采用三范式</li>
+<li>从设计层: 采用分区分表,索引,表的字段采用合适的字段属性,适当的采用逆范式,开启mysql缓存</li>
+<li>sql语句层:结果一样的情况下,采用效率高,速度快节省资源的sql语句执行</li>
+</ol>
+<h2 id="19自定义session处理函数要处理那些东西">19.自定义session处理函数要处理那些东西</h2>
+<p>默认是用文件存储session，在php配置中指定存储目录，可以进行多级缓存，便于查找。</p>
+<p>可以用数据库表，redis，memcached等来存储session会话。</p>
+<p>session_start() 会触发open(),read()</p>
+<p>session_commit()以及页面执行完毕都会顺序触发 write(),close()*</p>
+<p>自定义Session处理机制首先要设置php.ini选项session.save_handler = user，</p>
+<p>也可在 PHP程序 中进行设置：ini_set(‘session.save_handler’, ‘user’);</p>
+<p>接下来着重看 session_set_save_handle() 函数，此函数有六个参数：</p>
+<p>session_set_save_handler(string open, string close, string read, string write, string destroy, string gc)</p>
+<p>各个参数为各项操作的函数名，这些操作依次对应是：打开、关闭、读取、写入、销毁、垃圾回收。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">FileSessionHandler</span>{
+    <span style="color:#000;font-weight:bold">private</span> <span style="color:#008080">$savePath</span>;
+    <span style="color:#998;font-style:italic">//第一个参数$save_path对应的是ini_get(&#39;session.save_path&#39;)
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">//第二个参数$name对应的是ini_get(&#39;session.name&#39;)
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">open</span>(<span style="color:#008080">$savePath</span>, <span style="color:#008080">$sessionName</span>){
+        <span style="color:#008080">$this</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">savePath</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$savePath</span>;
+        <span style="color:#000;font-weight:bold">if</span> (<span style="color:#000;font-weight:bold">!</span>is_dir(<span style="color:#008080">$this</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">savePath</span>)) {
+            mkdir(<span style="color:#008080">$this</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">savePath</span>, <span style="color:#099">0777</span>);
+        }
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">true</span>;
+    }
+
+    <span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">close</span>(){
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">true</span>;
+    }
+
+    <span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">read</span>(<span style="color:#008080">$id</span>){
+        <span style="color:#000;font-weight:bold">return</span> (string)<span style="color:#000;font-weight:bold">@</span>file_get_contents(<span style="color:#d14">&#34;</span><span style="color:#d14">$this-&gt;savePath</span><span style="color:#d14">/sess_</span><span style="color:#d14">$id</span><span style="color:#d14">&#34;</span>);
+    }
+
+    <span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">write</span>(<span style="color:#008080">$id</span>, <span style="color:#008080">$data</span>){
+        <span style="color:#000;font-weight:bold">return</span> file_put_contents(<span style="color:#d14">&#34;</span><span style="color:#d14">$this-&gt;savePath</span><span style="color:#d14">/sess_</span><span style="color:#d14">$id</span><span style="color:#d14">&#34;</span>, <span style="color:#008080">$data</span>) <span style="color:#000;font-weight:bold">===</span> <span style="color:#000;font-weight:bold">false</span> <span style="color:#000;font-weight:bold">?</span> <span style="color:#000;font-weight:bold">false</span> <span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">true</span>;
+    }
+
+    <span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">destroy</span>(<span style="color:#008080">$id</span>){
+        <span style="color:#008080">$file</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;</span><span style="color:#d14">$this-&gt;savePath</span><span style="color:#d14">/sess_</span><span style="color:#d14">$id</span><span style="color:#d14">&#34;</span>;
+        <span style="color:#000;font-weight:bold">if</span> (file_exists(<span style="color:#008080">$file</span>)) {
+            unlink(<span style="color:#008080">$file</span>);
+        }
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">true</span>;
+    }
+
+    <span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">gc</span>(<span style="color:#008080">$maxlifetime</span>){
+        <span style="color:#000;font-weight:bold">foreach</span> (glob(<span style="color:#d14">&#34;</span><span style="color:#d14">$this-&gt;savePath</span><span style="color:#d14">/sess_*&#34;</span>) <span style="color:#000;font-weight:bold">as</span> <span style="color:#008080">$file</span>) {
+            <span style="color:#000;font-weight:bold">if</span> (filemtime(<span style="color:#008080">$file</span>) <span style="color:#000;font-weight:bold">+</span> <span style="color:#008080">$maxlifetime</span> <span style="color:#000;font-weight:bold">&lt;</span> time() <span style="color:#000;font-weight:bold">&amp;&amp;</span> file_exists(<span style="color:#008080">$file</span>)) {
+                unlink(<span style="color:#008080">$file</span>);
+            }
+        }
+
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">true</span>;
+    }
+}
+
+<span style="color:#008080">$handler</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> FileSessionHandler();
+session_set_save_handler(
+        <span style="color:#000;font-weight:bold">array</span>(<span style="color:#008080">$handler</span>, <span style="color:#d14">&#39;open&#39;</span>),
+        <span style="color:#000;font-weight:bold">array</span>(<span style="color:#008080">$handler</span>, <span style="color:#d14">&#39;close&#39;</span>),
+        <span style="color:#000;font-weight:bold">array</span>(<span style="color:#008080">$handler</span>, <span style="color:#d14">&#39;read&#39;</span>),
+        <span style="color:#000;font-weight:bold">array</span>(<span style="color:#008080">$handler</span>, <span style="color:#d14">&#39;write&#39;</span>),
+        <span style="color:#000;font-weight:bold">array</span>(<span style="color:#008080">$handler</span>, <span style="color:#d14">&#39;destroy&#39;</span>),
+        <span style="color:#000;font-weight:bold">array</span>(<span style="color:#008080">$handler</span>, <span style="color:#d14">&#39;gc&#39;</span>)
+    );
+
+<span style="color:#998;font-style:italic">// the following prevents unexpected effects when using objects as save handlers
+</span><span style="color:#998;font-style:italic"></span>register_shutdown_function(<span style="color:#d14">&#39;session_write_close&#39;</span>);
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">DatabaseSession</span> <span style="color:#000;font-weight:bold">implements</span> SessionHandlerInterface{
+    <span style="color:#d14">/**
+</span><span style="color:#d14">     * Reference to the table handling the session data
+</span><span style="color:#d14">     */</span>
+    <span style="color:#000;font-weight:bold">protected</span> <span style="color:#008080">$_table</span>;
+
+    <span style="color:#d14">/**
+</span><span style="color:#d14">     * Number of seconds to mark the session as expired
+</span><span style="color:#d14">     */</span>
+    <span style="color:#000;font-weight:bold">protected</span> <span style="color:#008080">$_timeout</span>;
+
+    <span style="color:#d14">/**
+</span><span style="color:#d14">     * Constructor. Looks at Session configuration information and
+</span><span style="color:#d14">     * sets up the session model.
+</span><span style="color:#d14">     * @param array $config The configuration for this engine. It requires the &#39;model&#39;
+</span><span style="color:#d14">     * key to be present corresponding to the Table to use for managing the sessions.
+</span><span style="color:#d14">     */</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">function</span> __construct(<span style="color:#000;font-weight:bold">array</span> <span style="color:#008080">$config</span> <span style="color:#000;font-weight:bold">=</span> []){
+        <span style="color:#000;font-weight:bold">if</span> (<span style="color:#000;font-weight:bold">empty</span>(<span style="color:#008080">$config</span>[<span style="color:#d14">&#39;model&#39;</span>])) {
+            <span style="color:#008080">$config</span> <span style="color:#000;font-weight:bold">=</span> TableRegistry<span style="color:#000;font-weight:bold">::</span><span style="color:#008080">exists</span>(<span style="color:#d14">&#39;Sessions&#39;</span>) <span style="color:#000;font-weight:bold">?</span> [] <span style="color:#000;font-weight:bold">:</span> [<span style="color:#d14">&#39;table&#39;</span> <span style="color:#000;font-weight:bold">=&gt;</span> <span style="color:#d14">&#39;sessions&#39;</span>];
+            <span style="color:#008080">$this</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">_table</span> <span style="color:#000;font-weight:bold">=</span> TableRegistry<span style="color:#000;font-weight:bold">::</span><span style="color:#008080">get</span>(<span style="color:#d14">&#39;Sessions&#39;</span>, <span style="color:#008080">$config</span>);
+        } <span style="color:#000;font-weight:bold">else</span> {
+            <span style="color:#008080">$this</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">_table</span> <span style="color:#000;font-weight:bold">=</span> TableRegistry<span style="color:#000;font-weight:bold">::</span><span style="color:#008080">get</span>(<span style="color:#008080">$config</span>[<span style="color:#d14">&#39;model&#39;</span>]);
+        }
+        <span style="color:#008080">$this</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">_timeout</span> <span style="color:#000;font-weight:bold">=</span> ini_get(<span style="color:#d14">&#39;session.gc_maxlifetime&#39;</span>);
+    }
+
+    <span style="color:#d14">/**
+</span><span style="color:#d14">     * Method called on open of a database session.
+</span><span style="color:#d14">     * @param string $savePath The path where to store/retrieve the session.
+</span><span style="color:#d14">     * @param string $name The session name.
+</span><span style="color:#d14">     * @return bool Success
+</span><span style="color:#d14">     */</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">open</span>(<span style="color:#008080">$savePath</span>, <span style="color:#008080">$name</span>){
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">true</span>;
+    }
+
+    <span style="color:#d14">/**
+</span><span style="color:#d14">     * Method called on close of a database session.
+</span><span style="color:#d14">     *
+</span><span style="color:#d14">     * @return bool Success
+</span><span style="color:#d14">     */</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">close</span>(){
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">true</span>;
+    }
+
+    <span style="color:#d14">/**
+</span><span style="color:#d14">     * Method used to read from a database session.
+</span><span style="color:#d14">     *
+</span><span style="color:#d14">     * @param int|string $id The key of the value to read
+</span><span style="color:#d14">     * @return mixed The value of the key or false if it does not exist
+</span><span style="color:#d14">     */</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">read</span>(<span style="color:#008080">$id</span>){
+        <span style="color:#008080">$result</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$this</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">_table</span>
+            <span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">find</span>(<span style="color:#d14">&#39;all&#39;</span>)
+            <span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">select</span>([<span style="color:#d14">&#39;data&#39;</span>])
+            <span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">where</span>([<span style="color:#008080">$this</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">_table</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">primaryKey</span>() <span style="color:#000;font-weight:bold">=&gt;</span> <span style="color:#008080">$id</span>])
+            <span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">hydrate</span>(<span style="color:#000;font-weight:bold">false</span>)
+            <span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">first</span>();
+
+        <span style="color:#000;font-weight:bold">if</span> (<span style="color:#000;font-weight:bold">empty</span>(<span style="color:#008080">$result</span>)) {
+            <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">false</span>;
+        }
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#008080">$result</span>[<span style="color:#d14">&#39;data&#39;</span>];
+    }
+
+    <span style="color:#d14">/**
+</span><span style="color:#d14">     * Helper function called on write for database sessions.
+</span><span style="color:#d14">     *
+</span><span style="color:#d14">     * @param int $id ID that uniquely identifies session in database
+</span><span style="color:#d14">     * @param mixed $data The value of the data to be saved.
+</span><span style="color:#d14">     * @return bool True for successful write, false otherwise.
+</span><span style="color:#d14">     */</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">write</span>(<span style="color:#008080">$id</span>, <span style="color:#008080">$data</span>){
+        <span style="color:#000;font-weight:bold">if</span> (<span style="color:#000;font-weight:bold">!</span><span style="color:#008080">$id</span>) {
+            <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">false</span>;
+        }
+        <span style="color:#008080">$expires</span> <span style="color:#000;font-weight:bold">=</span> time() <span style="color:#000;font-weight:bold">+</span> <span style="color:#008080">$this</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">_timeout</span>;
+        <span style="color:#008080">$record</span> <span style="color:#000;font-weight:bold">=</span> compact(<span style="color:#d14">&#39;data&#39;</span>, <span style="color:#d14">&#39;expires&#39;</span>);
+        <span style="color:#008080">$record</span>[<span style="color:#008080">$this</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">_table</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">primaryKey</span>()] <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$id</span>;
+        <span style="color:#008080">$result</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$this</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">_table</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">save</span>(<span style="color:#000;font-weight:bold">new</span> Entity(<span style="color:#008080">$record</span>));
+        <span style="color:#000;font-weight:bold">return</span> (bool)<span style="color:#008080">$result</span>;
+    }
+
+    <span style="color:#d14">/**
+</span><span style="color:#d14">     * Method called on the destruction of a database session.
+</span><span style="color:#d14">     * @param int $id ID that uniquely identifies session in database
+</span><span style="color:#d14">     * @return bool True for successful delete, false otherwise.
+</span><span style="color:#d14">     */</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">destroy</span>(<span style="color:#008080">$id</span>){
+        <span style="color:#000;font-weight:bold">return</span> (bool)<span style="color:#008080">$this</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">_table</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">delete</span>(<span style="color:#000;font-weight:bold">new</span> Entity(
+            [<span style="color:#008080">$this</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">_table</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">primaryKey</span>() <span style="color:#000;font-weight:bold">=&gt;</span> <span style="color:#008080">$id</span>],
+            [<span style="color:#d14">&#39;markNew&#39;</span> <span style="color:#000;font-weight:bold">=&gt;</span> <span style="color:#000;font-weight:bold">false</span>]
+        ));
+    }
+
+    <span style="color:#d14">/**
+</span><span style="color:#d14">     * Helper function called on gc for database sessions.
+</span><span style="color:#d14">     *
+</span><span style="color:#d14">     * @param string $maxlifetime Sessions that have not updated for the last maxlifetime seconds will be removed.
+</span><span style="color:#d14">     * @return bool True on success, false on failure.
+</span><span style="color:#d14">     */</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">gc</span>(<span style="color:#008080">$maxlifetime</span>){
+        <span style="color:#008080">$this</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">_table</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">deleteAll</span>([<span style="color:#d14">&#39;expires &lt;&#39;</span> <span style="color:#000;font-weight:bold">=&gt;</span> time() <span style="color:#000;font-weight:bold">-</span> <span style="color:#008080">$maxlifetime</span>]);
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">true</span>;
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/Php-009%E6%8F%90%E9%AB%98php%E6%95%88%E7%8E%8750%E7%82%B9/">Php-009提高php效率50点</a></li>
+        
+        <li><a href="../../post/Php-008%E9%AB%98%E6%B5%81%E9%87%8F%E7%AB%99%E7%82%B9NGINX%E4%B8%8Ephp-fpm%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96/">Php-008高流量站点NGINX与php-Fpm配置优化</a></li>
+        
+        <li><a href="../../post/Php-007%E6%B7%B1%E5%85%A5pack%E5%92%8Cunpack/">Php-007深入pack和unpack</a></li>
+        
+        <li><a href="../../post/Php-006%E8%BE%93%E5%85%A5%E6%B5%81php-input%E4%BB%8B%E7%BB%8D/">Php-006输入流php Input介绍</a></li>
+        
+        <li><a href="../../post/Php-005%E5%8F%91%E9%80%81http%E8%AF%B7%E6%B1%82/">Php 005发送http请求</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/" title="Mysql-006解读事务和MVVC原理">Mysql-006解读事务和MVVC原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/" title="Mysql-005浅谈Mysql架构体系">Mysql-005浅谈Mysql架构体系</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 010flume基础知识">大数据 010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 009kafka基础知识">大数据 009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 008hbase基础知识">大数据 008hbase基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 007clickhouse基础知识">大数据 007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 006impala基础知识">大数据 006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 005flink基础知识">大数据 005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 004spark基础知识">大数据 004spark基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/" title="几种序列化协议的介绍(转)">几种序列化协议的介绍(转)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Http/">Http (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Java/">Java (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Mysql/">Mysql (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Nginx/">Nginx (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Php/">Php (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-python/">语言-python (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

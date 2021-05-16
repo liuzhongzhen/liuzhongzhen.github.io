@@ -1,0 +1,690 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>大数据-003hive基础知识2 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="大数据-003hive基础知识2 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2016-03-01T23:15:23&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2016-03-01T23:15:23&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="大数据-003hive基础知识2">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1大表join小表产生的问题怎么解决">1.大表join小表产生的问题，怎么解决？</a></li>
+    <li><a href="#2udf-udaf-udtf区别">2.udf udaf udtf区别</a></li>
+    <li><a href="#3hive有哪些保存元数据的方式个有什么特点">3.hive有哪些保存元数据的方式，个有什么特点。</a></li>
+    <li><a href="#4hive内部表和外部表的区别">4.hive内部表和外部表的区别</a></li>
+    <li><a href="#5生产环境中为什么建议使用外部表">5.生产环境中为什么建议使用外部表？</a></li>
+    <li><a href="#6insert-into-和-insert-overwrite区别">6.insert into 和 insert overwrite区别？</a></li>
+    <li><a href="#7hive的判断函数有哪些">7.hive的判断函数有哪些</a></li>
+    <li><a href="#8简单描述一下hive的功能用hive创建表有几种方式hive表有几种">8.简单描述一下HIVE的功能？用hive创建表有几种方式？hive表有几种？</a></li>
+    <li><a href="#9union-all和union的区别">9.union all和union的区别</a></li>
+    <li><a href="#10如何解决hive数据倾斜的问题">10.如何解决hive数据倾斜的问题</a>
+      <ul>
+        <li><a href="#1group-by">1.group by</a></li>
+        <li><a href="#2countdistinct">2.count(distinct)</a></li>
+        <li><a href="#3mapjoin">3.mapjoin</a></li>
+        <li><a href="#4不同数据类型关联产生数据倾斜">4.不同数据类型关联产生数据倾斜</a></li>
+        <li><a href="#5开启数据倾斜时负载均衡">5.开启数据倾斜时负载均衡</a></li>
+        <li><a href="#6控制空值分布">6.控制空值分布</a></li>
+      </ul>
+    </li>
+    <li><a href="#11hive性能优化常用的方法">11.hive性能优化常用的方法</a>
+      <ul>
+        <li><a href="#1-mapjoin">1. MapJoin</a></li>
+        <li><a href="#2行列过滤">2.行列过滤</a></li>
+        <li><a href="#3列式存储">3.列式存储</a></li>
+        <li><a href="#4采用分区技术">4.采用分区技术</a></li>
+        <li><a href="#5合理设置-map-数">5.合理设置 Map 数</a></li>
+        <li><a href="#6小文件进行合并">6.小文件进行合并</a></li>
+        <li><a href="#7合理设置-reduce-数">7.合理设置 Reduce 数</a></li>
+        <li><a href="#8常用参数">8.常用参数</a></li>
+        <li><a href="#9开启-map-端-combiner不影响最终业务逻辑">9.开启 map 端 combiner（不影响最终业务逻辑）</a></li>
+        <li><a href="#10压缩选择快的">10.压缩（选择快的）</a></li>
+        <li><a href="#11开启-jvm-重用">11.开启 JVM 重用</a></li>
+      </ul>
+    </li>
+    <li><a href="#13简述deletedroptruncate的区别">13.简述delete，drop，truncate的区别</a></li>
+    <li><a href="#14四个by的区别">14.四个by的区别</a></li>
+    <li><a href="#15分区分桶的区别为什么要分区">15.分区分桶的区别，为什么要分区</a></li>
+    <li><a href="#16group-by为什么要排序">16.group by为什么要排序</a></li>
+    <li><a href="#20手写sql连续5天活跃用户">20.手写sql，连续5天活跃用户？</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">大数据-003hive基础知识2</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2016年3月1日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive'>大数据-003hive</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="1大表join小表产生的问题怎么解决">1.大表join小表产生的问题，怎么解决？</h2>
+<p>mapjoin方案</p>
+<ol>
+<li>join因为空值导致长尾(key为空值是用随机值代替)</li>
+<li>join因为热点值导致长尾，也可以将热点数据和非热点数据分开处理，最后合并</li>
+</ol>
+<h2 id="2udf-udaf-udtf区别">2.udf udaf udtf区别</h2>
+<ul>
+<li>UDF操作作用于单个数据行，并且产生一个数据行作为输出。大多数函数都属于这一类（比如数学函数和字符串函数）。</li>
+<li>UDAF 接受多个输入数据行，并产生一个输出数据行。像COUNT和MAX这样的函数就是聚集函数。</li>
+<li>UDTF 操作作用于单个数据行，并且产生多个数据行&mdash;&mdash;-一个表作为输出。lateral view explore()</li>
+</ul>
+<p>简单来说：</p>
+<ul>
+<li>UDF:返回对应值，一对一</li>
+<li>UDAF：返回聚类值，多对一</li>
+<li>UDTF：返回拆分值，一对多</li>
+</ul>
+<h2 id="3hive有哪些保存元数据的方式个有什么特点">3.hive有哪些保存元数据的方式，个有什么特点。</h2>
+<ul>
+<li>内存数据库derby，安装小，但是数据存在内存，不稳定</li>
+<li>mysql数据库，数据存储模式可以自己设置，持久化好，查看方便。</li>
+</ul>
+<h2 id="4hive内部表和外部表的区别">4.hive内部表和外部表的区别</h2>
+<ul>
+<li>内部表：加载数据到hive所在的hdfs目录，删除时，元数据和数据文件都删除</li>
+<li>外部表：不加载数据到hive所在的hdfs目录，删除时，只删除表结构。</li>
+</ul>
+<p>这样外部表相对来说更加安全些，数据组织也更加灵活，方便共享源数据。</p>
+<h2 id="5生产环境中为什么建议使用外部表">5.生产环境中为什么建议使用外部表？</h2>
+<ul>
+<li>因为外部表不会加载数据到hive，减少数据传输、数据还能共享。</li>
+<li>hive不会修改数据，所以无需担心数据的损坏</li>
+<li>删除表时，只删除表结构、不删除数据。</li>
+</ul>
+<h2 id="6insert-into-和-insert-overwrite区别">6.insert into 和 insert overwrite区别？</h2>
+<ul>
+<li>insert into：将数据追加写到表中</li>
+<li>insert overwrite：覆盖之前的内容,先删除分区或表数据在写入</li>
+</ul>
+<h2 id="7hive的判断函数有哪些">7.hive的判断函数有哪些</h2>
+<p>hive 的条件判断（if、coalesce、case）</p>
+<h2 id="8简单描述一下hive的功能用hive创建表有几种方式hive表有几种">8.简单描述一下HIVE的功能？用hive创建表有几种方式？hive表有几种？</h2>
+<ul>
+<li>hive主要是做离线分析的，把hiveSQL转换成mapreduce程序，提交到yarn集群上运行，简化了mr程序的开发。</li>
+</ul>
+<p>hive建表有三种方式</p>
+<ol>
+<li>直接建表法</li>
+<li>查询建表法(通过AS 查询语句完成建表：将子查询的结果存在新表里，有数据，一般用于中间表)</li>
+<li>like建表法(会创建结构完全相同的表，但是没有数据)</li>
+</ol>
+<p>hive表有2种：内部表和外部表</p>
+<h2 id="9union-all和union的区别">9.union all和union的区别</h2>
+<ul>
+<li>union 去重</li>
+<li>union oll 不去重</li>
+</ul>
+<h2 id="10如何解决hive数据倾斜的问题">10.如何解决hive数据倾斜的问题</h2>
+<h3 id="1group-by">1.group by</h3>
+<p>注：group by 优于 distinct</p>
+<ul>
+<li>情形：group by 维度过小，某值的数量过多</li>
+<li>后果：处理某值的 reduce 非常耗时</li>
+<li>解决方式：采用 sum() group by 的方式来替换 count(distinct)完成计算。</li>
+</ul>
+<h3 id="2countdistinct">2.count(distinct)</h3>
+<p>count(distinct xx)</p>
+<ul>
+<li>情形：某特殊值过多</li>
+<li>后果：处理此特殊值的 reduce 耗时；只有一个 reduce 任务</li>
+<li>解决方式：count distinct 时，将值为空的情况单独处理，比如可以直接过滤空值的行，</li>
+<li>在最后结果中加 1。如果还有其他计算，需要进行 group by，可以先将值为空的记录单独处理，再和其他计算结果进行 union。</li>
+</ul>
+<h3 id="3mapjoin">3.mapjoin</h3>
+<p>采用mapjoin方法，在map时候进行关联，适用于小表</p>
+<h3 id="4不同数据类型关联产生数据倾斜">4.不同数据类型关联产生数据倾斜</h3>
+<ul>
+<li>
+<p>情形：比如用户表中 user_id 字段为 int，log 表中 user_id 字段既有 string 类型也有 int 类型。当按照 user_id 进行两个表的 Join 操作时。</p>
+</li>
+<li>
+<p>后果：处理此特殊值的 reduce 耗时；只有一个 reduce 任务</p>
+<p>默认的 Hash 操作会按 int 型的 id 来进行分配，这样会导致所有 string 类型 id 的记录都分配到一个 Reducer 中。</p>
+</li>
+<li>
+<p>解决方式：把数字类型转换成字符串类型</p>
+</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> 
+  <span style="color:#000;font-weight:bold">from</span> users a
+  <span style="color:#000;font-weight:bold">left</span> <span style="color:#000;font-weight:bold">outer</span> <span style="color:#000;font-weight:bold">join</span> logs b
+    <span style="color:#000;font-weight:bold">on</span> a.usr_id <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">cast</span>(b.user_id <span style="color:#000;font-weight:bold">as</span> string)
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="5开启数据倾斜时负载均衡">5.开启数据倾斜时负载均衡</h3>
+<ul>
+<li>set hive.groupby.skewindata=true;</li>
+<li>思想：就是先随机分发并处理，再按照 key group by 来分发处理。</li>
+<li>操作：当选项设定为 true，生成的查询计划会有两个 MRJob。</li>
+</ul>
+<p>第一个 MRJob 中，Map 的输出结果集合会随机分布到 Reduce 中，每个 Reduce 做部分聚合操作，并输出结果，这样处理的结果是相同的 GroupBy Key 有可能被分发到不同的Reduce 中，从而达到负载均衡的目的；</p>
+<p>第二个 MRJob 再根据预处理的数据结果按照 GroupBy Key 分布到 Reduce 中（这个过程可以保证相同的原始 GroupBy Key 被分布到同一个 Reduce 中），最后完成最终的聚合操作。</p>
+<p>点评：它使计算变成了两个 mapreduce，先在第一个中在 shuffle 过程 partition 时随机给 key 打标记，使每个 key 随机均匀分布到各个 reduce 上计算，但是这样只能完成部分计算，因为相同 key 没有分配到相同 reduce 上。</p>
+<p>所以需要第二次的 mapreduce,这次就回归正常 shuffle,但是数据分布不均匀的问题在第一次 mapreduce 已经有了很大的改善，因此基本解决数据倾斜。因为大量计算已经在第一次mr 中随机分布到各个节点完成。</p>
+<h3 id="6控制空值分布">6.控制空值分布</h3>
+<p>将为空的 key 转变为字符串加随机数或纯随机数，将因空值而造成倾斜的数据分不到多个 Reducer。</p>
+<p>注：对于异常值如果不需要的话，最好是提前在 where 条件里过滤掉，这样可以使计算量大大减少</p>
+<h2 id="11hive性能优化常用的方法">11.hive性能优化常用的方法</h2>
+<h3 id="1-mapjoin">1. MapJoin</h3>
+<p>如果不指定 MapJoin 或者不符合 MapJoin 的条件，那么 Hive 解析器会将 Join 操作转换成 Common Join，即：在 Reduce 阶段完成 join。容易发生数据倾斜。可以用 MapJoin 把小表全部加载到内存在 map 端进行 join，避免 reducer 处理。</p>
+<h3 id="2行列过滤">2.行列过滤</h3>
+<ul>
+<li>列处理：在 SELECT 中，只拿需要的列，如果有，尽量使用分区过滤，少用 SELECT *。</li>
+<li>行处理：在分区剪裁中，当使用外关联时，如果将副表的过滤条件写在 Where 后面，那么就会先全表关联，之后再过滤。</li>
+</ul>
+<h3 id="3列式存储">3.列式存储</h3>
+<p>parquet,ORCFile</p>
+<h3 id="4采用分区技术">4.采用分区技术</h3>
+<p>partition(ptime=20210321070000)</p>
+<h3 id="5合理设置-map-数">5.合理设置 Map 数</h3>
+<ol>
+<li>
+<p>通常情况下，作业会通过 input 的目录产生一个或者多个 map 任务。</p>
+<p>主要的决定因素有：input 的文件总个数，input 的文件大小，集群设置的文件块大小。</p>
+</li>
+<li>
+<p>是不是 map 数越多越好？</p>
+<p>答案是否定的。如果一个任务有很多小文件（远远小于块大小 128m），则每个小文件也会被当做一个块，用一个 map 任务来完成，而一个 map 任务启动和初始化的时间远远大于逻辑处理的时间，就会造成很大的资源浪费。而且，同时可执行的 map 数是受限的。</p>
+</li>
+<li>
+<p>是不是保证每个 map 处理接近 128m 的文件块，就高枕无忧了？</p>
+<p>答案也是不一定。比如有一个 127m 的文件，正常会用一个 map 去完成，但这个文件只有一个或者两个小字段，却有几千万的记录，如果 map 处理的逻辑比较复杂，用一个 map任务去做，肯定也比较耗时。</p>
+</li>
+</ol>
+<p>针对上面的问题 2 和 3，我们需要采取两种方式来解决：即减少 map 数和增加 map 数；</p>
+<h3 id="6小文件进行合并">6.小文件进行合并</h3>
+<p>在 Map 执行前合并小文件，减少 Map 数：</p>
+<ul>
+<li>CombineHiveInputFormat 具有对小文件进行合并的功能（系统默认的格式）。</li>
+<li>HiveInputFormat 没有对小文件合并功能。</li>
+</ul>
+<h3 id="7合理设置-reduce-数">7.合理设置 Reduce 数</h3>
+<p>Reduce 个数并不是越多越好</p>
+<pre><code>1. 过多的启动和初始化 Reduce 也会消耗时间和资源；
+2. 另外，有多少个 Reduce，就会有多少个输出文件，如果生成了很多个小文件，那么如果这些小文件作为下一个任务的输入，则也会出现小文件过多的问题；
+</code></pre>
+<p>在设置 Reduce 个数的时候也需要考虑这两个原则：</p>
+<ul>
+<li>处理大数据量利用合适的 Reduce数；</li>
+<li>使单个 Reduce 任务处理数据量大小要合适；</li>
+</ul>
+<h3 id="8常用参数">8.常用参数</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">//</span> <span style="color:#a61717;background-color:#e3d2d2">输出合并小文件</span>
+<span style="color:#000;font-weight:bold">SET</span> hive.merge.mapfiles <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">true</span>; <span style="color:#998;font-style:italic">-- 默认 true，在 map-only 任务结束时合并小文件
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">SET</span> hive.merge.mapredfiles <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">true</span>; <span style="color:#998;font-style:italic">-- 默认 false，在 map-reduce 任务结束时合并小文件
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">SET</span> hive.merge.<span style="color:#000;font-weight:bold">size</span>.per.task <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">268435456</span>; <span style="color:#998;font-style:italic">-- 默认 256M
+</span><span style="color:#998;font-style:italic">-- 当输出文件的平均大小小于 16m 该值时，启动一个独立的 map-reduce 任务进行文件 merge
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">SET</span> hive.merge.smallfiles.avgsize <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">16777216</span>; 
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="9开启-map-端-combiner不影响最终业务逻辑">9.开启 map 端 combiner（不影响最终业务逻辑）</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">set</span> hive.<span style="color:#000;font-weight:bold">map</span>.aggr<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">true</span><span style="color:#a61717;background-color:#e3d2d2">；</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="10压缩选择快的">10.压缩（选择快的）</h3>
+<p>设置 map 端输出、中间结果压缩。（不完全是解决数据倾斜的问题，但是减少了 IO 读写和网络传输，能提高很多效率）</p>
+<h3 id="11开启-jvm-重用">11.开启 JVM 重用</h3>
+<h2 id="13简述deletedroptruncate的区别">13.简述delete，drop，truncate的区别</h2>
+<ul>
+<li>delet 删除数据</li>
+<li>drop 删除表</li>
+<li>truncate  摧毁表结构并重建</li>
+</ul>
+<h2 id="14四个by的区别">14.四个by的区别</h2>
+<ul>
+<li>Sort By：分区内有序；</li>
+<li>Order By：全局排序，只有一个 Reducer；</li>
+<li>Distrbute By：类似 MR 中 Partition，进行分区，结合 sort by 使用。</li>
+<li>Cluster By：当 Distribute by 和 Sorts by 字段相同时，可以使用 Cluster by 方式。Cluster by 除了具有 Distribute by 的功能外还兼具 Sort by 的功能。但是排序只能是升序排序，不能 指定排序规则为 ASC 或者 DESC。</li>
+</ul>
+<h2 id="15分区分桶的区别为什么要分区">15.分区分桶的区别，为什么要分区</h2>
+<ul>
+<li>分区表：原来的一个大表存储的时候分成不同的数据目录进行存储。如果说是单分区表，那么在表的目录下就只有一级子目录，如果说是多分区表，那么在表的目录下有多少分区就有多少级子目录。不管是单分区表，还是多分区表，在表的目录下，和非最终分区目录下是不能直接存储数据文件的</li>
+<li>分桶表：原理和hashpartitioner 一样，将hive中的一张表的数据进行归纳分类的时候，归纳分类规则就是hashpartitioner。（需要指定分桶字段，指定分成多少桶）</li>
+</ul>
+<p>分区表和分桶的区别除了存储的格式不同外，最主要的是作用：</p>
+<ul>
+<li>
+<p>分区表：细化数据管理，缩小mapreduce程序 需要扫描的数据量。</p>
+</li>
+<li>
+<p>分桶表：提高join查询的效率，在一份数据会被经常用来做连接查询的时候建立分桶，分桶字段就是连接字段；提高采样的效率。</p>
+</li>
+</ul>
+<h2 id="16group-by为什么要排序">16.group by为什么要排序</h2>
+<h2 id="20手写sql连续5天活跃用户">20.手写sql，连续5天活跃用户？</h2>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">大数据-003hive基础知识</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E6%A6%82%E5%BF%B5%E5%8E%9F%E7%90%86/">大数据 003hive概念原理</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">大数据-002hadoop之yarn基础知识</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">大数据-001hadoop之hdfs基础知识</a></li>
+        
+        <li><a href="../../products/%E8%85%BE%E8%AE%AF-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/">腾讯-数据平台架构</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/" title="Mysql-006解读事务和MVVC原理">Mysql-006解读事务和MVVC原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/" title="Mysql-005浅谈Mysql架构体系">Mysql-005浅谈Mysql架构体系</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 010flume基础知识">大数据 010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 009kafka基础知识">大数据 009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 008hbase基础知识">大数据 008hbase基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 007clickhouse基础知识">大数据 007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 006impala基础知识">大数据 006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 005flink基础知识">大数据 005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 004spark基础知识">大数据 004spark基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/" title="几种序列化协议的介绍(转)">几种序列化协议的介绍(转)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Http/">Http (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Java/">Java (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Mysql/">Mysql (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Nginx/">Nginx (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Php/">Php (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-python/">语言-python (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

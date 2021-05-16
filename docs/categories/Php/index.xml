@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Sat, 09 Aug 2014 11:47:39 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Php/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Aug 2014 13:47:39 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Php/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Php-010基础面试题</title>
+      <link>https://liuzhongzhen.github.io/post/Php-010%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Sat, 09 Aug 2014 13:47:39 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Php-010%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <description>1、PHP语言的一大优势是跨平台，什么是跨平台？ PHP的运行环境最优搭配为Apache+MySQL+</description>
+    </item>
+    
     <item>
       <title>Php-009提高php效率50点</title>
       <link>https://liuzhongzhen.github.io/post/Php-009%E6%8F%90%E9%AB%98php%E6%95%88%E7%8E%8750%E7%82%B9/</link>
