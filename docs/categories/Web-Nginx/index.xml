@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web-Nginx on Liuzhongzhen的博客</title>
+    <link>https://liuzhongzhen.github.io/categories/Web-Nginx/</link>
+    <description>Recent content in Web-Nginx on Liuzhongzhen的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>&amp;copy; 2021. All rights reserved.</copyright>
+    <lastBuildDate>Tue, 09 Jan 2018 22:57:56 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-Nginx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nginx 003nginx返回码</title>
+      <link>https://liuzhongzhen.github.io/post/Nginx-003nginx%E8%BF%94%E5%9B%9E%E7%A0%81/</link>
+      <pubDate>Tue, 09 Jan 2018 22:57:56 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Nginx-003nginx%E8%BF%94%E5%9B%9E%E7%A0%81/</guid>
+      <description>常用返回码 200：服务器成功返回网页 403：服务器拒绝请求。 404：请求的网页不存在 499：客户端主</description>
+    </item>
+    
+    <item>
+      <title>Nginx 002http_range详解</title>
+      <link>https://liuzhongzhen.github.io/post/Nginx-002http_range%E8%AF%A6%E8%A7%A3/</link>
+      <pubDate>Mon, 08 Jan 2018 22:57:56 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Nginx-002http_range%E8%AF%A6%E8%A7%A3/</guid>
+      <description>Range，是在 HTTP/1.1（http://www.w3.org/Protocols/rfc26</description>
+    </item>
+    
+    <item>
+      <title>Nginx-001详细介绍</title>
+      <link>https://liuzhongzhen.github.io/post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Sun, 07 Jan 2018 22:57:56 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/</guid>
+      <description>转发 万字总结，体系化带你全面认识 Nginx 前言 作为一名前端开发人员，你是不是经常碰到领导让你上服务器去修改 Nginx</description>
+    </item>
+    
+  </channel>
+</rss>
