@@ -1,0 +1,729 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>大数据 100数据集成调研 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="大数据 100数据集成调研 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-05-01T01:10:13&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-05-01T01:10:13&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="大数据 100数据集成调研">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#公司">公司</a></li>
+    <li><a href="#一-cdc数据库实时变化数据采集">一、 CDC数据库实时变化数据采集</a></li>
+    <li><a href="#1-canal">1. canal</a></li>
+    <li><a href="#2-otter">2. otter</a></li>
+    <li><a href="#3-kafka_connectdebeziumdebezium-ui">3. kafka_connect+debezium+debezium-ui</a></li>
+    <li><a href="#4-maxwell">4. maxwell</a></li>
+    <li><a href="#二-数据库离线数据采集同步">二、 数据库离线数据采集同步</a></li>
+    <li><a href="#1-datax">1. dataX</a></li>
+    <li><a href="#2-sqoop">2. Sqoop</a></li>
+    <li><a href="#3-nifi">3. Nifi</a></li>
+    <li><a href="#4-kettle">4. kettle</a></li>
+    <li><a href="#三-服务器日志数据采集工具">三、 服务器日志数据采集工具</a></li>
+    <li><a href="#1-flume">1. Flume</a></li>
+    <li><a href="#2-filebeat">2. Filebeat</a></li>
+    <li><a href="#3-logstash">3. Logstash</a></li>
+    <li><a href="#4-fluentd">4. Fluentd</a></li>
+    <li><a href="#5-chukwa">5. Chukwa</a></li>
+    <li><a href="#6-scribe">6. Scribe</a></li>
+    <li><a href="#7-logkit">7. logkit</a></li>
+    <li><a href="#8-logtail">8. logtail</a></li>
+    <li><a href="#9-jlogstash">9. jlogstash</a></li>
+    <li><a href="#四-http数据采集">四、 Http数据采集</a></li>
+    <li><a href="#1-openrestylualibkafka">1. openResty+lua+libkafka</a></li>
+    <li><a href="#五-终端数据采集">五、 终端数据采集</a></li>
+    <li><a href="#六-kafka集群数据同步工具">六、 kafka集群数据同步工具</a></li>
+    <li><a href="#1-brooklin">1. brooklin</a></li>
+    <li><a href="#七-kafka集群管理工具">七、 kafka集群管理工具</a></li>
+    <li><a href="#1-logi-kafkamanager">1. logi-KafkaManager</a></li>
+    <li><a href="#2-kafkamonitor">2. kafkaMonitor</a></li>
+    <li><a href="#3-kafkamanager">3. kafkaManager</a></li>
+    <li><a href="#4-kafkaeagle">4. kafkaEagle</a></li>
+    <li><a href="#八-数据集成管理服务">八、 数据集成管理服务</a></li>
+    <li><a href="#1-dbus">1. DBus</a></li>
+    <li><a href="#2-cdap">2. CDAP</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">大数据 100数据集成调研</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年5月1日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90'>大数据-100数据集成</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="公司">公司</h2>
+<ol>
+<li><a href="https://www.datapipeline.com/">DataPipeline</a></li>
+<li><a href="https://fivetran.com/">Fivetran</a></li>
+<li><a href="https://www.sensorsdata.cn/auto">神策数据</a></li>
+<li><a href="https://www.rizhiyi.com/">日志易</a></li>
+<li><a href="https://www.thinkingdata.cn/">数数科技</a></li>
+<li><a href="https://www.conviva.com/">Conviva</a></li>
+<li><a href="https://www.growingio.com/">GrowingIO</a></li>
+<li><a href="http://www.talkingdata.com/">TalkingData</a></li>
+<li><a href="https://www.umeng.com/">友盟</a></li>
+<li><a href="https://www.dtstack.com/">袋鼠云</a></li>
+<li><a href="https://www.deepexi.com/">滴普</a></li>
+<li><a href="http://www.startdt.com/">奇点云</a></li>
+<li><a href="https://www.qiniu.com/">七牛云</a></li>
+<li><a href="https://www.163yun.com/">网易数帆</a></li>
+<li><a href="http://www.dtdream.com/">数梦工厂</a></li>
+<li><a href="https://www.bdp.cn/home.html">海致BDP</a></li>
+<li><a href="https://www.mininglamp.com/">明略科技</a></li>
+<li><a href="https://www.aliyun.com/product/dataphin">阿里dataphin</a></li>
+<li><a href="https://help.aliyun.com/product/72772.html">阿里datawork</a></li>
+<li><a href="https://dp.alibaba.com/product/quickbi?source=1371">阿里quickbi</a></li>
+<li><a href="https://cloud.tencent.com/product/wedata">腾讯数据中台</a></li>
+<li><a href="https://xiaoma.tencent.com/#/">腾讯小马bi</a></li>
+<li><a href="https://dianxiaohe.com/">盒子数据</a></li>
+</ol>
+<h2 id="一-cdc数据库实时变化数据采集">一、 CDC数据库实时变化数据采集</h2>
+<p>实时同步最灵活的还是用kafka做中间转发，当数据发生变化时，记录变化到kafka，需要同步数据的程序订阅消息即可，需要研发编码支持。主要是订阅binlog日志，进行增量订阅&amp;消费的业务。</p>
+<h2 id="1-canal">1. canal</h2>
+<p><a href="https://github.com/alibaba/canal">https://github.com/alibaba/canal</a> 当前版本1.1.4</p>
+<p>当前的canal开源版本支持5.7及以下的版本(阿里内部mysql 5.7.13, 5.6.10, mysql 5.5.18和5.1.40/48)</p>
+<p>功能如下：</p>
+<ul>
+<li>基于日志增量订阅&amp;消费支持的业务：</li>
+<li>数据库镜像</li>
+<li>数据库实时备份</li>
+<li>多级索引 (卖家和买家各自分库索引)</li>
+<li>search build</li>
+<li>业务cache刷新</li>
+<li>价格变化等重要业务消息</li>
+</ul>
+<p>界面 <a href="https://github.com/alibaba/canal/wiki/Canal-Admin-QuickStart">https://github.com/alibaba/canal/wiki/Canal-Admin-QuickStart</a></p>
+<p>常用架构mysql binlog+canal+kafka+flink+大数据存储</p>
+<h2 id="2-otter">2. otter</h2>
+<p>代码库https://github.com/alibaba/otter</p>
+<p>otter是在canal基础上又重新实现了可配置的消费者，使用otter的话，刚才说过的消费者就不需要写了，而otter提供了一个web界面，可以自定义同步任务及map表。非常适合mysql库之间的同步。</p>
+<p>另外：otter已在阿里云推出商业化版本 数据传输服务DTS， 开通即用，免去部署维护的昂贵使用成本。DTS针对阿里云RDS、DRDS等产品进行了适配，解决了Binlog日志回收，主备切换、VPC网络切换等场景下的同步高可用问题。同时，针对RDS进行了针对性的性能优化。出于稳定性、性能及成本的考虑，强烈推荐阿里云用户使用DTS产品。</p>
+<h2 id="3-kafka_connectdebeziumdebezium-ui">3. kafka_connect+debezium+debezium-ui</h2>
+<p>kafka-connect-ui docker安装landoop/kafka-connect-ui</p>
+<p>kafka_connect <a href="https://docs.confluent.io/3.0.0/connect/">https://docs.confluent.io/3.0.0/connect/</a> 提供写kafka，读kafka功能</p>
+<p>debezium <a href="https://github.com/debezium/debezium">https://github.com/debezium/debezium</a> 提供各种db binlog解析插件</p>
+<p>debezium-ui <a href="https://github.com/debezium/debezium-ui">https://github.com/debezium/debezium-ui</a> 提供同步任务管理功能</p>
+<p>3.1 kafka connector:</p>
+<p><a href="https://github.com/apache/ignite/tree/master/modules">https://github.com/apache/ignite/tree/master/modules</a></p>
+<p>Kafka Connector很多，包括开源和商业版本的。如下列表中是常用的开源Connector</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>HasSource</th>
+<th>HasSink</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fileStream</td>
+<td>Source</td>
+<td>Sink</td>
+</tr>
+<tr>
+<td>Jdbc</td>
+<td>Source</td>
+<td>Sink</td>
+</tr>
+</tbody>
+</table>
+<p>商业版 <a href="https://www.confluent.io/product/connectors/">https://www.confluent.io/product/connectors/</a></p>
+<p>3.2 debezium 提供的connector</p>
+<p>Connector文档https://debezium.io/documentation/reference/1.5/connectors/mysql.html</p>
+<ul>
+<li>debezium-connector-mysql</li>
+<li>debezium-connector-oracle</li>
+<li>debezium-connector-postgres</li>
+<li>debezium-connector-sqlserver</li>
+<li>debezium-connector-mongodb</li>
+</ul>
+<p>3.3. Kafka Connect的优点</p>
+<ol>
+<li>对开发者提供了统一的实现接口</li>
+<li>开发，部署和管理都非常方便，统一 </li>
+<li>使用分布式模式进行水平扩展，毫无压力</li>
+<li>在分布式模式下可以通过Rest Api提交和管理Connectors</li>
+<li>对offset自动管理，只需要很简单的配置，而不像Consumer中需要开发者处理</li>
+<li>流式/批式处理的支持</li>
+<li>k8s支持</li>
+</ol>
+<h2 id="4-maxwell">4. maxwell</h2>
+<p><a href="http://maxwells-daemon.io/">http://maxwells-daemon.io/</a> 当前版本1.33.0</p>
+<p>mysql-to-json kafka的生产者</p>
+<p><a href="https://github.com/zendesk/maxwell">https://github.com/zendesk/maxwell</a></p>
+<h2 id="二-数据库离线数据采集同步">二、 数据库离线数据采集同步</h2>
+<h2 id="1-datax">1. dataX</h2>
+<ul>
+<li>阿里巴巴开源的数据库同步工具</li>
+<li>开发语言：java，spring</li>
+<li>dataX <a href="https://github.com/alibaba/DataX/blob/master/introduction.md">https://github.com/alibaba/DataX/blob/master/introduction.md</a></li>
+<li>功能：把数据从A数据源同步到B数据源</li>
+<li>数据源是:Mysql,Oracle,Postgresql,SQLServer,Hive,Hbase,mongodb,
+clickhouse,hdfs,hbase,kudu,mongodb</li>
+<li>工作原理: 分成reader，writer</li>
+<li>reader：根据jdbc 和select sql读取 源数据库表</li>
+<li>writer： 根据jdbc 和insert/replace sql 写到目标数据库表中</li>
+<li>dataX web管理台：https://github.com/WeiYe-Jing/datax-web</li>
+<li>体验地址：http://192.168.126.147:9527/index.html#/datax/project/jobProject admin/123456</li>
+</ul>
+<p>类似一个小型的dolphin调度系统，dataX是它启动一个插件，每个同步任务需要启动一个dataX进程。
+功能类似arfa数据同步功能，dataX充当了kafka角色</p>
+<p>优点：集中管理数据同步任务，配置简单(2步即可,创建作业的配置文件（json格式配置reader,writer),启动执行配置作业)，分布式执行，多数据源匹配，部署简单,常适合离线数据，增量数据可以使用一些编码的方式实现，</p>
+<p>缺点：无法做实时同步，开源版不支持kafka，需要自己开发reader和writer插件
+仅仅针对insert数据比较有效，update数据就不适合。缺乏对增量更新的内置支持，因为DataX的灵活架构，可以通过shell脚本等方式方便实现增量同步。</p>
+<h2 id="2-sqoop">2. Sqoop</h2>
+<ul>
+<li><a href="http://sqoop.apache.org/">http://sqoop.apache.org/</a></li>
+</ul>
+<p>Sqoop(发音：skup)是一款开源的工具，主要用于在Hadoop(Hive)与传统的数据库(mysql、postgresql…)间进行数据的传递，可以将一个关系型数据库（例如 ： MySQL ,Oracle ,Postgres等）中的数据导进到Hadoop的HDFS中，也可以将HDFS的数据导进到关系型数据库中。</p>
+<p>Sqoop导入：导入工具从RDBMS到HDFS导入单个表。表中的每一行被视为HDFS的记录。所有记录被存储在文本文件的文本数据或者在Avro和序列文件的二进制数据。</p>
+<p>Sqoop导出：导出工具从HDFS导出一组文件到一个RDBMS。作为输入到Sqoop文件包含记录，这被称为在表中的行。那些被读取并解析成一组记录和分隔使用用户指定的分隔符。</p>
+<p>Sqoop支持全量数据导入和增量数据导入（增量数据导入分两种，一是基于递增列的增量数据导入（Append方式）。二是基于时间列的增量数据导入（LastModified方式）），同时可以指定数据是否以并发形式导入。</p>
+<h2 id="3-nifi">3. Nifi</h2>
+<p>Apache NiFi 是一个易于使用、功能强大而且可靠的数据拉取、数据处理和分发系统，用于自动化管理系统间的数据流。它支持高度可配置的指示图的数据路由、转换和系统中介逻辑，支持从多种数据源动态拉取数据。</p>
+<p>NiFi基于Web方式工作，后台在服务器上进行调度。 用户可以为数据处理定义为一个流程，然后进行处理，后台具有数据处理引擎、任务调度等组件。</p>
+<p>几个核心概念：</p>
+<ul>
+<li>Nifi 的设计理念接近于基于流的编程 Flow Based Programming。</li>
+<li>FlowFile：表示通过系统移动的每个对象，包含数据流的基本属性</li>
+<li>FlowFile Processor（处理器）：负责实际对数据流执行工作</li>
+<li>Connection（连接线）：负责不同处理器之间的连接，是数据的有界缓冲区</li>
+<li>Flow Controller（流量控制器）：管理进程使用的线程及其分配</li>
+<li>Process Group（过程组）：进程组是一组特定的进程及其连接，允许组合其他组件创建新组件</li>
+</ul>
+<h2 id="4-kettle">4. kettle</h2>
+<p>Kettle是一款国外开源的ETL工具，纯java编写，可以在Window、Linux、Unix上运行，数据抽取高效稳定。
+Kettle的Spoon有丰富的Steps可以组装开发出满足多种复杂应用场景的数据集成作业，方便实现全量、增量数据同步。缺点是通过定时运行，实时性相对较差。</p>
+<h2 id="三-服务器日志数据采集工具">三、 服务器日志数据采集工具</h2>
+<h2 id="1-flume">1. Flume</h2>
+<ul>
+<li>官网：https://flume.apache.org/</li>
+<li>开发语言：java</li>
+</ul>
+<h2 id="2-filebeat">2. Filebeat</h2>
+<ul>
+<li>官方文档https://www.elastic.co/guide/en/beats/filebeat/current/index.html</li>
+<li>代码库：https://github.com/elastic/beats/tree/master/filebeat</li>
+<li>开发语言:go</li>
+</ul>
+<h2 id="3-logstash">3. Logstash</h2>
+<ul>
+<li>代码库:https://github.com/elastic/logstash</li>
+<li>开发语言: java</li>
+</ul>
+<h2 id="4-fluentd">4. Fluentd</h2>
+<ul>
+<li>官方文档:http://docs.fluentd.org/articles/quickstart</li>
+<li>开发语言：c,ruby</li>
+</ul>
+<h2 id="5-chukwa">5. Chukwa</h2>
+<ul>
+<li>官网:https://chukwa.apache.org/</li>
+<li>代码库：https://github.com/apache/chukwa</li>
+<li>开发语言：java</li>
+</ul>
+<h2 id="6-scribe">6. Scribe</h2>
+<ul>
+<li>代码库https://github.com/facebookarchive/scribe</li>
+<li>公司：facebook开发</li>
+<li>开发语言：c,c++</li>
+</ul>
+<h2 id="7-logkit">7. logkit</h2>
+<ul>
+<li>官网: <a href="https://logkit-pro.qiniu.com">https://logkit-pro.qiniu.com</a></li>
+<li>代码库：https://github.com/qiniu/logkit</li>
+<li>文档：https://developer.qiniu.com/insight/4684/product_introduction</li>
+<li>开发语言：go</li>
+<li>公司：七牛云</li>
+<li>对比：https://developer.qiniu.com/insight/4934/logkit-pro-compared-with-mainstream-collecting-component-function-performance</li>
+</ul>
+<h2 id="8-logtail">8. logtail</h2>
+<ul>
+<li>文档：https://help.aliyun.com/document_detail/28979.html</li>
+<li>其他公司https://logtail.com/</li>
+<li>开发语言：c++</li>
+<li>公司：阿里云</li>
+<li>不开源</li>
+</ul>
+<h2 id="9-jlogstash">9. jlogstash</h2>
+<ul>
+<li>代码：https://github.com/DTStack/jlogstash</li>
+<li>开发语言：java</li>
+<li>公司：袋鼠云</li>
+</ul>
+<h2 id="四-http数据采集">四、 Http数据采集</h2>
+<h2 id="1-openrestylualibkafka">1. openResty+lua+libkafka</h2>
+<h2 id="五-终端数据采集">五、 终端数据采集</h2>
+<ol>
+<li>PC web</li>
+<li>android</li>
+<li>ios</li>
+<li>微信小程序</li>
+<li>mobile h5</li>
+<li>第三方</li>
+</ol>
+<h2 id="六-kafka集群数据同步工具">六、 kafka集群数据同步工具</h2>
+<h2 id="1-brooklin">1. brooklin</h2>
+<ul>
+<li>linked开源的工具，用来在kafka集群之间同步数据，用来替代kafka-mirror-maker</li>
+<li><a href="https://github.com/linkedin/brooklin">https://github.com/linkedin/brooklin</a></li>
+<li>An extensible distributed system for reliable nearline data streaming at scale.
+fileConnector,kafkaConnector</li>
+<li>功能：把多个数据源的内容通过brooklin写入到多个目的地，类似kafka-mirror-maker。</li>
+<li>开发语言：java,gradle</li>
+<li>组件：zookeepr，kafka，connector，provider</li>
+<li>优点：架构新颖，可靠性好，部署简单</li>
+<li>缺点：connector和provider比较少;管理麻烦，没有界面</li>
+</ul>
+<h2 id="七-kafka集群管理工具">七、 kafka集群管理工具</h2>
+<h2 id="1-logi-kafkamanager">1. logi-KafkaManager</h2>
+<ul>
+<li><a href="https://github.com/didi/Logi-KafkaManager">https://github.com/didi/Logi-KafkaManager</a></li>
+<li>滴滴开源的kafka集群管理工具</li>
+</ul>
+<h2 id="2-kafkamonitor">2. kafkaMonitor</h2>
+<ul>
+<li><a href="https://github.com/Morningstar/kafka-offset-monitor/releases/tag/0.4.6">https://github.com/Morningstar/kafka-offset-monitor/releases/tag/0.4.6</a></li>
+</ul>
+<h2 id="3-kafkamanager">3. kafkaManager</h2>
+<ul>
+<li><a href="https://github.com/yahoo/kafka-manager/archive/1.3.3.15.zip">https://github.com/yahoo/kafka-manager/archive/1.3.3.15.zip</a></li>
+</ul>
+<h2 id="4-kafkaeagle">4. kafkaEagle</h2>
+<ul>
+<li><a href="https://github.com/smartloli/kafka-eagle-bin/archive/v1.4.8.tar.gz">https://github.com/smartloli/kafka-eagle-bin/archive/v1.4.8.tar.gz</a></li>
+</ul>
+<h2 id="八-数据集成管理服务">八、 数据集成管理服务</h2>
+<h2 id="1-dbus">1. DBus</h2>
+<ul>
+<li>宜信开源的数据采集分发平台</li>
+<li>项目文档 <a href="https://bridata.github.io/DBus/">https://bridata.github.io/DBus/</a></li>
+<li>项目代码https://github.com/BriData/DBus</li>
+<li>采用cannal抓取数据库实时binlog日志</li>
+<li>采用flume/filebeat采集日志文件</li>
+</ul>
+<h2 id="2-cdap">2. CDAP</h2>
+<ul>
+<li>一个开源的框架建立数据分析服务</li>
+<li>项目代码https://github.com/cdapio/cdap</li>
+<li>项目官网https://cdap.io/</li>
+<li>项目文档https://cdap.atlassian.net/wiki/spaces/DOCS/</li>
+</ul>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Mysql-007基础知识</a></li>
+        
+        <li><a href="../../post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/">Mysql-006解读事务和MVVC原理</a></li>
+        
+        <li><a href="../../post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/">Mysql-005浅谈Mysql架构体系</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">大数据 010flume基础知识</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">大数据 009kafka基础知识</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据 100数据集成调研">大数据 100数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Mysql-007基础知识">Mysql-007基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/" title="Mysql-006解读事务和MVVC原理">Mysql-006解读事务和MVVC原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/" title="Mysql-005浅谈Mysql架构体系">Mysql-005浅谈Mysql架构体系</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 010flume基础知识">大数据 010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 009kafka基础知识">大数据 009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 008hbase基础知识">大数据 008hbase基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 007clickhouse基础知识">大数据 007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 006impala基础知识">大数据 006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 005flink基础知识">大数据 005flink基础知识</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-100数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Java/">语言-Java (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Php/">语言-Php (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Python/">语言-Python (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Thu, 29 Apr 2021 22:20:44 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 01 May 2021 01:10:13 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>大数据 100数据集成调研</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/</link>
+      <pubDate>Sat, 01 May 2021 01:10:13 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/</guid>
+      <description>公司 DataPipeline Fivetran 神策数据 日志易 数数科技 Conviva GrowingIO TalkingData 友盟 袋鼠云 滴普 奇点云 七牛云 网易数帆 数梦工厂 海致BDP 明略科技 阿里</description>
+    </item>
+    
     <item>
       <title>Mysql-007基础知识</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
@@ -743,6 +752,42 @@
       
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-lhotse%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 参与者，负责其中某些runner的设计开发 背景 周期性运行离线计算任务，用来替代Oracle中的J</description>
+    </item>
+    
+    <item>
+      <title>Memcached 004安装教程</title>
+      <link>https://liuzhongzhen.github.io/post/Memcached-004%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Sun, 03 Feb 2013 12:17:16 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Memcached-004%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</guid>
+      <description>单机安装 Memcached 支持许多平台：Linux、FreeBSD、Solaris、Mac OS，也可以安装在Wind</description>
+    </item>
+    
+    <item>
+      <title>Memcached 003学习资源</title>
+      <link>https://liuzhongzhen.github.io/post/Memcached-003%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/</link>
+      <pubDate>Sun, 03 Feb 2013 11:17:16 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Memcached-003%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/</guid>
+      <description>菜鸟笔记-Memcached 教程 面包圈-Memcached 教程 W3Cschool-Memcached</description>
+    </item>
+    
+    <item>
+      <title>Memcached 002常见面试题</title>
+      <link>https://liuzhongzhen.github.io/post/Memcached-002%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Sat, 02 Feb 2013 11:17:16 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Memcached-002%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <description>1、memcached是怎么工作的？ Memcached的神奇来自两阶段哈希（two-stagehas</description>
+    </item>
+    
+    <item>
+      <title>Memcached 001超详细解读</title>
+      <link>https://liuzhongzhen.github.io/post/Memcached-001%E8%B6%85%E8%AF%A6%E7%BB%86%E8%A7%A3%E8%AF%BB/</link>
+      <pubDate>Fri, 01 Feb 2013 11:17:16 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Memcached-001%E8%B6%85%E8%AF%A6%E7%BB%86%E8%A7%A3%E8%AF%BB/</guid>
+      <description>转载外部-MemCache 超详细解读 Memcached官网 MemCache是什么 MemCache是一</description>
     </item>
     
     <item>

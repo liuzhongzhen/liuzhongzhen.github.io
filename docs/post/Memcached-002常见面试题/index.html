@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Memcached 002常见面试题 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="Memcached 002常见面试题 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2013-02-02T11:17:16&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2013-02-02T11:17:16&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="Memcached 002常见面试题">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/Memcached-002%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1memcached是怎么工作的">1、memcached是怎么工作的？</a></li>
+    <li><a href="#2memcached最大的优势是什么">2、memcached最大的优势是什么？</a></li>
+    <li><a href="#3memcached和mysql的querycache相比有什么优缺点">3、memcached和MySQL的querycache相比有什么优缺点？</a></li>
+    <li><a href="#4memcached和服务器的localcache比如php的apcmmap文件等相比有什么优缺点">4、memcached和服务器的localcache（比如PHP的APC、mmap文件等）相比，有什么优缺点？</a></li>
+    <li><a href="#5memcached的cache机制是怎样的">5、memcached的cache机制是怎样的？</a></li>
+    <li><a href="#6memcached如何实现冗余机制">6、memcached如何实现冗余机制？</a></li>
+    <li><a href="#7memcached如何处理容错的">7、memcached如何处理容错的？</a></li>
+    <li><a href="#8如何将memcached中item批量导入导出">8、如何将memcached中item批量导入导出？</a></li>
+    <li><a href="#9我需要把memcached中的item批量导出导入怎么办">9、我需要把memcached中的item批量导出导入，怎么办？</a></li>
+    <li><a href="#10memcached是如何做身份验证的">10、memcached是如何做身份验证的？</a></li>
+    <li><a href="#11memcached的多线程是什么如何使用它们">11、memcached的多线程是什么？如何使用它们？</a></li>
+    <li><a href="#12memcached能接受的key的最大长度是多少">12、memcached能接受的key的最大长度是多少？</a></li>
+    <li><a href="#13memcached对item的过期时间有什么限制">13、memcached对item的过期时间有什么限制？</a></li>
+    <li><a href="#14memcached最大能存储多大的单个item">14、memcached最大能存储多大的单个item？</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Memcached 002常见面试题</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2013年2月2日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E7%BC%93%E5%AD%98-Memcache'>缓存-Memcache</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="1memcached是怎么工作的">1、memcached是怎么工作的？</h2>
+<p>Memcached的神奇来自两阶段哈希（two-stagehash）。Memcached就像一个巨大的、存储了很多＜key，value＞对的哈希表。通过key，可以存储或查询任意的数据。</p>
+<p>客户端可以把数据存储在多台memcached上。当查询数据时，客户端首先参考节点列表计算出key的哈希值（阶段一哈希），进而选中一个节点；客户端将请求发送给选中的节点，然后memcached节点通过一个内部的哈希算法（阶段二哈希），查找真正的数据（item）。</p>
+<p>举个列子，假设有3个客服端123台memcachedA，B，CClient1想把数据&quot;barbaz”以key“foo&quot;存储。Client1首先参考节点列表
+（A，B，C）计算key&quot;foo”的哈希值，假设memcachedB被选中。接着，Client1直接connect到memcachedB通过key&quot;foo&quot;把数据&quot;barbaz&quot;存储进去。Client2使用与Client1相同的客户端库億味着阶段一的哈希算法相同），也拥有同样的memcached列表（A，B，C）。于是，经过相同的哈希计算（阶段一），Client2计算出key&quot;foo&quot;在memcachedB上，然后它直接请求memcachedB，得到数据&quot;barbaz&quot;。各种客户端在memcached中数据的存储形式是不同的（perlStorablephpserialize，javahibernate，JSON等）。一些客户端实现的哈希算法也不一样。但是，memcached服务器端的行为总是一致的。</p>
+<p>最后，从实现的角度看，memcached是一个非阻塞的、基于事件的服务器程序。这种架构可以很好地解决C10Kproblem，并具有极佳的可扩展性。
+可以参考AStoryofCaching，这篇文章简单解释了客户端与memcached是如何交互的。</p>
+<h2 id="2memcached最大的优势是什么">2、memcached最大的优势是什么？</h2>
+<p>请仔细阅读上面的问题（即memcached是如何工作的）。Memcached最大的好处就是它带来了极佳的水平可扩展性，特别是在一个巨大的系统中。</p>
+<p>由于客户端自己做了一次哈希，那么我们很容易增加大量memcached到集群中。memcached之间没有相互通信，因此不会增加memcached的负载；没有多播协议，不会网络通信量爆炸（implode）omemcached的集群很好用。内存不够了？增加几台memcached吧；CPU不够用了？再增加几台吧；有多余的内存？在增加几台吧，不要浪费了。</p>
+<p>基于memcached的基本原则，可以相当轻松地构建出不同类型的缓存架构。除了这篇FAQ，在其他地方很容易找到详细资料的。</p>
+<h2 id="3memcached和mysql的querycache相比有什么优缺点">3、memcached和MySQL的querycache相比有什么优缺点？</h2>
+<p>把memcached引入应用中，还是需要不少工作量的。MySQL有个使用方便的querycache，可以自动地缓存SQL查询的结果，被缓存的SQL查询可以被反复地快速执行。Memcached与之相比，怎么样呢？MySQL的querycache是集中式的，连接到该querycache的MySQL服务器都会受益。</p>
+<p>•当您修改表时，MySQL的querycache会立刻被刷新（flush）。存储一个memcacheditem只需要很少的时间，但是当写操作很频繁时，MySQL的querycache会经常让所有缓存数据都失效。</p>
+<p>在多核CPU上MySQL的querycache会遇到扩展问题（scalabilityissues）。在多核CPU上querycache会增加一个全局锁（globallock）、由于需要刷新更多的缓存数据，速度会变得更慢。</p>
+<p>在MySQL的querycache中，我们是不能存储任意的数据的（只能是SQL查询结果）。而利用memcached，我们可以搭建出各种高效的缓存。比如，可以执行多个独立的查询，构建出一个用户对象（userobject），然后将用户对象缓存到memcached中，而querycache是SQL语句级别的，不可能做到这一点。在小的网站中，querycache会有所帮助，但随着网站规模的增加，querycache的弊将大于利。</p>
+<p>querycache能够利用的内存容量受到MySQL服务器空闲内存空间的限制。给数据库服务器增加更多的内存来缓存数据，固然是很好的。但是，有了memcached，只要您有空闲的内存，都可以用来增加memcached集群的规模，然后您就可以缓存更多的数据。</p>
+<h2 id="4memcached和服务器的localcache比如php的apcmmap文件等相比有什么优缺点">4、memcached和服务器的localcache（比如PHP的APC、mmap文件等）相比，有什么优缺点？</h2>
+<p>首先，localcache有许多与上面（querycache）相同的问题。localcache能够利用的内存容量受到（单台）服务器空闲内存空间的限制。不过，localcache有一点比memcached和querycache都要好，那就是它不但可以存储任意的数据，而且没有网络存取的延迟。</p>
+<p>localcache的数据查询更快。考虑把highlycommon的数据放在localcache中吧。如果每个页面都需要加载一些数量较少的数据，考虑把它们放在localcache吧。
+localcache缺少集体失效（groupinvalidation）的特性，在memcached集群中，删除或更新一个key会让所有的观察者觉察到。但是在localcache中我们只能通知所有的服务器刷新cache（很慢，不具扩展性），或者仅仅依赖缓存超时失效机制。</p>
+<p>localcache面临着严重的内存限制，这一点上面已经提到。</p>
+<h2 id="5memcached的cache机制是怎样的">5、memcached的cache机制是怎样的？</h2>
+<p>Memcached主要的cache机制是LRU最近最少用）算法+超时失效。当您存数据到memcached中，可以指定该数据在缓存中可以呆多久Whichisforever，orsometimeinthefutureo如果memcached的内存不够用了，过期的slabs会优先被替换，接着就轮到最老的未被使用的slabs</p>
+<h2 id="6memcached如何实现冗余机制">6、memcached如何实现冗余机制？</h2>
+<p>不实现!我们对这个问题感到很惊讶。Memcached应该是应用的缓存层。它的设计本身就不带有任何冗余机制。如果一个Memcached节点失去了所有数据，您应该可以从数据源（比如数据库）再次获取到数据。您应该特别注意，您的应用应该可以容忍节点的失效。不要写一些糟糕的查询代码，寄希望于memcached来保证一切!如果您担心节点失效会大大加重数据库的负担，那么您可以采取一些办法。比如您可以增加更多的节点（来减少丢失一个节点的影响），热备节点（在其他节点down了的时候接管IP）。</p>
+<h2 id="7memcached如何处理容错的">7、memcached如何处理容错的？</h2>
+<p>不处理!在memcached节点失效的情况下，集群没有必要做任何容错处理。如果发生了节点失效，应对的措施完全取决于用户。节点失效时，下面列出几种方案供您选择：</p>
+<p>忽略它！失效节点被恢复或替换之前，还有很多其他节点可以应对节点失效带来的影响。
+把失效的节点从节点列表中移除。做这个操作千万要小心！在默认情况下（余数式哈希算法），客户端添加或移除节点，会导致所有的缓存数据不可用！因为哈希参照的节点列表变化了，大部分key会因为哈希值的改变而被映射到（与原来）不同的节点上。</p>
+<p>•启动热备节点，接管失效节点所占用的IP，这样可以防止哈希紊乱（hashingchaos）。
+如果希望添加和移除节点，而不影响原先的哈希结果，可以使用一致性哈希算法（consistenthashing）。您可以百度一下一致性哈希算法。支持一致性哈希的客户端已经很成熟，而且被广泛使用。去尝试一下吧！•两次哈希（reshing）。当客户端存取数据时，如果发现一个节点（down）了，就再做一次哈希（哈希算法与前一次不同），重新选择另一个节点（需要注意的时，客户端并没有把down的节点从节点列表中移除，下次还是有可能先哈希到它）。如果某个节点时好时坏，两次哈希的方法就有风险了，好的节点和坏的节点上都可能存在脏数据（staledata）。</p>
+<h2 id="8如何将memcached中item批量导入导出">8、如何将memcached中item批量导入导出？</h2>
+<p>您不应该这样做!Memcached是一个非阻塞的服务器。任何可能导致memcached暂停或瞬时拒绝服务的操作都应该值得深思熟虑。向memcached中批量导入数据往往不是您真正想要的!想象看，如果缓存数据在导出导入之间发生了变化，您就需要处理脏数据了；如果缓存数据在导出导入之间过期了，您又怎么处理这些数据呢？因此，批量导出导入数据并不像您想象中的那么有用。不过在一个场景倒是很有用。如果您有大量的从不变化的数据，并且希望缓存很快热（warm）起来，批量导入缓存数据是很有帮助的。虽然这个场景并不典型，但却经常发生，因此我们会考虑在将来实现批量导出导入的功能。</p>
+<h2 id="9我需要把memcached中的item批量导出导入怎么办">9、我需要把memcached中的item批量导出导入，怎么办？</h2>
+<p>好吧好吧。如果您需要批量导出导入，最可能的原因一般是重新生成缓存数据需要消耗很长的时间，或者数据库坏了让您饱受痛苦。</p>
+<p>如果一个memcached节点down了让您很痛苦，那么您还会陷入其他很多麻烦。您的系统太脆弱了。您需要做一些优化工作。比如处理“惊群’&lsquo;问题（比如memcached节点都失效了，反复的查询让您的数据库不堪重负…这个问题在FAQ的其他提到过），或者优化不好的查询。记住，Memcached并不是您逃避优化查询的借口。</p>
+<p>如果您的麻烦仅仅是重新生成缓存数据需要消耗很长时间（15秒到超过5分钟），您可以考虑重新使用数据库。这里给出一些提示：</p>
+<p>使用MogileFS（或者CouchDB等类似的软件）在存储item。把item计算出来并dump磁盘上。MogileFS可以很方便地覆写item，并提供快速地访问。您甚至可以把MogileFS中的item缓存在memcached中，这样可以加快读取速度。MogileFS+Memcached的组合可以加快缓存不命中时的响应速度，提高网站的可用性。
+重新使用MySQL。MySQL的InnoDB主键查询的速度非常快。如果大部分缓存数据都可以放到VARCHAR字段中，那么主键查询的性能将更好。从memcached中按key查询几乎等价于MySQL的主键查询:将key哈希到64-bit的整数，然后将数据存储到MySQL中。您可以把原始（不做哈希）的key存储都普通的字段中，然后建立二级索引来加快查询…key被动地失效，批量删除失效的key，等等。</p>
+<p>上面的方法都可以引入memcached，在重启memcached的时候仍然提供很好的性能。由于您不需要当心&quot;hot’‘的item被memcachedLRU算法突然淘汰，用户再也不用花几分钟来等待重新生成缓存数据（当缓存数据突然从内存中消失时），因此上面的方法可以全面提高性能。</p>
+<h2 id="10memcached是如何做身份验证的">10、memcached是如何做身份验证的？</h2>
+<p>没有身份认证机制!memcached是运行在应用下层的软件（身份验证应该是应用上层的职责）。memcached的客户端和服务器端之所以是轻量级的，部分原因就是完全没有实现身份验证机制。这样，memcached可以很快地创建新连接，服务器端也无需任何配置。</p>
+<p>如果您希望限制访问，您可以使用防火墙，或者让memcached监听unix
+domainsocketo</p>
+<h2 id="11memcached的多线程是什么如何使用它们">11、memcached的多线程是什么？如何使用它们？</h2>
+<p>线程就是定律（threadsrule）!在StevenGrimm和Facebook的努力下，memcached1.2及更高版本拥有了多线程模式。多线程模式允许memcached能够充分利用多个CPU，并在CPU之间共享所有的缓存数据。memcached使用一种简单的锁机制来保证数据更新操作的互斥。相比在同一个物理机器上运行多个memcached实例，这种方式能够更有效地处理multigetso</p>
+<p>如果您的系统负载并不重，也许您不需要启用多线程工作模式。如果您在运行一个拥有大规模硬件的、庞大的网站，您将会看到多线程的好处。简单地总结一下:命令解析（memcached在这里花了大部分时间）可以运行在多线程模式下。memcached内部对数据的操作是基于很多全局锁的（因此这部分工作不是多线程的）。未来对多线程模式的改进，将移除大量的全局锁，提高memcached在负载极高的场景下的性能。</p>
+<h2 id="12memcached能接受的key的最大长度是多少">12、memcached能接受的key的最大长度是多少？</h2>
+<p>key的最大长度是250个字符。需要注意的是，250是memcached服务器端内部的限制，如果您使用的客户端支持&quot;key的前缀或类似特性，那么key（前缀+原始key）的最大长度是可以超过250个字符的。我们推荐使用使用较短的key，因为可以节省内存和带宽。</p>
+<h2 id="13memcached对item的过期时间有什么限制">13、memcached对item的过期时间有什么限制？</h2>
+<p>过期时间最大可以达到30天.memcached把传入的过期时间（时间段）解释成时间点后，一旦到了这个时间点，memcached就把item置为失效状态。这是一个简单但obscure的机制。</p>
+<h2 id="14memcached最大能存储多大的单个item">14、memcached最大能存储多大的单个item？</h2>
+<p>1MB。如果你的数据大于1MB，可以考虑在客户端压缩或拆分到多个key中</p>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/Memcached-001%E8%B6%85%E8%AF%A6%E7%BB%86%E8%A7%A3%E8%AF%BB/">Memcached 001超详细解读</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E8%AE%BA/">大数据 000数据分析方法论</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%93%8D%E4%BD%9C/">大数据-000数据分析操作</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析</a></li>
+        
+        <li><a href="../../products/%E5%AD%A6%E6%A0%A1-%E8%AF%BE%E5%A4%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/">学校-课外实践项目</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据 100数据集成调研">大数据 100数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Mysql-007基础知识">Mysql-007基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/" title="Mysql-006解读事务和MVVC原理">Mysql-006解读事务和MVVC原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/" title="Mysql-005浅谈Mysql架构体系">Mysql-005浅谈Mysql架构体系</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 010flume基础知识">大数据 010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 009kafka基础知识">大数据 009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 008hbase基础知识">大数据 008hbase基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 007clickhouse基础知识">大数据 007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 006impala基础知识">大数据 006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 005flink基础知识">大数据 005flink基础知识</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-100数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Java/">语言-Java (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Php/">语言-Php (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Python/">语言-Python (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
