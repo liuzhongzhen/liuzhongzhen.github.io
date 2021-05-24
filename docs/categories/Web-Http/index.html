@@ -90,11 +90,57 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://liuzhongzhen.github.io/post/Http-004CGI%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/">Http 004CGI相关概念介绍</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2015年1月4日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='../../categories/Web-Http'>Web-Http</a>
+            
+        </div>
+        
+        <div class="post-content">
+            1. CGI 1.1 CGI简介 CGI，（Common Gateway Interface）通用网关接口，是一个协议，是外部应用程序……
+            <p class="readmore"><a href="https://liuzhongzhen.github.io/post/Http-004CGI%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://liuzhongzhen.github.io/post/Http-003%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3cgi%E4%BB%8B%E7%BB%8D/">Http 003后台接口cgi介绍</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2015年1月3日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='../../categories/Web-Http'>Web-Http</a>
+            
+        </div>
+        
+        <div class="post-content">
+            转载外部 背景 在腾讯，一个非常让我困惑和别扭的东西，就是在这里会经常听到 CGI 这个词。 我一直很疑问:CGI……
+            <p class="readmore"><a href="https://liuzhongzhen.github.io/post/Http-003%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3cgi%E4%BB%8B%E7%BB%8D/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://liuzhongzhen.github.io/post/Http-002Cookies/">Http-002Cookies介绍</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年1月2日
+            2015年1月2日
         </date>
         
         <div class="post-meta meta-category">
@@ -106,14 +152,29 @@
         
         <div class="post-content">
             <p><strong>转载外部</strong></p>
-<h3 id="什么是cookie">什么是Cookie</h3>
+<h3 id="什么是cooki">什么是Cooki</h3>
 <p>Cookie用于存储http请求中的用户认证信息，用户在通过登录认证后，服务器在response header中设置Cookie，用户浏览器自动带Cookie访问该网站。</p>
 <h3 id="response-中的-cookie">response 中的 Cookie</h3>
 <p>response header 中添加 <code>Set-Cookie</code>信息，cookie是一组key，value值。</p>
-<pre><code>Set-Cookie: &lt;name&gt;=&lt;value&gt;[; &lt;name&gt;=&lt;value&gt;]...
-            [; expires=&lt;date&gt;][; domain=&lt;domain_name&gt;]
-            [; path=&lt;some_path&gt;][; secure][; httponly]
-</code></pre>……
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">……
             <p class="readmore"><a href="https://liuzhongzhen.github.io/post/Http-002Cookies/">阅读全文</a></p>
         </div>
     </article>
@@ -125,7 +186,7 @@
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年1月1日
+            2015年1月1日
         </date>
         
         <div class="post-meta meta-category">
@@ -248,7 +309,7 @@
         <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
 <ul class="widget-list">
     
-    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (2)</a></li>
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (4)</a></li>
     
     <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (3)</a></li>
     

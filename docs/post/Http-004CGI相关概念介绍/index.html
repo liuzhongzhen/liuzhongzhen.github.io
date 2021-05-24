@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Http 004CGI相关概念介绍 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="Http 004CGI相关概念介绍 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2015-01-04T07:44:53&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2015-01-04T07:44:53&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="Http 004CGI相关概念介绍">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/Http-004CGI%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-cgi">1. CGI</a>
+      <ul>
+        <li><a href="#11-cgi简介">1.1 CGI简介</a></li>
+        <li><a href="#12-web服务器与cgi程序的交互">1.2 Web服务器与CGI程序的交互</a></li>
+        <li><a href="#13-cgi工作原理">1.3 CGI工作原理</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-fastcgi">2. FastCGI</a>
+      <ul>
+        <li><a href="#21-fastcgi简介">2.1 FastCGI简介</a></li>
+        <li><a href="#22-fastcgi工作原理">2.2 FastCGI工作原理</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-wsgi">3. WSGI</a></li>
+    <li><a href="#4-uwsgi">4. uwsgi</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#5-uwsgi">5. uWSGI</a></li>
+    <li><a href="#6-区分wsgi--uwsgi--uwsgi">6. 区分WSGI / uwsgi / uWSGI</a></li>
+    <li><a href="#7-这些名词的关系">7. 这些名词的关系</a></li>
+    <li><a href="#8-有uwgsi了django为什么还需要nginx">8. 有uWGSI了Django为什么还需要Nginx</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Http 004CGI相关概念介绍</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2015年1月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/Web-Http'>Web-Http</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="1-cgi">1. CGI</h2>
+<h3 id="11-cgi简介">1.1 CGI简介</h3>
+<p>CGI，（Common Gateway Interface）通用网关接口，是一个协议，是外部应用程序（CGI程序）与WEB服务器之间的接口标准，该协议定义了Web服务器调用外部应用程序的时候需要输入的参数和给Web服务器的返回结果。</p>
+<p>最早的Web服务器简单地响应浏览器发来的HTTP请求，并将存储在服务器上的HTML文件返回给浏览器，也就是静态html。事物总是不断发展，网站也越来越复杂，所以出现动态技术。但是服务器并不能直接运行php，asp这样的文件，自己不能做，外包给别人吧，但是要与第三做个约定，我给你什么，然后你给我什么，就是握把请求参数发送给你，然后我接收你的处理结果给客户端。那这个约定就是 common gateway interface，简称cgi(通用网管协议)。这个协议可以用vb，c，php，python来实现。cgi只是接口协议，根本不是什么语言。</p>
+<p>
+        <img class="mx-auto" alt="cgi" src="../../imgs/post/web/a03.png" />   
+    </p>
+<h3 id="12-web服务器与cgi程序的交互">1.2 Web服务器与CGI程序的交互</h3>
+<p>WEB服务器将根据CGI程序的类型决定数据向CGI程序的传送方式，一般是通过标准输入/输出流和环境变量来与CGI程序间传递数据。 如下图所示：
+
+        <img class="mx-auto" alt="cgi" src="../../imgs/post/web/a04.png" />   
+    </p>
+<p>CGI程序通过标准输入（STDIN）和标准输出（STDOUT）来进行输入输出。此外CGI程序还通过环境变量来得到输入，操作系统提供了许多环境变量，它们定义了程序的执行环境，应用程序可以存取它们。Web服务器和CGI接口又另外设置了一些环境变量，用来向CGI程序传递一些重要的参数。
+常用CGI环境变量：</p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CONTENT_TYPE</td>
+<td>这个环境变量的值指示所传递来的信息的MIME类型。目前，环境变量CONTENT_TYPE一般都是：application/x-www-form-urlencoded,他表示数据来自于HTML表单。</td>
+</tr>
+<tr>
+<td>CONTENT_LENGTH</td>
+<td>如果服务器与CGI程序信息的传递方式是POST，这个环境变量即使从标准输入STDIN中可以读到的有效数据的字节数。这个环境变量在读取所输入的数据时必须使用。</td>
+</tr>
+<tr>
+<td>HTTP_COOKIE</td>
+<td>客户机内的 COOKIE 内容。</td>
+</tr>
+<tr>
+<td>HTTP_USER_AGENT</td>
+<td>提供包含了版本数或其他专有数据的客户浏览器信息。</td>
+</tr>
+<tr>
+<td>PATH_INFO</td>
+<td>这个环境变量的值表示紧接在CGI程序名之后的其他路径信息。它常常作为CGI程序的参数出现。</td>
+</tr>
+<tr>
+<td>QUERY_STRING</td>
+<td>如果服务器与CGI程序信息的传递方式是GET，这个环境变量的值即使所传递的信息。这个信息经跟在CGI程序名的后面，两者中间用一个问号’?’分隔。</td>
+</tr>
+<tr>
+<td>REMOTE_ADDR</td>
+<td>这个环境变量的值是发送请求的客户机的IP地址，例如上面的192.168.1.67。这个值总是存在的。而且它是Web客户机需要提供给Web服务器的唯一标识，可以在CGI程序中用它来区分不同的Web客户机。</td>
+</tr>
+<tr>
+<td>REMOTE_HOST</td>
+<td>这个环境变量的值包含发送CGI请求的客户机的主机名。如果不支持你想查询，则无需定义此环境变量。</td>
+</tr>
+<tr>
+<td>REQUEST_METHOD</td>
+<td>提供脚本被调用的方法。对于使用 HTTP/1.0 协议的脚本，仅 GET 和 POST 有意义。</td>
+</tr>
+<tr>
+<td>SCRIPT_FILENAME</td>
+<td>CGI脚本的完整路径</td>
+</tr>
+<tr>
+<td>SCRIPT_NAME</td>
+<td>CGI脚本的的名称</td>
+</tr>
+<tr>
+<td>SERVER_NAME</td>
+<td>这是你的 WEB 服务器的主机名、别名或IP地址。</td>
+</tr>
+<tr>
+<td>SERVER_SOFTWARE</td>
+<td>这个环境变量的值包含了调用CGI程序的HTTP服务器的名称和版本号。例如，上面的值为Apache/2.2.14(Unix)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-cgi工作原理">1.3 CGI工作原理</h3>
+<p>每当客户请求CGI的时候，WEB服务器就请求操作系统生成一个新的CGI解释器进程(如php-cgi.exe)，CGI 的一个进程则处理完一个请求后退出，下一个请求来时再创建新进程。当然，这样在访问量很少没有并发的情况也行。但当访问量增大，并发存在，这种方式就不适合了，于是就有了FastCGI。</p>
+<h2 id="2-fastcgi">2. FastCGI</h2>
+<h3 id="21-fastcgi简介">2.1 FastCGI简介</h3>
+<p>CGI的一个扩展，像是一个常驻(long-live)型的CGI ，废除了 CGI fork-and-execute （来一个请求 fork 一个新进程处理，处理完再把进程 kill 掉）的工作方式，转而使用一种长生存期的方法，减少了进程消耗，提升了性能。</p>
+<h3 id="22-fastcgi工作原理">2.2 FastCGI工作原理</h3>
+<ol>
+<li>Web Server启动时载入FastCGI进程管理器（IIS ISAPI或Apache Module)</li>
+<li>FastCGI进程管理器自身初始化，启动多个CGI解释器进程(可见多个php-cgi)并等待来自Web Server的连接。</li>
+<li>当客户端请求到达Web Server时，FastCGI进程管理器选择并连接到一个CGI解释器。Web server将CGI环境变量和标准输入发送到FastCGI子进程php-cgi。</li>
+<li>FastCGI子进程完成处理后将标准输出和错误信息从同一连接返回Web Server。当FastCGI子进程关闭连接时，请求便告处理完成。FastCGI子进程接着等待并处理来自FastCGI进程管理器(运行在Web Server中)的下一个连接。 在CGI模式中，php-cgi在此便退出了。</li>
+</ol>
+<h2 id="3-wsgi">3. WSGI</h2>
+<p>WSGI，（WEB SERVER GATEWAY INTERFACE），Web服务器网关接口，是一种Web服务器网关接口，它是一个Web服务器（如Nginx，uWSGI等服务器）与web应用（如Flask框架写的程序）通信的一种规范。</p>
+<p>当前运行在WSGI协议之上的Web框架有Bottle，Flask，Django</p>
+<h2 id="4-uwsgi">4. uwsgi</h2>
+<p>uwsgi是一种线路协议，是uWSGI服务器的独占协议，用于定义传输信息的类型（type of information），每一个uwsgi packet前4 byte为传输信息类型的描述，与WSGI协议是两种东西。</p>
+<p>对于uwsgi，个人比较认同
+<a href="https://baijiahao.baidu.com/s?id=1590941335729952485&amp;wfr=spider&amp;for=pc">https://baijiahao.baidu.com/s?id=1590941335729952485&amp;wfr=spider&amp;for=pc</a>的观点，
+&ldquo;它是用于前端服务器与 uwsgi 的通信规范，相当于 FastCGI的作用&rdquo;.</p>
+<p>相信大家在学习web开发的过程中一定会遇到 cgi、 wsgi 之类的名词，然后看着他们十分相似的解释估计还没开始写代码就晕了，这都什么鬼？</p>
+<p>反正我最开始学习那会儿就不知道这些都是个啥，我也推荐学习过程不要纠结于某个词语的解释。当你拥有一定开发经验，对 web 开发有一个更系统的认识后回过头来看之前的疑惑也许就迎刃而解了，今天我就谈谈当初对这些看着十分相似的名词的浅见：</p>
+<p>CGI(Common Gateway Inteface): 字面意思就是通用网关接口，我觉得之所以看字面意思跟没看一样是因为这个称呼本身很学术，所以对于通俗的理解就存在一定困难，这里我觉得直接把 Gateway 当作 server 理解就好。</p>
+<p>它是外部应用程序与Web服务器之间的接口标准</p>
+<p>意思就是它用来规定一个程序该如何与web服务器程序之间通信从而可以让这个程序跑在web服务器上。当然，CGI 只是一个很基本的协议，在现代常见的服务器结构中基本已经没有了它的身影，更多的则是它的扩展和更新。</p>
+<p>在讲更进一步之前首先我们要了解目前比较常见的服务端结构：</p>
+<p>假设我们使用 python 的 Django 框架写了一个网站，现在要将它挂在网上运行，我们一般需要：</p>
+<ul>
+<li>nginx 做为代理服务器：负责静态资源发送（js、css、图片等）、动态请求转发以及结果的回复；</li>
+<li>uWSGI 做为后端服务器：负责接收 nginx 请求转发并处理后发给 Django 应用以及接收 Django 应用返回信息转发给 nginx；</li>
+<li>Django 应用收到请求后处理数据并渲染相应的返回页面给 uWSGI 服务器。</li>
+</ul>
+<h4 id="接下来的协议及接口就是应用在以上三者之间">接下来的协议及接口就是应用在以上三者之间:</h4>
+<p>FastCGI: CGI的一个扩展， 提升了性能，废除了 CGI fork-and-execute （来一个请求 fork 一个新进程处理，处理完再把进程 kill 掉）的工作方式，转而使用一种长生存期的方法，减少了进程消耗，提升了性能。
+这里 FastCGI 就应用于前端 server（nginx）与后端 server（uWSGI）的通信中，制定规范等等，让前后端服务器可以顺利理解双方都在说什么（当然 uWSGI 本身并不用 FastCGI, 它有另外的协议）</p>
+<p>WSGI（Python Web Server GateWay Interface）:它是用在 python web 框架编写的应用程序与后端服务器之间的规范（本例就是 Django 和 uWSGI 之间），让你写的应用程序可以与后端服务器顺利通信。在 WSGI 出现之前你不得不专门为某个后端服务器而写特定的 API，并且无法更换后端服务器，而 WSGI 就是一种统一规范， 所有使用 WSGI 的服务器都可以运行使用 WSGI 规范的 web 框架，反之亦然。</p>
+<p>uWSGI: 是一个Web服务器，它实现了WSGI协议、uwsgi、http等协议。用于接收前端服务器转发的动态请求并处理后发给 web 应用程序。<a href="https://uwsgi-docs.readthedocs.io/en/latest/#">官网</a></p>
+<p>uwsgi: 是uWSGI服务器实现的独有的协议， 网上没有明确的说明这个协议是用在哪里的，我个人认为它是用于前端服务器与 uwsgi 的通信规范，相当于 FastCGI的作用。当然这只是个人见解，我在知乎进行了相关提问，欢迎共同讨论。</p>
+<p>简单来讲，这些名词的关系就是下图：
+
+        <img class="mx-auto" alt="cgi" src="../../imgs/post/web/a05.png" />   
+    </p>
+<p>对于 CGI ，我认为在 CGI 制定的时候也许没有考虑到现代的架构，所以他只是一个通用的规范，而后来的 WSGI 也好 Fastcgi 也好等等这些都是在 CGI 的基础上扩展并应用于现代Web Server 不同地方的通信规范， 所以我在图中将 CGI 标注在整个流程之上。</p>
+<p>做为一个 Python Web 开发者，相信以上流程我们最关注的莫过于 WSGI 这里所做的事，了解熟悉这里的规范不仅可以让我们更快速的开发 Web 应用同时我们也可以自己实现一个后端 Server 。</p>
+<h2 id="5-uwsgi">5. uWSGI</h2>
+<ul>
+<li>uWSGI是一个Web服务器，它实现了WSGI协议、uwsgi、http等协议。</li>
+<li>uWSGI也可以当做中间件。</li>
+<li>如果是Nginx+uWSGI+App，那uWSGI就是一个中间件</li>
+<li>如果是uWSGI+App，那它就是服务器</li>
+</ul>
+<h2 id="6-区分wsgi--uwsgi--uwsgi">6. 区分WSGI / uwsgi / uWSGI</h2>
+<ul>
+<li>WSGI是一种通信协议</li>
+<li>uwsgi是一种通信协议，常用于在uWSGI服务器与其他网络服务器的数据通信</li>
+<li>而uWSGI是实现了uwsgi和WSGI两种协议的Web服务器</li>
+</ul>
+<p>百度百科上说uwsgi是一种线路协议而不是通信协议，个人更倾向于uwsgi是类似WSGI的通信协议的说法，uwsgi和WSGI都是基于CGI扩展出来的。</p>
+<h2 id="7-这些名词的关系">7. 这些名词的关系</h2>
+<p>假设我们使用 python 的 Django 框架写了一个网站，现在要将它挂在网上运行，我们一般需要：</p>
+<ul>
+<li>Nginx 做为代理服务器：负责静态资源发送（js、css、图片等）、动态请求转发以及结果的回复。</li>
+<li>uWSGI 做为后端服务器：负责接收 Nginx 转发的请求并处理后发给 Django 应用以及接收 Django 应用返回信息转发给 Nginx。</li>
+<li>Django 应用收到请求后处理数据并渲染相应的返回页面给 uWSGI 服务器。</li>
+</ul>
+<p>
+        <img class="mx-auto" alt="cgi" src="../../imgs/post/web/a06.png" />   
+    </p>
+<h2 id="8-有uwgsi了django为什么还需要nginx">8. 有uWGSI了Django为什么还需要Nginx</h2>
+<p>Nginx是一个HTTP和反向代理服务器</p>
+<ul>
+<li>
+<p>正向代理</p>
+<p>正向的就是由浏览器主动的想代理服务器发出请求，经代理服务器做出处理后再转给目标服务器</p>
+</li>
+<li>
+<p>反向代理</p>
+<p>反向的就是不管浏览器同不同意，请求都会经过代理服务器处理再发给目标服务器</p>
+</li>
+</ul>
+<p>更多关于正向代理和反向代理的内容可参考：https://www.cnblogs.com/Anker/p/6056540.html</p>
+<p>使用Nginx作为反向代理服务器的好处：</p>
+<ol>
+<li>
+<p>安全</p>
+<p>不管什么请求都要经过代理服务器，可以避免外部程序直接攻击Web服务器</p>
+</li>
+<li>
+<p>负载均衡</p>
+<p>根据请求情况和服务器负载情况，将请求分配给不同的Web服务器，保证服务器性能</p>
+</li>
+<li>
+<p>提高Web服务器的IO性能</p>
+<p>请求从客户端传到Web服务器是需要时间的，传递多长时间就会让这个进程阻塞多长时间，而通过反向代理，就可以由反向代理完整接受该请求，然后再传给Web服务器，从而保证服务器性能，而且有的一些简单的事情（比如静态文件）可以直接由反向代理处理，不经过Web服务器</p>
+</li>
+</ol>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/Http-003%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3cgi%E4%BB%8B%E7%BB%8D/">Http 003后台接口cgi介绍</a></li>
+        
+        <li><a href="../../post/Http-002Cookies/">Http-002Cookies介绍</a></li>
+        
+        <li><a href="../../post/Http-001%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86/">Http-001协议原理</a></li>
+        
+        <li><a href="../../post/Php-010%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/">Php-010基础面试题</a></li>
+        
+        <li><a href="../../post/Php-009%E6%8F%90%E9%AB%98php%E6%95%88%E7%8E%8750%E7%82%B9/">Php-009提高php效率50点</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据 100数据集成调研">大数据 100数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Mysql-007基础知识">Mysql-007基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/" title="Mysql-006解读事务和MVVC原理">Mysql-006解读事务和MVVC原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/" title="Mysql-005浅谈Mysql架构体系">Mysql-005浅谈Mysql架构体系</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 010flume基础知识">大数据 010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 009kafka基础知识">大数据 009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 008hbase基础知识">大数据 008hbase基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 007clickhouse基础知识">大数据 007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 006impala基础知识">大数据 006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 005flink基础知识">大数据 005flink基础知识</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-100数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Java/">语言-Java (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Php/">语言-Php (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Python/">语言-Python (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
