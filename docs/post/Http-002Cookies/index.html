@@ -222,26 +222,25 @@
 <p>response header 中添加 <code>Set-Cookie</code>信息，cookie是一组key，value值。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-e></td></tr></table>
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Set-Cookie: &lt;name&gt;<span style="color:#000;font-weight:bold">=</span>&lt;value&gt;<span style="color:#000;font-weight:bold">[</span>; &lt;name&gt;<span style="color:#000;font-weight:bold">=</span>&lt;value&gt;<span style="color:#000;font-weight:bold">]</span>...
+            <span style="color:#000;font-weight:bold">[</span>; <span style="color:#008080">expires</span><span style="color:#000;font-weight:bold">=</span>&lt;date&gt;<span style="color:#000;font-weight:bold">][</span>; <span style="color:#008080">domain</span><span style="color:#000;font-weight:bold">=</span>&lt;domain_name&gt;<span style="color:#000;font-weight:bold">]</span>
+            <span style="color:#000;font-weight:bold">[</span>; <span style="color:#008080">path</span><span style="color:#000;font-weight:bold">=</span>&lt;some_path&gt;<span style="color:#000;font-weight:bold">][</span>; secure<span style="color:#000;font-weight:bold">][</span>; httponly<span style="color:#000;font-weight:bold">]</span>
+</code></pre></td></tr></table>
 </div>
-</div><h3 id="request-中的-cookie">request 中的 Cookie</h3>
+</div><ul>
+<li>expires Cookie过期时间</li>
+<li>domain Cookie的生效域</li>
+<li>path Cookie的生效路径</li>
+<li>secure 表示cookie只能被发送到http服务器</li>
+<li>httponly 表示cookie不能被客户端脚本获取到</li>
+</ul>
+<p>不带expires的Cookie表示临时Cookie只在当前会话有效，关闭浏览器Cookie实效。</p>
+<h3 id="request-中的-cookie">request 中的 Cookie</h3>
 <p>浏览器在接受的response中如果发现有<code>Set-Cookie</code>头，则在下一个request中设置<code>Cookie</code>头，如果有expires还要判断Cookie是否过期，reqeust中的cookie没有expires字段，
 如果是临时Cookie，浏览器直接保存在内存中，带expire的cookie如果未过期保存硬盘中，浏览器自动删除过期的Cookie，所有服务器要删除Cookie就是重新发送带<code>Set-Cookie</code>并且expires
 早与当前时间的Cookie。</p>
@@ -403,7 +402,7 @@ e></td></tr></table>
         <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
 <ul class="widget-list">
     
-    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (4)</a></li>
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (5)</a></li>
     
     <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (3)</a></li>
     
