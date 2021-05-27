@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Redis 001高可用最佳实践 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="Redis 001高可用最佳实践 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2013-07-01T11:17:16&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2013-07-01T11:17:16&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="Redis 001高可用最佳实践">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/Redis-001%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1前言">1、前言</a></li>
+    <li><a href="#2sentinel-原理">2、Sentinel 原理</a></li>
+    <li><a href="#3redis-高可用架构">3、Redis 高可用架构</a></li>
+    <li><a href="#31-redis-sentinel-集群--内网-dns--自定义脚本">3.1 Redis Sentinel 集群 + 内网 DNS + 自定义脚本</a></li>
+    <li><a href="#32-redis-sentinel-集群--vip--自定义脚本">3.2 Redis Sentinel 集群 + VIP + 自定义脚本</a></li>
+    <li><a href="#33-封装客户端直连-redis-sentinel-端口">3.3 封装客户端直连 Redis Sentinel 端口</a></li>
+    <li><a href="#34-redis-sentinel-集群--keepalivedhaproxy">3.4 Redis Sentinel 集群 + Keepalived/Haproxy</a></li>
+    <li><a href="#35-redis-ms--keepalived">3.5 Redis M/S + Keepalived</a></li>
+    <li><a href="#36-redis-cluster">3.6 Redis Cluster</a></li>
+    <li><a href="#37-twemproxy">3.7 Twemproxy</a></li>
+    <li><a href="#38-codis">3.8 Codis</a></li>
+    <li><a href="#4最佳实践">4.最佳实践</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Redis 001高可用最佳实践</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2013年7月1日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E7%BC%93%E5%AD%98-Redis'>缓存-Redis</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="1前言">1、前言</h2>
+<p>2017 年 5 月 13 日，应用性能管理大讲堂广州站圆满落幕，其中来自三七互娱的 DBA 温国兵在会场与各位进行了精彩的 Redis 技术分享。</p>
+<p>Redis 是一个开源的使用 ANSI C 语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value 数据库，并提供多种语言的 API。</p>
+<p>如今，互联网业务的数据正以更快的速度在增长，数据类型越来越丰富，这对数据处理的速度和能力提出了更高要求。Redis 是一种开源的内存非关系型数据库，给开发人员带来的体验是颠覆性的。在自始至终的设计过程中，都充分考虑高性能，这使得 Redis 成为当今速度最快的 NoSQL 数据库。</p>
+<p>考虑高性能的同时，高可用也是很重要的考虑因素。互联网 7x24 无间断服务，在故障期间以最快的速度 Failover，能给企业带来最小的损失。</p>
+<p>那么，在实际应用中，都有哪些高可用架构呢？架构之间有何优劣？我们应该怎么取舍？有哪些最佳实践？</p>
+<h2 id="2sentinel-原理">2、Sentinel 原理</h2>
+<p>在讲解 Redis 高可用方案之前，我们先来看看 Redis Sentinel 原理是怎么样的。</p>
+<ol>
+<li>
+<p>Sentinel 集群通过给定的配置文件发现 master，启动时会监控 master。通过向 master 发送 info 信息获得该服务器下面的所有从服务器。</p>
+</li>
+<li>
+<p>Sentinel 集群通过命令连接向被监视的主从服务器发送 hello 信息 (每秒一次)，该信息包括 Sentinel 本身的 IP、端口、id 等内容，以此来向其他 Sentinel 宣告自己的存在。</p>
+</li>
+<li>
+<p>Sentinel 集群通过订阅连接接收其他 Sentinel 发送的 hello 信息，以此来发现监视同一个主服务器的其他 Sentinel；集群之间会互相创建命令连接用于通信，因为已经有主从服务器作为发送和接收 hello 信息的中介，Sentinel 之间不会创建订阅连接。</p>
+</li>
+<li>
+<p>Sentinel 集群使用 ping 命令来检测实例的状态，如果在指定的时间内（down-after-milliseconds）没有回复或则返回错误的回复，那么该实例被判为下线。</p>
+</li>
+<li>
+<p>当 failover 主备切换被触发后，failover 并不会马上进行，还需要 Sentinel 中的大多数 Sentinel 授权后才可以进行 failover，即进行 failover 的 Sentinel 会去获得指定 quorum 个的 Sentinel 的授权，成功后进入 ODOWN 状态。如在 5 个 Sentinel 中配置了 2 个 quorum，等到 2 个 Sentinel 认为 master 死了就执行 failover。</p>
+</li>
+<li>
+<p>Sentinel 向选为 master 的 slave 发送 SLAVEOF NO ONE 命令，选择 slave 的条件是 Sentinel 首先会根据 slaves 的优先级来进行排序，优先级越小排名越靠前。如果优先级相同，则查看复制的下标，哪个从 master 接收的复制数据多，哪个就靠前。如果优先级和下标都相同，就选择进程 ID 较小的。</p>
+</li>
+<li>
+<p>Sentinel 被授权后，它将会获得宕掉的 master 的一份最新配置版本号 (config-epoch)，当 failover 执行结束以后，这个版本号将会被用于最新的配置，通过广播形式通知其它 Sentinel，其它的 Sentinel 则更新对应 master 的配置。</p>
+</li>
+</ol>
+<p>其中：</p>
+<p>1 到 3 是自动发现机制:</p>
+<pre><code>以 10 秒一次的频率，向被监视的 master 发送 info 命令，根据回复获取 master 当前信息。
+以 1 秒一次的频率，向所有 redis 服务器、包含 Sentinel 在内发送 PING 命令，通过回复判断服务器是否在线。
+以 2 秒一次的频率，通过向所有被监视的 master，slave 服务器发送当前 Sentinel master 信息的消息。
+</code></pre>
+<p>4 是检测机制，<br>
+5 和 6 是 failover 机制，<br>
+7 是更新配置机制。[1]</p>
+<h2 id="3redis-高可用架构">3、Redis 高可用架构</h2>
+<p>讲解完 Redis Sentinel 原理之后，接下来讲解常用的 Redis 高可用架构。</p>
+<ol>
+<li>Redis Sentinel 集群 + 内网 DNS + 自定义脚本</li>
+<li>Redis Sentinel 集群 + VIP + 自定义脚本</li>
+<li>封装客户端直连 Redis Sentinel 端口
+<ul>
+<li>JedisSentinelPool，适合 Java</li>
+<li>PHP 基于 phpredis 自行封装</li>
+</ul>
+</li>
+<li>Redis Sentinel 集群 + Keepalived/Haproxy</li>
+<li>Redis M/S + Keepalived</li>
+<li>Redis Cluster</li>
+<li>Twemproxy</li>
+<li>Codis</li>
+<li>Tendis</li>
+</ol>
+<h2 id="31-redis-sentinel-集群--内网-dns--自定义脚本">3.1 Redis Sentinel 集群 + 内网 DNS + 自定义脚本</h2>
+<p>
+        <img class="mx-auto" alt="redis" src="../../imgs/post/redis/a001.png" />   
+    </p>
+<p>上图是已经在线上环境应用的方案。底层是 Redis Sentinel 集群，代理着 Redis 主从，Web 端连接内网 DNS 提供服务。内网 DNS 按照一定的规则分配，比如 <code>xxxx.redis.cache/queue.port.xxx.xxx</code>，</p>
+<p>第一个段表示业务简写，第二个段表示这是 Redis 内网域名，第三个段表示 Redis 类型，cache 表示缓存，queue 表示队列，第四个段表示 Redis 端口，第五、第六个段表示内网主域名。</p>
+<p>当主节点发生故障，比如机器故障、Redis 节点故障或者网络不可达，Sentinel 集群会调用 <code>client-reconfig-script</code> 配置的脚本，修改对应端口的内网域名。对应端口的内网域名指向新的 Redis 主节点。</p>
+<p>优点：</p>
+<ul>
+<li>秒级切换，在 10s 内完成整个切换操作</li>
+<li>脚本自定义，架构可控</li>
+<li>对应用透明，前端不用担心后端发生什么变化</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>维护成本略高，Redis Sentinel 集群建议投入 3 台机器以上</li>
+<li>依赖 DNS，存在解析延时</li>
+<li>Sentinel 模式存在短时间的服务不可用</li>
+<li>服务通过外网访问不可采用此方案</li>
+</ul>
+<h2 id="32-redis-sentinel-集群--vip--自定义脚本">3.2 Redis Sentinel 集群 + VIP + 自定义脚本</h2>
+<p>
+        <img class="mx-auto" alt="redis" src="../../imgs/post/redis/a002.png" />   
+    </p>
+<p>此方案和上一个方案相比，略有不同。第一个方案使用了内网 DNS，第二个方案把内网 DNS 换成了虚拟 IP。底层是 Redis Sentinel 集群，代理着 Redis 主从，Web 端通过 VIP 提供服务。</p>
+<p>在部署 Redis 主从的时候，需要将虚拟 IP 绑定到当前的 Redis 主节点。当主节点发生故障，比如机器故障、Redis 节点故障或者网络不可达，Sentinel 集群会调用 client-reconfig-script 配置的脚本，将 VIP 漂移到新的主节点上。</p>
+<p>优点：</p>
+<ul>
+<li>秒级切换，在 5s 内完成整个切换操作</li>
+<li>脚本自定义，架构可控</li>
+<li>对应用透明，前端不用担心后端发生什么变化</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>维护成本略高，Redis Sentinel 集群建议投入 3 台机器以上</li>
+<li>使用 VIP 增加维护成本，存在 IP 混乱风险</li>
+<li>Sentinel 模式存在短时间的服务不可用</li>
+</ul>
+<h2 id="33-封装客户端直连-redis-sentinel-端口">3.3 封装客户端直连 Redis Sentinel 端口</h2>
+<p>
+        <img class="mx-auto" alt="redis" src="../../imgs/post/redis/a003.png" />   
+    </p>
+<p>部分业务只能通过外网访问 Redis，上述两种方案均不可用，于是衍生出了这种方案。Web 使用客户端连接其中一台 Redis Sentinel 集群中的一台机器的某个端口，然后通过这个端口获取到当前的主节点，
+然后再连接到真实的 Redis 主节点进行相应的业务员操作。需要注意的是，Redis Sentinel 端口和 Redis 主节点均需要开放访问权限。如果前端业务使用 Java，有 JedisSentinelPool 可以复用；如果前端业务使用 PHP，可以在 phpredis 的基础上做二次封装。</p>
+<p>优点：</p>
+<ul>
+<li>服务探测故障及时</li>
+<li>DBA 维护成本低</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>依赖客户端支持 Sentinel</li>
+<li>Sentinel 服务器和 Redis 节点需要开放访问权限</li>
+<li>对应用有侵入性</li>
+</ul>
+<h2 id="34-redis-sentinel-集群--keepalivedhaproxy">3.4 Redis Sentinel 集群 + Keepalived/Haproxy</h2>
+<p>
+        <img class="mx-auto" alt="redis" src="../../imgs/post/redis/a004.png" />   
+    </p>
+<p>底层是 Redis Sentinel 集群，代理着 Redis 主从，Web 端通过 VIP 提供服务。当主节点发生故障，比如机器故障、Redis 节点故障或者网络不可达，Redis 之间的切换通过 Redis Sentinel 内部机制保障，VIP 切换通过 Keepalived 保障。</p>
+<p>优点：</p>
+<ul>
+<li>秒级切换</li>
+<li>对应用透明</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>维护成本高</li>
+<li>存在脑裂</li>
+<li>Sentinel 模式存在短时间的服务不可用</li>
+</ul>
+<h2 id="35-redis-ms--keepalived">3.5 Redis M/S + Keepalived</h2>
+<p>
+        <img class="mx-auto" alt="redis" src="../../imgs/post/redis/a005.png" />   
+    </p>
+<p>此方案没有使用到 Redis Sentinel。此方案使用了原生的主从和 Keepalived，VIP 切换通过 Keepalived 保障，Redis 主从之间的切换需要自定义脚本实现。</p>
+<p>优点：</p>
+<ul>
+<li>秒级切换</li>
+<li>对应用透明</li>
+<li>部署简单，维护成本低</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>需要脚本实现切换功能</li>
+<li>存在脑裂</li>
+</ul>
+<h2 id="36-redis-cluster">3.6 Redis Cluster</h2>
+<p>
+        <img class="mx-auto" alt="redis" src="../../imgs/post/redis/a006.png" />   
+    </p>
+<p>Redis 3.0.0 在 2015 年 4 月 2 日正式发布，距今已有两年多的时间。Redis 集群采用 P2P 模式，无中心化。把 key 分成 16384 个 slot，每个实例负责一部分 slot。客户端请求对应的数据，
+若该实例 slot 没有对应的数据，该实例会转发给对应的实例。另外，Redis 集群通过 Gossip 协议同步节点信息。</p>
+<p>优点：</p>
+<ul>
+<li>组件 all-in-box，部署简单，节约机器资源</li>
+<li>性能比 proxy 模式好</li>
+<li>自动故障转移、Slot 迁移中数据可用</li>
+<li>官方原生集群方案，更新与支持有保障</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>架构比较新，最佳实践较少</li>
+<li>多键操作支持有限（驱动可以曲线救国）</li>
+<li>为了性能提升，客户端需要缓存路由表信息</li>
+<li>节点发现、reshard 操作不够自动化</li>
+</ul>
+<h2 id="37-twemproxy">3.7 Twemproxy</h2>
+<p>
+        <img class="mx-auto" alt="redis" src="../../imgs/post/redis/a007.png" />   
+    </p>
+<p>多个同构 Twemproxy（配置相同）同时工作，接受客户端的请求，根据 hash 算法，转发给对应的 Redis。
+Twemproxy 方案比较成熟了，之前我们团队长期使用此方案，但是效果并不是很理想。一方面是定位问题比较困难，另一方面是它对自动剔除节点的支持不是很友好。</p>
+<p>优点：</p>
+<ul>
+<li>开发简单，对应用几乎透明</li>
+<li>历史悠久，方案成熟</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>代理影响性能</li>
+<li>LVS 和 Twemproxy 会有节点性能瓶颈</li>
+<li>Redis 扩容非常麻烦</li>
+<li>Twitter 内部已放弃使用该方案，新使用的架构未开源</li>
+</ul>
+<h2 id="38-codis">3.8 Codis</h2>
+<p>
+        <img class="mx-auto" alt="redis" src="../../imgs/post/redis/a008.png" />   
+    </p>
+<p>Codis 是由豌豆荚开源的产品，涉及组件众多，其中 ZooKeeper 存放路由表和代理节点元数据、分发 Codis-Config 的命令；Codis-Config 是集成管理工具，有 Web 界面供使用；
+Codis-Proxy 是一个兼容 Redis 协议的无状态代理；Codis-Redis 基于 Redis 2.8 版本二次开发，加入 slot 支持，方便迁移数据。</p>
+<p>优点：</p>
+<ul>
+<li>开发简单，对应用几乎透明</li>
+<li>性能比 Twemproxy 好</li>
+<li>有图形化界面，扩容容易，运维方便</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>代理依旧影响性能</li>
+<li>组件过多，需要很多机器资源</li>
+<li>修改了 Redis 代码，导致和官方无法同步，新特性跟进缓慢</li>
+<li>开发团队准备主推基于 Redis 改造的 reborndb</li>
+</ul>
+<h2 id="4最佳实践">4.最佳实践</h2>
+<p>所谓的最佳实践，都是最适合具体场景的实践。</p>
+<p>主推以下方案：</p>
+<ul>
+<li>Redis Sentinel 集群 + 内网 DNS + 自定义脚本</li>
+<li>Redis Sentinel 集群 + VIP + 自定义脚本</li>
+</ul>
+<p>以下是实战过程中总结出的最佳实践：</p>
+<ul>
+<li>Redis Sentinel 集群建议使用 &gt;= 5 台机器</li>
+<li>不同的大业务可以使用一套 Redis Sentinel 集群，代理该业务下的所有端口</li>
+<li>根据不同的业务划分好 Redis 端口范围</li>
+<li>自定义脚本建议采用 Python 实现，扩展便利</li>
+<li>自定义脚本需要注意判断当前的 Sentinel 角色</li>
+<li>自定义脚本传入参数：&lt;service_name&gt; <!-- raw HTML omitted --> <!-- raw HTML omitted --> &lt;from_ip&gt; &lt;from_port&gt; &lt;to_ip&gt; &lt;to_port&gt;</li>
+<li>自定义脚本需要远程 ssh 操作机器，建议使用 paramiko 库，避免重复建立 SSH 连接，消耗时间</li>
+<li>加速 SSH 连接，建议关闭以下两个参数
+<ul>
+<li>UseDNS no</li>
+<li>GSSAPIAuthentication no</li>
+</ul>
+</li>
+<li>微信或者邮件告警，建议 fork 一个进程，避免主进程阻塞</li>
+<li>自动切换和故障切换，所有操作建议在 15s 以内完成</li>
+</ul>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../products/%E8%85%BE%E8%AE%AF-%E7%BD%97%E7%9B%98BI%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/">腾讯-罗盘BI可视化平台</a></li>
+        
+        <li><a href="../../products/%E8%85%BE%E8%AE%AF-lhotse%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/">腾讯-Lhotse调度系统</a></li>
+        
+        <li><a href="../../post/Memcached-004%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Memcached 004安装教程</a></li>
+        
+        <li><a href="../../post/Memcached-003%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/">Memcached 003学习资源</a></li>
+        
+        <li><a href="../../post/Memcached-002%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/">Memcached 002常见面试题</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据 100数据集成调研">大数据 100数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Mysql-007基础知识">Mysql-007基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/" title="Mysql-006解读事务和MVVC原理">Mysql-006解读事务和MVVC原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/" title="Mysql-005浅谈Mysql架构体系">Mysql-005浅谈Mysql架构体系</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 010flume基础知识">大数据 010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 009kafka基础知识">大数据 009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 007clickhouse基础知识">大数据 007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 006impala基础知识">大数据 006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 005flink基础知识">大数据 005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 004spark基础知识">大数据 004spark基础知识</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-100数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Redis/">缓存-Redis (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Java/">语言-Java (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Php/">语言-Php (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Python/">语言-Python (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

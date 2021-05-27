@@ -7,14 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Wed, 21 Apr 2021 08:42:41 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Mar 2019 08:42:41 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>大数据 008hbase基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
-      <pubDate>Wed, 21 Apr 2021 08:42:41 +0800</pubDate>
+      <pubDate>Thu, 21 Mar 2019 08:42:41 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description></description>
+      <description>转载外部-HBase 内部探险 一、数据模型 1、重要概念回顾 Namespace（表命名空间）：将多个表分</description>
     </item>
     
   </channel>

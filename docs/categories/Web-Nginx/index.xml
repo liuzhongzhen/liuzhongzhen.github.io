@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 09 Jan 2018 22:57:56 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-Nginx/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Jan 2018 07:57:56 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-Nginx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nginx 004openResty内置变量</title>
+      <link>https://liuzhongzhen.github.io/post/Nginx-004openResty%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Wed, 10 Jan 2018 07:57:56 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Nginx-004openResty%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F/</guid>
+      <description>openResty变量 请求如下:http://baidu.com/liveroom?d=10&amp;amp</description>
+    </item>
+    
     <item>
       <title>Nginx 003nginx返回码</title>
       <link>https://liuzhongzhen.github.io/post/Nginx-003nginx%E8%BF%94%E5%9B%9E%E7%A0%81/</link>
@@ -18,12 +27,12 @@
     </item>
     
     <item>
-      <title>Nginx 002http_range详解</title>
-      <link>https://liuzhongzhen.github.io/post/Nginx-002http_range%E8%AF%A6%E8%A7%A3/</link>
+      <title>Nginx 002openResty中lua库查找路径</title>
+      <link>https://liuzhongzhen.github.io/post/Nginx-002openResty%E4%B8%ADlua%E5%BA%93%E6%9F%A5%E6%89%BE%E8%B7%AF%E5%BE%84/</link>
       <pubDate>Mon, 08 Jan 2018 22:57:56 +0800</pubDate>
       
-      <guid>https://liuzhongzhen.github.io/post/Nginx-002http_range%E8%AF%A6%E8%A7%A3/</guid>
-      <description>Range，是在 HTTP/1.1（http://www.w3.org/Protocols/rfc26</description>
+      <guid>https://liuzhongzhen.github.io/post/Nginx-002openResty%E4%B8%ADlua%E5%BA%93%E6%9F%A5%E6%89%BE%E8%B7%AF%E5%BE%84/</guid>
+      <description>no field package.preload[&#39;zlib&#39;] no file &#39;/usr/local/sandai/apana/lua/libs/zlib.lua&#39; no file &#39;/usr/local/sandai/apana/lua/zlib.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/site/lualib/zlib.ljbc&#39; no file &#39;/usr/local/services/openresty_httpsrv/site/lualib/zlib/init.ljbc&#39; no file &#39;/usr/local/services/openresty_httpsrv/lualib/zlib.ljbc&#39; no file &#39;/usr/local/services/openresty_httpsrv/lualib/zlib/init.ljbc&#39; no file &#39;/usr/local/services/openresty_httpsrv/site/lualib/zlib.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/site/lualib/zlib/init.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/lualib/zlib.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/lualib/zlib/init.lua&#39; no file &#39;./zlib.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/luajit/share/luajit-2.1.0-beta3/zlib.lua&#39; no file &#39;/usr/local/share/lua/5.1/zlib.lua&#39; no file &#39;/usr/local/share/lua/5.1/zlib/init.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/luajit/share/lua/5.1/zlib.lua&#39; no file</description>
     </item>
     
     <item>

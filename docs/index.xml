@@ -63,15 +63,6 @@
     </item>
     
     <item>
-      <title>大数据 008hbase基础知识</title>
-      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
-      <pubDate>Wed, 21 Apr 2021 08:42:41 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>大数据 007clickhouse基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 21 Apr 2021 08:42:33 +0800</pubDate>
@@ -177,15 +168,6 @@
       
       <guid>https://liuzhongzhen.github.io/about/</guid>
       <description>关于作者 性别：男 生日：1989.11 学历：本科 现居：广东省深圳市宝安区 籍贯：河北省衡水市故城县 地址：</description>
-    </item>
-    
-    <item>
-      <title>Python-001学习资料</title>
-      <link>https://liuzhongzhen.github.io/post/python-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</link>
-      <pubDate>Fri, 01 Jan 2021 18:38:16 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/post/python-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</guid>
-      <description>常用开发框架 名字 链接 项目 备注 django https://www.djangoproject.com/ hue flask https://flask.palletsprojects.com/en/1.1.x/ redash,superset,flaskbb tornado https://www.tornadoweb.org/en/stable/# twisted https://twistedmatrix.com/trac/ sanic https://sanic.readthedocs.io/en/latest/ fastapi https://fastapi.tiangolo.com/ vibora https://github.com/vibora-io/vibora pyramid https://www.trypyramid.com/ cherryPy https://cherrypy.org/ hue的WebServer bottlePy http://www.bottlepy.com/docs/dev/ webpy</description>
     </item>
     
     <item>
@@ -333,6 +315,15 @@
     </item>
     
     <item>
+      <title>大数据 008hbase基础知识</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Thu, 21 Mar 2019 08:42:41 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>转载外部-HBase 内部探险 一、数据模型 1、重要概念回顾 Namespace（表命名空间）：将多个表分</description>
+    </item>
+    
+    <item>
       <title>系统设计-001常见架构</title>
       <link>https://liuzhongzhen.github.io/post/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-001%E5%B8%B8%E8%A7%81%E6%9E%B6%E6%9E%84/</link>
       <pubDate>Wed, 23 Jan 2019 22:13:04 +0800</pubDate>
@@ -360,6 +351,15 @@
     </item>
     
     <item>
+      <title>Nginx 004openResty内置变量</title>
+      <link>https://liuzhongzhen.github.io/post/Nginx-004openResty%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F/</link>
+      <pubDate>Wed, 10 Jan 2018 07:57:56 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Nginx-004openResty%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F/</guid>
+      <description>openResty变量 请求如下:http://baidu.com/liveroom?d=10&amp;amp</description>
+    </item>
+    
+    <item>
       <title>Nginx 003nginx返回码</title>
       <link>https://liuzhongzhen.github.io/post/Nginx-003nginx%E8%BF%94%E5%9B%9E%E7%A0%81/</link>
       <pubDate>Tue, 09 Jan 2018 22:57:56 +0800</pubDate>
@@ -369,12 +369,12 @@
     </item>
     
     <item>
-      <title>Nginx 002http_range详解</title>
-      <link>https://liuzhongzhen.github.io/post/Nginx-002http_range%E8%AF%A6%E8%A7%A3/</link>
+      <title>Nginx 002openResty中lua库查找路径</title>
+      <link>https://liuzhongzhen.github.io/post/Nginx-002openResty%E4%B8%ADlua%E5%BA%93%E6%9F%A5%E6%89%BE%E8%B7%AF%E5%BE%84/</link>
       <pubDate>Mon, 08 Jan 2018 22:57:56 +0800</pubDate>
       
-      <guid>https://liuzhongzhen.github.io/post/Nginx-002http_range%E8%AF%A6%E8%A7%A3/</guid>
-      <description>Range，是在 HTTP/1.1（http://www.w3.org/Protocols/rfc26</description>
+      <guid>https://liuzhongzhen.github.io/post/Nginx-002openResty%E4%B8%ADlua%E5%BA%93%E6%9F%A5%E6%89%BE%E8%B7%AF%E5%BE%84/</guid>
+      <description>no field package.preload[&#39;zlib&#39;] no file &#39;/usr/local/sandai/apana/lua/libs/zlib.lua&#39; no file &#39;/usr/local/sandai/apana/lua/zlib.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/site/lualib/zlib.ljbc&#39; no file &#39;/usr/local/services/openresty_httpsrv/site/lualib/zlib/init.ljbc&#39; no file &#39;/usr/local/services/openresty_httpsrv/lualib/zlib.ljbc&#39; no file &#39;/usr/local/services/openresty_httpsrv/lualib/zlib/init.ljbc&#39; no file &#39;/usr/local/services/openresty_httpsrv/site/lualib/zlib.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/site/lualib/zlib/init.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/lualib/zlib.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/lualib/zlib/init.lua&#39; no file &#39;./zlib.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/luajit/share/luajit-2.1.0-beta3/zlib.lua&#39; no file &#39;/usr/local/share/lua/5.1/zlib.lua&#39; no file &#39;/usr/local/share/lua/5.1/zlib/init.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/luajit/share/lua/5.1/zlib.lua&#39; no file</description>
     </item>
     
     <item>
@@ -387,12 +387,30 @@
     </item>
     
     <item>
+      <title>Python 002后端架构演进</title>
+      <link>https://liuzhongzhen.github.io/post/python-002%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/</link>
+      <pubDate>Tue, 02 Jan 2018 08:38:16 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/python-002%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/</guid>
+      <description>转载自外部-Python后端架构演进 前言 来腾讯之前在前公司做了3年的后端开发, 经历一款SaaS产品从</description>
+    </item>
+    
+    <item>
       <title>Java编程思想</title>
       <link>https://liuzhongzhen.github.io/books/Java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/</link>
       <pubDate>Mon, 01 Jan 2018 23:02:30 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/books/Java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Python-001学习资料</title>
+      <link>https://liuzhongzhen.github.io/post/python-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</link>
+      <pubDate>Mon, 01 Jan 2018 18:38:16 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/python-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</guid>
+      <description>常用开发框架 名字 链接 项目 备注 django https://www.djangoproject.com/ hue flask https://flask.palletsprojects.com/en/1.1.x/ redash,superset,flaskbb tornado https://www.tornadoweb.org/en/stable/# twisted https://twistedmatrix.com/trac/ sanic https://sanic.readthedocs.io/en/latest/ fastapi https://fastapi.tiangolo.com/ vibora https://github.com/vibora-io/vibora pyramid https://www.trypyramid.com/ cherryPy https://cherrypy.org/ hue的WebServer bottlePy http://www.bottlepy.com/docs/dev/ webpy</description>
     </item>
     
     <item>
@@ -411,6 +429,15 @@
       
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Apana%E5%9F%BA%E4%BA%8EopenResty%E7%9A%84http%E6%95%B0%E6%8D%AE%E4%B8%8A%E6%8A%A5%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 设计开发负责人 背景 为支持sdk上报，web上报，小程序上报，插件上报，模调上报，快速数据上报开发</description>
+    </item>
+    
+    <item>
+      <title>Java 003maven仓库配置</title>
+      <link>https://liuzhongzhen.github.io/post/Java-003maven%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Fri, 02 Jun 2017 18:53:49 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Java-003maven%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE/</guid>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 &amp;lt;repositories&amp;gt; &amp;lt;repository&amp;gt; &amp;lt;id&amp;gt;mymvn&amp;lt;/id&amp;gt; &amp;lt;url&amp;gt;file:///Users/xxxx/maven_repo&amp;lt;/url&amp;gt; &amp;lt;/repository&amp;gt; &amp;lt;repository&amp;gt; &amp;lt;id&amp;gt;alimaven&amp;lt;/id&amp;gt; &amp;lt;url&amp;gt;http://maven.aliyun.com/nexus/content/groups/public/&amp;lt;/url&amp;gt; &amp;lt;/repository&amp;gt; &amp;lt;repository&amp;gt; &amp;lt;id&amp;gt;repo1&amp;lt;/id&amp;gt; &amp;lt;name&amp;gt;Maven Repository&amp;lt;/name&amp;gt; &amp;lt;url&amp;gt;https://repo1.maven.org/maven2&amp;lt;/url&amp;gt; &amp;lt;/repository&amp;gt; &amp;lt;/repositories&amp;gt;</description>
     </item>
     
     <item>
@@ -510,6 +537,24 @@
       
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-ABTest%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 设计开发负责人 开发工具 后台开发语言php5,CodeIgniter 前端开发语言html5,css</description>
+    </item>
+    
+    <item>
+      <title>Http 007http_range详解</title>
+      <link>https://liuzhongzhen.github.io/post/Http-007http_range%E8%AF%A6%E8%A7%A3/</link>
+      <pubDate>Sun, 04 Jan 2015 11:44:53 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Http-007http_range%E8%AF%A6%E8%A7%A3/</guid>
+      <description>Range，是在 HTTP/1.1（http://www.w3.org/Protocols/rfc26</description>
+    </item>
+    
+    <item>
+      <title>Http 006http请求头信息</title>
+      <link>https://liuzhongzhen.github.io/post/Http-006http%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%BF%A1%E6%81%AF/</link>
+      <pubDate>Sun, 04 Jan 2015 10:44:53 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Http-006http%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%BF%A1%E6%81%AF/</guid>
+      <description>http客户请求的数据格式说明 请求行(method,uri,protocol,version)、头部</description>
     </item>
     
     <item>
@@ -770,6 +815,15 @@
       
       <guid>https://liuzhongzhen.github.io/books/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/</guid>
       <description>作者 加西亚·马尔克斯 简介 背影是真的人是假的 没什么执著 一百年前你不是你我不是我 悲哀是真的泪是假的 本来没</description>
+    </item>
+    
+    <item>
+      <title>Redis 001高可用最佳实践</title>
+      <link>https://liuzhongzhen.github.io/post/Redis-001%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Mon, 01 Jul 2013 11:17:16 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Redis-001%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</guid>
+      <description>1、前言 2017 年 5 月 13 日，应用性能管理大讲堂广州站圆满落幕，其中来自三七互娱的 DBA 温国兵在会场与各位进行了</description>
     </item>
     
     <item>
