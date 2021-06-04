@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Wed, 10 Jan 2018 07:57:56 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-Nginx/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 10 Jan 2018 08:01:56 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-Nginx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nginx 005基于openresty的几个开发框架</title>
+      <link>https://liuzhongzhen.github.io/post/Nginx-005%E5%9F%BA%E4%BA%8Eopenresty%E7%9A%84%E5%87%A0%E4%B8%AA%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/</link>
+      <pubDate>Wed, 10 Jan 2018 08:01:56 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Nginx-005%E5%9F%BA%E4%BA%8Eopenresty%E7%9A%84%E5%87%A0%E4%B8%AA%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/</guid>
+      <description>kong api gateway Github: https://github.com/Mashape/kong orange api gateway Github: https://github.com/sumory/orange Lapis web 开发框架 Github: https://github.com/leafo/lapis Vanilla web 开发框架 Github: https://github.com/idevz/vanilla Lor web 开发框架 Github: https://github.com/sumory/lor</description>
+    </item>
+    
     <item>
       <title>Nginx 004openResty内置变量</title>
       <link>https://liuzhongzhen.github.io/post/Nginx-004openResty%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F/</link>

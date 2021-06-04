@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Http 008提交数据的几种方式比较 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="Http 008提交数据的几种方式比较 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2015-01-04T12:44:53&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2015-01-04T12:44:53&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="Http 008提交数据的几种方式比较">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/Http-008%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1表单类型">1.表单类型</a></li>
+    <li><a href="#2get请求方式">2.GET请求方式</a></li>
+    <li><a href="#3post请求方式-applicationx-www-form-urlencoded">3.POST请求方式 application/x-www-form-urlencoded</a></li>
+    <li><a href="#4post请求方式-applicationjson">4.POST请求方式 application/json</a></li>
+    <li><a href="#5post请求方式-multipartform-data">5.POST请求方式 multipart/form-data</a></li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#python-flask-处理">python flask 处理</a></li>
+    <li><a href="#openresty-lua-处理">openResty lua 处理</a></li>
+    <li><a href="#php-处理请求参数">php 处理请求参数</a></li>
+    <li><a href="#url编码方法">url编码方法</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Http 008提交数据的几种方式比较</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2015年1月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/Web-Http'>Web-Http</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="1表单类型">1.表单类型</h2>
+<p>MediaType，即是Internet Media Type，互联网媒体类型；也叫做MIME类型，在Http协议消息头中，使用Content-Type来表示具体请求中的媒体类型信息。Content-Type头部后面可以追加;charset=UTF-8指定编码格式,例如：Content-Type:x-www-from-urlencoded;charset=UTF-8</p>
+<p>Content-Type字段表明了请求的请求体类型，可以是如下几种常见的类型：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">常见媒体格式如下:
+text/html   ： HTML格式
+text/plain  ：纯文本格式
+text/xml    ： XML格式
+image/gif   ：gif图片格式
+image/jpeg  ：jpg图片格式
+image/png   ：png图片格式
+multipart/form-data：（体数据被编码为一条消息，页上的每个控件对应消息中的一个部分，这个一般文件上传时用）
+
+以application开头的媒体格式类型：
+application/xhtml+xml ：XHTML格式
+application/xml ： XML数据格式
+application/atom+xml ：Atom XML聚合格式
+application/json ： JSON数据格式
+application/pdf ：pdf格式
+application/msword ： Word文档格式
+application/octet-stream ： 二进制流数据（如常见的文件下载）
+application/x-www-form-urlencoded ： 默认的encType,form表单数据被编码为key/value格式发送到服务器（表单默认的提交数据的格式）
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="2get请求方式">2.GET请求方式</h2>
+<p>读取get url中的queryString(查询字符串)</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">getParameterMap    读取参数的数组列表<span style="color:#000;font-weight:bold">{</span>k1<span style="color:#000;font-weight:bold">:[],</span>k2<span style="color:#000;font-weight:bold">:[]}</span>
+getParameterValues 读取参数k的值列表数组<span style="color:#000;font-weight:bold">[</span>v1<span style="color:#000;font-weight:bold">,</span>v2<span style="color:#000;font-weight:bold">,...]</span>
+getParameter       读取参数k的第一个值v1
+getInputStream     读取http请求body内容
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">不用增加注解
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="3post请求方式-applicationx-www-form-urlencoded">3.POST请求方式 application/x-www-form-urlencoded</h2>
+<p>会读取url中的queryString和请求body中的内容，进行合并</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">getParameterMap    读取合并的参数字典
+getInputStream     为空
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">请求参数会合并
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="4post请求方式-applicationjson">4.POST请求方式 application/json</h2>
+<p>会读取url中的queryString和请求body中的内容</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">getParameterMap    读取queryString参数的数组列表
+getInputStream     读取json数据
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">增加<span style="color:#3c5d5d;font-weight:bold">@RequestBody注解</span>   读取json数据
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="5post请求方式-multipartform-data">5.POST请求方式 multipart/form-data</h2>
+<p>会读取url中的queryString和请求body中的内容,主要用来处理上传数据</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">getParameterMap    读取queryString参数的数组列表
+getInputStream     读取boundary指定分割符分割的内容
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="总结">总结</h2>
+<p>综上所述，url中的queryString查询参数内容都能获取到的。http协议中请求Body中的内容可以根据不同的Content-Type来进行响应处理。</p>
+<ul>
+<li>如果是text/plain        当作纯文本处理</li>
+<li>如果是text/html         可以当作html来解析</li>
+<li>如果是application/json  则用Json工具把请求体转换成json对象处理</li>
+<li>如果是application/xml   则把Xml工具把请求体转换成xml对象处理</li>
+<li>如果是application/x-www-form-urlencoded 则用kv工具把请求体转换成对应的格式</li>
+<li>如果是multipart/form-data 则按照分割符和k，v协议处理</li>
+<li>如果是application/octet-stream 则按照二进制进行处理</li>
+</ul>
+<p>java servlet处理application/x-www-form-urlencoded这种格式比较方便，
+处理其他的格式内容，需要自己解析请求数据，进行处理。</p>
+<p>java spring有@RequestBody注解，可以把请求body中的json字符串对应到java pojo类上。</p>
+<p>当请求中的ContentType分别为一下三种类型时，结果如下：
+
+        <img class="mx-auto" alt="cgi" src="../../imgs/post/java/a005.jpg" />   
+    </p>
+<h2 id="python-flask-处理">python flask 处理</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param<span style="color:#000;font-weight:bold">=</span>{}
+<span style="color:#998;font-style:italic">#获取所有的请求参数</span>
+<span style="color:#000;font-weight:bold">for</span> k,v <span style="color:#000;font-weight:bold">in</span> request<span style="color:#000;font-weight:bold">.</span>values<span style="color:#000;font-weight:bold">.</span>iterlists():
+    <span style="color:#000;font-weight:bold">if</span> <span style="color:#0086b3">len</span>(v)<span style="color:#000;font-weight:bold">==</span><span style="color:#099">1</span>:
+        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param[k]<span style="color:#000;font-weight:bold">=</span>v[<span style="color:#099">0</span>]
+    <span style="color:#000;font-weight:bold">else</span>:
+        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param[k]<span style="color:#000;font-weight:bold">=</span>v
+<span style="color:#000;font-weight:bold">if</span> request<span style="color:#000;font-weight:bold">.</span>is_json:
+    <span style="color:#000;font-weight:bold">try</span>:
+        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param<span style="color:#000;font-weight:bold">=</span><span style="color:#0086b3">dict</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param,<span style="color:#000;font-weight:bold">**</span><span style="color:#0086b3">dict</span>(request<span style="color:#000;font-weight:bold">.</span>get_json()))
+    <span style="color:#000;font-weight:bold">except</span> <span style="color:#900;font-weight:bold">Exception</span>,ex:
+        <span style="color:#000;font-weight:bold">pass</span>
+<span style="color:#000;font-weight:bold">if</span> <span style="color:#0086b3">str</span>(request<span style="color:#000;font-weight:bold">.</span>content_type)<span style="color:#000;font-weight:bold">.</span>find(<span style="color:#d14">&#39;text/plain&#39;</span>)<span style="color:#000;font-weight:bold">&gt;-</span><span style="color:#099">1</span>:
+    <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param[<span style="color:#d14">&#39;data&#39;</span>]<span style="color:#000;font-weight:bold">=</span>request<span style="color:#000;font-weight:bold">.</span>get_data()
+</code></pre></td></tr></table>
+</div>
+</div><p>python 框架request发送请求也有对应的设置方式</p>
+<h2 id="openresty-lua-处理">openResty lua 处理</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">108
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">109
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">110
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">111
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">112
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">113
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">114
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">115
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">116
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">117
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">118
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">119
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">120
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">121
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">122
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">123
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">124
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">queryString查询字符串的变量获取方式
+ngx.var.arg_xxxx
+<span style="color:#a61717;background-color:#e3d2d2">例如</span>
+<span style="color:#000;font-weight:bold">local</span> name<span style="color:#000;font-weight:bold">=</span>ngx.var.arg_name
+
+http协议请求体中body数据获取方式
+
+<span style="color:#998;font-style:italic">-- requtil.lua</span>
+
+<span style="color:#000;font-weight:bold">local</span> type<span style="color:#000;font-weight:bold">=</span>type
+<span style="color:#000;font-weight:bold">local</span> table<span style="color:#000;font-weight:bold">=</span>table
+<span style="color:#000;font-weight:bold">local</span> string<span style="color:#000;font-weight:bold">=</span>string
+<span style="color:#000;font-weight:bold">local</span> tostring<span style="color:#000;font-weight:bold">=</span>tostring
+<span style="color:#000;font-weight:bold">local</span> tonumber<span style="color:#000;font-weight:bold">=</span>tonumber
+<span style="color:#000;font-weight:bold">local</span> pairs<span style="color:#000;font-weight:bold">=</span>pairs
+<span style="color:#000;font-weight:bold">local</span> ipairs <span style="color:#000;font-weight:bold">=</span>ipairs
+<span style="color:#000;font-weight:bold">local</span> logdirlist<span style="color:#000;font-weight:bold">=</span> require(<span style="color:#d14">&#34;common.logdirlist&#34;</span>)
+<span style="color:#000;font-weight:bold">local</span> logutil<span style="color:#000;font-weight:bold">=</span>require(<span style="color:#d14">&#34;common.logutil&#34;</span>)
+<span style="color:#000;font-weight:bold">local</span> zlib<span style="color:#000;font-weight:bold">=</span>require(<span style="color:#d14">&#34;zlib&#34;</span>)
+
+
+<span style="color:#998;font-style:italic">--请求体的size大于nginx配置里的client_body_buffer_size，</span>
+<span style="color:#998;font-style:italic">--则会导致请求体被缓冲到磁盘临时文件里，</span>
+<span style="color:#998;font-style:italic">--client_body_buffer_size默认是8k或者16k</span>
+<span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">getBodyData</span>()
+    <span style="color:#000;font-weight:bold">local</span> retcode<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">true</span>
+    <span style="color:#000;font-weight:bold">local</span> retdata<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
+    ngx.req.read_body()
+    <span style="color:#000;font-weight:bold">local</span> bodydata<span style="color:#000;font-weight:bold">=</span>ngx.req.get_body_data()
+    <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> bodydata <span style="color:#000;font-weight:bold">then</span>
+        <span style="color:#000;font-weight:bold">local</span> datafile<span style="color:#000;font-weight:bold">=</span>ngx.req.get_body_file()
+        <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> datafile <span style="color:#000;font-weight:bold">then</span>
+            retcode<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">false</span>
+            retdata<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;no request body found&#39;</span>
+        <span style="color:#000;font-weight:bold">else</span>
+            <span style="color:#000;font-weight:bold">local</span> fh, err <span style="color:#000;font-weight:bold">=</span> io.open(datafile, <span style="color:#d14">&#34;r&#34;</span>)
+            <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> fh <span style="color:#000;font-weight:bold">then</span>
+                retcode<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">false</span>
+                retdata<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;failed to open &#34;</span> <span style="color:#000;font-weight:bold">..</span> tostring(datafile) <span style="color:#000;font-weight:bold">..</span> <span style="color:#d14">&#34;for reading: &#34;</span> <span style="color:#000;font-weight:bold">..</span> tostring(err)
+            <span style="color:#000;font-weight:bold">else</span>
+                fh:seek(<span style="color:#d14">&#34;set&#34;</span>)
+                retdata<span style="color:#000;font-weight:bold">=</span>fh:read(<span style="color:#d14">&#34;*a&#34;</span>)
+                fh:close()
+            <span style="color:#000;font-weight:bold">end</span>
+        <span style="color:#000;font-weight:bold">end</span>
+    <span style="color:#000;font-weight:bold">else</span>
+        retdata<span style="color:#000;font-weight:bold">=</span>bodydata
+    <span style="color:#000;font-weight:bold">end</span>
+    <span style="color:#000;font-weight:bold">local</span> reqheaders<span style="color:#000;font-weight:bold">=</span>ngx.req.get_headers()
+    <span style="color:#000;font-weight:bold">local</span> encoding <span style="color:#000;font-weight:bold">=</span> reqheaders[<span style="color:#d14">&#34;content-encoding&#34;</span>]
+    <span style="color:#000;font-weight:bold">if</span> encoding<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;gzip&#34;</span> <span style="color:#000;font-weight:bold">and</span> retdata<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">then</span>
+        <span style="color:#000;font-weight:bold">local</span> stream <span style="color:#000;font-weight:bold">=</span> zlib.inflate()
+        retdata<span style="color:#000;font-weight:bold">=</span>stream(retdata)
+        ngx.req.set_body_data(retdata)
+    <span style="color:#000;font-weight:bold">end</span>
+    <span style="color:#000;font-weight:bold">return</span> retcode,retdata
+<span style="color:#000;font-weight:bold">end</span>
+
+<span style="color:#998;font-style:italic">--获取请求的参数</span>
+<span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">getReqParam</span>()
+    <span style="color:#000;font-weight:bold">local</span> retcode<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">false</span>
+    <span style="color:#000;font-weight:bold">local</span> retdata<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
+    <span style="color:#000;font-weight:bold">local</span> args<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
+    <span style="color:#000;font-weight:bold">local</span> reqbody<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
+    <span style="color:#000;font-weight:bold">local</span> method<span style="color:#000;font-weight:bold">=</span>ngx.var.request_method
+    <span style="color:#000;font-weight:bold">local</span> reqheaders<span style="color:#000;font-weight:bold">=</span>ngx.req.get_headers()
+    <span style="color:#000;font-weight:bold">local</span> encoding<span style="color:#000;font-weight:bold">=</span>reqheaders[<span style="color:#d14">&#34;content-encoding&#34;</span>]
+    <span style="color:#000;font-weight:bold">if</span> method<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#39;POST&#39;</span> <span style="color:#000;font-weight:bold">then</span>
+        <span style="color:#000;font-weight:bold">local</span> content_type<span style="color:#000;font-weight:bold">=</span>reqheaders[<span style="color:#d14">&#39;content-type&#39;</span>]
+        <span style="color:#000;font-weight:bold">if</span> content_type<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">and</span> string.sub(content_type,<span style="color:#099">1</span>,<span style="color:#099">20</span>)<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;multipart/form-data;&#34;</span> <span style="color:#000;font-weight:bold">then</span>
+            retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
+            args<span style="color:#000;font-weight:bold">=</span>{}
+            args[<span style="color:#099">1</span>]<span style="color:#000;font-weight:bold">=</span>retdata
+        <span style="color:#000;font-weight:bold">elseif</span> content_type<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">and</span> string.sub(content_type,<span style="color:#099">1</span>,<span style="color:#099">16</span>)<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;application/json&#34;</span> <span style="color:#000;font-weight:bold">then</span>
+            retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
+            <span style="color:#000;font-weight:bold">if</span> retcode <span style="color:#000;font-weight:bold">and</span> retdata<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">then</span>
+                reqbody<span style="color:#000;font-weight:bold">=</span>retdata
+                args<span style="color:#000;font-weight:bold">=</span>logutil.json_decode(retdata)
+            <span style="color:#000;font-weight:bold">else</span>
+                args<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
+            <span style="color:#000;font-weight:bold">end</span>
+        <span style="color:#000;font-weight:bold">elseif</span> content_type<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">and</span> string.sub(content_type,<span style="color:#099">1</span>,<span style="color:#099">33</span>)<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;application/x-www-form-urlencoded&#34;</span> <span style="color:#000;font-weight:bold">then</span>
+            <span style="color:#000;font-weight:bold">if</span> encoding<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;gzip&#34;</span> <span style="color:#000;font-weight:bold">then</span>
+                retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
+            <span style="color:#000;font-weight:bold">end</span>
+            ngx.req.read_body()
+            args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_post_args()
+        <span style="color:#000;font-weight:bold">elseif</span> content_type<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">and</span> (string.sub(content_type,<span style="color:#099">1</span>,<span style="color:#099">5</span>)<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;text/&#34;</span> <span style="color:#000;font-weight:bold">or</span> string.sub(content_type,<span style="color:#099">1</span>,<span style="color:#099">24</span>)<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;application/octet-stream&#34;</span>) <span style="color:#000;font-weight:bold">then</span>
+            retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
+            <span style="color:#000;font-weight:bold">if</span> retcode <span style="color:#000;font-weight:bold">and</span> retdata<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">then</span>
+                args<span style="color:#000;font-weight:bold">=</span>{}
+                args[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">=</span>tostring(retdata)
+            <span style="color:#000;font-weight:bold">else</span>
+                args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_uri_args()
+                <span style="color:#000;font-weight:bold">if</span> logutil.tableIsEmpty(args) <span style="color:#000;font-weight:bold">then</span>
+                    args<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
+                <span style="color:#000;font-weight:bold">end</span>
+            <span style="color:#000;font-weight:bold">end</span>
+        <span style="color:#000;font-weight:bold">else</span>
+            retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
+            args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_post_args()
+            <span style="color:#000;font-weight:bold">if</span> retcode <span style="color:#000;font-weight:bold">and</span> retdata<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">then</span>
+                args<span style="color:#000;font-weight:bold">=</span>logutil.json_decode(retdata)
+            <span style="color:#000;font-weight:bold">end</span>
+            <span style="color:#000;font-weight:bold">if</span> args<span style="color:#000;font-weight:bold">==</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">then</span>
+                args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_post_args()
+            <span style="color:#000;font-weight:bold">end</span>
+        <span style="color:#000;font-weight:bold">end</span>
+    <span style="color:#000;font-weight:bold">elseif</span> method<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#39;GET&#39;</span> <span style="color:#000;font-weight:bold">then</span>
+        <span style="color:#000;font-weight:bold">if</span> encoding<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;gzip&#34;</span> <span style="color:#000;font-weight:bold">then</span>
+            retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
+        <span style="color:#000;font-weight:bold">end</span>
+        args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_uri_args()
+    <span style="color:#000;font-weight:bold">else</span>
+        args<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
+        ngx.exit(<span style="color:#099">200</span>)
+    <span style="color:#000;font-weight:bold">end</span>
+    <span style="color:#000;font-weight:bold">if</span> args<span style="color:#000;font-weight:bold">==</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">or</span> type(args)<span style="color:#000;font-weight:bold">~=</span><span style="color:#d14">&#39;table&#39;</span> <span style="color:#000;font-weight:bold">or</span> logutil.tableIsEmpty(args) <span style="color:#000;font-weight:bold">then</span>
+        args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_uri_args()
+    <span style="color:#000;font-weight:bold">end</span>
+    ngx.ctx.args<span style="color:#000;font-weight:bold">=</span>args
+    ngx.ctx.reqbody<span style="color:#000;font-weight:bold">=</span>reqbody
+<span style="color:#000;font-weight:bold">end</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="php-处理请求参数">php 处理请求参数</h2>
+<pre><code>queryString查询字符串参数，
+获取地址栏参数   $_SERVER['QUERY_STRING'] 
+GET 方式       $_GET['a']  
+POST方式       $_POST['a']
+任何方式:       $_REQUEST['a']
+
+对于http请求body中的数据
+
+如果content-type是application/x-www-form-urlencoded，上报格式是k1=v1&amp;k2=v2这种kv形式的数据
+可以使用$b = $_POST['b'] 或 $_REQUEST['b']
+
+如果content-type是multipart/form-data, 可以使用$_FILE['']
+
+php://input  ，$HTTP_RAW_POST_DATA 不能用于 enctype=&quot;multipart/form-data&quot;  因为 php会试图解析所收到的数据，能解析就放入 $_POST, $_GET 数组里，不能解析，才会放到 php://input 里。
+php://input比$HTTP_RAW_POST_DATA有更好的内存使用效率
+file_get_contents(“php://input”);
+</code></pre><h2 id="url编码方法">url编码方法</h2>
+<p>对于地址栏中的queryString 查询字符串需要编码，</p>
+<ul>
+<li>一种是和uri拼接成完整的url后，统一进行编码；</li>
+<li>一种是queryString每个k对应的v值自己编码，uri如果有特殊字符则自己编码，然后拼接在一起</li>
+</ul>
+<p>所以了解客户端如何对url进行编码的，对于服务端做解析相当重要。</p>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/Http-007http_range%E8%AF%A6%E8%A7%A3/">Http 007http_range详解</a></li>
+        
+        <li><a href="../../post/Http-006http%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%BF%A1%E6%81%AF/">Http 006http请求头信息</a></li>
+        
+        <li><a href="../../post/Http-005POST%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/">Http 005POST提交数据的几种方法</a></li>
+        
+        <li><a href="../../post/Http-004CGI%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/">Http 004CGI相关概念介绍</a></li>
+        
+        <li><a href="../../post/Http-003%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3cgi%E4%BB%8B%E7%BB%8D/">Http 003后台接口cgi介绍</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据 100数据集成调研">大数据 100数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Mysql-007基础知识">Mysql-007基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/" title="Mysql-006解读事务和MVVC原理">Mysql-006解读事务和MVVC原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/" title="Mysql-005浅谈Mysql架构体系">Mysql-005浅谈Mysql架构体系</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 010flume基础知识">大数据 010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 009kafka基础知识">大数据 009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 007clickhouse基础知识">大数据 007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 006impala基础知识">大数据 006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 005flink基础知识">大数据 005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 004spark基础知识">大数据 004spark基础知识</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-100数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Redis/">缓存-Redis (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Java/">语言-Java (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Php/">语言-Php (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Python/">语言-Python (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -279,6 +279,15 @@
     </item>
     
     <item>
+      <title>Nginx 005基于openresty的几个开发框架</title>
+      <link>https://liuzhongzhen.github.io/post/Nginx-005%E5%9F%BA%E4%BA%8Eopenresty%E7%9A%84%E5%87%A0%E4%B8%AA%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/</link>
+      <pubDate>Wed, 10 Jan 2018 08:01:56 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Nginx-005%E5%9F%BA%E4%BA%8Eopenresty%E7%9A%84%E5%87%A0%E4%B8%AA%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/</guid>
+      <description>kong api gateway Github: https://github.com/Mashape/kong orange api gateway Github: https://github.com/sumory/orange Lapis web 开发框架 Github: https://github.com/leafo/lapis Vanilla web 开发框架 Github: https://github.com/idevz/vanilla Lor web 开发框架 Github: https://github.com/sumory/lor</description>
+    </item>
+    
+    <item>
       <title>Nginx 004openResty内置变量</title>
       <link>https://liuzhongzhen.github.io/post/Nginx-004openResty%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F/</link>
       <pubDate>Wed, 10 Jan 2018 07:57:56 +0800</pubDate>
@@ -330,6 +339,15 @@
       
       <guid>https://liuzhongzhen.github.io/post/python-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</guid>
       <description>常用开发框架 名字 链接 项目 备注 django https://www.djangoproject.com/ hue flask https://flask.palletsprojects.com/en/1.1.x/ redash,superset,flaskbb tornado https://www.tornadoweb.org/en/stable/# twisted https://twistedmatrix.com/trac/ sanic https://sanic.readthedocs.io/en/latest/ fastapi https://fastapi.tiangolo.com/ vibora https://github.com/vibora-io/vibora pyramid https://www.trypyramid.com/ cherryPy https://cherrypy.org/ hue的WebServer bottlePy http://www.bottlepy.com/docs/dev/ webpy</description>
+    </item>
+    
+    <item>
+      <title>Java 004springboot组件依赖列表</title>
+      <link>https://liuzhongzhen.github.io/post/Java-004springboot%E7%BB%84%E4%BB%B6%E4%BE%9D%E8%B5%96%E5%88%97%E8%A1%A8/</link>
+      <pubDate>Sat, 03 Jun 2017 18:53:49 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Java-004springboot%E7%BB%84%E4%BB%B6%E4%BE%9D%E8%B5%96%E5%88%97%E8%A1%A8/</guid>
+      <description>转载外部 github地址</description>
     </item>
     
     <item>
@@ -402,6 +420,15 @@
       
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>HDFS系统架构 HDFS数据安全性如何保证 存储在HDFS系统上的文件，会分割成128M大小的bloc</description>
+    </item>
+    
+    <item>
+      <title>Http 008提交数据的几种方式比较</title>
+      <link>https://liuzhongzhen.github.io/post/Http-008%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83/</link>
+      <pubDate>Sun, 04 Jan 2015 12:44:53 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Http-008%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83/</guid>
+      <description>1.表单类型 MediaType，即是Internet Media Type，互联网媒体类型；也叫做MIME类型，</description>
     </item>
     
     <item>

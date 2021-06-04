@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 04 Jan 2015 11:44:53 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-Http/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 04 Jan 2015 12:44:53 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-Http/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Http 008提交数据的几种方式比较</title>
+      <link>https://liuzhongzhen.github.io/post/Http-008%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83/</link>
+      <pubDate>Sun, 04 Jan 2015 12:44:53 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Http-008%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83/</guid>
+      <description>1.表单类型 MediaType，即是Internet Media Type，互联网媒体类型；也叫做MIME类型，</description>
+    </item>
+    
     <item>
       <title>Http 007http_range详解</title>
       <link>https://liuzhongzhen.github.io/post/Http-007http_range%E8%AF%A6%E8%A7%A3/</link>
