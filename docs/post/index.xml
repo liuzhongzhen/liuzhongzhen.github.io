@@ -342,6 +342,15 @@
     </item>
     
     <item>
+      <title>Java 005springboot前后端参数传递方式</title>
+      <link>https://liuzhongzhen.github.io/post/Java-005springboot%E5%89%8D%E5%90%8E%E7%AB%AF%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Mon, 05 Jun 2017 18:53:49 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Java-005springboot%E5%89%8D%E5%90%8E%E7%AB%AF%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%96%B9%E5%BC%8F/</guid>
+      <description>一、GET请求方式 01.单个键值对参数 1 2 3 4 5 6 7 /** * GET 方式传递参数 单个参数 * */ @GetMapping(&amp;#34;/get01&amp;#34;) public String get01(String comment) { return comment ==</description>
+    </item>
+    
+    <item>
       <title>Java 004springboot组件依赖列表</title>
       <link>https://liuzhongzhen.github.io/post/Java-004springboot%E7%BB%84%E4%BB%B6%E4%BE%9D%E8%B5%96%E5%88%97%E8%A1%A8/</link>
       <pubDate>Sat, 03 Jun 2017 18:53:49 +0800</pubDate>
