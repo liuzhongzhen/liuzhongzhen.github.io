@@ -145,7 +145,17 @@
 <div class="post-toc" style="position: absolute; top: 188px;">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一相关资料">一、相关资料</a></li>
+    <li><a href="#二定位及使用">二、定位及使用</a></li>
+    <li><a href="#1-什么是impala">1. 什么是Impala？</a></li>
+    <li><a href="#2-impala优势">2. Impala优势</a></li>
+    <li><a href="#3-impala架构简介">3. Impala架构简介</a></li>
+    <li><a href="#4-impala-3x新特性">4. Impala 3.x新特性</a></li>
+    <li><a href="#5-应用场景">5. 应用场景</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 <script type="text/javascript">
@@ -204,7 +214,77 @@
         </div>
         
         <div class="post-content">
-            
+            <h2 id="一相关资料">一、相关资料</h2>
+<p><a href="https://docs.cloudera.com/documentation/enterprise/latest/topics/impala.html">CDH文档 https://docs.cloudera.com/documentation/enterprise/latest/topics/impala.html</a></p>
+<p><a href="http://impala.apache.org/downloads.html">官方文档 http://impala.apache.org/downloads.html</a></p>
+<p><a href="https://mp.weixin.qq.com/s/aJujZkpX2X4tiLhi54GOVQ">Impala3.4对接Iceberg在网易的最新实践</a></p>
+<p><a href="https://mp.weixin.qq.com/s/y6ANDFbq-4bm1PcrInl3Og">Impala3.4在网易大数据的优化和实践</a></p>
+<p><a href="https://mp.weixin.qq.com/s/l4QE9oWbQdrOrA-cUg0Y3g">网易基于Impala平台打造交互查询系统</a></p>
+<p><a href="https://mp.weixin.qq.com/s/J5pgf8VIYi5G1Zs5KryRLA">基于kudu和KRPC实现 Impala 的飞跃</a></p>
+<p><a href="https://mp.weixin.qq.com/s/cmzyE9hsILoWBJyRJ74Eng">爱奇艺海量数据实时分析架构的演进</a></p>
+<h2 id="二定位及使用">二、定位及使用</h2>
+<p>Impala是Cloudera公司主导开发的交互式查询系统，它提供SQL语义和计算能力，但是本身并不存储数据。</p>
+<h2 id="1-什么是impala">1. 什么是Impala？</h2>
+<ul>
+<li>Cloudera开源贡献至Apache的OLAP引擎</li>
+<li>提供高并发和低延迟的交互式SQL查询</li>
+<li>可以查询HDFS/HBase/Kudu中的数据</li>
+</ul>
+<h2 id="2-impala优势">2. Impala优势</h2>
+<ul>
+<li>去中心化的MPP架构</li>
+<li>完全兼容Hive元数据格式</li>
+<li>Apache顶级项目，社区活跃度高</li>
+<li>支持多种数据格式，例如Parquet、Orc、Avro等</li>
+<li>高效的查询性能，支持codegen、llvm、runtime filter等</li>
+</ul>
+<h2 id="3-impala架构简介">3. Impala架构简介</h2>
+<p>下面是Impala的一个架构，如图所示：
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_impala/a001.png" />   
+    </p>
+<p>Impalad节点分为两种角色：</p>
+<ul>
+<li>Coordinator(协调者)：响应客户端请求，SQL解析</li>
+<li>Executor(执行者)：数据扫描、聚合运算</li>
+</ul>
+<p>Impalad内部分为两个模块：</p>
+<ul>
+<li>Frontend：执行SQL解析，Java代码编写</li>
+<li>Backend：进行聚合运算，C++代码编写</li>
+</ul>
+<p>Impala主要分为三种服务，每种服务对应一个单独的进程。</p>
+<ul>
+<li>
+<p>第一种服务：从最左边绿色的部分可以看起，它是一个Impalad 进程，主要有两种角色，第一种角色：Coordinator（协调者），它主要的功能是响应JDBC请求，对发过来的SQL进行执行计划解析，将SQL生成的执行计划发给各个Executor（执行者），这些Executor会进行数据扫描和聚合运算等操作。每个Impalad节点，既可以充当Coordinator，也可以充当Executor，也可以二者兼之。在Impalad内部也分为两个模块，其中FE模块由Java代码编写，主要执行SQL的解析操作，使用Java可以更好地兼容Hadoop生态圈；BE模块由C++代码编写，主要负责实际的数据扫描、聚合运算，使用C++可以进行更好地性能优化。</p>
+</li>
+<li>
+<p>第二种服务：catalogd，它是一个元数据服务，单独的一个进程，主要就是将hive的metastore所存储的元数据缓存到自己的内存当中。</p>
+</li>
+<li>
+<p>第三种服务：statestored，它是一个发布订阅服务，主要的作用包括节点之间状态信息的同步、元数据信息的同步、资源队列的信息同步等等。</p>
+</li>
+</ul>
+<p>这里以元数据服务加载为例：首先catalogd将元数据缓存到自己的内存中，同时它会将元数据信息发布到statestored上面，然后Impalad就可以去订阅相应的topic，将这部分信息拉到自己的本地进行缓存。这整体就是一个发布订阅的过程。</p>
+<p>需要注意的是，在一个Impala集群中，statestored和catalogd只有一个，Impalad节点有若干个。由于coordinator需要进行执行计划解析，因此需要缓存元数据在自己的内存中。实际线上部署的时候，我们一般会将coordinator和executor分开，同时集群中只有配置少量几个coordinator节点，大部分都是executor节点。</p>
+<h2 id="4-impala-3x新特性">4. Impala 3.x新特性</h2>
+<p>3.0到3.4的特性罗列：</p>
+<ul>
+<li>支持在相同的查询块中存在多个distinct算子</li>
+<li>支持优雅的（不影响正在执行的查询）关闭impala进程</li>
+<li>支持ORC文件格式</li>
+<li>支持DATE数据类型及其操作函数</li>
+<li>支持将远端的HDFS/S3等文件缓存到Impalad节点上</li>
+<li>CBO增强</li>
+<li>支持将Profile信息导出成JSON格式，方便解析</li>
+</ul>
+<h2 id="5-应用场景">5. 应用场景</h2>
+<ol>
+<li>交互式查询分析系统，对下可以查询存储在HDFS、Kudu、HBase等等这些存储系统中的数据，向上它可以对接一些我们开发的BI工具、或者是一些业务自己的系统等。</li>
+<li>自助分析，主要提供给分析师或者数据开发人员使用，直接在页面上提交SQL查询，通过SQL来获取自己想要的数据，这个与Cloudera的HUE类似</li>
+<li>作为BI工具后端数据存储引擎，BI系统会自动地生成相应的SQL，发到Impala，根据Impala的查询结果，以图形化的界面形式展示给用户</li>
+</ol>
+
         </div>
 
         
@@ -329,6 +409,14 @@
     </li>
     
     <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/" title="大数据006impala与hive对比详解">大数据006impala与hive对比详解</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" title="大数据 004spark知识整理">大数据 004spark知识整理</a>
+    </li>
+    
+    <li>
         <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 010flume基础知识">大数据 010flume基础知识</a>
     </li>
     
@@ -342,14 +430,6 @@
     
     <li>
         <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 006impala基础知识">大数据 006impala基础知识</a>
-    </li>
-    
-    <li>
-        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 005flink基础知识">大数据 005flink基础知识</a>
-    </li>
-    
-    <li>
-        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 004spark基础知识">大数据 004spark基础知识</a>
     </li>
     
 </ul>
@@ -373,11 +453,11 @@
     
     <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (3)</a></li>
     
-    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (1)</a></li>
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (2)</a></li>
     
     <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
     
-    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (1)</a></li>
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (2)</a></li>
     
     <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
     

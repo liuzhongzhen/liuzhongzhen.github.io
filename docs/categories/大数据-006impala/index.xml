@@ -7,14 +7,23 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Wed, 21 Apr 2021 08:42:20 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Apr 2021 08:42:20 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>大数据006impala与hive对比详解</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/</link>
+      <pubDate>Thu, 22 Apr 2021 08:42:20 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/</guid>
+      <description>Impala简介 Impala是由Cloudera公司开发的新型查询系统，它提供SQL语义，能查询存储</description>
+    </item>
+    
     <item>
       <title>大数据 006impala基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 21 Apr 2021 08:42:20 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description></description>
+      <description>一、相关资料 CDH文档 https://docs.cloudera.com/documentation/enterprise/latest/topics/impala.html 官方文档 http://impala.apache.org/downloads.html Impala3.4对接Iceberg在网易的最新实践 Impala3</description>
     </item>
     
   </channel>

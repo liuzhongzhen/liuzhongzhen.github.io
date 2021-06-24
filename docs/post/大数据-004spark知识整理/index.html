@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>大数据 004spark知识整理 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="大数据 004spark知识整理 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-04-22T08:40:57&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-04-22T08:40:57&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="大数据 004spark知识整理">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1rdd的属性">1.rdd的属性</a></li>
+    <li><a href="#2算子分为哪几类rdd支持哪几种类型的操作">2.算子分为哪几类(RDD支持哪几种类型的操作)</a></li>
+    <li><a href="#3创建rdd的几种方式">3.创建rdd的几种方式</a></li>
+    <li><a href="#4spark运行流程">4.spark运行流程</a></li>
+    <li><a href="#5spark中coalesce与repartition的区别">5.Spark中coalesce与repartition的区别</a></li>
+    <li><a href="#6sortby-和-sortbykey的区别">6.sortBy 和 sortByKey的区别</a></li>
+    <li><a href="#7map和mappartitions的区别">7.map和mapPartitions的区别</a></li>
+    <li><a href="#8数据存入redis或mysql优先使用mapmappartitionsforeachforeachpartions哪个">8.数据存入Redis或mysql优先使用map/mapPartitions/foreach/foreachPartions哪个</a></li>
+    <li><a href="#9reducebykey和groupbykey的区别">9.reduceByKey和groupBykey的区别</a></li>
+    <li><a href="#10cache和checkpoint的比较">10.cache和checkPoint的比较</a></li>
+    <li><a href="#11spark-streaming流式统计单词数量代码">11.spark streaming流式统计单词数量代码</a></li>
+    <li><a href="#12简述map和flatmap的区别和应用场景">12.简述map和flatMap的区别和应用场景</a></li>
+    <li><a href="#13计算曝光数和点击数">13.计算曝光数和点击数</a></li>
+    <li><a href="#14分别列出几个常用的transformation和action算子">14.分别列出几个常用的transformation和action算子</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">大数据 004spark知识整理</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年4月22日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark'>大数据-004spark</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="1rdd的属性">1.rdd的属性</h2>
+<ul>
+<li>
+<p>一组分片（Partition），即数据集的基本组成单位。对于RDD来说，每个分片都会被一个计算任务处理，并决定并行计算的粒度。用户可以在创建RDD时指定RDD的分片个数，如果没有指定，那么就会采用默认值。默认值就是程序所分配到的CPU Core的数目。</p>
+</li>
+<li>
+<p>一个计算每个分区的函数。Spark中RDD的计算是以分片为单位的，每个RDD都会实现compute函数以达到这个目的。compute函数会对迭代器进行复合，不需要保存每次计算的结果。</p>
+</li>
+<li>
+<p>RDD之间的依赖关系。RDD的每次转换都会生成一个新的RDD，所以RDD之间就会形成类似于流水线一样的前后依赖关系。在部分分区数据丢失时，Spark可以通过这个依赖关系重新计算丢失的分区数据，而不是对RDD的所有分区进行重新计算。</p>
+</li>
+<li>
+<p>一个Partitioner，即RDD的分片函数。当前Spark中实现了两种类型的分片函数，一个是基于哈希的HashPartitioner，另外一个是基于范围的RangePartitioner。只有对于于key-value的RDD，才会有Partitioner，非key-value的RDD的Parititioner的值是None。Partitioner函数不但决定了RDD本身的分片数量，也决定了parent RDD Shuffle输出时的分片数量。</p>
+</li>
+<li>
+<p>一个列表，存储存取每个Partition的优先位置（preferred location）。对于一个HDFS文件来说，这个列表保存的就是每个Partition所在的块的位置。按照“移动数据不如移动计算”的理念，Spark在进行任务调度的时候，会尽可能地将计算任务分配到其所要处理数据块的存储位置。</p>
+</li>
+</ul>
+<h2 id="2算子分为哪几类rdd支持哪几种类型的操作">2.算子分为哪几类(RDD支持哪几种类型的操作)</h2>
+<ul>
+<li>
+<p>转换（Transformation）  现有的RDD通过转换生成一个新的RDD。lazy模式，延迟执行。</p>
+<p>转换函数包括：map，filter，flatMap，groupByKey，reduceByKey，aggregateByKey，union, join, coalesce 等等。</p>
+</li>
+<li>
+<p>动作（Action）  在RDD上运行计算，并返回结果给驱动程序(Driver)或写入文件系统。</p>
+<p>动作操作包括：reduce，collect，count，first，take，countByKey以及foreach等等。</p>
+</li>
+<li>
+<p>collect  该方法把数据收集到driver端   Array数组类型</p>
+<p>所有的transformation只有遇到action才能被执行。</p>
+<p>当触发执行action之后，数据类型不再是rdd了，数据就会存储到指定文件系统中，或者直接打印结 果或者收集起来。</p>
+</li>
+</ul>
+<h2 id="3创建rdd的几种方式">3.创建rdd的几种方式</h2>
+<ol>
+<li>集合并行化创建(有数据)</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#000;font-weight:bold">val</span> arr <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">4</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">5</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000;font-weight:bold">val</span> rdd <span style="color:#000;font-weight:bold">=</span> sc<span style="color:#000;font-weight:bold">.</span>parallelize<span style="color:#000;font-weight:bold">(</span>arr<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000;font-weight:bold">val</span> rdd <span style="color:#000;font-weight:bold">=</span>sc<span style="color:#000;font-weight:bold">.</span>makeRDD<span style="color:#000;font-weight:bold">(</span>arr<span style="color:#000;font-weight:bold">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>读取外部文件系统，如hdfs，或者读取本地文件(最常用的方式)(没数据)</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#998;font-style:italic">// 读取hdfs文件
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">val</span> rdd2 <span style="color:#000;font-weight:bold">=</span> sc<span style="color:#000;font-weight:bold">.</span>textFile<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;hdfs://hdp-01:9000/words.txt&#34;</span><span style="color:#000;font-weight:bold">)</span>
+<span style="color:#998;font-style:italic">// 读取本地文件
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">val</span> rdd2 <span style="color:#000;font-weight:bold">=</span> sc<span style="color:#000;font-weight:bold">.</span>textFile<span style="color:#000;font-weight:bold">(</span><span style="color:#a61717;background-color:#e3d2d2">“</span>file<span style="color:#000;font-weight:bold">:</span><span style="color:#998;font-style:italic">///root/words.txt”)
+</span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>
+<p>从父RDD转换成新的子RDD
+调用Transformation类的方法，生成新的RDD</p>
+</li>
+<li>
+<p>从数据库创建</p>
+</li>
+<li>
+<p>从消息系统kafka创建</p>
+</li>
+</ol>
+<h2 id="4spark运行流程">4.spark运行流程</h2>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_spark/a001.png" />   
+    
+Worker的功能：定时和master通信；调度并管理自身的executor</p>
+<p>executor：由Worker启动的，程序最终在executor中运行，（程序运行的一个容器）</p>
+<p>spark-submit命令执行时，会根据master地址去向 Master发送请求，</p>
+<p>Master接收到Dirver端的任务请求之后，根据任务的请求资源进行调度，（打散的策略），尽可能的 把任务资源平均分配，然后向WOrker发送指令</p>
+<p>Worker收到Master的指令之后，就根据相应的资源，启动executor（cores,memory）</p>
+<p>executor会向dirver端建立请求，通知driver，任务已经可以运行了</p>
+<p>driver运行任务的时候，会把任务发送到executor中去运行。</p>
+<h2 id="5spark中coalesce与repartition的区别">5.Spark中coalesce与repartition的区别</h2>
+<p>1）关系：</p>
+<p>两者都是用来改变 RDD 的 partition 数量的，repartition 底层调用的就是 coalesce 方法：coalesce(numPartitions, shuffle = true)</p>
+<p>2）区别：</p>
+<p>repartition 一定会发生 shuffle，coalesce 根据传入的参数来判断是否发生 shuffle</p>
+<p>一般情况下增大 rdd 的 partition 数量使用 repartition，减少 partition 数量时使用coalesce</p>
+<h2 id="6sortby-和-sortbykey的区别">6.sortBy 和 sortByKey的区别</h2>
+<p>sortBy既可以作用于RDD[K] ，还可以作用于RDD[(k,v)]</p>
+<p>sortByKey  只能作用于 RDD[K,V] 类型上。</p>
+<h2 id="7map和mappartitions的区别">7.map和mapPartitions的区别</h2>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_spark/a002.png" />   
+    </p>
+<h2 id="8数据存入redis或mysql优先使用mapmappartitionsforeachforeachpartions哪个">8.数据存入Redis或mysql优先使用map/mapPartitions/foreach/foreachPartions哪个</h2>
+<p>使用 foreachPartition</p>
+<ol>
+<li>
+<p>map mapPartition 是转换类的算子， 有返回值</p>
+</li>
+<li>
+<p>写mysql,redis 的连接</p>
+<p>foreach  * 100万         100万次的连接</p>
+<p>foreachPartions * 200 个分区     200次连接  一个分区中的数据，共用一个连接</p>
+</li>
+</ol>
+<p>foreachParititon 每次迭代一个分区，foreach每次迭代一个元素。</p>
+<p>该方法没有返回值，或者Unit</p>
+<p>主要作用于，没有返回值类型的操作（打印结果，写入到mysql数据库中）</p>
+<p>在写入到redis,mysql的时候，优先使用foreachPartititon</p>
+<h2 id="9reducebykey和groupbykey的区别">9.reduceByKey和groupBykey的区别</h2>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_spark/a003.png" />   
+    
+reduceByKey会传一个聚合函数， 相当于  groupByKey + mapValues</p>
+<p>reduceByKey 会有一个分区内聚合，而groupByKey没有  最核心的区别</p>
+<p>结论：reduceByKey有分区内聚合，更高效，优先选择使用reduceByKey。</p>
+<h2 id="10cache和checkpoint的比较">10.cache和checkPoint的比较</h2>
+<p>都是做 RDD 持久化的</p>
+<p>1.缓存，是在触发action之后，把数据写入到内存或者磁盘中。不会截断血缘关系</p>
+<p>（设置缓存级别为memory_only：内存不足，只会部分缓存或者没有缓存，缓存会丢失,memory_and_disk :内存不足，会使用磁盘）</p>
+<p>2.checkpoint 也是在触发action之后，执行任务。单独再启动一个job，负责写入数据到hdfs中。（把rdd中的数据，以二进制文本的方式写入到hdfs中，有几个分区，就有几个二进制文件）</p>
+<p>3.某一个RDD被checkpoint之后，他的父依赖关系会被删除，血缘关系被截断，该RDD转换成了CheckPointRDD，以后再对该rdd的所有操作，都是从hdfs中的checkpoint的具体目录来读取数据。缓存之后，rdd的依赖关系还是存在的。</p>
+<h2 id="11spark-streaming流式统计单词数量代码">11.spark streaming流式统计单词数量代码</h2>
+<h2 id="12简述map和flatmap的区别和应用场景">12.简述map和flatMap的区别和应用场景</h2>
+<h2 id="13计算曝光数和点击数">13.计算曝光数和点击数</h2>
+<h2 id="14分别列出几个常用的transformation和action算子">14.分别列出几个常用的transformation和action算子</h2>
+<p>15.按照需求使用spark编写以下程序，要求使用scala语言</p>
+<p>16.spark应用程序的执行命令是什么？</p>
+<p>17.Spark应用执行有哪些模式，其中哪几种是集群模式</p>
+<p>18.请说明spark中广播变量的用途</p>
+<p>19.以下代码会报错吗？如果会怎么解决 val arr = new ArrayList[String]; arr.foreach(println)</p>
+<p>20.写出你用过的spark中的算子，其中哪些会产生shuffle过程</p>
+<p>21.Spark中rdd与partition的区别</p>
+<p>22.请写出创建Dateset的几种方式</p>
+<p>23.描述一下RDD，DataFrame，DataSet的区别？</p>
+<p>24.描述一下Spark中stage是如何划分的？描述一下shuffle的概念</p>
+<p>25.Spark 在yarn上运行需要做哪些关键的配置工作？如何kill -个Spark在yarn运行中Application</p>
+<p>26.通常来说，Spark与MapReduce相比，Spark运行效率更高。请说明效率更高来源于Spark内置的哪些机制？请列举常见spark的运行模式？</p>
+<p>27.RDD中的数据在哪？</p>
+<p>28.如果对RDD进行cache操作后，数据在哪里？</p>
+<p>29.Spark中Partition的数量由什么决定</p>
+<p>30.Scala里面的函数和方法有什么区别</p>
+<p>31.SparkStreaming怎么进行监控?</p>
+<p>32.Spark判断Shuffle的依据?</p>
+<p>33.Scala有没有多继承？可以实现多继承么？</p>
+<p>34.Sparkstreaming和flink做实时处理的区别</p>
+<p>35.Sparkcontext的作用</p>
+<p>36.Sparkstreaming读取kafka数据为什么选择直连方式</p>
+<p>37.离线分析什么时候用sparkcore和sparksql</p>
+<p>38.Sparkstreaming实时的数据不丢失的问题</p>
+<p>39.简述宽依赖和窄依赖概念，groupByKey,reduceByKey,map,filter,union五种操作哪些会导致宽依赖，哪些会导致窄依赖</p>
+<p>40.数据倾斜可能会导致哪些问题，如何监控和排查，在设计之初，要考虑哪些来避免</p>
+<p>41.有一千万条短信，有重复，以文本文件的形式保存，一行一条数据，请用五分钟时间，找出重复出现最多的前10条</p>
+<p>42.现有一文件，格式如下，请用spark统计每个单词出现的次数</p>
+<p>43.共享变量和累加器</p>
+<p>44.当 Spark 涉及到数据库的操作时，如何减少 Spark 运行中的数据库连接数？</p>
+<p>45.特别大的数据，怎么发送到excutor中？</p>
+<p>46.spark调优都做过哪些方面？</p>
+<p>47.spark任务为什么会被yarn kill掉？</p>
+<p>48.Spark on Yarn作业执行流程？yarn-client和yarn-cluster有什么区别？</p>
+<p>49.Flatmap底层编码实现？</p>
+<p>50.spark_1.X与spark_2.X区别</p>
+<p>51.说说spark与flink</p>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">大数据 010flume基础知识</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">大数据 009kafka基础知识</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">大数据 007clickhouse基础知识</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">大数据 006impala基础知识</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">大数据 005flink基础知识</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据 100数据集成调研">大数据 100数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Mysql-007基础知识">Mysql-007基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/" title="Mysql-006解读事务和MVVC原理">Mysql-006解读事务和MVVC原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/" title="Mysql-005浅谈Mysql架构体系">Mysql-005浅谈Mysql架构体系</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/" title="大数据006impala与hive对比详解">大数据006impala与hive对比详解</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" title="大数据 004spark知识整理">大数据 004spark知识整理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 010flume基础知识">大数据 010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 009kafka基础知识">大数据 009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 007clickhouse基础知识">大数据 007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 006impala基础知识">大数据 006impala基础知识</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-100数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Redis/">缓存-Redis (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Java/">语言-Java (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Php/">语言-Php (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Python/">语言-Python (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
