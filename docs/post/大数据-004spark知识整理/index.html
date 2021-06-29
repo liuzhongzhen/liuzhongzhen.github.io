@@ -161,6 +161,43 @@
     <li><a href="#12简述map和flatmap的区别和应用场景">12.简述map和flatMap的区别和应用场景</a></li>
     <li><a href="#13计算曝光数和点击数">13.计算曝光数和点击数</a></li>
     <li><a href="#14分别列出几个常用的transformation和action算子">14.分别列出几个常用的transformation和action算子</a></li>
+    <li><a href="#15按照需求使用spark编写以下程序要求使用scala语言">15.按照需求使用spark编写以下程序，要求使用scala语言</a></li>
+    <li><a href="#16spark应用程序的执行命令是什么">16.spark应用程序的执行命令是什么？</a></li>
+    <li><a href="#17spark应用执行有哪些模式其中哪几种是集群模式">17.Spark应用执行有哪些模式，其中哪几种是集群模式</a></li>
+    <li><a href="#18请说明spark中广播变量的用途">18.请说明spark中广播变量的用途</a></li>
+    <li><a href="#19以下代码会报错吗如果会怎么解决">19.以下代码会报错吗？如果会怎么解决</a></li>
+    <li><a href="#20写出你用过的spark中的算子其中哪些会产生shuffle过程">20.写出你用过的spark中的算子，其中哪些会产生shuffle过程</a></li>
+    <li><a href="#21spark中rdd与partition的区别">21.Spark中rdd与partition的区别</a></li>
+    <li><a href="#22请写出创建dateset的几种方式">22.请写出创建Dateset的几种方式</a></li>
+    <li><a href="#23描述一下rdddataframedataset的区别">23.描述一下RDD，DataFrame，DataSet的区别？</a></li>
+    <li><a href="#24描述一下spark中stage是如何划分的描述一下shuffle的概念">24.描述一下Spark中stage是如何划分的？描述一下shuffle的概念</a></li>
+    <li><a href="#25spark-在yarn上运行需要做哪些关键的配置工作如何kill--个spark在yarn运行中application">25.Spark 在yarn上运行需要做哪些关键的配置工作？如何kill -个Spark在yarn运行中Application</a></li>
+    <li><a href="#26通常来说spark与mapreduce相比spark运行效率更高请说明效率更高来源于spark内置的哪些机制请列举常见spark的运行模式">26.通常来说，Spark与MapReduce相比，Spark运行效率更高。请说明效率更高来源于Spark内置的哪些机制？请列举常见spark的运行模式？</a></li>
+    <li><a href="#27rdd中的数据在哪">27.RDD中的数据在哪？</a></li>
+    <li><a href="#28如果对rdd进行cache操作后数据在哪里">28.如果对RDD进行cache操作后，数据在哪里？</a></li>
+    <li><a href="#29spark中partition的数量由什么决定">29.Spark中Partition的数量由什么决定</a></li>
+    <li><a href="#30scala里面的函数和方法有什么区别">30.Scala里面的函数和方法有什么区别</a></li>
+    <li><a href="#31sparkstreaming怎么进行监控">31.SparkStreaming怎么进行监控?</a></li>
+    <li><a href="#32spark判断shuffle的依据">32.Spark判断Shuffle的依据?</a></li>
+    <li><a href="#33scala有没有多继承可以实现多继承么">33.Scala有没有多继承？可以实现多继承么？</a></li>
+    <li><a href="#34sparkstreaming和flink做实时处理的区别">34.Sparkstreaming和flink做实时处理的区别</a></li>
+    <li><a href="#35sparkcontext的作用">35.Sparkcontext的作用</a></li>
+    <li><a href="#36sparkstreaming读取kafka数据为什么选择直连方式">36.Sparkstreaming读取kafka数据为什么选择直连方式</a></li>
+    <li><a href="#37离线分析什么时候用sparkcore和sparksql">37.离线分析什么时候用sparkcore和sparksql</a></li>
+    <li><a href="#38sparkstreaming实时的数据不丢失的问题">38.Sparkstreaming实时的数据不丢失的问题</a></li>
+    <li><a href="#39简述宽依赖和窄依赖概念groupbykeyreducebykeymapfilterunion五种操作哪些会导致宽依赖哪些会导致窄依赖">39.简述宽依赖和窄依赖概念，groupByKey,reduceByKey,map,filter,union五种操作哪些会导致宽依赖，哪些会导致窄依赖</a></li>
+    <li><a href="#40数据倾斜可能会导致哪些问题如何监控和排查在设计之初要考虑哪些来避免">40.数据倾斜可能会导致哪些问题，如何监控和排查，在设计之初，要考虑哪些来避免</a></li>
+    <li><a href="#41有一千万条短信有重复以文本文件的形式保存一行一条数据请用五分钟时间找出重复出现最多的前10条">41.有一千万条短信，有重复，以文本文件的形式保存，一行一条数据，请用五分钟时间，找出重复出现最多的前10条</a></li>
+    <li><a href="#42现有一文件格式如下请用spark统计每个单词出现的次数">42.现有一文件，格式如下，请用spark统计每个单词出现的次数</a></li>
+    <li><a href="#43共享变量和累加器">43.共享变量和累加器</a></li>
+    <li><a href="#44当-spark-涉及到数据库的操作时如何减少-spark-运行中的数据库连接数">44.当 Spark 涉及到数据库的操作时，如何减少 Spark 运行中的数据库连接数？</a></li>
+    <li><a href="#45特别大的数据怎么发送到excutor中">45.特别大的数据，怎么发送到excutor中？</a></li>
+    <li><a href="#46spark调优都做过哪些方面">46.spark调优都做过哪些方面？</a></li>
+    <li><a href="#47spark任务为什么会被yarn-kill掉">47.spark任务为什么会被yarn kill掉？</a></li>
+    <li><a href="#48spark-on-yarn作业执行流程yarn-client和yarn-cluster有什么区别">48.Spark on Yarn作业执行流程？yarn-client和yarn-cluster有什么区别？</a></li>
+    <li><a href="#49flatmap底层编码实现">49.Flatmap底层编码实现？</a></li>
+    <li><a href="#50spark_1x与spark_2x区别">50.spark_1.X与spark_2.X区别</a></li>
+    <li><a href="#51说说spark与flink">51.说说spark与flink</a></li>
   </ul>
 </nav>
     </div>
@@ -354,46 +391,293 @@ reduceByKey会传一个聚合函数， 相当于  groupByKey + mapValues</p>
 <p>2.checkpoint 也是在触发action之后，执行任务。单独再启动一个job，负责写入数据到hdfs中。（把rdd中的数据，以二进制文本的方式写入到hdfs中，有几个分区，就有几个二进制文件）</p>
 <p>3.某一个RDD被checkpoint之后，他的父依赖关系会被删除，血缘关系被截断，该RDD转换成了CheckPointRDD，以后再对该rdd的所有操作，都是从hdfs中的checkpoint的具体目录来读取数据。缓存之后，rdd的依赖关系还是存在的。</p>
 <h2 id="11spark-streaming流式统计单词数量代码">11.spark streaming流式统计单词数量代码</h2>
-<h2 id="12简述map和flatmap的区别和应用场景">12.简述map和flatMap的区别和应用场景</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">object WordCountAll <span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#998;font-style:italic">// newValues当前批次的出现的单词次数， runningCount表示之前运行的单词出现的结果
+</span><span style="color:#998;font-style:italic"></span> <span style="color:#998;font-style:italic">/* def updateFunction(newValues: Seq[Int], runningCount: Option[Int]): Option[Int] = {
+</span><span style="color:#998;font-style:italic">    val newCount =  newValues.sum + runningCount.getOrElse(0)// 将历史前几个批次的值和当前批次的值进行累加返回当前批次最终的结果
+</span><span style="color:#998;font-style:italic">    Some(newCount)
+</span><span style="color:#998;font-style:italic">  }*/</span>
+  <span style="color:#998;font-style:italic">/**
+</span><span style="color:#998;font-style:italic">    * String : 单词 hello
+</span><span style="color:#998;font-style:italic">    * Seq[Int] ：单词在当前批次出现的次数
+</span><span style="color:#998;font-style:italic">    * Option[Int] ：历史结果
+</span><span style="color:#998;font-style:italic">    */</span>
+  val updateFunc <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">(</span>iter<span style="color:#000;font-weight:bold">:</span> Iterator<span style="color:#000;font-weight:bold">[(</span>String<span style="color:#000;font-weight:bold">,</span> Seq<span style="color:#000;font-weight:bold">[</span>Int<span style="color:#000;font-weight:bold">],</span> Option<span style="color:#000;font-weight:bold">[</span>Int<span style="color:#000;font-weight:bold">])])</span> <span style="color:#000;font-weight:bold">=&gt;</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#998;font-style:italic">//iter.flatMap(it=&gt;Some(it._2.sum + it._3.getOrElse(0)).map(x=&gt;(it._1,x)))
+</span><span style="color:#998;font-style:italic"></span>    iter<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">flatMap</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000;font-weight:bold">case</span><span style="color:#000;font-weight:bold">(</span>x<span style="color:#000;font-weight:bold">,</span>y<span style="color:#000;font-weight:bold">,</span>z<span style="color:#000;font-weight:bold">)=&gt;</span>Some<span style="color:#000;font-weight:bold">(</span>y<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">sum</span> <span style="color:#000;font-weight:bold">+</span> z<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getOrElse</span><span style="color:#000;font-weight:bold">(</span>0<span style="color:#000;font-weight:bold">)).</span><span style="color:#008080">map</span><span style="color:#000;font-weight:bold">(</span>m<span style="color:#000;font-weight:bold">=&gt;(</span>x<span style="color:#000;font-weight:bold">,</span> m<span style="color:#000;font-weight:bold">))}</span>
+  <span style="color:#000;font-weight:bold">}</span>
+  <span style="color:#998;font-style:italic">// 屏蔽日志
+</span><span style="color:#998;font-style:italic"></span>  Logger<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getLogger</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;org.apache&#34;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#008080">setLevel</span><span style="color:#000;font-weight:bold">(</span>Level<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">ERROR</span><span style="color:#000;font-weight:bold">)</span>
+  def <span style="color:#900;font-weight:bold">main</span><span style="color:#000;font-weight:bold">(</span>args<span style="color:#000;font-weight:bold">:</span> Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">])</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#998;font-style:italic">// 必须要开启2个以上的线程，一个线程用来接收数据，另外一个线程用来计算
+</span><span style="color:#998;font-style:italic"></span>    val conf <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> SparkConf<span style="color:#000;font-weight:bold">().</span><span style="color:#008080">setMaster</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;local[2]&#34;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#008080">setAppName</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;NetworkWordCount&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#998;font-style:italic">// 设置sparkjob计算时所采用的序列化方式
+</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">set</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;spark.serializer&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;org.apache.spark.serializer.KryoSerializer&#34;</span><span style="color:#000;font-weight:bold">)</span>
+      <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">set</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;spark.rdd.compress&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;true&#34;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#998;font-style:italic">// 节约大量的内存内容
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// 如果你的程序出现垃圾回收时间过程，可以设置一下java的垃圾回收参数
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// 同时也会创建sparkContext对象
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// 批次时间 &gt;= 批次处理的总时间 (批次数据量，集群的计算节点数量和配置)
+</span><span style="color:#998;font-style:italic"></span>    val ssc <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> StreamingContext<span style="color:#000;font-weight:bold">(</span>conf<span style="color:#000;font-weight:bold">,</span> Seconds<span style="color:#000;font-weight:bold">(</span>5<span style="color:#000;font-weight:bold">))</span>
+
+    <span style="color:#998;font-style:italic">//做checkpoint 写入共享存储中
+</span><span style="color:#998;font-style:italic"></span>    ssc<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">checkpoint</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;c://aaa&#34;</span><span style="color:#000;font-weight:bold">)</span>
+
+    <span style="color:#998;font-style:italic">// 创建一个将要连接到 hostname:port 的 DStream，如 localhost:9999
+</span><span style="color:#998;font-style:italic"></span>    val lines<span style="color:#000;font-weight:bold">:</span> ReceiverInputDStream<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> ssc<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">socketTextStream</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;192.168.175.101&#34;</span><span style="color:#000;font-weight:bold">,</span> 44444<span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#998;font-style:italic">//updateStateByKey结果可以累加但是需要传入一个自定义的累加函数：updateFunc
+</span><span style="color:#998;font-style:italic"></span>    val results <span style="color:#000;font-weight:bold">=</span> lines<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">flatMap</span><span style="color:#000;font-weight:bold">(</span>_<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">split</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34; &#34;</span><span style="color:#000;font-weight:bold">)).</span><span style="color:#008080">map</span><span style="color:#000;font-weight:bold">((</span>_<span style="color:#000;font-weight:bold">,</span>1<span style="color:#000;font-weight:bold">)).</span><span style="color:#008080">updateStateByKey</span><span style="color:#000;font-weight:bold">(</span>updateFunc<span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">new</span> HashPartitioner<span style="color:#000;font-weight:bold">(</span>ssc<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">sparkContext</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">defaultParallelism</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#000;font-weight:bold">true</span><span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#998;font-style:italic">//打印结果到控制台
+</span><span style="color:#998;font-style:italic"></span>    results<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">print</span><span style="color:#000;font-weight:bold">()</span>
+    <span style="color:#998;font-style:italic">//开始计算
+</span><span style="color:#998;font-style:italic"></span>    ssc<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">start</span><span style="color:#000;font-weight:bold">()</span>
+    <span style="color:#998;font-style:italic">//等待停止
+</span><span style="color:#998;font-style:italic"></span>    ssc<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">awaitTermination</span><span style="color:#000;font-weight:bold">()</span>
+  <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="12简述map和flatmap的区别和应用场景">12.简述map和flatMap的区别和应用场景</h2>
+<p>map是对每一个元素进行操作，flatmap是对每一个元素操作后并压平,一行变多行</p>
+<ol>
+<li>共同点</li>
+</ol>
+<ul>
+<li>都是依赖FuncX(入参，返回值)进行转换（将一个类型依据程序逻辑转换成另一种类型，根据入参和返回值）</li>
+<li>都能在转换后直接被subscribe</li>
+</ul>
+<ol start="2">
+<li>区别</li>
+</ol>
+<ul>
+<li>map返回的是结果集，flatmap返回的是包含结果集的Observable（返回结果不同）</li>
+<li>map被订阅时每传递一个事件执行一次onNext方法，flatmap多用于多对多，一对多，再被转化为多个时，一般利用from/just进行一一分发，被订阅时将所有数据传递完毕汇总到一个Observable然后一一执行onNext方法（执行顺序不同）&raquo;&raquo;(如单纯用于一对一转换则和map相同)</li>
+<li>map只能单一转换，单一只的是只能一对一进行转换，指一个对象可以转化为另一个对象但是不能转换成对象数组（map返回结果集不能直接使用from/just再次进行事件分发，一旦转换成对象数组的话，再处理集合/数组的结果时需要利用for一一遍历取出，而使用RxJava就是为了剔除这样的嵌套结构，使得整体的逻辑性更强。）</li>
+<li>flatmap既可以单一转换也可以一对多/多对多转换，flatmap要求返回Observable，因此可以再内部进行from/just的再次事件分发，一一取出单一对象（转换对象的能力不同）</li>
+</ul>
 <h2 id="13计算曝光数和点击数">13.计算曝光数和点击数</h2>
 <h2 id="14分别列出几个常用的transformation和action算子">14.分别列出几个常用的transformation和action算子</h2>
-<p>15.按照需求使用spark编写以下程序，要求使用scala语言</p>
-<p>16.spark应用程序的执行命令是什么？</p>
-<p>17.Spark应用执行有哪些模式，其中哪几种是集群模式</p>
-<p>18.请说明spark中广播变量的用途</p>
-<p>19.以下代码会报错吗？如果会怎么解决 val arr = new ArrayList[String]; arr.foreach(println)</p>
-<p>20.写出你用过的spark中的算子，其中哪些会产生shuffle过程</p>
-<p>21.Spark中rdd与partition的区别</p>
-<p>22.请写出创建Dateset的几种方式</p>
-<p>23.描述一下RDD，DataFrame，DataSet的区别？</p>
-<p>24.描述一下Spark中stage是如何划分的？描述一下shuffle的概念</p>
-<p>25.Spark 在yarn上运行需要做哪些关键的配置工作？如何kill -个Spark在yarn运行中Application</p>
-<p>26.通常来说，Spark与MapReduce相比，Spark运行效率更高。请说明效率更高来源于Spark内置的哪些机制？请列举常见spark的运行模式？</p>
-<p>27.RDD中的数据在哪？</p>
-<p>28.如果对RDD进行cache操作后，数据在哪里？</p>
-<p>29.Spark中Partition的数量由什么决定</p>
-<p>30.Scala里面的函数和方法有什么区别</p>
-<p>31.SparkStreaming怎么进行监控?</p>
-<p>32.Spark判断Shuffle的依据?</p>
-<p>33.Scala有没有多继承？可以实现多继承么？</p>
-<p>34.Sparkstreaming和flink做实时处理的区别</p>
-<p>35.Sparkcontext的作用</p>
-<p>36.Sparkstreaming读取kafka数据为什么选择直连方式</p>
-<p>37.离线分析什么时候用sparkcore和sparksql</p>
-<p>38.Sparkstreaming实时的数据不丢失的问题</p>
-<p>39.简述宽依赖和窄依赖概念，groupByKey,reduceByKey,map,filter,union五种操作哪些会导致宽依赖，哪些会导致窄依赖</p>
-<p>40.数据倾斜可能会导致哪些问题，如何监控和排查，在设计之初，要考虑哪些来避免</p>
-<p>41.有一千万条短信，有重复，以文本文件的形式保存，一行一条数据，请用五分钟时间，找出重复出现最多的前10条</p>
-<p>42.现有一文件，格式如下，请用spark统计每个单词出现的次数</p>
-<p>43.共享变量和累加器</p>
-<p>44.当 Spark 涉及到数据库的操作时，如何减少 Spark 运行中的数据库连接数？</p>
-<p>45.特别大的数据，怎么发送到excutor中？</p>
-<p>46.spark调优都做过哪些方面？</p>
-<p>47.spark任务为什么会被yarn kill掉？</p>
-<p>48.Spark on Yarn作业执行流程？yarn-client和yarn-cluster有什么区别？</p>
-<p>49.Flatmap底层编码实现？</p>
-<p>50.spark_1.X与spark_2.X区别</p>
-<p>51.说说spark与flink</p>
+<p>转换算子：map,map,filter,reduceByKey,groupByKey,groupBy</p>
+<p>行动算子：foreach，foreachpartition,collect,collectAsMap,take,top,first,count,countByKey</p>
+<h2 id="15按照需求使用spark编写以下程序要求使用scala语言">15.按照需求使用spark编写以下程序，要求使用scala语言</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">当前文件a<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">txt的格式</span><span style="color:#a61717;background-color:#e3d2d2">，</span>请统计每个单词出现的次数
+A<span style="color:#000;font-weight:bold">,</span>b<span style="color:#000;font-weight:bold">,</span>c
+B<span style="color:#000;font-weight:bold">,</span>b<span style="color:#000;font-weight:bold">,</span>f<span style="color:#000;font-weight:bold">,</span>e
+
+object WordCount <span style="color:#000;font-weight:bold">{</span>
+    def <span style="color:#900;font-weight:bold">main</span><span style="color:#000;font-weight:bold">(</span>args<span style="color:#000;font-weight:bold">:</span> Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]):</span> Unit <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
+        val conf <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> SparkConf<span style="color:#000;font-weight:bold">()</span>
+        <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">setAppName</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">this</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getClass</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getSimpleName</span><span style="color:#000;font-weight:bold">)</span>
+        <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">setMaster</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;local[*]&#34;</span><span style="color:#000;font-weight:bold">)</span>
+        val sc <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> SparkContext<span style="color:#000;font-weight:bold">(</span>conf<span style="color:#000;font-weight:bold">)</span>
+        var sData<span style="color:#000;font-weight:bold">:</span> RDD<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> sc<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">textFile</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;a.txt&#34;</span><span style="color:#000;font-weight:bold">)</span>
+        val sortData<span style="color:#000;font-weight:bold">:</span> RDD<span style="color:#000;font-weight:bold">[(</span>String<span style="color:#000;font-weight:bold">,</span> Int<span style="color:#000;font-weight:bold">)]</span> <span style="color:#000;font-weight:bold">=</span> sData<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">flatMap</span><span style="color:#000;font-weight:bold">(</span>_<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">split</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;,&#34;</span><span style="color:#000;font-weight:bold">)).</span><span style="color:#008080">map</span><span style="color:#000;font-weight:bold">((</span>_<span style="color:#000;font-weight:bold">,</span>1<span style="color:#000;font-weight:bold">)).</span><span style="color:#008080">reduceByKey</span><span style="color:#000;font-weight:bold">(</span>_<span style="color:#000;font-weight:bold">+</span>_<span style="color:#000;font-weight:bold">)</span>
+        sortData<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">foreach</span><span style="color:#000;font-weight:bold">(</span>print<span style="color:#000;font-weight:bold">)</span>
+    <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="16spark应用程序的执行命令是什么">16.spark应用程序的执行命令是什么？</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/usr/local/spark-current2.3/bin/spark-submit <span style="color:#d14">\
+</span><span style="color:#d14"></span>--class com.wedoctor.Application <span style="color:#d14">\
+</span><span style="color:#d14"></span>--master yarn <span style="color:#d14">\
+</span><span style="color:#d14"></span>--deploy-mode client <span style="color:#d14">\
+</span><span style="color:#d14"></span>--driver-memory 1g <span style="color:#d14">\
+</span><span style="color:#d14"></span>--executor-memory 2g <span style="color:#d14">\
+</span><span style="color:#d14"></span>--queue root.wedw <span style="color:#d14">\
+</span><span style="color:#d14"></span>--num-executors <span style="color:#099">200</span> <span style="color:#d14">\
+</span><span style="color:#d14"></span>--jars /home/pgxl/liuzc/config-1.3.0.jar,/home/pgxl/liuzc/hadoop-lzo-0.4.20.jar,/home/pgxl/liuzc/elasticsearch-hadoop-hive-2.3.4.jar <span style="color:#d14">\
+</span><span style="color:#d14"></span>/home/pgxl/liuzc/sen.jar
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="17spark应用执行有哪些模式其中哪几种是集群模式">17.Spark应用执行有哪些模式，其中哪几种是集群模式</h2>
+<ul>
+<li>本地local模式</li>
+<li>standalone模式</li>
+<li>spark on yarn模式</li>
+<li>spark on mesos模式</li>
+</ul>
+<p>其中，standalone模式，spark on yarn模式，spark on mesos模式是集群模式</p>
+<h2 id="18请说明spark中广播变量的用途">18.请说明spark中广播变量的用途</h2>
+<p>使用广播变量，每个 Executor 的内存中，只驻留一份变量副本，而不是对 每个 task 都传输一次大变量，省了很多的网络传输， 对性能提升具有很大帮助， 而且会通过高效的广播算法来减少传输代价。</p>
+<h2 id="19以下代码会报错吗如果会怎么解决">19.以下代码会报错吗？如果会怎么解决</h2>
+<p>val arr = new ArrayList[String]; arr.foreach(println)</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val arr <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> ArrayList<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">];</span> 这里会报错<span style="color:#a61717;background-color:#e3d2d2">，</span>需要改成 val arr<span style="color:#000;font-weight:bold">:</span> Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">](</span>10<span style="color:#000;font-weight:bold">)</span>
+arr<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">foreach</span><span style="color:#000;font-weight:bold">(</span>println<span style="color:#000;font-weight:bold">)</span>打印不会报空指针
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="20写出你用过的spark中的算子其中哪些会产生shuffle过程">20.写出你用过的spark中的算子，其中哪些会产生shuffle过程</h2>
+<p>reduceBykey：</p>
+<p>groupByKey：</p>
+<p>…ByKey:</p>
+<h2 id="21spark中rdd与partition的区别">21.Spark中rdd与partition的区别</h2>
+<h2 id="22请写出创建dateset的几种方式">22.请写出创建Dateset的几种方式</h2>
+<h2 id="23描述一下rdddataframedataset的区别">23.描述一下RDD，DataFrame，DataSet的区别？</h2>
+<ol>
+<li>RDD</li>
+</ol>
+<p>优点:</p>
+<p>编译时类型安全</p>
+<p>编译时就能检查出类型错误</p>
+<p>面向对象的编程风格</p>
+<p>直接通过类名点的方式来操作数据</p>
+<p>缺点:</p>
+<p>序列化和反序列化的性能开销</p>
+<p>无论是集群间的通信, 还是 IO 操作都需要对对象的结构和数据进行序列化和反序列化。</p>
+<p>GC 的性能开销，频繁的创建和销毁对象, 势必会增加 GC</p>
+<ol start="2">
+<li>DataFrame</li>
+</ol>
+<p>DataFrame 引入了 schema 和 off-heap</p>
+<p>schema : RDD 每一行的数据, 结构都是一样的，这个结构就存储在 schema 中。Spark 通过 schema 就能够读懂数据, 因此在通信和 IO 时就只需要序列化和反序列化数据, 而结构的部分就可以省略了。</p>
+<ol start="3">
+<li>DataSet</li>
+</ol>
+<p>DataSet 结合了 RDD 和 DataFrame 的优点，并带来的一个新的概念 Encoder。</p>
+<p>当序列化数据时，Encoder 产生字节码与 off-heap 进行交互，能够达到按需访问数据的效果，而不用反序列化整个对象。Spark 还没有提供自定义 Encoder 的 API，但是未来会加入。</p>
+<p>三者之间的转换：</p>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_spark/a004.png" />   
+    </p>
+<h2 id="24描述一下spark中stage是如何划分的描述一下shuffle的概念">24.描述一下Spark中stage是如何划分的？描述一下shuffle的概念</h2>
+<h2 id="25spark-在yarn上运行需要做哪些关键的配置工作如何kill--个spark在yarn运行中application">25.Spark 在yarn上运行需要做哪些关键的配置工作？如何kill -个Spark在yarn运行中Application</h2>
+<h2 id="26通常来说spark与mapreduce相比spark运行效率更高请说明效率更高来源于spark内置的哪些机制请列举常见spark的运行模式">26.通常来说，Spark与MapReduce相比，Spark运行效率更高。请说明效率更高来源于Spark内置的哪些机制？请列举常见spark的运行模式？</h2>
+<h2 id="27rdd中的数据在哪">27.RDD中的数据在哪？</h2>
+<p>RDD中的数据在数据源，RDD只是一个抽象的数据集，我们通过对RDD的操作就相当于对数据进行操作。</p>
+<h2 id="28如果对rdd进行cache操作后数据在哪里">28.如果对RDD进行cache操作后，数据在哪里？</h2>
+<p>数据在第一执行cache算子时会被加载到各个Executor进程的内存中，第二次就会直接从内存中读取而不会区磁盘。</p>
+<h2 id="29spark中partition的数量由什么决定">29.Spark中Partition的数量由什么决定</h2>
+<p>和Mr一样，但是Spark默认最少有两个分区。</p>
+<h2 id="30scala里面的函数和方法有什么区别">30.Scala里面的函数和方法有什么区别</h2>
+<h2 id="31sparkstreaming怎么进行监控">31.SparkStreaming怎么进行监控?</h2>
+<h2 id="32spark判断shuffle的依据">32.Spark判断Shuffle的依据?</h2>
+<p>父RDD的一个分区中的数据有可能被分配到子RDD的多个分区中</p>
+<h2 id="33scala有没有多继承可以实现多继承么">33.Scala有没有多继承？可以实现多继承么？</h2>
+<h2 id="34sparkstreaming和flink做实时处理的区别">34.Sparkstreaming和flink做实时处理的区别</h2>
+<h2 id="35sparkcontext的作用">35.Sparkcontext的作用</h2>
+<h2 id="36sparkstreaming读取kafka数据为什么选择直连方式">36.Sparkstreaming读取kafka数据为什么选择直连方式</h2>
+<h2 id="37离线分析什么时候用sparkcore和sparksql">37.离线分析什么时候用sparkcore和sparksql</h2>
+<h2 id="38sparkstreaming实时的数据不丢失的问题">38.Sparkstreaming实时的数据不丢失的问题</h2>
+<h2 id="39简述宽依赖和窄依赖概念groupbykeyreducebykeymapfilterunion五种操作哪些会导致宽依赖哪些会导致窄依赖">39.简述宽依赖和窄依赖概念，groupByKey,reduceByKey,map,filter,union五种操作哪些会导致宽依赖，哪些会导致窄依赖</h2>
+<h2 id="40数据倾斜可能会导致哪些问题如何监控和排查在设计之初要考虑哪些来避免">40.数据倾斜可能会导致哪些问题，如何监控和排查，在设计之初，要考虑哪些来避免</h2>
+<h2 id="41有一千万条短信有重复以文本文件的形式保存一行一条数据请用五分钟时间找出重复出现最多的前10条">41.有一千万条短信，有重复，以文本文件的形式保存，一行一条数据，请用五分钟时间，找出重复出现最多的前10条</h2>
+<h2 id="42现有一文件格式如下请用spark统计每个单词出现的次数">42.现有一文件，格式如下，请用spark统计每个单词出现的次数</h2>
+<h2 id="43共享变量和累加器">43.共享变量和累加器</h2>
+<p>累加器（accumulator）是 Spark 中提供的一种分布式的变量机制，其原理类似于mapreduce，即分布式的改变，然后聚合这些改变。累加器的一个常见用途是在调试时对作业执行过程中的事件进行计数。而广播变量用来高效分发较大的对象。</p>
+<p>共享变量出现的原因：</p>
+<p>通常在向 Spark 传递函数时，比如使用 map() 函数或者用 filter() 传条件时，可以使用驱动器程序中定义的变量，但是集群中运行的每个任务都会得到这些变量的一份新的副本，更新这些副本的值也不会影响驱动器中的对应变量。</p>
+<p>Spark 的两个共享变量，累加器与广播变量，分别为结果聚合与广播这两种常见的通信模式突破了这一限制。</p>
+<h2 id="44当-spark-涉及到数据库的操作时如何减少-spark-运行中的数据库连接数">44.当 Spark 涉及到数据库的操作时，如何减少 Spark 运行中的数据库连接数？</h2>
+<p>使用 foreachPartition 代替 foreach，在 foreachPartition 内获取数据库的连接。</p>
+<h2 id="45特别大的数据怎么发送到excutor中">45.特别大的数据，怎么发送到excutor中？</h2>
+<h2 id="46spark调优都做过哪些方面">46.spark调优都做过哪些方面？</h2>
+<h2 id="47spark任务为什么会被yarn-kill掉">47.spark任务为什么会被yarn kill掉？</h2>
+<h2 id="48spark-on-yarn作业执行流程yarn-client和yarn-cluster有什么区别">48.Spark on Yarn作业执行流程？yarn-client和yarn-cluster有什么区别？</h2>
+<p>Spark on Yarn作业执行流程？</p>
+<ol>
+<li>Spark Yarn Client 向 Yarn 中提交应用程序。</li>
+<li>ResourceManager 收到请求后，在集群中选择一个 NodeManager，并为该应用程序分配一个 Container，在这个 Container 中启动应用程序的 ApplicationMaster， ApplicationMaster 进行 SparkContext 等的初始化。</li>
+<li>ApplicationMaster 向 ResourceManager 注册，这样用户可以直接通过 ResourceManager 查看应用程序的运行状态，然后它将采用轮询的方式通过RPC协议为各个任务申请资源，并监控它们的运行状态直到运行结束。</li>
+<li>ApplicationMaster 申请到资源（也就是Container）后，便与对应的 NodeManager 通信，并在获得的 Container 中启动 CoarseGrainedExecutorBackend，启动后会向 ApplicationMaster 中的 SparkContext 注册并申请 Task。</li>
+<li>ApplicationMaster 中的 SparkContext 分配 Task 给 CoarseGrainedExecutorBackend 执行，CoarseGrainedExecutorBackend 运行 Task 并向ApplicationMaster 汇报运行的状态和进度，以让 ApplicationMaster 随时掌握各个任务的运行状态，从而可以在任务失败时重新启动任务。</li>
+<li>应用程序运行完成后，ApplicationMaster 向 ResourceManager申请注销并关闭自己。</li>
+</ol>
+<p>yarn-client和yarn-cluster有什么区别？</p>
+<ol>
+<li>理解YARN-Client和YARN-Cluster深层次的区别之前先清楚一个概念：Application Master。在YARN中，每个Application实例都有一个ApplicationMaster进程，它是Application启动的第一个容器。它负责和ResourceManager打交道并请求资源，获取资源之后告诉NodeManager为其启动Container。从深层次的含义讲YARN-Cluster和YARN-Client模式的区别其实就是ApplicationMaster进程的区别</li>
+<li>YARN-Cluster模式下，Driver运行在AM(Application Master)中，它负责向YARN申请资源，并监督作业的运行状况。当用户提交了作业之后，就可以关掉Client，作业会继续在YARN上运行，因而YARN-Cluster模式不适合运行交互类型的作业</li>
+<li>YARN-Client模式下，Application Master仅仅向YARN请求Executor，Client会和请求的Container通信来调度他们工作，也就是说Client不能离开</li>
+</ol>
+<h2 id="49flatmap底层编码实现">49.Flatmap底层编码实现？</h2>
+<p>flatMap其实就是将RDD里的每一个元素执行自定义函数f，这时这个元素的结果转换成iterator，最后将这些再拼接成一个</p>
+<p>新的RDD，也可以理解成原本的每个元素由横向执行函数f后再变为纵向。画红部分一直在回调，当RDD内没有元素为止。</p>
+<h2 id="50spark_1x与spark_2x区别">50.spark_1.X与spark_2.X区别</h2>
+<h2 id="51说说spark与flink">51.说说spark与flink</h2>
 
         </div>
 
