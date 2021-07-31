@@ -9,20 +9,20 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>Python-001学习资料 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="Python-001学习资料 - Liuzhongzhen的博客">
+    <title>Python 002后端架构演变 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="Python 002后端架构演变 - Liuzhongzhen的博客">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2018-01-01T18:38:16&#43;08:00'>
+    <meta property="article:published_time" content='2018-01-12T10:07:47&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2018-01-01T18:38:16&#43;08:00'>
+    <meta property="article:modified_time" content='2018-01-12T10:07:47&#43;08:00'>
         
     <meta name="Keywords" content="java python php sql">
-    <meta name="description" content="Python-001学习资料">
+    <meta name="description" content="Python 002后端架构演变">
         
     <meta name="author" content="liuzhongzhen">
-    <meta property="og:url" content="https://liuzhongzhen.github.io/post/python-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/Python-002%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8F%98/">
     <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='../../css/normalize.css'>
@@ -147,7 +147,12 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#常用开发框架">常用开发框架</a></li>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#1-mvc">1. MVC</a></li>
+    <li><a href="#2-服务拆分">2. 服务拆分</a></li>
+    <li><a href="#3-微服务架构">3. 微服务架构</a></li>
+    <li><a href="#4-领域驱动设计">4. 领域驱动设计</a></li>
+    <li><a href="#总结">总结</a></li>
   </ul>
 </nav>
     </div>
@@ -181,10 +186,10 @@
 </script>
     <article class="post">
         <header>
-            <h1 class="post-title">Python-001学习资料</h1>
+            <h1 class="post-title">Python 002后端架构演变</h1>
         </header>
         <date class="post-meta meta-date">
-            2018年1月1日
+            2018年1月12日
         </date>
         
         <div class="post-meta">
@@ -208,355 +213,66 @@
         </div>
         
         <div class="post-content">
-            <h2 id="常用开发框架">常用开发框架</h2>
-<table>
-<thead>
-<tr>
-<th>名字</th>
-<th>链接</th>
-<th>项目</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://www.djangoproject.com/">django</a></td>
-<td><a href="https://www.djangoproject.com/">https://www.djangoproject.com/</a></td>
-<td>hue</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://flask.palletsprojects.com/en/1.1.x/">flask</a></td>
-<td><a href="https://flask.palletsprojects.com/en/1.1.x/">https://flask.palletsprojects.com/en/1.1.x/</a></td>
-<td>redash,superset,flaskbb</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.tornadoweb.org/en/stable/#">tornado</a></td>
-<td><a href="https://www.tornadoweb.org/en/stable/#">https://www.tornadoweb.org/en/stable/#</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://twistedmatrix.com/trac/">twisted</a></td>
-<td><a href="https://twistedmatrix.com/trac/">https://twistedmatrix.com/trac/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://sanic.readthedocs.io/en/latest/">sanic</a></td>
-<td><a href="https://sanic.readthedocs.io/en/latest/">https://sanic.readthedocs.io/en/latest/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://fastapi.tiangolo.com/">fastapi</a></td>
-<td><a href="https://fastapi.tiangolo.com/">https://fastapi.tiangolo.com/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://github.com/vibora-io/vibora">vibora</a></td>
-<td><a href="https://github.com/vibora-io/vibora">https://github.com/vibora-io/vibora</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.trypyramid.com/">pyramid</a></td>
-<td><a href="https://www.trypyramid.com/">https://www.trypyramid.com/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://cherrypy.org/">cherryPy</a></td>
-<td><a href="https://cherrypy.org/">https://cherrypy.org/</a></td>
-<td></td>
-<td>hue的WebServer</td>
-</tr>
-<tr>
-<td><a href="http://www.bottlepy.com/docs/dev/">bottlePy</a></td>
-<td><a href="http://www.bottlepy.com/docs/dev/">http://www.bottlepy.com/docs/dev/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://webpy.org/">webpy</a></td>
-<td><a href="https://webpy.org/">https://webpy.org/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://falconframework.org/">falcon</a></td>
-<td><a href="http://falconframework.org/">http://falconframework.org/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.starlette.io/">starlette</a></td>
-<td><a href="https://www.starlette.io/">https://www.starlette.io/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://docs.aiohttp.org/en/stable/">aiphttp</a></td>
-<td><a href="https://docs.aiohttp.org/en/stable/">https://docs.aiohttp.org/en/stable/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.python-httpx.org/">httpx</a></td>
-<td><a href="https://www.python-httpx.org/">https://www.python-httpx.org/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.turbogears.org/">turbogears</a></td>
-<td><a href="https://www.turbogears.org/">https://www.turbogears.org/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://channels.readthedocs.io/en/stable/">channels</a></td>
-<td><a href="https://channels.readthedocs.io/en/stable/">https://channels.readthedocs.io/en/stable/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://github.com/jonashaag/bjoern">bjoern</a></td>
-<td><a href="https://github.com/jonashaag/bjoern">https://github.com/jonashaag/bjoern</a></td>
-<td></td>
-<td>c开发</td>
-</tr>
-<tr>
-<td><a href="http://meinheld.org/">meinheld</a></td>
-<td><a href="http://meinheld.org/">http://meinheld.org/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://pythonpaste.readthedocs.io/en/latest/">pythonpaste</a></td>
-<td><a href="https://pythonpaste.readthedocs.io/en/latest/">https://pythonpaste.readthedocs.io/en/latest/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://uwsgi-docs.readthedocs.io/en/latest/">uwsgi</a></td>
-<td><a href="https://uwsgi-docs.readthedocs.io/en/latest/">https://uwsgi-docs.readthedocs.io/en/latest/</a></td>
-<td></td>
-<td>c开发</td>
-</tr>
-<tr>
-<td><a href="https://gunicorn.org/">gunicorn</a></td>
-<td><a href="https://docs.gunicorn.org/en/stable/">https://docs.gunicorn.org/en/stable/</a></td>
-<td></td>
-<td>python开发</td>
-</tr>
-<tr>
-<td><a href="https://www.uvicorn.org/">uvicorn</a></td>
-<td><a href="https://www.uvicorn.org/">https://www.uvicorn.org/</a></td>
-<td></td>
-<td>asgi</td>
-</tr>
-<tr>
-<td><a href="https://docs.apistar.com/">apistar</a></td>
-<td><a href="https://docs.apistar.com/">https://docs.apistar.com/</a></td>
-<td></td>
-<td>asgi</td>
-</tr>
-<tr>
-<td><a href="https://github.com/django/daphne">daphne</a></td>
-<td><a href="https://github.com/django/daphne">https://github.com/django/daphne</a></td>
-<td></td>
-<td>asgi,python开发</td>
-</tr>
-<tr>
-<td><a href="https://pypi.org/project/Hypercorn/#description">hypercorn</a></td>
-<td><a href="https://gitlab.com/pgjones/hypercorn/">https://gitlab.com/pgjones/hypercorn/</a></td>
-<td></td>
-<td>asgi</td>
-</tr>
-<tr>
-<td><a href="https://flask-appbuilder.readthedocs.io/en/latest/index.html">flask-appbuilder</a></td>
-<td><a href="https://flask-appbuilder.readthedocs.io/en/latest/index.html">https://flask-appbuilder.readthedocs.io/en/latest/index.html</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://supervisord.org/">supervisord</a></td>
-<td><a href="http://supervisord.org/">http://supervisord.org/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://docs.python-requests.org/zh_CN/latest/#">requests</a></td>
-<td><a href="https://docs.python-requests.org/">https://docs.python-requests.org/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://pypi.org/project/grequests/">grequests</a></td>
-<td><a href="https://pypi.org/project/grequests/">https://pypi.org/project/grequests/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.sqlalchemy.org/">sqlalchemy</a></td>
-<td><a href="https://www.sqlalchemy.org/">https://www.sqlalchemy.org/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://palletsprojects.com/p/click/">click</a></td>
-<td><a href="https://palletsprojects.com/p/click/">https://palletsprojects.com/p/click/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://github.com/amoffat/sh">sh</a></td>
-<td><a href="https://github.com/amoffat/sh">https://github.com/amoffat/sh</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://pypi.org/project/envoy/">envoy</a></td>
-<td><a href="https://pypi.org/project/envoy/">https://pypi.org/project/envoy/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://scrapy.org/">scrapy</a></td>
-<td><a href="https://scrapy.org/">https://scrapy.org/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://logbook.readthedocs.io/en/stable/">logbook</a></td>
-<td><a href="https://logbook.readthedocs.io/en/stable/">https://logbook.readthedocs.io/en/stable/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://eliot.readthedocs.io/en/stable/">eliot</a></td>
-<td><a href="https://eliot.readthedocs.io/en/stable/">https://eliot.readthedocs.io/en/stable/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.crummy.com/software/BeautifulSoup/">beautifulSoup</a></td>
-<td><a href="https://www.crummy.com/software/BeautifulSoup/">https://www.crummy.com/software/BeautifulSoup/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://celeryproject.org/">celery</a></td>
-<td><a href="http://celeryproject.org/">http://celeryproject.org/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://apscheduler.readthedocs.io/en/stable/#">apscheduler</a></td>
-<td><a href="https://apscheduler.readthedocs.io/en/stable/#">https://apscheduler.readthedocs.io/en/stable/#</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://schedule.readthedocs.io/en/stable/">schedule</a></td>
-<td><a href="https://schedule.readthedocs.io/en/stable/">https://schedule.readthedocs.io/en/stable/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://webwareforpython.github.io/DBUtils/">dbutils</a></td>
-<td><a href="https://webwareforpython.github.io/DBUtils/">https://webwareforpython.github.io/DBUtils/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://arrow.readthedocs.io/en/latest/">arrow</a></td>
-<td><a href="https://arrow.readthedocs.io/en/latest/">https://arrow.readthedocs.io/en/latest/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://dateutil.readthedocs.io/en/stable/">dateutil</a></td>
-<td><a href="https://dateutil.readthedocs.io/en/stable/">https://dateutil.readthedocs.io/en/stable/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://thrift.apache.org/lib/py">thrift</a></td>
-<td><a href="https://thrift.apache.org/lib/py">https://thrift.apache.org/lib/py</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://www.zerorpc.io/">zerorpc</a></td>
-<td><a href="http://www.zerorpc.io/">http://www.zerorpc.io/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://grpc.io/docs/languages/python/basics/">grpc</a></td>
-<td><a href="https://grpc.io/docs/languages/python/basics/">https://grpc.io/docs/languages/python/basics/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://www.gevent.org/">gevent</a></td>
-<td><a href="http://www.gevent.org/">http://www.gevent.org/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="http://eventlet.net/">eventlet</a></td>
-<td><a href="http://eventlet.net/">http://eventlet.net/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://pypi.org/project/httplib2/">httplib2</a></td>
-<td><a href="https://pypi.org/project/httplib2/">https://pypi.org/project/httplib2/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://urllib3.readthedocs.io/en/latest/">urllib3</a></td>
-<td><a href="https://urllib3.readthedocs.io/en/latest/">https://urllib3.readthedocs.io/en/latest/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.makotemplates.org/">mako</a></td>
-<td><a href="https://www.makotemplates.org/">https://www.makotemplates.org/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://github.com/apache/arrow/tree/master/python/">pyarrow</a></td>
-<td><a href="https://github.com/apache/arrow/tree/master/python/">https://github.com/apache/arrow/tree/master/python/</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://python3-cookbook.readthedocs.io">python3-cookbook</a></td>
-<td><a href="https://python3-cookbook.readthedocs.io">https://python3-cookbook.readthedocs.io</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.py.cn/manual/python-intro.html">python-handbook</a></td>
-<td><a href="https://www.py.cn/manual/python-intro.html">https://www.py.cn/manual/python-intro.html</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.ctolib.com/python/docs/">ctolib</a></td>
-<td><a href="https://www.ctolib.com/python/docs/">https://www.ctolib.com/python/docs/</a></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+            <p><strong><a href="https://zhu327.github.io/2018/07/19/python%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/">转载自外部-Python后端架构演进</a></strong></p>
+<h2 id="前言">前言</h2>
+<p>来腾讯之前在前公司做了3年的后端开发, 经历一款SaaS产品从0到10(还没有到100, 哈哈哈)的过程, 3年间后端的架构逐步演变, 在微服务的实践过程中遇到的问题也越来越多, 在这里总结下.</p>
+<p>产品是一款服务于人力资源的SaaS在线服务, 面向HR有Web Android/iOS 小程序多个客户端, 后端采用RESTful风格API来提供服务. 主要使用Python语言, 方便快速迭代.</p>
+<p>架构的演进经历了4个大的阶段:</p>
+<ol>
+<li>MVC</li>
+<li>服务拆分</li>
+<li>微服务架构</li>
+<li>领域驱动设计.</li>
+</ol>
+<h2 id="1-mvc">1. MVC</h2>
+<p>项目刚开始的时候, 后端同事不超过5个, 这个阶段主要的工作是实现产品的原型, 没有太多的考虑架构, 使用Django来快速实现功能, DB的表结构设计好之后, 抽象出功能View, 由于产品设计也很不完善, 后端需要很多的预留设计, 避免产品逻辑的变更带来整个表结构的变动, 在这个阶段代码上最重要的是确定适合团队的代码规范, 代码检查规则.</p>
+<p>
+        <img class="mx-auto" alt="python" src="../../imgs/post/python/a001.png" />   
+    </p>
+<p>整体上架构如上图,</p>
+<ul>
+<li>Nginx负责负载均衡, 分发流量到多个Django服务,</li>
+<li>Django处理逻辑,</li>
+<li>需要异步任务就交给Celery,</li>
+<li>然后数据量比较大的地方使用Redis做缓存.</li>
+<li>同时还有实时消息通知的需要使用了Nginx Push Module.</li>
+</ul>
+<p>问题与优化方式:</p>
+<ul>
+<li>Django并发性能差 使用uWSGI Master+Worker 配合 gevent 协程支持高并发</li>
+<li>Redis连接数过多 使用redis-py自带的连接池来实现连接复用</li>
+<li>MySQL连接数过多 使用<a href="https://github.com/djangonauts/djorm-ext-pool">djorm-ext-pool</a>连接池复用连接</li>
+<li>Celery配置gevent支持并发任务</li>
+</ul>
+<p>随着开发的功能越来越多, Django下的app也越来越多, 这就带了发布上的不方便, 每次发布版本都需要重启所有的Django服务, 如果发布遇到问题, 只能加班解决了. 而且单个Django工程下的代码量也越来越多, 不好维护.</p>
+<h2 id="2-服务拆分">2. 服务拆分</h2>
+<p>随着后端团队的壮大, 分给每个同事的需求也越来越细, 如果继续在一个工程里面开发所有的代码, 维护起来的代价太高, 而我们的上一个架构中在Django里面已经按模块划分了一个个app, app内高类聚, app之间低耦合, 这就为服务的拆分带来了便利. 拆分的过程没有遇到太大的问题, 初期的拆分只是代码的分离, 把公用的代码抽离出来实现一个公用的Python库, 数据库, Redis还是共用, 随着负载的增加, 数据库也做了多实例.</p>
+<p>
+        <img class="mx-auto" alt="python" src="../../imgs/post/python/a002.png" />   
+    </p>
+<p>如上图, 服务之间尽量避免相互调用, 需要交互的地方采用http请求的方式, 内网的调用使用hosts指向内网地址.</p>
+<p>问题与优化方式:</p>
+<ul>
+<li>Nginx Push Module由于长时间没有维护, 长连接最大数量不够, 使用Tornado + ZeroMQ实现了<a href="https://github.com/zhu327/tormq">tormq</a>服务来支撑消息通知</li>
+</ul>
+<p>服务之间的调用采用http的方式, 并且要求有依赖的服务主机配置hosts指向被调用的地址, 这样带来的维护上的不方便. 以及在调用链的过程中没有重试, 错误处理, 限流等等的策略, 导致服务可用性差. 随着业务拆分, 继续使用Nginx维护配置非常麻烦, 经常因为修改Nginx的配置引发调用错误. 每一个服务都有一个完整的认证过程, 认证又依赖于用户中心的数据库, 修改认证时需要重新发布多个服务.</p>
+<h2 id="3-微服务架构">3. 微服务架构</h2>
+<p>
+        <img class="mx-auto" alt="python" src="../../imgs/post/python/a003.png" />   
+    </p>
+<p>首先是在接入层引入了基于OpenResty的Kong API Gateway, 定制实现了认证, 限流等插件. 在接入层承接并剥离了应用层公共的认证, 限流等功能. 在发布新的服务时, 发布脚本中调用Kong admin api注册服务地址到Kong, 并加载api需要使用插件.</p>
+<p>为了解决相互调用的问题, 维护了一个基于gevent+msgpack的RPC服务框架doge, 借助于etcd做服务治理, 并在rpc客户端实现了限流, 高可用, 负载均衡这些功能.</p>
+<p>在这个阶段最难的技术选型, 开源的API网关大多用Golang与OpenResty(lua)实现, 为了应对我们业务的需要还要做定制. 前期花了1个月时间学习OpenResty与Golang, 并使用OpenResty实现了一个短网址服务<a href="https://github.com/zhu327/shorturl">shorturl</a>用在业务中. 最终选择Kong是基于Lua发布的便利性, Kong的开箱即用以及插件开发比较容易. 性能的考量倒不是最重要的, 为了支撑更多的并发, 还使用了云平台提供的LB服务分发流量到2台Kong服务器组成的集群. 集群之间自动同步配置.</p>
+<p>饿了么维护一个纯Python实现的thrift协议框架<a href="https://github.com/eleme/thriftpy">thriftpy</a>, 并提供很多配套的工具, 如果团队足够大, 这一套RPC方案其实是合适的, 但是我们的团队人手不足, 水平参差不齐, 很难推广这一整套学习成本高昂的方案. 最终我们开发了类Duboo的RPC框架<a href="https://github.com/zhu327/doge">doge</a>, 代码主要参考了weibo开源的motan.</p>
+<h2 id="4-领域驱动设计">4. 领域驱动设计</h2>
+<p>
+        <img class="mx-auto" alt="python" src="../../imgs/post/python/a004.png" />   
+    </p>
+<p>在这一架构中我们尝试从应用服务中抽离出数据服务层, 每一个数据服务包含一个或多个界限上下文, 界限上下文类只有一个聚合根来暴露出RPC调用的方法. 数据服务不依赖于应用服务, 应用服务可以依赖多个数据服务. 有了数据服务层, 应用就解耦了相互之间的依赖, 高层服务只依赖于底层服务.</p>
+<p>在我离职时领域驱动设计还在学习设计阶段, 还没有落地, 但是我相信前公司的后端架构一定会往这个方向继续演进.</p>
+<h2 id="总结">总结</h2>
+<p>架构的设计, 技术的选型, 不能完全按照流行的技术走, 最终还是服务于产品, 服务于客户的需求. 设计过程中由于团队, 人员的结构问题, 有很多的妥协之处, 如何在妥协中找到最优解才是最大的挑战.</p>
+<p>Service Mesh这种新一代的微服务架构正在成为主流, 虽然现在的工作与微服务无关了, 但是也还会继续关注学习.</p>
 
         </div>
 
@@ -569,15 +285,15 @@
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="../../products/%E7%BD%91%E5%BF%83-Asima%E5%8A%A8%E6%80%81%E6%95%B0%E6%8D%AE%E5%85%A5%E5%BA%93%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/">网心-Asima动态数据入库系统设计开发</a></li>
+        <li><a href="../../post/Python-001%E7%9B%B8%E5%85%B3%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/">Python 001相关学习资料</a></li>
         
-        <li><a href="../../products/%E7%BD%91%E5%BF%83-Apana%E5%9F%BA%E4%BA%8EopenResty%E7%9A%84http%E6%95%B0%E6%8D%AE%E4%B8%8A%E6%8A%A5%E7%B3%BB%E7%BB%9F/">网心-Apana基于openResty的http数据上报系统</a></li>
+        <li><a href="../../post/Nginx-005%E5%9F%BA%E4%BA%8Eopenresty%E7%9A%84%E5%87%A0%E4%B8%AA%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/">Nginx 005基于openresty的几个开发框架</a></li>
         
-        <li><a href="../../post/Java-005springboot%E5%89%8D%E5%90%8E%E7%AB%AF%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%96%B9%E5%BC%8F/">Java 005springboot前后端参数传递方式</a></li>
+        <li><a href="../../post/Nginx-004openResty%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F/">Nginx 004openResty内置变量</a></li>
         
-        <li><a href="../../post/Java-004springboot%E7%BB%84%E4%BB%B6%E4%BE%9D%E8%B5%96%E5%88%97%E8%A1%A8/">Java 004springboot组件依赖列表</a></li>
+        <li><a href="../../post/Nginx-003nginx%E8%BF%94%E5%9B%9E%E7%A0%81/">Nginx 003nginx返回码</a></li>
         
-        <li><a href="../../post/Java-003maven%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE/">Java 003maven仓库配置</a></li>
+        <li><a href="../../post/Nginx-002openResty%E4%B8%ADlua%E5%BA%93%E6%9F%A5%E6%89%BE%E8%B7%AF%E5%BE%84/">Nginx 002openResty中lua库查找路径</a></li>
         
     </ul>
 </div>
