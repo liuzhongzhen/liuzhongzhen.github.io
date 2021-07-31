@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>语言-Python on Liuzhongzhen的博客</title>
-    <link>https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Python/</link>
-    <description>Recent content in 语言-Python on Liuzhongzhen的博客</description>
+    <title>语言Python on Liuzhongzhen的博客</title>
+    <link>https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Python/</link>
+    <description>Recent content in 语言Python on Liuzhongzhen的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 12 Jan 2018 10:07:47 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80-Python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Jan 2018 10:07:47 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Python 002后端架构演变</title>
       <link>https://liuzhongzhen.github.io/post/Python-002%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8F%98/</link>
