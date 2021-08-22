@@ -1,0 +1,1151 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>腾讯-罗盘权限管理系统 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="腾讯-罗盘权限管理系统 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2015-01-01T17:32:02&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2015-01-01T17:32:02&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="腾讯-罗盘权限管理系统">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-%E7%BD%97%E7%9B%98%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一权限系统介绍">一、权限系统介绍</a></li>
+    <li><a href="#二linux权限系统介绍">二、Linux权限系统介绍</a></li>
+    <li><a href="#三mysql权限系统介绍">三、Mysql权限系统介绍</a></li>
+    <li><a href="#四通用权限系统的设计">四、通用权限系统的设计</a></li>
+    <li><a href="#五腾讯罗盘权限系统db设计">五、腾讯罗盘权限系统DB设计</a>
+      <ul>
+        <li><a href="#1t_priv_system-系统注册表">1.t_priv_system 系统注册表</a></li>
+        <li><a href="#2t_priv_process-权限审批流程最多有9步审批必须完成">2．t_priv_process 权限审批流程，最多有9步审批,必须完成</a></li>
+        <li><a href="#3-t_priv_approvalobj-流程审批对象定义">3. t_priv_approvalobj 流程审批对象定义</a></li>
+        <li><a href="#4t_priv_resources-系统资源信息表">4．t_priv_resources 系统资源信息表</a></li>
+        <li><a href="#5t_priv_resource_operation-系统资源操作信息表">5．t_priv_resource_operation 系统资源操作信息表</a></li>
+        <li><a href="#6t_priv_user_apply-用户权限申请表">6．t_priv_user_apply 用户权限申请表</a></li>
+        <li><a href="#7-t_priv_permission-用户组角色权限表">7. t_priv_permission 用户,组,角色权限表</a></li>
+        <li><a href="#8-t_priv_log-操作日志表">8. t_priv_log 操作日志表</a></li>
+        <li><a href="#9-t_priv_group-用户组表">9. t_priv_group 用户组表</a></li>
+        <li><a href="#10-t_priv_role-角色表">10. t_priv_role 角色表</a></li>
+        <li><a href="#11-t_priv_ugr_relation-用户组角色关系表">11. t_priv_ugr_relation 用户,组,角色关系表</a></li>
+      </ul>
+    </li>
+    <li><a href="#六腾讯罗盘功能模块设计">六、腾讯罗盘功能模块设计</a></li>
+    <li><a href="#七腾讯罗盘权限系统用户界面设计">七、腾讯罗盘权限系统用户界面设计</a></li>
+    <li><a href="#八腾讯罗盘权限系统业务逻辑架构">八、腾讯罗盘权限系统业务逻辑架构</a></li>
+    <li><a href="#九罗盘验证流程">九、罗盘验证流程</a></li>
+    <li><a href="#十腾讯罗盘权限系统接口api设计">十、腾讯罗盘权限系统接口Api设计</a></li>
+    <li><a href="#十一权限系统容灾设计">十一、权限系统容灾设计</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">腾讯-罗盘权限管理系统</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2015年1月1日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h2 id="一权限系统介绍">一、权限系统介绍</h2>
+<p>权限系统简单定义：“who 对 what 进行 how 的操作”的表达式是否为真。<br>
+系统涉及到的概念：</p>
+<ul>
+<li>Who：用户（user），使权限的拥有者或主体。</li>
+<li>What：权限针对的对象或资源（resource）。</li>
+<li>How：具体的操作权限或方法行为（operator或method）。<br>
+引申之后，可以增加：</li>
+<li>用户组：group用户的集合，方便对一批相同的用户进行管理。</li>
+<li>角色：role权限的集合，方便对一批权限进行管理。</li>
+</ul>
+<p>这里考虑用户组和角色，不考虑继承，即所有的用户组都是平级的关系，不可以继承包含，所有的角色也都是平级的关系，不可以包含和继承。<br>
+再次引申一下，资源不仅有平级的关系，还有级联的关系，拥有父级别的资源权限就有了所有子级别对应的权限了。<br>
+最后关系图如下：
+
+        <img class="mx-auto" alt="ua001" src="../../imgs/txcp/a001.png" />   
+    </p>
+<h2 id="二linux权限系统介绍">二、Linux权限系统介绍</h2>
+<p>以linux的文件目录的权限管理为例，linux有用户，组，权限的概念。<br>
+一个linux用户可以属于多个linux用户组；同理一个linux用户组可以有多个用户。<br>
+Linux的文件或目录有4种权限：读，写，可执行，无权限。<br>
+一个linux文件或目录只能属于一个用户和一个组。<br>
+drwxr-xr-x user_00 users 16384 Sep 23 11:14 lamp<br>
+第1位表示文件类型。d是目录文件，l是链接文件，-是普通文件，p是管道<br>
+第2-4位表示这个文件的所有者是user_00，这个用户有r读，w写，x执行的权限。<br>
+第5-7位表示这个文件的组users包含的用户，他们具有的权限是r读，x执行。<br>
+第8-10位表示既不是文件所有者user_00，也不再users这个用户组里的用户具有的权限是x执行权限。<br>
+在这里，user_00, users对应who，文件和目录对应what,,rwx对应how操作。</p>
+<h2 id="三mysql权限系统介绍">三、Mysql权限系统介绍</h2>
+<p>Mysql的权限涉及到user,db,host,table_priv,columns_priv,proc_priv这几张表，它是分级别的，<br>
+它的存取控制分为两个阶段，
+1：服务器检查你是否有连接权限；2：你发出的每个请求都要去验证权限。<br>
+权限涉及到全局层级，数据库层级，表层级，列层级，子程序层级。<br>
+Who对应用户。<br>
+What对应db,table,view,column,process,function等。<br>
+How对应connect,select,update,insert,delete,create,drop,alter,grant,process,file,execute操作。<br>
+角色role就是一组权限的集合，通过角色，管理员可以方便的把一组权限授予某个用户。</p>
+<h2 id="四通用权限系统的设计">四、通用权限系统的设计</h2>
+<ol>
+<li>系统注册</li>
+<li>审批流程注册</li>
+<li>资源、操作、审批流注册。l</li>
+<li>权限申请，撤销，修改，删除，续期</li>
+<li>权限审批，驳回</li>
+<li>权限批量开通</li>
+<li>用户组管理</li>
+<li>角色管理</li>
+<li>移动审批</li>
+<li>权限校验</li>
+<li>权限查看，权限回收</li>
+<li>通知服务，到期提醒，审批催办</li>
+<li>权限Api服务（申请，注册，鉴权）</li>
+<li>操作日志</li>
+</ol>
+<h2 id="五腾讯罗盘权限系统db设计">五、腾讯罗盘权限系统DB设计</h2>
+<h3 id="1t_priv_system-系统注册表">1.t_priv_system 系统注册表</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> t_priv_system(
+    sys_id       <span style="color:#0086b3">bigint</span>        <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;主键，系统id&#39;</span>,
+    sys_name     <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)  <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;系统名称&#39;</span>,
+    sys_owner    <span style="color:#0086b3">varchar</span>(<span style="color:#099">2000</span>) <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;系统负责人，逗号分隔多人&#39;</span>,
+    sys_mark     <span style="color:#0086b3">varchar</span>(<span style="color:#099">2000</span>) <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;系统备注，系统用途，主页url&#39;</span>,
+    vip_users    longtext      <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;vip用户列表&#39;</span>,
+    sys_status   <span style="color:#0086b3">int</span>           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;系统状态&#39;</span>,
+    creator      <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)  <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建者&#39;</span>,
+    created      datetime      <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+    updated      datetime      <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;更新时间&#39;</span>
+)
+ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB
+<span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">SET</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4
+<span style="color:#000;font-weight:bold">COLLATE</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci
+<span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;系统注册表&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2t_priv_process-权限审批流程最多有9步审批必须完成">2．t_priv_process 权限审批流程，最多有9步审批,必须完成</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> t_priv_process(
+    proc_id         <span style="color:#0086b3">bigint</span>          <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;主键，流程id&#39;</span>,
+    sys_id          <span style="color:#0086b3">bigint</span>          <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;流程所属系统id&#39;</span>,
+    proc_name       <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;流程名称&#39;</span>,
+    creator         <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;流程创建者&#39;</span>,
+    stepnum         <span style="color:#0086b3">int</span>             <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;流程总数&lt;10&#39;</span>,
+    stepobj1        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤1审批对象&#39;</span>,
+    stepobj2        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤2审批对象&#39;</span>,
+    stepobj3        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤3审批对象&#39;</span>,
+    stepobj4        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤4审批对象&#39;</span>,
+    stepobj5        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤5审批对象&#39;</span>,
+    stepobj6        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤6审批对象&#39;</span>,
+    stepobj7        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤7审批对象&#39;</span>,
+    stepobj8        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤8审批对象&#39;</span>,
+    stepobj9        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤9审批对象&#39;</span>,
+    created         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+    updated         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;更新时间&#39;</span>
+)
+ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB
+<span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">SET</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4
+<span style="color:#000;font-weight:bold">COLLATE</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci
+<span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;权限审批流程，最多有9步审批,必须完成&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3-t_priv_approvalobj-流程审批对象定义">3. t_priv_approvalobj 流程审批对象定义</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> t_priv_approvalobj(
+    apvobj_id       <span style="color:#0086b3">bigint</span>   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;主键，审批对象id&#39;</span>,
+    stepobj_en      <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;审批步骤对象英文名,唯一索引&#39;</span>,
+    stepobj_cn      <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;审批步骤对象中文名&#39;</span>,
+    is_apicall      <span style="color:#0086b3">int</span>             <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;是否api调用&#39;</span>,
+    apiurl          <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;apiURL地址&#39;</span>,
+    apiparam        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;api参数&#39;</span>,
+    apvobj_status   <span style="color:#0086b3">int</span>             <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;审批对象状态&#39;</span>,
+    created         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+    updated         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;更新时间&#39;</span>,
+    <span style="color:#000;font-weight:bold">unique</span> <span style="color:#000;font-weight:bold">key</span> uk_obj_en(stepobj_en)
+)
+ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB
+<span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">SET</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4
+<span style="color:#000;font-weight:bold">COLLATE</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci
+<span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;流程审批对象定义&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="4t_priv_resources-系统资源信息表">4．t_priv_resources 系统资源信息表</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> t_priv_resources(
+    prid                  <span style="color:#0086b3">bigint</span> <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> auto_increment <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;主键，权限资源表&#39;</span>,
+    sys_id                <span style="color:#0086b3">bigint</span>          <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;资源所属系统&#39;</span>,
+    resource_id           <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;资源id&#39;</span>,
+    resource_cn           <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;资源名称&#39;</span>,
+    creator               <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;资源创建者&#39;</span>,
+    resource_owner        <span style="color:#0086b3">text</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;资源负责人，分号分割&#39;</span>,
+    is_has_subresource    <span style="color:#0086b3">int</span>             <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;是否有级联子资源权限&#39;</span>,
+    subresource_type      <span style="color:#0086b3">int</span>             <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;子资源类型 api或本地&#39;</span>,
+    subresource_level     <span style="color:#0086b3">int</span>             <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;字资源层数&#39;</span>,
+    subresource_apiurl    <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;资源涞源 api url&#39;</span>,
+    is_canapply           <span style="color:#0086b3">int</span>             <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;是否可以申请&#39;</span>,
+    proc_id               <span style="color:#0086b3">bigint</span>          <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;资源申请流程id&#39;</span>, 
+    created               datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+    updated               datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;更新时间&#39;</span>
+)
+ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB
+<span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">SET</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4
+<span style="color:#000;font-weight:bold">COLLATE</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci
+<span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;系统资源信息表&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="5t_priv_resource_operation-系统资源操作信息表">5．t_priv_resource_operation 系统资源操作信息表</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> t_priv_resource_operation(
+    proid           <span style="color:#0086b3">bigint</span> <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;主键，操作id&#39;</span>,
+    sys_id          <span style="color:#0086b3">bigint</span>          <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;系统id&#39;</span>,
+    resource_id     <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;资源id&#39;</span>,
+    operate_en      <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;操作英文名read,write,admin&#39;</span>,
+    operate_cn      <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;操作中文名&#39;</span>,
+    creator         <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建者&#39;</span>,
+    created         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+    updated         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;更新时间&#39;</span>
+)
+ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB
+<span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">SET</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4
+<span style="color:#000;font-weight:bold">COLLATE</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci
+<span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;系统资源操作信息表&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="6t_priv_user_apply-用户权限申请表">6．t_priv_user_apply 用户权限申请表</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> t_priv_user_apply(
+    apply_id         <span style="color:#0086b3">bigint</span> <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;申请单id,主键&#39;</span>,
+    apply_user       <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;权限申请人&#39;</span>,
+    apply_group_id   <span style="color:#0086b3">bigint</span>         <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;申请组id&#39;</span>,
+    sys_id           <span style="color:#0086b3">bigint</span>         <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;系统id&#39;</span>,
+    sys_name         <span style="color:#0086b3">text</span>           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;系统名称&#39;</span>,
+    permission_owner <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;权限获得者&#39;</span>,
+    resource_id      <span style="color:#0086b3">text</span>           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;资源id 和子资源合并的&#39;</span>,
+    resource_cn      longtext       <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;资源名称 和子资源合并的&#39;</span>,
+    operate_en       <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;资源操作id&#39;</span>,
+    operate_cn       <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;资源操作名称&#39;</span>,
+    apply_reason     <span style="color:#0086b3">text</span>           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;申请原因&#39;</span>,
+    apply_daylimit   <span style="color:#0086b3">bigint</span>         <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;申请时长&#39;</span>,
+    apply_status     <span style="color:#0086b3">int</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;申请单状态&#39;</span>,
+    last_remind_time datetime       <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;上次催办时间&#39;</span>,
+    process_id       <span style="color:#0086b3">bigint</span>         <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;审批流程id&#39;</span>,
+    stepnum          <span style="color:#0086b3">int</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;审批总步数&#39;</span>,
+    currstep         <span style="color:#0086b3">int</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;当前审批步&#39;</span>,
+    stepopers1       <span style="color:#0086b3">text</span>           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤1所有审批人 分号分割&#39;</span>,
+    stepapprover1    <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤1实际审批人&#39;</span>,
+    stepresult1      <span style="color:#0086b3">int</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤1审批结果0驳回，1通过&#39;</span>,
+    stepmark1        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤1审批意见&#39;</span>,
+    stepopers2       <span style="color:#0086b3">text</span>           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤2所有审批人 分号分割&#39;</span>,
+    stepapprover2    <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤2实际审批人&#39;</span>,
+    stepresult2      <span style="color:#0086b3">int</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤2审批结果0驳回，1通过&#39;</span>,
+    stepmark2        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤2审批意见&#39;</span>,
+    stepopers3       <span style="color:#0086b3">text</span>           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤3所有审批人 分号分割&#39;</span>,
+    stepapprover3    <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤3实际审批人&#39;</span>,
+    stepresult3      <span style="color:#0086b3">int</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤3审批结果0驳回，1通过&#39;</span>,
+    stepmark3        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤3审批意见&#39;</span>,
+    stepopers4       <span style="color:#0086b3">text</span>           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤4所有审批人 分号分割&#39;</span>,
+    stepapprover4    <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤4实际审批人&#39;</span>,
+    stepresult4      <span style="color:#0086b3">int</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤4审批结果0驳回，1通过&#39;</span>,
+    stepmark4        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤4审批意见&#39;</span>,
+    stepopers5       <span style="color:#0086b3">text</span>           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤5所有审批人 分号分割&#39;</span>,
+    stepapprover5    <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤5实际审批人&#39;</span>,
+    stepresult5      <span style="color:#0086b3">int</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤5审批结果0驳回，1通过&#39;</span>,
+    stepmark5        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤5审批意见&#39;</span>,
+    stepopers6       <span style="color:#0086b3">text</span>           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤6所有审批人 分号分割&#39;</span>,
+    stepapprover6    <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤6实际审批人&#39;</span>,
+    stepresult6      <span style="color:#0086b3">int</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤6审批结果0驳回，1通过&#39;</span>,
+    stepmark6        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤6审批意见&#39;</span>,
+    stepopers7       <span style="color:#0086b3">text</span>           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤7所有审批人 分号分割&#39;</span>,
+    stepapprover7    <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤7实际审批人&#39;</span>,
+    stepresult7      <span style="color:#0086b3">int</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤7审批结果0驳回，1通过&#39;</span>,
+    stepmark7        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤7审批意见&#39;</span>,
+    stepopers8       <span style="color:#0086b3">text</span>           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤8所有审批人 分号分割&#39;</span>,
+    stepapprover8    <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤8实际审批人&#39;</span>,
+    stepresult8      <span style="color:#0086b3">int</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤8审批结果0驳回，1通过&#39;</span>,
+    stepmark8        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤8审批意见&#39;</span>,
+    stepopers9       <span style="color:#0086b3">text</span>           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤9所有审批人 分号分割&#39;</span>,
+    stepapprover9    <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤9实际审批人&#39;</span>,
+    stepresult9      <span style="color:#0086b3">int</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤9审批结果0驳回，1通过&#39;</span>,
+    stepmark9        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)   <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;步骤9审批意见&#39;</span>,
+    created         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+    updated         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;更新时间&#39;</span>
+)
+ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB
+<span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">SET</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4
+<span style="color:#000;font-weight:bold">COLLATE</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci
+<span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;用户权限申请表&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="7-t_priv_permission-用户组角色权限表">7. t_priv_permission 用户,组,角色权限表</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> t_priv_permission(
+    permission_id   <span style="color:#0086b3">bigint</span>   <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;主键，权限id&#39;</span>,
+    permission_owner_type <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>) <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;所有者类型User，group，Role&#39;</span>,
+    permission_owner      <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>) <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;权限所有者&#39;</span>,
+    sys_id          <span style="color:#0086b3">bigint</span>          <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;系统id&#39;</span>,
+    resource_id     <span style="color:#0086b3">text</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;资源id&#39;</span>,
+    resource_cn     longtext        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;资源名称&#39;</span>,
+    operate_en      <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;操作名称&#39;</span>,
+    valid_from      <span style="color:#0086b3">bigint</span>          <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;权限有效开始日期&#39;</span>,
+    valid_to        <span style="color:#0086b3">bigint</span>          <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;权限有效结束日期&#39;</span>,
+    permission_status <span style="color:#0086b3">int</span>           <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;权限状态&#39;</span>,
+    apply_id        <span style="color:#0086b3">bigint</span>          <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;相关的申请单id&#39;</span>,
+    created         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+    updated         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;更新时间&#39;</span>
+)
+ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB
+<span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">SET</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4
+<span style="color:#000;font-weight:bold">COLLATE</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci
+<span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;用户,组,角色权限表&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="8-t_priv_log-操作日志表">8. t_priv_log 操作日志表</h3>
+<p>二期工程，可以考虑扩展用户组和角色的定义及实现。</p>
+<h3 id="9-t_priv_group-用户组表">9. t_priv_group 用户组表</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> t_priv_group(
+    group_id        <span style="color:#0086b3">bigint</span> <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;组id&#39;</span>,
+    sys_id          <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;关系类型，用户为主，组为主&#39;</span>,
+    group_cn        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;组名&#39;</span>,
+    creator         <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建者&#39;</span>,
+    group_mark      <span style="color:#0086b3">text</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;组描述信息&#39;</span>,
+    created         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+    updated         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;更新时间&#39;</span>
+)
+ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB
+<span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">SET</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4
+<span style="color:#000;font-weight:bold">COLLATE</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci
+<span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;用户组表&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="10-t_priv_role-角色表">10. t_priv_role 角色表</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> t_priv_role(
+    role_id         <span style="color:#0086b3">bigint</span> <span style="color:#000;font-weight:bold">primary</span> <span style="color:#000;font-weight:bold">key</span> <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;主键，角色id&#39;</span>,
+    sys_id          <span style="color:#0086b3">bigint</span>          <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;系统id&#39;</span>,
+    role_cn         <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;角色名称&#39;</span>,
+    creator         <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建者&#39;</span>,
+    role_mark       <span style="color:#0086b3">text</span>            <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;角色描述&#39;</span>,
+    valid_from      <span style="color:#0086b3">bigint</span>          <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;角色有效开始日期&#39;</span>,
+    valid_to        <span style="color:#0086b3">bigint</span>          <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;角色有效结束日期&#39;</span>,
+    created         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+    updated         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;更新时间&#39;</span>
+)
+ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB
+<span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">SET</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4
+<span style="color:#000;font-weight:bold">COLLATE</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci
+<span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;角色表&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="11-t_priv_ugr_relation-用户组角色关系表">11. t_priv_ugr_relation 用户,组,角色关系表</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> t_priv_ugr_relation(
+    ugr_id          <span style="color:#0086b3">bigint</span>          <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;主键&#39;</span>,
+    ugr_type        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;关系类型，用户为主，组为主&#39;</span>,
+    user_en         <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;用户名&#39;</span>,
+    group_en        <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;用户所属组名&#39;</span>,
+    role_en         <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;用户所有角色名,组拥有角色名&#39;</span>,
+    creator         <span style="color:#0086b3">varchar</span>(<span style="color:#099">255</span>)    <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建者&#39;</span>,
+    created         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;创建时间&#39;</span>,
+    updated         datetime        <span style="color:#000;font-weight:bold">comment</span> <span style="color:#d14">&#39;更新时间&#39;</span>
+)
+ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB
+<span style="color:#000;font-weight:bold">default</span> <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">SET</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4
+<span style="color:#000;font-weight:bold">COLLATE</span> <span style="color:#000;font-weight:bold">=</span> utf8mb4_general_ci
+<span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;用户,组,角色关系表&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="六腾讯罗盘功能模块设计">六、腾讯罗盘功能模块设计</h2>
+<ol>
+<li>系统管理模块<br>
+(1) 新建编辑系统<br>
+(2) 系统查询</li>
+<li>审批对象定义模块<br>
+(1)新建编辑审批对象</li>
+<li>审批流程定义模块<br>
+(1)新建编辑审批流程<br>
+(2)查询审批流程<br>
+(3)查询审批流程相关的资源,申请单,权限单,权限用户</li>
+<li>资源管理模块<br>
+(1)新建编辑资源信息<br>
+(2)新建编辑资源子信息<br>
+(3)新建编辑资源操作信息<br>
+(4)查询资源信息<br>
+(5)查询此资源相关的申请单,权限单,用户列表,组列表,角色列表<br>
+(6)权限用户资源操作权限清理功能</li>
+<li>权限申请模块<br>
+(1)用户申请资源(子资源)相关操作的权限(批量)功能<br>
+(2)申请单状态处理<br>
+(3)申请单查询<br>
+(4)申请单审批进度查询<br>
+(5)申请单催办功能(邮件,短信,微信)<br>
+(6)批量开通权限功能</li>
+<li>审批单管理模块<br>
+(1)审批单查询<br>
+(2)审批单(批量)处理</li>
+<li>用户组管理模块<br>
+(1)新建编辑用户组<br>
+(2)用户组权限申请,添加,编辑<br>
+(3)用户组成员管理<br>
+(4)用户组角色管理</li>
+<li>角色管理模块<br>
+(1)角色新建<br>
+(2)角色权限新建编辑<br>
+(3)角色查询<br>
+(4)角色相关用户，用户组查询</li>
+<li>个人中心模块<br>
+(1)资源列表<br>
+(2)申请单列列表<br>
+(3)所属用户组列表<br>
+(4)所有角色列表<br>
+(5)所有权限列表<br>
+(6)权限续期<br>
+(7)资源权限列表</li>
+<li>Api模块<br>
+(1) 系统注册接口<br>
+(2) 资源注册接口<br>
+(3) 权限查询接口<br>
+(4) 鉴权服务接口<br>
+(5) 权限审批接口</li>
+<li>移动端模块</li>
+</ol>
+<h2 id="七腾讯罗盘权限系统用户界面设计">七、腾讯罗盘权限系统用户界面设计</h2>
+<h2 id="八腾讯罗盘权限系统业务逻辑架构">八、腾讯罗盘权限系统业务逻辑架构</h2>
+<ol>
+<li>
+<p>权限申请模块<br>
+提供一个权限后台Server, 每当有用户提交申请单,则保存之后,给后台server发送请求,后台server接受到请求后就直接返回,并开启一个任务处理此申请单的相关信息,<br>
+主要有如下信息:<br>
+(1)获取申请单对应的审批流程<br>
+(2)获取每个流程步骤的审批人<br>
+(3)更新申请单的审批人信息和审批步骤信息<br>
+(4)通知相关人进行审批</p>
+</li>
+<li>
+<p>权限审批模块<br>
+采用先审批先处理的模式,以先操作的为主
+
+        <img class="mx-auto" alt="ua001" src="../../imgs/txcp/a002.jpg" />   
+    </p>
+</li>
+<li>
+<p>权限鉴权模块<br>
+用户需要传递系统id,资源id及子资源id,操作id,鉴权用户<br>
+系统会先获取用户的角色,<br>
+用户所属组的角色<br>
+合并所有角色,获取角色的所有权限,<br>
+获取用户的权限,<br>
+获取用户所属组的权限<br>
+合并所有的权限<br>
+判断用户是否有对应的操作权限.</p>
+</li>
+<li>
+<p>罗盘权限验证介绍<br>
+罗盘采用了cakephp框架开发，cakephp框架的执行入口是controller控制器，控制页面具体的模块。 <br>
+控制器执行过程:<br>
+
+        <img class="mx-auto" alt="ua001" src="../../imgs/txcp/a003.jpg" />   
+    </p>
+</li>
+</ol>
+<p>流程整理如下：</p>
+<ol>
+<li>Controller构造函数__construct</li>
+<li>所有组件Components构造函数__construct</li>
+<li>所有组件Components的initialize函数</li>
+<li>Controller的beforeFilter函数</li>
+<li>所有组件Components的startup函数</li>
+<li>Controller的beforeRender函数</li>
+<li>Controller中View类的render函数</li>
+<li>所有组件的shutdown函数</li>
+<li>Controller的afterFilter函数</li>
+<li>Controller页面输出</li>
+</ol>
+<h2 id="九罗盘验证流程">九、罗盘验证流程</h2>
+<ol>
+<li>
+<p>OaAuthComponent-&gt;startup函数<br>
+(1) isOaDomain<br>
+(2) checkSkipAuth($_GET[SKIP_AUTH_KEY]，$_GET[‘__nocheck’])<br>
+(3) 是否是vipController (TofService，InfoSearch)<br>
+(4) Controller是否有skipLogin函数，有的话Controller-&gt;skipLogin<br>
+(5) 敏感权限检查会话获取用户名<br>
+(6) tof获取员工信息<br>
+(7) controller-&gt;isAuthorized() 函数调用</p>
+</li>
+<li>
+<p>ReportsController中 isAuthorized 时候要checkProductAuth<br>
+ReportsController中isAuthorized 验证流程<br>
+(1) checkSkipAuth<br>
+(2) 管理员跳过权限验证<br>
+(3) 报表开发负责人和产品负责人验证<br>
+(4) 报表白名单访问验证<br>
+(5) 报表合作者访问验证<br>
+(6) 报表所属产品的负责人验证<br>
+(7) checkProductAuth($productId); //用户的产品权限验证</p>
+</li>
+<li>
+<p>AppController中 getUserDepProdInfo时候要checkProductAuth</p>
+</li>
+<li>
+<p>WxController中getUserDepProdInfo时候要checkProductAuth</p>
+</li>
+<li>
+<p>CustomReportController中 config时候要checkProductAuth</p>
+</li>
+</ol>
+<h2 id="十腾讯罗盘权限系统接口api设计">十、腾讯罗盘权限系统接口Api设计</h2>
+<ol>
+<li>系统注册api</li>
+<li>资源查询api</li>
+<li>用户角色查询api</li>
+<li>角色权限查询api</li>
+<li>用户组查询api</li>
+<li>组角色查询api</li>
+<li>组权限查询api</li>
+<li>用户权限查询api</li>
+<li>鉴权api</li>
+<li>操作查询api</li>
+</ol>
+<h2 id="十一权限系统容灾设计">十一、权限系统容灾设计</h2>
+<p>权限系统是一个开放的通用的部门级别的系统，可以为各种系统提供权限管理功能。
+层级定义.</p>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/Php-010%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/">Php-010基础面试题</a></li>
+        
+        <li><a href="../../post/Php-009%E6%8F%90%E9%AB%98php%E6%95%88%E7%8E%8750%E7%82%B9/">Php-009提高php效率50点</a></li>
+        
+        <li><a href="../../post/Php-008%E9%AB%98%E6%B5%81%E9%87%8F%E7%AB%99%E7%82%B9NGINX%E4%B8%8Ephp-fpm%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96/">Php-008高流量站点NGINX与php-Fpm配置优化</a></li>
+        
+        <li><a href="../../post/Php-007%E6%B7%B1%E5%85%A5pack%E5%92%8Cunpack/">Php-007深入pack和unpack</a></li>
+        
+        <li><a href="../../post/Php-006%E8%BE%93%E5%85%A5%E6%B5%81php-input%E4%BB%8B%E7%BB%8D/">Php-006输入流php Input介绍</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据 100数据集成调研">大数据 100数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Mysql-007基础知识">Mysql-007基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/" title="Mysql-006解读事务和MVVC原理">Mysql-006解读事务和MVVC原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/" title="Mysql-005浅谈Mysql架构体系">Mysql-005浅谈Mysql架构体系</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/" title="大数据006impala与hive对比详解">大数据006impala与hive对比详解</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" title="大数据 004spark知识整理">大数据 004spark知识整理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 010flume基础知识">大数据 010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 009kafka基础知识">大数据 009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 007clickhouse基础知识">大数据 007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据 006impala基础知识">大数据 006impala基础知识</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-100数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Redis/">缓存-Redis (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Java/">语言Java (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Php/">语言Php (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Python/">语言Python (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Sat, 01 May 2021 01:10:13 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Aug 2021 00:19:32 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Go语言编程</title>
+      <link>https://liuzhongzhen.github.io/books/Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Sun, 01 Aug 2021 00:19:32 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>大数据 100数据集成调研</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/</link>
@@ -576,6 +585,15 @@
     </item>
     
     <item>
+      <title>PHP经典实例第3版</title>
+      <link>https://liuzhongzhen.github.io/books/PHP%E7%BB%8F%E5%85%B8%E5%AE%9E%E4%BE%8B%E7%AC%AC3%E7%89%88/</link>
+      <pubDate>Mon, 10 Aug 2015 00:46:46 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/PHP%E7%BB%8F%E5%85%B8%E5%AE%9E%E4%BE%8B%E7%AC%AC3%E7%89%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>腾讯-ABTest效果评估系统</title>
       <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-ABTest%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Tue, 10 Feb 2015 23:20:00 +0800</pubDate>
@@ -671,6 +689,15 @@
       
       <guid>https://liuzhongzhen.github.io/post/Http-001%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86/</guid>
       <description>转发 51 张图助你彻底掌握 HTTP 协议 前言 如果说 TCP/IP 协议是互联网通信的根基，那么 HTTP 就是其中当之无愧的王者，小到日</description>
+    </item>
+    
+    <item>
+      <title>腾讯-罗盘权限管理系统</title>
+      <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-%E7%BD%97%E7%9B%98%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
+      <pubDate>Thu, 01 Jan 2015 17:32:02 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-%E7%BD%97%E7%9B%98%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
+      <description>一、权限系统介绍 权限系统简单定义：“who 对 what 进行 how 的操作”的表达式是否为真。 系统涉及到的概念： Wh</description>
     </item>
     
     <item>
@@ -872,12 +899,30 @@
     </item>
     
     <item>
+      <title>PHP6高级编程</title>
+      <link>https://liuzhongzhen.github.io/books/PHP6%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Sat, 03 Aug 2013 00:45:26 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/PHP6%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Redis 001高可用最佳实践</title>
       <link>https://liuzhongzhen.github.io/post/Redis-001%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</link>
       <pubDate>Mon, 01 Jul 2013 11:17:16 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/Redis-001%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</guid>
       <description>1、前言 2017 年 5 月 13 日，应用性能管理大讲堂广州站圆满落幕，其中来自三七互娱的 DBA 温国兵在会场与各位进行了</description>
+    </item>
+    
+    <item>
+      <title>PHP和MySQL WEB开发 4th</title>
+      <link>https://liuzhongzhen.github.io/books/PHP%E5%92%8CMySQL-WEB%E5%BC%80%E5%8F%91-4th/</link>
+      <pubDate>Wed, 01 May 2013 00:42:09 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/PHP%E5%92%8CMySQL-WEB%E5%BC%80%E5%8F%91-4th/</guid>
+      <description></description>
     </item>
     
     <item>
