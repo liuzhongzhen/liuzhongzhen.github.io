@@ -819,6 +819,9 @@ ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB
 <li>移动端模块</li>
 </ol>
 <h2 id="七腾讯罗盘权限系统用户界面设计">七、腾讯罗盘权限系统用户界面设计</h2>
+<p>
+        <img class="mx-auto" alt="ua001" src="../../imgs/txcp/a009.png" />   
+    </p>
 <h2 id="八腾讯罗盘权限系统业务逻辑架构">八、腾讯罗盘权限系统业务逻辑架构</h2>
 <ol>
 <li>
@@ -829,16 +832,30 @@ ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB
 (2)获取每个流程步骤的审批人<br>
 (3)更新申请单的审批人信息和审批步骤信息<br>
 (4)通知相关人进行审批</p>
+<p>申请单处理主要分为两步，<br>
+第一步就是用户提交申请单，系统会根据用户选择的目录对象情况，进行合并，生成对应的拼接好的resource_id,这个时候保存数据仅仅保存Apply_id、
+Apply_user、Sys_id、Sys_name、Permission_owner、Resource_id、Resource_cn、Operate_en、
+Apply_reason、Apply_daylimit、Apply_status、Updated这几个信息；同时启动后台服务，进行第二步处理。<br>
+第二步首先获取申请单对应的系统和资源id，从而获取到对应的审批流程，然后获取审批流对应的每个步骤审批角色的实际审批人，最后更新申请单的审批信息。</p>
+<p>整体流程如下:
+
+        <img class="mx-auto" alt="ua001" src="../../imgs/txcp/a004.jpg" />   
+    </p>
 </li>
 <li>
 <p>权限审批模块<br>
-采用先审批先处理的模式,以先操作的为主
+这一步主要是资源的负责人对审批单进行审批操作，因为涉及到移动端审批，所以我们抽象出了审批公共操作。<br>
+主要流程如下：<br>
+
+        <img class="mx-auto" alt="ua001" src="../../imgs/txcp/a005.jpg" />   
+    </p>
+<p>采用先审批先处理的模式,以先操作的为主<br>
 
         <img class="mx-auto" alt="ua001" src="../../imgs/txcp/a002.jpg" />   
     </p>
 </li>
 <li>
-<p>权限鉴权模块<br>
+<p>权限鉴权验证模块<br>
 用户需要传递系统id,资源id及子资源id,操作id,鉴权用户<br>
 系统会先获取用户的角色,<br>
 用户所属组的角色<br>
@@ -848,14 +865,31 @@ ENGINE <span style="color:#000;font-weight:bold">=</span> InnoDB
 合并所有的权限<br>
 判断用户是否有对应的操作权限.</p>
 </li>
-<li>
-<p>罗盘权限验证介绍<br>
+</ol>
+<p>通用权限系统提供了鉴权api，供外部系统调用，判断用户是否有对相关资源操作的权限。</p>
+<pre><code>请求url：http://ca.oa.com/checkauth
+请求参数:
+{
+    User_en:＂＂，//用户名
+    Obj_id:[]，//资源id，存放样式如下[1001,1211,1213,54368]
+    Obj_operation: ＂＂，//资源操作
+    Sys_id:＂＂　//系统id
+}
+</code></pre><p>整个鉴权的流程如下：</p>
+<p>
+        <img class="mx-auto" alt="ua001" src="../../imgs/txcp/a006.jpg" />   
+    </p>
+<p>在处理鉴权参数的过程中，会把用户请求参数中的obj_id进行拼装，因为这个参数是一个数组 ，用户可以只传递一个资源id，也可以传递子资源id，例如：可以是这样[1001],也可以是这样[1001,1211],还可以是这样[1001,1211,1213],如果参数obj_id的参数有n个，那最终会形成n个条件,如对[1001,1211,1213]则会形成1001,1001|1211,1001|1211|1213,他们之间是或的关系，最后判断这些条件是否在数据库权限表t_auth_permission中是否找到对应的记录，如果可以找到，那么判断这次鉴权是成功的，否则就鉴权失败。为了加快鉴权的速度，这里还对resource_id增加了索引，同时增加了缓存处理。</p>
+<p>整个方案的设计就可以实现，用户获得了一个父对象的权限（如手机Qzone），那么就获得了手
+机Qzone级联的所有子对象的权限，实现了资源的级联管理，同时也实现了资源和操作的分离，
+便于管理一个资源的不同操作权限。</p>
+<ol start="4">
+<li>罗盘权限验证介绍<br>
 罗盘采用了cakephp框架开发，cakephp框架的执行入口是controller控制器，控制页面具体的模块。 <br>
 控制器执行过程:<br>
 
         <img class="mx-auto" alt="ua001" src="../../imgs/txcp/a003.jpg" />   
-    </p>
-</li>
+    </li>
 </ol>
 <p>流程整理如下：</p>
 <ol>
@@ -1075,6 +1109,8 @@ ReportsController中isAuthorized 验证流程<br>
     <section class="widget">
         <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
 <ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Css/">Web-Css (5)</a></li>
     
     <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (8)</a></li>
     
