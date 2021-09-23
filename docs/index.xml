@@ -18,7 +18,7 @@
     </item>
     
     <item>
-      <title>大数据 100数据集成调研</title>
+      <title>大数据100数据集成调研</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/</link>
       <pubDate>Sat, 01 May 2021 01:10:13 +0800</pubDate>
       
@@ -63,7 +63,7 @@
     </item>
     
     <item>
-      <title>大数据 004spark知识整理</title>
+      <title>大数据004spark知识整理</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</link>
       <pubDate>Thu, 22 Apr 2021 08:40:57 +0800</pubDate>
       
@@ -72,25 +72,25 @@
     </item>
     
     <item>
-      <title>大数据 010flume基础知识</title>
+      <title>大数据010flume基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 21 Apr 2021 08:43:31 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description></description>
+      <description>一.什么是flume Flume是一个分布式、可靠、和高可用的海量日志采集、聚合和传输的系统。 Flum</description>
     </item>
     
     <item>
-      <title>大数据 009kafka基础知识</title>
+      <title>大数据009kafka基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 21 Apr 2021 08:43:21 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description></description>
+      <description>一.Kafka名词解释和工作方式 Producer ：消息生产者，就是向kafka broker发消息的客户端。 Consumer ：消息</description>
     </item>
     
     <item>
-      <title>大数据 007clickhouse基础知识</title>
+      <title>大数据007clickhouse基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 21 Apr 2021 08:42:33 +0800</pubDate>
       
@@ -99,7 +99,7 @@
     </item>
     
     <item>
-      <title>大数据 006impala基础知识</title>
+      <title>大数据006impala基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 21 Apr 2021 08:42:20 +0800</pubDate>
       
@@ -108,16 +108,16 @@
     </item>
     
     <item>
-      <title>大数据 005flink基础知识</title>
+      <title>大数据005flink基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 21 Apr 2021 08:41:35 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description></description>
+      <description>一、flink on yarn执行流程 Flink任务提交后，Client向HDFS上传Flink的Jar包</description>
     </item>
     
     <item>
-      <title>大数据 004spark基础知识</title>
+      <title>大数据004spark基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 21 Apr 2021 08:40:57 +0800</pubDate>
       
@@ -342,7 +342,7 @@
     </item>
     
     <item>
-      <title>大数据 008hbase基础知识</title>
+      <title>大数据008hbase基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Thu, 21 Mar 2019 08:42:41 +0800</pubDate>
       
@@ -531,7 +531,7 @@
     </item>
     
     <item>
-      <title>大数据-003hive基础知识2</title>
+      <title>大数据003hive基础知识2</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/</link>
       <pubDate>Tue, 01 Mar 2016 23:15:23 +0800</pubDate>
       
@@ -540,7 +540,7 @@
     </item>
     
     <item>
-      <title>大数据-003hive基础知识</title>
+      <title>大数据003hive基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 01 Mar 2016 23:05:23 +0800</pubDate>
       
@@ -549,7 +549,7 @@
     </item>
     
     <item>
-      <title>大数据 003hive概念原理</title>
+      <title>大数据003hive概念原理</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E6%A6%82%E5%BF%B5%E5%8E%9F%E7%90%86/</link>
       <pubDate>Tue, 01 Mar 2016 13:05:23 +0800</pubDate>
       
@@ -558,7 +558,7 @@
     </item>
     
     <item>
-      <title>大数据-002hadoop之yarn基础知识</title>
+      <title>大数据002hadoop之yarn基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Mon, 01 Feb 2016 23:04:07 +0800</pubDate>
       
@@ -567,7 +567,7 @@
     </item>
     
     <item>
-      <title>大数据-001hadoop之hdfs基础知识</title>
+      <title>大数据001hadoop之hdfs基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Fri, 01 Jan 2016 23:02:51 +0800</pubDate>
       
@@ -1016,7 +1016,7 @@
     </item>
     
     <item>
-      <title>大数据 000数据分析方法论</title>
+      <title>大数据000数据分析方法论</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E8%AE%BA/</link>
       <pubDate>Tue, 03 Jul 2012 01:10:13 +0800</pubDate>
       
@@ -1034,7 +1034,7 @@
     </item>
     
     <item>
-      <title>大数据-000数据分析操作</title>
+      <title>大数据000数据分析操作</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Mon, 02 Jul 2012 01:10:13 +0800</pubDate>
       
