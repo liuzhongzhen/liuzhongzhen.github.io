@@ -1,0 +1,643 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>大数据 008hbase核心知识整理 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="大数据 008hbase核心知识整理 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2019-03-22T08:42:41&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2019-03-22T08:42:41&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="大数据 008hbase核心知识整理">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一hbase调优的方法">一.Hbase调优的方法</a></li>
+    <li><a href="#二hbase的rowkey怎么创建好列族怎么创建比较好">二.hbase的rowkey怎么创建好？列族怎么创建比较好？</a></li>
+    <li><a href="#三hbase过滤器实现用途">三.hbase过滤器实现用途</a></li>
+    <li><a href="#四hbase宕机如何处理">四.HBase宕机如何处理</a></li>
+    <li><a href="#五hive跟hbase的异同点是什么">五.hive跟hbase的异同点是什么</a></li>
+    <li><a href="#六hbase写流程">六.hbase写流程</a></li>
+    <li><a href="#七hbase读流程">七.hbase读流程</a></li>
+    <li><a href="#八hbase数据flush过程">八.hbase数据flush过程</a></li>
+    <li><a href="#九数据合并过程">九.数据合并过程</a></li>
+    <li><a href="#十hmaster和hgionserver职责">十.Hmaster和Hgionserver职责</a></li>
+    <li><a href="#十一hbase列族和region的关系">十一.HBase列族和region的关系？</a></li>
+    <li><a href="#十二如何避免读写hbaes时访问热点问题">十二、如何避免读、写HBaes时访问热点问题？</a></li>
+    <li><a href="#十三布隆过滤器在hbase中的应用">十三.布隆过滤器在HBASE中的应用</a></li>
+    <li><a href="#十四hbase在建表时的设计原则注意事项">十四.Hbase在建表时的设计原则(注意事项)</a></li>
+    <li><a href="#十五hbase优化方法">十五.hbase优化方法</a></li>
+    <li><a href="#十六-hbase中的region-server发生故障后的处理方法zk--wal">十六. Hbase中的region server发生故障后的处理方法(zk&ndash;&gt;WAL)</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">大数据 008hbase核心知识整理</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年3月22日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase'>大数据-008hbase</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="一hbase调优的方法">一.Hbase调优的方法</h2>
+<ol>
+<li>高可用<br>
+在HBase中Hmaster负责监控RegionServer的生命周期，均衡RegionServer的负载，如果Hmaster挂掉了，那么整个HBase集群将陷入不健康的状态，并且此时的工作状态并不会维持太久。所以HBase支持对Hmaster的高可用配置。</li>
+<li>预分区<br>
+每一个region维护着startRow与endRowKey，如果加入的数据符合某个region维护的rowKey范围，则该数据交给这个region维护。那么依照这个原则，我们可以将数据所要投放的分区提前大致的规划好，以提高HBase性能。</li>
+<li>优化RowKey设计<br>
+一条数据的唯一标识就是rowkey，那么这条数据存储于哪个分区，取决于rowkey处于哪个一个预分区的区间内，设计rowkey的主要目的 ，就是让数据均匀的分布于所有的region中，在一定程度上防止数据倾斜</li>
+<li>内存优化<br>
+HBase操作过程中需要大量的内存开销，毕竟Table是可以缓存在内存中的，一般会分配整个可用内存的70%给HBase的Java堆。但是不建议分配非常大的堆内存，因为GC过程持续太久会导致RegionServer处于长期不可用状态，一般16~48G内存就可以了，如果因为框架占用内存过高导致系统内存不足，框架一样会被系统服务拖死。</li>
+</ol>
+<h2 id="二hbase的rowkey怎么创建好列族怎么创建比较好">二.hbase的rowkey怎么创建好？列族怎么创建比较好？</h2>
+<p>hbase存储时，数据按照Rowkey的字典序(byte order)排序存储。设计key时，要充分排序存储这个特性，将经常一起读取的行存储放到一起。(位置相关性)</p>
+<p>一个列族在数据底层是一个文件，所以将经常一起查询的列放到一个列族中，列族尽量少，减少文件的寻址时间。</p>
+<p>设计原则</p>
+<ol>
+<li>rowkey 长度原则</li>
+<li>rowkey 散列原则</li>
+<li>rowkey 唯一原则</li>
+</ol>
+<p>如何设计</p>
+<ol>
+<li>生成随机数、hash、散列值</li>
+<li>字符串反转</li>
+<li>字符串拼接</li>
+</ol>
+<h2 id="三hbase过滤器实现用途">三.hbase过滤器实现用途</h2>
+<ol>
+<li>增强hbase查询数据的功能</li>
+<li>减少服务端返回给客户端的数据量</li>
+</ol>
+<h2 id="四hbase宕机如何处理">四.HBase宕机如何处理</h2>
+<p>宕机分为HMaster宕机和HRegisoner宕机，</p>
+<p>如果是HRegisoner宕机，HMaster会将其所管理的region重新分布到其他活动的RegionServer上，由于数据和日志都持久在HDFS中，该操作不会导致数据丢失。所以数据的一致性和安全性是有保障的。</p>
+<p>如果是HMaster宕机，HMaster没有单点问题，HBase中可以启动多个HMaster，通过Zookeeper的Master Election机制保证总有一个Master运行。即ZooKeeper会保证总会有一个HMaster在对外提供服务。</p>
+<h2 id="五hive跟hbase的异同点是什么">五.hive跟hbase的异同点是什么</h2>
+<p>共同点：<br>
+1.hbase与hive都是架构在hadoop之上的。都是用hadoop/hdfs作为底层存储</p>
+<p>不同点：</p>
+<ol>
+<li>
+<p>Hive是建立在Hadoop之上为了减少MapReduce jobs编写工作的批处理系统，HBase是为了支持弥补Hadoop对实时操作的缺陷的项目 。</p>
+</li>
+<li>
+<p>想象你在操作RMDB数据库，如果是全表扫描，就用Hive+Hadoop,如果是索引访问，就用HBase+Hadoop 。</p>
+</li>
+<li>
+<p>Hive query就是MapReduce jobs可以从5分钟到数小时不止，HBase是非常高效的，肯定比Hive高效的多。</p>
+</li>
+<li>
+<p>Hive本身不存储和计算数据，它完全依赖于HDFS和MapReduce，Hive中的表纯逻辑。</p>
+</li>
+<li>
+<p>hive借用hadoop的MapReduce来完成一些hive中的命令的执行</p>
+</li>
+<li>
+<p>hbase是物理表，不是逻辑表，提供一个超大的内存hash表，搜索引擎通过它来存储索引，方便查询操作。</p>
+</li>
+<li>
+<p>hbase是列存储，hive文件可以采用列存也可以采用行式存储。</p>
+</li>
+<li>
+<p>hdfs作为底层存储，hdfs是存放文件的系统，而Hbase负责组织文件。</p>
+</li>
+<li>
+<p>hive需要用到hdfs存储文件，需要用到MapReduce计算框架。</p>
+</li>
+</ol>
+<h2 id="六hbase写流程">六.hbase写流程</h2>
+<p>
+        <img class="mx-auto" alt="hbase" src="../../imgs/post/bigdata_hbase/h001.png" />   
+    </p>
+<ol>
+<li>客户端要连接zookeeper, 从zk的/hbase节点找到hbase:meta表所在的regionserver（host:port）;</li>
+<li>regionserver扫描hbase:meta中的每个region的起始行健，对比r000001这条数据在那个region的范围内；</li>
+<li>从对应的 info:server key中存储了region是有哪个regionserver(host:port)在负责的；</li>
+<li>客户端直接请求对应的regionserver；</li>
+<li>regionserver接收到客户端发来的请求之后，就会将数据写入到region中</li>
+</ol>
+<h2 id="七hbase读流程">七.hbase读流程</h2>
+<p>
+        <img class="mx-auto" alt="hbase" src="../../imgs/post/bigdata_hbase/h002.png" />   
+    </p>
+<ol>
+<li>首先Client连接zookeeper, 找到hbase:meta表所在的regionserver;</li>
+<li>请求对应的regionserver，扫描hbase:meta表，根据namespace、表名和rowkey在meta表中找到r00001所在的region是由那个regionserver负责的；</li>
+<li>找到这个region对应的regionserver</li>
+<li>regionserver收到了请求之后，扫描对应的region返回数据到Client</li>
+</ol>
+<p>(先从MemStore找数据，如果没有，再到BlockCache里面读；BlockCache还没有，再到StoreFile上读(为了读取的效率)；如果是从StoreFile里面读取的数据，不是直接返回给客户端，而是先写入BlockCache，再返回给客户端。)</p>
+<h2 id="八hbase数据flush过程">八.hbase数据flush过程</h2>
+<ol>
+<li>当MemStore数据达到阈值（默认是128M，老版本是64M），将数据刷到硬盘，将内存中的数据删除，同时删除HLog中的历史数据；</li>
+<li>并将数据存储到HDFS中；</li>
+<li>在HLog中做标记点。</li>
+</ol>
+<h2 id="九数据合并过程">九.数据合并过程</h2>
+<ol>
+<li>当数据块达到4块，hmaster将数据块加载到本地，进行合并</li>
+<li>当合并的数据超过256M，进行拆分，将拆分后的region分配给不同的hregionserver管理</li>
+<li>当hregionser宕机后，将hregionserver上的hlog拆分，然后分配给不同的hregionserver加载，修改.META.</li>
+<li>注意：hlog会同步到hdfs</li>
+</ol>
+<h2 id="十hmaster和hgionserver职责">十.Hmaster和Hgionserver职责</h2>
+<p>Hmaster的功能:</p>
+<ol>
+<li>管理用户对Table的增、删、改、查操作；</li>
+<li>记录region在哪台Hregion server上</li>
+<li>在Region Split后，负责新Region的分配；</li>
+<li>新机器加入时，管理HRegion Server的负载均衡，调整Region分布</li>
+<li>在HRegion Server宕机后，负责失效HRegion Server 上的Regions迁移。</li>
+</ol>
+<p>Hgionserver的功能:</p>
+<ol>
+<li>HRegion Server主要负责响应用户I/O请求，向HDFS文件系统中读写数据，是HBASE中最核心的模块。</li>
+<li>HRegion Server管理了很多table的分区，也就是region。</li>
+</ol>
+<h2 id="十一hbase列族和region的关系">十一.HBase列族和region的关系？</h2>
+<p>HBase有多个RegionServer，每个RegionServer里有多个Region，一个Region中存放着若干行的行键以及所对应的数据，一个列族是一个文件夹，如果经常要搜索整个一条数据，列族越少越好，如果只有一部分的数据需要经常被搜索，那么将经常搜索的建立一个列族，其他不常搜索的建立列族检索较快。</p>
+<h2 id="十二如何避免读写hbaes时访问热点问题">十二、如何避免读、写HBaes时访问热点问题？</h2>
+<ol>
+<li>
+<p>加盐<br>
+这里所说的加盐不是密码学中的加盐，而是在rowkey的前面增加随机数，具体就是给rowkey分配一个随机前缀以使得它和之前的rowkey的开头不同。给多少个前缀？这个数量应该和我们想要分散数据到不同的region的数量一致（类似hive里面的分桶）。
+（ 自己理解：即region数量是一个范围，我们给rowkey分配一个随机数，前缀（随机数）的范围是region的数量）
+加盐之后的rowkey就会根据随机生成的前缀分散到各个region上，以避免热点。</p>
+</li>
+<li>
+<p>哈希<br>
+哈希会使同一行永远用一个前缀加盐。哈希也可以使负载分散到整个集群，但是读却是可以预测的。使用确定的哈希可以让客户端重构完整的rowkey，可以使用get操作准确获取某一个行数据。</p>
+</li>
+<li>
+<p>反转<br>
+第三种防止热点的方法是反转固定长度或者数字格式的rowkey。这样可以使得rowkey中经常改变的部分（最没有意义的部分）放在前面。这样可以有效的随机rowkey，但是牺牲了rowkey的有序性。反转rowkey的例子：以手机号为rowkey，可以将手机号反转后的字符串作为rowkey，从而避免诸如139、158之类的固定号码开头导 致的热点问题。</p>
+</li>
+<li>
+<p>时间戳反转<br>
+一个常见的数据处理问题是快速获取数据的最近版本，使用反转的时间戳作为rowkey的一部分对这个问题十分有用，可以用Long.Max_Value – timestamp追加到key的末尾，例如[key][reverse_timestamp] ,[key] 的最新值可以通过scan [key]获得[key]的第一条记录，因为HBase中rowkey是有序的，第一条记录是最后录入的数据。</p>
+</li>
+<li>
+<p>尽量减少行和列的大小<br>
+在HBase中，value永远和它的key一起传输的。当具体的值在系统间传输时，它的rowkey，列名，时间戳也会一起传输。如果你的rowkey和列名很大，HBase storefiles中的索引（有助于随机访问）会占据HBase分配的大量内存，因为具体的值和它的key很大。可以增加block大小使得storefiles索引再更大的时间间隔增加，或者修改表的模式以减小rowkey和列名的大小。压缩也有助于更大的索引。</p>
+</li>
+<li>
+<p>其他办法<br>
+列族名的长度尽可能小，最好是只有一个字符。冗长的属性名虽然可读性好，但是更短的属性名存储在HBase中会更好。也可以在建表时预估数据规模，预留region数量，例如create ‘myspace:mytable’, SPLITS =&gt; [01,02,03,,…99]</p>
+</li>
+</ol>
+<h2 id="十三布隆过滤器在hbase中的应用">十三.布隆过滤器在HBASE中的应用</h2>
+<p>主要提高随机读的性能</p>
+<h2 id="十四hbase在建表时的设计原则注意事项">十四.Hbase在建表时的设计原则(注意事项)</h2>
+<ol>
+<li>预分区<br>
+Hbase默认建表时有一个 region，这个 region的 rowkey是没有边界的，即没有 startkey和 endkey在数据写入时，所有数据都会写入这个默认的 region，随着数据量的不断增加，会进行 split，分成2个 region在此过程中，会产生两个问题:<br>
+(1). 数据往一个 region写，会有写热点问题。<br>
+(2). region split会消耗宝贵的集群I/0资源。我们可以控制在建表的时候，创建多个空 region，并确定每个 region的startkey和endkey，这样只要我们的 rowkey设计能均匀的命中各个 region，就不会存在写热点问题。自然 split的几率也会大大降低。</li>
+<li>rowkey设计原则<br>
+(1) rowkey长度越短越好。<br>
+数据的持久化文件 Hfile中是按照 Keyvalue存储的，如果 rowkey过长会极大影响File的存储效率; Memstore将缓存部分数据到内存，如果 rowkey字段过长，内存的有效利用率就会降低，系统不能缓存更多的数据，这样会降低检索效率。<br>
+(2) rowkey尽量散列。 <br>
+建议将 rowkey的高位作为散列字段，将提高数据均衡分布在每个 Regionserver以实现负载均衡的几率。(哈希、反转等也可以避免热点问题<br>
+(3) rowkey保证唯一性。</li>
+<li>列族设计原则<br>
+(1) 建表至少指定一个列族，但一般不超过三个，一般一个，因为 flush和 compact是以 region为单位，所以，某个 column family在 flush的时候，它邻近的 column family也会因关联效应被触发f1ush，最终导致系统产生更多的1/0<br>
+(2) 列族名字不宜过长，会冗余存储。<br>
+(3) 不同列族的记录的数量级不易相差太大，比如A，B两个列族，A为100万条，B为100亿条，则A会被分散到多个 region(可能会跨 reglon server)，导致对A的扫描效率低下</li>
+</ol>
+<h2 id="十五hbase优化方法">十五.hbase优化方法</h2>
+<ol>
+<li>减少调整<br>
+(1) 减少 region分裂<br>
+根据你的 Rowkey设计来进行预建分区，减少 region的动态分裂。<br>
+(2) 给HFile设定合适大小<br>
+Hfile是数据底层存储文件，在每个 memstore进行刷新时会生成一 Hfile，当 Hfile增加到一定程度时，会将属于一个 region的HFi1e进行合并，这个步骤会带来开销但不可避免，但是合并后 reglon大小如果大于设定的值，那么 region会进行分裂。为了减少这样的无谓的1/0开销，建议估计项目数据量大小，给 Hfile设定一个合适的值</li>
+<li>减少启停
+Hbase中也存在频繁开启关闭帯来的问题。<br>
+(1) 关闭 Compaction，在闲时进行手动 Compact ion0因为 Hbase中存在 Minor Compaction和Major Compaction，合并就是1/0读写，大量的 Hfile进行肯定会带来I/0开销，甚至是1/0风暴所以为了避免这种不受控制的意外发生，建议关闭自动 Compact ion，在闲时进行 compaction <br>
+(2)当需要写入大量离线数据时建议使用 Bulkload</li>
+<li>减少数据量<br>
+(1) 开启过滤，提高查询速度，可以减少网络10<br>
+(2) 使用压缩:一般推荐使用 Snappy和LZ0压缩。</li>
+<li>合理设计(建表注意事项)<br>
+分区、 Rowkey设计、列族的设计</li>
+</ol>
+<h2 id="十六-hbase中的region-server发生故障后的处理方法zk--wal">十六. Hbase中的region server发生故障后的处理方法(zk&ndash;&gt;WAL)</h2>
+<p>Hbase检测宕机是通过Zookeeper实现的，正常情况下 Regionserver会周期性向 Zookeeper发送心跳，一旦发生宕机，心跳就会停止，超过一定时间( Sessi ontimeout) Zookeeper就会认为 Regionserver宕机离线，并将该消息通知给 Master0一台 Regionserver只有一个HLog文件，然后，将HLog按照Region进行分组，切分到每个 regionserver中，因此在回放之前首先需要将og按照 Region进行分组，每个 Region的日志数据放在一起，方便后面按照 Region进行回放。这个分组的过程就称为HLog切分。然后再对 region重新分配，并对其中的Hog进行回放将数据写入 memstore刷写到磁盘，完成最终数据恢复。</p>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">大数据008hbase基础知识</a></li>
+        
+        <li><a href="../../post/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-001%E5%B8%B8%E8%A7%81%E6%9E%B6%E6%9E%84/">系统设计-001常见架构</a></li>
+        
+        <li><a href="../../post/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-002%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B%E4%B9%8B%E8%B7%AF/">系统设计-002服务端架构演进之路</a></li>
+        
+        <li><a href="../../books/Java%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91/">Java编程的逻辑</a></li>
+        
+        <li><a href="../../post/Python-002%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8F%98/">Python 002后端架构演变</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据100数据集成调研">大数据100数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Mysql-007基础知识">Mysql-007基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/" title="Mysql-006解读事务和MVVC原理">Mysql-006解读事务和MVVC原理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/" title="Mysql-005浅谈Mysql架构体系">Mysql-005浅谈Mysql架构体系</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/" title="大数据006impala与hive对比详解">大数据006impala与hive对比详解</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" title="大数据004spark知识整理">大数据004spark知识整理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据010flume基础知识">大数据010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据009kafka基础知识">大数据009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据007clickhouse基础知识">大数据007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据006impala基础知识">大数据006impala基础知识</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Css/">Web-Css (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-100数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Redis/">缓存-Redis (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Java/">语言Java (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Php/">语言Php (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Python/">语言Python (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

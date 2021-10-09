@@ -2,13 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://liuzhongzhen.github.io/</loc>
+    <lastmod>2021-09-01T16:41:10+08:00</lastmod>
+  </url><url>
+    <loc>https://liuzhongzhen.github.io/products/</loc>
+    <lastmod>2021-09-01T16:41:10+08:00</lastmod>
+  </url><url>
+    <loc>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Alita%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BA%A7%E5%93%81/</loc>
+    <lastmod>2021-09-01T16:41:10+08:00</lastmod>
+  </url><url>
     <loc>https://liuzhongzhen.github.io/books/</loc>
     <lastmod>2021-08-01T00:19:32+08:00</lastmod>
   </url><url>
     <loc>https://liuzhongzhen.github.io/books/Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2021-08-01T00:19:32+08:00</lastmod>
-  </url><url>
-    <loc>https://liuzhongzhen.github.io/</loc>
     <lastmod>2021-08-01T00:19:32+08:00</lastmod>
   </url><url>
     <loc>https://liuzhongzhen.github.io/categories/</loc>
@@ -76,9 +82,6 @@
   </url><url>
     <loc>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2021-04-21T08:40:57+08:00</lastmod>
-  </url><url>
-    <loc>https://liuzhongzhen.github.io/products/</loc>
-    <lastmod>2021-04-15T23:20:54+08:00</lastmod>
   </url><url>
     <loc>https://liuzhongzhen.github.io/products/%E5%85%AC%E5%85%B1-%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/</loc>
     <lastmod>2021-04-15T23:20:54+08:00</lastmod>
@@ -161,8 +164,11 @@
     <loc>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/</loc>
     <lastmod>2019-10-15T23:04:55+08:00</lastmod>
   </url><url>
+    <loc>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</loc>
+    <lastmod>2019-03-22T08:42:41+08:00</lastmod>
+  </url><url>
     <loc>https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/</loc>
-    <lastmod>2019-03-21T08:42:41+08:00</lastmod>
+    <lastmod>2019-03-22T08:42:41+08:00</lastmod>
   </url><url>
     <loc>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     <lastmod>2019-03-21T08:42:41+08:00</lastmod>

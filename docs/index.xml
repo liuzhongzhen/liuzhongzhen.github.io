@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 01 Aug 2021 00:19:32 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Sep 2021 16:41:10 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>网心-Alita数据中台产品</title>
+      <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Alita%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BA%A7%E5%93%81/</link>
+      <pubDate>Wed, 01 Sep 2021 16:41:10 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Alita%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BA%A7%E5%93%81/</guid>
+      <description>一、目标 构建一站式数据采集、ETL、开发、应用、运维管理平台 二、应用技术 后端技术架构 开发语言: java 开发</description>
+    </item>
+    
     <item>
       <title>Go语言编程</title>
       <link>https://liuzhongzhen.github.io/books/Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/</link>
@@ -339,6 +348,15 @@
       
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/</guid>
       <description>大数据平台整体架构 数据流转图</description>
+    </item>
+    
+    <item>
+      <title>大数据 008hbase核心知识整理</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</link>
+      <pubDate>Fri, 22 Mar 2019 08:42:41 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</guid>
+      <description>一.Hbase调优的方法 高可用 在HBase中Hmaster负责监控RegionServer的生命周期</description>
     </item>
     
     <item>
