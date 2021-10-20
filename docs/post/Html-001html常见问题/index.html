@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>Html 001html常见问题 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="Html 001html常见问题 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2013-04-01T23:14:31&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2013-04-01T23:14:31&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="Html 001html常见问题">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/Html-001html%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1xhtml和html有什么区别">1.XHTML和HTML有什么区别</a></li>
+    <li><a href="#2什么是语义化的html">2.什么是语义化的HTML？</a></li>
+    <li><a href="#3简述一下你对html语义化的理解">3.简述一下你对HTML语义化的理解？</a></li>
+    <li><a href="#4常见的浏览器内核有哪些">4.常见的浏览器内核有哪些？</a></li>
+    <li><a href="#5常见哪几种浏览器测试有哪些内核layout-engine">5.常见哪几种浏览器测试？有哪些内核（Layout Engine）？</a></li>
+    <li><a href="#6html5有哪些新特性移除了哪些元素">6.HTML5有哪些新特性，移除了哪些元素？</a>
+      <ul>
+        <li><a href="#如何处理html5新标签的浏览器兼容问题">如何处理HTML5新标签的浏览器兼容问题？</a></li>
+        <li><a href="#如何区分html和html5">如何区分HTML和HTML5?</a></li>
+      </ul>
+    </li>
+    <li><a href="#7请描述一下cookiessessionstorage会话存储和localstrorage本地存储的区别">7.请描述一下cookies,sessionStorage（会话存储）和localStrorage（本地存储）的区别？</a></li>
+    <li><a href="#8请描述一下cookiessessionstorage和localstorage区别">8.请描述一下cookies、sessionStorage和localStorage区别？</a></li>
+    <li><a href="#9如何实现浏览器内多个标签页之间的通信">9.如何实现浏览器内多个标签页之间的通信？</a></li>
+    <li><a href="#10html5为什么只需要写doctype-html">10.HTML5为什么只需要写！DOCTYPE HTML？</a></li>
+    <li><a href="#11doctype作用标准模式与兼容模式各种什么区别">11.Doctype作用？标准模式与兼容模式各种什么区别？</a></li>
+    <li><a href="#12doctype严格模式与混杂模式如何触发这两种模式区分它们有何意义">12.Doctype严格模式与混杂模式如何触发这两种模式，区分它们有何意义？</a></li>
+    <li><a href="#13html-document是干嘛的">13.html document是干嘛的？</a></li>
+    <li><a href="#14html5哪些操作可以seo优化">14.html5哪些操作可以SEO优化</a></li>
+    <li><a href="#15前端需要注意哪些seo">15.前端需要注意哪些SEO</a></li>
+    <li><a href="#16img的title和alt有什么区别">16.img的title和alt有什么区别</a></li>
+    <li><a href="#17http的几种请求方法用途">17.HTTP的几种请求方法用途</a></li>
+    <li><a href="#18从浏览器地址栏输入url到显示页面的步骤">18.从浏览器地址栏输入url到显示页面的步骤</a></li>
+    <li><a href="#19如何进行网站性能优化">19.如何进行网站性能优化</a></li>
+    <li><a href="#20http状态码及其含义">20.HTTP状态码及其含义</a></li>
+    <li><a href="#21语义化的理解">21.语义化的理解</a></li>
+    <li><a href="#22介绍一下你对浏览器内核的理解">22.介绍一下你对浏览器内核的理解？</a></li>
+    <li><a href="#23html5有哪些新特性移除了那些元素">23.html5有哪些新特性、移除了那些元素？</a></li>
+    <li><a href="#23html5的离线储存怎么使用工作原理能不能解释一下">23.HTML5的离线储存怎么使用，工作原理能不能解释一下？</a></li>
+    <li><a href="#24-浏览器是怎么对html5的离线储存资源进行管理和加载的呢">24. 浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢</a></li>
+    <li><a href="#25请描述一下-cookiessessionstorage-和-localstorage-的区别">25.请描述一下 cookies，sessionStorage 和 localStorage 的区别？</a></li>
+    <li><a href="#26iframe有那些缺点">26.iframe有那些缺点？</a></li>
+    <li><a href="#27web标准以及w3c标准是什么">27.WEB标准以及W3C标准是什么?</a></li>
+    <li><a href="#28xhtml和html有什么区别">28.xhtml和html有什么区别?</a></li>
+    <li><a href="#29doctype作用严格模式与混杂模式如何区分它们有何意义">29.Doctype作用?严格模式与混杂模式如何区分？它们有何意义?</a></li>
+    <li><a href="#30行内元素有哪些块级元素有哪些-空void元素有那些行内元素和块级元素有什么区别">30.行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？行内元素和块级元素有什么区别？</a></li>
+    <li><a href="#31html全局属性global-attribute有哪些">31.HTML全局属性(global attribute)有哪些</a></li>
+    <li><a href="#32canvas和svg有什么区别">32.Canvas和SVG有什么区别？</a></li>
+    <li><a href="#33如何在页面上实现一个圆形的可点击区域">33.如何在页面上实现一个圆形的可点击区域？</a></li>
+    <li><a href="#34网页验证码是干嘛的是为了解决什么安全问题">34.网页验证码是干嘛的，是为了解决什么安全问题</a></li>
+    <li><a href="#35html5有哪些新特性如何处理html5新标签的浏览器兼容问题如何区分html和html5">35.html5有哪些新特性？如何处理HTML5新标签的浏览器兼容问题？如何区分HTML和HTML5？</a></li>
+    <li><a href="#36iframe的作用">36.iframe的作用？</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Html 001html常见问题</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2013年4月1日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/Web-Html'>Web-Html</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="1xhtml和html有什么区别">1.XHTML和HTML有什么区别</h2>
+<ul>
+<li>HTML是一种基本的WEB网页设计语言，</li>
+<li>XHTML是一个基于XML的置标语言<br>
+最主要的不同:</li>
+<li>XHTML元素必须被正确地嵌套。</li>
+<li>XHTML元素必须被关闭</li>
+<li>标签名必须用小写字母</li>
+<li>XHTML文档必须拥有根元素</li>
+</ul>
+<h2 id="2什么是语义化的html">2.什么是语义化的HTML？</h2>
+<ul>
+<li>直观的认识标签对于搜索引擎的抓取有好处，用正确的标签做正确的事情！</li>
+<li>HTML语义化就是让页面的内容结构化，便于对浏览器，搜索引擎解析；</li>
+<li>在没有样式css情况下也以一种文档格式显示，并且是容易阅读。<br>
+ 搜索引擎的爬虫依赖于标记来确定上下文和各个关键字的权重，利于SEO。</li>
+<li>在阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。</li>
+</ul>
+<h2 id="3简述一下你对html语义化的理解">3.简述一下你对HTML语义化的理解？</h2>
+<p>1、用正确的标签做正确的事情。<br>
+2、html语义化让页面的内容结构化，结构更清晰，便于对浏览器，搜索引擎解析；<br>
+3、即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的；<br>
+4、搜索引擎的爬虫也依赖于HTML标记确定上下文和各个关键字的权重，利用SEO;<br>
+5、使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。</p>
+<h2 id="4常见的浏览器内核有哪些">4.常见的浏览器内核有哪些？</h2>
+<ol>
+<li>Trident内核：IE,MaxThon,TT,The Word,360,搜狗浏览器等。[又称为MSHTML]</li>
+<li>Gecko内核：Netscape6及以上版本，FF,MozillaSuite/SeaMonkey等；</li>
+<li>Presto内核：Opera7及以上。[Opera内核原为：Presto，现为：Blink]</li>
+<li>Webkit内核：Safari,Chrome等。[Chrome的:Blink(Webkit的分支)]</li>
+</ol>
+<h2 id="5常见哪几种浏览器测试有哪些内核layout-engine">5.常见哪几种浏览器测试？有哪些内核（Layout Engine）？</h2>
+<ul>
+<li>浏览器：IE、Chrome、FireFox、Safari、Opera</li>
+<li>内核：Trident、Gecko、Presto、Webkit</li>
+</ul>
+<h2 id="6html5有哪些新特性移除了哪些元素">6.HTML5有哪些新特性，移除了哪些元素？</h2>
+<h3 id="如何处理html5新标签的浏览器兼容问题">如何处理HTML5新标签的浏览器兼容问题？</h3>
+<h3 id="如何区分html和html5">如何区分HTML和HTML5?</h3>
+<ol>
+<li>HTML5现在已经不是SGML的子集，主要是关于图像，位置，存储，多任务等功能的增加。</li>
+<li>用于绘画canvas</li>
+<li>用于媒介回放的video和audio元素</li>
+<li>本地离线存储localStorage长期存储数据，浏览器关闭后数据不丢失；</li>
+<li>sessionStorage的数据在浏览器关闭后自动删除</li>
+<li>语意化更好的内容元素，比如article,footer,header,nav,section</li>
+<li>表单控件：calendar,date,time,email,url,search</li>
+<li>新的技术webworker,websocktGeolocation</li>
+</ol>
+<p>移除的元素</p>
+<ol>
+<li>纯表现的元素：basefont,big,center,font,s,strike,tt,u;</li>
+<li>对可用性产生负面影响的元素：frame,frameset,noframes;</li>
+</ol>
+<p>支持HTML5新标签：</p>
+<ol>
+<li>IE8/IE7/IE6支持通过document,createElement方法产生的标签，可以利用这一特性让这些浏览器支持HTML5新标签，浏览器支持新标签后，还需要添加标签默认的样式。</li>
+</ol>
+<h2 id="7请描述一下cookiessessionstorage会话存储和localstrorage本地存储的区别">7.请描述一下cookies,sessionStorage（会话存储）和localStrorage（本地存储）的区别？</h2>
+<ol>
+<li>cookie在浏览器和服务器间来回传递,sessionStorage和localStorage不会；</li>
+<li>sessionStorage和localStorage的存储空间更大；</li>
+<li>sessionStorage和localStorage有更多丰富易用的接口；</li>
+<li>sessionStorage和localStorage各自独立的存储空间；</li>
+</ol>
+<h2 id="8请描述一下cookiessessionstorage和localstorage区别">8.请描述一下cookies、sessionStorage和localStorage区别？</h2>
+<ol>
+<li>cookie是网站为了标示用户身份而储存在用户本地终端（Client Side）上的数据（通常经过加密）。</li>
+<li>cookie数据始终在同源的http请求中携带（即使不需要），即会在浏览器和服务器间来回传递。</li>
+<li>sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存</li>
+</ol>
+<p>存储大小：</p>
+<ol>
+<li>cookie数据大小不能超过4K。</li>
+<li>sessionStorage和localStorage虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。</li>
+</ol>
+<p>有期时间：</p>
+<ol>
+<li>localStorage：存储持久数据，浏览器关闭后数据不丢失除非主动删除数据；</li>
+<li>sessionStorage：数据在当前浏览器窗口关闭后自动删除</li>
+<li>cookie：设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭</li>
+</ol>
+<h2 id="9如何实现浏览器内多个标签页之间的通信">9.如何实现浏览器内多个标签页之间的通信？</h2>
+<ol>
+<li>调用localstorage,cookies等本地存储方式</li>
+<li>WebSocket、SharedWorker</li>
+<li>localstroge另一个浏览器上下文被添加、删除或修改时，它都会触发一个事件，我们通过监听事件，控制它的值来进行页面信息通信。</li>
+<li>注意quirks:Safari在无痕迹模式下设置localstorge值抛出QuotExceededError的异常。</li>
+</ol>
+<h2 id="10html5为什么只需要写doctype-html">10.HTML5为什么只需要写！DOCTYPE HTML？</h2>
+<p>HTMl5不基于SGML,因此不需要对DTD进行引用，但是需要doctype来规范浏览器的行为(让浏览器按照它们应该的方式来运行)；而HTMl4.01基于SGMA，所以需要对DTD进行引用，才能告知浏览器文档所使用的文档类型。</p>
+<h2 id="11doctype作用标准模式与兼容模式各种什么区别">11.Doctype作用？标准模式与兼容模式各种什么区别？</h2>
+<ul>
+<li>!Doctype声明位于HTML文档的第一行，处于html标签之前。告知浏览器的解析器用什么文档标准解析这个文档。doctype不存在或格式不正确会导致文档以兼容模式呈现。</li>
+<li>标准模式的排版和JS运作模式都是该浏览器支持的最高标准运行。在兼容模式中，页面以宽松的向后兼容的方式来显示，模拟老式浏览器的行为以防止站点无法工作。</li>
+</ul>
+<h2 id="12doctype严格模式与混杂模式如何触发这两种模式区分它们有何意义">12.Doctype严格模式与混杂模式如何触发这两种模式，区分它们有何意义？</h2>
+<ul>
+<li>用于声明文档使用哪种规范（html/Xhtml）一般为严格过渡基于框架的html文档。</li>
+<li>加入XML声明可触发，解析方式更改为IE5.5拥有IE5.5的Bug。</li>
+</ul>
+<h2 id="13html-document是干嘛的">13.html document是干嘛的？</h2>
+<ul>
+<li>HTML即：超文本标记语言，标准通用标记语言的一个应用，“超文本”就是指页面内可以包含图片、链接、甚至音乐、程序等非文字元素。</li>
+<li>HTML Document即：HTML Document对象，每个载入浏览器的HTML文档都会成为Document对象</li>
+<li>由于Document对象是window对象的一部分，所以可通过window.document属性对其进行访问。</li>
+</ul>
+<h2 id="14html5哪些操作可以seo优化">14.html5哪些操作可以SEO优化</h2>
+<ul>
+<li>title标签；</li>
+<li>meta标签；</li>
+<li>header标签；</li>
+<li>footer标签</li>
+<li>元标签（meta标签）；</li>
+<li>导航标签（nav标签）；</li>
+<li>文章标签（article标签）；</li>
+<li>左或右侧标签（aside标签）</li>
+</ul>
+<h2 id="15前端需要注意哪些seo">15.前端需要注意哪些SEO</h2>
+<ul>
+<li>合理的title、description、keywords：搜索对着三项的权重逐个减小，<br>
+title值强调重点即可，重要关键词出现不要超过2次，而且要靠前，不同页面title要有所不同；<br>
+description把页面内容高度概括，长度合适，不可过分堆砌关键词，不同页面description有所不同；<br>
+keywords列举出重要关键词即可</li>
+<li>语义化的HTML代码，符合W3C规范：语义化代码让搜索引擎容易理解网页</li>
+<li>重要内容HTML代码放在最前：搜索引擎抓取HTML顺序是从上到下，有的搜索引擎对抓取长度有限制，保证重要内容一定会被抓取</li>
+<li>重要内容不要用js输出：爬虫不会执行js获取内容</li>
+<li>少用iframe：搜索引擎不会抓取iframe中的内容</li>
+<li>非装饰性图片必须加alt</li>
+<li>提高网站速度：网站速度是搜索引擎排序的一个重要指标</li>
+</ul>
+<h2 id="16img的title和alt有什么区别">16.img的title和alt有什么区别</h2>
+<ul>
+<li>通常当鼠标滑动到元素上的时候显示</li>
+<li>alt是&lt;img&gt;的特有属性，是图片内容的等价描述，用于图片无法加载时显示、读屏器阅读图片。可提图片高可访问性，除了纯装饰图片外都必须设置有意义的值，搜索引擎会重点分析。</li>
+</ul>
+<h2 id="17http的几种请求方法用途">17.HTTP的几种请求方法用途</h2>
+<ol>
+<li>GET方法 发送一个请求来取得服务器上的某一资源</li>
+<li>POST方法 向URL指定的资源提交数据或附加新的数据</li>
+<li>PUT方法 跟POST方法很像，也是想服务器提交数据。但是，它们之间有不同。PUT指定了资源在服务器上的位置，而POST没有</li>
+<li>HEAD方法 只请求页面的首部</li>
+<li>DELETE方法 删除服务器上的某资源</li>
+<li>OPTIONS方法 它用于获取当前URL所支持的方法。如果请求成功，会有一个Allow的头包含类似“GET,POST”这样的信息</li>
+<li>TRACE方法 TRACE方法被用于激发一个远程的，应用层的请求消息回路</li>
+<li>CONNECT方法 把请求连接转换到透明的TCP/IP通道</li>
+</ol>
+<h2 id="18从浏览器地址栏输入url到显示页面的步骤">18.从浏览器地址栏输入url到显示页面的步骤</h2>
+<ol>
+<li>浏览器根据请求的URL交给DNS域名解析，找到真实IP，向服务器发起请求；</li>
+<li>服务器交给后台处理完成后返回数据，浏览器接收文件（HTML、JS、CSS、图象等）；</li>
+<li>浏览器对加载到的资源（HTML、JS、CSS等）进行语法解析，建立相应的内部数据结构（如HTML的DOM）；</li>
+<li>载入解析到的资源文件，渲染页面，完成。</li>
+</ol>
+<h2 id="19如何进行网站性能优化">19.如何进行网站性能优化</h2>
+<ol>
+<li>content方面</li>
+</ol>
+<ul>
+<li>减少HTTP请求：合并文件、CSS精灵、inline Image</li>
+<li>减少DNS查询：DNS缓存、将资源分布到恰当数量的主机名</li>
+<li>减少DOM元素数量</li>
+</ul>
+<ol start="2">
+<li>Server方面</li>
+</ol>
+<ul>
+<li>使用CDN</li>
+<li>配置ETag</li>
+<li>对组件使用Gzip压缩</li>
+</ul>
+<ol start="3">
+<li>Cookie方面</li>
+</ol>
+<ul>
+<li>减小cookie大小</li>
+</ul>
+<ol start="4">
+<li>css方面</li>
+</ol>
+<ul>
+<li>将样式表放到页面顶部</li>
+<li>不使用CSS表达式</li>
+<li>使用&lt;link&gt;不使用@import</li>
+</ul>
+<ol start="5">
+<li>Javascript方面</li>
+</ol>
+<ul>
+<li>将脚本放到页面底部</li>
+<li>将javascript和css从外部引入</li>
+<li>压缩javascript和css</li>
+<li>删除不需要的脚本</li>
+<li>减少DOM访问</li>
+</ul>
+<ol start="6">
+<li>图片方面</li>
+</ol>
+<ul>
+<li>优化图片：根据实际颜色需要选择色深、压缩</li>
+<li>优化css精灵</li>
+<li>不要在HTML中拉伸图片</li>
+</ul>
+<h2 id="20http状态码及其含义">20.HTTP状态码及其含义</h2>
+<ol>
+<li>1XX：信息状态码</li>
+</ol>
+<ul>
+<li>100 Continue 继续，一般在发送post请求时，已发送了http header之后服务端将返回此信息，表示确认，之后发送具体参数信息</li>
+</ul>
+<ol start="2">
+<li>2XX：成功状态码</li>
+</ol>
+<ul>
+<li>200 OK 正常返回信息</li>
+<li>201 Created 请求成功并且服务器创建了新的资源</li>
+<li>202 Accepted 服务器已接受请求，但尚未处理</li>
+<li>206 PARTIAL_CONTENT 内容发送了一部分</li>
+</ul>
+<ol start="3">
+<li>3XX：重定向</li>
+</ol>
+<ul>
+<li>301 Moved Permanently 请求的网页已永久移动到新位置。</li>
+<li>302 Found 临时性重定向。</li>
+<li>303 See Other 临时性重定向，且总是使用 GET 请求新的 URI。</li>
+<li>304 Not Modified 自从上次请求后，请求的网页未修改过。</li>
+</ul>
+<ol start="4">
+<li>4XX：客户端错误</li>
+</ol>
+<ul>
+<li>400 Bad Request 服务器无法理解请求的格式，客户端不应当尝试再次使用相同的内容发起请求。</li>
+<li>401 Unauthorized 请求未授权。</li>
+<li>403 Forbidden 禁止访问。</li>
+<li>404 Not Found 找不到如何与 URI 相匹配的资源。</li>
+</ul>
+<ol start="5">
+<li>5XX: 服务器错误</li>
+</ol>
+<ul>
+<li>500 Internal Server Error 最常见的服务器端错误。</li>
+<li>503 Service Unavailable 服务器端暂时无法处理请求（可能是过载或维护）。</li>
+</ul>
+<h2 id="21语义化的理解">21.语义化的理解</h2>
+<ul>
+<li>用正确的标签做正确的事情！</li>
+<li>html语义化就是让页面的内容结构化，便于对浏览器、搜索引擎解析；</li>
+<li>在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的。</li>
+<li>搜索引擎的爬虫依赖于标记来确定上下文和各个关键字的权重，利于 SEO。</li>
+<li>使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解</li>
+</ul>
+<h2 id="22介绍一下你对浏览器内核的理解">22.介绍一下你对浏览器内核的理解？</h2>
+<ol>
+<li>主要分成两部分：渲染引擎(layout engineer或Rendering Engine)和JS引擎</li>
+<li>渲染引擎：负责取得网页的内容（HTML、XML、图像等等）、整理讯息（例如加入CSS等），以及计算网页的显示方式，然后会输出至显示器或打印机。浏览器的内核的不同对于网页的语法解释会有不同，所以渲染的效果也不相同。所有网页浏览器、电子邮件客户端以及其它需要编辑、显示网络内容的应用程序都需要内核</li>
+<li>JS引擎则：解析和执行javascript来实现网页的动态效果</li>
+<li>最开始渲染引擎和JS引擎并没有区分的很明确，后来JS引擎越来越独立，内核就倾向于只指渲染引擎</li>
+</ol>
+<h2 id="23html5有哪些新特性移除了那些元素">23.html5有哪些新特性、移除了那些元素？</h2>
+<ol>
+<li>HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加</li>
+</ol>
+<ul>
+<li>用于绘画 canvas</li>
+<li>用于媒介回放的 video 和 audio 元素</li>
+<li>本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失</li>
+<li>sessionStorage 的数据在浏览器关闭后自动删除</li>
+<li>语意化更好的内容元素，比如article、footer、header、nav、section</li>
+<li>表单控件，calendar、date、time、email、url、search</li>
+<li>新的技术webworker, websocket, Geolocation</li>
+</ul>
+<ol start="2">
+<li>移除的元素：</li>
+</ol>
+<ul>
+<li>纯表现的元素：basefont，big，center，font, s，strike，tt，u`</li>
+<li>对可用性产生负面影响的元素：frame，frameset，noframes</li>
+</ul>
+<ol start="3">
+<li>支持HTML5新标签：</li>
+</ol>
+<ul>
+<li>IE8/IE7/IE6支持通过document.createElement方法产生的标签</li>
+<li>可以利用这一特性让这些浏览器支持HTML5新标签</li>
+<li>浏览器支持新标签后，还需要添加标签默认的样式</li>
+<li>当然也可以直接使用成熟的框架、比如html5shim</li>
+</ul>
+<h2 id="23html5的离线储存怎么使用工作原理能不能解释一下">23.HTML5的离线储存怎么使用，工作原理能不能解释一下？</h2>
+<ol>
+<li>在用户没有与因特网连接时，可以正常访问站点或应用，在用户与因特网连接时，更新用户机器上的缓存文件</li>
+<li>原理：HTML5的离线存储是基于一个新建的.appcache文件的缓存机制(不是存储技术)，通过这个文件上的解析清单离线存储资源，这些资源就会像cookie一样被存储了下来。之后当网络在处于离线状态下时，浏览器会通过被离线存储的数据进行页面展示</li>
+<li>如何使用：</li>
+</ol>
+<ul>
+<li>页面头部像下面一样加入一个manifest的属性；</li>
+<li>在cache.manifest文件的编写离线存储的资源</li>
+<li>在离线状态时，操作window.applicationCache进行需求实现</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">CACHE MANIFEST
+
+#v0.11
+CACHE:
+js/app.js
+css/style.css
+NETWORK:
+resourse/logo.png
+FALLBACK:
+//offline.html
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="24-浏览器是怎么对html5的离线储存资源进行管理和加载的呢">24. 浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢</h2>
+<ul>
+<li>在线的情况下，浏览器发现html头部有manifest属性，它会请求manifest文件，如果是第一次访问app，那么浏览器就会根据manifest文件的内容下载相应的资源并且进行离线存储。如果已经访问过app并且资源已经离线存储了，那么浏览器就会使用离线的资源加载页面，然后浏览器会对比新的manifest文件与旧的manifest文件，如果文件没有发生改变，就不做任何操作，如果文件改变了，那么就会重新下载文件中的资源并进行离线存储。</li>
+<li>离线的情况下，浏览器就直接使用离线存储的资源。</li>
+</ul>
+<h2 id="25请描述一下-cookiessessionstorage-和-localstorage-的区别">25.请描述一下 cookies，sessionStorage 和 localStorage 的区别？</h2>
+<ol>
+<li>cookie是网站为了标示用户身份而储存在用户本地终端（Client Side）上的数据（通常经过加密）</li>
+<li>cookie数据始终在同源的http请求中携带（即使不需要），记会在浏览器和服务器间来回传递</li>
+<li>sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存</li>
+<li>存储大小：</li>
+</ol>
+<ul>
+<li>cookie数据大小不能超过4k</li>
+<li>sessionStorage和localStorage虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大</li>
+</ul>
+<ol start="5">
+<li>有期时间：</li>
+</ol>
+<ul>
+<li>localStorage 存储持久数据，浏览器关闭后数据不丢失除非主动删除数据</li>
+<li>sessionStorage 数据在当前浏览器窗口关闭后自动删除</li>
+<li>cookie 设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭</li>
+</ul>
+<h2 id="26iframe有那些缺点">26.iframe有那些缺点？</h2>
+<ol>
+<li>iframe会阻塞主页面的Onload事件</li>
+<li>搜索引擎的检索程序无法解读这种页面，不利于SEO</li>
+<li>iframe和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载</li>
+<li>使用iframe之前需要考虑这两个缺点。如果需要使用iframe，最好是通过javascript动态给iframe添加src属性值，这样可以绕开以上两个问题</li>
+</ol>
+<h2 id="27web标准以及w3c标准是什么">27.WEB标准以及W3C标准是什么?</h2>
+<p>标签闭合、标签小写、不乱嵌套、使用外链css和js、结构行为表现的分离</p>
+<h2 id="28xhtml和html有什么区别">28.xhtml和html有什么区别?</h2>
+<ol>
+<li>一个是功能上的差别<br>
+主要是XHTML可兼容各大浏览器、手机以及PDA，并且浏览器也能快速正确地编译网页</li>
+<li>另外是书写习惯的差别<br>
+XHTML 元素必须被正确地嵌套，闭合，区分大小写，文档必须拥有根元素</li>
+</ol>
+<h2 id="29doctype作用严格模式与混杂模式如何区分它们有何意义">29.Doctype作用?严格模式与混杂模式如何区分？它们有何意义?</h2>
+<ol>
+<li>页面被加载的时，link会同时被加载，而@imort页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载<br>
+import只在IE5以上才能识别，而link是XHTML标签，无兼容问题<br>
+link方式的样式的权重 高于@import的权重</li>
+<li>
+<!-- raw HTML omitted -->
+</li>
+<li>严格模式的排版和 JS 运作模式是 以该浏览器支持的最高标准运行</li>
+<li>在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。 DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现</li>
+</ol>
+<h2 id="30行内元素有哪些块级元素有哪些-空void元素有那些行内元素和块级元素有什么区别">30.行内元素有哪些？块级元素有哪些？ 空(void)元素有那些？行内元素和块级元素有什么区别？</h2>
+<ol>
+<li>行内元素有：a b span img input select strong</li>
+<li>块级元素有：div ul ol li dl dt dd h1 h2 h3 h4… p</li>
+<li>空元素：<!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --> <!-- raw HTML omitted --></li>
+<li>行内元素不可以设置宽高，不独占一行</li>
+<li>块级元素可以设置宽高，独占一行</li>
+</ol>
+<h2 id="31html全局属性global-attribute有哪些">31.HTML全局属性(global attribute)有哪些</h2>
+<ol>
+<li>class:为元素设置类标识</li>
+<li>data-*: 为元素增加自定义属性</li>
+<li>draggable: 设置元素是否可拖拽</li>
+<li>id: 元素id，文档内唯一</li>
+<li>lang: 元素内容的的语言</li>
+<li>style: 行内css样式</li>
+<li>title: 元素相关的建议信息</li>
+</ol>
+<h2 id="32canvas和svg有什么区别">32.Canvas和SVG有什么区别？</h2>
+<ol>
+<li>svg绘制出来的每一个图形的元素都是独立的DOM节点，能够方便的绑定事件或用来修改。canvas输出的是一整幅画布</li>
+<li>svg输出的图形是矢量图形，后期可以修改参数来自由放大缩小，不会出现失真和锯齿。而canvas输出标量画布，就像一张图片一样，放大会失真或者出现锯齿</li>
+</ol>
+<h2 id="33如何在页面上实现一个圆形的可点击区域">33.如何在页面上实现一个圆形的可点击区域？</h2>
+<ol>
+<li>svg</li>
+<li>border-radius</li>
+<li>纯js实现 需要求一个点在不在圆上简单算法、获取鼠标坐标等等</li>
+</ol>
+<h2 id="34网页验证码是干嘛的是为了解决什么安全问题">34.网页验证码是干嘛的，是为了解决什么安全问题</h2>
+<ol>
+<li>区分用户是计算机还是人的公共全自动程序。可以防止恶意破解密码、刷票、论坛灌水</li>
+<li>有效防止黑客对某一个特定注册用户用特定程序暴力破解方式进行不断的登陆尝试</li>
+</ol>
+<h2 id="35html5有哪些新特性如何处理html5新标签的浏览器兼容问题如何区分html和html5">35.html5有哪些新特性？如何处理HTML5新标签的浏览器兼容问题？如何区分HTML和HTML5？</h2>
+<p>HTML5现在已经不是SGML的子集，主要是关于图像，位置，存储，多任务等功能的增加；</p>
+<ol>
+<li>绘画canvas；</li>
+<li>用于媒介回放的video和auto元素；</li>
+<li>本地离线存储localStorage长期存储数据，浏览器关闭后数据不丢失；</li>
+<li>sessionStorage的数据在浏览器关闭后自动删除；</li>
+<li>语意化更好的内容元素，比如article、footer、header、nav、section；</li>
+<li>表单控件：calendar、date、time、url、search；</li>
+<li>新的技术</li>
+<li>IE8/IE7/IE6支持通过document.createElement方法产生的标签；</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#998;font-style:italic">&lt;!--[if lt IE 9]&gt;
+</span><span style="color:#998;font-style:italic">&lt;script&gt; src=&#34;http://html5shim.googlecode.com/svn/trunk/html5.js&#34;&lt;/script&gt;
+</span><span style="color:#998;font-style:italic">&lt;![endif]--&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="36iframe的作用">36.iframe的作用？</h2>
+<ul>
+<li>用法</li>
+</ul>
+<ol>
+<li>iframe是用来在网页中插入第三方页面，早期的页面使用iframe主要是用于导航栏这种很多页面都相同的部分，这样在切换页面的时候避免重复下载。</li>
+</ol>
+<ul>
+<li>优点</li>
+</ul>
+<ol>
+<li>便于修改，模拟分离，像一些信息管理系统会用到。</li>
+<li>但现在基本不推荐使用。除非特殊需要，一般不推荐使用。</li>
+</ol>
+<ul>
+<li>缺点</li>
+</ul>
+<ol>
+<li>iframe的创建比一般的DOM元素慢了1-2个数量级</li>
+<li>iframe标签会阻塞页面的的加载，如果页面的onload事件不能及时触发，会让用户觉得网页加载很慢，用户体验不好，在Safari和Chrome中可以通过js动态设置iframe的src属性来避免阻塞。</li>
+<li>iframe对于SEO不友好，替换方案一般就是动态语言的Incude机制和ajax动态填充内容等。</li>
+</ol>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/JavaScript-001%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">JavaScript 001常见问题</a></li>
+        
+        <li><a href="../../post/CSS-006%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">CSS 006常见问题</a></li>
+        
+        <li><a href="../../post/CSS-005%E5%AE%9A%E4%BD%8Dposition%E8%AF%A6%E8%A7%A3/">CSS 005定位position详解</a></li>
+        
+        <li><a href="../../post/CSS-004Flex%E5%B8%83%E5%B1%80/">CSS 004Flex布局</a></li>
+        
+        <li><a href="../../post/CSS-003Grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/">CSS 003Grid网格布局</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据100数据集成调研">大数据100数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/" title="大数据006impala与hive对比详解">大数据006impala与hive对比详解</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" title="大数据004spark知识整理">大数据004spark知识整理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据010flume基础知识">大数据010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据009kafka基础知识">大数据009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据007clickhouse基础知识">大数据007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据006impala基础知识">大数据006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据005flink基础知识">大数据005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据004spark基础知识">大数据004spark基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/" title="几种序列化协议的介绍(转)">几种序列化协议的介绍(转)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Css/">Web-Css (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Html/">Web-Html (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-JavaScript/">Web-JavaScript (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-100数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Redis/">缓存-Redis (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Java/">语言Java (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Php/">语言Php (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Python/">语言Python (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

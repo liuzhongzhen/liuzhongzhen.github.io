@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web-JavaScript on Liuzhongzhen的博客</title>
+    <link>https://liuzhongzhen.github.io/categories/Web-JavaScript/</link>
+    <description>Recent content in Web-JavaScript on Liuzhongzhen的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>&amp;copy; 2021. All rights reserved.</copyright>
+    <lastBuildDate>Thu, 21 Mar 2013 07:14:32 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-JavaScript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript 001常见问题</title>
+      <link>https://liuzhongzhen.github.io/post/JavaScript-001%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 21 Mar 2013 07:14:32 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/JavaScript-001%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
+      <description>1.谈一谈JavaScript作用域链 当执行一段JavaScript代码（全局代码或函数）时，Jav</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -18,33 +18,6 @@
     </item>
     
     <item>
-      <title>Mysql-007基础知识</title>
-      <link>https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
-      <pubDate>Thu, 29 Apr 2021 22:20:44 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description>什么是SQL？ 结构化查询语言(Structured Query Language)简称SQL，是一种数据库查询语</description>
-    </item>
-    
-    <item>
-      <title>Mysql-006解读事务和MVVC原理</title>
-      <link>https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/</link>
-      <pubDate>Wed, 28 Apr 2021 22:20:44 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/</guid>
-      <description>转载外部-解读数据库原理 一、事务 概念 事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使</description>
-    </item>
-    
-    <item>
-      <title>Mysql-005浅谈Mysql架构体系</title>
-      <link>https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/</link>
-      <pubDate>Wed, 28 Apr 2021 22:19:55 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/</guid>
-      <description>转载外部-浅谈MySQL架构体系 一、数据库和数据库实例 在MySQL的学习研究中，存在两个非常容易混淆</description>
-    </item>
-    
-    <item>
       <title>大数据006impala与hive对比详解</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/</link>
       <pubDate>Thu, 22 Apr 2021 08:42:20 +0800</pubDate>
@@ -123,42 +96,6 @@
       
       <guid>https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/</guid>
       <description>序列化概述 1.序列化定义 序列化（serialization）就是将对象序列化为二进制形式（字节数组）</description>
-    </item>
-    
-    <item>
-      <title>Mysql-004Mysql优化</title>
-      <link>https://liuzhongzhen.github.io/post/Mysql-004Mysql%E4%BC%98%E5%8C%96/</link>
-      <pubDate>Wed, 03 Feb 2021 21:17:16 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/post/Mysql-004Mysql%E4%BC%98%E5%8C%96/</guid>
-      <description>MySQL优化 配置优化 配置优化指的MySQL 的 server端的配置，一般对于业务方而言，可以不用关注</description>
-    </item>
-    
-    <item>
-      <title>Mysql-003如何正确高效使用Mysql索引</title>
-      <link>https://liuzhongzhen.github.io/post/Mysql-003%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8Mysql%E7%B4%A2%E5%BC%95/</link>
-      <pubDate>Wed, 03 Feb 2021 11:17:16 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/post/Mysql-003%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8Mysql%E7%B4%A2%E5%BC%95/</guid>
-      <description>转载外部-如何理解并正确高效的使用MySQL索引 概述 索引是存储引擎用于快速查找记录的一种数据结构，通</description>
-    </item>
-    
-    <item>
-      <title>Mysql-002索引原理介绍</title>
-      <link>https://liuzhongzhen.github.io/post/Mysql-002%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/</link>
-      <pubDate>Tue, 02 Feb 2021 22:57:04 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/post/Mysql-002%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/</guid>
-      <description>转自外部深入剖析MySQL索引和SQL调优实战 MySQL索引 MySQL支持诸多存储引擎，而各种存储引</description>
-    </item>
-    
-    <item>
-      <title>Mysql-001建表语句</title>
-      <link>https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/</link>
-      <pubDate>Mon, 01 Feb 2021 11:17:16 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/</guid>
-      <description>常用附加信息 1 2 3 4 5 6 ENGINE = InnoDB default character set = utf8mb4 collate = utf8mb4_general_ci comment = &amp;#39;任务类型扩展配置信息&amp;#39; ROW_FORMAT = Compact #压</description>
     </item>
     
     <item>
@@ -279,7 +216,7 @@
     </item>
     
     <item>
-      <title>大数据008hbase基础知识</title>
+      <title>大数据 008hbase基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Thu, 21 Mar 2019 08:42:41 +0800</pubDate>
       
@@ -360,7 +297,7 @@
     </item>
     
     <item>
-      <title>Nginx-001详细介绍</title>
+      <title>Nginx 001详细介绍</title>
       <link>https://liuzhongzhen.github.io/post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sun, 07 Jan 2018 22:57:56 +0800</pubDate>
       
@@ -396,7 +333,7 @@
     </item>
     
     <item>
-      <title>Java-002初识Servlet并发处理与线程安全</title>
+      <title>Java 002初识Servlet并发处理与线程安全</title>
       <link>https://liuzhongzhen.github.io/post/Java-002%E5%88%9D%E8%AF%86Servlet%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86%E4%B8%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</link>
       <pubDate>Fri, 02 Jun 2017 16:53:49 +0800</pubDate>
       
@@ -405,7 +342,7 @@
     </item>
     
     <item>
-      <title>Java-001基础学习资源</title>
+      <title>Java 001基础学习资源</title>
       <link>https://liuzhongzhen.github.io/post/Java-001%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/</link>
       <pubDate>Thu, 01 Jun 2017 16:53:49 +0800</pubDate>
       
@@ -432,6 +369,24 @@
     </item>
     
     <item>
+      <title>大数据002hadoop之yarn基础知识</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Tue, 01 Mar 2016 23:04:07 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>yarn架构 yarn负责作业资源调度，在集群中找到满足业务的资源，帮助作业启动任务，管理作业的生命周</description>
+    </item>
+    
+    <item>
+      <title>大数据001hadoop之hdfs基础知识</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Tue, 01 Mar 2016 23:02:51 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>HDFS系统架构 HDFS数据安全性如何保证 存储在HDFS系统上的文件，会分割成128M大小的bloc</description>
+    </item>
+    
+    <item>
       <title>大数据003hive概念原理</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E6%A6%82%E5%BF%B5%E5%8E%9F%E7%90%86/</link>
       <pubDate>Tue, 01 Mar 2016 13:05:23 +0800</pubDate>
@@ -441,21 +396,66 @@
     </item>
     
     <item>
-      <title>大数据002hadoop之yarn基础知识</title>
-      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
-      <pubDate>Mon, 01 Feb 2016 23:04:07 +0800</pubDate>
+      <title>Mysql-007基础知识</title>
+      <link>https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Fri, 29 Jan 2016 22:20:44 +0800</pubDate>
       
-      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description>yarn架构 yarn负责作业资源调度，在集群中找到满足业务的资源，帮助作业启动任务，管理作业的生命周</description>
+      <guid>https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>什么是SQL？ 结构化查询语言(Structured Query Language)简称SQL，是一种数据库查询语</description>
     </item>
     
     <item>
-      <title>大数据001hadoop之hdfs基础知识</title>
-      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
-      <pubDate>Fri, 01 Jan 2016 23:02:51 +0800</pubDate>
+      <title>Mysql-006解读事务和MVVC原理</title>
+      <link>https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Thu, 28 Jan 2016 22:20:44 +0800</pubDate>
       
-      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description>HDFS系统架构 HDFS数据安全性如何保证 存储在HDFS系统上的文件，会分割成128M大小的bloc</description>
+      <guid>https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/</guid>
+      <description>转载外部-解读数据库原理 一、事务 概念 事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使</description>
+    </item>
+    
+    <item>
+      <title>Mysql-005浅谈Mysql架构体系</title>
+      <link>https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/</link>
+      <pubDate>Thu, 28 Jan 2016 22:19:55 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/</guid>
+      <description>转载外部-浅谈MySQL架构体系 一、数据库和数据库实例 在MySQL的学习研究中，存在两个非常容易混淆</description>
+    </item>
+    
+    <item>
+      <title>Mysql-004Mysql优化</title>
+      <link>https://liuzhongzhen.github.io/post/Mysql-004Mysql%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Sun, 03 Jan 2016 21:17:16 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Mysql-004Mysql%E4%BC%98%E5%8C%96/</guid>
+      <description>MySQL优化 配置优化 配置优化指的MySQL 的 server端的配置，一般对于业务方而言，可以不用关注</description>
+    </item>
+    
+    <item>
+      <title>Mysql-003如何正确高效使用Mysql索引</title>
+      <link>https://liuzhongzhen.github.io/post/Mysql-003%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8Mysql%E7%B4%A2%E5%BC%95/</link>
+      <pubDate>Sun, 03 Jan 2016 11:17:16 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Mysql-003%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8Mysql%E7%B4%A2%E5%BC%95/</guid>
+      <description>转载外部-如何理解并正确高效的使用MySQL索引 概述 索引是存储引擎用于快速查找记录的一种数据结构，通</description>
+    </item>
+    
+    <item>
+      <title>Mysql-002索引原理介绍</title>
+      <link>https://liuzhongzhen.github.io/post/Mysql-002%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Sat, 02 Jan 2016 22:57:04 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Mysql-002%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/</guid>
+      <description>转自外部深入剖析MySQL索引和SQL调优实战 MySQL索引 MySQL支持诸多存储引擎，而各种存储引</description>
+    </item>
+    
+    <item>
+      <title>Mysql-001建表语句</title>
+      <link>https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/</link>
+      <pubDate>Fri, 01 Jan 2016 11:17:16 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/</guid>
+      <description>常用附加信息 1 2 3 4 5 6 ENGINE = InnoDB default character set = utf8mb4 collate = utf8mb4_general_ci comment = &amp;#39;任务类型扩展配置信息&amp;#39; ROW_FORMAT = Compact #压</description>
     </item>
     
     <item>
@@ -513,7 +513,7 @@
     </item>
     
     <item>
-      <title>Http-002Cookies介绍</title>
+      <title>Http 002Cookies介绍</title>
       <link>https://liuzhongzhen.github.io/post/Http-002Cookies/</link>
       <pubDate>Fri, 02 Jan 2015 22:44:53 +0800</pubDate>
       
@@ -539,7 +539,7 @@
     </item>
     
     <item>
-      <title>Http-001协议原理</title>
+      <title>Http 001协议原理</title>
       <link>https://liuzhongzhen.github.io/post/Http-001%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86/</link>
       <pubDate>Thu, 01 Jan 2015 22:47:56 +0800</pubDate>
       
@@ -593,7 +593,7 @@
     </item>
     
     <item>
-      <title>Php 005发送http请求</title>
+      <title>Php-005发送http请求</title>
       <link>https://liuzhongzhen.github.io/post/Php-005%E5%8F%91%E9%80%81http%E8%AF%B7%E6%B1%82/</link>
       <pubDate>Tue, 05 Aug 2014 11:47:39 +0800</pubDate>
       
@@ -602,7 +602,7 @@
     </item>
     
     <item>
-      <title>Php 004redis库介绍</title>
+      <title>Php-004redis库介绍</title>
       <link>https://liuzhongzhen.github.io/post/Php-004redis%E5%BA%93%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Mon, 04 Aug 2014 11:47:39 +0800</pubDate>
       
@@ -737,6 +737,33 @@
     </item>
     
     <item>
+      <title>Html 001html常见问题</title>
+      <link>https://liuzhongzhen.github.io/post/Html-001html%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Mon, 01 Apr 2013 23:14:31 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Html-001html%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
+      <description>1.XHTML和HTML有什么区别 HTML是一种基本的WEB网页设计语言， XHTML是一个基于XML</description>
+    </item>
+    
+    <item>
+      <title>JavaScript 001常见问题</title>
+      <link>https://liuzhongzhen.github.io/post/JavaScript-001%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Thu, 21 Mar 2013 07:14:32 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/JavaScript-001%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
+      <description>1.谈一谈JavaScript作用域链 当执行一段JavaScript代码（全局代码或函数）时，Jav</description>
+    </item>
+    
+    <item>
+      <title>CSS 006常见问题</title>
+      <link>https://liuzhongzhen.github.io/post/CSS-006%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Wed, 06 Mar 2013 07:14:32 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/CSS-006%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
+      <description>1.css sprite是什么,有什么优缺点 概念：将多个小图片拼接到一个图片中。通过background-po</description>
+    </item>
+    
+    <item>
       <title>CSS 005定位position详解</title>
       <link>https://liuzhongzhen.github.io/post/CSS-005%E5%AE%9A%E4%BD%8Dposition%E8%AF%A6%E8%A7%A3/</link>
       <pubDate>Tue, 05 Mar 2013 23:14:31 +0800</pubDate>
@@ -836,7 +863,7 @@
     </item>
     
     <item>
-      <title>大数据-000数据分析</title>
+      <title>大数据000数据分析</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</link>
       <pubDate>Sun, 01 Jul 2012 01:10:13 +0800</pubDate>
       
