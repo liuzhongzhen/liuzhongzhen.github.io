@@ -1,0 +1,1125 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>大数据003hive优化相关 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="大数据003hive优化相关 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2016-02-27T23:05:23&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2016-02-27T23:05:23&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="大数据003hive优化相关">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E4%BC%98%E5%8C%96%E7%9B%B8%E5%85%B3/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一hive执行过程">一.HIVE执行过程</a></li>
+    <li><a href="#二hive表优化">二.hive表优化</a></li>
+    <li><a href="#1分区">1.分区</a></li>
+    <li><a href="#2分桶">2.分桶</a></li>
+    <li><a href="#三hive-job优化">三.Hive job优化</a></li>
+    <li><a href="#1-并行化执行">1. 并行化执行</a></li>
+    <li><a href="#2本地化执行">2.本地化执行</a></li>
+    <li><a href="#3job合并输入小文件">3.job合并输入小文件</a></li>
+    <li><a href="#4job合并输出小文件">4.job合并输出小文件</a></li>
+    <li><a href="#5jvm重利用">5.JVM重利用</a></li>
+    <li><a href="#6压缩数据">6.压缩数据</a></li>
+    <li><a href="#四-hive-sql语句优化">四. Hive SQL语句优化</a></li>
+    <li><a href="#1join优化">1.join优化</a></li>
+    <li><a href="#2mapjoin">2.mapjoin</a></li>
+    <li><a href="#3bucket-join">3.bucket join</a></li>
+    <li><a href="#4修改where的位置进行优化">4.修改where的位置进行优化</a></li>
+    <li><a href="#5group-by优化">5.group by优化</a></li>
+    <li><a href="#6count-distinct优化">6.count distinct优化</a></li>
+    <li><a href="#7union-all优化">7.union all优化</a></li>
+    <li><a href="#五-hive-mapreduce优化">五. Hive Map/Reduce优化</a></li>
+    <li><a href="#1-map优化">1. Map优化</a></li>
+    <li><a href="#2map端聚合">2.map端聚合</a></li>
+    <li><a href="#3推测执行">3.推测执行</a></li>
+    <li><a href="#4shuffle优化">4.shuffle优化</a>
+      <ul>
+        <li><a href="#map端">Map端</a></li>
+        <li><a href="#reduce端">Reduce端</a></li>
+        <li><a href="#reduce优化">Reduce优化</a></li>
+      </ul>
+    </li>
+    <li><a href="#5推断执行">5.推断执行</a></li>
+    <li><a href="#6启动压缩">6.启动压缩</a></li>
+    <li><a href="#一减少map数当有大量小文件时启动合并">一.减少map数，（当有大量小文件时，启动合并）</a></li>
+    <li><a href="#二mr作业结束后判断生成文件的平均大小如果小于阀值就再启动一个job来合并文件">二.MR作业结束后，判断生成文件的平均大小，如果小于阀值，就再启动一个job来合并文件</a>
+      <ul>
+        <li><a href="#1-map输入合并小文件">1. Map输入合并小文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#2输出合并">2.输出合并</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">大数据003hive优化相关</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2016年2月27日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive'>大数据-003hive</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="一hive执行过程">一.HIVE执行过程</h2>
+<p>
+        <img class="mx-auto" alt="bigdata" src="../../imgs/post/bigdata_hive/a07.jpeg" />   
+    </p>
+<h2 id="二hive表优化">二.hive表优化</h2>
+<h2 id="1分区">1.分区</h2>
+<ol>
+<li>静态分区</li>
+<li>动态分区
+<ul>
+<li>set hive.exec.dynamic.partition=true;</li>
+<li>set hive.exec.dynamic.partltlon.mode=nonstrict;</li>
+</ul>
+</li>
+</ol>
+<h2 id="2分桶">2.分桶</h2>
+<pre><code>- set hive.enforce.bucketing=true;
+- set hive.enforce.sorting=true;
+</code></pre>
+<ol start="3">
+<li>表优化数据目标：相同数据尽量聚集在一起</li>
+</ol>
+<h2 id="三hive-job优化">三.Hive job优化</h2>
+<h2 id="1-并行化执行">1. 并行化执行</h2>
+<p>每个查询被hive转化成多个阶段，有些阶段关联性不大，则可以并行化执行，减少执行时问。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">set</span> hive.<span style="color:#000;font-weight:bold">exec</span>.parallel<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">true</span>;
+<span style="color:#000;font-weight:bold">set</span> hive.<span style="color:#000;font-weight:bold">exec</span>.parallel.thread.<span style="color:#0086b3">number</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">8</span>;
+eg:
+<span style="color:#000;font-weight:bold">select</span> num 
+  <span style="color:#000;font-weight:bold">from</span> (<span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">count</span>(city) <span style="color:#000;font-weight:bold">as</span> num 
+          <span style="color:#000;font-weight:bold">from</span> city
+         <span style="color:#000;font-weight:bold">union</span> <span style="color:#000;font-weight:bold">all</span>
+        <span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">count</span>(province) <span style="color:#000;font-weight:bold">as</span> num 
+          <span style="color:#000;font-weight:bold">from</span> province
+       ) tmp;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="2本地化执行">2.本地化执行</h2>
+<p>set hive.exec.mode.local.auto=true;<br>
+当一个job满足如下条件才能真正使用本地模式：</p>
+<ol>
+<li>job的输入数据大小必须小于参数：
+<ul>
+<li>hive.exec.mode.local.inputbytes.max（默认128MB）</li>
+</ul>
+</li>
+<li>job的map数必须小于参数：
+<ul>
+<li>hive.exec.mode.local.auto.tasks.max（默认4)</li>
+</ul>
+</li>
+<li>job的reduce数必须为0或者1</li>
+</ol>
+<h2 id="3job合并输入小文件">3.job合并输入小文件</h2>
+<p>set hive.input.format=org.apache.hadoop.hive.ql.io.CombineHiveInputFormat<br>
+合并文件数由mapred.max.split.size限制的大小决定。</p>
+<h2 id="4job合并输出小文件">4.job合并输出小文件</h2>
+<ol>
+<li>set hive.merge.smallfiles.avgsize=256000000;<br>
+当输出文件平均大小小于该值，启动新job合并文件</li>
+<li>set hive.merge.size.per.task=64000000;<br>
+合并之后的文件大小</li>
+</ol>
+<h2 id="5jvm重利用">5.JVM重利用</h2>
+<p>set mapred.job.reuse.jvm.num.tasks=20;<br>
+JVM重利用可以是job长时间保留slot，直到作业结束，这在对于有较多任务和较多小文件的任务是非常有意义的，减少执行时间。当然这个值不能设置过大，因为有些作业会有reduce任务，如果reduce任务没有完成，则map任务占用的slot不能释放，其他的作业可能就需要等待。</p>
+<h2 id="6压缩数据">6.压缩数据</h2>
+<p>a. 中间压缩就是处理hive查询的多个job之间的数据，对中间压缩，最好选择一个节省CPU耗时的压缩方式。<br>
+set hive.exec.compress.intermediate=true；<br>
+set hive.intermediate.compression.codec=org.apache.hadoop.io.compress.SnappyCodec;<br>
+set hive.intermediate.compression.type=BLOCK;</p>
+<p>b. 最终的输出也可以压缩,选择一个压缩效果比较好的，节省了磁盘空间，但是cpu比较耗时。<br>
+set hive.exec.compress.output=true;<br>
+set mapred.output.compression.codec=org.apache.hadoop.io.compress.GzipCodec;
+set mapred.output.compression.type=BLOCK</p>
+<h2 id="四-hive-sql语句优化">四. Hive SQL语句优化</h2>
+<h2 id="1join优化">1.join优化</h2>
+<p>set hive.optimize.skewjoin=true; 如果是join过程出现倾斜应该设置为true<br>
+set hive.skewjoin.key=100000; 这个是join的键对应的记录条数超过这个值则会进行优化。</p>
+<h2 id="2mapjoin">2.mapjoin</h2>
+<ul>
+<li>
+<p>自动执行<br>
+set hive.auto.convert.join=true;<br>
+set hive.mapjoin.smalltable.filesize=;默认值是25mb</p>
+</li>
+<li>
+<p>手动执行</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#998;font-style:italic">/*+mapjoin(A)*/</span> f.a,f.b 
+  <span style="color:#000;font-weight:bold">from</span> A t <span style="color:#000;font-weight:bold">join</span> B f 
+    <span style="color:#000;font-weight:bold">on</span> (f.a<span style="color:#000;font-weight:bold">==</span>t.a)
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>简单总结一下，mapjoin的使用场景：</p>
+<ol>
+<li>关联操作中有一张表非常小</li>
+<li>(不等值)的链接操作时</li>
+<li>注：小表尽量设置小一点或用手动方式。</li>
+</ol>
+</li>
+</ul>
+<h2 id="3bucket-join">3.bucket join</h2>
+<ol>
+<li>两个表以相同方式划分捅。</li>
+<li>两个表的桶个数是倍数关系。</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> ordertab(
+    cid <span style="color:#0086b3">int</span>,
+    price <span style="color:#0086b3">float</span>
+)
+clustered <span style="color:#000;font-weight:bold">by</span>(cid) <span style="color:#000;font-weight:bold">into</span> <span style="color:#099">32</span> buckets;
+
+<span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> customer(
+    id <span style="color:#0086b3">int</span>,
+    amt string
+)
+clustered <span style="color:#000;font-weight:bold">by</span>(id) <span style="color:#000;font-weight:bold">into</span> <span style="color:#099">32</span> buckets;
+
+<span style="color:#000;font-weight:bold">select</span> price 
+  <span style="color:#000;font-weight:bold">from</span> ordertab t <span style="color:#000;font-weight:bold">join</span> customer s 
+    <span style="color:#000;font-weight:bold">on</span> t.cid<span style="color:#000;font-weight:bold">=</span>s.id
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="4修改where的位置进行优化">4.修改where的位置进行优化</h2>
+<ol>
+<li>join优化前</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> m.cid, u.id 
+  <span style="color:#000;font-weight:bold">from</span> <span style="color:#000;font-weight:bold">order</span> m <span style="color:#000;font-weight:bold">join</span> customer u 
+    <span style="color:#000;font-weight:bold">on</span> m.cid<span style="color:#000;font-weight:bold">=</span>u.id
+ <span style="color:#000;font-weight:bold">where</span> m.dt<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2013-12-12&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>join优化后</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> m.cid, u.id 
+  <span style="color:#000;font-weight:bold">from</span> (<span style="color:#000;font-weight:bold">select</span> cid 
+          <span style="color:#000;font-weight:bold">from</span> <span style="color:#000;font-weight:bold">order</span> 
+         <span style="color:#000;font-weight:bold">where</span> dt<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2013-12-12&#39;</span>
+       ) m
+  <span style="color:#000;font-weight:bold">join</span> customer u 
+    <span style="color:#000;font-weight:bold">on</span> m.cid<span style="color:#000;font-weight:bold">=</span>u.id;
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>这样就能减少join连接的数据量。</li>
+</ol>
+<h2 id="5group-by优化">5.group by优化</h2>
+<ol>
+<li>set hive.groupby.skewindata=true;<br>
+如果是group by过程出现倾斜应该设置为true。</li>
+<li>set hive.groupby.mapaggr.checkinterval=100000;<br>
+这个是group的键对应的记录条数超过这个值则会进行优化。</li>
+</ol>
+<h2 id="6count-distinct优化">6.count distinct优化</h2>
+<p>优化前（启动一个job，数据量大时，一个reduce负载过重）</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">count</span>(<span style="color:#000;font-weight:bold">distinct</span> id) <span style="color:#000;font-weight:bold">from</span> tablename;
+</code></pre></td></tr></table>
+</div>
+</div><p>优化后（启动两个job）</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">count</span>(<span style="color:#099">1</span>) <span style="color:#000;font-weight:bold">from</span> (<span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">distinct</span> id <span style="color:#000;font-weight:bold">from</span> tablename) tmp;
+<span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">count</span>(<span style="color:#099">1</span>) <span style="color:#000;font-weight:bold">from</span> (<span style="color:#000;font-weight:bold">select</span> id <span style="color:#000;font-weight:bold">from</span> tablename <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> id) tmp;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="7union-all优化">7.union all优化</h2>
+<p>优化前</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span>  a,
+        <span style="color:#000;font-weight:bold">sum</span>(b),
+        <span style="color:#000;font-weight:bold">count</span>(<span style="color:#000;font-weight:bold">distinct</span> <span style="color:#000;font-weight:bold">c</span>),
+        <span style="color:#000;font-weight:bold">count</span>(<span style="color:#000;font-weight:bold">distinct</span> d) 
+  <span style="color:#000;font-weight:bold">from</span> test 
+ <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> a;
+</code></pre></td></tr></table>
+</div>
+</div><p>优化后</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> a, 
+       <span style="color:#000;font-weight:bold">sum</span>(b) <span style="color:#000;font-weight:bold">as</span> b,
+       <span style="color:#000;font-weight:bold">count</span>(<span style="color:#000;font-weight:bold">c</span>) <span style="color:#000;font-weight:bold">as</span> <span style="color:#000;font-weight:bold">c</span>, 
+       <span style="color:#000;font-weight:bold">count</span>(d) <span style="color:#000;font-weight:bold">as</span> d
+ <span style="color:#000;font-weight:bold">from</span> (<span style="color:#000;font-weight:bold">select</span> a, <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">as</span> b, <span style="color:#000;font-weight:bold">c</span>, <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">as</span> d 
+         <span style="color:#000;font-weight:bold">from</span> test
+        <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> a,<span style="color:#000;font-weight:bold">c</span>
+       <span style="color:#000;font-weight:bold">union</span> <span style="color:#000;font-weight:bold">all</span>
+       <span style="color:#000;font-weight:bold">select</span> a, <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">as</span> b, <span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">as</span> <span style="color:#000;font-weight:bold">c</span>, d 
+         <span style="color:#000;font-weight:bold">from</span> test 
+        <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> a,d
+       <span style="color:#000;font-weight:bold">union</span> <span style="color:#000;font-weight:bold">all</span>
+       <span style="color:#000;font-weight:bold">select</span> a,b,<span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">as</span> <span style="color:#000;font-weight:bold">c</span>,<span style="color:#000;font-weight:bold">null</span> <span style="color:#000;font-weight:bold">as</span> d 
+         <span style="color:#000;font-weight:bold">from</span> test
+      ) tmpl 
+<span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> a;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="五-hive-mapreduce优化">五. Hive Map/Reduce优化</h2>
+<h2 id="1-map优化">1. Map优化</h2>
+<p>修改map个数进行优化<br>
+直接设置mapred.map.tasks无效<br>
+set mapred.map.tasks=10；</p>
+<p><strong>map个数的计算过程:</strong><br>
+1. 默认map个数<br>
+default_num=total_size/block_size;<br>
+2. 期望大小<br>
+goal_num=mapred.map.tasks;<br>
+3. 设置处理的文件大小<br>
+split_size=max(mapred.min.split.size,b1ock_size);<br>
+split_num=total_size/split_size;<br>
+4. 计算的map个数<br>
+compute_map_num=min(split_num,max(default_num,goal_num))<br>
+经过以上的分析，在设置map个数的时候，可以简单的总结为以下几点：<br>
+1）如果想增加map个数，则设置mapred.map.tasks为一个较大的值。<br>
+2）如果想减小map个数，则设置mapred.min.split.size为一个较大的值。<br>
+有如下两种情况：<br>
+情况1：输入文件size巨大，但不是小文件增大mapred.min.split.size的值。<br>
+情况2：输入文件数量巨大，且都是小文件，就是单个文件的size小于blockSize。<br>
+这种情况通过增大mapred.min.spllt.size不可行，<br>
+需要使用CombineFileInputFormat将多个input path合并成一个InputSplit送给mapper处理，从而减少mapper的数量。</p>
+<h2 id="2map端聚合">2.map端聚合</h2>
+<p>map阶段进行combiner<br>
+set hive.map.aggr=true:</p>
+<h2 id="3推测执行">3.推测执行</h2>
+<p>启动多个相同的map，谁先执行完，用谁的。<br>
+set mapred.map.tasks.speculative.execution=true</p>
+<h2 id="4shuffle优化">4.shuffle优化</h2>
+<p>根据需要配置相应参数。</p>
+<h3 id="map端">Map端</h3>
+<ol>
+<li>io.sort.mb</li>
+<li>io.sort.spill.percent</li>
+<li>min.num.spill.for.combine</li>
+<li>io.sort.factor</li>
+<li>io.sort.record.percent</li>
+</ol>
+<h3 id="reduce端">Reduce端</h3>
+<ol>
+<li>mapred.reduce.parallel.copies</li>
+<li>mapred.reduce.copy.backoff</li>
+<li>io.sort.factor</li>
+<li>mapred.job.shuffle.input.buffer.percent</li>
+<li>mapred.job.reduce.input.buffer.percent</li>
+</ol>
+<h3 id="reduce优化">Reduce优化</h3>
+<ol>
+<li>需要reduce操作的查询</li>
+<li>聚合函数sum,count,distinct</li>
+<li>高级查询group by,join,distribute by,cluster by…</li>
+<li>order by比较特殊，只需要一个reduce，设置reduce个数无效。</li>
+</ol>
+<h2 id="5推断执行">5.推断执行</h2>
+<ol>
+<li>设置mapred.reduce.tasks.speculative.execution<br>
+或者hive.mapred.reduce.tasks.speculative.execution效果都一样。</li>
+<li>设置Reduce
+<ul>
+<li>set mapred.reduce.tasks=10; 直接设置</li>
+<li>set hive.exec.reducers.max 默认：999</li>
+<li>set hive.exec.reducers.bytes.per.reducer 默认:1G</li>
+</ul>
+</li>
+<li>计算公式
+<ul>
+<li>maxReducers=hive.exec.reducers.max</li>
+<li>perReducer=hive.exec.reducers.bytes.per.reducer</li>
+<li>numReduceTasks=min(maxReducers,input.size/perReducer)</li>
+</ul>
+</li>
+</ol>
+<h2 id="6启动压缩">6.启动压缩</h2>
+<ol>
+<li>set hive.exec.compress.output=true;</li>
+<li>set mapreduce.output.fileoutputformat.compress=true;</li>
+</ol>
+<h2 id="一减少map数当有大量小文件时启动合并">一.减少map数，（当有大量小文件时，启动合并）</h2>
+<ol>
+<li>set hive.input.format=org.apache.hadoop.hive.ql.io.CombineHiveInputFormat;</li>
+<li>set mapreduce.input.fileinputformat.split.maxsize=1073741824;</li>
+<li>set mapreduce.input.fileinputformat.split.minsize=1;</li>
+<li>set mapreduce.input.fileinputformat.split.minsize.per.node=536870912;</li>
+<li>set mapreduce.input.fileinputformat.split.minsize.per.rack=536870912;</li>
+<li>经过测试，这种设置可以在map阶段和并小文件，减少map的数量。</li>
+<li>注意：在测试的时候，如果文件格式为Textfile，并且启用lzo压缩，不能生效。 rcfile以及orc可以生效，Textfile不启用lzo压缩也可以生效。如果是新集群的话，没有历史遗留的问题的话，建议hive都使用orc文件格式，以及启用lzo压缩。</li>
+</ol>
+<h2 id="二mr作业结束后判断生成文件的平均大小如果小于阀值就再启动一个job来合并文件">二.MR作业结束后，判断生成文件的平均大小，如果小于阀值，就再启动一个job来合并文件</h2>
+<ol>
+<li>set hive.merge.mapredfiles=true;</li>
+<li>set hive.merge.mapfiles=true;</li>
+<li>set hive.merge.smallfiles.avgsize=268435456;</li>
+</ol>
+<h3 id="1-map输入合并小文件">1. Map输入合并小文件</h3>
+<p>对应参数：</p>
+<ol>
+<li>set mapred.max.split.size=256000000;  #每个Map最大输入大小</li>
+<li>set mapred.min.split.size.per.node=100000000; #一个节点上split的至少的大小</li>
+<li>set mapred.min.split.size.per.rack=100000000; #一个交换机下split的至少的大小</li>
+<li>set Hive.input.format=org.apache.Hadoop.hive.ql.io.CombineHiveInputFormat;  #执行Map前</li>
+</ol>
+<p>进行小文件合并</p>
+<ol>
+<li>在开启了org.apache.Hadoop.hive.ql.io.CombineHiveInputFormat后，一个data node节点上多个小文件会进行合并，合并文件数由mapred.max.split.size限制的大小决定。</li>
+<li>mapred.min.split.size.per.node决定了多个data node上的文件是否需要合并~</li>
+<li>mapred.min.split.size.per.rack决定了多个交换机上的文件是否需要合并~</li>
+</ol>
+<h2 id="2输出合并">2.输出合并</h2>
+<ol>
+<li>
+<p>set hive.merge.mapfiles = true #在Map-only的任务结束时合并小文件</p>
+</li>
+<li>
+<p>set hive.merge.mapredfiles = true #在Map-Reduce的任务结束时合并小文件</p>
+</li>
+<li>
+<p>set hive.merge.size.per.task = 25610001000 #合并文件的大小</p>
+</li>
+<li>
+<p>set hive.merge.smallfiles.avgsize=16000000 #当输出文件的平均大小小于该值时，启动一个独立的map-reduce任务进行文件merge</p>
+</li>
+<li>
+<p>set hive.groupby.skewindata=false;</p>
+</li>
+<li>
+<p>set hive.input.format=org.apache.hadoop.hive.ql.io.CombineHiveInputFormat;</p>
+</li>
+<li>
+<p>set mapred.min.split.size = 134217728;</p>
+</li>
+<li>
+<p>set mapred.min.split.size.per.node=134217728;</p>
+</li>
+<li>
+<p>set mapred.min.split.size.per.rack=134217728;</p>
+</li>
+<li>
+<p>set mapred.map.tasks=128;</p>
+</li>
+<li>
+<p>set mapred.reduce.tasks=32;</p>
+</li>
+<li>
+<p>set mapred.map.tasks.speculative.execution=true;</p>
+</li>
+<li>
+<p>set mapred.reduce.tasks.speculative.execution=true;</p>
+</li>
+<li>
+<p>set hive.exec.parallel=true;</p>
+</li>
+<li>
+<p>set hive.exec.parallel.thread.number=32;</p>
+</li>
+<li>
+<p>set hive.merge.mapfiles=true;</p>
+</li>
+<li>
+<p>set hive.merge.mapredfiles=true;</p>
+</li>
+<li>
+<p>set hive.merge.size.per.task = 536870912;</p>
+</li>
+<li>
+<p>set hive.merge.smallfiles.avgsize=67108864;</p>
+</li>
+<li>
+<p>set hive.map.aggr=true;</p>
+</li>
+<li>
+<p>set hive.exec.dynamic.partition=true;使用窗口函数，必须增加，否则会执行失败。</p>
+</li>
+<li>
+<p>在使用union all的时候，系统资源足够的情况下，为了加快Hive处理速度，可以设置如下参数实现并发执行</p>
+<ul>
+<li>set mapred.job.priority=VERY_HIGH;</li>
+<li>set hive.exec.parallel=true;</li>
+</ul>
+</li>
+<li>
+<p>设置map reduce个数
+&ndash; 设置map capacity<br>
+set mapred.job.map.capacity=2000;<br>
+set mapred.job.reduce.capacity=2000;<br>
+&ndash; 设置每个reduce的大小<br>
+set hive.exec.reducers.bytes.per.reducer=500000000;<br>
+&ndash; 直接设置个数<br>
+set mapred.reduce.tasks = 15;</p>
+</li>
+<li>
+<p>设置任务名称<br>
+&ndash; 设置名称<br>
+set mapred.job.name=my_job_{DATE};</p>
+</li>
+<li>
+<p>Hive文件合并
+&ndash; 设置文件合并<br>
+set abaci.is.dag.job=false;<br>
+set hive.merge.mapredfiles=true;<br>
+set mapred.combine.input.format.local.only=false; <br>
+set hive.merge.smallfiles.avgsize=100000000; <br>
+&ndash; 在map only的情况下，如上的参数如果没有生效，可以设置如下<br>
+&ndash; 在HQL的最外层增加distribute by rand()</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">from</span> XXX distribute <span style="color:#000;font-weight:bold">by</span> rand()
+use namespace udw_ns;
+<span style="color:#000;font-weight:bold">set</span> mapred.job.name<span style="color:#000;font-weight:bold">=</span>job_name_<span style="color:#a61717;background-color:#e3d2d2">{</span><span style="color:#0086b3">DATE</span><span style="color:#a61717;background-color:#e3d2d2">}</span>;
+<span style="color:#000;font-weight:bold">set</span> hive.mapred.<span style="color:#000;font-weight:bold">mode</span><span style="color:#000;font-weight:bold">=</span>nonstrict;
+<span style="color:#000;font-weight:bold">set</span> mapred.reduce.tasks <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">600</span>;
+<span style="color:#000;font-weight:bold">set</span> hive.<span style="color:#000;font-weight:bold">exec</span>.<span style="color:#000;font-weight:bold">dynamic</span>.partition.<span style="color:#000;font-weight:bold">mode</span><span style="color:#000;font-weight:bold">=</span>nonstrict;
+<span style="color:#000;font-weight:bold">set</span> hive.<span style="color:#000;font-weight:bold">exec</span>.<span style="color:#000;font-weight:bold">dynamic</span>.partition<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">true</span>;
+<span style="color:#000;font-weight:bold">set</span> hive.<span style="color:#000;font-weight:bold">exec</span>.compress.<span style="color:#000;font-weight:bold">output</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">true</span>;
+<span style="color:#000;font-weight:bold">set</span> mapred.<span style="color:#000;font-weight:bold">output</span>.compress<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">true</span>;
+<span style="color:#000;font-weight:bold">set</span> mapred.<span style="color:#000;font-weight:bold">output</span>.compression.codec<span style="color:#000;font-weight:bold">=</span>org.apache.hadoop.io.compress.LzoCodec;
+</code></pre></td></tr></table>
+</div>
+</div><p>dfs.block.size<br>
+决定HDFS文件block数量的多少(文件个数),它会间接的影响Job Tracker的调度和内存的占用(更影响内存的使用),</p>
+</li>
+<li>
+<p>mapred.map.tasks.speculative.execution=true</p>
+</li>
+<li>
+<p>mapred.reduce.tasks.speculative.execution=true<br>
+这是两个推测式执行的配置项,默认是true<br>
+所谓的推测执行，就是当所有task都开始运行之后，Job Tracker会统计所有任务的平均进度，
+如果某个task所在的task node机器配置比较低或者CPU load很高（原因很多），<br>
+导致任务执行比总体任务的平均执行要慢，此时Job Tracker会启动一个新的任务（duplicate task），<br>
+原有任务和新任务哪个先执行完就把另外一个kill掉，这也是我们经常在Job Tracker页面看到任务执行成功，<br>
+但是总有些任务被kill，就是这个原因。</p>
+</li>
+<li>
+<p>mapred.child.java.opts<br>
+一般来说，都是reduce耗费内存比较大，这个选项是用来设置JVM堆的最大可用内存，但不要设置过大，如果超过2G(这是数字有待考证)，就应该考虑一下优化程序。<br>
+Input Split的大小，决定了一个Job拥有多少个map，默认64M每个Split，如果输入的数据量巨大，那么默认的64M的block会有特别多Map Task，集群的网络传输会很大，给Job Tracker的调度、队列、内存都会带来很大压力。</p>
+</li>
+<li>
+<p>mapred.min.split.size<br>
+这个配置决定了每个Input Split 的最小值,也间接决定了一个job的map数量<br>
+HDFS块大小是在job写入时决定的,而分片的大小,是由三个元素决定的(在3各种去最大的那个)<br>
+(1) 输入的块数<br>
+(2) Mapred.min.split.size<br>
+(3) Job.setNumMapTasks()</p>
+</li>
+<li>
+<p>mapred.compress.map.output<br>
+压缩Map的输出，这样做有两个好处：<br>
+a)压缩是在内存中进行，所以写入map本地磁盘的数据就会变小，大大减少了本地IO次数<br>
+注：数据序列化其实效果会更好，无论是磁盘IO还是数据大小，都会明显的降低。</p>
+</li>
+<li>
+<p>io.sort.mb</p>
+</li>
+</ol>
+<ul>
+<li>以MB为单位，默认100M，这个值比较小</li>
+<li>map节点没运行完时，内存的数据过多，要将内存中的内容写入磁盘，这个设置就是设置内存缓冲的大小，在suffle之前</li>
+<li>这个选项定义了map输出结果在内存里占用buffer的大小，当buffer达到某个阈值(后面那条配置)，会启动一个后台线程来对buffer的内容进行排序，然后写入本地磁盘(一个spill文件)</li>
+<li>根据map输出数据量的大小，可以适当的调整buffer的大小，注意是适当的调整，并不是越大越好，假设内存无限大，</li>
+<li>io.sort.mb=1024(1G), 和io.sort.mb=300 (300M)，前者未必比后者快：<br>
+（1）1G的数据排序一次<br>
+（2）排序3次，每次300MB<br>
+一定是后者快（归并排序）</li>
+</ul>
+<ol start="32">
+<li>io.sort.spill.percent</li>
+</ol>
+<ul>
+<li>这个值就是上面提到的buffer的阈值，默认是0.8，既80%，当buffer中的数据达到这个阈值，后台线程会起来对buffer中已有的数据进行排序，然后写入磁盘，此时map输出的数据继续往剩余的20% buffer写数据，如果buffer的剩余20%写满，排序还没结束，map task被block等待。</li>
+<li>如果你确认map输出的数据基本有序，排序时间很短，可以将这个阈值适当调高，更理想的，如果你的map输出是有序的数据，那么可以把buffer设的更大，阈值设置为1.</li>
+</ul>
+<ol start="33">
+<li>Io.sort.factor</li>
+</ol>
+<ul>
+<li>同时打开的文件句柄的数量，默认是10</li>
+<li>当一个map task执行完之后，本地磁盘上(mapred.local.dir)有若干个spill文件，map task最后做的一件事就是执行merge sort，把这些spill文件合成一个文件（partition，combine阶段）。</li>
+<li>执行merge sort的时候，每次同时打开多少个spill文件，就是由io.sort.factor决定的。打开的文件越多，不一定merge sort就越快，也要根据数据情况适当的调整。</li>
+<li>注：merge排序的结果是两个文件，一个是index，另一个是数据文件，index文件记录了每个不同的key在数据文件中的偏移量（即partition）。</li>
+<li>在map节点上，如果发现map所在的子节点的机器io比较重，原因可能是io.sort.factor这个设置的比较小，io.sort.factor设置小的话，如果spill文件比较多，merge成一个文件要很多轮读取操作，这样就提升了io的负载。io.sort.mb小了，也会增加io的负载。</li>
+<li>如果设置了执行combine的话，combine只是在merge的时候，增加了一步操作，不会改变merge的流程，所以combine不会减少</li>
+<li>或者增加文件个数。另外有个min.num.spills.for.combine的参数，表示执行一个merge操作时，如果输入文件数小于这个数字，就不调用combiner。如果设置了combiner，在写spill文件的时候也会调用，这样加上merge时候的调用，就会执行两次combine。</li>
+<li>提高Reduce的执行效率，除了在Hadoop框架方面的优化，重点还是在代码逻辑上的优化.比如：对Reduce接受到的value可能有重复的，此时如果用Java的Set或者STL的Set来达到去重的目的，那么这个程序不是扩展良好的(non-scalable)，受到数据量的限制，当数据膨胀，内存势必会溢出</li>
+</ul>
+<ol start="34">
+<li>mapred.reduce.parallel.copies</li>
+</ol>
+<ul>
+<li>Reduce copy数据的线程数量，默认值是5</li>
+<li>Reduce到每个完成的Map Task 拷贝数据（通过RPC调用），默认同时启动5个线程到map节点取数据。</li>
+<li>这个配置还是很关键的，如果你的map输出数据很大，有时候会发现map早就100%了，reduce却在缓慢的变化，那就是copy数据太慢了，比如5个线程copy 10G的数据，确实会很慢，这时就要调整这个参数，但是调整的太大，容易造成集群拥堵，所以 Job tuning的同时，也是个权衡的过程，要熟悉所用的数据！</li>
+</ul>
+<ol start="35">
+<li>mapred.job.shuffle.input.buffer.percent</li>
+</ol>
+<ul>
+<li>当指定了JVM的堆内存最大值以后，上面这个配置项就是Reduce用来存放从Map节点取过来的数据所用的内存占堆内存的比例，默认是0.7，既70%，通常这个比例是够了，但是对于大数据的情况，这个比例还是小了一些，0.8-0.9之间比较合适。（前提是你的reduce函数不会疯狂的吃掉内存）</li>
+</ul>
+<ol start="36">
+<li>
+<p>mapred.job.shuffle.merge.percent(默认值0.66)<br>
+mapred.inmem.merge.threshold(默认值1000)</p>
+<ul>
+<li>第一个指的是从Map节点取数据过来，放到内存，当达到这个阈值之后，后台启动线程（通常是Linux native process）把内存中的数据merge sort，写到reduce节点的本地磁盘；</li>
+<li>第二个指的是从map节点取过来的文件个数，当达到这个个数之后，也进行merger sort，然后写到reduce节点的本地磁盘；</li>
+<li>这两个配置项第一个优先判断，其次才判断第二个thresh-hold。</li>
+<li>从实际经验来看，mapred.job.shuffle.merge.percent默认值偏小，完全可以设置到0.8左右；第二个默认值1000，完全取决于map输出数据的大小，如果map输出的数据很大，默认值1000反倒不好，应该小一些，如果map输出的数据不大（lightweight），可以设置2000或者以上。</li>
+</ul>
+</li>
+<li>
+<p>mapred.reduce.slowstart.completed.maps （map完成多少百分比时，开始shuffle）</p>
+<ul>
+<li>当map运行慢，reduce运行很快时，如果不设置mapred.reduce.slowstart.completed.maps会使job的shuffle时间变的很长，</li>
+<li>map运行完很早就开始了reduce，导致reduce的slot一直处于被占用状态。mapred.reduce.slowstart.completed.maps 这个值是和“运行完的map数除以总map数”做判断的，当后者大于等于设定的值时，开始reduce的shuffle。所以当map比reduce的执行时间多很多时，可以调整这个值（0.75,0.80,0.85及以上）</li>
+</ul>
+</li>
+<li>
+<p>下面从流程里描述一下各个参数的作用：</p>
+</li>
+</ol>
+<p>当map task开始运算，并产生中间数据时，其产生的中间结果并非直接就简单的写入磁盘。 <br>
+这中间的过程比较复杂，并且利用到了内存buffer来进行已经产生的部分结果的缓存，并在内存buffer中进行一些预排序来优化整个map的性能。 <br>
+每一个map都会对应存在一个内存buffer（MapOutputBuffer），map会将已经产生的部分结果先写入到该buffer中，这个buffer默认是100MB大小，但是这个大小是可以根据job提交时的参数设定来调整的，该参数即为：io.sort.mb。<br>
+当map的产生数据非常大时，并且把io.sort.mb调大，那么map在整个计算过程中spill的次数就势必会降低，map task对磁盘的操作就会变少，如果map tasks的瓶颈在磁盘上，这样调整就会大大提高map的计算性能。<br>
+map在运行过程中，不停的向该buffer中写入已有的计算结果，但是该buffer并不一定能将全部的map输出缓存下来，当map输出超出一定阈值（比如100M），那么map就必须将该buffer中的数据写入到磁盘中去，这个过程在mapreduce中叫做spill。map并不是要等到将该buffer全部写满时才进行spill，因为如果全部写满了再去写spill，势必会造成map的计算部分等待buffer释放空间的情况。所以，map其实是当buffer被写满到一定程度（比如80%）时，就开始进行spill。这个阈值也是由一个job的配置参数来控制，即io.sort.spill.percent，默认为0.80或80%。这个参数同样也是影响spill频繁程度，进而影响map task运行周期对磁盘的读写频率的。但非特殊情况下，通常不需要人为的调整。调整io.sort.mb对用户来说更加方便。<br>
+当map task的计算部分全部完成后，如果map有输出，就会生成一个或者多个spill文件，这些文件就是map的输出结果。map在正常退出之前，需要将这些spill合并（merge）成一个，所以map在结束之前还有一个merge的过程。merge的过程中，有一个参数可以调整这个过程的行为，该参数为：io.sort.factor。该参数默认为10。它表示当merge spill文件时，最多能有多少并行的stream向merge文件中写入。比如如果map产生的数据非常的大，产生的spill文件大于10，而io.sort.factor使用的是默认的10，那么当map计算完成做merge时，就没有办法一次将所有的spill文件merge成一个，而是会分多次，每次最多10个stream。这也就是说当map的中间结果非常大，调大io.sort.factor，有利于减少merge次数，进而减少map对磁盘的读写频率，有可能达到优化作业的目的。<br>
+当job指定了combiner的时候，我们都知道map介绍后会在map端根据combiner定义的函数将map结果进行合并。运行combiner函数的时机有可能会是merge完成之前，或者之后，这个时机可以由一个参数控制，即min.num.spill.for.combine（default 3），当job中设定了combiner，并且spill数最少有3个的时候，那么combiner函数就会在merge产生结果文件之前运行。通过这样的方式，就可以在spill非常多需要merge，并且很多数据需要做conbine的时候，减少写入到磁盘文件的数据数量，同样是为了减少对磁盘的读写频率，有可能达到优化作业的目的。
+减少中间结果读写进出磁盘的方法不止这些，还有就是压缩。也就是说map的中间，无论是spill的时候，还是最后merge产生的结果文件，都是可以压缩的。压缩的好处在于，通过压缩减少写入读出磁盘的数据量。对中间结果非常大，磁盘速度成为map执行瓶颈的job，尤其有用。控制map中间结果是否使用压缩的参数为：mapred.compress.map.output(true/false)。将这个参数设置为true时，那么map在写中间结果时，就会将数据压缩后再写入磁盘，读结果时也会采用先解压后读取数据。这样做的后果就是：写入磁盘的中间结果数据量会变少，但是cpu会消耗一些用来压缩和解压。所以这种方式通常适合job中间结果非常大，瓶颈不在cpu，而是在磁盘的读写的情况。说的直白一些就是用cpu换IO。根据观察，通常大部分的作业cpu都不是瓶颈，除非运算逻辑异常复杂。所以对中间结果采用压缩通常来说是有收益的。<br>
+当采用map中间结果压缩的情况下，用户还可以选择压缩时采用哪种压缩格式进行压缩，现在hadoop支持的压缩格式有：
+GzipCodec，LzoCodec，BZip2Codec，LzmaCodec等压缩格式。通常来说，想要达到比较平衡的cpu和磁盘压缩比，LzoCodec比较适合。但也要取决于job的具体情况。用户若想要自行选择中间结果的压缩算法，可以设置配置参数：
+mapred.map.output.compression.codec=org.apache.hadoop.io.compress.DefaultCodec或者其他用户自行选择的压缩方式。</p>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Mysql-007基础知识</a></li>
+        
+        <li><a href="../../post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/">Mysql-006解读事务和MVVC原理</a></li>
+        
+        <li><a href="../../post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/">Mysql-005浅谈Mysql架构体系</a></li>
+        
+        <li><a href="../../post/Mysql-004Mysql%E4%BC%98%E5%8C%96/">Mysql-004Mysql优化</a></li>
+        
+        <li><a href="../../post/Mysql-003%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8Mysql%E7%B4%A2%E5%BC%95/">Mysql-003如何正确高效使用Mysql索引</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据100数据集成调研">大数据100数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/" title="大数据006impala与hive对比详解">大数据006impala与hive对比详解</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" title="大数据004spark知识整理">大数据004spark知识整理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据010flume基础知识">大数据010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据009kafka基础知识">大数据009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据007clickhouse基础知识">大数据007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据006impala基础知识">大数据006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据005flink基础知识">大数据005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据004spark基础知识">大数据004spark基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/" title="几种序列化协议的介绍(转)">几种序列化协议的介绍(转)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Css/">Web-Css (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Html/">Web-Html (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-JavaScript/">Web-JavaScript (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-100数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Redis/">缓存-Redis (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Java/">语言Java (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Php/">语言Php (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Python/">语言Python (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

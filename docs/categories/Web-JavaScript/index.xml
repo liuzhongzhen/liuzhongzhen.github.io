@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Thu, 21 Mar 2013 07:14:32 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-JavaScript/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Mar 2013 08:11:32 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-JavaScript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JavaScript 002Jquery基础知识</title>
+      <link>https://liuzhongzhen.github.io/post/JavaScript-002Jquery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
+      <pubDate>Thu, 21 Mar 2013 08:11:32 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/JavaScript-002Jquery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
+      <description>1. 你觉得jQuery或zepto源码有哪些写的好的地方 jquery源码封装在一个匿名函数的自执行环境</description>
+    </item>
+    
     <item>
       <title>JavaScript 001常见问题</title>
       <link>https://liuzhongzhen.github.io/post/JavaScript-001%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>

@@ -1,0 +1,1090 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>JavaScript 002Jquery基础知识 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="JavaScript 002Jquery基础知识 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2013-03-21T08:11:32&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2013-03-21T08:11:32&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="JavaScript 002Jquery基础知识">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/JavaScript-002Jquery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-你觉得jquery或zepto源码有哪些写的好的地方">1. 你觉得jQuery或zepto源码有哪些写的好的地方</a></li>
+    <li><a href="#2-jquery-的实现原理">2. jQuery 的实现原理？</a></li>
+    <li><a href="#3-jqueryfn-的-init-方法返回的-this-指的是什么对象-为什么要返回-this">3. jQuery.fn 的 init 方法返回的 this 指的是什么对象？ 为什么要返回 this？</a></li>
+    <li><a href="#4-jqueryextend-与-jqueryfnextend-的区别">4. jQuery.extend 与 jQuery.fn.extend 的区别？</a></li>
+    <li><a href="#5jquery-的属性拷贝extend的实现原理是什么如何实现深拷贝">5、jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝？</a></li>
+    <li><a href="#6jquery-的队列是如何实现的队列可以用在哪些地方">6、jQuery 的队列是如何实现的？队列可以用在哪些地方？</a></li>
+    <li><a href="#7jquery-中的-bind-live-delegate-on的区别">7、jQuery 中的 bind(), live(), delegate(), on()的区别？</a></li>
+    <li><a href="#8是否知道自定义事件-jquery-里的-fire-函数是什么意思什么时候用">8、是否知道自定义事件？ jQuery 里的 fire 函数是什么意思，什么时候用？</a></li>
+    <li><a href="#9jquery-通过哪个方法和-sizzle-选择器结合的">9、jQuery 通过哪个方法和 Sizzle 选择器结合的？</a></li>
+    <li><a href="#10jquery-中如何将数组转化为-json-字符串然后再转化回来">10、jQuery 中如何将数组转化为 JSON 字符串，然后再转化回来？</a></li>
+    <li><a href="#11jquery-一个对象可以同时绑定多个事件这是如何实现的">11、jQuery 一个对象可以同时绑定多个事件，这是如何实现的？</a></li>
+    <li><a href="#12针对-jquery-的优化方法">12、针对 jQuery 的优化方法？</a></li>
+    <li><a href="#13jquery-的-slideup-动画当鼠标快速连续触发-动画会滞后反复执行该如何处理呢">13、jQuery 的 slideUp 动画，当鼠标快速连续触发, 动画会滞后反复执行，该如何处理呢?</a></li>
+    <li><a href="#14jquery-ui-如何自定义组件">14、jQuery UI 如何自定义组件？</a></li>
+    <li><a href="#15jquery-与-jquery-uijquery-mobile-区别">15、jQuery 与 jQuery UI、jQuery Mobile 区别？</a></li>
+    <li><a href="#16jquery-和-zepto-的区别-各自的使用场景">16、jQuery 和 Zepto 的区别？ 各自的使用场景？</a></li>
+    <li><a href="#17jquery对象的特点">17、jQuery对象的特点</a></li>
+    <li><a href="#18你觉得jquery源码有哪些写的好的地方">18.你觉得jQuery源码有哪些写的好的地方</a></li>
+    <li><a href="#19-写一个通用的事件侦听器函数">19. 写一个通用的事件侦听器函数</a></li>
+    <li><a href="#20如何判断一个对象是否为数组">20、如何判断一个对象是否为数组</a></li>
+    <li><a href="#21冒泡排序">21、冒泡排序</a></li>
+    <li><a href="#22快速排序">22、快速排序</a></li>
+    <li><a href="#23编写一个方法-求一个字符串的字节长度">23、编写一个方法 求一个字符串的字节长度</a></li>
+    <li><a href="#24bind的用法以及如何实现bind的函数和需要注意的点">24、bind的用法，以及如何实现bind的函数和需要注意的点</a></li>
+    <li><a href="#25谈谈你对重构的理解">25.谈谈你对重构的理解</a></li>
+    <li><a href="#26什么样的前端代码是好的">26.什么样的前端代码是好的</a></li>
+    <li><a href="#27对前端工程师这个职位是怎么样理解的它的前景会怎么样">27.对前端工程师这个职位是怎么样理解的？它的前景会怎么样？</a></li>
+    <li><a href="#28你觉得前端工程的价值体现在哪">28、你觉得前端工程的价值体现在哪</a></li>
+    <li><a href="#29平时如何管理你的项目">29、平时如何管理你的项目？</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">JavaScript 002Jquery基础知识</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2013年3月21日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/Web-JavaScript'>Web-JavaScript</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="1-你觉得jquery或zepto源码有哪些写的好的地方">1. 你觉得jQuery或zepto源码有哪些写的好的地方</h2>
+<p>jquery源码封装在一个匿名函数的自执行环境中，有助于防止变量的全局污染，<br>
+然后通过传入window对象参数，可以使window对象作为局部变量使用，好处是当jquery中访问window对象的时候，就不用将作用域链退回到顶层作用域了，从而可以更快的访问window对象。<br>
+同样，传入undefined参数，可以缩短查找undefined时的作用域链</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(<span style="color:#000;font-weight:bold">function</span>( <span style="color:#0086b3">window</span>, <span style="color:#000;font-weight:bold">undefined</span> ) {
+    <span style="color:#998;font-style:italic">//用一个函数域包起来，就是所谓的沙箱
+</span><span style="color:#998;font-style:italic"></span>
+    <span style="color:#998;font-style:italic">//在这里边var定义的变量，属于这个函数域内的局部变量，避免污染全局
+</span><span style="color:#998;font-style:italic"></span>
+    <span style="color:#998;font-style:italic">//把当前沙箱需要的外部变量通过函数参数引入进来
+</span><span style="color:#998;font-style:italic"></span>
+    <span style="color:#998;font-style:italic">//只要保证参数对内提供的接口的一致性，你还可以随意替换传进来的这个参数
+</span><span style="color:#998;font-style:italic"></span>
+    <span style="color:#0086b3">window</span>.jQuery <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">window</span>.$ <span style="color:#000;font-weight:bold">=</span> jQuery;
+})(<span style="color:#0086b3">window</span>);
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>jquery将一些原型属性和方法封装在了jquery.prototype中，为了缩短名称，又赋值给了jquery.fn，这是很形象的写法</li>
+<li>有一些数组或对象的方法经常能使用到，jQuery将其保存为局部变量以提高访问速度</li>
+<li>jquery实现的链式调用可以节约代码，所返回的都是同一个对象，可以提高代码效率</li>
+</ol>
+<h2 id="2-jquery-的实现原理">2. jQuery 的实现原理？</h2>
+<ol>
+<li>(function(window, undefined) {})(window);</li>
+<li>jQuery 利用 JS 函数作用域的特性，采用立即调用表达式包裹了自身，解决命名空间和变量污染问题</li>
+<li>window.jQuery = window.$ = jQuery;</li>
+<li>在闭包当中将 jQuery 和 $ 绑定到 window 上，从而将 jQuery 和 $ 暴露为全局变量</li>
+</ol>
+<h2 id="3-jqueryfn-的-init-方法返回的-this-指的是什么对象-为什么要返回-this">3. jQuery.fn 的 init 方法返回的 this 指的是什么对象？ 为什么要返回 this？</h2>
+<ol>
+<li>jQuery.fn 的 init 方法 返回的 this 就是 jQuery 对象</li>
+<li>用户使用 jQuery() 或 $() 即可初始化 jQuery 对象，不需要动态的去调用 init 方法</li>
+</ol>
+<h2 id="4-jqueryextend-与-jqueryfnextend-的区别">4. jQuery.extend 与 jQuery.fn.extend 的区别？</h2>
+<ol>
+<li>$.fn.extend() 和 $.extend() 是 jQuery 为扩展插件提拱了两个方法</li>
+<li>$.extend(object); // 为jQuery添加“静态方法”（工具方法）</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">$.extend({
+　　min<span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">function</span>(a, b) { <span style="color:#000;font-weight:bold">return</span> a <span style="color:#000;font-weight:bold">&lt;</span> b <span style="color:#000;font-weight:bold">?</span> a <span style="color:#000;font-weight:bold">:</span> b; },
+　　max<span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">function</span>(a, b) { <span style="color:#000;font-weight:bold">return</span> a <span style="color:#000;font-weight:bold">&gt;</span> b <span style="color:#000;font-weight:bold">?</span> a <span style="color:#000;font-weight:bold">:</span> b; }
+});
+$.min(<span style="color:#099">2</span>,<span style="color:#099">3</span>); <span style="color:#998;font-style:italic">//  2
+</span><span style="color:#998;font-style:italic"></span>$.max(<span style="color:#099">4</span>,<span style="color:#099">5</span>); <span style="color:#998;font-style:italic">//  5
+</span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>$.extend([true,] targetObject, object1[, object2]); // 对targt对象进行扩展</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#000;font-weight:bold">var</span> settings <span style="color:#000;font-weight:bold">=</span> {validate<span style="color:#000;font-weight:bold">:</span><span style="color:#000;font-weight:bold">false</span>, limit<span style="color:#000;font-weight:bold">:</span><span style="color:#099">5</span>};
+<span style="color:#000;font-weight:bold">var</span> options <span style="color:#000;font-weight:bold">=</span> {validate<span style="color:#000;font-weight:bold">:</span><span style="color:#000;font-weight:bold">true</span>, name<span style="color:#000;font-weight:bold">:</span><span style="color:#d14">&#34;bar&#34;</span>};
+$.extend(settings, options);  <span style="color:#998;font-style:italic">// 注意：不支持第一个参数传 false
+</span><span style="color:#998;font-style:italic">// settings == {validate:true, limit:5, name:&#34;bar&#34;}
+</span></code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>$.fn.extend(json); // 为jQuery添加“成员函数”（实例方法）</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">$.fn.extend({
+    alertValue<span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">function</span>() {
+        $(<span style="color:#000;font-weight:bold">this</span>).click(<span style="color:#000;font-weight:bold">function</span>(){
+            alert($(<span style="color:#000;font-weight:bold">this</span>).val());
+        });
+    }
+});
+$(<span style="color:#d14">&#34;#email&#34;</span>).alertValue();
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="5jquery-的属性拷贝extend的实现原理是什么如何实现深拷贝">5、jQuery 的属性拷贝(extend)的实现原理是什么，如何实现深拷贝？</h2>
+<ol>
+<li>浅拷贝（只复制一份原始对象的引用）<br>
+<code>var newObject = $.extend({}, oldObject);</code></li>
+<li>深拷贝（对原始对象属性所引用的对象进行进行递归拷贝）<br>
+<code>var newObject = $.extend(true, {}, oldObject);</code></li>
+</ol>
+<h2 id="6jquery-的队列是如何实现的队列可以用在哪些地方">6、jQuery 的队列是如何实现的？队列可以用在哪些地方？</h2>
+<ol>
+<li>jQuery 核心中有一组队列控制方法，由 queue()/dequeue()/clearQueue() 三个方法组成。</li>
+<li>主要应用于 animate()，ajax，其他要按时间顺序执行的事件中</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#000;font-weight:bold">var</span> func1 <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">function</span>(){alert(<span style="color:#d14">&#39;事件1&#39;</span>);}
+<span style="color:#000;font-weight:bold">var</span> func2 <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">function</span>(){alert(<span style="color:#d14">&#39;事件2&#39;</span>);}
+<span style="color:#000;font-weight:bold">var</span> func3 <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">function</span>(){alert(<span style="color:#d14">&#39;事件3&#39;</span>);}
+<span style="color:#000;font-weight:bold">var</span> func4 <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">function</span>(){alert(<span style="color:#d14">&#39;事件4&#39;</span>);}
+
+<span style="color:#998;font-style:italic">// 入栈队列事件
+</span><span style="color:#998;font-style:italic"></span>$(<span style="color:#d14">&#39;#box&#39;</span>).queue(<span style="color:#d14">&#34;queue1&#34;</span>, func1);  <span style="color:#998;font-style:italic">// push func1 to queue1
+</span><span style="color:#998;font-style:italic"></span>$(<span style="color:#d14">&#39;#box&#39;</span>).queue(<span style="color:#d14">&#34;queue1&#34;</span>, func2);  <span style="color:#998;font-style:italic">// push func2 to queue1
+</span><span style="color:#998;font-style:italic"></span>
+<span style="color:#998;font-style:italic">// 替换队列事件
+</span><span style="color:#998;font-style:italic"></span>$(<span style="color:#d14">&#39;#box&#39;</span>).queue(<span style="color:#d14">&#34;queue1&#34;</span>, []);  <span style="color:#998;font-style:italic">// delete queue1 with empty array
+</span><span style="color:#998;font-style:italic"></span>$(<span style="color:#d14">&#39;#box&#39;</span>).queue(<span style="color:#d14">&#34;queue1&#34;</span>, [func3, func4]);  <span style="color:#998;font-style:italic">// replace queue1
+</span><span style="color:#998;font-style:italic"></span>
+<span style="color:#998;font-style:italic">// 获取队列事件（返回一个函数数组）
+</span><span style="color:#998;font-style:italic"></span>$(<span style="color:#d14">&#39;#box&#39;</span>).queue(<span style="color:#d14">&#34;queue1&#34;</span>);  <span style="color:#998;font-style:italic">// [func3(), func4()]
+</span><span style="color:#998;font-style:italic"></span>
+<span style="color:#998;font-style:italic">// 出栈队列事件并执行
+</span><span style="color:#998;font-style:italic"></span>$(<span style="color:#d14">&#39;#box&#39;</span>).dequeue(<span style="color:#d14">&#34;queue1&#34;</span>); <span style="color:#998;font-style:italic">// return func3 and do func3
+</span><span style="color:#998;font-style:italic"></span>$(<span style="color:#d14">&#39;#box&#39;</span>).dequeue(<span style="color:#d14">&#34;queue1&#34;</span>); <span style="color:#998;font-style:italic">// return func4 and do func4
+</span><span style="color:#998;font-style:italic"></span>
+<span style="color:#998;font-style:italic">// 清空整个队列
+</span><span style="color:#998;font-style:italic"></span>$(<span style="color:#d14">&#39;#box&#39;</span>).clearQueue(<span style="color:#d14">&#34;queue1&#34;</span>); <span style="color:#998;font-style:italic">// delete queue1 with clearQueue
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="7jquery-中的-bind-live-delegate-on的区别">7、jQuery 中的 bind(), live(), delegate(), on()的区别？</h2>
+<ol>
+<li>bind 直接绑定在目标元素上</li>
+<li>live 通过冒泡传播事件，默认document上，支持动态数据</li>
+<li>delegate 更精确的小范围使用事件代理，性能优于 live</li>
+<li>on 是最新的1.9版本整合了之前的三种方式的新事件绑定机制</li>
+</ol>
+<h2 id="8是否知道自定义事件-jquery-里的-fire-函数是什么意思什么时候用">8、是否知道自定义事件？ jQuery 里的 fire 函数是什么意思，什么时候用？</h2>
+<ol>
+<li>事件即“发布/订阅”模式，自定义事件即“消息发布”，事件的监听即“订阅订阅”</li>
+<li>JS 原生支持自定义事件，示例：</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#0086b3">document</span>.createEvent(type); <span style="color:#998;font-style:italic">// 创建事件
+</span><span style="color:#998;font-style:italic"></span>event.initEvent(eventType, canBubble, prevent); <span style="color:#998;font-style:italic">// 初始化事件
+</span><span style="color:#998;font-style:italic"></span>target.addEventListener(<span style="color:#d14">&#39;dataavailable&#39;</span>, handler, <span style="color:#000;font-weight:bold">false</span>); <span style="color:#998;font-style:italic">// 监听事件
+</span><span style="color:#998;font-style:italic"></span>target.dispatchEvent(e);  <span style="color:#998;font-style:italic">// 触发事件
+</span></code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>jQuery 里的 fire 函数用于调用 jQuery 自定义事件列表中的事件</li>
+</ol>
+<h2 id="9jquery-通过哪个方法和-sizzle-选择器结合的">9、jQuery 通过哪个方法和 Sizzle 选择器结合的？</h2>
+<ol>
+<li>Sizzle 选择器采取 Right To Left 的匹配模式，先搜寻所有匹配标签，再判断它的父节点</li>
+<li>jQuery 通过 $(selecter).find(selecter); 和 Sizzle 选择器结合</li>
+</ol>
+<h2 id="10jquery-中如何将数组转化为-json-字符串然后再转化回来">10、jQuery 中如何将数组转化为 JSON 字符串，然后再转化回来？</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">
+$.array2json <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">function</span>(array) {
+    <span style="color:#998;font-style:italic">// 通过原生 JSON.stringify/JSON.parse 扩展 jQuery 实现
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">return</span> JSON.stringify(array);
+}
+
+$.json2array <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">function</span>(array) {
+    <span style="color:#998;font-style:italic">// $.parseJSON(array); // 3.0 开始，已过时
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#000;font-weight:bold">return</span> JSON.parse(array);
+}
+
+<span style="color:#998;font-style:italic">// 调用
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">var</span> json <span style="color:#000;font-weight:bold">=</span> $.array2json([<span style="color:#d14">&#39;a&#39;</span>, <span style="color:#d14">&#39;b&#39;</span>, <span style="color:#d14">&#39;c&#39;</span>]);
+<span style="color:#000;font-weight:bold">var</span> array <span style="color:#000;font-weight:bold">=</span> $.json2array(json);
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="11jquery-一个对象可以同时绑定多个事件这是如何实现的">11、jQuery 一个对象可以同时绑定多个事件，这是如何实现的？</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">$(<span style="color:#d14">&#34;#btn&#34;</span>).on(<span style="color:#d14">&#34;mouseover mouseout&#34;</span>, func);
+
+$(<span style="color:#d14">&#34;#btn&#34;</span>).on({
+    mouseover<span style="color:#000;font-weight:bold">:</span> func1,
+    mouseout<span style="color:#000;font-weight:bold">:</span> func2,
+    click<span style="color:#000;font-weight:bold">:</span> func3
+});
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="12针对-jquery-的优化方法">12、针对 jQuery 的优化方法？</h2>
+<ol>
+<li>缓存频繁操作DOM对象</li>
+<li>尽量使用id选择器代替class选择器</li>
+<li>总是从#id选择器来继承</li>
+<li>尽量使用链式操作</li>
+<li>使用时间委托 on绑定事件</li>
+<li>采用jQuery的内部函数data()来存储数据</li>
+<li>使用最新版本的 jQuery</li>
+</ol>
+<h2 id="13jquery-的-slideup-动画当鼠标快速连续触发-动画会滞后反复执行该如何处理呢">13、jQuery 的 slideUp 动画，当鼠标快速连续触发, 动画会滞后反复执行，该如何处理呢?</h2>
+<ol>
+<li>在触发元素上的事件设置为延迟处理：使用 JS 原生 setTimeout 方法</li>
+<li>在触发元素的事件时预先停止所有的动画，再执行相应的动画事件：$('.tab').stop().slideUp();</li>
+</ol>
+<h2 id="14jquery-ui-如何自定义组件">14、jQuery UI 如何自定义组件？</h2>
+<ol>
+<li>通过向 $.widget() 传递组件名称和一个原型对象来完成</li>
+<li>$.widget(&ldquo;ns.widgetName&rdquo;, [baseWidget], widgetPrototype);</li>
+</ol>
+<h2 id="15jquery-与-jquery-uijquery-mobile-区别">15、jQuery 与 jQuery UI、jQuery Mobile 区别？</h2>
+<ol>
+<li>jQuery 是 JS 库，兼容各种PC浏览器，主要用作更方便地处理 DOM、事件、动画、AJAX</li>
+<li>jQuery UI 是建立在 jQuery 库上的一组用户界面交互、特效、小部件及主题</li>
+<li>jQuery Mobile 以 jQuery 为基础，用于创建“移动Web应用”的框架</li>
+</ol>
+<h2 id="16jquery-和-zepto-的区别-各自的使用场景">16、jQuery 和 Zepto 的区别？ 各自的使用场景？</h2>
+<ol>
+<li>jQuery 主要目标是PC的网页中，兼容全部主流浏览器。在移动设备方面，单独推出 `jQuery Mobile</li>
+<li>Zepto从一开始就定位移动设备，相对更轻量级。它的API 基本兼容jQuery`，但对PC浏览器兼容不理想</li>
+</ol>
+<h2 id="17jquery对象的特点">17、jQuery对象的特点</h2>
+<ol>
+<li>只有 JQuery对象才能使用 JQuery 方法</li>
+<li>JQuery 对象是一个数组对象</li>
+</ol>
+<h2 id="18你觉得jquery源码有哪些写的好的地方">18.你觉得jQuery源码有哪些写的好的地方</h2>
+<ol>
+<li>jquery源码封装在一个匿名函数的自执行环境中，有助于防止变量的全局污染，<br>
+然后通过传入window对象参数，可以使window对象作为局部变量使用，<br>
+好处是当jquery中访问window对象的时候，就不用将作用域链退回到顶层作用域了，<br>
+从而可以更快的访问window对象。同样，传入undefined参数，可以缩短查找undefined时的作用域链</li>
+<li>jquery将一些原型属性和方法封装在了jquery.prototype中，为了缩短名称，又赋值给了jquery.fn，这是很形象的写法</li>
+<li>有一些数组或对象的方法经常能使用到，jQuery将其保存为局部变量以提高访问速度</li>
+<li>jquery实现的链式调用可以节约代码，所返回的都是同一个对象，可以提高代码效率</li>
+</ol>
+<h2 id="19-写一个通用的事件侦听器函数">19. 写一个通用的事件侦听器函数</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#998;font-style:italic">// event(事件)工具集，来源：github.com/markyun
+</span><span style="color:#998;font-style:italic"></span>markyun.Event <span style="color:#000;font-weight:bold">=</span> {
+    <span style="color:#998;font-style:italic">// 视能力分别使用dom0||dom2||IE方式 来绑定事件
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// 参数： 操作的元素,事件名称 ,事件处理程序
+</span><span style="color:#998;font-style:italic"></span>    addEvent <span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">function</span>(element, type, handler) {
+        <span style="color:#000;font-weight:bold">if</span> (element.addEventListener) {
+            <span style="color:#998;font-style:italic">//事件类型、需要执行的函数、是否捕捉
+</span><span style="color:#998;font-style:italic"></span>            element.addEventListener(type, handler, <span style="color:#000;font-weight:bold">false</span>);
+        } <span style="color:#000;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">if</span> (element.attachEvent) {
+            element.attachEvent(<span style="color:#d14">&#39;on&#39;</span> <span style="color:#000;font-weight:bold">+</span> type, <span style="color:#000;font-weight:bold">function</span>() {
+                handler.call(element);
+            });
+        } <span style="color:#000;font-weight:bold">else</span> {
+            element[<span style="color:#d14">&#39;on&#39;</span> <span style="color:#000;font-weight:bold">+</span> type] <span style="color:#000;font-weight:bold">=</span> handler;
+        }
+    },
+    <span style="color:#998;font-style:italic">// 移除事件
+</span><span style="color:#998;font-style:italic"></span>    removeEvent <span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">function</span>(element, type, handler) {
+        <span style="color:#000;font-weight:bold">if</span> (element.removeEventListener) {
+            element.removeEventListener(type, handler, <span style="color:#000;font-weight:bold">false</span>);
+        } <span style="color:#000;font-weight:bold">else</span> <span style="color:#000;font-weight:bold">if</span> (element.datachEvent) {
+            element.detachEvent(<span style="color:#d14">&#39;on&#39;</span> <span style="color:#000;font-weight:bold">+</span> type, handler);
+        } <span style="color:#000;font-weight:bold">else</span> {
+            element[<span style="color:#d14">&#39;on&#39;</span> <span style="color:#000;font-weight:bold">+</span> type] <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">null</span>;
+        }
+    },
+    <span style="color:#998;font-style:italic">// 阻止事件 (主要是事件冒泡，因为IE不支持事件捕获)
+</span><span style="color:#998;font-style:italic"></span>    stopPropagation <span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">function</span>(ev) {
+        <span style="color:#000;font-weight:bold">if</span> (ev.stopPropagation) {
+            ev.stopPropagation();
+        } <span style="color:#000;font-weight:bold">else</span> {
+            ev.cancelBubble <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">true</span>;
+        }
+    },
+    <span style="color:#998;font-style:italic">// 取消事件的默认行为
+</span><span style="color:#998;font-style:italic"></span>    preventDefault <span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">function</span>(event) {
+        <span style="color:#000;font-weight:bold">if</span> (event.preventDefault) {
+            event.preventDefault();
+        } <span style="color:#000;font-weight:bold">else</span> {
+            event.returnValue <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">false</span>;
+        }
+    },
+    <span style="color:#998;font-style:italic">// 获取事件目标
+</span><span style="color:#998;font-style:italic"></span>    getTarget <span style="color:#000;font-weight:bold">:</span> <span style="color:#000;font-weight:bold">function</span>(event) {
+        <span style="color:#000;font-weight:bold">return</span> event.target <span style="color:#000;font-weight:bold">||</span> event.srcElement;
+    }
+}
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="20如何判断一个对象是否为数组">20、如何判断一个对象是否为数组</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#000;font-weight:bold">function</span> isArray(arg) {
+    <span style="color:#000;font-weight:bold">if</span> (<span style="color:#000;font-weight:bold">typeof</span> arg <span style="color:#000;font-weight:bold">===</span> <span style="color:#d14">&#39;object&#39;</span>) {
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">Object</span>.prototype.toString.call(arg) <span style="color:#000;font-weight:bold">===</span> <span style="color:#d14">&#39;[object Array]&#39;</span>;
+    }
+    <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">false</span>;
+}
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="21冒泡排序">21、冒泡排序</h2>
+<p>每次比较相邻的两个数，如果后一个比前一个小，换位置</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#000;font-weight:bold">var</span> arr <span style="color:#000;font-weight:bold">=</span> [<span style="color:#099">3</span>, <span style="color:#099">1</span>, <span style="color:#099">4</span>, <span style="color:#099">6</span>, <span style="color:#099">5</span>, <span style="color:#099">7</span>, <span style="color:#099">2</span>];
+<span style="color:#000;font-weight:bold">function</span> bubbleSort(arr) {
+    <span style="color:#000;font-weight:bold">for</span> (<span style="color:#000;font-weight:bold">var</span> i <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>; i <span style="color:#000;font-weight:bold">&lt;</span> arr.length <span style="color:#000;font-weight:bold">-</span> <span style="color:#099">1</span>; i<span style="color:#000;font-weight:bold">++</span>) {
+        <span style="color:#000;font-weight:bold">for</span>(<span style="color:#000;font-weight:bold">var</span> j <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>; j <span style="color:#000;font-weight:bold">&lt;</span> arr.length <span style="color:#000;font-weight:bold">-</span> i <span style="color:#000;font-weight:bold">-</span> <span style="color:#099">1</span>; j<span style="color:#000;font-weight:bold">++</span>) {
+            <span style="color:#000;font-weight:bold">if</span>(arr[j <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">&lt;</span> arr[j]) {
+                <span style="color:#000;font-weight:bold">var</span> temp;
+                temp <span style="color:#000;font-weight:bold">=</span> arr[j];
+                arr[j] <span style="color:#000;font-weight:bold">=</span> arr[j <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>];
+                arr[j <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>] <span style="color:#000;font-weight:bold">=</span> temp;
+            }
+        }
+    }
+    <span style="color:#000;font-weight:bold">return</span> arr;
+}
+console.log(bubbleSort(arr));
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="22快速排序">22、快速排序</h2>
+<p>采用二分法，取出中间数，数组每次和中间数比较，小的放到左边，大的放到右边</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#000;font-weight:bold">var</span> arr <span style="color:#000;font-weight:bold">=</span> [<span style="color:#099">3</span>, <span style="color:#099">1</span>, <span style="color:#099">4</span>, <span style="color:#099">6</span>, <span style="color:#099">5</span>, <span style="color:#099">7</span>, <span style="color:#099">2</span>];
+<span style="color:#000;font-weight:bold">function</span> quickSort(arr) {
+    <span style="color:#000;font-weight:bold">if</span>(arr.length <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0</span>) {
+        <span style="color:#000;font-weight:bold">return</span> [];    <span style="color:#998;font-style:italic">// 返回空数组
+</span><span style="color:#998;font-style:italic"></span>    }
+    <span style="color:#000;font-weight:bold">var</span> cIndex <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">Math</span>.floor(arr.length <span style="color:#000;font-weight:bold">/</span> <span style="color:#099">2</span>);
+    <span style="color:#000;font-weight:bold">var</span> c <span style="color:#000;font-weight:bold">=</span> arr.splice(cIndex, <span style="color:#099">1</span>);
+    <span style="color:#000;font-weight:bold">var</span> l <span style="color:#000;font-weight:bold">=</span> [];
+    <span style="color:#000;font-weight:bold">var</span> r <span style="color:#000;font-weight:bold">=</span> [];
+
+    <span style="color:#000;font-weight:bold">for</span> (<span style="color:#000;font-weight:bold">var</span> i <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>; i <span style="color:#000;font-weight:bold">&lt;</span> arr.length; i<span style="color:#000;font-weight:bold">++</span>) {
+        <span style="color:#000;font-weight:bold">if</span>(arr[i] <span style="color:#000;font-weight:bold">&lt;</span> c) {
+            l.push(arr[i]);
+        } <span style="color:#000;font-weight:bold">else</span> {
+            r.push(arr[i]);
+        }
+    }
+    <span style="color:#000;font-weight:bold">return</span> quickSort(l).concat(c, quickSort(r));
+}
+
+console.log(quickSort(arr));
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="23编写一个方法-求一个字符串的字节长度">23、编写一个方法 求一个字符串的字节长度</h2>
+<p>假设：一个英文字符占用一个字节，一个中文字符占用两个字节</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#000;font-weight:bold">function</span> GetBytes(str){
+    <span style="color:#000;font-weight:bold">var</span> len <span style="color:#000;font-weight:bold">=</span> str.length;
+    <span style="color:#000;font-weight:bold">var</span> bytes <span style="color:#000;font-weight:bold">=</span> len;
+    <span style="color:#000;font-weight:bold">for</span>(<span style="color:#000;font-weight:bold">var</span> i<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>; i<span style="color:#000;font-weight:bold">&lt;</span>len; i<span style="color:#000;font-weight:bold">++</span>){
+        <span style="color:#000;font-weight:bold">if</span> (str.charCodeAt(i) <span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#099">255</span>) bytes<span style="color:#000;font-weight:bold">++</span>;
+    }
+    <span style="color:#000;font-weight:bold">return</span> bytes;
+}
+console.log(GetBytes(<span style="color:#d14">&#34;你好,as&#34;</span>));
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="24bind的用法以及如何实现bind的函数和需要注意的点">24、bind的用法，以及如何实现bind的函数和需要注意的点</h2>
+<p>bind的作用与call和apply相同，<br>
+区别是call和apply是立即调用函数，而bind是返回了一个函数，需要调用的时候再执行。<br>
+一个简单的bind函数实现如下</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#0086b3">Function</span>.prototype.bind <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">function</span>(ctx) {
+    <span style="color:#000;font-weight:bold">var</span> fn <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">this</span>;
+    <span style="color:#000;font-weight:bold">return</span> <span style="color:#000;font-weight:bold">function</span>() {
+        fn.apply(ctx, arguments);
+    };
+};
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="25谈谈你对重构的理解">25.谈谈你对重构的理解</h2>
+<ol>
+<li>网站重构：在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一致的行为。也就是说是在不改变UI的情况下，对网站进行优化， 在扩展的同时保持一致的UI</li>
+<li>对于传统的网站来说重构通常是：
+<ul>
+<li>表格(table)布局改为DIV+CSS</li>
+<li>使网站前端兼容于现代浏览器(针对于不合规范的CSS、如对IE6有效的)</li>
+<li>对于移动平台的优化</li>
+<li>针对于SEO进行优化</li>
+</ul>
+</li>
+</ol>
+<h2 id="26什么样的前端代码是好的">26.什么样的前端代码是好的</h2>
+<ol>
+<li>高复用低耦合，这样文件小，好维护，而且好扩展。</li>
+</ol>
+<h2 id="27对前端工程师这个职位是怎么样理解的它的前景会怎么样">27.对前端工程师这个职位是怎么样理解的？它的前景会怎么样？</h2>
+<ol>
+<li>前端是最贴近用户的程序员，比后端、数据库、产品经理、运营、安全都近
+<ul>
+<li>实现界面交互</li>
+<li>提升用户体验</li>
+<li>有了Node.js，前端可以实现服务端的一些事情</li>
+</ul>
+</li>
+<li>前端是最贴近用户的程序员，前端的能力就是能让产品从 90分进化到 100 分，甚至更好，</li>
+<li>与团队成员，UI设计，产品经理的沟通；</li>
+<li>做好的页面结构，页面重构和用户体验；</li>
+</ol>
+<h2 id="28你觉得前端工程的价值体现在哪">28、你觉得前端工程的价值体现在哪</h2>
+<ol>
+<li>为简化用户使用提供技术支持（交互部分）</li>
+<li>为多个浏览器兼容性提供支持</li>
+<li>为提高用户浏览速度（浏览器性能）提供支持</li>
+<li>为跨平台或者其他基于webkit或其他渲染引擎的应用提供支持</li>
+<li>为展示数据提供支持（数据接口）</li>
+</ol>
+<h2 id="29平时如何管理你的项目">29、平时如何管理你的项目？</h2>
+<ol>
+<li>先期团队必须确定好全局样式（globe.css），编码模式(utf-8) 等；</li>
+<li>编写习惯必须一致（例如都是采用继承式的写法，单样式都写成一行）；</li>
+<li>标注样式编写人，各模块都及时标注（标注关键样式调用的地方）；</li>
+<li>页面进行标注（例如 页面 模块 开始和结束）；</li>
+<li>CSS跟HTML 分文件夹并行存放，命名都得统一（例如style.css）；</li>
+<li>JS 分文件夹存放 命名以该JS功能为准的英文翻译。</li>
+<li>图片采用整合的 images.png png8 格式文件使用 - 尽量整合在一起使用方便将来的管理</li>
+</ol>
+<p><a href="https://juejin.cn/post/6844903587487678477">转发来源链接</a></p>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/JavaScript-001%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">JavaScript 001常见问题</a></li>
+        
+        <li><a href="../../post/CSS-006%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/">CSS 006常见问题</a></li>
+        
+        <li><a href="../../post/CSS-005%E5%AE%9A%E4%BD%8Dposition%E8%AF%A6%E8%A7%A3/">CSS 005定位position详解</a></li>
+        
+        <li><a href="../../post/CSS-004Flex%E5%B8%83%E5%B1%80/">CSS 004Flex布局</a></li>
+        
+        <li><a href="../../post/CSS-003Grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/">CSS 003Grid网格布局</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据100数据集成调研">大数据100数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/" title="大数据006impala与hive对比详解">大数据006impala与hive对比详解</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" title="大数据004spark知识整理">大数据004spark知识整理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据010flume基础知识">大数据010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据009kafka基础知识">大数据009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据007clickhouse基础知识">大数据007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据006impala基础知识">大数据006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据005flink基础知识">大数据005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据004spark基础知识">大数据004spark基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/" title="几种序列化协议的介绍(转)">几种序列化协议的介绍(转)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Css/">Web-Css (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Html/">Web-Html (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-JavaScript/">Web-JavaScript (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-100数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%BA%8F%E5%88%97%E5%8C%96/">序列化 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Redis/">缓存-Redis (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Java/">语言Java (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Php/">语言Php (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Python/">语言Python (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
