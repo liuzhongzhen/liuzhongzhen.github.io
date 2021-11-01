@@ -44,5 +44,23 @@
       <description>一.HIVE执行过程 二.hive表优化 1.分区 静态分区 动态分区 set hive.exec.dynamic.partition=true; set hive.exec.dynamic.partltlon.mode=nonstrict; 2.分桶 - set hive.enforce.bucketing=true; - set hive.enforce.sorting=true; 表优化数据</description>
     </item>
     
+    <item>
+      <title>大数据 003hive常用操作</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Sat, 02 Mar 2013 13:05:23 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+      <description>Alter Column 1 2 3 4 5 6 7 8 9 10 -- 修改column属性（列名，列字段类型，列注释）： ALTER TABLE table_name CHANGE [COLUMN] col_old_name col_new_name column_type [COMMENT col_comment] [FIRST|AFTER column_name]</description>
+    </item>
+    
+    <item>
+      <title>大数据 003hive函数大全</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/</link>
+      <pubDate>Fri, 01 Mar 2013 13:05:23 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/</guid>
+      <description>一、关系运算： 1. 等值比较: = 语法：A=B 操作类型：所有基本类型 描述: 如果表达式A与表达式B相等，则为</description>
+    </item>
+    
   </channel>
 </rss>

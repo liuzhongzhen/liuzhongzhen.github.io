@@ -17,5 +17,14 @@
       <description>HDFS系统架构 HDFS数据安全性如何保证 存储在HDFS系统上的文件，会分割成128M大小的bloc</description>
     </item>
     
+    <item>
+      <title>大数据 001hadoop之hdfs常用操作</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Tue, 01 Mar 2016 08:02:51 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+      <description>hadoop fs -stat命令 d 当向HDFS上写文件时，可以通过设置dfs.block.size配置项来设置文件</description>
+    </item>
+    
   </channel>
 </rss>

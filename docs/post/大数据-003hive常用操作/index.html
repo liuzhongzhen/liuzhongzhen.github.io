@@ -1,0 +1,859 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>大数据 003hive常用操作 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="大数据 003hive常用操作 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2013-03-02T13:05:23&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2013-03-02T13:05:23&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="大数据 003hive常用操作">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#alter-column">Alter Column</a></li>
+    <li><a href="#hive-udf函数的使用">hive udf函数的使用</a></li>
+    <li><a href="#根据目录创建外表">根据目录创建外表</a></li>
+    <li><a href="#给外表加分区">给外表加分区：</a></li>
+    <li><a href="#创建外表">创建外表</a></li>
+    <li><a href="#lateral-view和json使用例子">Lateral View和json使用例子</a></li>
+    <li><a href="#hive命令参数">hive命令参数</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">大数据 003hive常用操作</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2013年3月2日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive'>大数据-003hive</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="alter-column">Alter Column</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#998;font-style:italic">-- 修改column属性（列名，列字段类型，列注释）：
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#000;font-weight:bold">table_name</span>     
+    CHANGE [<span style="color:#000;font-weight:bold">COLUMN</span>] col_old_name col_new_name column_type [<span style="color:#000;font-weight:bold">COMMENT</span> col_comment] [<span style="color:#000;font-weight:bold">FIRST</span><span style="color:#000;font-weight:bold">|</span><span style="color:#000;font-weight:bold">AFTER</span> <span style="color:#000;font-weight:bold">column_name</span>] 
+
+<span style="color:#998;font-style:italic">-- 增加/替换column（可以使用replace来删除不需要的字段）
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#000;font-weight:bold">table_name</span>   
+    <span style="color:#000;font-weight:bold">ADD</span><span style="color:#000;font-weight:bold">|</span><span style="color:#000;font-weight:bold">REPLACE</span> COLUMNS (
+        col_name data_type [<span style="color:#000;font-weight:bold">COMMENT</span> col_comment], 
+        ...
+    )  
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="hive-udf函数的使用">hive udf函数的使用</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">add</span> jar <span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">data</span><span style="color:#000;font-weight:bold">/</span>udfbak<span style="color:#000;font-weight:bold">/</span>dcdnIpdbUdf<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>.<span style="color:#099">9</span>.jar; <span style="color:#a61717;background-color:#e3d2d2">这是本地路径</span>
+<span style="color:#000;font-weight:bold">add</span> jar <span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">user</span><span style="color:#000;font-weight:bold">/</span>dcdn<span style="color:#000;font-weight:bold">/</span>warehouse<span style="color:#000;font-weight:bold">/</span>udf<span style="color:#000;font-weight:bold">/</span>dcdnIpdbUdf<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>.<span style="color:#099">6</span>.jar;
+<span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">temporary</span> <span style="color:#000;font-weight:bold">function</span> mysplit <span style="color:#000;font-weight:bold">as</span> <span style="color:#d14">&#39;com.dcdn.udf.UDFMySplit&#39;</span>;
+<span style="color:#000;font-weight:bold">select</span> mysplit(<span style="color:#d14">&#39;10.11.12.13&#39;</span>,<span style="color:#d14">&#34;,&#34;</span>) a <span style="color:#000;font-weight:bold">from</span> dual;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="根据目录创建外表">根据目录创建外表</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">EXTERNAL</span> <span style="color:#000;font-weight:bold">TABLE</span> test_min_part(
+    stime  <span style="color:#000;font-weight:bold">timestamp</span>, 
+    tid    <span style="color:#0086b3">int</span>, 
+    tmsg   string
+) PARTITIONED <span style="color:#000;font-weight:bold">BY</span> ( 
+    pdate string, 
+    phour string,
+    pmin  string
+)
+<span style="color:#000;font-weight:bold">ROW</span> FORMAT DELIMITED 
+FIELDS TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\u0001&#39;</span>
+COLLECTION ITEMS TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\u0002&#39;</span> 
+LINES TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\n&#39;</span> 
+STORED <span style="color:#000;font-weight:bold">AS</span> textfile
+<span style="color:#000;font-weight:bold">LOCATION</span> <span style="color:#d14">&#39;/user/dcdn/mysql_backup/dim_lib.db/test_min_part&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="给外表加分区">给外表加分区：</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> test_min_part <span style="color:#000;font-weight:bold">add</span> partition(pdate<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;20170412&#39;</span>,phour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;10&#39;</span>,pmin<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;00&#39;</span>) <span style="color:#000;font-weight:bold">location</span> <span style="color:#d14">&#39;20170412/10/00&#39;</span>;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="创建外表">创建外表</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">external</span> <span style="color:#000;font-weight:bold">table</span> tb_test(
+    logtime            <span style="color:#0086b3">bigint</span>,
+    bussinessname      string,
+    appname            string,
+    streamname         string,
+    connectiontotal    <span style="color:#0086b3">bigint</span>,
+    outbandwidthdelta  <span style="color:#0086b3">bigint</span>,
+    srvtime            <span style="color:#0086b3">bigint</span>,
+    <span style="color:#000;font-weight:bold">source</span>             <span style="color:#0086b3">int</span>
+)
+partitioned <span style="color:#000;font-weight:bold">by</span>(
+    pdate <span style="color:#0086b3">bigint</span>
+)
+<span style="color:#000;font-weight:bold">ROW</span> FORMAT DELIMITED
+FIELDS TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\t&#39;</span>
+COLLECTION ITEMS TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\t&#39;</span>
+LINES TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\n&#39;</span>
+STORED <span style="color:#000;font-weight:bold">AS</span> textfile
+<span style="color:#000;font-weight:bold">LOCATION</span> <span style="color:#d14">&#39;/user/dcdn/mysql_backup/live_stat.db/tb_test&#39;</span>;
+
+<span style="color:#998;font-style:italic">-- 删除分区：
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> tb1 <span style="color:#000;font-weight:bold">drop</span> partition(data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-06-15&#39;</span>,data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;04&#39;</span>);  
+<span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> tb2 <span style="color:#000;font-weight:bold">drop</span> partition(data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#099">20170309</span>); 
+<span style="color:#998;font-style:italic">-- 重建分区：
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> tb1 <span style="color:#000;font-weight:bold">add</span> partition(data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-06-15&#39;</span>,data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;04&#39;</span>) <span style="color:#000;font-weight:bold">location</span> <span style="color:#d14">&#39;20160615/04/&#39;</span>;
+<span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> tb2 <span style="color:#000;font-weight:bold">add</span> partition(data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-11-17&#39;</span>,data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;12&#39;</span>) <span style="color:#000;font-weight:bold">location</span> <span style="color:#d14">&#39;20161117/12/&#39;</span>;
+
+<span style="color:#998;font-style:italic">-- 上传本地文件数据到hive的指定分区中
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">load</span> <span style="color:#000;font-weight:bold">data</span> <span style="color:#000;font-weight:bold">local</span> inpath <span style="color:#d14">&#39;/data/19/*&#39;</span> overwrite <span style="color:#000;font-weight:bold">into</span> <span style="color:#000;font-weight:bold">table</span> test.tb4 partition(data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-11-27&#39;</span>,data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;19&#39;</span>);
+
+<span style="color:#998;font-style:italic">-- 把数据写入到本地目录中
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">INSERT</span> OVERWRITE <span style="color:#000;font-weight:bold">LOCAL</span> DIRECTORY <span style="color:#d14">&#39;/tmp/httphive18.log&#39;</span>
+    <span style="color:#000;font-weight:bold">ROW</span> FORMAT DELIMITED
+    FIELDS TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\t&#39;</span>
+    COLLECTION ITEMS TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\t&#39;</span>
+<span style="color:#000;font-weight:bold">select</span>  gcid,
+        province,
+        isp,
+        <span style="color:#000;font-weight:bold">sum</span>(<span style="color:#099">1</span>) devicenum 
+  <span style="color:#000;font-weight:bold">from</span>  http_hub_deploy  
+ <span style="color:#000;font-weight:bold">where</span> data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-04-19&#39;</span> 
+   <span style="color:#000;font-weight:bold">and</span> <span style="color:#000;font-weight:bold">domain</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;iqiyi.x.00cdn.com&#39;</span> 
+ <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> gcid,province,isp;
+
+<span style="color:#998;font-style:italic">-- 根据已有的表创建表
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> r_live_oss_stat_flow 
+    <span style="color:#000;font-weight:bold">as</span> 
+<span style="color:#000;font-weight:bold">select</span> hostname,<span style="color:#000;font-weight:bold">sum</span>(<span style="color:#099">1</span>) cnt                
+  <span style="color:#000;font-weight:bold">from</span> dcdn_standard_access_log 
+ <span style="color:#000;font-weight:bold">where</span> data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-05-29&#39;</span> 
+   <span style="color:#000;font-weight:bold">and</span> data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;20&#39;</span>   
+   <span style="color:#000;font-weight:bold">and</span> <span style="color:#000;font-weight:bold">host</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;get3.xiaopi.com&#39;</span>               
+   <span style="color:#000;font-weight:bold">and</span> status<span style="color:#000;font-weight:bold">=</span><span style="color:#099">404</span>                          
+ <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> hostname;
+
+
+<span style="color:#998;font-style:italic">-- 创建表的语句
+</span><span style="color:#998;font-style:italic">-- 建表语句
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">EXTERNAL</span> <span style="color:#000;font-weight:bold">TABLE</span> o_vod_scheduledns_log(
+    stime     <span style="color:#000;font-weight:bold">timestamp</span>,
+    hostname  string,  
+    ms        double
+)
+PARTITIONED <span style="color:#000;font-weight:bold">BY</span> ( 
+    data_date string, 
+    data_hour string
+)
+<span style="color:#000;font-weight:bold">ROW</span> FORMAT DELIMITED 
+FIELDS TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\u0001&#39;</span> 
+STORED <span style="color:#000;font-weight:bold">AS</span> INPUTFORMAT <span style="color:#d14">&#39;org.apache.hadoop.mapred.SequenceFileInputFormat&#39;</span> 
+OUTPUTFORMAT <span style="color:#d14">&#39;org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat&#39;</span>
+<span style="color:#000;font-weight:bold">LOCATION</span> <span style="color:#d14">&#39;hdfs://master.xldw.xunlei.com:xxxx/user/dcdn/warehouse/flume_hive/o_vod_scheduledns_log&#39;</span>;
+
+<span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> jsontest(
+    id  <span style="color:#0086b3">int</span>,
+    jl   string
+)
+<span style="color:#000;font-weight:bold">row</span> format delimited
+fields terminated <span style="color:#000;font-weight:bold">by</span> <span style="color:#d14">&#39;\u0001&#39;</span>
+escaped <span style="color:#000;font-weight:bold">by</span> <span style="color:#d14">&#39;\\&#39;</span>
+collection items terminated <span style="color:#000;font-weight:bold">by</span> <span style="color:#d14">&#39;\u0002&#39;</span>
+stored <span style="color:#000;font-weight:bold">as</span> textfile;
+
+<span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">TABLE</span> jt_reg 
+    <span style="color:#000;font-weight:bold">AS</span>
+<span style="color:#000;font-weight:bold">select</span> regexp_replace(regexp_replace(value,<span style="color:#d14">&#39;\\}\\,\\{&#39;</span>,<span style="color:#d14">&#39;\\}\\\n\\{&#39;</span>),<span style="color:#d14">&#39;\\[|\\]&#39;</span>,<span style="color:#d14">&#39;&#39;</span>) <span style="color:#000;font-weight:bold">as</span> valuereg  
+  <span style="color:#000;font-weight:bold">from</span> jt;
+
+<span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">TABLE</span> logs 
+    <span style="color:#000;font-weight:bold">AS</span> 
+<span style="color:#000;font-weight:bold">SELECT</span> get_json_object(jt_reg.valuereg,<span style="color:#d14">&#39;$.ts&#39;</span>) <span style="color:#000;font-weight:bold">AS</span> ts, 
+       get_json_object(jt_reg.valuereg,<span style="color:#d14">&#39;$.id&#39;</span>) <span style="color:#000;font-weight:bold">AS</span> id,
+       get_json_object(jt_reg.valuereg,<span style="color:#d14">&#39;$.log&#39;</span>) <span style="color:#000;font-weight:bold">AS</span> log
+  <span style="color:#000;font-weight:bold">FROM</span> ams_json_reg;
+
+<span style="color:#000;font-weight:bold">SELECT</span> get_json_object(single_json_table.single_json,<span style="color:#d14">&#39;$.ts&#39;</span>) <span style="color:#000;font-weight:bold">AS</span> ts,
+       get_json_object(single_json_table.single_json,<span style="color:#d14">&#39;$.id&#39;</span>) <span style="color:#000;font-weight:bold">AS</span> id,
+       get_json_object(single_json_table.single_json,<span style="color:#d14">&#39;$.log&#39;</span>) <span style="color:#000;font-weight:bold">AS</span> log
+  <span style="color:#000;font-weight:bold">FROM</span> (<span style="color:#000;font-weight:bold">SELECT</span> explode(split(regexp_replace(substr(json_array_col,<span style="color:#099">2</span>, 
+                        <span style="color:#000;font-weight:bold">length</span>(json_array_col)<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>),<span style="color:#d14">&#39;&#34;}&#34;,&#34;&#39;</span>,<span style="color:#d14">&#39;&#34;}&#34;,,,,&#34;&#39;</span>),<span style="color:#d14">&#39;,,,,&#39;</span>)) 
+          <span style="color:#000;font-weight:bold">FROM</span> src_table
+        ) single_json_table;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="lateral-view和json使用例子">Lateral View和json使用例子</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> jonliu_temp 
+    <span style="color:#000;font-weight:bold">as</span> 
+<span style="color:#000;font-weight:bold">select</span> hostname,<span style="color:#000;font-weight:bold">sum</span>(<span style="color:#099">1</span>) cnt                 
+  <span style="color:#000;font-weight:bold">from</span> dcdn_standard_access_log           
+ <span style="color:#000;font-weight:bold">where</span> data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-05-29&#39;</span>           
+   <span style="color:#000;font-weight:bold">and</span> data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;20&#39;</span>   
+   <span style="color:#000;font-weight:bold">and</span> <span style="color:#000;font-weight:bold">host</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;get3.xiaopi.com&#39;</span>              
+   <span style="color:#000;font-weight:bold">and</span> status<span style="color:#000;font-weight:bold">=</span><span style="color:#099">404</span>                          
+ <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> hostname;
+
+<span style="color:#000;font-weight:bold">select</span> json_tuple(d,<span style="color:#d14">&#39;ts&#39;</span>,<span style="color:#d14">&#39;id&#39;</span>,<span style="color:#d14">&#39;log&#39;</span>) 
+  <span style="color:#000;font-weight:bold">from</span> (<span style="color:#000;font-weight:bold">SELECT</span> explode(split(regexp_replace(substr(jl,<span style="color:#099">2</span>,<span style="color:#000;font-weight:bold">length</span>(jl)<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>),<span style="color:#d14">&#39;},\\{&#39;</span>,<span style="color:#d14">&#39;}@@@@\\{&#39;</span>),<span style="color:#d14">&#39;@@@@&#39;</span>)) <span style="color:#000;font-weight:bold">as</span> d 
+          <span style="color:#000;font-weight:bold">FROM</span> jsontest
+       ) tmp;
+
+<span style="color:#000;font-weight:bold">select</span> a.id,
+       json_tuple(b.jl,<span style="color:#d14">&#39;ts&#39;</span>,<span style="color:#d14">&#39;id&#39;</span>,<span style="color:#d14">&#39;log&#39;</span>) jld
+  <span style="color:#000;font-weight:bold">from</span> jsontest a 
+<span style="color:#000;font-weight:bold">LATERAL</span> <span style="color:#000;font-weight:bold">VIEW</span> explode(split(regexp_replace(substr(jl,<span style="color:#099">2</span>,<span style="color:#000;font-weight:bold">length</span>(jl)<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>),<span style="color:#d14">&#39;},\\{&#39;</span>,<span style="color:#d14">&#39;}@@@@\\{&#39;</span>),<span style="color:#d14">&#39;@@@@&#39;</span>)) b <span style="color:#000;font-weight:bold">as</span> jl; 
+
+<span style="color:#000;font-weight:bold">explain</span> 
+<span style="color:#000;font-weight:bold">select</span> t1.id,t2.<span style="color:#000;font-weight:bold">*</span>
+  <span style="color:#000;font-weight:bold">from</span> (<span style="color:#000;font-weight:bold">select</span> a.id  id,
+               b.dmc dmc
+          <span style="color:#000;font-weight:bold">from</span> jsontest a 
+               <span style="color:#000;font-weight:bold">LATERAL</span> <span style="color:#000;font-weight:bold">VIEW</span> explode(split(regexp_replace(substr(jl,<span style="color:#099">2</span>,<span style="color:#000;font-weight:bold">length</span>(jl)<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>),<span style="color:#d14">&#39;},\\{&#39;</span>,<span style="color:#d14">&#39;}@@@@\\{&#39;</span>),<span style="color:#d14">&#39;@@@@&#39;</span>)) b <span style="color:#000;font-weight:bold">as</span> dmc
+          <span style="color:#000;font-weight:bold">where</span> jl<span style="color:#000;font-weight:bold">!=</span><span style="color:#d14">&#39;[]&#39;</span>
+        ) t1 
+  <span style="color:#000;font-weight:bold">LATERAL</span> <span style="color:#000;font-weight:bold">VIEW</span> json_tuple(dmc,<span style="color:#d14">&#39;ts&#39;</span>,<span style="color:#d14">&#39;id&#39;</span>,<span style="color:#d14">&#39;log&#39;</span>) t2 <span style="color:#000;font-weight:bold">as</span> ts,tid,log; 
+
+<span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> jond2 
+    <span style="color:#000;font-weight:bold">as</span> 
+<span style="color:#000;font-weight:bold">select</span> a.id,b.<span style="color:#000;font-weight:bold">*</span>
+  <span style="color:#000;font-weight:bold">from</span> jontest a 
+  <span style="color:#000;font-weight:bold">LATERAL</span> <span style="color:#000;font-weight:bold">VIEW</span> json_tuple(dmc,<span style="color:#d14">&#39;ts&#39;</span>,<span style="color:#d14">&#39;id&#39;</span>,<span style="color:#d14">&#39;log&#39;</span>) b <span style="color:#000;font-weight:bold">as</span> ts,tid,log;
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="hive命令参数">hive命令参数</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">set</span> hive.<span style="color:#000;font-weight:bold">exec</span>.compress.<span style="color:#000;font-weight:bold">output</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">true</span>;
+<span style="color:#000;font-weight:bold">set</span> mapred.job.queue.name<span style="color:#000;font-weight:bold">=</span>dcdn;
+<span style="color:#000;font-weight:bold">set</span> mapred.<span style="color:#000;font-weight:bold">max</span>.split.<span style="color:#000;font-weight:bold">size</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">512000000</span>;
+<span style="color:#000;font-weight:bold">set</span> mapred.<span style="color:#000;font-weight:bold">min</span>.split.<span style="color:#000;font-weight:bold">size</span>.per.node<span style="color:#000;font-weight:bold">=</span><span style="color:#099">512000000</span>;
+<span style="color:#000;font-weight:bold">set</span> mapred.<span style="color:#000;font-weight:bold">min</span>.split.<span style="color:#000;font-weight:bold">size</span>.per.rack<span style="color:#000;font-weight:bold">=</span><span style="color:#099">512000000</span>;
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/CSS-001HTML%E6%A8%A1%E6%9D%BF%E5%92%8CCSS%E5%9F%BA%E5%87%86%E6%A0%B7%E5%BC%8F/">CSS 001HTML模板和CSS基准样式</a></li>
+        
+        <li><a href="../../products/%E8%85%BE%E8%AE%AF-lhotse%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/">腾讯-Lhotse调度系统</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/">大数据 003hive函数大全</a></li>
+        
+        <li><a href="../../post/Memcached-004%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Memcached 004安装教程</a></li>
+        
+        <li><a href="../../post/Memcached-003%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/">Memcached 003学习资源</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-015%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/" title="大数据 015运维管理">大数据 015运维管理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-014zookeeper%E4%BB%8B%E7%BB%8D/" title="大数据 014zookeeper介绍">大数据 014zookeeper介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-012%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据012数据集成调研">大数据012数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/" title="大数据006impala与hive对比详解">大数据006impala与hive对比详解</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/" title="大数据004spark知识整理">大数据004spark知识整理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据010flume基础知识">大数据010flume基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据009kafka基础知识">大数据009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据007clickhouse基础知识">大数据007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据006impala基础知识">大数据006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据005flink基础知识">大数据005flink基础知识</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80001%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">CS基础001数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80002%E6%95%B0%E6%8D%AE%E5%BA%93/">CS基础002数据库 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80003%E7%BD%91%E7%BB%9C/">CS基础003网络 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80004%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">CS基础004操作系统 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80005%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">CS基础005组成原理 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80006%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">CS基础006设计模式 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80007%E6%95%B0%E5%AD%A6/">CS基础007数学 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Css/">Web-Css (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Html/">Web-Html (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-JavaScript/">Web-JavaScript (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-012%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-012数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-014zookeeper/">大数据-014zookeeper (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-015%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/">大数据-015运维管理 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Redis/">缓存-Redis (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Java/">语言Java (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Php/">语言Php (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Python/">语言Python (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

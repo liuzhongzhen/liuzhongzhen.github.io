@@ -27,11 +27,29 @@
     </item>
     
     <item>
-      <title>大数据100数据集成调研</title>
-      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/</link>
+      <title>大数据 015运维管理</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-015%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Mon, 21 Jun 2021 08:43:31 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-015%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>大数据 014zookeeper介绍</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-014zookeeper%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Fri, 21 May 2021 08:43:31 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-014zookeeper%E4%BB%8B%E7%BB%8D/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>大数据012数据集成调研</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-012%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/</link>
       <pubDate>Sat, 01 May 2021 01:10:13 +0800</pubDate>
       
-      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-100%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/</guid>
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-012%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/</guid>
       <description>公司 DataPipeline Fivetran 神策数据 日志易 数数科技 Conviva GrowingIO TalkingData 友盟 袋鼠云 滴普 奇点云 七牛云 网易数帆 数梦工厂 海致BDP 明略科技 阿里</description>
     </item>
     
@@ -114,15 +132,6 @@
       
       <guid>https://liuzhongzhen.github.io/products/%E5%85%AC%E5%85%B1-%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/</guid>
       <description>项目调研说明书 发现痛点，耗时，耗人力，不自动化的地方，找出待改进的地方，待优化的流程 复杂的事情简单化</description>
-    </item>
-    
-    <item>
-      <title>几种序列化协议的介绍(转)</title>
-      <link>https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/</link>
-      <pubDate>Sun, 11 Apr 2021 22:57:10 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/post/%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/</guid>
-      <description>序列化概述 1.序列化定义 序列化（serialization）就是将对象序列化为二进制形式（字节数组）</description>
     </item>
     
     <item>
@@ -423,6 +432,15 @@
     </item>
     
     <item>
+      <title>Java 006几种序列化协议的介绍(转)</title>
+      <link>https://liuzhongzhen.github.io/post/Java-006%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Tue, 06 Jun 2017 18:53:49 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Java-006%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/</guid>
+      <description>序列化概述 1.序列化定义 序列化（serialization）就是将对象序列化为二进制形式（字节数组）</description>
+    </item>
+    
+    <item>
       <title>Java 005springboot前后端参数传递方式</title>
       <link>https://liuzhongzhen.github.io/post/Java-005springboot%E5%89%8D%E5%90%8E%E7%AB%AF%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%96%B9%E5%BC%8F/</link>
       <pubDate>Mon, 05 Jun 2017 18:53:49 +0800</pubDate>
@@ -531,6 +549,15 @@
     </item>
     
     <item>
+      <title>大数据 001hadoop之hdfs常用操作</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Tue, 01 Mar 2016 08:02:51 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+      <description>hadoop fs -stat命令 d 当向HDFS上写文件时，可以通过设置dfs.block.size配置项来设置文件</description>
+    </item>
+    
+    <item>
       <title>大数据003hive优化相关</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E4%BC%98%E5%8C%96%E7%9B%B8%E5%85%B3/</link>
       <pubDate>Sat, 27 Feb 2016 23:05:23 +0800</pubDate>
@@ -612,11 +639,74 @@
     </item>
     
     <item>
+      <title>数学 002运筹学</title>
+      <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-002%E8%BF%90%E7%AD%B9%E5%AD%A6/</link>
+      <pubDate>Wed, 02 Sep 2015 01:41:49 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-002%E8%BF%90%E7%AD%B9%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>数学 001离散数学</title>
+      <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-001%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</link>
+      <pubDate>Tue, 01 Sep 2015 01:41:49 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-001%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>PHP经典实例第3版</title>
       <link>https://liuzhongzhen.github.io/books/PHP%E7%BB%8F%E5%85%B8%E5%AE%9E%E4%BE%8B%E7%AC%AC3%E7%89%88/</link>
       <pubDate>Mon, 10 Aug 2015 00:46:46 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/books/PHP%E7%BB%8F%E5%85%B8%E5%AE%9E%E4%BE%8B%E7%AC%AC3%E7%89%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>设计模式 001基础</title>
+      <link>https://liuzhongzhen.github.io/post/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-001%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Sat, 01 Aug 2015 01:41:49 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-001%E5%9F%BA%E7%A1%80/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>组成原理 001基础</title>
+      <link>https://liuzhongzhen.github.io/post/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-001%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Wed, 01 Jul 2015 01:41:49 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-001%E5%9F%BA%E7%A1%80/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>操作系统 20150601 001基础</title>
+      <link>https://liuzhongzhen.github.io/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-001%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Mon, 01 Jun 2015 01:41:49 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-001%E5%9F%BA%E7%A1%80/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>网络 001基础</title>
+      <link>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9C-001%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Fri, 01 May 2015 01:41:49 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9C-001%E5%9F%BA%E7%A1%80/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>数据库 001基础</title>
+      <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93-001%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Sun, 01 Mar 2015 22:33:58 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93-001%E5%9F%BA%E7%A1%80/</guid>
       <description></description>
     </item>
     
@@ -1025,6 +1115,15 @@
     </item>
     
     <item>
+      <title>大数据 003hive常用操作</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Sat, 02 Mar 2013 13:05:23 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+      <description>Alter Column 1 2 3 4 5 6 7 8 9 10 -- 修改column属性（列名，列字段类型，列注释）： ALTER TABLE table_name CHANGE [COLUMN] col_old_name col_new_name column_type [COMMENT col_comment] [FIRST|AFTER column_name]</description>
+    </item>
+    
+    <item>
       <title>CSS 001HTML模板和CSS基准样式</title>
       <link>https://liuzhongzhen.github.io/post/CSS-001HTML%E6%A8%A1%E6%9D%BF%E5%92%8CCSS%E5%9F%BA%E5%87%86%E6%A0%B7%E5%BC%8F/</link>
       <pubDate>Fri, 01 Mar 2013 23:14:31 +0800</pubDate>
@@ -1040,6 +1139,15 @@
       
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-lhotse%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 参与者，负责其中某些runner的设计开发 背景 周期性运行离线计算任务，用来替代Oracle中的J</description>
+    </item>
+    
+    <item>
+      <title>大数据 003hive函数大全</title>
+      <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/</link>
+      <pubDate>Fri, 01 Mar 2013 13:05:23 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/</guid>
+      <description>一、关系运算： 1. 等值比较: = 语法：A=B 操作类型：所有基本类型 描述: 如果表达式A与表达式B相等，则为</description>
     </item>
     
     <item>

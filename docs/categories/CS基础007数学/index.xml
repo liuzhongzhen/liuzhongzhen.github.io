@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CS基础007数学 on Liuzhongzhen的博客</title>
+    <link>https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80007%E6%95%B0%E5%AD%A6/</link>
+    <description>Recent content in CS基础007数学 on Liuzhongzhen的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>&amp;copy; 2021. All rights reserved.</copyright>
+    <lastBuildDate>Wed, 02 Sep 2015 01:41:49 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80007%E6%95%B0%E5%AD%A6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数学 002运筹学</title>
+      <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-002%E8%BF%90%E7%AD%B9%E5%AD%A6/</link>
+      <pubDate>Wed, 02 Sep 2015 01:41:49 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-002%E8%BF%90%E7%AD%B9%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>数学 001离散数学</title>
+      <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-001%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</link>
+      <pubDate>Tue, 01 Sep 2015 01:41:49 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-001%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
