@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>大数据 010flume常用架构 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="大数据 010flume常用架构 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2017-04-21T08:43:31&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2017-04-21T08:43:31&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="大数据 010flume常用架构">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%B8%B8%E7%94%A8%E6%9E%B6%E6%9E%84/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一常用架构">一、常用架构</a></li>
+    <li><a href="#二组件结构">二、组件结构</a></li>
+    <li><a href="#三flume-理解">三、Flume 理解</a>
+      <ul>
+        <li><a href="#flume处理流程总结">Flume处理流程总结：</a></li>
+        <li><a href="#flume-组件">Flume 组件</a></li>
+      </ul>
+    </li>
+    <li><a href="#四source">四、Source</a></li>
+    <li><a href="#五channel">五、Channel</a>
+      <ul>
+        <li><a href="#channel应用">Channel应用</a></li>
+      </ul>
+    </li>
+    <li><a href="#六sink">六、Sink</a>
+      <ul>
+        <li><a href="#sink应用">Sink应用：</a></li>
+      </ul>
+    </li>
+    <li><a href="#七interceptor">七、Interceptor</a></li>
+    <li><a href="#八channel-selector">八、Channel Selector</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">大数据 010flume常用架构</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2017年4月21日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume'>大数据-010flume</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="一常用架构">一、常用架构</h2>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_flume/f002.png" />   
+    </p>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_flume/f003.png" />   
+    </p>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_flume/f004.png" />   
+    </p>
+<h2 id="二组件结构">二、组件结构</h2>
+<p>Flume是一个分布式、高可靠、高可用的日志收集系统。能够有效的收集、聚合、移动大量的日志。<br>
+把各种类型的数据源采集汇总到各种类型的目的地,flume有一个口号：“我们不生产数据，我们是数据的搬运工。”<br>
+那我们怎么去搬运数据呢？
+让我们想想，那就需要一个入口（采集数据），和一个出口(推送数据)，中间再加上一些队列(暂存数据，让数据流动起来)，<br>
+这样一来我们就可以去搬运数据了，自己也可以去实现一个简单的搬运数据的。当然我们已经不需要了，<br>
+因为大牛已经帮我们实现了就是flume,能采集各种数据(各种source),推动到各种目的地（sink）。</p>
+<p>下面我们来看看flume的组件结构：</p>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_flume/f005.png" />   
+    </p>
+<h2 id="三flume-理解">三、Flume 理解</h2>
+<p>Flume 的核心（agent）就是把数据从数据源收集过来，再送到目的地。<br>
+为了保证高可靠输送一定成功，在送到目的地之前，会先缓存数据，待数据真正到达目的地后，删除自己缓存的数据。</p>
+<ul>
+<li>Flume : 传输的数据的基本单位是 Event，如果是文本文件，通常是一行记录，这也是事务的基本单位。</li>
+<li>Event : （包含：headers:{} 、body） 从 Source，流向 Channel，再到 Sink，本身为一个 byte 数组。</li>
+<li>Source : 对数据进行收集，分成transtion 和 event 打入到channel之中。</li>
+<li>Channel : 就像一个管道(队列)，接收 Source 的输出，再推送给 Sink 消费。<br>
+数据直到进入到下一个Channel中或者进入终端才会被删除。<br>
+即:中转Event临时存储，在 sources 和 sinks之间起一个连接作用 。</li>
+<li>Sink : 取出 Channel 中的数据，然后送给外部源（HDFS、HBase）或者其他 Source。</li>
+</ul>
+<h3 id="flume处理流程总结">Flume处理流程总结：</h3>
+<p>Flume由事件(Event)贯穿了整个数据流动。事件是Flume的基本数据单位，它携带日志数据(字节数组形式)和头信息，这些Event由Agent外部的Source生成，当Source捕获事件后会进行特定的格式化，然后Source会把事件推入(单个或多个)Channel中（缓冲区），它将保存事件直到Sink处理完该事件。Sink负责持久化日志或者把事件推向另一个Source。</p>
+<h3 id="flume-组件">Flume 组件</h3>
+<p>Flume提供了大量内置的Source、Channel和Sink。不同类型的Source,Channel和Sink可以自由组合。<br>
+比如：source 来源可以是日志文件，Avro和Thrift端口Kafka等， Channel可以把事件暂存在内存里，也可以持久化到本地硬盘上。Sink可以把日志写入HDFS、Hive、HBase，甚至是另外一个Source等。</p>
+<h2 id="四source">四、Source</h2>
+<p>常见采集的数据类型：
+Exec Source、Avro Source、NetCat Source、Spooling Directory Source、Kafka Source等。<br>
+详细查看：<a href="http://flume.apache.org/FlumeUserGuide.html#flume-sources">http://flume.apache.org/FlumeUserGuide.html#flume-sources</a></p>
+<p>Source应用：</p>
+<ol>
+<li>Avro Source：监听一个 avro 服务端口，采集Avro数据序列化后的数据；</li>
+</ol>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_flume/f006.jpg" />   
+    </p>
+<pre><code>- type：avrosource的类型，必须是avro。
+- bind：要监听的(本机的)主机名或者ip。此监听不是过滤发送方。一台电脑不是说只有一个IP。有多网卡的电脑，对应多个IP。
+- port：绑定的本地的端口。
+</code></pre>
+<ol start="2">
+<li>Exec Source：基于Unix的command在标准输出上采集数据（tail -F）；</li>
+</ol>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_flume/f007.jpg" />   
+    </p>
+<pre><code>- type:source的类型：必须是exec。
+- command：要执行命令。
+</code></pre>
+<ol start="3">
+<li>NetCat Source： 绑定的端口（tcp、udp），将流经端口的每一个文本行数据作为Event输入；</li>
+</ol>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_flume/f008.jpg" />   
+    </p>
+<ul>
+<li>type：source的类型，必须是netcat。</li>
+<li>bind：要监听的(本机的)主机名或者ip。此监听不是过滤发送方。一台电脑不是说只有一个IP。有多网卡的电脑，对应多个IP。</li>
+<li>port：绑定的本地的端口。</li>
+</ul>
+<ol start="4">
+<li>
+<p>Kafka Source：从 kafka 服务中采集数据；
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_flume/f009.jpg" />   
+    </p>
+</li>
+<li>
+<p>Thrift Source：监听一个 Thrift 服务端口，采集Thrift数据序列化后的数据；
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_flume/f010.jpg" />   
+    </p>
+</li>
+<li>
+<p>JMS Source： Java 消息服务数据源，Java消息服务是一个与具体平台无关的API，这是支持jms规范的数据源采集；</p>
+</li>
+<li>
+<p>Spooling Directory Source：通过文件夹里的新增的文件作为数据源的采集；</p>
+</li>
+<li>
+<p>HTTP Source：监听 HTTP POST和 GET 产生的数据的采集；</p>
+</li>
+</ol>
+<h2 id="五channel">五、Channel</h2>
+<p>常见采集的数据类型：<br>
+Memory Channel、File Channel、JDBC Channel、Kafka Channel等。
+详细查看：<a href="http://flume.apache.org/FlumeUserGuide.html#flume-channels">http://flume.apache.org/FlumeUserGuide.html#flume-channels</a></p>
+<h3 id="channel应用">Channel应用</h3>
+<ol>
+<li>Memory Channel：使用 内存 作为数据的存储(详情大家可以去官网，或者阅读下载下来的doc文档)。</li>
+</ol>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_flume/f011.jpg" />   
+    </p>
+<pre><code>- channel的类型 ： 必须为memory
+- capacity ： channel中的最大event数目
+- transactionCapacity ： channel中允许事务的最大event数目
+</code></pre>
+<ol start="2">
+<li>JDBC Channel：使用 jdbc 数据源来作为数据的存储。</li>
+<li>Kafka Channel：使用 kafka服务 来作为数据的存储。</li>
+<li>File Channel：使用 文件 来作为数据的存储。</li>
+<li>Spillable Memory Channel：使用内存和文件作为数据的存储，即：先存在内存中，如果内存中数据达到阀值则flush到文件中。</li>
+</ol>
+<h2 id="六sink">六、Sink</h2>
+<p>常见采集的数据类型：<br>
+HDFS Sink、Hive Sink、Logger Sink、Avro Sink、Thrift Sink、File Roll Sink、HBaseSink、Kafka Sink等。
+详细查看：<a href="http://flume.apache.org/FlumeUserGuide.html#flume-sinks">http://flume.apache.org/FlumeUserGuide.html#flume-sinks</a></p>
+<h3 id="sink应用">Sink应用：</h3>
+<ol>
+<li>
+<p>HDFS Sink：将数据传输到 hdfs 集群中。
+
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_flume/f012.jpg" />   
+    </p>
+<ul>
+<li>type ： sink的类型 必须是hdfs。</li>
+<li>hdfs.path ： hdfs的上传路径。</li>
+<li>hdfs.filePrefix ： hdfs文件的前缀。默认是:FlumeData</li>
+<li>hdfs.rollInterval : 间隔多久产生新文件，默认是:30（秒） 0表示不以时间间隔为准。</li>
+<li>hdfs.rollSize ： 文件到达多大再产生一个新文件，默认是:1024（bytes）0表示不以文件大小为准。</li>
+<li>hdfs.rollCount ： event达到多大再产生一个新文件，默认是:10（个）0表示不以event数目为准。</li>
+<li>hdfs.batchSize ： 每次往hdfs里提交多少个event，默认为100</li>
+<li>hdfs.fileType ： hdfs文件的格式</li>
+<li>hdfs.codeC ： 压缩方式：gzip, bzip2, lzo, lzop, snappy</li>
+</ul>
+</li>
+<li>
+<p>Hive Sink：将数据传输到 hive 的表中。</p>
+</li>
+<li>
+<p>Logger Sink：将数据作为 日志 处理（根据flume中的设置的日志的级别显示）。<br>
+要在控制台显示在运行agent的时候加入：-Dflume.root.logger=INFO,console 。</p>
+<ul>
+<li>type ： sink的类型：必须是 logger。</li>
+<li>maxBytesToLog ： 打印body的最长的字节数 默认为16</li>
+</ul>
+</li>
+<li>
+<p>Avro Sink：数据被转换成 Avro Event ，然后发送到指定的服务端口上。</p>
+</li>
+<li>
+<p>Thrift Sink：数据被转换成 Thrift Event ，然后发送到指定的的服务端口上。</p>
+</li>
+<li>
+<p>Kafka Sink：将数据发送到 kafka服务 中。（注意依赖类库）</p>
+</li>
+<li>
+<p>IRC Sink：数据向指定的 IRC服务 和端口中发送。</p>
+</li>
+<li>
+<p>File Roll Sink：数据传输到 本地文件 中。</p>
+</li>
+<li>
+<p>Null Sink：取消数据的传输，即不发送到任何目的地。</p>
+</li>
+<li>
+<p>HBaseSink：将数据发往 hbase 数据库中。</p>
+</li>
+<li>
+<p>MorphlineSolrSink：数据发送到 Solr搜索服务器 （集群）。</p>
+</li>
+<li>
+<p>ElasticSearchSink：数据发送到 Elastic Search 搜索服务器（集群）。</p>
+</li>
+</ol>
+<h2 id="七interceptor">七、Interceptor</h2>
+<ol>
+<li>
+<p>Timestamp Interceptor : 时间戳拦截器 在header里加入key为timestamp，value为当前时间。</p>
+<ul>
+<li>type ： 拦截器的类型，必须为timestamp</li>
+<li>preserveExisting ： 如果此拦截器增加的key已经存在，如果这个值设置为true则保持原来的值，否则覆盖原来的值。默认为false</li>
+</ul>
+</li>
+<li>
+<p>Host Interceptor : 主机名或者ip拦截器，在header里加入ip或者主机名</p>
+<ul>
+<li>type ： 拦截器的类型，必须为host</li>
+<li>preserveExisting ： 如果此拦截器增加的key已经存在，如果这个值设置为true则保持原来的值，否则覆盖原来的值。默认为false</li>
+<li>useIP ： 如果设置为true则使用ip地址，否则使用主机名，默认为true</li>
+<li>hostHeader ： 使用的header的key名字，默认为host</li>
+</ul>
+</li>
+<li>
+<p>Static Interceptor ： 静态拦截器，是在header里加入固定的key和value。</p>
+<ul>
+<li>type ： avrosource的类型，必须是static。</li>
+<li>preserveExisting : 如果此拦截器增加的key已经存在，如果这个值设置为true则保持原来的值，否则覆盖原来的值。默认为false</li>
+<li>key : 静态拦截器添加的key的名字</li>
+<li>value : 静态拦截器添加的key对应的value值</li>
+</ul>
+</li>
+</ol>
+<h2 id="八channel-selector">八、Channel Selector</h2>
+<ol>
+<li>Multiplexing Channel Selector 根据header的key的值分配channel
+<ul>
+<li>selector.type 默认为replicating</li>
+<li>selector.header：选择作为判断的key</li>
+<li>selector.default：默认的channel配置</li>
+<li>selector.mapping.*：匹配到的channel的配置</li>
+</ul>
+</li>
+</ol>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/bigdata_flume/f013.png" />   
+    </p>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/">网心-数据接入管理系统</a></li>
+        
+        <li><a href="../../post/OpenResty-002openResty%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F/">OpenResty 002openResty内置变量</a></li>
+        
+        <li><a href="../../post/OpenResty-003%E5%9F%BA%E4%BA%8Eopenresty%E7%9A%84%E5%87%A0%E4%B8%AA%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/">OpenResty 003基于openresty的几个开发框架</a></li>
+        
+        <li><a href="../../post/OpenResty-001openResty%E4%B8%ADlua%E5%BA%93%E6%9F%A5%E6%89%BE%E8%B7%AF%E5%BE%84/">OpenResty 001openResty中lua库查找路径</a></li>
+        
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-Eagle%E5%8F%AF%E8%A7%86%E5%8C%96%E9%82%AE%E4%BB%B6%E9%85%8D%E7%BD%AE%E6%8E%A8%E9%80%81%E7%B3%BB%E7%BB%9F/">网心-Eagle可视化邮件配置推送系统</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-015%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/" title="大数据 015运维管理">大数据 015运维管理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-014zookeeper%E4%BB%8B%E7%BB%8D/" title="大数据 014zookeeper介绍">大数据 014zookeeper介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-012%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据012数据集成调研">大数据012数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/" title="大数据006impala与hive对比详解">大数据006impala与hive对比详解</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据009kafka基础知识">大数据009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据007clickhouse基础知识">大数据007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据006impala基础知识">大数据006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据005flink基础知识">大数据005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004PySparkSQL%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" title="大数据 004PySparkSQL常用函数">大数据 004PySparkSQL常用函数</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004PySpark%E5%AF%B9%E8%B1%A1%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" title="大数据 004PySparkRDD对象常用函数">大数据 004PySparkRDD对象常用函数</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80001%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">CS基础001数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80002%E6%95%B0%E6%8D%AE%E5%BA%93/">CS基础002数据库 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80003%E7%BD%91%E7%BB%9C/">CS基础003网络 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80004%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">CS基础004操作系统 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80005%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">CS基础005组成原理 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80006%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">CS基础006设计模式 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80007%E6%95%B0%E5%AD%A6/">CS基础007数学 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Css/">Web-Css (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-HAProxy/">Web-HAProxy (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Html/">Web-Html (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-JavaScript/">Web-JavaScript (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-KeepAlived/">Web-KeepAlived (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-LVS/">Web-LVS (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-OpenResty/">Web-OpenResty (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-012%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-012数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-014zookeeper/">大数据-014zookeeper (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-015%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/">大数据-015运维管理 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%AD%98%E5%82%A8-GlusterFS/">存储-GlusterFS (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%AD%98%E5%82%A8-MinIO/">存储-MinIO (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (7)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Redis/">缓存-Redis (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Java/">语言Java (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Php/">语言Php (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Python/">语言Python (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

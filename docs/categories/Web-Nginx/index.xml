@@ -7,47 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Wed, 10 Jan 2018 08:01:56 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-Nginx/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Jan 2013 22:57:56 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-Nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Nginx 005基于openresty的几个开发框架</title>
-      <link>https://liuzhongzhen.github.io/post/Nginx-005%E5%9F%BA%E4%BA%8Eopenresty%E7%9A%84%E5%87%A0%E4%B8%AA%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/</link>
-      <pubDate>Wed, 10 Jan 2018 08:01:56 +0800</pubDate>
+      <title>Nginx 002nginx返回码</title>
+      <link>https://liuzhongzhen.github.io/post/Nginx-002nginx%E8%BF%94%E5%9B%9E%E7%A0%81/</link>
+      <pubDate>Wed, 09 Jan 2013 22:57:56 +0800</pubDate>
       
-      <guid>https://liuzhongzhen.github.io/post/Nginx-005%E5%9F%BA%E4%BA%8Eopenresty%E7%9A%84%E5%87%A0%E4%B8%AA%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/</guid>
-      <description>kong api gateway Github: https://github.com/Mashape/kong orange api gateway Github: https://github.com/sumory/orange Lapis web 开发框架 Github: https://github.com/leafo/lapis Vanilla web 开发框架 Github: https://github.com/idevz/vanilla Lor web 开发框架 Github: https://github.com/sumory/lor</description>
-    </item>
-    
-    <item>
-      <title>Nginx 004openResty内置变量</title>
-      <link>https://liuzhongzhen.github.io/post/Nginx-004openResty%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F/</link>
-      <pubDate>Wed, 10 Jan 2018 07:57:56 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/post/Nginx-004openResty%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F/</guid>
-      <description>openResty变量 请求如下:http://baidu.com/liveroom?d=10&amp;amp</description>
-    </item>
-    
-    <item>
-      <title>Nginx 003nginx返回码</title>
-      <link>https://liuzhongzhen.github.io/post/Nginx-003nginx%E8%BF%94%E5%9B%9E%E7%A0%81/</link>
-      <pubDate>Tue, 09 Jan 2018 22:57:56 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/post/Nginx-003nginx%E8%BF%94%E5%9B%9E%E7%A0%81/</guid>
+      <guid>https://liuzhongzhen.github.io/post/Nginx-002nginx%E8%BF%94%E5%9B%9E%E7%A0%81/</guid>
       <description>常用返回码 200：服务器成功返回网页 403：服务器拒绝请求。 404：请求的网页不存在 499：客户端主</description>
-    </item>
-    
-    <item>
-      <title>Nginx 002openResty中lua库查找路径</title>
-      <link>https://liuzhongzhen.github.io/post/Nginx-002openResty%E4%B8%ADlua%E5%BA%93%E6%9F%A5%E6%89%BE%E8%B7%AF%E5%BE%84/</link>
-      <pubDate>Mon, 08 Jan 2018 22:57:56 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/post/Nginx-002openResty%E4%B8%ADlua%E5%BA%93%E6%9F%A5%E6%89%BE%E8%B7%AF%E5%BE%84/</guid>
-      <description>no field package.preload[&#39;zlib&#39;] no file &#39;/usr/local/sandai/apana/lua/libs/zlib.lua&#39; no file &#39;/usr/local/sandai/apana/lua/zlib.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/site/lualib/zlib.ljbc&#39; no file &#39;/usr/local/services/openresty_httpsrv/site/lualib/zlib/init.ljbc&#39; no file &#39;/usr/local/services/openresty_httpsrv/lualib/zlib.ljbc&#39; no file &#39;/usr/local/services/openresty_httpsrv/lualib/zlib/init.ljbc&#39; no file &#39;/usr/local/services/openresty_httpsrv/site/lualib/zlib.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/site/lualib/zlib/init.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/lualib/zlib.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/lualib/zlib/init.lua&#39; no file &#39;./zlib.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/luajit/share/luajit-2.1.0-beta3/zlib.lua&#39; no file &#39;/usr/local/share/lua/5.1/zlib.lua&#39; no file &#39;/usr/local/share/lua/5.1/zlib/init.lua&#39; no file &#39;/usr/local/services/openresty_httpsrv/luajit/share/lua/5.1/zlib.lua&#39; no file</description>
     </item>
     
     <item>
       <title>Nginx 001详细介绍</title>
       <link>https://liuzhongzhen.github.io/post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/</link>
-      <pubDate>Sun, 07 Jan 2018 22:57:56 +0800</pubDate>
+      <pubDate>Mon, 07 Jan 2013 22:57:56 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/</guid>
       <description>转发 万字总结，体系化带你全面认识 Nginx 前言 作为一名前端开发人员，你是不是经常碰到领导让你上服务器去修改 Nginx</description>
