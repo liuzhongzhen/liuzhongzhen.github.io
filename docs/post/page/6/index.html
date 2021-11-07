@@ -108,6 +108,81 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://liuzhongzhen.github.io/post/Mysql-010mysql%E7%B4%A2%E5%BC%95%E4%BB%8B%E7%BB%8D/" title="Mysql 010mysql索引介绍">Mysql 010mysql索引介绍</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2016年1月31日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../../categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql'>数据库-Mysql</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            一、简介 MySQL目前主要有以下几种索引类型： 普通索引 唯一索引 主键索引 组合索引 全文索引 二、语句 1 2 3……
+        </div>
+        <p class="readmore"><a href="https://liuzhongzhen.github.io/post/Mysql-010mysql%E7%B4%A2%E5%BC%95%E4%BB%8B%E7%BB%8D/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://liuzhongzhen.github.io/post/Mysql-009mysql%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" title="Mysql 009mysql安装配置">Mysql 009mysql安装配置</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2016年1月31日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../../categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql'>数据库-Mysql</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            # This config is for: 64G, 2 * 6 physical cores with 24 threads [client] port = 3306 socket = /dev/shm/mysql.sock default-character-set = utf8 [mysqld_safe] basedir = /usr open-files-limit = 32000 user = mysql [mysqld] port = 3306 socket = /dev/shm/mysql.sock basedir = /usr datadir = /usr/local/mysql/data pid-file = /usr/local/mysql/data/mysqld.pid……
+        </div>
+        <p class="readmore"><a href="https://liuzhongzhen.github.io/post/Mysql-009mysql%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://liuzhongzhen.github.io/post/Mysql-008%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" title="Mysql 008基础操作">Mysql 008基础操作</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2016年1月30日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../../categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql'>数据库-Mysql</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            1. 刷新mysql缓存信息 mysqladmin flush-hosts -h127.0.0.1 -P3306 -uroot -p'123456'; 2. 从sql语句恢复一个数据库方法 登入mysql，执行source……
+        </div>
+        <p class="readmore"><a href="https://liuzhongzhen.github.io/post/Mysql-008%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="Mysql-007基础知识">Mysql-007基础知识</a>
             </h1>
         </header>
@@ -251,81 +326,6 @@
             转自外部深入剖析MySQL索引和SQL调优实战 MySQL索引 MySQL支持诸多存储引擎，而各种存储引……
         </div>
         <p class="readmore"><a href="https://liuzhongzhen.github.io/post/Mysql-002%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/" title="Mysql-001建表语句">Mysql-001建表语句</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2016年1月1日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='../../../categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql'>数据库-Mysql</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            常用附加信息 1 2 3 4 5 6 ENGINE = InnoDB default character set = utf8mb4 collate = utf8mb4_general_ci comment = &#39;任务类型扩展配置信息&#39; ROW_FORMAT = Compact #压……
-        </div>
-        <p class="readmore"><a href="https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-002%E8%BF%90%E7%AD%B9%E5%AD%A6/" title="数学 002运筹学">数学 002运筹学</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2015年9月2日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='../../../categories/CS%E5%9F%BA%E7%A1%80007%E6%95%B0%E5%AD%A6'>CS基础007数学</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            ……
-        </div>
-        <p class="readmore"><a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-002%E8%BF%90%E7%AD%B9%E5%AD%A6/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-001%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/" title="数学 001离散数学">数学 001离散数学</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2015年9月1日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='../../../categories/CS%E5%9F%BA%E7%A1%80007%E6%95%B0%E5%AD%A6'>CS基础007数学</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            ……
-        </div>
-        <p class="readmore"><a href="https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-001%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/">阅读全文</a></p>
     </article>
     
     
@@ -587,7 +587,7 @@
     
     <li><a href="https://liuzhongzhen.github.io/categories/%E5%AD%98%E5%82%A8-MinIO/">存储-MinIO (1)</a></li>
     
-    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (7)</a></li>
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (10)</a></li>
     
     <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
     

@@ -468,6 +468,33 @@
     </item>
     
     <item>
+      <title>Mysql 010mysql索引介绍</title>
+      <link>https://liuzhongzhen.github.io/post/Mysql-010mysql%E7%B4%A2%E5%BC%95%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Sun, 31 Jan 2016 23:20:44 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Mysql-010mysql%E7%B4%A2%E5%BC%95%E4%BB%8B%E7%BB%8D/</guid>
+      <description>一、简介 MySQL目前主要有以下几种索引类型： 普通索引 唯一索引 主键索引 组合索引 全文索引 二、语句 1 2 3</description>
+    </item>
+    
+    <item>
+      <title>Mysql 009mysql安装配置</title>
+      <link>https://liuzhongzhen.github.io/post/Mysql-009mysql%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Sun, 31 Jan 2016 22:20:44 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Mysql-009mysql%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
+      <description># This config is for: 64G, 2 * 6 physical cores with 24 threads [client] port = 3306 socket = /dev/shm/mysql.sock default-character-set = utf8 [mysqld_safe] basedir = /usr open-files-limit = 32000 user = mysql [mysqld] port = 3306 socket = /dev/shm/mysql.sock basedir = /usr datadir = /usr/local/mysql/data pid-file = /usr/local/mysql/data/mysqld.pid</description>
+    </item>
+    
+    <item>
+      <title>Mysql 008基础操作</title>
+      <link>https://liuzhongzhen.github.io/post/Mysql-008%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Sat, 30 Jan 2016 22:20:44 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Mysql-008%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid>
+      <description>1. 刷新mysql缓存信息 mysqladmin flush-hosts -h127.0.0.1 -P3306 -uroot -p&#39;123456&#39;; 2. 从sql语句恢复一个数据库方法 登入mysql，执行source</description>
+    </item>
+    
+    <item>
       <title>Mysql-007基础知识</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Fri, 29 Jan 2016 22:20:44 +0800</pubDate>
