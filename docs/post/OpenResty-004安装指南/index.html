@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>OpenResty 004安装指南 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="OpenResty 004安装指南 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2016-05-12T08:05:56&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2016-05-12T08:05:56&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="OpenResty 004安装指南">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/OpenResty-004%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents"></nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">OpenResty 004安装指南</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2016年5月12日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/Web-OpenResty'>Web-OpenResty</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">80
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">81
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">82
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">83
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">84
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">85
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">86
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#099">1</span>. 安装drizzle库<span style="color:#bbb">
+</span><span style="color:#bbb"></span>wget http://agentzh.org/misc/nginx/drizzle7-2011.07.21.tar.gz<span style="color:#bbb">
+</span><span style="color:#bbb"></span>tar xzvf drizzle7-2011.07.21.tar.gz<span style="color:#bbb">
+</span><span style="color:#bbb"></span>cd drizzle7-2011.07.21/<span style="color:#bbb">
+</span><span style="color:#bbb"></span>./configure --without-server --prefix=/usr/local<span style="color:#bbb">
+</span><span style="color:#bbb"></span>make libdrizzle-1.0<span style="color:#bbb">
+</span><span style="color:#bbb"></span>make install-libdrizzle-1.0<span style="color:#bbb">
+</span><span style="color:#bbb"></span>依赖安装：yum install pcre-devel openssl-devel zlib zlib-devel postgresql-devel<span style="color:#bbb">
+</span><span style="color:#bbb"></span>cd /usr/local/src;<span style="color:#bbb">
+</span><span style="color:#bbb"></span>wget http://ftp.exim.llorien.org/pcre/pcre-8.39.tar.gz<span style="color:#bbb">
+</span><span style="color:#bbb"></span>tar -zxvf pcre-8.39.tar.gz<span style="color:#bbb">
+</span><span style="color:#bbb"></span>wget https://www.openssl.org/source/old/1.0.2/openssl-1.0.2j.tar.gz<span style="color:#bbb">
+</span><span style="color:#bbb"></span>tar -zxvf openssl-1.0.2j.tar.gz <span style="color:#bbb">
+</span><span style="color:#bbb"></span>wget http://www.zlib.net/zlib-1.2.11.tar.gz<span style="color:#bbb">
+</span><span style="color:#bbb"></span>tar -zxvf zlib-1.2.11.tar.gz <span style="color:#bbb">
+</span><span style="color:#bbb"></span>useradd -M -s /sbin/nologin nobody<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>下载源码：wget https://openresty.org/download/openresty-1.11.2.4.tar.gz;<span style="color:#bbb">
+</span><span style="color:#bbb"></span>解压：tar -zxvf openresty-1.11.2.4.tar.gz;<span style="color:#bbb">
+</span><span style="color:#bbb"></span>执行安装命令<span style="color:#bbb">
+</span><span style="color:#bbb"></span>./configure  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--prefix=/usr/local/services/openresty \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-cc-opt=&#39;-DNGX_LUA_USE_ASSERT -DNGX_LUA_ABORT_AT_PANIC -O2&#39;  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-ld-opt=-Wl,-rpath,/usr/local/lib:/usr/local/services/openresty/luajit/lib  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--pid-path=/usr/local/services/openresty/nginx/run/nginx.pid  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--http-client-body-temp-path=/usr/local/services/openresty/nginx/cache/clientbody  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--http-proxy-temp-path=/usr/local/services/openresty/nginx/cache/proxy  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--http-fastcgi-temp-path=/usr/local/services/openresty/nginx/cache/fastcgi  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--http-uwsgi-temp-path=/usr/local/services/openresty/nginx/cache/uwsgi  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--http-scgi-temp-path=/usr/local/services/openresty/nginx/cache/scgi  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-http_postgres_module \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-http_iconv_module \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-http_ssl_module \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-http_addition_module  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-http_stub_status_module  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-http_v2_module  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-http_slice_module  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-http_flv_module  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-http_mp4_module  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-http_realip_module  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-http_drizzle_module \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-http_gzip_static_module  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-http_gunzip_module  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-mail \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-mail=dynamic  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-threads \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-stream  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-stream=dynamic  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-stream_ssl_module  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-libdrizzle=/usr/local  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-ipv6  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-file-aio \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-pcre-jit \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-zlib=/usr/local/src/zlib-1.2.11 \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--user=nobody  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--group=nobody \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-openssl=/usr/local/src/openssl-1.0.2j  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-pcre=/usr/local/src/pcre-8.39 \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>--with-debug  \<span style="color:#bbb">
+</span><span style="color:#bbb"></span>gmake<span style="color:#bbb">
+</span><span style="color:#bbb"></span>gmake install<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>yum  install epel-release  //扩展包更新包<span style="color:#bbb">
+</span><span style="color:#bbb"></span>yum  update //更新yum源<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>openresty扩展安装方法：<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>htop安装：<span style="color:#bbb">
+</span><span style="color:#bbb"></span>yum -y install epel-release<span style="color:#bbb">
+</span><span style="color:#bbb"></span>yum -y install htop <span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>openresty安装方法：<span style="color:#bbb">
+</span><span style="color:#bbb"></span>应用：http://blog.csdn.net/aaa1117a8w5s6d/article/details/51007741<span style="color:#bbb">
+</span><span style="color:#bbb"></span>安装drizzle库<span style="color:#bbb">
+</span><span style="color:#bbb"></span>wget http://agentzh.org/misc/nginx/drizzle7-2011.07.21.tar.gz<span style="color:#bbb">
+</span><span style="color:#bbb"></span>tar xzvf drizzle7-2011.07.21.tar.gz<span style="color:#bbb">
+</span><span style="color:#bbb"></span>cd drizzle7-2011.07.21/<span style="color:#bbb">
+</span><span style="color:#bbb"></span>./configure --without-server --prefix=/usr/local<span style="color:#bbb">
+</span><span style="color:#bbb"></span>make libdrizzle-1.0<span style="color:#bbb">
+</span><span style="color:#bbb"></span>make install-libdrizzle-1.0<span style="color:#bbb">
+</span><span style="color:#bbb"></span>依赖安装：yum install pcre-devel open-ssl-devel<span style="color:#bbb">
+</span><span style="color:#bbb"></span>下载源码：wget https://openresty.org/download/openresty-1.11.2.4.tar.gz<span style="color:#bbb">
+</span><span style="color:#bbb"></span>执行安装命令<span style="color:#bbb">
+</span><span style="color:#bbb"></span>./configure --prefix=/usr/local/services/openresty --pid-path=/usr/local/services/openresty/nginx/run/nginx.pid --http-client-body-temp-path=/usr/local/services/openresty/nginx/cache/clientbody --http-proxy-temp-path=/usr/local/services/openresty/nginx/cache/proxy --http-fastcgi-temp-path=/usr/local/services/openresty/nginx/cache/fastcgi --http-uwsgi-temp-path=/usr/local/services/openresty/nginx/cache/uwsgi --http-scgi-temp-path=/usr/local/services/openresty/nginx/cache/scgi --with-http_ssl_module --with-http_addition_module --with-http_stub_status_module --with-http_v2_module --with-http_slice_module --with-http_flv_module --with-http_mp4_module --with-http_gunzip_module --with-stream --with-stream=dynamic --with-stream_ssl_module --with-http_realip_module --with-threads --with-debug --with-libdrizzle=/usr/local --with-http_drizzle_module<span style="color:#bbb">
+</span><span style="color:#bbb"></span>gmake<span style="color:#bbb">
+</span><span style="color:#bbb"></span>gmake install<span style="color:#bbb">
+</span></code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/OpenResty-003%E5%9F%BA%E4%BA%8Eopenresty%E7%9A%84%E5%87%A0%E4%B8%AA%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/">OpenResty 003基于openresty的几个开发框架</a></li>
+        
+        <li><a href="../../post/OpenResty-002openResty%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F/">OpenResty 002openResty内置变量</a></li>
+        
+        <li><a href="../../post/OpenResty-001openResty%E4%B8%ADlua%E5%BA%93%E6%9F%A5%E6%89%BE%E8%B7%AF%E5%BE%84/">OpenResty 001openResty中lua库查找路径</a></li>
+        
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-Eagle%E5%8F%AF%E8%A7%86%E5%8C%96%E9%82%AE%E4%BB%B6%E9%85%8D%E7%BD%AE%E6%8E%A8%E9%80%81%E7%B3%BB%E7%BB%9F/">网心-Eagle可视化邮件配置推送系统</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/">大数据003hive基础知识2</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-015%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/" title="大数据 015运维管理">大数据 015运维管理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-014zookeeper%E4%BB%8B%E7%BB%8D/" title="大数据 014zookeeper介绍">大数据 014zookeeper介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-012%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据012数据集成调研">大数据012数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/" title="大数据006impala与hive对比详解">大数据006impala与hive对比详解</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据009kafka基础知识">大数据009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据007clickhouse基础知识">大数据007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据006impala基础知识">大数据006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据005flink基础知识">大数据005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004PySparkSQL%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" title="大数据 004PySparkSQL常用函数">大数据 004PySparkSQL常用函数</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004PySpark%E5%AF%B9%E8%B1%A1%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" title="大数据 004PySparkRDD对象常用函数">大数据 004PySparkRDD对象常用函数</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80001%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">CS基础001数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80002%E6%95%B0%E6%8D%AE%E5%BA%93/">CS基础002数据库 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80003%E7%BD%91%E7%BB%9C/">CS基础003网络 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80004%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">CS基础004操作系统 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80005%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">CS基础005组成原理 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80006%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">CS基础006设计模式 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80007%E6%95%B0%E5%AD%A6/">CS基础007数学 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Css/">Web-Css (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-HAProxy/">Web-HAProxy (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Html/">Web-Html (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-JavaScript/">Web-JavaScript (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-KeepAlived/">Web-KeepAlived (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-LVS/">Web-LVS (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-OpenResty/">Web-OpenResty (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-012%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-012数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-014zookeeper/">大数据-014zookeeper (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-015%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/">大数据-015运维管理 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%AD%98%E5%82%A8-GlusterFS/">存储-GlusterFS (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%AD%98%E5%82%A8-MinIO/">存储-MinIO (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (11)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Redis/">缓存-Redis (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Java/">语言Java (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Php/">语言Php (11)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Python/">语言Python (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
