@@ -477,6 +477,15 @@
     </item>
     
     <item>
+      <title>Mysql 012mysql锁相关</title>
+      <link>https://liuzhongzhen.github.io/post/Mysql-012mysql%E9%94%81%E7%9B%B8%E5%85%B3/</link>
+      <pubDate>Tue, 02 Feb 2016 23:20:44 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Mysql-012mysql%E9%94%81%E7%9B%B8%E5%85%B3/</guid>
+      <description>information_schema.partitions 表的分区信息 information_schema.processlist 客户端连接信息 information_schema.innodb_trx 当前运行的所有事务 information_schema.innodb_locks 当前出现的锁 information_schema.innodb_lock_waits 锁等待的对应关系 查询发生锁等待占有</description>
+    </item>
+    
+    <item>
       <title>Mysql 011安装指南</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-011%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</link>
       <pubDate>Mon, 01 Feb 2016 23:20:44 +0800</pubDate>
