@@ -145,7 +145,13 @@
 <div class="post-toc" style="position: absolute; top: 188px;">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#常用命令">常用命令：</a></li>
+    <li><a href="#配置文件">配置文件:</a></li>
+    <li><a href="#usrlocalbinsend_alertsh">/usr/local/bin/send_alert.sh</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 <script type="text/javascript">
@@ -204,7 +210,102 @@
         </div>
         
         <div class="post-content">
-            
+            <h2 id="常用命令">常用命令：</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">service keepalived status
+service keepalived reload/force-reload
+service keepalived start/stop/restart/try-restart
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="配置文件">配置文件:</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#009926">/etc/</span>keepalived/keepalived.conf<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>! Configuration File for keepalived<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>global_defs {<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>   router_id filecdndatatest<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>}<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>vrrp_instance VIP_1 {<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>    state MASTER<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>    interface eth3<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>    virtual_router_id <span style="color:#099">105</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>    priority <span style="color:#099">100</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>    advert_int <span style="color:#099">1</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>    notify_master <span style="color:#d14">&#34;/usr/local/bin/send_alert.sh &#39;haproxy_status_change&#39; &#39;Public HAProxy status changed to active: tw06axxx&#39; &#39;tw06axxx&#39; &#39;error&#39;&#34;</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>    notify_backup <span style="color:#d14">&#34;/usr/local/bin/send_alert.sh &#39;haproxy_status_change&#39; &#39;Public HAProxy status changed to standby: tw06axxx&#39; &#39;tw06axxx&#39; &#39;error&#39;&#34;</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>    authentication {<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>        auth_type PASS<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>        auth_pass filecdndatatest<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>    }<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>   virtual_ipaddress {<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>        <span style="color:#099">1</span>.<span style="color:#099">1</span>.<span style="color:#099">1</span>.<span style="color:#099">99</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>        <span style="color:#099">2</span>.<span style="color:#099">2</span>.<span style="color:#099">2</span>.<span style="color:#099">196</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>        <span style="color:#099">3</span>.<span style="color:#099">3</span>.<span style="color:#099">3</span>.<span style="color:#099">199</span><span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>   }<span style="color:#a61717;background-color:#e3d2d2">
+</span><span style="color:#a61717;background-color:#e3d2d2"></span>}<span style="color:#a61717;background-color:#e3d2d2">
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="usrlocalbinsend_alertsh">/usr/local/bin/send_alert.sh</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#999;font-weight:bold;font-style:italic">#!/bin/sh
+</span><span style="color:#999;font-weight:bold;font-style:italic"></span>
+<span style="color:#008080">key</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#008080">$1</span><span style="color:#d14">&#34;</span>
+<span style="color:#008080">content</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#008080">$2</span><span style="color:#d14">&#34;</span>
+<span style="color:#008080">object</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#008080">$3</span><span style="color:#d14">&#34;</span>
+<span style="color:#008080">grade</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#008080">$4</span><span style="color:#d14">&#34;</span>
+
+curl -i http://xxx.oa.com/alert/send -d <span style="color:#008080">key</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#d14">${</span><span style="color:#008080">key</span><span style="color:#d14">}</span><span style="color:#d14">&#34;</span> -d <span style="color:#008080">content</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#d14">${</span><span style="color:#008080">content</span><span style="color:#d14">}</span><span style="color:#d14">&#34;</span> -d <span style="color:#008080">object</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#d14">${</span><span style="color:#008080">object</span><span style="color:#d14">}</span><span style="color:#d14">&#34;</span> -d <span style="color:#008080">grade</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#d14">${</span><span style="color:#008080">grade</span><span style="color:#d14">}</span><span style="color:#d14">&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div>
         </div>
 
         

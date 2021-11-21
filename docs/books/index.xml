@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 01 Aug 2021 00:19:32 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/books/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Nov 2021 21:12:46 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/books/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Netty权威指南第2版</title>
+      <link>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC2%E7%89%88/</link>
+      <pubDate>Wed, 17 Nov 2021 21:12:46 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC2%E7%89%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Netty权威指南第1版</title>
+      <link>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC1%E7%89%88/</link>
+      <pubDate>Wed, 17 Nov 2021 21:12:40 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC1%E7%89%88/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Go语言编程</title>
       <link>https://liuzhongzhen.github.io/books/Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/</link>
@@ -51,6 +69,15 @@
       
       <guid>https://liuzhongzhen.github.io/books/PHP%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3PHP%E5%86%85%E6%A0%B8/</guid>
       <description>原文地址</description>
+    </item>
+    
+    <item>
+      <title>跟兄弟连学PHP</title>
+      <link>https://liuzhongzhen.github.io/books/PHP%E8%B7%9F%E5%85%84%E5%BC%9F%E8%BF%9E%E5%AD%A6PHP/</link>
+      <pubDate>Fri, 10 Jan 2014 15:12:32 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/PHP%E8%B7%9F%E5%85%84%E5%BC%9F%E8%BF%9E%E5%AD%A6PHP/</guid>
+      <description></description>
     </item>
     
     <item>

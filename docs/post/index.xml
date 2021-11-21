@@ -239,7 +239,7 @@
       <pubDate>Sat, 09 Nov 2019 22:57:56 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/GlusterFS-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description></description>
+      <description>参考文档 https://wiki.centos.org/zh/HowTos/GlusterFSonCentOS 推荐 https://wiki.centos.org/SpecialInterestGroup/Storage/gluster-Quickstart 安装文档 https://www.codercto.com/a/23851.html gluster高可用HA http://www.voidcn.com/article/p-mczwnjaz-tx.html HA高可用 https://blog.51cto.com/7424593/2165158 HA高可用 https://www.cnblogs.com/smlie/p/11799908.html 3种客户端挂载方案 https://blog.csdn.net/qq43748322/article/details/93875225 GlusterFS 配</description>
     </item>
     
     <item>
@@ -841,7 +841,7 @@
       <pubDate>Sun, 09 Mar 2014 22:57:56 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/KeepAlived-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description></description>
+      <description>常用命令： 1 2 3 service keepalived status service keepalived reload/force-reload service keepalived start/stop/restart/try-restart 配置文件: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 /etc/keepalived/keepalived.conf! Configuration</description>
     </item>
     
     <item>

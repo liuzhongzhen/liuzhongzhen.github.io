@@ -7,7 +7,25 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Wed, 01 Sep 2021 16:41:10 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 17 Nov 2021 21:12:46 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Netty权威指南第2版</title>
+      <link>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC2%E7%89%88/</link>
+      <pubDate>Wed, 17 Nov 2021 21:12:46 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC2%E7%89%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Netty权威指南第1版</title>
+      <link>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC1%E7%89%88/</link>
+      <pubDate>Wed, 17 Nov 2021 21:12:40 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC1%E7%89%88/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>网心-Alita数据中台产品</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Alita%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BA%A7%E5%93%81/</link>
@@ -302,7 +320,7 @@
       <pubDate>Sat, 09 Nov 2019 22:57:56 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/GlusterFS-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description></description>
+      <description>参考文档 https://wiki.centos.org/zh/HowTos/GlusterFSonCentOS 推荐 https://wiki.centos.org/SpecialInterestGroup/Storage/gluster-Quickstart 安装文档 https://www.codercto.com/a/23851.html gluster高可用HA http://www.voidcn.com/article/p-mczwnjaz-tx.html HA高可用 https://blog.51cto.com/7424593/2165158 HA高可用 https://www.cnblogs.com/smlie/p/11799908.html 3种客户端挂载方案 https://blog.csdn.net/qq43748322/article/details/93875225 GlusterFS 配</description>
     </item>
     
     <item>
@@ -1030,7 +1048,7 @@
       <pubDate>Sun, 09 Mar 2014 22:57:56 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/KeepAlived-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description></description>
+      <description>常用命令： 1 2 3 service keepalived status service keepalived reload/force-reload service keepalived start/stop/restart/try-restart 配置文件: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 /etc/keepalived/keepalived.conf! Configuration</description>
     </item>
     
     <item>
@@ -1130,6 +1148,15 @@
       
       <guid>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-360Xmanager%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D/</guid>
       <description>转载自外部-lxw的大数据田地 » xManager–通用产品集成、快速交付、监控运维解决方案 xMana</description>
+    </item>
+    
+    <item>
+      <title>跟兄弟连学PHP</title>
+      <link>https://liuzhongzhen.github.io/books/PHP%E8%B7%9F%E5%85%84%E5%BC%9F%E8%BF%9E%E5%AD%A6PHP/</link>
+      <pubDate>Fri, 10 Jan 2014 15:12:32 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/PHP%E8%B7%9F%E5%85%84%E5%BC%9F%E8%BF%9E%E5%AD%A6PHP/</guid>
+      <description></description>
     </item>
     
     <item>

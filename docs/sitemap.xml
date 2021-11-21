@@ -2,17 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://liuzhongzhen.github.io/books/</loc>
+    <lastmod>2021-11-17T21:12:46+08:00</lastmod>
+  </url><url>
     <loc>https://liuzhongzhen.github.io/</loc>
-    <lastmod>2021-09-01T16:41:10+08:00</lastmod>
+    <lastmod>2021-11-17T21:12:46+08:00</lastmod>
+  </url><url>
+    <loc>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC2%E7%89%88/</loc>
+    <lastmod>2021-11-17T21:12:46+08:00</lastmod>
+  </url><url>
+    <loc>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC1%E7%89%88/</loc>
+    <lastmod>2021-11-17T21:12:40+08:00</lastmod>
   </url><url>
     <loc>https://liuzhongzhen.github.io/products/</loc>
     <lastmod>2021-09-01T16:41:10+08:00</lastmod>
   </url><url>
     <loc>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Alita%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BA%A7%E5%93%81/</loc>
     <lastmod>2021-09-01T16:41:10+08:00</lastmod>
-  </url><url>
-    <loc>https://liuzhongzhen.github.io/books/</loc>
-    <lastmod>2021-08-01T00:19:32+08:00</lastmod>
   </url><url>
     <loc>https://liuzhongzhen.github.io/books/Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2021-08-01T00:19:32+08:00</lastmod>
@@ -487,6 +493,9 @@
   </url><url>
     <loc>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-360Xmanager%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D/</loc>
     <lastmod>2014-01-13T22:48:02+08:00</lastmod>
+  </url><url>
+    <loc>https://liuzhongzhen.github.io/books/PHP%E8%B7%9F%E5%85%84%E5%BC%9F%E8%BF%9E%E5%AD%A6PHP/</loc>
+    <lastmod>2014-01-10T15:12:32+08:00</lastmod>
   </url><url>
     <loc>https://liuzhongzhen.github.io/books/PHP6%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2013-08-03T00:45:26+08:00</lastmod>
