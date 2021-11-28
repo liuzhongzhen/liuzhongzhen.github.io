@@ -180,6 +180,15 @@
     </item>
     
     <item>
+      <title>ClickHouse原理解析与应用实践</title>
+      <link>https://liuzhongzhen.github.io/books/ClickHouse%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Wed, 06 May 2020 10:20:26 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/ClickHouse%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>数据结构-20200401-12文件操作</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-12%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Tue, 07 Apr 2020 22:33:58 +0800</pubDate>
@@ -306,6 +315,24 @@
     </item>
     
     <item>
+      <title>OpenResty 006logrotate日志切割使用</title>
+      <link>https://liuzhongzhen.github.io/post/OpenResty-006logrotate%E6%97%A5%E5%BF%97%E5%88%87%E5%89%B2%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Fri, 22 Nov 2019 15:00:59 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/OpenResty-006logrotate%E6%97%A5%E5%BF%97%E5%88%87%E5%89%B2%E4%BD%BF%E7%94%A8/</guid>
+      <description>1.基本配置 参考文档: https://www.cnblogs.com/clsn/p/8428257.html 1 2 3 4 5 6 7 cat /etc/redhat-release uname -r 安装方法yum -y install logrotate crontabs rpm -ql logrotate 显示软件包信息 /etc/cron.daily/logrotate /etc/logrotate.conf # 主配置</description>
+    </item>
+    
+    <item>
+      <title>OpenResty 005logrotate日志切割介绍</title>
+      <link>https://liuzhongzhen.github.io/post/OpenResty-005logrotate%E6%97%A5%E5%BF%97%E5%88%87%E5%89%B2%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Fri, 22 Nov 2019 14:50:59 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/OpenResty-005logrotate%E6%97%A5%E5%BF%97%E5%88%87%E5%89%B2%E4%BB%8B%E7%BB%8D/</guid>
+      <description>logrotate是linux自带的日志切割程序，可以方便的对日志进行切割，并且执行相关命令。 一、安</description>
+    </item>
+    
+    <item>
       <title>网心-Arfa离线数据开发平台</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Arfa%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/</link>
       <pubDate>Wed, 20 Nov 2019 00:37:59 +0800</pubDate>
@@ -339,6 +366,24 @@
       
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/</guid>
       <description>大数据平台整体架构 数据流转图</description>
+    </item>
+    
+    <item>
+      <title>NFS 001基本介绍</title>
+      <link>https://liuzhongzhen.github.io/post/NFS-001%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/</link>
+      <pubDate>Thu, 09 May 2019 22:57:56 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/NFS-001%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/</guid>
+      <description>一、NFS简介 什么是NFS？ (1) NFS是Net File System的简写，即网络文件系统。NFS是由SUN公</description>
+    </item>
+    
+    <item>
+      <title>NFS 002服务配置指南</title>
+      <link>https://liuzhongzhen.github.io/post/NFS-002%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Thu, 09 May 2019 20:57:56 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/NFS-002%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</guid>
+      <description>概述 nfs(Network File System)网络文件系统，它允许网络中的计算机直接通过TCP/IP网络共享资源。 在NFS的</description>
     </item>
     
     <item>
@@ -387,12 +432,30 @@
     </item>
     
     <item>
+      <title>3Proxy 001代理软件</title>
+      <link>https://liuzhongzhen.github.io/post/3Proxy-001%E4%BB%A3%E7%90%86%E8%BD%AF%E4%BB%B6/</link>
+      <pubDate>Fri, 09 Mar 2018 22:57:56 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/3Proxy-001%E4%BB%A3%E7%90%86%E8%BD%AF%E4%BB%B6/</guid>
+      <description>一、概述 3proxy是一个由俄罗斯人开发的多平台代理软件，支持http/https/ftp/sock</description>
+    </item>
+    
+    <item>
+      <title>DNS 001搭建自己的DNS服务</title>
+      <link>https://liuzhongzhen.github.io/post/DNS-001%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84DNS%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Mon, 05 Mar 2018 23:14:31 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/DNS-001%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84DNS%E6%9C%8D%E5%8A%A1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>HAProxy 001基础知识</title>
       <link>https://liuzhongzhen.github.io/post/HAProxy-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Fri, 09 Feb 2018 22:57:56 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/HAProxy-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description>接入层代理服务器，支持四层tcp网络层代理和七层http应用层代理</description>
+      <description>一、概述 接入层代理服务器，支持四层tcp网络层代理和七层http应用层代理 部署方案 两台服务hostH</description>
     </item>
     
     <item>

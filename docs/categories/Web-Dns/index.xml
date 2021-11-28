@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web-Dns on Liuzhongzhen的博客</title>
+    <link>https://liuzhongzhen.github.io/categories/Web-Dns/</link>
+    <description>Recent content in Web-Dns on Liuzhongzhen的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>&amp;copy; 2021. All rights reserved.</copyright>
+    <lastBuildDate>Mon, 05 Mar 2018 23:14:31 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-Dns/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DNS 001搭建自己的DNS服务</title>
+      <link>https://liuzhongzhen.github.io/post/DNS-001%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84DNS%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Mon, 05 Mar 2018 23:14:31 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/DNS-001%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84DNS%E6%9C%8D%E5%8A%A1/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

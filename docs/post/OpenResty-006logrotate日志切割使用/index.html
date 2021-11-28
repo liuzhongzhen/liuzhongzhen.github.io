@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>OpenResty 006logrotate日志切割使用 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="OpenResty 006logrotate日志切割使用 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2019-11-22T15:00:59&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2019-11-22T15:00:59&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="OpenResty 006logrotate日志切割使用">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/OpenResty-006logrotate%E6%97%A5%E5%BF%97%E5%88%87%E5%89%B2%E4%BD%BF%E7%94%A8/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1基本配置">1.基本配置</a></li>
+    <li><a href="#2配置文件说明">2.配置文件说明</a></li>
+    <li><a href="#3手动运行logrotate">3.手动运行logrotate</a></li>
+    <li><a href="#4logrotate的记录日志">4.Logrotate的记录日志</a></li>
+    <li><a href="#5logrotate定时任务">5.Logrotate定时任务</a></li>
+    <li><a href="#6logrotate生产应用">6.logrotate生产应用</a></li>
+    <li><a href="#7-常见配置参数小结">7. 常见配置参数小结</a></li>
+    <li><a href="#8配置例子">8.配置例子：</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">OpenResty 006logrotate日志切割使用</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年11月22日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/Web-OpenResty'>Web-OpenResty</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="1基本配置">1.基本配置</h2>
+<p>参考文档: <a href="https://www.cnblogs.com/clsn/p/8428257.html">https://www.cnblogs.com/clsn/p/8428257.html</a></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cat /etc/redhat-release 
+uname -r 
+安装方法yum -y install logrotate crontabs 
+rpm -ql  logrotate 显示软件包信息
+/etc/cron.daily/logrotate
+/etc/logrotate.conf  <span style="color:#998;font-style:italic"># 主配置文件</span>
+/etc/logrotate.d     <span style="color:#998;font-style:italic"># 配置目录</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>logrotate的配置文件是/etc/logrotate.conf，通常不需要对它进行修改。<br>
+日志文件的轮循设置在独立的配置文件中，它（们）放在/etc/logrotate.d/目录下。<br>
+随机生成一个10MB的文件</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic"># touch /var/log/log-file</span>
+<span style="color:#998;font-style:italic"># head -c 10M &lt; /dev/urandom &gt; /var/log/log-file </span>
+</code></pre></td></tr></table>
+</div>
+</div><p>由于现在日志文件已经准备好，我们将配置logrotate来轮循该日志文件。让我们为该文件创建一个配置文件。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@clsn6 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># vim /etc/logrotate.d/log-file </span>
+/var/log/log-file <span style="color:#000;font-weight:bold">{</span>
+    monthly
+    rotate <span style="color:#099">5</span>
+    compress
+    delaycompress
+    missingok
+    notifempty
+    create <span style="color:#099">644</span> root root
+    postrotate
+        /usr/bin/killall -HUP rsyslogd
+    endscript
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>上面的模板是通用的，而配置参数则根据你的需求进行调整，不是所有的参数都是必要的。也可以通过man手册中的例子进行配置。</p>
+<h2 id="2配置文件说明">2.配置文件说明</h2>
+<table>
+<thead>
+<tr>
+<th>配置参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>monthly</td>
+<td>日志文件将按月轮循。其它可用值为&rsquo;daily'，&lsquo;weekly&rsquo;或者&rsquo;yearly&rsquo;。</td>
+</tr>
+<tr>
+<td>rotate 5</td>
+<td>一次将存储5个归档日志。对于第六个归档，时间最久的归档将被删除。</td>
+</tr>
+<tr>
+<td>compress</td>
+<td>在轮循任务完成后，已轮循的归档将使用gzip进行压缩。</td>
+</tr>
+<tr>
+<td>delaycompress</td>
+<td>总是与compress选项一起用，delaycompress选项指示logrotate不要将最近的归档压缩，压缩将在下一次轮循周期进行。这在你或任何软件仍然需要读取最新归档时很有用。</td>
+</tr>
+<tr>
+<td>missingok</td>
+<td>在日志轮循期间，任何错误将被忽略，例如“文件无法找到”之类的错误。</td>
+</tr>
+<tr>
+<td>notifempty</td>
+<td>如果日志文件为空，轮循不会进行。</td>
+</tr>
+<tr>
+<td>create 644 root root</td>
+<td>以指定的权限创建全新的日志文件，同时logrotate也会重命名原始日志文件。</td>
+</tr>
+<tr>
+<td>postrotate/endscript</td>
+<td>在所有其它指令完成后，postrotate和endscript里面指定的命令将被执行。在这种情况下，rsyslogd 进程将立即再次读取其配置并继续运行。</td>
+</tr>
+</tbody>
+</table>
+<p>以上信息来源 &ldquo;man logrotate&rdquo;</p>
+<h2 id="3手动运行logrotate">3.手动运行logrotate</h2>
+<p>logrotate可以在任何时候从命令行手动调用。要调用为/etc/lograte.d/下配置的所有日志调用logrotate：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@clsn6 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># logrotate /etc/logrotate.conf</span>
+要为某个特定的配置调用logrotate,执行一次切割任务测试
+<span style="color:#000;font-weight:bold">[</span>root@clsn6 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ll /var/log/log-file </span>
+-rw-r--r-- <span style="color:#099">1</span> root root <span style="color:#099">10485760</span> Feb  <span style="color:#099">7</span> 18:50 /var/log/log-file
+<span style="color:#000;font-weight:bold">[</span>root@clsn6 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># logrotate -vf /etc/logrotate.d/log-file </span>
+<span style="color:#000;font-weight:bold">[</span>root@clsn6 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ll /var/log/log-file* </span>
+-rw-r--r-- <span style="color:#099">1</span> root root        <span style="color:#099">0</span> Feb  <span style="color:#099">7</span> 19:17 /var/log/log-file
+-rw-r--r-- <span style="color:#099">1</span> root root <span style="color:#099">10485760</span> Feb  <span style="color:#099">7</span> 18:50 /var/log/log-file.1
+</code></pre></td></tr></table>
+</div>
+</div><p>即使轮循条件没有满足，我们也可以通过使用‘-f’选项来强制logrotate轮循日志文件，‘-v’参数提供了详细的输出。</p>
+<h2 id="4logrotate的记录日志">4.Logrotate的记录日志</h2>
+<p>logrotate自身的日志通常存放于/var/lib/logrotate/status目录。<br>
+如果处于排障目的，我们想要logrotate记录到任何指定的文件，我们可以指定像下面这样从命令行指定。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@clsn6 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># logrotate -vf -s /var/log/logrotate-status /etc/logrotate.d/log-file</span>
+reading config file /etc/logrotate.d/log-file
+reading config info <span style="color:#000;font-weight:bold">for</span> /var/log/log-file 
+
+Handling <span style="color:#099">1</span> logs
+
+rotating pattern: /var/log/log-file  forced from <span style="color:#0086b3">command</span> line <span style="color:#000;font-weight:bold">(</span><span style="color:#099">5</span> rotations<span style="color:#000;font-weight:bold">)</span>
+empty log files are not rotated, old logs are removed
+considering log /var/log/log-file log does not need rotating
+not running postrotate script, since no logs were rotated
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="5logrotate定时任务">5.Logrotate定时任务</h2>
+<p>logrotate需要的cron任务应该在安装时就自动创建了，我把cron文件的内容贴出来，以供大家参考。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@clsn6 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /etc/cron.daily/logrotate </span>
+<span style="color:#998;font-style:italic">#!/bin/sh</span>
+
+/usr/sbin/logrotate /etc/logrotate.conf
+<span style="color:#008080">EXITVALUE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">$?</span>
+<span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">[</span> <span style="color:#008080">$EXITVALUE</span> !<span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">]</span>; <span style="color:#000;font-weight:bold">then</span>
+    /usr/bin/logger -t logrotate <span style="color:#d14">&#34;ALERT exited abnormally with [</span><span style="color:#008080">$EXITVALUE</span><span style="color:#d14">]&#34;</span>
+<span style="color:#000;font-weight:bold">fi</span>
+<span style="color:#0086b3">exit</span> <span style="color:#099">0</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="6logrotate生产应用">6.logrotate生产应用</h2>
+<p>为nginx设置日志切割,防止访问日志文件过大</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@clsn nginx<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /etc/logrotate.d/nginx </span>
+/var/log/nginx/*.log <span style="color:#000;font-weight:bold">{</span>
+    daily
+    rotate <span style="color:#099">5</span>
+    missingok
+    notifempty
+    create <span style="color:#099">644</span> www www
+    postrotate
+      <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">[</span> -f /application/nginx/logs/nginx.pid <span style="color:#000;font-weight:bold">]</span>; <span style="color:#000;font-weight:bold">then</span>
+          <span style="color:#0086b3">kill</span> -USR1 <span style="color:#d14">`</span>cat /application/nginx/logs/nginx.pid<span style="color:#d14">`</span>
+      <span style="color:#000;font-weight:bold">fi</span>
+    endscript
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>logrotate工具对于防止因庞大的日志文件而耗尽存储空间是十分有用的。<br>
+配置完毕后，进程是全自动的，可以长时间在不需要人为干预下运行。<br>
+本教程重点关注几个使用logrotate的几个基本样例，你也可以定制它以满足你的需求。</p>
+<h2 id="7-常见配置参数小结">7. 常见配置参数小结</h2>
+<table>
+<thead>
+<tr>
+<th>配置参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>compress</td>
+<td>通过gzip压缩转储以后的日志</td>
+</tr>
+<tr>
+<td>nocompress              </td>
+<td>不压缩</td>
+</tr>
+<tr>
+<td>copytruncate            </td>
+<td>用于还在打开中的日志文件，把当前日志备份并截断</td>
+</tr>
+<tr>
+<td>nocopytruncate          </td>
+<td>备份日志文件但是不截断</td>
+</tr>
+<tr>
+<td>create mode owner group </td>
+<td>转储文件，使用指定的文件模式创建新的日志文件</td>
+</tr>
+<tr>
+<td>nocreate                </td>
+<td>不建立新的日志文件</td>
+</tr>
+<tr>
+<td>delaycompress           </td>
+<td>和 compress 一起使用时，转储的日志文件到下一次转储时才压缩</td>
+</tr>
+<tr>
+<td>nodelaycompress         </td>
+<td>覆盖 delaycompress 选项，转储同时压缩。</td>
+</tr>
+<tr>
+<td>errors address          </td>
+<td>专储时的错误信息发送到指定的Email 地址</td>
+</tr>
+<tr>
+<td>ifempty                 </td>
+<td>即使是空文件也转储，这个是 logrotate 的缺省选项。</td>
+</tr>
+<tr>
+<td>notifempty              </td>
+<td>如果是空文件的话，不转储</td>
+</tr>
+<tr>
+<td>mail address             </td>
+<td>把转储的日志文件发送到指定的E-mail 地址</td>
+</tr>
+<tr>
+<td>nomail                  </td>
+<td>转储时不发送日志文件</td>
+</tr>
+<tr>
+<td>olddir directory         </td>
+<td>转储后的日志文件放入指定的目录，必须和当前日志文件在同一个文件系统</td>
+</tr>
+<tr>
+<td>noolddir                </td>
+<td>转储后的日志文件和当前日志文件放在同一个目录下</td>
+</tr>
+<tr>
+<td>prerotate/endscript     </td>
+<td>在转储以前需要执行的命令可以放入这个对，这两个关键字必须单独成行</td>
+</tr>
+<tr>
+<td>daily                   </td>
+<td>指定转储周期为每天</td>
+</tr>
+<tr>
+<td>weekly                  </td>
+<td>指定转储周期为每周</td>
+</tr>
+<tr>
+<td>monthly                 </td>
+<td>指定转储周期为每月</td>
+</tr>
+<tr>
+<td>rotate count            </td>
+<td>指定日志文件删除之前转储的次数，0 指没有备份，5 指保留5 个备份</td>
+</tr>
+<tr>
+<td>tabooext [+] list</td>
+<td>让logrotate不转储指定扩展名的文件，缺省的扩展名是：.rpm-orig, .rpmsave, v, 和 ~</td>
+</tr>
+<tr>
+<td>size size               </td>
+<td>当日志文件到达指定的大小时才转储，bytes(缺省)及KB(sizek)或MB(sizem)</td>
+</tr>
+<tr>
+<td>missingok</td>
+<td>在日志轮循期间，任何错误将被忽略，例如“文件无法找到”之类的错误。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8配置例子">8.配置例子：</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/data/wwwlogs/eagle/access.log
+/data/wwwlogs/horizon/nginx_access.log
+/data/wwwlogs/hulkweb/nginx_access.log
+/data/wwwlogs/portal/nginx_access.log
+/data/wwwlogs/portal/nginx_error.log
+<span style="color:#000;font-weight:bold">{</span>
+    daily
+    missingok
+    rotate <span style="color:#099">8</span>
+    compress
+    delaycompress
+    notifempty
+    dateext
+    dateformat .%Y%m%d
+    sharedscripts
+    postrotate
+        <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">[</span> -f /usr/local/services/openresty_httpsrv/nginx/run/nginx.pid <span style="color:#000;font-weight:bold">]</span>; <span style="color:#000;font-weight:bold">then</span>
+          <span style="color:#0086b3">kill</span> -USR1 <span style="color:#d14">`</span>cat /usr/local/services/openresty_httpsrv/nginx/run/nginx.pid<span style="color:#d14">`</span>
+          <span style="color:#0086b3">echo</span> <span style="color:#d14">&#39;restart nginx&#39;</span>
+        <span style="color:#000;font-weight:bold">fi</span>
+        <span style="color:#0086b3">cd</span> /usr/local/sandai/arfa/backend
+        ../env/bin/supervisorctl -c supervisord.conf reload
+    endscript
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/OpenResty-005logrotate%E6%97%A5%E5%BF%97%E5%88%87%E5%89%B2%E4%BB%8B%E7%BB%8D/">OpenResty 005logrotate日志切割介绍</a></li>
+        
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-Arfa%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/">网心-Arfa离线数据开发平台</a></li>
+        
+        <li><a href="../../post/GlusterFS-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">GlusterFS 001基础知识</a></li>
+        
+        <li><a href="../../products/%E5%85%AC%E5%85%B1-%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">公共-软件项目开发流程</a></li>
+        
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/">网心-数据平台架构</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-015%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/" title="大数据 015运维管理">大数据 015运维管理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-014zookeeper%E4%BB%8B%E7%BB%8D/" title="大数据 014zookeeper介绍">大数据 014zookeeper介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-012%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据012数据集成调研">大数据012数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/" title="大数据006impala与hive对比详解">大数据006impala与hive对比详解</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据009kafka基础知识">大数据009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据007clickhouse基础知识">大数据007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据006impala基础知识">大数据006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据005flink基础知识">大数据005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004PySparkSQL%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" title="大数据 004PySparkSQL常用函数">大数据 004PySparkSQL常用函数</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004PySpark%E5%AF%B9%E8%B1%A1%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" title="大数据 004PySparkRDD对象常用函数">大数据 004PySparkRDD对象常用函数</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80001%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">CS基础001数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80002%E6%95%B0%E6%8D%AE%E5%BA%93/">CS基础002数据库 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80003%E7%BD%91%E7%BB%9C/">CS基础003网络 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80004%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">CS基础004操作系统 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80005%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">CS基础005组成原理 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80006%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">CS基础006设计模式 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80007%E6%95%B0%E5%AD%A6/">CS基础007数学 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-3Proxy/">Web-3Proxy (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Css/">Web-Css (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Dns/">Web-Dns (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-HAProxy/">Web-HAProxy (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Html/">Web-Html (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-JavaScript/">Web-JavaScript (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-KeepAlived/">Web-KeepAlived (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-LVS/">Web-LVS (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-OpenResty/">Web-OpenResty (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-012%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-012数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-014zookeeper/">大数据-014zookeeper (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-015%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/">大数据-015运维管理 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%AD%98%E5%82%A8-GlusterFS/">存储-GlusterFS (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%AD%98%E5%82%A8-MinIO/">存储-MinIO (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%AD%98%E5%82%A8-NFS/">存储-NFS (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Redis/">缓存-Redis (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Java/">语言Java (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Php/">语言Php (11)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Python/">语言Python (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

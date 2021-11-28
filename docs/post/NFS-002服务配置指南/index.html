@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>NFS 002服务配置指南 | Liuzhongzhen的博客</title>
+    <meta property="og:title" content="NFS 002服务配置指南 - Liuzhongzhen的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2019-05-09T20:57:56&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2019-05-09T20:57:56&#43;08:00'>
+        
+    <meta name="Keywords" content="java python php sql">
+    <meta name="description" content="NFS 002服务配置指南">
+        
+    <meta name="author" content="liuzhongzhen">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/post/NFS-002%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+        <link rel="stylesheet" href='../../css/douban.css'>
+    
+        <link rel="stylesheet" href='../../css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://liuzhongzhen.github.io/">
+                        Liuzhongzhen的博客
+                    </a>
+                
+                <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概述">概述</a></li>
+    <li><a href="#一服务器部署文档">一、服务器部署文档</a></li>
+    <li><a href="#二客户端配置">二、客户端配置</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">NFS 002服务配置指南</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年5月9日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='../../categories/%E5%AD%98%E5%82%A8-NFS'>存储-NFS</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="clear" style="display: none">
+            <div class="toc-article">
+                <div class="toc-title">文章目录</div>
+            </div>
+        </div>
+        
+        <div class="post-content">
+            <h2 id="概述">概述</h2>
+<p>nfs(Network File System)网络文件系统，它允许网络中的计算机直接通过TCP/IP网络共享资源。<br>
+在NFS的应用中，本地NFS的客户端应用可以透明地读写位于远端NFS服务器上的文件，就像访问本地文件一样。<br>
+服务主要用来服务arfa的日志下载和arfa执行日志记录</p>
+<p>nfs分成服务器端和客户端配置<br>
+当前nfs
+服务器配置在tw071036 web server master<br>
+客户端安装有:
+tw071037  web server slave<br>
+tw071029  az excutor<br>
+tw071030  az excutor<br>
+tw071031  az excutor<br>
+tw071032  az excutor</p>
+<h2 id="一服务器部署文档">一、服务器部署文档</h2>
+<ol>
+<li>
+<p>检查系统是否已安装nfs, rpcbink<br>
+rpm -qa|grep nfs<br>
+rpm -qa|grep rpcbind</p>
+</li>
+<li>
+<p>安装nfs，rpcbind <br>
+yum -y install nfs-utils rpcbind<br>
+NFS的RPC服务器，Centos5下名字为portmap,CentOS6和CentOS7下名称为rcpbind<br>
+NFS软件包<br>
+nfs-utils:NFS主程序，包含rpc.nfsd  rpc.mount两个deamons<br>
+rpcbind:RPC主程序</p>
+</li>
+<li>
+<p>创建存放文件的共享目录<br>
+mkdir /usr/local/services/arfa_nfs #因为这个目录放在了ssd盘上面<br>
+chown -R nobody:nobody #设置权限，允许nobody用户访问</p>
+</li>
+<li>
+<p>编辑/ets/hosts.allow，允许外部程序可以访问<br>
+增加如下内容：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic">#nfs config</span>
+all:127.0.0.1
+rpcbind: ALL :allow
+mountd: ALL :allow
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>编辑/etc/netconfig配置文件，注释掉udp6,tcp6行，禁用ip6,如下:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic">#udp6       tpi_clts      v     inet6    udp     -       -</span>
+<span style="color:#998;font-style:italic">#tcp6       tpi_cots_ord  v     inet6    tcp     -       -</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>编辑配置文件/etc/exports，设置共享目录，权限，用户，增加如下：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/usr/local/services/arfa_nfs 10.0.0.0/8<span style="color:#000;font-weight:bold">(</span>rw,sync,all_squash,anonuid<span style="color:#000;font-weight:bold">=</span>99,anongid<span style="color:#000;font-weight:bold">=</span>99<span style="color:#000;font-weight:bold">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>&mdash;&mdash;&mdash;-下面是各个内容的详细解释&mdash;&mdash;&mdash;&ndash;<br>
+格式：共享目录     指定共享对象(共享参数)<br>
+对于上面的配置，解释如下：<br>
+/usr/local/services/arfa_nfs 共享目录<br>
+10.0.0.0/8 共享机器的访问权限<br>
+rw：读写<br>
+ro：只读<br>
+sync： 将数据同步写入内存缓冲区与磁盘中，效率低，但可以保证数据的一致性；<br>
+async：是大数据时使用，是先写到缓存区，必要时再写到磁盘里。<br>
+all_squash：所有访问用户都映射为匿名用户或用户组；<br>
+no_all_squash（默认）：访问用户先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；<br>
+root_squash（默认）：将来访的root用户映射为匿名用户或用户组；<br>
+no_root_squash：来访的root用户保持root帐号权限；<br>
+wdelay（默认）：检查是否有相关的写操作，如果有则将这些写操作一起执行，这样可以提高效率；<br>
+no_wdelay：若有写操作则立即执行，应与sync配合使用；<br>
+subtree_check ：若输出目录是一个子目录，则nfs服务器将检查其父目录的权限；<br>
+no_subtree_check（默认）：即使输出目录是一个子目录，nfs服务器也不检查其父目录的权限，这样可以提高效率；<br>
+anonuid anongid anon 意指 anonymous (匿名者) 前面关于 *_squash 提到的匿名用户的 UID 设定值，通常为 nobody(nfsnobody)，但是你可以自行设定这个 UID 的值！<br>
+当然，这个 UID 必需要存在于你的 /etc/passwd 当中！<br>
+anonuid 指的是 UID 而 anongid 则是群组的 GID 啰
+99 是nobody用户的uid和gid，可以使用id nobody命令查看<br>
+&mdash;&mdash;&mdash;&mdash;解释含义完成&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</p>
+<p>exportfs -r 配置生效</p>
+</li>
+<li>
+<p>配置服务端口号,编辑文件/etc/sysconfig/nfs</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#008080">RQUOTAD_PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30001</span>
+<span style="color:#008080">LOCKD_TCPPORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30002</span>
+<span style="color:#008080">LOCKD_UDPPORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30002</span>
+<span style="color:#008080">MOUNTD_PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30003</span>
+<span style="color:#008080">STATD_PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30004</span>  
+</code></pre></td></tr></table>
+</div>
+</div><p>30001 是 rpc.rquotad<br>
+30002 是 nlockmgr块管理<br>
+30003 是 rpc.mountd<br>
+111端口是 rpcbind的端口portmapper管理<br>
+2049端口是 nfs，nfs_acl管理</p>
+</li>
+<li>
+<p>iptables配置，允许防火墙访问，编辑配置文件/etc//sysconfig/iptables</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">-A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p tcp -m tcp --dport <span style="color:#099">111</span> -j ACCEPT 
+-A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p udp -m udp --dport <span style="color:#099">111</span> -j ACCEPT
+-A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p tcp -m tcp --dport <span style="color:#099">2049</span> -j ACCEPT
+-A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p udp -m udp --dport <span style="color:#099">2049</span> -j ACCEPT
+-A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p tcp -m tcp --dport 30001:30004 -j ACCEPT
+-A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p udp -m udp --dport 30001:30004 -j ACCEPT
+</code></pre></td></tr></table>
+</div>
+</div><p>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;重启防火墙,使配置生效&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-<br>
+service iptables restart</p>
+</li>
+<li>
+<p>注意先启动rpcbind再启动nfs，<br>
+启动rpcbind服务:<br>
+service rpcbind start</p>
+</li>
+<li>
+<p>启动nfs服务<br>
+service nfs restart</p>
+</li>
+<li>
+<p>查看RPC服务注册状态<br>
+rpcinfo -p localhost<br>
+输出如下：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">program vers proto   port  service
+<span style="color:#099">100000</span>    <span style="color:#099">4</span>   tcp    <span style="color:#099">111</span>  portmapper
+<span style="color:#099">100000</span>    <span style="color:#099">3</span>   tcp    <span style="color:#099">111</span>  portmapper
+<span style="color:#099">100000</span>    <span style="color:#099">2</span>   tcp    <span style="color:#099">111</span>  portmapper
+<span style="color:#099">100000</span>    <span style="color:#099">4</span>   udp    <span style="color:#099">111</span>  portmapper
+<span style="color:#099">100000</span>    <span style="color:#099">3</span>   udp    <span style="color:#099">111</span>  portmapper
+<span style="color:#099">100000</span>    <span style="color:#099">2</span>   udp    <span style="color:#099">111</span>  portmapper
+<span style="color:#099">100011</span>    <span style="color:#099">1</span>   udp  <span style="color:#099">30001</span>  rquotad
+<span style="color:#099">100011</span>    <span style="color:#099">2</span>   udp  <span style="color:#099">30001</span>  rquotad
+<span style="color:#099">100011</span>    <span style="color:#099">1</span>   tcp  <span style="color:#099">30001</span>  rquotad
+<span style="color:#099">100011</span>    <span style="color:#099">2</span>   tcp  <span style="color:#099">30001</span>  rquotad
+<span style="color:#099">100005</span>    <span style="color:#099">1</span>   udp  <span style="color:#099">30003</span>  mountd
+<span style="color:#099">100005</span>    <span style="color:#099">1</span>   tcp  <span style="color:#099">30003</span>  mountd
+<span style="color:#099">100005</span>    <span style="color:#099">2</span>   udp  <span style="color:#099">30003</span>  mountd
+<span style="color:#099">100005</span>    <span style="color:#099">2</span>   tcp  <span style="color:#099">30003</span>  mountd
+<span style="color:#099">100005</span>    <span style="color:#099">3</span>   udp  <span style="color:#099">30003</span>  mountd
+<span style="color:#099">100005</span>    <span style="color:#099">3</span>   tcp  <span style="color:#099">30003</span>  mountd
+<span style="color:#099">100003</span>    <span style="color:#099">2</span>   tcp   <span style="color:#099">2049</span>  nfs
+<span style="color:#099">100003</span>    <span style="color:#099">3</span>   tcp   <span style="color:#099">2049</span>  nfs
+<span style="color:#099">100003</span>    <span style="color:#099">4</span>   tcp   <span style="color:#099">2049</span>  nfs
+<span style="color:#099">100227</span>    <span style="color:#099">2</span>   tcp   <span style="color:#099">2049</span>  nfs_acl
+<span style="color:#099">100227</span>    <span style="color:#099">3</span>   tcp   <span style="color:#099">2049</span>  nfs_acl
+<span style="color:#099">100003</span>    <span style="color:#099">2</span>   udp   <span style="color:#099">2049</span>  nfs
+<span style="color:#099">100003</span>    <span style="color:#099">3</span>   udp   <span style="color:#099">2049</span>  nfs
+<span style="color:#099">100003</span>    <span style="color:#099">4</span>   udp   <span style="color:#099">2049</span>  nfs
+<span style="color:#099">100227</span>    <span style="color:#099">2</span>   udp   <span style="color:#099">2049</span>  nfs_acl
+<span style="color:#099">100227</span>    <span style="color:#099">3</span>   udp   <span style="color:#099">2049</span>  nfs_acl
+<span style="color:#099">100021</span>    <span style="color:#099">1</span>   udp  <span style="color:#099">30002</span>  nlockmgr
+<span style="color:#099">100021</span>    <span style="color:#099">3</span>   udp  <span style="color:#099">30002</span>  nlockmgr
+<span style="color:#099">100021</span>    <span style="color:#099">4</span>   udp  <span style="color:#099">30002</span>  nlockmgr
+<span style="color:#099">100021</span>    <span style="color:#099">1</span>   tcp  <span style="color:#099">30002</span>  nlockmgr
+<span style="color:#099">100021</span>    <span style="color:#099">3</span>   tcp  <span style="color:#099">30002</span>  nlockmgr
+<span style="color:#099">100021</span>    <span style="color:#099">4</span>   tcp  <span style="color:#099">30002</span>  nlockmgr
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>显示挂载信息 showmount -e localhost<br>
+输出如下：<br>
+/usr/local/services/arfa_nfs 10.0.0.0/8</p>
+</li>
+<li>
+<p>配置开机启动：<br>
+chkconfig rpcbind on<br>
+chkconfig nfs on</p>
+</li>
+</ol>
+<h2 id="二客户端配置">二、客户端配置</h2>
+<ol>
+<li>安装客户端<br>
+yum -y install nfs-utils</li>
+<li>创建目录<br>
+mkdir -p /data/arfa_nfs</li>
+<li>挂载目录<br>
+mount -t nfs 10.65.9.136:/usr/local/services/arfa_nfs /data/arfa_nfs -o proto=tcp -o nolock</li>
+<li>卸载nfs配置<br>
+umount /data/arfa_nfs</li>
+<li>查看nfs的磁盘挂载信息<br>
+df -h
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">---------------客户端挂载参数说明----------------------
+noatime       不更新文件的inode访问时间戳，文件很多时此参数可以提高效率。
+nodiratime    不更新目录的访问时间戳，同上。
+nosuid         关闭挂载目录的suid
+noexec         不允许执行二进制文件。shell脚本无法直接使用，但是用sh  xxx.sh依然可以调用。
+rsize          系统每次读取的最大字节，centos6.5默认131072，此参数过小会影响系统的I/O效率.
+wsize          系统每次写入的最大字节，同上
+defaults       使用默认的选项。默认选项为rw、suid、dev、exec、anto  nouser与async。 
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>查看nfs状态:<br>
+服务端  nfsstat -s<br>
+客户端  nfsstat -m</li>
+<li>开启nfs调试日志，日志保存在/var/log/message<br>
+服务端  rpcdebug -m nfs -s all<br>
+客户端  rpcdebug -m nfsd -s all<br>
+关闭nfs调试功能：<br>
+服务端  rpcdebug -m nfs -s all<br>
+客户端  rpcdebug -m nfsd -s all</li>
+</ol>
+<p>三、 因为arfa需要web端执行测试，所以需要用nobody ssh到其他机器上面，nobody用户需要有登陆权限，<br>
+前提需要关闭所有使用nobody用户端进程<br>
+mkdir -p /home/nobody<br>
+chown -R nobody.nobody /home/nobody/<br>
+usermod -s /bin/bash -d /home/nobody/ nobody<br>
+ssh-keygen -t rsa</p>
+<p>四、 nfs原理<br>
+既然NFS是通过网络来进行服务器端和客户端之间的数据传输，那么两者之间要传输数据就要有想对应的网络端口，
+NFS服务器到底使用哪个端口来进行数据传输呢？基本上NFS这个服务器的端口开在2049,但由于文件系统非常复杂。<br>
+因此NFS还有其他的程序去启动额外的端口，这些额外的用来传输数据的端口是随机选择的，是小于1024的端口。</p>
+<ol>
+<li>
+<p>RPC与NFS如何通讯<br>
+因为NFS支持的功能相当多，而不同的功能都会使用不同的程序来启动，每启动一个功能就会启用一些端口来传输数据，因此NFS的功能对应的端口并不固定，客户端要知道NFS服务器端的相关端口才能建立连接进行数据传输，而RPC就是用来统一管理NFS端口的服务，并且统一对外的端口是111，RPC会记录NFS端口的信息，如此我们就能够通过RPC实现服务端和客户端沟通端口信息。PRC最主要的功能就是指定每个NFS功能所对应的port number,并且通知客户端，记客户端可以连接到正常端口上去。</p>
+</li>
+<li>
+<p>RPC是如何知道每个NFS功能端端口呢？<br>
+首先当NFS启动后，就会随机的使用一些端口，然后NFS就会向RPC去注册这些端口，RPC就会记录下这些端口，并且RPC会开启111端口，等待客户端RPC的请求，如果客户端有请求，那么服务器端的RPC就会将之前记录的NFS端口信息告知客户端。<br>
+如此客户端就会获取NFS服务器端的端口信息，就会以实际端口进行数据的传输了。
+提示：在启动NFS SERVER之前，首先要启动RPC服务（即rpcbind服务，下同）否则NFS SERVER就无法向RPC服务区注册，另外，如果RPC服务重新启动，原来已经注册好的NFS端口数据就会全部丢失。因此此时RPC服务管理的NFS程序也要重新启动以重新向RPC注册。特别注意：一般修改NFS配置文档后，是不需要重启NFS的，<br>
+直接在命令执行/etc/init.d/nfs  reload或exportfs –rv即可使修改的/etc/exports生效。</p>
+</li>
+<li>
+<p>NFS客户端和NFS服务端通讯端过程<br>
+(1) 首先服务器端启动RPC服务，并开启111端口<br>
+(2) 服务器端启动NFS服务，并向RPC注册端口信息<br>
+(3) 客户端启动RPC（rpcbind)服务器，向服务端RPC(rpcbind) 服务请求服务端NFS端口<br>
+(4) 服务端端RPC(rpcbind)服务反馈NFS端口信息给客户端<br>
+(5) 客户端通过获取端NFS端口来建立和服务端的NFS连接并进行数据的传输</p>
+</li>
+</ol>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/nfs/a007.png" />   
+    </p>
+<p>
+        <img class="mx-auto" alt="tw1" src="../../imgs/post/nfs/a008.png" />   
+    </p>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/">大数据 008hbase核心知识整理</a></li>
+        
+        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">大数据 008hbase基础知识</a></li>
+        
+        <li><a href="../../post/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-001%E5%B8%B8%E8%A7%81%E6%9E%B6%E6%9E%84/">系统设计-001常见架构</a></li>
+        
+        <li><a href="../../post/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-002%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B%E4%B9%8B%E8%B7%AF/">系统设计-002服务端架构演进之路</a></li>
+        
+        <li><a href="../../books/Java%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91/">Java编程的逻辑</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        
+    </div>
+    <br />
+    <div style="display:none;">
+        <div class="github-badge">
+            <a href="https://gohugo.io/" target="_black" rel="nofollow"><span class="badge-subject">Powered by</span><span class="badge-value bg-blue">Hugo</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://www.flysnow.org/" target="_black"><span class="badge-subject">Design by</span><span class="badge-value bg-brightgreen">飞雪无情</span></a>
+        </div>
+        <div class="github-badge">
+            <a href="https://github.com/flysnow-org/maupassant-hugo" target="_black"><span class="badge-subject">Theme</span><span class="badge-value bg-yellowgreen">Maupassant</span></a>
+        </div>
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='../../js/douban.js'></script>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://liuzhongzhen.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://liuzhongzhen.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-015%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/" title="大数据 015运维管理">大数据 015运维管理</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-014zookeeper%E4%BB%8B%E7%BB%8D/" title="大数据 014zookeeper介绍">大数据 014zookeeper介绍</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-012%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/" title="大数据012数据集成调研">大数据012数据集成调研</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/" title="大数据006impala与hive对比详解">大数据006impala与hive对比详解</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据009kafka基础知识">大数据009kafka基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据007clickhouse基础知识">大数据007clickhouse基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据006impala基础知识">大数据006impala基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据005flink基础知识">大数据005flink基础知识</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004PySparkSQL%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" title="大数据 004PySparkSQL常用函数">大数据 004PySparkSQL常用函数</a>
+    </li>
+    
+    <li>
+        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004PySpark%E5%AF%B9%E8%B1%A1%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" title="大数据 004PySparkRDD对象常用函数">大数据 004PySparkRDD对象常用函数</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80001%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">CS基础001数据结构 (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80002%E6%95%B0%E6%8D%AE%E5%BA%93/">CS基础002数据库 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80003%E7%BD%91%E7%BB%9C/">CS基础003网络 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80004%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">CS基础004操作系统 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80005%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">CS基础005组成原理 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80006%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">CS基础006设计模式 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80007%E6%95%B0%E5%AD%A6/">CS基础007数学 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-3Proxy/">Web-3Proxy (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Css/">Web-Css (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Dns/">Web-Dns (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-HAProxy/">Web-HAProxy (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Html/">Web-Html (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Http/">Web-Http (8)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-JavaScript/">Web-JavaScript (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-KeepAlived/">Web-KeepAlived (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-LVS/">Web-LVS (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-Nginx/">Web-Nginx (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/Web-OpenResty/">Web-OpenResty (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">大数据-000数据分析 (3)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs/">大数据-001hadoop之hdfs (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/">大数据-002hadoop之yarn (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/">大数据-003hive (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark/">大数据-004spark (4)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink/">大数据-005flink (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala/">大数据-006impala (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse/">大数据-007clickhouse (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/">大数据-008hbase (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka/">大数据-009kafka (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/">大数据-010flume (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-012%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90/">大数据-012数据集成 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-014zookeeper/">大数据-014zookeeper (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-015%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/">大数据-015运维管理 (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%AD%98%E5%82%A8-GlusterFS/">存储-GlusterFS (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%AD%98%E5%82%A8-MinIO/">存储-MinIO (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E5%AD%98%E5%82%A8-NFS/">存储-NFS (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/">数据库-Mysql (12)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">系统设计 (2)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Memcache/">缓存-Memcache (5)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BC%93%E5%AD%98-Redis/">缓存-Redis (1)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E7%BD%91%E7%BB%9CPPT/">网络PPT (10)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Java/">语言Java (6)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Php/">语言Php (11)</a></li>
+    
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Python/">语言Python (2)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://liuzhongzhen.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

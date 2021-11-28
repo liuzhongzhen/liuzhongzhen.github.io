@@ -14,7 +14,7 @@
       <pubDate>Fri, 09 Feb 2018 22:57:56 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/HAProxy-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description>接入层代理服务器，支持四层tcp网络层代理和七层http应用层代理</description>
+      <description>一、概述 接入层代理服务器，支持四层tcp网络层代理和七层http应用层代理 部署方案 两台服务hostH</description>
     </item>
     
   </channel>
