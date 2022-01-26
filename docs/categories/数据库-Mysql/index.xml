@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 02 Feb 2016 23:20:44 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Feb 2016 23:20:44 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mysql 013表结构变更</title>
+      <link>https://liuzhongzhen.github.io/post/Mysql-013%E8%A1%A8%E7%BB%93%E6%9E%84%E5%8F%98%E6%9B%B4/</link>
+      <pubDate>Sat, 06 Feb 2016 23:20:44 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/post/Mysql-013%E8%A1%A8%E7%BB%93%E6%9E%84%E5%8F%98%E6%9B%B4/</guid>
+      <description>当前mysql最大的记录数是7亿级 Executing: 1 2 3 4 ALTER TABLE `live_http_origin`.`o_xylive_flashsdk_one_20170414` ADD COLUMN `httpdns_resptime` DOUBLE NULL AFTER `httpdns_time`, ADD COLUMN `httpdns_clientip` VARCHAR(45) NULL AFTER `httpdns_resptime`, ADD COLUMN `httpdns_host` VARCHAR(200) NULL AFTER `httpdns_clientip`; 杀死my</description>
+    </item>
+    
     <item>
       <title>Mysql 012mysql锁相关</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-012mysql%E9%94%81%E7%9B%B8%E5%85%B3/</link>
