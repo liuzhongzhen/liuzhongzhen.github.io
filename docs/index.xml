@@ -135,15 +135,6 @@
     </item>
     
     <item>
-      <title>个人简介</title>
-      <link>https://liuzhongzhen.github.io/about/</link>
-      <pubDate>Fri, 01 Jan 2021 20:42:01 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/about/</guid>
-      <description>关于作者 性别：男 生日：1989.11 学历：本科 现居：广东省深圳市宝安区 籍贯：河北省衡水市故城县 地址：</description>
-    </item>
-    
-    <item>
       <title>网心-Angela基于spark的实时开发系统</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Angela%E5%9F%BA%E4%BA%8Espark%E7%9A%84%E5%AE%9E%E6%97%B6%E5%BC%80%E5%8F%91%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Fri, 01 Jan 2021 00:40:00 +0800</pubDate>
@@ -321,6 +312,15 @@
       
       <guid>https://liuzhongzhen.github.io/leetcode/0001-TwoSum/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>个人简介</title>
+      <link>https://liuzhongzhen.github.io/about/</link>
+      <pubDate>Wed, 01 Jan 2020 20:42:01 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/about/</guid>
+      <description>关于作者 性别：男 生日：1989.11 学历：本科 现居：广东省深圳市宝安区 籍贯：河北省衡水市故城县 地址：</description>
     </item>
     
     <item>
