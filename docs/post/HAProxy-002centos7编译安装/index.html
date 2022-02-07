@@ -845,6 +845,11 @@ http://192.168.126.10:1080/metrics <span style="color:#998;font-style:italic">#�
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Use the following commands to generate an SHA-256 encrypted password.
@@ -861,6 +866,11 @@ $ mkpasswd -m sha-256 mypassword123
 
 <span style="color:#998;font-style:italic">## 执行如下命令获取的密码可以作为秘文</span>
 python -c <span style="color:#d14">&#39;import crypt; print(crypt.crypt(&#34;mypassword123&#34;))&#39;</span>
+
+<span style="color:#998;font-style:italic">## 或者参考这个工具</span>
+https://github.com/myENA/mkpasswd
+go get -u github.com/myENA/mkpasswd
+mkpasswd -hash sha256 -password mypassword123
 </code></pre></td></tr></table>
 </div>
 </div></li>
