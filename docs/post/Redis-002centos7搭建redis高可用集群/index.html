@@ -465,7 +465,18 @@ redis-cli --cluster del-node 192.168.126.21:6380 f98ac1bcc47e90f9b0b9df104750ba0
 </ol>
 <pre><code>redis-cli --cluster del-node [集群中的任意node:port] [node ID]
 redis-cli --cluster del-node 192.168.126.21:6380 3290302920329320103923902390230920920fdab
-</code></pre><h2 id="三redis常用配置说明">三、redis常用配置说明</h2>
+</code></pre><ol start="15">
+<li>创建redis用户和组</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">groupadd redis;useradd -d /var/lib/redis -c <span style="color:#d14">&#34;Redis Database Server&#34;</span> -g redis redis -s /sbin/nologin 
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="三redis常用配置说明">三、redis常用配置说明</h2>
 <pre><code class="language-conf" data-lang="conf">
 </code></pre><h2 id="参考资料">参考资料</h2>
 <p><a href="https://www.jianshu.com/p/6b0418dbab8b">centos7安装redis6.2.6</a><br>
