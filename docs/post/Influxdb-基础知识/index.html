@@ -301,21 +301,21 @@ Boolean类型的值的表示方式有很多，直接写成：t, T, true, TRUE, f
 <ol>
 <li>管理员用户管理</li>
 </ol>
-<pre><code>创建一个新的管理员用户：CREATE USER &lt;username&gt; WITH PASSWORD '&lt;password&gt;' WITH ALL PRIVILEGES
+<pre tabindex="0"><code>创建一个新的管理员用户：CREATE USER &lt;username&gt; WITH PASSWORD '&lt;password&gt;' WITH ALL PRIVILEGES
 为一个已有用户授权管理员权限：GRANT ALL PRIVILEGES TO &lt;username&gt;
 取消用户权限：REVOKE ALL PRIVILEGES FROM &lt;username&gt;
 展示用户及其权限：SHOW USERS
 </code></pre><ol start="2">
 <li>非管理员用户管理</li>
 </ol>
-<pre><code>创建一个新的普通用户:CREATE USER &lt;username&gt; WITH PASSWORD '&lt;password&gt;'
+<pre tabindex="0"><code>创建一个新的普通用户:CREATE USER &lt;username&gt; WITH PASSWORD '&lt;password&gt;'
 为一个已有用户授权:GRANT [READ,WRITE,ALL] ON &lt;database_name&gt; TO &lt;username&gt;
 取消权限:REVOKE [READ,WRITE,ALL] ON &lt;database_name&gt; FROM &lt;username&gt;
 展示用户在不同数据库上的权限:SHOW GRANTS FOR &lt;user_name&gt;
 </code></pre><ol start="3">
 <li>普通用户账号功能管理</li>
 </ol>
-<pre><code>重设密码：SET PASSWORD FOR &lt;username&gt; = '&lt;password&gt;'
+<pre tabindex="0"><code>重设密码：SET PASSWORD FOR &lt;username&gt; = '&lt;password&gt;'
 删除用户：DROP USER &lt;username&gt;
 </code></pre>
         </div>

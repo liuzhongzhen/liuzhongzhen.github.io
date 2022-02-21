@@ -222,19 +222,19 @@
 <li>下载lua包 wget <a href="http://www.lua.org/ftp/lua-5.4.4.tar.gz">http://www.lua.org/ftp/lua-5.4.4.tar.gz</a></li>
 <li>解压 tar -zxvf haproxy-2.4.12.tar.gz; tar -zxvf lua-5.4.4.tar.gz;</li>
 <li>安装编译相关包
-<pre><code> yum install make gcc gcc-c++ openssl openssl-devel readline-devel pcre-devel systemd-devel zlib-devel -y  #安装haproxy、lua依赖
+<pre tabindex="0"><code> yum install make gcc gcc-c++ openssl openssl-devel readline-devel pcre-devel systemd-devel zlib-devel -y  #安装haproxy、lua依赖
  yum -y install pcre-static make perl -y #这个应该是不需要，如果make失败，可尝试运行
  yum install build-essential libssl-dev zlib1g-dev libpcre3 libpcre3-dev -y #这个不需要
 </code></pre></li>
 <li>编译lua扩展包
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> <span style="color:#0086b3">cd</span> /usr/local/src/lua-5.4.4
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> <span style="color:#0086b3">cd</span> /usr/local/src/lua-5.4.4
  make linux <span style="color:#0086b3">test</span>
  /usr/local/src/lua.5.4.4/src/lua -v <span style="color:#998;font-style:italic">#显示lua版本即表示安装正确</span>
 </code></pre></td></tr></table>
@@ -243,7 +243,7 @@
 <li>编译安装haproxy,目标目录 /usr/local/services/haproxy
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -261,7 +261,7 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">make <span style="color:#008080">TARGET</span><span style="color:#000;font-weight:bold">=</span>linux-glic <span style="color:#008080">ARCH</span><span style="color:#000;font-weight:bold">=</span>x86_64
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">make <span style="color:#008080">TARGET</span><span style="color:#000;font-weight:bold">=</span>linux-glic <span style="color:#008080">ARCH</span><span style="color:#000;font-weight:bold">=</span>x86_64
   <span style="color:#008080">USE_PCRE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_OPENSSL</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_LIBCRYPT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>  
   <span style="color:#008080">USE_CRYPT_H</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_ZLIB</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_SYSTEMD</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>  
   <span style="color:#008080">USE_CPU_AFFINITY</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_THREAD</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_DL</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>   
@@ -283,7 +283,7 @@ ln -s /usr/local/services/haproxy/sbin/haproxy /usr/sbin/haproxy <span style="co
 <li>创建用户及相关目录
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -303,7 +303,7 @@ ln -s /usr/local/services/haproxy/sbin/haproxy /usr/sbin/haproxy <span style="co
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> 创建HAProxy运行账户和组
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> 创建HAProxy运行账户和组
  groupadd haproxy <span style="color:#998;font-style:italic">#添加haproxy组</span>
  useradd -g haproxy haproxy -c <span style="color:#d14">&#34;haproxy&#34;</span> -d /var/lib/haproxy -s /sbin/nologin
  或者
@@ -327,12 +327,12 @@ ln -s /usr/local/services/haproxy/sbin/haproxy /usr/sbin/haproxy <span style="co
 <li>创建systemctl服务管理文件
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#0086b3">cd</span> /usr/lib/systemd/system/;
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#0086b3">cd</span> /usr/lib/systemd/system/;
 vim haproxy.service
 写入以下内容
 </code></pre></td></tr></table>
@@ -341,7 +341,7 @@ vim haproxy.service
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -365,7 +365,7 @@ vim haproxy.service
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic">##/usr/lib/systemd/system/</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic">##/usr/lib/systemd/system/</span>
 <span style="color:#000;font-weight:bold">[</span>Unit<span style="color:#000;font-weight:bold">]</span>
 <span style="color:#008080">Description</span><span style="color:#000;font-weight:bold">=</span>HAProxy Load Balancer
 <span style="color:#008080">After</span><span style="color:#000;font-weight:bold">=</span>network-online.target
@@ -400,13 +400,13 @@ systemctl enable haproxy #添加开机启动文件
 <li>配置rsyslog错误日志:
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ps afx|grep rsyslog <span style="color:#998;font-style:italic">#查看rsyslog服务是否启动</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ps afx|grep rsyslog <span style="color:#998;font-style:italic">#查看rsyslog服务是否启动</span>
 <span style="color:#0086b3">cd</span> /etc/rsyslog.d/; <span style="color:#998;font-style:italic">#进入rsyslogd服务配置文件</span>
 vim haproxy.conf    <span style="color:#998;font-style:italic">#创建配置文件</span>
 写入以下内容
@@ -416,7 +416,7 @@ vim haproxy.conf    <span style="color:#998;font-style:italic">#创建配置文�
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -426,7 +426,7 @@ vim haproxy.conf    <span style="color:#998;font-style:italic">#创建配置文�
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic"># Collect log with UDP</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic"># Collect log with UDP</span>
 <span style="color:#008080">$ModLoad</span> imudp
 <span style="color:#008080">$UDPServerAddress</span> 127.0.0.1
 <span style="color:#008080">$UDPServerRun</span> <span style="color:#099">514</span>
@@ -445,7 +445,7 @@ systemctl restart rsyslog #重启rsyslog服务
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
@@ -590,7 +590,7 @@ systemctl restart rsyslog #重启rsyslog服务
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">143
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic"># This HAProxy Config</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic"># This HAProxy Config</span>
 
 global
     log 127.0.0.1:514 local2
@@ -741,7 +741,7 @@ a. 400.http</li>
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -751,7 +751,7 @@ a. 400.http</li>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">HTTP/<span style="color:#099">1</span>.<span style="color:#099">0</span> <span style="color:#099">400</span> Bad request^M<span style="color:#a61717;background-color:#e3d2d2">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">HTTP/<span style="color:#099">1</span>.<span style="color:#099">0</span> <span style="color:#099">400</span> Bad request^M<span style="color:#a61717;background-color:#e3d2d2">
 </span><span style="color:#a61717;background-color:#e3d2d2"></span>Cache-Control: no-cache^M<span style="color:#a61717;background-color:#e3d2d2">
 </span><span style="color:#a61717;background-color:#e3d2d2"></span>Connection: close^M<span style="color:#a61717;background-color:#e3d2d2">
 </span><span style="color:#a61717;background-color:#e3d2d2"></span>Content-Type: text/html^M<span style="color:#a61717;background-color:#e3d2d2">
@@ -764,7 +764,7 @@ a. 400.http</li>
 </div><p>b. 500.http</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -774,7 +774,7 @@ a. 400.http</li>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">HTTP/<span style="color:#099">1</span>.<span style="color:#099">0</span> <span style="color:#099">500</span> Internal Server Error^M<span style="color:#a61717;background-color:#e3d2d2">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">HTTP/<span style="color:#099">1</span>.<span style="color:#099">0</span> <span style="color:#099">500</span> Internal Server Error^M<span style="color:#a61717;background-color:#e3d2d2">
 </span><span style="color:#a61717;background-color:#e3d2d2"></span>Cache-Control: no-cache^M<span style="color:#a61717;background-color:#e3d2d2">
 </span><span style="color:#a61717;background-color:#e3d2d2"></span>Connection: close^M<span style="color:#a61717;background-color:#e3d2d2">
 </span><span style="color:#a61717;background-color:#e3d2d2"></span>Content-Type: text/html^M<span style="color:#a61717;background-color:#e3d2d2">
@@ -787,7 +787,7 @@ a. 400.http</li>
 </div><p>c. 503.http</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -797,7 +797,7 @@ a. 400.http</li>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">HTTP/<span style="color:#099">1</span>.<span style="color:#099">0</span> <span style="color:#099">503</span> Service Unavailable^M<span style="color:#a61717;background-color:#e3d2d2">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">HTTP/<span style="color:#099">1</span>.<span style="color:#099">0</span> <span style="color:#099">503</span> Service Unavailable^M<span style="color:#a61717;background-color:#e3d2d2">
 </span><span style="color:#a61717;background-color:#e3d2d2"></span>Cache-Control: no-cache^M<span style="color:#a61717;background-color:#e3d2d2">
 </span><span style="color:#a61717;background-color:#e3d2d2"></span>Connection: close^M<span style="color:#a61717;background-color:#e3d2d2">
 </span><span style="color:#a61717;background-color:#e3d2d2"></span>Content-Type: text/html^M<span style="color:#a61717;background-color:#e3d2d2">
@@ -812,13 +812,13 @@ a. 400.http</li>
 <p>相关操作</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/usr/sbin/haproxy -c -f /etc/haproxy/haproxy.cfg <span style="color:#998;font-style:italic">#检查配置正确与否</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/usr/sbin/haproxy -c -f /etc/haproxy/haproxy.cfg <span style="color:#998;font-style:italic">#检查配置正确与否</span>
 systemctl reload haproxy <span style="color:#998;font-style:italic">#重启命令</span>
 http://192.168.126.10:1080 <span style="color:#998;font-style:italic">#查看Haproxy页面管理控制台: </span>
 http://192.168.126.10:1080/metrics <span style="color:#998;font-style:italic">#查看haproxy统计度量信息</span>
@@ -831,7 +831,7 @@ http://192.168.126.10:1080/metrics <span style="color:#998;font-style:italic">#�
 <a href="https://www.haproxy.com/documentation/hapee/latest/configuration/config-sections/userlist/">haproxy userlist</a></p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -852,7 +852,7 @@ http://192.168.126.10:1080/metrics <span style="color:#998;font-style:italic">#�
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Use the following commands to generate an SHA-256 encrypted password.
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Use the following commands to generate an SHA-256 encrypted password.
 mkpasswd -m sha-256 mypassword123  
 
 <span style="color:#998;font-style:italic">## ubuntu系统</span>
@@ -887,6 +887,8 @@ mkpasswd -hash sha256 -password mypassword123
     <h2>See Also</h2>
     <ul class="listing">
         
+        <li><a href="../../books/Netty4%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/">Netty4核心原理与手写RPC框架实战</a></li>
+        
         <li><a href="../../post/%E7%BD%91%E7%BB%9C-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Linux%E4%BA%94%E7%A7%8DIO%E6%A8%A1%E5%9E%8B/">网络 深入理解Linux五种IO模型</a></li>
         
         <li><a href="../../books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC2%E7%89%88/">Netty权威指南第2版</a></li>
@@ -894,8 +896,6 @@ mkpasswd -hash sha256 -password mypassword123
         <li><a href="../../books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC1%E7%89%88/">Netty权威指南第1版</a></li>
         
         <li><a href="../../products/%E7%BD%91%E5%BF%83-Alita%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BA%A7%E5%93%81/">网心-Alita数据中台产品</a></li>
-        
-        <li><a href="../../books/Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/">Go语言编程</a></li>
         
     </ul>
 </div>

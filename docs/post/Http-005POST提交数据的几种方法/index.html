@@ -220,14 +220,14 @@
 <p>另外，如利用AJAX 提交数据时，也可使用这种方式。例如 jQuery，Content-Type 默认值都是”application/x-www-form-urlencoded;charset=utf-8”。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl --location --request POST <span style="color:#d14">&#39;http://127.0.0.1:5000/test/getData?p1=1&amp;p2=2&#39;</span> <span style="color:#d14">\
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl --location --request POST <span style="color:#d14">&#39;http://127.0.0.1:5000/test/getData?p1=1&amp;p2=2&#39;</span> <span style="color:#d14">\
 </span><span style="color:#d14"></span>--header <span style="color:#d14">&#39;Content-Type: application/x-www-form-urlencoded&#39;</span> <span style="color:#d14">\
 </span><span style="color:#d14"></span>--data-urlencode <span style="color:#d14">&#39;x1=xv1&#39;</span> <span style="color:#d14">\
 </span><span style="color:#d14"></span>--data-urlencode <span style="color:#d14">&#39;x2=xv2&#39;</span> <span style="color:#d14">\
@@ -236,7 +236,7 @@
 </div>
 </div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -244,7 +244,7 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">POST /test/getData?p1<span style="color:#000;font-weight:bold">=</span>1&amp;<span style="color:#008080">p2</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span> HTTP/1.1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">POST /test/getData?p1<span style="color:#000;font-weight:bold">=</span>1&amp;<span style="color:#008080">p2</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span> HTTP/1.1
 Host: 127.0.0.1:5000
 Content-Type: application/x-www-form-urlencoded
 Content-Length: <span style="color:#099">20</span>
@@ -254,7 +254,7 @@ Content-Length: <span style="color:#099">20</span>
 </div>
 </div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -268,7 +268,7 @@ Content-Length: <span style="color:#099">20</span>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">requests</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">requests</span>
 
 url <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;http://127.0.0.1:5000/test/getData?p1=1&amp;p2=2&#34;</span>
 
@@ -279,7 +279,7 @@ headers <span style="color:#000;font-weight:bold">=</span> {
 
 response <span style="color:#000;font-weight:bold">=</span> requests<span style="color:#000;font-weight:bold">.</span>request(<span style="color:#d14">&#34;POST&#34;</span>, url, headers<span style="color:#000;font-weight:bold">=</span>headers, data<span style="color:#000;font-weight:bold">=</span>payload)
 
-<span style="color:#000;font-weight:bold">print</span>(response<span style="color:#000;font-weight:bold">.</span>text)
+<span style="color:#0086b3">print</span>(response<span style="color:#000;font-weight:bold">.</span>text)
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="二multipartform-data">二、multipart/form-data</h2>
@@ -290,14 +290,14 @@ response <span style="color:#000;font-weight:bold">=</span> requests<span style=
 每部分都是以 –boundary 开始，紧接着是内容描述信息，然后是回车，最后是字段具体内容（字段、文本或二进制等）。如果传输的是文件，还要包含文件名和文件类型信息。消息主体最后以 –boundary– 标示结束。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl --location --request POST <span style="color:#d14">&#39;http://127.0.0.1:5000/test/getData?p1=1&amp;p2=2&#39;</span> <span style="color:#d14">\
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl --location --request POST <span style="color:#d14">&#39;http://127.0.0.1:5000/test/getData?p1=1&amp;p2=2&#39;</span> <span style="color:#d14">\
 </span><span style="color:#d14"></span>--header <span style="color:#d14">&#39;Content-Type: multipart/form-data&#39;</span> <span style="color:#d14">\
 </span><span style="color:#d14"></span>--form <span style="color:#d14">&#39;f1=&#34;formA&#34;&#39;</span> <span style="color:#d14">\
 </span><span style="color:#d14"></span>--form <span style="color:#d14">&#39;f2=&#34;formB&#34;&#39;</span> <span style="color:#d14">\
@@ -306,7 +306,7 @@ response <span style="color:#000;font-weight:bold">=</span> requests<span style=
 </div>
 </div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -326,7 +326,7 @@ response <span style="color:#000;font-weight:bold">=</span> requests<span style=
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">POST /test/getData?p1<span style="color:#000;font-weight:bold">=</span>1&amp;<span style="color:#008080">p2</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span> HTTP/1.1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">POST /test/getData?p1<span style="color:#000;font-weight:bold">=</span>1&amp;<span style="color:#008080">p2</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span> HTTP/1.1
 Host: 127.0.0.1:5000
 Content-Type: multipart/form-data; <span style="color:#008080">boundary</span><span style="color:#000;font-weight:bold">=</span>----WebKitFormBoundary7MA4YWxkTrZu0gW
 Content-Length: <span style="color:#099">299</span>
@@ -348,7 +348,7 @@ formC
 </div>
 </div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -369,7 +369,7 @@ formC
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">requests</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">requests</span>
 
 url <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;http://127.0.0.1:5000/test/getData?p1=1&amp;p2=2&#34;</span>
 
@@ -387,7 +387,7 @@ headers <span style="color:#000;font-weight:bold">=</span> {
 
 response <span style="color:#000;font-weight:bold">=</span> requests<span style="color:#000;font-weight:bold">.</span>request(<span style="color:#d14">&#34;POST&#34;</span>, url, headers<span style="color:#000;font-weight:bold">=</span>headers, data<span style="color:#000;font-weight:bold">=</span>payload, files<span style="color:#000;font-weight:bold">=</span>files)
 
-<span style="color:#000;font-weight:bold">print</span>(response<span style="color:#000;font-weight:bold">.</span>text)
+<span style="color:#0086b3">print</span>(response<span style="color:#000;font-weight:bold">.</span>text)
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="三applicationjson">三、application/json</h2>
@@ -395,7 +395,7 @@ response <span style="color:#000;font-weight:bold">=</span> requests<span style=
 Google 的 AngularJS 中的 Ajax 功能，默认就是提交 JSON 字符串。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -412,7 +412,7 @@ Google 的 AngularJS 中的 Ajax 功能，默认就是提交 JSON 字符串。</
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl --location --request POST <span style="color:#d14">&#39;http://127.0.0.1:5000/test/getData&#39;</span> <span style="color:#d14">\
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl --location --request POST <span style="color:#d14">&#39;http://127.0.0.1:5000/test/getData&#39;</span> <span style="color:#d14">\
 </span><span style="color:#d14"></span>--header <span style="color:#d14">&#39;Content-Type: application/json&#39;</span> <span style="color:#d14">\
 </span><span style="color:#d14"></span>--data-raw <span style="color:#d14">&#39;{
 </span><span style="color:#d14">    &#34;article_title&#34;:&#34;斗罗大陆&#34;,
@@ -431,7 +431,7 @@ Google 的 AngularJS 中的 Ajax 功能，默认就是提交 JSON 字符串。</
 </div>
 </div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -451,7 +451,7 @@ Google 的 AngularJS 中的 Ajax 功能，默认就是提交 JSON 字符串。</
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">POST /test/getData?p1<span style="color:#000;font-weight:bold">=</span>1&amp;<span style="color:#008080">p2</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span> HTTP/1.1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">POST /test/getData?p1<span style="color:#000;font-weight:bold">=</span>1&amp;<span style="color:#008080">p2</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">2</span> HTTP/1.1
 Host: 127.0.0.1:5000
 Content-Type: application/json
 Content-Length: <span style="color:#099">238</span>
@@ -473,7 +473,7 @@ Content-Length: <span style="color:#099">238</span>
 </div>
 </div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -489,7 +489,7 @@ Content-Length: <span style="color:#099">238</span>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">requests</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">requests</span>
 
 url <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;http://127.0.0.1:5000/test/getData?p1=1&amp;p2=2&#34;</span>
 
@@ -502,7 +502,7 @@ headers <span style="color:#000;font-weight:bold">=</span> {
 
 response <span style="color:#000;font-weight:bold">=</span> requests<span style="color:#000;font-weight:bold">.</span>request(<span style="color:#d14">&#34;POST&#34;</span>, url, headers<span style="color:#000;font-weight:bold">=</span>headers, data<span style="color:#000;font-weight:bold">=</span>payload)
 
-<span style="color:#000;font-weight:bold">print</span>(response<span style="color:#000;font-weight:bold">.</span>text)
+<span style="color:#0086b3">print</span>(response<span style="color:#000;font-weight:bold">.</span>text)
 </code></pre></td></tr></table>
 </div>
 </div><p>指定其他类型：</p>

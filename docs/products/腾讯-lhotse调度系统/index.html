@@ -264,7 +264,7 @@ taskRunner可以向BaseServer报告自己任务执行的进度和状态，执行
 </ol>
 <h2 id="使用情况">使用情况</h2>
 <h2 id="核心表">核心表</h2>
-<pre><code>create table lb_task(
+<pre tabindex="0"><code>create table lb_task(
     task_id     任务id
     task_type   任务类型
     task_cycle  取值分钟60,小时3600,天86400等
@@ -305,7 +305,7 @@ depend_type取值Enum(
     -n 依赖前面第n个周期任务
 )
 </code></pre><h2 id="请求分发模块">请求分发模块</h2>
-<pre><code>1. broker代理发起请求 
+<pre tabindex="0"><code>1. broker代理发起请求 
 2. base服务器taskServer模块根据客户端ip，找到具体的taskWorker线程来处理
 3. taskWorker解析broker请求，获取请求类型和请求内容
 4. 如果是启动runner请求，则交给启动runner插件处理
@@ -314,7 +314,7 @@ depend_type取值Enum(
 7. 如果是请求新的任务，则交给任务下发线程处理
 在各个线程中响应broker请求   
 </code></pre><h2 id="任务job生成模块">任务Job生成模块</h2>
-<pre><code>select a.task_id       as task_id,
+<pre tabindex="0"><code>select a.task_id       as task_id,
        a.task_cycle    as task_cycle,
        a.start_date    as start_date,
        a.end_date      as end_date
@@ -329,7 +329,7 @@ depend_type取值Enum(
 max_run_date+task_cycle则是下一个周期Job的时间,job_status=Ready
 此方案在任务多，实例多会有性能问题，因为要扫描实例表全表
 </code></pre><h2 id="任务实例获取模块">任务实例获取模块</h2>
-<pre><code>1. 根据taskType和clientIP获取等待UnSuccess的job实例列表
+<pre tabindex="0"><code>1. 根据taskType和clientIP获取等待UnSuccess的job实例列表
 2. 遍历任务实例列表，如果碰到实例状态为等待kill的job，则不作任何检查，更新状态，直接下发
 3. 如果任务状态不是有效态，则忽略对该任务接下来的检查，从列表中移除
 4. 将实例按照优先级分配到不同的线程进行检查
@@ -340,10 +340,10 @@ max_run_date+task_cycle则是下一个周期Job的时间,job_status=Ready
    在任务列表里面找出满足并发度检查，实例正确性验证，任务正确性验证的实例生成新的排序列表
 8. 对新对排序列表进行遍历，找到第一个满足依赖检查的Job就下发
 </code></pre><h2 id="依赖检查线程模块">依赖检查线程模块</h2>
-<pre><code>该线程的主要目的是在任务下发之前，先检查任务实例的依赖状态。  
+<pre tabindex="0"><code>该线程的主要目的是在任务下发之前，先检查任务实例的依赖状态。  
 如果一个任务实例的所有依赖关系都满足，则将该任务实例的状态置为DependenceFinish 
 </code></pre><h2 id="命令执行模块">命令执行模块</h2>
-<pre><code>1. 批量冻结下线任务
+<pre tabindex="0"><code>1. 批量冻结下线任务
 2. 批量解冻任务
 3. 批量补录任务Job
 4. 批量重做任务Job
@@ -357,7 +357,7 @@ max_run_date+task_cycle则是下一个周期Job的时间,job_status=Ready
    3.  更新插件信息
    4.  更新下发器的日志级别
 </code></pre><h2 id="维护线程模块">维护线程模块</h2>
-<pre><code>1. 已经实例化的一次性任务修改为下线或清理
+<pre tabindex="0"><code>1. 已经实例化的一次性任务修改为下线或清理
 2. 任务结束时间已经超过当前时间的任务修改为下线或清理
 3. 将实例执行时长已经超过alive_wait的任务实例状态强制设置为失败
 5. 删除Job实例表中过期的任务实例

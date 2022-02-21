@@ -233,7 +233,7 @@ PostgreSQL系统在TDW生态圈中的位置如下图所示，tPG是我们对扩�
 具体情况如下图<br>
 在使用上，只需要在创建表的时候指定为pgdata存储引擎即可，<br>
 例如使用如下语句就可以创建此类型的外表</p>
-<pre><code>create external tablefoo(idx bigint, str string) stored as pgdata
+<pre tabindex="0"><code>create external tablefoo(idx bigint, str string) stored as pgdata
 </code></pre><p>在后续访问过程中就和使用其他TDW表一般即可，在此简单说明一下访问的实现方式，</p>
 <pre><code>访问的数据流大致如下
 1. 在解析SQL查询语句时，先分解出每个子查询，然后对每个子查询总是会首先判断当前查询涉

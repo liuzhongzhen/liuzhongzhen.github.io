@@ -271,13 +271,13 @@ gmake install</p>
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vim /etc/yum.repos.d/CentOS-Base.repo
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vim /etc/yum.repos.d/CentOS-Base.repo
 
 <span style="color:#000;font-weight:bold">[</span>base<span style="color:#000;font-weight:bold">]</span> and <span style="color:#000;font-weight:bold">[</span>updates<span style="color:#000;font-weight:bold">]</span> sections添加：
 <span style="color:#008080">exclude</span><span style="color:#000;font-weight:bold">=</span>postgresql*
@@ -288,13 +288,13 @@ gmake install</p>
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go http://yum.postgresql.org and find your correct RPM.
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go http://yum.postgresql.org and find your correct RPM.
 For example, to install PostgreSQL 9.3 on CentOS <span style="color:#099">6</span> 64-bit:
 打开 http://yum.postgresql.org/repopackages.php#pg93 后找到CentOS 6-x86_64
 然后 yum localinstall http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos93-9.3-1.noarch.rpm
@@ -305,7 +305,7 @@ For example, to install PostgreSQL 9.3 on CentOS <span style="color:#099">6</spa
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -314,7 +314,7 @@ For example, to install PostgreSQL 9.3 on CentOS <span style="color:#099">6</spa
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">list available packages:
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">list available packages:
 yum list postgres*
 
 For example, to install a basic PostgreSQL 9.3 server:
@@ -328,11 +328,11 @@ Other packages can be installed according to your needs.
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">After installing the packages, a database needs to be initialized and configured.
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">After installing the packages, a database needs to be initialized and configured.
 PostgreSQL data directory（/var/lib/pgsql/9.3/data） contains all of the data files <span style="color:#000;font-weight:bold">for</span> the database.
 </code></pre></td></tr></table>
 </div>
@@ -341,12 +341,12 @@ PostgreSQL data directory（/var/lib/pgsql/9.3/data） contains all of the data 
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">The first <span style="color:#0086b3">command</span> <span style="color:#000;font-weight:bold">(</span>only needed once<span style="color:#000;font-weight:bold">)</span> is to initialize the database：
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">The first <span style="color:#0086b3">command</span> <span style="color:#000;font-weight:bold">(</span>only needed once<span style="color:#000;font-weight:bold">)</span> is to initialize the database：
 service postgresql-9.3 initdb
 正在初始化数据库：                                         <span style="color:#000;font-weight:bold">[</span>确定<span style="color:#000;font-weight:bold">]</span>
 </code></pre></td></tr></table>
@@ -356,12 +356,12 @@ service postgresql-9.3 initdb
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">开机启动：
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">开机启动：
 chkconfig postgresql-9.3 on
 service postgresql-9.3 start
 </code></pre></td></tr></table>
@@ -378,7 +378,7 @@ service postgresql-9.3 start
 <p>tw07a311 10.65.14.11 pg/pg99 data/data99</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -396,23 +396,23 @@ service postgresql-9.3 start
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> 
-  <span style="color:#000;font-weight:bold">from</span> TBLS 
- <span style="color:#000;font-weight:bold">where</span> TBL_NAME<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;f_h_vodxserver_preprocess&#39;</span>;
-
-<span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">left</span>(PART_NAME,<span style="color:#099">14</span>),<span style="color:#000;font-weight:bold">sum</span>(<span style="color:#099">1</span>) num 
-  <span style="color:#000;font-weight:bold">from</span> PARTITIONS 
- <span style="color:#000;font-weight:bold">where</span> TBL_ID<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;931186&#39;</span> 
- <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> <span style="color:#000;font-weight:bold">left</span>(PART_NAME,<span style="color:#099">14</span>); 
-
-<span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> 
-  <span style="color:#000;font-weight:bold">from</span> PARTITIONS 
- <span style="color:#000;font-weight:bold">where</span> TBL_ID<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;931376&#39;</span>
-   <span style="color:#000;font-weight:bold">and</span> PART_NAME <span style="color:#000;font-weight:bold">like</span> <span style="color:#d14">&#39;pdate=20170415%&#39;</span>
- <span style="color:#000;font-weight:bold">order</span> <span style="color:#000;font-weight:bold">by</span> PART_NAME;
-<span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> 
-  <span style="color:#000;font-weight:bold">from</span> pg_catalog.pg_user;
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> 
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>TBLS<span style="color:#bbb"> 
+</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>TBL_NAME<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;f_h_vodxserver_preprocess&#39;</span>;<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">left</span>(PART_NAME,<span style="color:#099">14</span>),<span style="color:#000;font-weight:bold">sum</span>(<span style="color:#099">1</span>)<span style="color:#bbb"> </span>num<span style="color:#bbb"> 
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>PARTITIONS<span style="color:#bbb"> 
+</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>TBL_ID<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;931186&#39;</span><span style="color:#bbb"> 
+</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">group</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">by</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">left</span>(PART_NAME,<span style="color:#099">14</span>);<span style="color:#bbb"> 
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> 
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>PARTITIONS<span style="color:#bbb"> 
+</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>TBL_ID<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;931376&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb">   </span><span style="color:#000;font-weight:bold">and</span><span style="color:#bbb"> </span>PART_NAME<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">like</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;pdate=20170415%&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">order</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">by</span><span style="color:#bbb"> </span>PART_NAME;<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> 
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>pg_catalog.pg_user;<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>pg库不能跨库访问，同一个库中可以跨模式访问。<br>
 不同的模式下面可以存在相同的表，默认的模式是public.</p>

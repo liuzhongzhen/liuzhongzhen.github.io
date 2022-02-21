@@ -396,7 +396,7 @@
 </ul>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -406,15 +406,15 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">TABLE</span> act_info(
-    id        <span style="color:#0086b3">BIGINT</span>      <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> AUTO_INCREMENT,
-    act_id    <span style="color:#0086b3">VARCHAR</span>(<span style="color:#099">50</span>) <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> <span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#d14">&#34;活动id&#34;</span>,
-    act_name  <span style="color:#0086b3">VARCHAR</span>(<span style="color:#099">50</span>) <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> <span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#d14">&#34;活动名称&#34;</span>,
-    act_date  datetime    <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span>,
-    <span style="color:#000;font-weight:bold">PRIMARY</span> <span style="color:#000;font-weight:bold">KEY</span>(id),
-    <span style="color:#000;font-weight:bold">KEY</span> idx_actid_name(act_id,act_name) <span style="color:#000;font-weight:bold">USING</span> BTREE
-) ENGINE<span style="color:#000;font-weight:bold">=</span>INNODB <span style="color:#000;font-weight:bold">DEFAULT</span> CHARSET<span style="color:#000;font-weight:bold">=</span>UTF8 ROW_FORMAT<span style="color:#000;font-weight:bold">=</span>COMPACT <span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#d14">&#34;活动记录表&#34;</span>;
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>act_info(<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>id<span style="color:#bbb">        </span><span style="color:#0086b3">BIGINT</span><span style="color:#bbb">      </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span>AUTO_INCREMENT,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>act_id<span style="color:#bbb">    </span><span style="color:#0086b3">VARCHAR</span>(<span style="color:#099">50</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COMMENT</span><span style="color:#bbb"> </span><span style="color:#d14">&#34;活动id&#34;</span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>act_name<span style="color:#bbb">  </span><span style="color:#0086b3">VARCHAR</span>(<span style="color:#099">50</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COMMENT</span><span style="color:#bbb"> </span><span style="color:#d14">&#34;活动名称&#34;</span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>act_date<span style="color:#bbb">  </span>datetime<span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">PRIMARY</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">KEY</span>(id),<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">KEY</span><span style="color:#bbb"> </span>idx_actid_name(act_id,act_name)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">USING</span><span style="color:#bbb"> </span>BTREE<span style="color:#bbb">
+</span><span style="color:#bbb"></span>)<span style="color:#bbb"> </span>ENGINE<span style="color:#000;font-weight:bold">=</span>INNODB<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">DEFAULT</span><span style="color:#bbb"> </span>CHARSET<span style="color:#000;font-weight:bold">=</span>UTF8<span style="color:#bbb"> </span>ROW_FORMAT<span style="color:#000;font-weight:bold">=</span>COMPACT<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COMMENT</span><span style="color:#bbb"> </span><span style="color:#d14">&#34;活动记录表&#34;</span>;<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="b-tree索引">B-TREE索引</h2>
 <h3 id="b-tree索引的特点">B-TREE索引的特点</h3>

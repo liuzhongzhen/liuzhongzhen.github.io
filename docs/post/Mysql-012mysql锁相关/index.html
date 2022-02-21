@@ -220,15 +220,15 @@
 <p>查询发生锁等待占有系统资源的语句</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> 
-  <span style="color:#000;font-weight:bold">from</span> information_schema.innodb_trx
-  <span style="color:#000;font-weight:bold">where</span> trx_state<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;LOCK_WAIT&#39;</span>;
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> 
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>information_schema.innodb_trx<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>trx_state<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;LOCK_WAIT&#39;</span>;<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>trx_query是占有系统资源的语句,trx_id是事务id,trx_mysql_thread_id为连接线程id。<br>
 执行kill {trx_mysql_thread_id} 杀掉这个MYSQL语句的线程即可。</p>
@@ -247,7 +247,7 @@
     </p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -255,12 +255,12 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> id,<span style="color:#000;font-weight:bold">user</span>,<span style="color:#000;font-weight:bold">host</span>,db,command,time,<span style="color:#000;font-weight:bold">state</span>,info
-  <span style="color:#000;font-weight:bold">from</span> information_schema.processlist 
-<span style="color:#000;font-weight:bold">where</span> time<span style="color:#000;font-weight:bold">&gt;</span><span style="color:#099">1000</span> 
-  <span style="color:#000;font-weight:bold">and</span> <span style="color:#000;font-weight:bold">user</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;arfa&#39;</span> 
-<span style="color:#000;font-weight:bold">order</span> <span style="color:#000;font-weight:bold">by</span> time <span style="color:#000;font-weight:bold">desc</span>;
-kill <span style="color:#a61717;background-color:#e3d2d2">{</span>id<span style="color:#a61717;background-color:#e3d2d2">}</span>; <span style="color:#998;font-style:italic">--杀死耗时比较旧的任务
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>id,<span style="color:#000;font-weight:bold">user</span>,<span style="color:#000;font-weight:bold">host</span>,db,command,time,<span style="color:#000;font-weight:bold">state</span>,info<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>information_schema.processlist<span style="color:#bbb"> 
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>time<span style="color:#000;font-weight:bold">&gt;</span><span style="color:#099">1000</span><span style="color:#bbb"> 
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">and</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">user</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;arfa&#39;</span><span style="color:#bbb"> 
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">order</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">by</span><span style="color:#bbb"> </span>time<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">desc</span>;<span style="color:#bbb">
+</span><span style="color:#bbb"></span>kill<span style="color:#bbb"> </span><span style="color:#a61717;background-color:#e3d2d2">{</span>id<span style="color:#a61717;background-color:#e3d2d2">}</span>;<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">--杀死耗时比较旧的任务
 </span></code></pre></td></tr></table>
 </div>
 </div><p>MySQL在进行alter table等DDL操作时，有时会出现Waiting for table metadata lock的等待场景。<br>
@@ -299,24 +299,24 @@ because the failed statement is written to the binary log and the locks protect 
 通过performance_schema.events_statements_current找到其sid, kill掉该session. 也可以 kill 掉DDL所在的session.</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> 
-  <span style="color:#000;font-weight:bold">from</span> performance_schema.events_statements_current 
- <span style="color:#000;font-weight:bold">where</span> digest_text <span style="color:#000;font-weight:bold">like</span> <span style="color:#d14">&#39;%arfa_task_run%&#39;</span>;
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> 
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>performance_schema.events_statements_current<span style="color:#bbb"> 
+</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>digest_text<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">like</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;%arfa_task_run%&#39;</span>;<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>总之，alter table的语句是很危险的(其实他的危险其实是未提交事物或者长事务导致的)，在操作之前最好确认对要操作的表没有任何进行中的操作、没有未提交事务、也没有显式事务中的报错语句。如果有alter table的维护任务，在无人监管的时候运行，最好通过<code>lock_wait_timeout</code>设置好超时时间，避免长时间的metedata锁等待。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> connection_id() <span style="color:#000;font-weight:bold">from</span> dual; <span style="color:#a61717;background-color:#e3d2d2">获取当前连接</span>id
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>connection_id()<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>dual;<span style="color:#bbb"> </span><span style="color:#a61717;background-color:#e3d2d2">获取当前连接</span>id<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div>
         </div>

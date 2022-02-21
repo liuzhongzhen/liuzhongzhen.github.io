@@ -288,7 +288,7 @@ rpcbind: RPC主程序</p>
 <p>CentOS 7.3 ，IP可以自定义，查看系统信息 ；</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -296,7 +296,7 @@ rpcbind: RPC主程序</p>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@NFS ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /etc/redhat-release </span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@NFS ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /etc/redhat-release </span>
 CentOS release 7.3.1611 <span style="color:#000;font-weight:bold">(</span>Final<span style="color:#000;font-weight:bold">)</span>
 <span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /etc/redhat-release</span>
 CentOS release 7.3.1611 <span style="color:#000;font-weight:bold">(</span>AltArch<span style="color:#000;font-weight:bold">)</span>
@@ -340,12 +340,12 @@ Linux server7.ctos.zu 3.10.0-514.el7.centos.plus.i686 <span style="color:#998;fo
 <p>查看系统是否已经安装nfs,rpcbind</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpm -qa | egrep &#34;nfs|rpcbind&#34;</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpm -qa | egrep &#34;nfs|rpcbind&#34;</span>
 Yum搜寻下安装包是否存在
 <span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum search nfs-utils  rpcbind</span>
 </code></pre></td></tr></table>
@@ -355,7 +355,7 @@ Yum搜寻下安装包是否存在
 <p>安装NFS和RPC服务</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -366,13 +366,13 @@ Yum搜寻下安装包是否存在
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum install nfs-utils  rpcbind</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum install nfs-utils  rpcbind</span>
 <span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpm -qa  | egrep &#34;nfs|rpcbind&#34;</span>
 
  rpcbind-0.2.0-38.el7_3.1.i686
  nfs-utils-1.3.0-0.33.el7_3.i686
  libnfsidmap-0.25-15.el7.i686
-   
+
 查看这两个软件包在电脑里都安装了什么文件；
 <span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpm -ql nfs-utils</span>
 </code></pre></td></tr></table>
@@ -386,12 +386,12 @@ nfsnobody用户在安装nfs时会自动创建。<br>
 客户端如果用root账户会在服务器被自动降级至nfsnobody。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir -p /data/arfa_nfs
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir -p /data/arfa_nfs
 chown -R nfsnobody:nfsnobody /data/arfa_nfs
 chmod <span style="color:#099">666</span> /data/arfa_nfs/
 </code></pre></td></tr></table>
@@ -401,13 +401,13 @@ chmod <span style="color:#099">666</span> /data/arfa_nfs/
 <p>编辑/etc/hosts.allow</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">增加如下内容：
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">增加如下内容：
 all:127.0.0.1
 rpcbind: ALL :allow
 mountd: ALL :allow
@@ -418,10 +418,10 @@ mountd: ALL :allow
 <p>编辑/etc/netconfig</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">注释掉 udp6,tcp6行
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">注释掉 udp6,tcp6行
 </code></pre></td></tr></table>
 </div>
 </div></li>
@@ -430,12 +430,12 @@ mountd: ALL :allow
 vim /etc/exports 写入以下内容</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/data1/arfa_nfs 192.168.0.0/16<span style="color:#000;font-weight:bold">(</span>rw,sync<span style="color:#000;font-weight:bold">)</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/data1/arfa_nfs 192.168.0.0/16<span style="color:#000;font-weight:bold">(</span>rw,sync<span style="color:#000;font-weight:bold">)</span>
 /data1/hulk_nfs 192.168.86.131<span style="color:#000;font-weight:bold">(</span>rw,sync<span style="color:#000;font-weight:bold">)</span>
 /data1/share    192.168.1.0/24<span style="color:#000;font-weight:bold">(</span>rw,sync,all_squash,anonuid<span style="color:#000;font-weight:bold">=</span>2000,anongid<span style="color:#000;font-weight:bold">=</span>2000<span style="color:#000;font-weight:bold">)</span>
 </code></pre></td></tr></table>
@@ -466,16 +466,16 @@ anongid： 同anongid，就是把uid换成gid而已</p>
 <p>让配置文件生效</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">exportfs -arv                     
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">exportfs -arv                     
 </code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>编辑/etc/sysconfig/nfs(该文件用以固定NFS服务端口)</p>
-<pre><code> RQUOTAD_PORT=30001
+<pre tabindex="0"><code> RQUOTAD_PORT=30001
  LOCKD_TCPPORT=30002
  LOCKD_UDPPORT=30002
  MOUNTD_PORT=30003
@@ -485,7 +485,7 @@ anongid： 同anongid，就是把uid换成gid而已</p>
 <p>启动NFS服务</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -541,7 +541,7 @@ anongid： 同anongid，就是把uid换成gid而已</p>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">启动NFS服务之前先启动rpcbind服务
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">启动NFS服务之前先启动rpcbind服务
 查看rcpbind状态:
 <span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># systemctl status rpcbind</span>
 rpcbind安装成功后默认已经开启，并且为开机自动启动。如果没有启动的话，我们来重新启动rcpbind服务
@@ -602,7 +602,7 @@ rpc.statd<span style="color:#000;font-weight:bold">(</span>非必要<span style=
 <p>本机测试， 显示挂载信息</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -611,7 +611,7 @@ rpc.statd<span style="color:#000;font-weight:bold">(</span>非必要<span style=
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">查询nfs挂载，showmount  -e  192.168.1.240 后面可以接ip来查看。
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">查询nfs挂载，showmount  -e  192.168.1.240 后面可以接ip来查看。
 <span style="color:#000;font-weight:bold">[</span>root@localhost data<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># showmount -e</span>
 Export list <span style="color:#000;font-weight:bold">for</span> localhost:
 /data/nfs 192.168.1.0/24,192.168.86.131
@@ -625,7 +625,7 @@ NFS服务开启后，查看共享目录参数
 <p>配置防火墙，对外开放NFS服务</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -646,7 +646,7 @@ NFS服务开启后，查看共享目录参数
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">iptables -A INPUT -p tcp --dport <span style="color:#099">111</span> -j ACCEPT
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">iptables -A INPUT -p tcp --dport <span style="color:#099">111</span> -j ACCEPT
 iptables -A INPUT -p udp --dport <span style="color:#099">111</span> -j ACCEPT
 iptables -A INPUT -p tcp --dport <span style="color:#099">2049</span> -j ACCEPT
 iptables -A INPUT -p udp --dport <span style="color:#099">2049</span> -j ACCEPT
@@ -672,7 +672,7 @@ iptables -A INPUT -p udp --dport 30000:30010 -j ACCEPT
 <h3 id="33-客户端安装过程">3.3 客户端安装过程</h3>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -691,7 +691,7 @@ iptables -A INPUT -p udp --dport 30000:30010 -j ACCEPT
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">安装rpcbind和nfs，启动rpcbind，nfs可以不启动。
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">安装rpcbind和nfs，启动rpcbind，nfs可以不启动。
 yum install rpcbind
 systemctl restart  rpcbind
 显示NFS服务器的共享目录
@@ -714,13 +714,13 @@ umount -l /data/arfa_nfs
 可以将挂载信息写入 /etc/rc.local</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vim  /etc/rc.local
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vim  /etc/rc.local
 <span style="color:#998;font-style:italic">#mount nfs_data</span>
 mount -t nfs 192.168.1.240:/data/www/image/  /data/www/image/
 mount -t nfs 192.168.1.240:/data/www/user/  /data/www/user/
@@ -728,11 +728,11 @@ mount -t nfs 192.168.1.240:/data/www/user/  /data/www/user/
 </div>
 </div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">umount /data/arfa_nfs;
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">umount /data/arfa_nfs;
 mount -t nfs 192.168.1.240:/data/arfa_nfs /data/arfa_nfs -o <span style="color:#008080">proto</span><span style="color:#000;font-weight:bold">=</span>tcp -o nolock
 </code></pre></td></tr></table>
 </div>
@@ -741,12 +741,12 @@ mount -t nfs 192.168.1.240:/data/arfa_nfs /data/arfa_nfs -o <span style="color:#
 <p>如果/data/nfs目录没有给写入权限，即使exports里设置了rw也是没有权限写入的。客户端默认操作账户为nfsnobody。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /var/lib/nfs/etab</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /var/lib/nfs/etab</span>
 /data/nfs   192.168.86.131<span style="color:#000;font-weight:bold">(</span>rw,sync,wdelay,hide,nocrossmnt,secure,root_squash,no_all_squash,no_subtree_check,secure_locks,acl,anonuid<span style="color:#000;font-weight:bold">=</span>65534,anongid<span style="color:#000;font-weight:bold">=</span>65534,sec<span style="color:#000;font-weight:bold">=</span>sys,rw,root_squash,no_all_squash<span style="color:#000;font-weight:bold">)</span>
 /data/nfs   192.168.1.0/24<span style="color:#000;font-weight:bold">(</span>rw,sync,wdelay,hide,nocrossmnt,secure,root_squash,no_all_squash,no_subtree_check,secure_locks,acl,anonuid<span style="color:#000;font-weight:bold">=</span>65534,anongid<span style="color:#000;font-weight:bold">=</span>65534,sec<span style="color:#000;font-weight:bold">=</span>sys,rw,root_squash,no_all_squash<span style="color:#000;font-weight:bold">)</span>
 </code></pre></td></tr></table>
@@ -755,11 +755,11 @@ mount -t nfs 192.168.1.240:/data/arfa_nfs /data/arfa_nfs -o <span style="color:#
 查看已挂载设备挂载参数 cat /proc/mounts</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /proc/mounts |grep 192</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /proc/mounts |grep 192</span>
 192.168.1.240:/data/nfs /mnt nfs4 rw,noexec,relatime,vers<span style="color:#000;font-weight:bold">=</span>4,rsize<span style="color:#000;font-weight:bold">=</span>131072,wsize<span style="color:#000;font-weight:bold">=</span>131072,namlen<span style="color:#000;font-weight:bold">=</span>255,hard,proto<span style="color:#000;font-weight:bold">=</span>tcp,port<span style="color:#000;font-weight:bold">=</span>0,timeo<span style="color:#000;font-weight:bold">=</span>600,retrans<span style="color:#000;font-weight:bold">=</span>2,sec<span style="color:#000;font-weight:bold">=</span>sys,clientaddr<span style="color:#000;font-weight:bold">=</span>192.168.1.240,minorversion<span style="color:#000;font-weight:bold">=</span>0,local_lock<span style="color:#000;font-weight:bold">=</span>none,addr<span style="color:#000;font-weight:bold">=</span>192.168.1.240 <span style="color:#099">0</span> <span style="color:#099">0</span>
 </code></pre></td></tr></table>
 </div>
@@ -775,14 +775,14 @@ mount -t nfs 192.168.1.240:/data/arfa_nfs /data/arfa_nfs -o <span style="color:#
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">例：
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">例：
 mount -o nosuid noexec noatime  -t nfs  192.168.1.240:/data/nfs  /mnt
 
 卸载挂载点,如果提示 /mnt: device is busy ，可以用lf参数强制卸载

@@ -213,7 +213,7 @@
 <p>请求如下:http://baidu.com/liveroom?d=10&amp;b=20</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -242,7 +242,7 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">ngx.var.uri          : <span style="color:#000;font-weight:bold">/</span>liveroom
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">ngx.var.uri          : <span style="color:#000;font-weight:bold">/</span>liveroom
 ngx.var.request      : GET <span style="color:#000;font-weight:bold">/</span>liveroom<span style="color:#a61717;background-color:#e3d2d2">?</span>d<span style="color:#000;font-weight:bold">=</span><span style="color:#099">10</span><span style="color:#000;font-weight:bold">&amp;</span>b<span style="color:#000;font-weight:bold">=</span><span style="color:#099">20</span> HTTP<span style="color:#000;font-weight:bold">/</span><span style="color:#099">1.1</span>
 ngx.var.time_local   : <span style="color:#099">30</span><span style="color:#000;font-weight:bold">/</span>Nov<span style="color:#000;font-weight:bold">/</span><span style="color:#099">2016</span>:<span style="color:#099">17</span>:<span style="color:#099">23</span>:<span style="color:#099">45</span> <span style="color:#000;font-weight:bold">+</span><span style="color:#099">0800</span>
 ngx.var.time_iso8601 : <span style="color:#099">2016</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">11</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">30</span>T17:<span style="color:#099">25</span>:<span style="color:#099">37</span><span style="color:#000;font-weight:bold">+</span><span style="color:#099">08</span>:<span style="color:#099">00</span>
@@ -274,7 +274,7 @@ ngx.req.get_headers(<span style="color:#a61717;background-color:#e3d2d2">）</sp
 </div><h2 id="nginx日志可用变量内容详解">nginx日志可用变量内容详解</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -301,7 +301,7 @@ ngx.req.get_headers(<span style="color:#a61717;background-color:#e3d2d2">）</sp
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">日志变量            解释                                                  实例日志内容
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">日志变量            解释                                                  实例日志内容
 <span style="color:#008080">$time_local</span>       通用日志格式下的本地时间；（服务器时间）         <span style="color:#000;font-weight:bold">==</span>&gt; 20/Mar/2014:17:36:21 +0900
 <span style="color:#008080">$remote_addr</span>      客户端（用户）IP地址。                        <span style="color:#000;font-weight:bold">==</span>&gt; 118.000.72.00
 <span style="color:#008080">$status</span>           请求状态（状态码，200表示成功，404表示页面不存在，301表示永久重定向等；<span style="color:#000;font-weight:bold">==</span>&gt; <span style="color:#099">304</span>
@@ -331,7 +331,7 @@ ngx.req.get_headers(<span style="color:#a61717;background-color:#e3d2d2">）</sp
 </div><p>nginx的配置文件中可以使用的内置变量以美元符$开始，也有人叫全局变量。其中，部分预定义的变量的值是可以改变的。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -367,7 +367,7 @@ ngx.req.get_headers(<span style="color:#a61717;background-color:#e3d2d2">）</sp
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008080">$arg_PARAMETER</span>      这个变量值为：GET请求中变量名PARAMETER参数的值。
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008080">$arg_PARAMETER</span>      这个变量值为：GET请求中变量名PARAMETER参数的值。
 <span style="color:#008080">$args</span>               这个变量等于GET请求中的参数。例如，foo<span style="color:#000;font-weight:bold">=</span>123&amp;<span style="color:#008080">bar</span><span style="color:#000;font-weight:bold">=</span>blahblah;这个变量只可以被修改
 <span style="color:#008080">$binary_remote_addr</span> 二进制码形式的客户端地址。
 <span style="color:#008080">$body_bytes_sehnt</span>   传送页面的字节数

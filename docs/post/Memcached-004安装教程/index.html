@@ -235,7 +235,7 @@
 <p>通过yum 安装是相对简单的安装方式</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -244,7 +244,7 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install memcached -y
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install memcached -y
 vim /etc/sysconfig/memcached
 <span style="color:#008080">PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;11211&#34;</span>     <span style="color:#998;font-style:italic">#监听端口</span>
 <span style="color:#008080">USER</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;memcached&#34;</span> <span style="color:#998;font-style:italic">#启动用户</span>
@@ -256,7 +256,7 @@ vim /etc/sysconfig/memcached
 </div><h3 id="编译安装">编译安装</h3>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -294,7 +294,7 @@ vim /etc/sysconfig/memcached
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#yum –y install gcc  libevent-devel </span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#yum –y install gcc  libevent-devel </span>
 <span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#wget http://memcached.org/files/memcached-1.5.22.tar.gz</span>
 <span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#tar xvf  memcached-1.5.22.tar.gz </span>
 <span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#cd memcached-1.5.22/</span>
@@ -335,7 +335,7 @@ LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</
 </div><h3 id="python操作memcached">python操作memcached</h3>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -346,15 +346,15 @@ LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#998;font-style:italic">#!/usr/bin/env python</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#998;font-style:italic">#!/usr/bin/env python</span>
 <span style="color:#998;font-style:italic">#coding:utf-8</span>
 
 <span style="color:#000;font-weight:bold">import</span> <span style="color:#555">memcache</span>
-m <span style="color:#000;font-weight:bold">=</span> memcache<span style="color:#000;font-weight:bold">.</span>Client([<span style="color:#d14">&#39;172.18.200.106:11211&#39;</span>], debug<span style="color:#000;font-weight:bold">=</span><span style="color:#999">True</span>)
+m <span style="color:#000;font-weight:bold">=</span> memcache<span style="color:#000;font-weight:bold">.</span>Client([<span style="color:#d14">&#39;172.18.200.106:11211&#39;</span>], debug<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">True</span>)
 <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">100</span>):
     m<span style="color:#000;font-weight:bold">.</span>set(<span style="color:#d14">&#34;key</span><span style="color:#d14">%d</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">%</span> i,<span style="color:#d14">&#34;v</span><span style="color:#d14">%d</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">%</span> i)
     ret <span style="color:#000;font-weight:bold">=</span> m<span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#39;key</span><span style="color:#d14">%d</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> i)
-    <span style="color:#000;font-weight:bold">print</span> ret
+    <span style="color:#0086b3">print</span> ret
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="集群部署架构">集群部署架构</h2>
@@ -382,7 +382,7 @@ master也会侦测到连接断，它就会重新 listen等待新的 slave加入�
 <h3 id="部署repcached">部署repcached</h3>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -390,7 +390,7 @@ master也会侦测到连接断，它就会重新 listen等待新的 slave加入�
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum install libevent libevent-devel</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum install libevent libevent-devel</span>
 <span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># wget https://jaist.dl.sourceforge.net/project/repcached/repcached/2.2.1-1.2.8/memcached-1.2.8-repcached-2.2.1.tar.gz</span>
 <span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># tar xvf memcached-1.2.8-repcached-2.2.1.tar.gz</span>
 <span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cd memcached-1.2.8-repcached-2.2.1</span>
@@ -404,7 +404,7 @@ master也会侦测到连接断，它就会重新 listen等待新的 slave加入�
 <p>解决办法：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -416,7 +416,7 @@ master也会侦测到连接断，它就会重新 listen等待新的 slave加入�
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 memcached-1.2.8-repcached-2.2.1<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># vim memcached.c</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 memcached-1.2.8-repcached-2.2.1<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># vim memcached.c</span>
 <span style="color:#099">56</span> <span style="color:#998;font-style:italic">#ifndef IOV_MAX</span>
 <span style="color:#099">57</span> <span style="color:#998;font-style:italic">#if defined(__FreeBSD__) || defined(__APPLE__)</span>
 <span style="color:#099">58</span> <span style="color:#998;font-style:italic"># define IOV_MAX 1024</span>
@@ -431,7 +431,7 @@ master也会侦测到连接断，它就会重新 listen等待新的 slave加入�
 </div><p>再次编译安装：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -446,7 +446,7 @@ master也会侦测到连接断，它就会重新 listen等待新的 slave加入�
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 memcached-1.2.8-repcached-2.2.1<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#make &amp;&amp; make install </span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 memcached-1.2.8-repcached-2.2.1<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#make &amp;&amp; make install </span>
 <span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#tree /apps/repcached/</span>
 /apps/repcached/
 ├── bin
@@ -467,7 +467,7 @@ master也会侦测到连接断，它就会重新 listen等待新的 slave加入�
 <p>验证是否可执行</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -504,7 +504,7 @@ master也会侦测到连接断，它就会重新 listen等待新的 slave加入�
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#echo &#39;PATH=/apps/repcached/bin:$PATH&#39; &gt; /etc/profile.d/repcached.sh</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#echo &#39;PATH=/apps/repcached/bin:$PATH&#39; &gt; /etc/profile.d/repcached.sh</span>
 <span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#. /etc/profile.d/repcached.sh</span>
 <span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#memcached -h</span>
 memcached 1.2.8
@@ -545,7 +545,7 @@ repcached 2.2.1
 <p>server 1相关操作</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -559,7 +559,7 @@ repcached 2.2.1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#useradd -r -s /sbin/nologin memcached</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#useradd -r -s /sbin/nologin memcached</span>
 <span style="color:#998;font-style:italic">#-x 10.0.0.17为对端memcached的地址 </span>
 <span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#memcached -d -m 2048 -p 11211 -u memcached  -c 2048 -x 10.0.0.17 </span>
 <span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#ss -ntl</span>
@@ -576,7 +576,7 @@ LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</
 </div><p>server 2相关操作</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -586,7 +586,7 @@ LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#memcached -d -m 2048 -p 11211 -u memcached -c 2048 -x 10.0.0.7</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#memcached -d -m 2048 -p 11211 -u memcached -c 2048 -x 10.0.0.7</span>
 <span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#ss -ntl</span>
 State      Recv-Q Send-Q          Local Address:Port                Peer Address:Port     
 LISTEN     <span style="color:#099">0</span>      <span style="color:#099">100</span>                 127.0.0.1:25                              *:*       
@@ -600,7 +600,7 @@ LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</
 <p>shell命令</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -629,7 +629,7 @@ LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic">#在第一台memcached上创建数据</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic">#在第一台memcached上创建数据</span>
 <span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#telnet 10.0.0.7 11211</span>
 Trying 10.0.0.7...
 Connected to 10.0.0.7.
@@ -662,7 +662,7 @@ Connection closed by foreign host.
 <p>示例：测试连接memcached的Python脚本</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -673,21 +673,21 @@ Connection closed by foreign host.
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#998;font-style:italic">#!/usr/bin/env python</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#998;font-style:italic">#!/usr/bin/env python</span>
 <span style="color:#998;font-style:italic">#coding:utf-8</span>
 
 <span style="color:#000;font-weight:bold">import</span> <span style="color:#555">memcache</span>
-m <span style="color:#000;font-weight:bold">=</span> memcache<span style="color:#000;font-weight:bold">.</span>Client([<span style="color:#d14">&#39;10.0.0.100:11211&#39;</span>], debug<span style="color:#000;font-weight:bold">=</span><span style="color:#999">True</span>)
+m <span style="color:#000;font-weight:bold">=</span> memcache<span style="color:#000;font-weight:bold">.</span>Client([<span style="color:#d14">&#39;10.0.0.100:11211&#39;</span>], debug<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">True</span>)
 <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">100</span>):
     m<span style="color:#000;font-weight:bold">.</span>set(<span style="color:#d14">&#34;key</span><span style="color:#d14">%d</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">%</span> i,<span style="color:#d14">&#34;v</span><span style="color:#d14">%d</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">%</span> i)
     ret <span style="color:#000;font-weight:bold">=</span> m<span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#39;key</span><span style="color:#d14">%d</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> i)
-    <span style="color:#000;font-weight:bold">print</span> ret
+    <span style="color:#0086b3">print</span> ret
 </code></pre></td></tr></table>
 </div>
 </div><p>范例：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -740,7 +740,7 @@ m <span style="color:#000;font-weight:bold">=</span> memcache<span style="color:
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#yum -y install python-memcached </span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#yum -y install python-memcached </span>
 <span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#cat  ./m.py</span>
 <span style="color:#998;font-style:italic">#!/usr/bin/env python</span>
 <span style="color:#998;font-style:italic">#coding:utf-8</span>

@@ -237,7 +237,7 @@ last-byte-pos = 1*DIGIT
 <p>详尽的细枝末节就不在这里记述了，</p>
 <p>举个例子说明一下，比如某文件的大小是 1000 字节，client 请求这个文件时用了 “Range: bytes=0-500”，那么 server 应该把这个文件开头的 501 个字节发回给 client，
 同时回应头要有如下内容：</p>
-<pre><code>Content-Range: bytes 0-500/1000
+<pre tabindex="0"><code>Content-Range: bytes 0-500/1000
 </code></pre><p>Range 请求的一些注意事项：</p>
 <ol>
 <li>不支持 Range 请求的 server 要用“Accept-Ranges: none”对 client 表明心意；server 也可以主动告诉 client “Accept-Ranges: bytes”，但是 client 也可以在没有收到这个指示的前提下向 server 发 Range 请求。</li>

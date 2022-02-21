@@ -298,12 +298,12 @@
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#000;font-weight:bold">val</span> arr <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">4</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">5</span><span style="color:#000;font-weight:bold">)</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#000;font-weight:bold">val</span> arr <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">4</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">5</span><span style="color:#000;font-weight:bold">)</span>
 <span style="color:#000;font-weight:bold">val</span> rdd <span style="color:#000;font-weight:bold">=</span> sc<span style="color:#000;font-weight:bold">.</span>parallelize<span style="color:#000;font-weight:bold">(</span>arr<span style="color:#000;font-weight:bold">)</span>
 <span style="color:#000;font-weight:bold">val</span> rdd <span style="color:#000;font-weight:bold">=</span>sc<span style="color:#000;font-weight:bold">.</span>makeRDD<span style="color:#000;font-weight:bold">(</span>arr<span style="color:#000;font-weight:bold">)</span>
 </code></pre></td></tr></table>
@@ -313,13 +313,13 @@
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#998;font-style:italic">// 读取hdfs文件
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#998;font-style:italic">// 读取hdfs文件
 </span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">val</span> rdd2 <span style="color:#000;font-weight:bold">=</span> sc<span style="color:#000;font-weight:bold">.</span>textFile<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;hdfs://hdp-01:9000/words.txt&#34;</span><span style="color:#000;font-weight:bold">)</span>
 <span style="color:#998;font-style:italic">// 读取本地文件
 </span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">val</span> rdd2 <span style="color:#000;font-weight:bold">=</span> sc<span style="color:#000;font-weight:bold">.</span>textFile<span style="color:#000;font-weight:bold">(</span><span style="color:#a61717;background-color:#e3d2d2">“</span>file<span style="color:#000;font-weight:bold">:</span><span style="color:#998;font-style:italic">///root/words.txt”)
@@ -393,7 +393,7 @@ reduceByKey会传一个聚合函数， 相当于  groupByKey + mapValues</p>
 <h2 id="11spark-streaming流式统计单词数量代码">11.spark streaming流式统计单词数量代码</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -438,7 +438,7 @@ reduceByKey会传一个聚合函数， 相当于  groupByKey + mapValues</p>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">object WordCountAll <span style="color:#000;font-weight:bold">{</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">object WordCountAll <span style="color:#000;font-weight:bold">{</span>
   <span style="color:#998;font-style:italic">// newValues当前批次的出现的单词次数， runningCount表示之前运行的单词出现的结果
 </span><span style="color:#998;font-style:italic"></span> <span style="color:#998;font-style:italic">/* def updateFunction(newValues: Seq[Int], runningCount: Option[Int]): Option[Int] = {
 </span><span style="color:#998;font-style:italic">    val newCount =  newValues.sum + runningCount.getOrElse(0)// 将历史前几个批次的值和当前批次的值进行累加返回当前批次最终的结果
@@ -508,7 +508,7 @@ reduceByKey会传一个聚合函数， 相当于  groupByKey + mapValues</p>
 <h2 id="15按照需求使用spark编写以下程序要求使用scala语言">15.按照需求使用spark编写以下程序，要求使用scala语言</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -525,7 +525,7 @@ reduceByKey会传一个聚合函数， 相当于  groupByKey + mapValues</p>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">当前文件a<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">txt的格式</span><span style="color:#a61717;background-color:#e3d2d2">，</span>请统计每个单词出现的次数
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">当前文件a<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">txt的格式</span><span style="color:#a61717;background-color:#e3d2d2">，</span>请统计每个单词出现的次数
 A<span style="color:#000;font-weight:bold">,</span>b<span style="color:#000;font-weight:bold">,</span>c
 B<span style="color:#000;font-weight:bold">,</span>b<span style="color:#000;font-weight:bold">,</span>f<span style="color:#000;font-weight:bold">,</span>e
 
@@ -545,7 +545,7 @@ object WordCount <span style="color:#000;font-weight:bold">{</span>
 </div><h2 id="16spark应用程序的执行命令是什么">16.spark应用程序的执行命令是什么？</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -557,7 +557,7 @@ object WordCount <span style="color:#000;font-weight:bold">{</span>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/usr/local/spark-current2.3/bin/spark-submit <span style="color:#d14">\
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/usr/local/spark-current2.3/bin/spark-submit <span style="color:#d14">\
 </span><span style="color:#d14"></span>--class com.wedoctor.Application <span style="color:#d14">\
 </span><span style="color:#d14"></span>--master yarn <span style="color:#d14">\
 </span><span style="color:#d14"></span>--deploy-mode client <span style="color:#d14">\
@@ -583,11 +583,11 @@ object WordCount <span style="color:#000;font-weight:bold">{</span>
 <p>val arr = new ArrayList[String]; arr.foreach(println)</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val arr <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> ArrayList<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">];</span> 这里会报错<span style="color:#a61717;background-color:#e3d2d2">，</span>需要改成 val arr<span style="color:#000;font-weight:bold">:</span> Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">](</span>10<span style="color:#000;font-weight:bold">)</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val arr <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> ArrayList<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">];</span> 这里会报错<span style="color:#a61717;background-color:#e3d2d2">，</span>需要改成 val arr<span style="color:#000;font-weight:bold">:</span> Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">](</span>10<span style="color:#000;font-weight:bold">)</span>
 arr<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">foreach</span><span style="color:#000;font-weight:bold">(</span>println<span style="color:#000;font-weight:bold">)</span>打印不会报空指针
 </code></pre></td></tr></table>
 </div>

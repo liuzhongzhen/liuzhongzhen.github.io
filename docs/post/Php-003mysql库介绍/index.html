@@ -223,7 +223,7 @@
 <h2 id="1-最简单的方式-mysql面向过程">1. 最简单的方式-mysql（面向过程）</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -244,7 +244,7 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
 <span style="color:#008080">$con</span> <span style="color:#000;font-weight:bold">=</span> mysql_connect(<span style="color:#d14">&#34;localhost&#34;</span>,<span style="color:#d14">&#34;root&#34;</span>,<span style="color:#d14">&#34;password&#34;</span>);
 <span style="color:#008080">$select_db</span> <span style="color:#000;font-weight:bold">=</span> mysql_select_db(<span style="color:#d14">&#39;test&#39;</span>);
 <span style="color:#000;font-weight:bold">if</span> (<span style="color:#000;font-weight:bold">!</span><span style="color:#008080">$select_db</span>) {
@@ -268,7 +268,7 @@
 </div><h2 id="2新的方式-mysqli面向过程">2.新的方式-mysqli（面向过程）</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -295,7 +295,7 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php 
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php 
 <span style="color:#008080">$mysql_server_name</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;localhost&#39;</span>; <span style="color:#998;font-style:italic">//改成自己的mysql数据库服务器
 </span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$mysql_username</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;root&#39;</span>; <span style="color:#998;font-style:italic">//改成自己的mysql数据库用户名
 </span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$mysql_password</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;password&#39;</span>; <span style="color:#998;font-style:italic">//改成自己的mysql数据库密码
@@ -325,7 +325,7 @@ mysqli_close(<span style="color:#008080">$conn</span>);
 </div><h2 id="3常用方式-mysqli面向对象">3.常用方式-mysqli（面向对象）</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -348,7 +348,7 @@ mysqli_close(<span style="color:#008080">$conn</span>);
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
 <span style="color:#998;font-style:italic">//连接数据库方式1
 </span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$conn</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> mysqli(<span style="color:#d14">&#39;localhost&#39;</span>, <span style="color:#d14">&#39;root&#39;</span>, <span style="color:#d14">&#39;password&#39;</span>, <span style="color:#d14">&#39;test&#39;</span>);
 <span style="color:#998;font-style:italic">//连接数据库方式2
@@ -374,7 +374,7 @@ mysqli_close(<span style="color:#008080">$conn</span>);
 </div><h2 id="4pdo连接mysql数据库">4.PDO连接MySQL数据库</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -388,7 +388,7 @@ mysqli_close(<span style="color:#008080">$conn</span>);
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
 <span style="color:#008080">$db</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> PDO(<span style="color:#d14">&#39;mysql:host=localhost;dbname=test&#39;</span>, <span style="color:#d14">&#39;root&#39;</span>, <span style="color:#d14">&#39;password&#39;</span>);
 <span style="color:#000;font-weight:bold">try</span> {
     <span style="color:#000;font-weight:bold">foreach</span> (<span style="color:#008080">$db</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">query</span>(<span style="color:#d14">&#39;select * from db_table&#39;</span>) <span style="color:#000;font-weight:bold">as</span> <span style="color:#008080">$row</span>){
@@ -405,7 +405,7 @@ mysqli_close(<span style="color:#008080">$conn</span>);
 </div><h2 id="5adodb连接mysql数据库">5.ADODB连接MySQL数据库</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -424,7 +424,7 @@ mysqli_close(<span style="color:#008080">$conn</span>);
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
 <span style="color:#998;font-style:italic">//安装驱动-引入类即可
 </span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">require_once</span> <span style="color:#d14">&#39;./adodb5/adodb.inc.php&#39;</span>;
 <span style="color:#008080">$conn</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">&amp;</span>ADONewConnection(<span style="color:#d14">&#39;mysql&#39;</span>);
@@ -446,14 +446,14 @@ mysqli_close(<span style="color:#008080">$conn</span>);
 </div><h2 id="6总结-关闭mysql数据库的连接方法">6.总结-关闭mysql数据库的连接方法</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">MySQL <span style="color:#000;font-weight:bold">-</span> 面向过程 mysql_close(<span style="color:#008080">$conn</span>);
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">MySQL <span style="color:#000;font-weight:bold">-</span> 面向过程 mysql_close(<span style="color:#008080">$conn</span>);
 MySQLi <span style="color:#000;font-weight:bold">-</span> 面向过程 mysqli_close(<span style="color:#008080">$conn</span>);
 MySQLi <span style="color:#000;font-weight:bold">-</span> 面向对象 <span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">close</span>();
 PDO <span style="color:#008080">$conn</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">null</span>;
@@ -464,13 +464,13 @@ ADODB <span style="color:#008080">$conn</span><span style="color:#000;font-weigh
 <h2 id="简要谈谈php中mysqlmysqlimysqlndpdo到底是什么">简要谈谈php中mysql,mysqli,mysqlnd,pdo到底是什么?</h2>
 <p>名词解释:
 最开始的初学者，往往搞不清mysqli,mysqlnd,pdo到底是什么，下面先直接贴出最直观的名字吧。</p>
-<pre><code>MYSQL:   This extension is deprecated as of PHP 5.5.0, and has been removed as of PHP 7.0.0.
+<pre tabindex="0"><code>MYSQL:   This extension is deprecated as of PHP 5.5.0, and has been removed as of PHP 7.0.0.
 MYSQLI:  MySQL Improved Extension
 MySQLND: MySQL Native Drive
 PDO:     The PHP Data Objects。extension defines a lightweight, consistent interface for 
          accessing databases in PHP。
 </code></pre><p>以上摘自 PHP官方手册: <a href="http://php.net/manual/en/book.mysqli.php">http://php.net/manual/en/book.mysqli.php</a></p>
-<pre><code>用中文说:
+<pre tabindex="0"><code>用中文说:
 MYSQL 也叫 Original MySQL，PHP4版本的MYSQL扩展，从PHP5起已经被废弃，并别从PHP7开始已经被移除。
 MYSQLI 叫做 “MySQL增强扩展”。
 MYSQLND MYSQL NATIVE DIRVER 叫做MYSQL “官方驱动”或者更加直接点的叫做“原生驱动”
@@ -489,7 +489,7 @@ PDO PHP Data Objects PHP数据对象，是PHP应用中的一个数据库抽象�
 <p>即从大部分功能上看，PDO提供的API接口和MYSQLI提供的接口对于普通的增删改查效果是一致的。</p>
 <p>想更多去了解他们的区别和联系，可以手动去编译一下PHP的源代码。注意参数</p>
 <p>编译配置</p>
-<pre><code>--enable-pdo 
+<pre tabindex="0"><code>--enable-pdo 
 --with-pdo-mysql
 --enable-mysqlnd 
 --with-mysqli
@@ -497,7 +497,7 @@ PDO PHP Data Objects PHP数据对象，是PHP应用中的一个数据库抽象�
 </code></pre><p>php安装完模块</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -564,7 +564,7 @@ PDO PHP Data Objects PHP数据对象，是PHP应用中的一个数据库抽象�
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># /usr/local/services/php7/bin/php -m</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># /usr/local/services/php7/bin/php -m</span>
 <span style="color:#000;font-weight:bold">[</span>PHP Modules<span style="color:#000;font-weight:bold">]</span>
 bcmath
 bz2

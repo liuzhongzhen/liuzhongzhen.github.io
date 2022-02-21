@@ -219,21 +219,21 @@ wget <a href="http://cn2.php.net/distributions/php-7.2.4.tar.gz;tar">http://cn2.
 <li>安装编译php需要的依赖包:
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum -y install gcc autoconf gcc-c++ systemd-devel openjpeg-devel libxml2 libxml2-devel openssl openssl-devel bzip2 bzip2-devel libcurl libcurl-devel libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel gmp gmp-devel readline readline-devel libxslt libxslt-devel libmcrypt libmcrypt-devel libicu-devel  zlib zlib-devel  libmcrypt libmcrypt-devel mcrypt mhash
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum -y install gcc autoconf gcc-c++ systemd-devel openjpeg-devel libxml2 libxml2-devel openssl openssl-devel bzip2 bzip2-devel libcurl libcurl-devel libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel gmp gmp-devel readline readline-devel libxslt libxslt-devel libmcrypt libmcrypt-devel libicu-devel  zlib zlib-devel  libmcrypt libmcrypt-devel mcrypt mhash
 </code></pre></td></tr></table>
 </div>
 </div></li>
 <li>添加php-fpm的用户，或者用nobody用户
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">groupadd php-fpm <span style="color:#998;font-style:italic">#创建群组</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">groupadd php-fpm <span style="color:#998;font-style:italic">#创建群组</span>
 useradd -s /sbin/nologin -g php-fpm -M php-fpm <span style="color:#998;font-style:italic">#创建一个用户，不允许登陆和不创主目录 </span>
 </code></pre></td></tr></table>
 </div>
@@ -241,7 +241,7 @@ useradd -s /sbin/nologin -g php-fpm -M php-fpm <span style="color:#998;font-styl
 <li>编译参数
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -249,7 +249,7 @@ useradd -s /sbin/nologin -g php-fpm -M php-fpm <span style="color:#998;font-styl
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> 开发环境:
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> 开发环境:
      --enable-phpdbg<span style="color:#d14">\
 </span><span style="color:#d14"></span>     --enable-dtrace<span style="color:#d14">\
 </span><span style="color:#d14"></span> 生产环境:
@@ -262,7 +262,7 @@ useradd -s /sbin/nologin -g php-fpm -M php-fpm <span style="color:#998;font-styl
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -359,7 +359,7 @@ useradd -s /sbin/nologin -g php-fpm -M php-fpm <span style="color:#998;font-styl
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">95
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">./configure  \<span style="color:#bbb">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">./configure  \<span style="color:#bbb">
 </span><span style="color:#bbb"></span>--prefix=/usr/local/services/php7  \<span style="color:#bbb">
 </span><span style="color:#bbb"></span>--with-config-file-path=/usr/local/services/php7/etc  \<span style="color:#bbb">
 </span><span style="color:#bbb"></span>--with-config-file-scan-dir=/usr/local/services/php7/etc/php.d  \<span style="color:#bbb">
@@ -461,7 +461,7 @@ useradd -s /sbin/nologin -g php-fpm -M php-fpm <span style="color:#998;font-styl
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -521,7 +521,7 @@ useradd -s /sbin/nologin -g php-fpm -M php-fpm <span style="color:#998;font-styl
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">cd php-7.2.4;cp php.ini-production /usr/local/services/php7/etc/php.ini;<span style="color:#bbb">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">cd php-7.2.4;cp php.ini-production /usr/local/services/php7/etc/php.ini;<span style="color:#bbb">
 </span><span style="color:#bbb"></span>cd /usr/local/services/php7/etc;cp php-fpm.conf.default php-fpm.conf;<span style="color:#bbb">
 </span><span style="color:#bbb"></span>cd /usr/local/services/php7/etc/php-fpm.d;cp www.conf.default www.conf;<span style="color:#bbb">
 </span><span style="color:#bbb"></span><span style="color:#000080">管理php-fpm配置</span>:<span style="color:#bbb">
@@ -586,14 +586,14 @@ useradd -s /sbin/nologin -g php-fpm -M php-fpm <span style="color:#998;font-styl
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">wget https://github.com/websupport-sk/pecl-memcache/archive/NON_BLOCKING_IO_php7.zip<span style="color:#bbb">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">wget https://github.com/websupport-sk/pecl-memcache/archive/NON_BLOCKING_IO_php7.zip<span style="color:#bbb">
 </span><span style="color:#bbb"></span>unzip NON_BLOCKING_IO_php7.zip<span style="color:#bbb">
 </span><span style="color:#bbb"></span>/usr/local/services/php7/bin/phpize <span style="color:#bbb">
 </span><span style="color:#bbb"></span>./configure --with-php-config=/usr/local/services/php7/bin/php-config<span style="color:#bbb">
@@ -605,7 +605,7 @@ useradd -s /sbin/nologin -g php-fpm -M php-fpm <span style="color:#998;font-styl
 </ol>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -634,7 +634,7 @@ useradd -s /sbin/nologin -g php-fpm -M php-fpm <span style="color:#998;font-styl
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">a. /usr/local/services/php7/bin/pecl install igbinary  安装依赖库<span style="color:#bbb">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">a. /usr/local/services/php7/bin/pecl install igbinary  安装依赖库<span style="color:#bbb">
 </span><span style="color:#bbb"></span>b. /usr/local/services/php7/bin/pecl install msgpack 安装依赖库<span style="color:#bbb">
 </span><span style="color:#bbb"></span>c. 安装lib-memcached服务<span style="color:#bbb">
 </span><span style="color:#bbb">    </span>yum -y install libmemcached libmemcached-devel cyrus-sasl-devel  zlib zlib-devel<span style="color:#bbb">

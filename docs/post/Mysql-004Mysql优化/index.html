@@ -331,7 +331,7 @@ max_connection值被设高了(例如1000或更高)之后一个主要缺陷是当
 假如有如下表结构</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -342,19 +342,19 @@ max_connection值被设高了(例如1000或更高)之后一个主要缺陷是当
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#000;font-weight:bold">`</span>circlemessage_idx_0<span style="color:#000;font-weight:bold">`</span> (
-  circle_id <span style="color:#0086b3">bigint</span>(<span style="color:#099">20</span>) unsigned <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> <span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#d14">&#39;群组id&#39;</span>,
-  from_id   <span style="color:#0086b3">bigint</span>(<span style="color:#099">20</span>) unsigned <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> <span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#d14">&#39;发送用户id&#39;</span>,
-  to_id     <span style="color:#0086b3">bigint</span>(<span style="color:#099">20</span>) unsigned <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> <span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#d14">&#39;指定接收用户id&#39;</span>,
-  msg_id    <span style="color:#0086b3">bigint</span>(<span style="color:#099">20</span>) unsigned <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> <span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#d14">&#39;消息ID&#39;</span>,
-  <span style="color:#000;font-weight:bold">type</span>      tinyint(<span style="color:#099">3</span>) unsigned <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> <span style="color:#000;font-weight:bold">DEFAULT</span> <span style="color:#d14">&#39;0&#39;</span> <span style="color:#000;font-weight:bold">COMMENT</span> <span style="color:#d14">&#39;消息类型&#39;</span>,
-  <span style="color:#000;font-weight:bold">PRIMARY</span> <span style="color:#000;font-weight:bold">KEY</span> (msg_id,to_id),
-  <span style="color:#000;font-weight:bold">KEY</span> idx_from_circle (from_id,circle_id)
-) ENGINE<span style="color:#000;font-weight:bold">=</span>InnoDB <span style="color:#000;font-weight:bold">DEFAULT</span> CHARSET<span style="color:#000;font-weight:bold">=</span>utf8mb4 <span style="color:#000;font-weight:bold">COLLATE</span><span style="color:#000;font-weight:bold">=</span>utf8mb4_bin
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">`</span>circlemessage_idx_0<span style="color:#000;font-weight:bold">`</span><span style="color:#bbb"> </span>(<span style="color:#bbb">
+</span><span style="color:#bbb">  </span>circle_id<span style="color:#bbb"> </span><span style="color:#0086b3">bigint</span>(<span style="color:#099">20</span>)<span style="color:#bbb"> </span>unsigned<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COMMENT</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;群组id&#39;</span>,<span style="color:#bbb">
+</span><span style="color:#bbb">  </span>from_id<span style="color:#bbb">   </span><span style="color:#0086b3">bigint</span>(<span style="color:#099">20</span>)<span style="color:#bbb"> </span>unsigned<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COMMENT</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;发送用户id&#39;</span>,<span style="color:#bbb">
+</span><span style="color:#bbb">  </span>to_id<span style="color:#bbb">     </span><span style="color:#0086b3">bigint</span>(<span style="color:#099">20</span>)<span style="color:#bbb"> </span>unsigned<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COMMENT</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;指定接收用户id&#39;</span>,<span style="color:#bbb">
+</span><span style="color:#bbb">  </span>msg_id<span style="color:#bbb">    </span><span style="color:#0086b3">bigint</span>(<span style="color:#099">20</span>)<span style="color:#bbb"> </span>unsigned<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COMMENT</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;消息ID&#39;</span>,<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">type</span><span style="color:#bbb">      </span>tinyint(<span style="color:#099">3</span>)<span style="color:#bbb"> </span>unsigned<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">DEFAULT</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;0&#39;</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COMMENT</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;消息类型&#39;</span>,<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">PRIMARY</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">KEY</span><span style="color:#bbb"> </span>(msg_id,to_id),<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">KEY</span><span style="color:#bbb"> </span>idx_from_circle<span style="color:#bbb"> </span>(from_id,circle_id)<span style="color:#bbb">
+</span><span style="color:#bbb"></span>)<span style="color:#bbb"> </span>ENGINE<span style="color:#000;font-weight:bold">=</span>InnoDB<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">DEFAULT</span><span style="color:#bbb"> </span>CHARSET<span style="color:#000;font-weight:bold">=</span>utf8mb4<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COLLATE</span><span style="color:#000;font-weight:bold">=</span>utf8mb4_bin<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><p>通过执行计划explain分析如下查询语句</p>
-<pre><code>mysql&gt; explain select msg_id 
+<pre tabindex="0"><code>mysql&gt; explain select msg_id 
  from circlemessage_idx_0  
 where  to_id = 113487 
   and circle_id=10019063  
@@ -369,7 +369,7 @@ limit 30;
 |  1 | SIMPLE      | circlemessage_idx_0 | range | PRIMARY,idx_from_circle | PRIMARY | 16      | NULL | 349780 | Using where |
 +----+-------------+---------------------+-------+-------------------------+---------+---------+------+--------+-------------+
 1 row in set (0.00 sec)
-</code></pre><pre><code>mysql&gt; explain select msg_id 
+</code></pre><pre tabindex="0"><code>mysql&gt; explain select msg_id 
  from circlemessage_idx_0 
 where  to_id = 113487 
   and circle_id=10019063   

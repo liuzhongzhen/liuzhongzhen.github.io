@@ -233,7 +233,7 @@
 <h2 id="二语句">二、语句</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -244,16 +244,16 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#000;font-weight:bold">table_name</span>[col_name <span style="color:#000;font-weight:bold">data</span> <span style="color:#000;font-weight:bold">type</span>]
-[<span style="color:#000;font-weight:bold">unique</span><span style="color:#000;font-weight:bold">|</span>fulltext][<span style="color:#000;font-weight:bold">index</span><span style="color:#000;font-weight:bold">|</span><span style="color:#000;font-weight:bold">key</span>][index_name](col_name[<span style="color:#000;font-weight:bold">length</span>])[<span style="color:#000;font-weight:bold">asc</span><span style="color:#000;font-weight:bold">|</span><span style="color:#000;font-weight:bold">desc</span>]
-
-<span style="color:#099">1</span>. <span style="color:#000;font-weight:bold">unique</span><span style="color:#000;font-weight:bold">|</span>fulltext为可选参数<span style="color:#a61717;background-color:#e3d2d2">，分别表示唯一索引、全文索引</span>
-<span style="color:#099">2</span>. index和key为同义词<span style="color:#a61717;background-color:#e3d2d2">，两者作用相同，用来指定创建索引</span>
-<span style="color:#099">3</span>. col_name为需要创建索引的字段列<span style="color:#a61717;background-color:#e3d2d2">，该列必须从数据表中该定义的多个列中选择</span>
-<span style="color:#099">4</span>. index_name指定索引的名称<span style="color:#a61717;background-color:#e3d2d2">，为可选参数，如果不指定，默认</span>col_name为索引值
-<span style="color:#099">5</span>. length为可选参数<span style="color:#a61717;background-color:#e3d2d2">，表示索引的长度，只有字符串类型的字段才能指定索引长度</span>
-<span style="color:#099">6</span>. asc或desc指定升序或降序的索引值存储
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table_name</span>[col_name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">data</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">type</span>]<span style="color:#bbb">
+</span><span style="color:#bbb"></span>[<span style="color:#000;font-weight:bold">unique</span><span style="color:#000;font-weight:bold">|</span>fulltext][<span style="color:#000;font-weight:bold">index</span><span style="color:#000;font-weight:bold">|</span><span style="color:#000;font-weight:bold">key</span>][index_name](col_name[<span style="color:#000;font-weight:bold">length</span>])[<span style="color:#000;font-weight:bold">asc</span><span style="color:#000;font-weight:bold">|</span><span style="color:#000;font-weight:bold">desc</span>]<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#099">1</span>.<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">unique</span><span style="color:#000;font-weight:bold">|</span>fulltext为可选参数<span style="color:#a61717;background-color:#e3d2d2">，分别表示唯一索引、全文索引</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#099">2</span>.<span style="color:#bbb"> </span>index和key为同义词<span style="color:#a61717;background-color:#e3d2d2">，两者作用相同，用来指定创建索引</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#099">3</span>.<span style="color:#bbb"> </span>col_name为需要创建索引的字段列<span style="color:#a61717;background-color:#e3d2d2">，该列必须从数据表中该定义的多个列中选择</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#099">4</span>.<span style="color:#bbb"> </span>index_name指定索引的名称<span style="color:#a61717;background-color:#e3d2d2">，为可选参数，如果不指定，默认</span>col_name为索引值<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#099">5</span>.<span style="color:#bbb"> </span>length为可选参数<span style="color:#a61717;background-color:#e3d2d2">，表示索引的长度，只有字符串类型的字段才能指定索引长度</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#099">6</span>.<span style="color:#bbb"> </span>asc或desc指定升序或降序的索引值存储<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="三索引类型">三、索引类型</h2>
 <h3 id="1普通索引">1.普通索引</h3>
@@ -261,7 +261,7 @@
 它有以下几种创建方式：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -281,25 +281,25 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#998;font-style:italic">-- (1). 直接创建索引 
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">INDEX</span> index_name <span style="color:#000;font-weight:bold">ON</span> <span style="color:#000;font-weight:bold">table</span>(<span style="color:#000;font-weight:bold">column</span>(<span style="color:#000;font-weight:bold">length</span>))
-
-<span style="color:#998;font-style:italic">-- (2). 修改表结构的方式添加索引
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#000;font-weight:bold">table_name</span> <span style="color:#000;font-weight:bold">ADD</span> <span style="color:#000;font-weight:bold">INDEX</span> index_name <span style="color:#000;font-weight:bold">ON</span> (<span style="color:#000;font-weight:bold">column</span>(<span style="color:#000;font-weight:bold">length</span>))
-
-<span style="color:#998;font-style:italic">-- (3) 创建表的时候同时创建索引
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">TABLE</span> tb_stat_pv (
-    id          <span style="color:#0086b3">int</span> <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> AUTO_INCREMENT ,
-    title       <span style="color:#0086b3">char</span>(<span style="color:#099">255</span>) <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> ,
-    content     <span style="color:#0086b3">text</span> <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">NULL</span> ,
-    create_time <span style="color:#0086b3">int</span> <span style="color:#000;font-weight:bold">NULL</span> <span style="color:#000;font-weight:bold">DEFAULT</span> <span style="color:#000;font-weight:bold">NULL</span> ,
-    <span style="color:#000;font-weight:bold">PRIMARY</span> <span style="color:#000;font-weight:bold">KEY</span> (id),
-    <span style="color:#000;font-weight:bold">INDEX</span> index_name (title(<span style="color:#000;font-weight:bold">length</span>))
-)
-
-<span style="color:#998;font-style:italic">-- (4). 删除索引
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">DROP</span> <span style="color:#000;font-weight:bold">INDEX</span> index_name <span style="color:#000;font-weight:bold">ON</span> <span style="color:#000;font-weight:bold">table</span>;
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#998;font-style:italic">-- (1). 直接创建索引 
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">INDEX</span><span style="color:#bbb"> </span>index_name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">ON</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span>(<span style="color:#000;font-weight:bold">column</span>(<span style="color:#000;font-weight:bold">length</span>))<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">-- (2). 修改表结构的方式添加索引
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">ALTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table_name</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">ADD</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">INDEX</span><span style="color:#bbb"> </span>index_name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">ON</span><span style="color:#bbb"> </span>(<span style="color:#000;font-weight:bold">column</span>(<span style="color:#000;font-weight:bold">length</span>))<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">-- (3) 创建表的时候同时创建索引
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>tb_stat_pv<span style="color:#bbb"> </span>(<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>id<span style="color:#bbb">          </span><span style="color:#0086b3">int</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span>AUTO_INCREMENT<span style="color:#bbb"> </span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>title<span style="color:#bbb">       </span><span style="color:#0086b3">char</span>(<span style="color:#099">255</span>)<span style="color:#bbb"> </span><span style="color:#0086b3">CHARACTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>content<span style="color:#bbb">     </span><span style="color:#0086b3">text</span><span style="color:#bbb"> </span><span style="color:#0086b3">CHARACTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>create_time<span style="color:#bbb"> </span><span style="color:#0086b3">int</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">DEFAULT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">PRIMARY</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">KEY</span><span style="color:#bbb"> </span>(id),<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">INDEX</span><span style="color:#bbb"> </span>index_name<span style="color:#bbb"> </span>(title(<span style="color:#000;font-weight:bold">length</span>))<span style="color:#bbb">
+</span><span style="color:#bbb"></span>)<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">-- (4). 删除索引
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">DROP</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">INDEX</span><span style="color:#bbb"> </span>index_name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">ON</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span>;<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><h3 id="2唯一索引">2.唯一索引</h3>
 <p>与前面的普通索引类似，不同的就是：<br>
@@ -308,7 +308,7 @@
 它有以下几种创建方式：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -324,50 +324,50 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#998;font-style:italic">-- （1）创建唯一索引
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">UNIQUE</span> <span style="color:#000;font-weight:bold">INDEX</span> indexName <span style="color:#000;font-weight:bold">ON</span> <span style="color:#000;font-weight:bold">table</span>(<span style="color:#000;font-weight:bold">column</span>(<span style="color:#000;font-weight:bold">length</span>))
-
-<span style="color:#998;font-style:italic">-- （2）修改表结构
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#000;font-weight:bold">table_name</span> <span style="color:#000;font-weight:bold">ADD</span> <span style="color:#000;font-weight:bold">UNIQUE</span> indexName <span style="color:#000;font-weight:bold">ON</span> (<span style="color:#000;font-weight:bold">column</span>(<span style="color:#000;font-weight:bold">length</span>))
-
-<span style="color:#998;font-style:italic">-- （3）创建表的时候直接指定
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">TABLE</span> f_d_pv_stat (
-    id          <span style="color:#0086b3">int</span> <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> AUTO_INCREMENT ,
-    title       <span style="color:#0086b3">char</span>(<span style="color:#099">255</span>) <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> ,
-    content     <span style="color:#0086b3">text</span> <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">NULL</span> ,
-    update_time <span style="color:#0086b3">int</span> <span style="color:#000;font-weight:bold">NULL</span> <span style="color:#000;font-weight:bold">DEFAULT</span> <span style="color:#000;font-weight:bold">NULL</span> ,
-    <span style="color:#000;font-weight:bold">UNIQUE</span> indexName (title(<span style="color:#000;font-weight:bold">length</span>))
-);
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#998;font-style:italic">-- （1）创建唯一索引
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">UNIQUE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">INDEX</span><span style="color:#bbb"> </span>indexName<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">ON</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span>(<span style="color:#000;font-weight:bold">column</span>(<span style="color:#000;font-weight:bold">length</span>))<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">-- （2）修改表结构
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">ALTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table_name</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">ADD</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">UNIQUE</span><span style="color:#bbb"> </span>indexName<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">ON</span><span style="color:#bbb"> </span>(<span style="color:#000;font-weight:bold">column</span>(<span style="color:#000;font-weight:bold">length</span>))<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">-- （3）创建表的时候直接指定
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>f_d_pv_stat<span style="color:#bbb"> </span>(<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>id<span style="color:#bbb">          </span><span style="color:#0086b3">int</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span>AUTO_INCREMENT<span style="color:#bbb"> </span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>title<span style="color:#bbb">       </span><span style="color:#0086b3">char</span>(<span style="color:#099">255</span>)<span style="color:#bbb"> </span><span style="color:#0086b3">CHARACTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>content<span style="color:#bbb">     </span><span style="color:#0086b3">text</span><span style="color:#bbb"> </span><span style="color:#0086b3">CHARACTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>update_time<span style="color:#bbb"> </span><span style="color:#0086b3">int</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">DEFAULT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">UNIQUE</span><span style="color:#bbb"> </span>indexName<span style="color:#bbb"> </span>(title(<span style="color:#000;font-weight:bold">length</span>))<span style="color:#bbb">
+</span><span style="color:#bbb"></span>);<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><h3 id="3主键索引">3.主键索引</h3>
 <p>是一种特殊的唯一索引，一个表只能有一个主键，不允许有空值。<br>
 一般是在建表的时候同时创建主键索引：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">TABLE</span> tb1 (
-    id    <span style="color:#0086b3">int</span>  <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> AUTO_INCREMENT ,
-    title <span style="color:#0086b3">char</span>(<span style="color:#099">255</span>) <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> ,
-    <span style="color:#000;font-weight:bold">PRIMARY</span> <span style="color:#000;font-weight:bold">KEY</span> (id)
-);
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>tb1<span style="color:#bbb"> </span>(<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>id<span style="color:#bbb">    </span><span style="color:#0086b3">int</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span>AUTO_INCREMENT<span style="color:#bbb"> </span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>title<span style="color:#bbb"> </span><span style="color:#0086b3">char</span>(<span style="color:#099">255</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">PRIMARY</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">KEY</span><span style="color:#bbb"> </span>(id)<span style="color:#bbb">
+</span><span style="color:#bbb"></span>);<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><h3 id="4组合索引">4.组合索引</h3>
 <p>指多个字段上创建的索引，只有在查询条件中使用了创建索引时的第一个字段，索引才会被使用。使用组合索引时遵循最左前缀集合</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> tb1 <span style="color:#000;font-weight:bold">ADD</span> <span style="color:#000;font-weight:bold">INDEX</span> name_city_age (name,city,age); 
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">ALTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>tb1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">ADD</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">INDEX</span><span style="color:#bbb"> </span>name_city_age<span style="color:#bbb"> </span>(name,city,age);<span style="color:#bbb"> 
+</span></code></pre></td></tr></table>
 </div>
 </div><h3 id="5全文索引">5.全文索引</h3>
 <p>主要用来查找文本中的关键字，而不是直接与索引中的值相比较。<br>
@@ -378,7 +378,7 @@ fulltext索引配合match against操作使用，而不是一般的where语句加
 然后再用CREATE index创建fulltext索引，要比先为一张表建立fulltext然后再将数据写入的速度快很多。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -395,22 +395,22 @@ fulltext索引配合match against操作使用，而不是一般的where语句加
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#998;font-style:italic">--（1）创建表的适合添加全文索引
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">TABLE</span> tb1 (
-    id          <span style="color:#0086b3">int</span> <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> AUTO_INCREMENT ,
-    title       <span style="color:#0086b3">char</span>(<span style="color:#099">255</span>) <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">NOT</span> <span style="color:#000;font-weight:bold">NULL</span> ,
-    content     <span style="color:#0086b3">text</span> <span style="color:#0086b3">CHARACTER</span> <span style="color:#000;font-weight:bold">NULL</span> ,
-    update_time <span style="color:#0086b3">int</span> <span style="color:#000;font-weight:bold">NULL</span> <span style="color:#000;font-weight:bold">DEFAULT</span> <span style="color:#000;font-weight:bold">NULL</span> ,
-    <span style="color:#000;font-weight:bold">PRIMARY</span> <span style="color:#000;font-weight:bold">KEY</span> (id),
-    FULLTEXT (content)
-);
-
-<span style="color:#998;font-style:italic">--（2）修改表结构添加全文索引
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> article <span style="color:#000;font-weight:bold">ADD</span> FULLTEXT index_content(content)
-
-<span style="color:#998;font-style:italic">--（3）直接创建索引
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">CREATE</span> FULLTEXT <span style="color:#000;font-weight:bold">INDEX</span> index_content <span style="color:#000;font-weight:bold">ON</span> article(content)
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#998;font-style:italic">--（1）创建表的适合添加全文索引
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>tb1<span style="color:#bbb"> </span>(<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>id<span style="color:#bbb">          </span><span style="color:#0086b3">int</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span>AUTO_INCREMENT<span style="color:#bbb"> </span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>title<span style="color:#bbb">       </span><span style="color:#0086b3">char</span>(<span style="color:#099">255</span>)<span style="color:#bbb"> </span><span style="color:#0086b3">CHARACTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NOT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>content<span style="color:#bbb">     </span><span style="color:#0086b3">text</span><span style="color:#bbb"> </span><span style="color:#0086b3">CHARACTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>update_time<span style="color:#bbb"> </span><span style="color:#0086b3">int</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">DEFAULT</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">PRIMARY</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">KEY</span><span style="color:#bbb"> </span>(id),<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>FULLTEXT<span style="color:#bbb"> </span>(content)<span style="color:#bbb">
+</span><span style="color:#bbb"></span>);<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">--（2）修改表结构添加全文索引
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">ALTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>article<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">ADD</span><span style="color:#bbb"> </span>FULLTEXT<span style="color:#bbb"> </span>index_content(content)<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">--（3）直接创建索引
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span>FULLTEXT<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">INDEX</span><span style="color:#bbb"> </span>index_content<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">ON</span><span style="color:#bbb"> </span>article(content)<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="四缺点">四、缺点</h2>
 <ol>

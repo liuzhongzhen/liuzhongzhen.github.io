@@ -248,13 +248,13 @@ chown -R nobody:nobody #设置权限，允许nobody用户访问</p>
 增加如下内容：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic">#nfs config</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic">#nfs config</span>
 all:127.0.0.1
 rpcbind: ALL :allow
 mountd: ALL :allow
@@ -265,11 +265,11 @@ mountd: ALL :allow
 <p>编辑/etc/netconfig配置文件，注释掉udp6,tcp6行，禁用ip6,如下:</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic">#udp6       tpi_clts      v     inet6    udp     -       -</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic">#udp6       tpi_clts      v     inet6    udp     -       -</span>
 <span style="color:#998;font-style:italic">#tcp6       tpi_cots_ord  v     inet6    tcp     -       -</span>
 </code></pre></td></tr></table>
 </div>
@@ -278,10 +278,10 @@ mountd: ALL :allow
 <p>编辑配置文件/etc/exports，设置共享目录，权限，用户，增加如下：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/usr/local/services/arfa_nfs 10.0.0.0/8<span style="color:#000;font-weight:bold">(</span>rw,sync,all_squash,anonuid<span style="color:#000;font-weight:bold">=</span>99,anongid<span style="color:#000;font-weight:bold">=</span>99<span style="color:#000;font-weight:bold">)</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/usr/local/services/arfa_nfs 10.0.0.0/8<span style="color:#000;font-weight:bold">(</span>rw,sync,all_squash,anonuid<span style="color:#000;font-weight:bold">=</span>99,anongid<span style="color:#000;font-weight:bold">=</span>99<span style="color:#000;font-weight:bold">)</span>
 </code></pre></td></tr></table>
 </div>
 </div><p>&mdash;&mdash;&mdash;-下面是各个内容的详细解释&mdash;&mdash;&mdash;&ndash;<br>
@@ -312,14 +312,14 @@ anonuid 指的是 UID 而 anongid 则是群组的 GID 啰
 <p>配置服务端口号,编辑文件/etc/sysconfig/nfs</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#008080">RQUOTAD_PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30001</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#008080">RQUOTAD_PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30001</span>
 <span style="color:#008080">LOCKD_TCPPORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30002</span>
 <span style="color:#008080">LOCKD_UDPPORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30002</span>
 <span style="color:#008080">MOUNTD_PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30003</span>
@@ -336,7 +336,7 @@ anonuid 指的是 UID 而 anongid 则是群组的 GID 啰
 <p>iptables配置，允许防火墙访问，编辑配置文件/etc//sysconfig/iptables</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -344,7 +344,7 @@ anonuid 指的是 UID 而 anongid 则是群组的 GID 啰
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">-A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p tcp -m tcp --dport <span style="color:#099">111</span> -j ACCEPT 
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">-A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p tcp -m tcp --dport <span style="color:#099">111</span> -j ACCEPT 
 -A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p udp -m udp --dport <span style="color:#099">111</span> -j ACCEPT
 -A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p tcp -m tcp --dport <span style="color:#099">2049</span> -j ACCEPT
 -A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p udp -m udp --dport <span style="color:#099">2049</span> -j ACCEPT
@@ -370,7 +370,7 @@ rpcinfo -p localhost<br>
 输出如下：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -405,7 +405,7 @@ rpcinfo -p localhost<br>
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">program vers proto   port  service
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">program vers proto   port  service
 <span style="color:#099">100000</span>    <span style="color:#099">4</span>   tcp    <span style="color:#099">111</span>  portmapper
 <span style="color:#099">100000</span>    <span style="color:#099">3</span>   tcp    <span style="color:#099">111</span>  portmapper
 <span style="color:#099">100000</span>    <span style="color:#099">2</span>   tcp    <span style="color:#099">111</span>  portmapper
@@ -466,7 +466,7 @@ umount /data/arfa_nfs</li>
 df -h
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -476,7 +476,7 @@ df -h
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">---------------客户端挂载参数说明----------------------
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">---------------客户端挂载参数说明----------------------
 noatime       不更新文件的inode访问时间戳，文件很多时此参数可以提高效率。
 nodiratime    不更新目录的访问时间戳，同上。
 nosuid         关闭挂载目录的suid
@@ -554,7 +554,7 @@ NFS服务器到底使用哪个端口来进行数据传输呢？基本上NFS这�
         
         <li><a href="../../post/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-002%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B%E4%B9%8B%E8%B7%AF/">系统设计-002服务端架构演进之路</a></li>
         
-        <li><a href="../../books/Java%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91/">Java编程的逻辑</a></li>
+        <li><a href="../../books/OpenResty%E5%AE%8C%E5%85%A8%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/">OpenResty完全开发指南: 构建百万级别并发的Web应用</a></li>
         
     </ul>
 </div>

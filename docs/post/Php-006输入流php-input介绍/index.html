@@ -234,7 +234,7 @@
 @file 192.168.0.8:/phpinput_get.php 模拟以GET方法提交表单表数</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -244,7 +244,7 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
 <span style="color:#998;font-style:italic">//@file phpinput_server.php
 </span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$raw_post_data</span> <span style="color:#000;font-weight:bold">=</span> file_get_contents(<span style="color:#d14">&#39;php://input&#39;</span>, <span style="color:#d14">&#39;r&#39;</span>);
 <span style="color:#000;font-weight:bold">echo</span> <span style="color:#d14">&#34;-------</span><span style="color:#d14">\$</span><span style="color:#d14">_POST------------------</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>;
@@ -256,7 +256,7 @@
 </div>
 </div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -281,7 +281,7 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
 <span style="color:#998;font-style:italic">//@file phpinput_post.php
 </span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$http_entity_body</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;n=&#39;</span> <span style="color:#000;font-weight:bold">.</span> urldecode(<span style="color:#d14">&#39;perfgeeks&#39;</span>) <span style="color:#000;font-weight:bold">.</span> <span style="color:#d14">&#39;&amp;amp;p=&#39;</span> <span style="color:#000;font-weight:bold">.</span> urldecode(<span style="color:#d14">&#39;7788&#39;</span>);
 <span style="color:#008080">$http_entity_type</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;application/x-www-form-urlencoded&#39;</span>;
@@ -309,7 +309,7 @@
 </div><p>我们可以通过使用工具ngrep抓取http请求包（因为我们需要探知的是php://input，所以我们这里只抓取http Request数据包）。我们来执行测试脚本phpinput_post.php</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -326,7 +326,7 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">@php /phpinput_post.php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">@php /phpinput_post.php
 HTTP/1.1 <span style="color:#099">200</span> OK
 Date: Thu, <span style="color:#099">08</span> Apr <span style="color:#099">2010</span> 03:23:36 GMT
 Server: Apache/2.2.3 <span style="color:#000;font-weight:bold">(</span>CentOS<span style="color:#000;font-weight:bold">)</span>
@@ -344,7 +344,7 @@ array<span style="color:#000;font-weight:bold">(</span>2<span style="color:#000;
 </code></pre></td></tr></table>
 </div>
 </div><p>通过ngrep抓到的http请求包如下:</p>
-<pre><code>T 192.168.0.8:57846 -&gt; 192.168.0.6:80 [AP]
+<pre tabindex="0"><code>T 192.168.0.8:57846 -&gt; 192.168.0.6:80 [AP]
 POST /phpinput_server.php HTTP/1.1..
 Host: 192.168.0.6..Content-Type: application/x-www-form-urlencoded..Co
 ntent-Length: 18..Connection: close....n=perfgeeks&amp;p=7788....
@@ -357,7 +357,7 @@ ntent-Length: 18..Connection: close....n=perfgeeks&amp;p=7788....
 <p>我们再来看看脚本phpinput_xmlrpc.php的原文件内容，它模拟了一个POST方法提交的xml-rpc请求。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -382,7 +382,7 @@ ntent-Length: 18..Connection: close....n=perfgeeks&amp;p=7788....
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
 <span style="color:#998;font-style:italic">//@file phpinput_xmlrpc.php
 </span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$http_entity_body</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;</span><span style="color:#d14">\n\n</span><span style="color:#d14"> jt_userinfo</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>;
 <span style="color:#008080">$http_entity_type</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;text/html&#39;</span>;
@@ -410,7 +410,7 @@ ntent-Length: 18..Connection: close....n=perfgeeks&amp;p=7788....
 </div><p>同样地，让我们来执行这个测试脚本</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -430,7 +430,7 @@ ntent-Length: 18..Connection: close....n=perfgeeks&amp;p=7788....
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">@php /phpinput_xmlrcp.php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">@php /phpinput_xmlrcp.php
 HTTP/1.1 <span style="color:#099">200</span> OK
 Date: Thu, <span style="color:#099">08</span> Apr <span style="color:#099">2010</span> 03:47:18 GMT
 Server: Apache/2.2.3 <span style="color:#000;font-weight:bold">(</span>CentOS<span style="color:#000;font-weight:bold">)</span>
@@ -451,7 +451,7 @@ array<span style="color:#000;font-weight:bold">(</span>0<span style="color:#000;
 </code></pre></td></tr></table>
 </div>
 </div><p>执行这个脚本的时候，我们通过ngrep抓取的http请求数据包如下</p>
-<pre><code>T 192.168.0.8:45570 -&gt; 192.168.0.6:80 [AP]
+<pre tabindex="0"><code>T 192.168.0.8:45570 -&gt; 192.168.0.6:80 [AP]
 POST /phpinput_server.php HTTP/1.1..
 Host: 192.168.0.6..Content-Type: text/html..Content-Length: 75..Connec
 tion: close....&lt;?xml version=&quot;1.0&quot;&gt;.&lt;methodcall&gt;. &lt;name&gt;jt_userinfo&lt;
@@ -465,7 +465,7 @@ tion: close....&lt;?xml version=&quot;1.0&quot;&gt;.&lt;methodcall&gt;. &lt;name
 <p>我们再来看看通过GET方法提交表单数据的情况，<code>php://input</code>能不能读取到GET方法的表单数据？在这里，我们稍加改动一下<code>phpinput_server.php文件，将$_POST改成$_GET</code>。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -494,7 +494,7 @@ tion: close....&lt;?xml version=&quot;1.0&quot;&gt;.&lt;methodcall&gt;. &lt;name
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
 <span style="color:#998;font-style:italic">//@file phpinput_server.php
 </span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$raw_post_data</span> <span style="color:#000;font-weight:bold">=</span> file_get_contents(<span style="color:#d14">&#39;php://input&#39;</span>, <span style="color:#d14">&#39;r&#39;</span>);
 <span style="color:#000;font-weight:bold">echo</span> <span style="color:#d14">&#34;-------</span><span style="color:#d14">\$</span><span style="color:#d14">_GET------------------</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>;
@@ -526,7 +526,7 @@ tion: close....&lt;?xml version=&quot;1.0&quot;&gt;.&lt;methodcall&gt;. &lt;name
 </div><p>同样，我们执行下一phpinput_get.php测试脚本，它模拟了一个通常情况下的GET方法提交表单数据。</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -546,7 +546,7 @@ tion: close....&lt;?xml version=&quot;1.0&quot;&gt;.&lt;methodcall&gt;. &lt;name
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">@php /phpinput_get.php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">@php /phpinput_get.php
 HTTP/1.1 <span style="color:#099">200</span> OK
 Date: Thu, <span style="color:#099">08</span> Apr <span style="color:#099">2010</span> 07:38:15 GMT
 Server: Apache/2.2.3 <span style="color:#000;font-weight:bold">(</span>CentOS<span style="color:#000;font-weight:bold">)</span>
@@ -567,7 +567,7 @@ string<span style="color:#000;font-weight:bold">(</span>4<span style="color:#000
 </code></pre></td></tr></table>
 </div>
 </div><p>在这个时候，使用ngrep工具，捕获的相应的http请求数据包如下</p>
-<pre><code>T 192.168.0.8:36775 -&gt; 192.168.0.6:80 [AP]
+<pre tabindex="0"><code>T 192.168.0.8:36775 -&gt; 192.168.0.6:80 [AP]
 GET /phpinput_server.php?n=perfgeeks&amp;p=7788 HTTP/1.1..
 Host: 192.168.0.6..Connection: close....
 </code></pre><p>比较POST方法提交的http请求，通常GET方法提交的请求中，entity body为空。同时，不会指定Content-Type和Content-Length。但是，如果强硬数据http entity body，并指明正确地Content-Type和Content-Length,那么php://input还可是读取得到http entity body数据，但不是$_GET数据。</p>
@@ -583,14 +583,14 @@ Host: 192.168.0.6..Connection: close....
 php://input碰到了multipart/form-data上传文件的时候，表单的写法是这样的</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">form</span> <span style="color:#008080">enctype</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;multipart/form-data&#34;</span> <span style="color:#008080">action</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;phpinput_server.php&#34;</span> <span style="color:#008080">method</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;POST&#34;</span> &gt;
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">form</span> <span style="color:#008080">enctype</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;multipart/form-data&#34;</span> <span style="color:#008080">action</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;phpinput_server.php&#34;</span> <span style="color:#008080">method</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;POST&#34;</span> &gt;
 &lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;text&#34;</span> <span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;n&#34;</span> /&gt;
 &lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;file&#34;</span> <span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;f&#34;</span> /&gt;
 &lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;submit&#34;</span> <span style="color:#008080">value</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;upload now&#34;</span> /&gt;
@@ -600,18 +600,18 @@ php://input碰到了multipart/form-data上传文件的时候，表单的写法�
 </div><p>那么，enctype=multipart/form-data这里的意义，就是将该次http请求头部(head)中的Content-Type设置为multipart/form-data。请查阅RFC1867对 它的描述。multipart/form-data也表示以POST方法提交表单数据，它还伴随了文件上传，所以会跟application/x- www-form-urlencoded数据格式不一样。它会以一更种更合理的，更高效的数据格式传递给服务端。我们提交该表单数据，并且打印出响应结果，如下:</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-------<span style="color:#008080">$_POST</span>------------------
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-------<span style="color:#008080">$_POST</span>------------------
 array<span style="color:#000;font-weight:bold">(</span>1<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span> <span style="color:#000;font-weight:bold">[</span><span style="color:#d14">&#34;n&#34;</span><span style="color:#000;font-weight:bold">]=</span>&gt; string<span style="color:#000;font-weight:bold">(</span>9<span style="color:#000;font-weight:bold">)</span> <span style="color:#d14">&#34;perfgeeks&#34;</span> <span style="color:#000;font-weight:bold">}</span>
 -------php://input-------------
 </code></pre></td></tr></table>
 </div>
 </div><p>同时，我们通过ngrep抓取的相应的http请求数据包如下:</p>
-<pre><code>########
+<pre tabindex="0"><code>########
 T 192.168.0.8:3981 -&gt; 192.168.0.6:80 [AP]
 POST /phpinput_server.php HTTP/1.1..Host: 192.168.0.6..Connection: kee
 p-alive..User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US) AppleWebKit/533.2 (KHTML, like Gecko) Chrome/5.0.342.3 Safari/533.2..Re
@@ -638,14 +638,14 @@ undarybLQwkp4opIEZn1fA--..
 <p>把脚本phpinput_server.php改变一下，可以验证上述内容</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
 <span style="color:#008080">$raw_post_data</span> <span style="color:#000;font-weight:bold">=</span> file_get_contents(<span style="color:#d14">&#39;php://input&#39;</span>, <span style="color:#d14">&#39;r&#39;</span>);
 <span style="color:#008080">$rtn</span> <span style="color:#000;font-weight:bold">=</span> (<span style="color:#008080">$raw_post_data</span> <span style="color:#000;font-weight:bold">==</span> <span style="color:#008080">$HTTP_RAW_POST_DATA</span>) <span style="color:#000;font-weight:bold">?</span> <span style="color:#099">1</span> <span style="color:#000;font-weight:bold">:</span> <span style="color:#099">0</span>;
 <span style="color:#000;font-weight:bold">echo</span> <span style="color:#008080">$rtn</span>;

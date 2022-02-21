@@ -14,7 +14,7 @@
       <pubDate>Sat, 06 Feb 2016 23:20:44 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/Mysql-013%E8%A1%A8%E7%BB%93%E6%9E%84%E5%8F%98%E6%9B%B4/</guid>
-      <description>当前mysql最大的记录数是7亿级 Executing: 1 2 3 4 ALTER TABLE `live_http_origin`.`o_xylive_flashsdk_one_20170414` ADD COLUMN `httpdns_resptime` DOUBLE NULL AFTER `httpdns_time`, ADD COLUMN `httpdns_clientip` VARCHAR(45) NULL AFTER `httpdns_resptime`, ADD COLUMN `httpdns_host` VARCHAR(200) NULL AFTER `httpdns_clientip`; 杀死my</description>
+      <description>当前mysql最大的记录数是7亿级 Executing: 1 2 3 4 ALTERTABLE`live_http_origin`.`o_xylive_flashsdk_one_20170414`ADDCOLUMN`httpdns_resptime`DOUBLENULLAFTER`httpdns_time`,ADDCOLUMN`httpdns_clientip`VARCHAR(45)NULLAFTER`httpdns_resptime`,ADDCOLUMN`httpdns_host`VARCHAR(200)NULLAFTER`httpdns_clientip`; 杀死mysql连接 1 mysql -uroot -p123456 -e &amp;#34; show processlist &amp;#34; | grep graph_cluster | awk &amp;#39;{print &amp;#34;mysql -uroot -p123456</description>
     </item>
     
     <item>
@@ -122,7 +122,7 @@
       <pubDate>Fri, 01 Jan 2016 11:17:16 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/</guid>
-      <description>常用附加信息 1 2 3 4 5 6 ENGINE = InnoDB default character set = utf8mb4 collate = utf8mb4_general_ci comment = &amp;#39;任务类型扩展配置信息&amp;#39; ROW_FORMAT = Compact #压</description>
+      <description>常用附加信息 1 2 3 4 5 6 ENGINE=InnoDBdefaultcharacterset=utf8m</description>
     </item>
     
   </channel>

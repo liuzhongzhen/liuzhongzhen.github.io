@@ -217,7 +217,7 @@
             <h2 id="alter-column">Alter Column</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -229,37 +229,37 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#998;font-style:italic">-- 修改column属性（列名，列字段类型，列注释）：
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#000;font-weight:bold">table_name</span>     
-    CHANGE [<span style="color:#000;font-weight:bold">COLUMN</span>] col_old_name col_new_name column_type [<span style="color:#000;font-weight:bold">COMMENT</span> col_comment] [<span style="color:#000;font-weight:bold">FIRST</span><span style="color:#000;font-weight:bold">|</span><span style="color:#000;font-weight:bold">AFTER</span> <span style="color:#000;font-weight:bold">column_name</span>] 
-
-<span style="color:#998;font-style:italic">-- 增加/替换column（可以使用replace来删除不需要的字段）
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">ALTER</span> <span style="color:#000;font-weight:bold">TABLE</span> <span style="color:#000;font-weight:bold">table_name</span>   
-    <span style="color:#000;font-weight:bold">ADD</span><span style="color:#000;font-weight:bold">|</span><span style="color:#000;font-weight:bold">REPLACE</span> COLUMNS (
-        col_name data_type [<span style="color:#000;font-weight:bold">COMMENT</span> col_comment], 
-        ...
-    )  
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#998;font-style:italic">-- 修改column属性（列名，列字段类型，列注释）：
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">ALTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table_name</span><span style="color:#bbb">     
+</span><span style="color:#bbb">    </span>CHANGE<span style="color:#bbb"> </span>[<span style="color:#000;font-weight:bold">COLUMN</span>]<span style="color:#bbb"> </span>col_old_name<span style="color:#bbb"> </span>col_new_name<span style="color:#bbb"> </span>column_type<span style="color:#bbb"> </span>[<span style="color:#000;font-weight:bold">COMMENT</span><span style="color:#bbb"> </span>col_comment]<span style="color:#bbb"> </span>[<span style="color:#000;font-weight:bold">FIRST</span><span style="color:#000;font-weight:bold">|</span><span style="color:#000;font-weight:bold">AFTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">column_name</span>]<span style="color:#bbb"> 
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">-- 增加/替换column（可以使用replace来删除不需要的字段）
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">ALTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table_name</span><span style="color:#bbb">   
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">ADD</span><span style="color:#000;font-weight:bold">|</span><span style="color:#000;font-weight:bold">REPLACE</span><span style="color:#bbb"> </span>COLUMNS<span style="color:#bbb"> </span>(<span style="color:#bbb">
+</span><span style="color:#bbb">        </span>col_name<span style="color:#bbb"> </span>data_type<span style="color:#bbb"> </span>[<span style="color:#000;font-weight:bold">COMMENT</span><span style="color:#bbb"> </span>col_comment],<span style="color:#bbb"> 
+</span><span style="color:#bbb">        </span>...<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>)<span style="color:#bbb">  
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="hive-udf函数的使用">hive udf函数的使用</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">add</span> jar <span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">data</span><span style="color:#000;font-weight:bold">/</span>udfbak<span style="color:#000;font-weight:bold">/</span>dcdnIpdbUdf<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>.<span style="color:#099">9</span>.jar; <span style="color:#a61717;background-color:#e3d2d2">这是本地路径</span>
-<span style="color:#000;font-weight:bold">add</span> jar <span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">user</span><span style="color:#000;font-weight:bold">/</span>dcdn<span style="color:#000;font-weight:bold">/</span>warehouse<span style="color:#000;font-weight:bold">/</span>udf<span style="color:#000;font-weight:bold">/</span>dcdnIpdbUdf<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>.<span style="color:#099">6</span>.jar;
-<span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">temporary</span> <span style="color:#000;font-weight:bold">function</span> mysplit <span style="color:#000;font-weight:bold">as</span> <span style="color:#d14">&#39;com.dcdn.udf.UDFMySplit&#39;</span>;
-<span style="color:#000;font-weight:bold">select</span> mysplit(<span style="color:#d14">&#39;10.11.12.13&#39;</span>,<span style="color:#d14">&#34;,&#34;</span>) a <span style="color:#000;font-weight:bold">from</span> dual;
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">add</span><span style="color:#bbb"> </span>jar<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">data</span><span style="color:#000;font-weight:bold">/</span>udfbak<span style="color:#000;font-weight:bold">/</span>dcdnIpdbUdf<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>.<span style="color:#099">9</span>.jar;<span style="color:#bbb"> </span><span style="color:#a61717;background-color:#e3d2d2">这是本地路径</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">add</span><span style="color:#bbb"> </span>jar<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">user</span><span style="color:#000;font-weight:bold">/</span>dcdn<span style="color:#000;font-weight:bold">/</span>warehouse<span style="color:#000;font-weight:bold">/</span>udf<span style="color:#000;font-weight:bold">/</span>dcdnIpdbUdf<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>.<span style="color:#099">6</span>.jar;<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">create</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">temporary</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>mysplit<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;com.dcdn.udf.UDFMySplit&#39;</span>;<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>mysplit(<span style="color:#d14">&#39;10.11.12.13&#39;</span>,<span style="color:#d14">&#34;,&#34;</span>)<span style="color:#bbb"> </span>a<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>dual;<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="根据目录创建外表">根据目录创建外表</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -276,36 +276,36 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">EXTERNAL</span> <span style="color:#000;font-weight:bold">TABLE</span> test_min_part(
-    stime  <span style="color:#000;font-weight:bold">timestamp</span>, 
-    tid    <span style="color:#0086b3">int</span>, 
-    tmsg   string
-) PARTITIONED <span style="color:#000;font-weight:bold">BY</span> ( 
-    pdate string, 
-    phour string,
-    pmin  string
-)
-<span style="color:#000;font-weight:bold">ROW</span> FORMAT DELIMITED 
-FIELDS TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\u0001&#39;</span>
-COLLECTION ITEMS TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\u0002&#39;</span> 
-LINES TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\n&#39;</span> 
-STORED <span style="color:#000;font-weight:bold">AS</span> textfile
-<span style="color:#000;font-weight:bold">LOCATION</span> <span style="color:#d14">&#39;/user/dcdn/mysql_backup/dim_lib.db/test_min_part&#39;</span>;
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">EXTERNAL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>test_min_part(<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>stime<span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">timestamp</span>,<span style="color:#bbb"> 
+</span><span style="color:#bbb">    </span>tid<span style="color:#bbb">    </span><span style="color:#0086b3">int</span>,<span style="color:#bbb"> 
+</span><span style="color:#bbb">    </span>tmsg<span style="color:#bbb">   </span>string<span style="color:#bbb">
+</span><span style="color:#bbb"></span>)<span style="color:#bbb"> </span>PARTITIONED<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">BY</span><span style="color:#bbb"> </span>(<span style="color:#bbb"> 
+</span><span style="color:#bbb">    </span>pdate<span style="color:#bbb"> </span>string,<span style="color:#bbb"> 
+</span><span style="color:#bbb">    </span>phour<span style="color:#bbb"> </span>string,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>pmin<span style="color:#bbb">  </span>string<span style="color:#bbb">
+</span><span style="color:#bbb"></span>)<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">ROW</span><span style="color:#bbb"> </span>FORMAT<span style="color:#bbb"> </span>DELIMITED<span style="color:#bbb"> 
+</span><span style="color:#bbb"></span>FIELDS<span style="color:#bbb"> </span>TERMINATED<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">BY</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;\u0001&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>COLLECTION<span style="color:#bbb"> </span>ITEMS<span style="color:#bbb"> </span>TERMINATED<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">BY</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;\u0002&#39;</span><span style="color:#bbb"> 
+</span><span style="color:#bbb"></span>LINES<span style="color:#bbb"> </span>TERMINATED<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">BY</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;\n&#39;</span><span style="color:#bbb"> 
+</span><span style="color:#bbb"></span>STORED<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">AS</span><span style="color:#bbb"> </span>textfile<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">LOCATION</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;/user/dcdn/mysql_backup/dim_lib.db/test_min_part&#39;</span>;<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="给外表加分区">给外表加分区：</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> test_min_part <span style="color:#000;font-weight:bold">add</span> partition(pdate<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;20170412&#39;</span>,phour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;10&#39;</span>,pmin<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;00&#39;</span>) <span style="color:#000;font-weight:bold">location</span> <span style="color:#d14">&#39;20170412/10/00&#39;</span>;
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">alter</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span><span style="color:#bbb"> </span>test_min_part<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">add</span><span style="color:#bbb"> </span>partition(pdate<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;20170412&#39;</span>,phour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;10&#39;</span>,pmin<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;00&#39;</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">location</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;20170412/10/00&#39;</span>;<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="创建外表">创建外表</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
@@ -409,114 +409,114 @@ STORED <span style="color:#000;font-weight:bold">AS</span> textfile
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">external</span> <span style="color:#000;font-weight:bold">table</span> tb_test(
-    logtime            <span style="color:#0086b3">bigint</span>,
-    bussinessname      string,
-    appname            string,
-    streamname         string,
-    connectiontotal    <span style="color:#0086b3">bigint</span>,
-    outbandwidthdelta  <span style="color:#0086b3">bigint</span>,
-    srvtime            <span style="color:#0086b3">bigint</span>,
-    <span style="color:#000;font-weight:bold">source</span>             <span style="color:#0086b3">int</span>
-)
-partitioned <span style="color:#000;font-weight:bold">by</span>(
-    pdate <span style="color:#0086b3">bigint</span>
-)
-<span style="color:#000;font-weight:bold">ROW</span> FORMAT DELIMITED
-FIELDS TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\t&#39;</span>
-COLLECTION ITEMS TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\t&#39;</span>
-LINES TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\n&#39;</span>
-STORED <span style="color:#000;font-weight:bold">AS</span> textfile
-<span style="color:#000;font-weight:bold">LOCATION</span> <span style="color:#d14">&#39;/user/dcdn/mysql_backup/live_stat.db/tb_test&#39;</span>;
-
-<span style="color:#998;font-style:italic">-- 删除分区：
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> tb1 <span style="color:#000;font-weight:bold">drop</span> partition(data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-06-15&#39;</span>,data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;04&#39;</span>);  
-<span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> tb2 <span style="color:#000;font-weight:bold">drop</span> partition(data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#099">20170309</span>); 
-<span style="color:#998;font-style:italic">-- 重建分区：
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> tb1 <span style="color:#000;font-weight:bold">add</span> partition(data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-06-15&#39;</span>,data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;04&#39;</span>) <span style="color:#000;font-weight:bold">location</span> <span style="color:#d14">&#39;20160615/04/&#39;</span>;
-<span style="color:#000;font-weight:bold">alter</span> <span style="color:#000;font-weight:bold">table</span> tb2 <span style="color:#000;font-weight:bold">add</span> partition(data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-11-17&#39;</span>,data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;12&#39;</span>) <span style="color:#000;font-weight:bold">location</span> <span style="color:#d14">&#39;20161117/12/&#39;</span>;
-
-<span style="color:#998;font-style:italic">-- 上传本地文件数据到hive的指定分区中
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">load</span> <span style="color:#000;font-weight:bold">data</span> <span style="color:#000;font-weight:bold">local</span> inpath <span style="color:#d14">&#39;/data/19/*&#39;</span> overwrite <span style="color:#000;font-weight:bold">into</span> <span style="color:#000;font-weight:bold">table</span> test.tb4 partition(data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-11-27&#39;</span>,data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;19&#39;</span>);
-
-<span style="color:#998;font-style:italic">-- 把数据写入到本地目录中
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">INSERT</span> OVERWRITE <span style="color:#000;font-weight:bold">LOCAL</span> DIRECTORY <span style="color:#d14">&#39;/tmp/httphive18.log&#39;</span>
-    <span style="color:#000;font-weight:bold">ROW</span> FORMAT DELIMITED
-    FIELDS TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\t&#39;</span>
-    COLLECTION ITEMS TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\t&#39;</span>
-<span style="color:#000;font-weight:bold">select</span>  gcid,
-        province,
-        isp,
-        <span style="color:#000;font-weight:bold">sum</span>(<span style="color:#099">1</span>) devicenum 
-  <span style="color:#000;font-weight:bold">from</span>  http_hub_deploy  
- <span style="color:#000;font-weight:bold">where</span> data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-04-19&#39;</span> 
-   <span style="color:#000;font-weight:bold">and</span> <span style="color:#000;font-weight:bold">domain</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;iqiyi.x.00cdn.com&#39;</span> 
- <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> gcid,province,isp;
-
-<span style="color:#998;font-style:italic">-- 根据已有的表创建表
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> r_live_oss_stat_flow 
-    <span style="color:#000;font-weight:bold">as</span> 
-<span style="color:#000;font-weight:bold">select</span> hostname,<span style="color:#000;font-weight:bold">sum</span>(<span style="color:#099">1</span>) cnt                
-  <span style="color:#000;font-weight:bold">from</span> dcdn_standard_access_log 
- <span style="color:#000;font-weight:bold">where</span> data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-05-29&#39;</span> 
-   <span style="color:#000;font-weight:bold">and</span> data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;20&#39;</span>   
-   <span style="color:#000;font-weight:bold">and</span> <span style="color:#000;font-weight:bold">host</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;get3.xiaopi.com&#39;</span>               
-   <span style="color:#000;font-weight:bold">and</span> status<span style="color:#000;font-weight:bold">=</span><span style="color:#099">404</span>                          
- <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> hostname;
-
-
-<span style="color:#998;font-style:italic">-- 创建表的语句
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">external</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span><span style="color:#bbb"> </span>tb_test(<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>logtime<span style="color:#bbb">            </span><span style="color:#0086b3">bigint</span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>bussinessname<span style="color:#bbb">      </span>string,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>appname<span style="color:#bbb">            </span>string,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>streamname<span style="color:#bbb">         </span>string,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>connectiontotal<span style="color:#bbb">    </span><span style="color:#0086b3">bigint</span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>outbandwidthdelta<span style="color:#bbb">  </span><span style="color:#0086b3">bigint</span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>srvtime<span style="color:#bbb">            </span><span style="color:#0086b3">bigint</span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">source</span><span style="color:#bbb">             </span><span style="color:#0086b3">int</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>)<span style="color:#bbb">
+</span><span style="color:#bbb"></span>partitioned<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">by</span>(<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>pdate<span style="color:#bbb"> </span><span style="color:#0086b3">bigint</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>)<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">ROW</span><span style="color:#bbb"> </span>FORMAT<span style="color:#bbb"> </span>DELIMITED<span style="color:#bbb">
+</span><span style="color:#bbb"></span>FIELDS<span style="color:#bbb"> </span>TERMINATED<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">BY</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;\t&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>COLLECTION<span style="color:#bbb"> </span>ITEMS<span style="color:#bbb"> </span>TERMINATED<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">BY</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;\t&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>LINES<span style="color:#bbb"> </span>TERMINATED<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">BY</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;\n&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>STORED<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">AS</span><span style="color:#bbb"> </span>textfile<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">LOCATION</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;/user/dcdn/mysql_backup/live_stat.db/tb_test&#39;</span>;<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">-- 删除分区：
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">alter</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span><span style="color:#bbb"> </span>tb1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">drop</span><span style="color:#bbb"> </span>partition(data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-06-15&#39;</span>,data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;04&#39;</span>);<span style="color:#bbb">  
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">alter</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span><span style="color:#bbb"> </span>tb2<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">drop</span><span style="color:#bbb"> </span>partition(data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#099">20170309</span>);<span style="color:#bbb"> 
+</span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">-- 重建分区：
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">alter</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span><span style="color:#bbb"> </span>tb1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">add</span><span style="color:#bbb"> </span>partition(data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-06-15&#39;</span>,data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;04&#39;</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">location</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;20160615/04/&#39;</span>;<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">alter</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span><span style="color:#bbb"> </span>tb2<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">add</span><span style="color:#bbb"> </span>partition(data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-11-17&#39;</span>,data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;12&#39;</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">location</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;20161117/12/&#39;</span>;<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">-- 上传本地文件数据到hive的指定分区中
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">load</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">data</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">local</span><span style="color:#bbb"> </span>inpath<span style="color:#bbb"> </span><span style="color:#d14">&#39;/data/19/*&#39;</span><span style="color:#bbb"> </span>overwrite<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">into</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span><span style="color:#bbb"> </span>test.tb4<span style="color:#bbb"> </span>partition(data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-11-27&#39;</span>,data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;19&#39;</span>);<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">-- 把数据写入到本地目录中
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">INSERT</span><span style="color:#bbb"> </span>OVERWRITE<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">LOCAL</span><span style="color:#bbb"> </span>DIRECTORY<span style="color:#bbb"> </span><span style="color:#d14">&#39;/tmp/httphive18.log&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">ROW</span><span style="color:#bbb"> </span>FORMAT<span style="color:#bbb"> </span>DELIMITED<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>FIELDS<span style="color:#bbb"> </span>TERMINATED<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">BY</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;\t&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb">    </span>COLLECTION<span style="color:#bbb"> </span>ITEMS<span style="color:#bbb"> </span>TERMINATED<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">BY</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;\t&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb">  </span>gcid,<span style="color:#bbb">
+</span><span style="color:#bbb">        </span>province,<span style="color:#bbb">
+</span><span style="color:#bbb">        </span>isp,<span style="color:#bbb">
+</span><span style="color:#bbb">        </span><span style="color:#000;font-weight:bold">sum</span>(<span style="color:#099">1</span>)<span style="color:#bbb"> </span>devicenum<span style="color:#bbb"> 
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb">  </span>http_hub_deploy<span style="color:#bbb">  
+</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-04-19&#39;</span><span style="color:#bbb"> 
+</span><span style="color:#bbb">   </span><span style="color:#000;font-weight:bold">and</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">domain</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;iqiyi.x.00cdn.com&#39;</span><span style="color:#bbb"> 
+</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">group</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">by</span><span style="color:#bbb"> </span>gcid,province,isp;<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">-- 根据已有的表创建表
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">create</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">if</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">not</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">exists</span><span style="color:#bbb"> </span>r_live_oss_stat_flow<span style="color:#bbb"> 
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb"> 
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>hostname,<span style="color:#000;font-weight:bold">sum</span>(<span style="color:#099">1</span>)<span style="color:#bbb"> </span>cnt<span style="color:#bbb">                
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>dcdn_standard_access_log<span style="color:#bbb"> 
+</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-05-29&#39;</span><span style="color:#bbb"> 
+</span><span style="color:#bbb">   </span><span style="color:#000;font-weight:bold">and</span><span style="color:#bbb"> </span>data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;20&#39;</span><span style="color:#bbb">   
+</span><span style="color:#bbb">   </span><span style="color:#000;font-weight:bold">and</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">host</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;get3.xiaopi.com&#39;</span><span style="color:#bbb">               
+</span><span style="color:#bbb">   </span><span style="color:#000;font-weight:bold">and</span><span style="color:#bbb"> </span>status<span style="color:#000;font-weight:bold">=</span><span style="color:#099">404</span><span style="color:#bbb">                          
+</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">group</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">by</span><span style="color:#bbb"> </span>hostname;<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">-- 创建表的语句
 </span><span style="color:#998;font-style:italic">-- 建表语句
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">EXTERNAL</span> <span style="color:#000;font-weight:bold">TABLE</span> o_vod_scheduledns_log(
-    stime     <span style="color:#000;font-weight:bold">timestamp</span>,
-    hostname  string,  
-    ms        double
-)
-PARTITIONED <span style="color:#000;font-weight:bold">BY</span> ( 
-    data_date string, 
-    data_hour string
-)
-<span style="color:#000;font-weight:bold">ROW</span> FORMAT DELIMITED 
-FIELDS TERMINATED <span style="color:#000;font-weight:bold">BY</span> <span style="color:#d14">&#39;\u0001&#39;</span> 
-STORED <span style="color:#000;font-weight:bold">AS</span> INPUTFORMAT <span style="color:#d14">&#39;org.apache.hadoop.mapred.SequenceFileInputFormat&#39;</span> 
-OUTPUTFORMAT <span style="color:#d14">&#39;org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat&#39;</span>
-<span style="color:#000;font-weight:bold">LOCATION</span> <span style="color:#d14">&#39;hdfs://master.xldw.xunlei.com:xxxx/user/dcdn/warehouse/flume_hive/o_vod_scheduledns_log&#39;</span>;
-
-<span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> jsontest(
-    id  <span style="color:#0086b3">int</span>,
-    jl   string
-)
-<span style="color:#000;font-weight:bold">row</span> format delimited
-fields terminated <span style="color:#000;font-weight:bold">by</span> <span style="color:#d14">&#39;\u0001&#39;</span>
-escaped <span style="color:#000;font-weight:bold">by</span> <span style="color:#d14">&#39;\\&#39;</span>
-collection items terminated <span style="color:#000;font-weight:bold">by</span> <span style="color:#d14">&#39;\u0002&#39;</span>
-stored <span style="color:#000;font-weight:bold">as</span> textfile;
-
-<span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">TABLE</span> jt_reg 
-    <span style="color:#000;font-weight:bold">AS</span>
-<span style="color:#000;font-weight:bold">select</span> regexp_replace(regexp_replace(value,<span style="color:#d14">&#39;\\}\\,\\{&#39;</span>,<span style="color:#d14">&#39;\\}\\\n\\{&#39;</span>),<span style="color:#d14">&#39;\\[|\\]&#39;</span>,<span style="color:#d14">&#39;&#39;</span>) <span style="color:#000;font-weight:bold">as</span> valuereg  
-  <span style="color:#000;font-weight:bold">from</span> jt;
-
-<span style="color:#000;font-weight:bold">CREATE</span> <span style="color:#000;font-weight:bold">TABLE</span> logs 
-    <span style="color:#000;font-weight:bold">AS</span> 
-<span style="color:#000;font-weight:bold">SELECT</span> get_json_object(jt_reg.valuereg,<span style="color:#d14">&#39;$.ts&#39;</span>) <span style="color:#000;font-weight:bold">AS</span> ts, 
-       get_json_object(jt_reg.valuereg,<span style="color:#d14">&#39;$.id&#39;</span>) <span style="color:#000;font-weight:bold">AS</span> id,
-       get_json_object(jt_reg.valuereg,<span style="color:#d14">&#39;$.log&#39;</span>) <span style="color:#000;font-weight:bold">AS</span> log
-  <span style="color:#000;font-weight:bold">FROM</span> ams_json_reg;
-
-<span style="color:#000;font-weight:bold">SELECT</span> get_json_object(single_json_table.single_json,<span style="color:#d14">&#39;$.ts&#39;</span>) <span style="color:#000;font-weight:bold">AS</span> ts,
-       get_json_object(single_json_table.single_json,<span style="color:#d14">&#39;$.id&#39;</span>) <span style="color:#000;font-weight:bold">AS</span> id,
-       get_json_object(single_json_table.single_json,<span style="color:#d14">&#39;$.log&#39;</span>) <span style="color:#000;font-weight:bold">AS</span> log
-  <span style="color:#000;font-weight:bold">FROM</span> (<span style="color:#000;font-weight:bold">SELECT</span> explode(split(regexp_replace(substr(json_array_col,<span style="color:#099">2</span>, 
-                        <span style="color:#000;font-weight:bold">length</span>(json_array_col)<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>),<span style="color:#d14">&#39;&#34;}&#34;,&#34;&#39;</span>,<span style="color:#d14">&#39;&#34;}&#34;,,,,&#34;&#39;</span>),<span style="color:#d14">&#39;,,,,&#39;</span>)) 
-          <span style="color:#000;font-weight:bold">FROM</span> src_table
-        ) single_json_table;
-</code></pre></td></tr></table>
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">EXTERNAL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>o_vod_scheduledns_log(<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>stime<span style="color:#bbb">     </span><span style="color:#000;font-weight:bold">timestamp</span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>hostname<span style="color:#bbb">  </span>string,<span style="color:#bbb">  
+</span><span style="color:#bbb">    </span>ms<span style="color:#bbb">        </span>double<span style="color:#bbb">
+</span><span style="color:#bbb"></span>)<span style="color:#bbb">
+</span><span style="color:#bbb"></span>PARTITIONED<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">BY</span><span style="color:#bbb"> </span>(<span style="color:#bbb"> 
+</span><span style="color:#bbb">    </span>data_date<span style="color:#bbb"> </span>string,<span style="color:#bbb"> 
+</span><span style="color:#bbb">    </span>data_hour<span style="color:#bbb"> </span>string<span style="color:#bbb">
+</span><span style="color:#bbb"></span>)<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">ROW</span><span style="color:#bbb"> </span>FORMAT<span style="color:#bbb"> </span>DELIMITED<span style="color:#bbb"> 
+</span><span style="color:#bbb"></span>FIELDS<span style="color:#bbb"> </span>TERMINATED<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">BY</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;\u0001&#39;</span><span style="color:#bbb"> 
+</span><span style="color:#bbb"></span>STORED<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">AS</span><span style="color:#bbb"> </span>INPUTFORMAT<span style="color:#bbb"> </span><span style="color:#d14">&#39;org.apache.hadoop.mapred.SequenceFileInputFormat&#39;</span><span style="color:#bbb"> 
+</span><span style="color:#bbb"></span>OUTPUTFORMAT<span style="color:#bbb"> </span><span style="color:#d14">&#39;org.apache.hadoop.hive.ql.io.HiveSequenceFileOutputFormat&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">LOCATION</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;hdfs://master.xldw.xunlei.com:xxxx/user/dcdn/warehouse/flume_hive/o_vod_scheduledns_log&#39;</span>;<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">create</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span><span style="color:#bbb"> </span>jsontest(<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>id<span style="color:#bbb">  </span><span style="color:#0086b3">int</span>,<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>jl<span style="color:#bbb">   </span>string<span style="color:#bbb">
+</span><span style="color:#bbb"></span>)<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">row</span><span style="color:#bbb"> </span>format<span style="color:#bbb"> </span>delimited<span style="color:#bbb">
+</span><span style="color:#bbb"></span>fields<span style="color:#bbb"> </span>terminated<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">by</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;\u0001&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>escaped<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">by</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;\\&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>collection<span style="color:#bbb"> </span>items<span style="color:#bbb"> </span>terminated<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">by</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;\u0002&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>stored<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb"> </span>textfile;<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>jt_reg<span style="color:#bbb"> 
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">AS</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>regexp_replace(regexp_replace(value,<span style="color:#d14">&#39;\\}\\,\\{&#39;</span>,<span style="color:#d14">&#39;\\}\\\n\\{&#39;</span>),<span style="color:#d14">&#39;\\[|\\]&#39;</span>,<span style="color:#d14">&#39;&#39;</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb"> </span>valuereg<span style="color:#bbb">  
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>jt;<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">CREATE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>logs<span style="color:#bbb"> 
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">AS</span><span style="color:#bbb"> 
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">SELECT</span><span style="color:#bbb"> </span>get_json_object(jt_reg.valuereg,<span style="color:#d14">&#39;$.ts&#39;</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">AS</span><span style="color:#bbb"> </span>ts,<span style="color:#bbb"> 
+</span><span style="color:#bbb">       </span>get_json_object(jt_reg.valuereg,<span style="color:#d14">&#39;$.id&#39;</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">AS</span><span style="color:#bbb"> </span>id,<span style="color:#bbb">
+</span><span style="color:#bbb">       </span>get_json_object(jt_reg.valuereg,<span style="color:#d14">&#39;$.log&#39;</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">AS</span><span style="color:#bbb"> </span>log<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">FROM</span><span style="color:#bbb"> </span>ams_json_reg;<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">SELECT</span><span style="color:#bbb"> </span>get_json_object(single_json_table.single_json,<span style="color:#d14">&#39;$.ts&#39;</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">AS</span><span style="color:#bbb"> </span>ts,<span style="color:#bbb">
+</span><span style="color:#bbb">       </span>get_json_object(single_json_table.single_json,<span style="color:#d14">&#39;$.id&#39;</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">AS</span><span style="color:#bbb"> </span>id,<span style="color:#bbb">
+</span><span style="color:#bbb">       </span>get_json_object(single_json_table.single_json,<span style="color:#d14">&#39;$.log&#39;</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">AS</span><span style="color:#bbb"> </span>log<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">FROM</span><span style="color:#bbb"> </span>(<span style="color:#000;font-weight:bold">SELECT</span><span style="color:#bbb"> </span>explode(split(regexp_replace(substr(json_array_col,<span style="color:#099">2</span>,<span style="color:#bbb"> 
+</span><span style="color:#bbb">                        </span><span style="color:#000;font-weight:bold">length</span>(json_array_col)<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>),<span style="color:#d14">&#39;&#34;}&#34;,&#34;&#39;</span>,<span style="color:#d14">&#39;&#34;}&#34;,,,,&#34;&#39;</span>),<span style="color:#d14">&#39;,,,,&#39;</span>))<span style="color:#bbb"> 
+</span><span style="color:#bbb">          </span><span style="color:#000;font-weight:bold">FROM</span><span style="color:#bbb"> </span>src_table<span style="color:#bbb">
+</span><span style="color:#bbb">        </span>)<span style="color:#bbb"> </span>single_json_table;<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="lateral-view和json使用例子">Lateral View和json使用例子</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -553,59 +553,59 @@ stored <span style="color:#000;font-weight:bold">as</span> textfile;
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> <span style="color:#000;font-weight:bold">exists</span> jonliu_temp 
-    <span style="color:#000;font-weight:bold">as</span> 
-<span style="color:#000;font-weight:bold">select</span> hostname,<span style="color:#000;font-weight:bold">sum</span>(<span style="color:#099">1</span>) cnt                 
-  <span style="color:#000;font-weight:bold">from</span> dcdn_standard_access_log           
- <span style="color:#000;font-weight:bold">where</span> data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-05-29&#39;</span>           
-   <span style="color:#000;font-weight:bold">and</span> data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;20&#39;</span>   
-   <span style="color:#000;font-weight:bold">and</span> <span style="color:#000;font-weight:bold">host</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;get3.xiaopi.com&#39;</span>              
-   <span style="color:#000;font-weight:bold">and</span> status<span style="color:#000;font-weight:bold">=</span><span style="color:#099">404</span>                          
- <span style="color:#000;font-weight:bold">group</span> <span style="color:#000;font-weight:bold">by</span> hostname;
-
-<span style="color:#000;font-weight:bold">select</span> json_tuple(d,<span style="color:#d14">&#39;ts&#39;</span>,<span style="color:#d14">&#39;id&#39;</span>,<span style="color:#d14">&#39;log&#39;</span>) 
-  <span style="color:#000;font-weight:bold">from</span> (<span style="color:#000;font-weight:bold">SELECT</span> explode(split(regexp_replace(substr(jl,<span style="color:#099">2</span>,<span style="color:#000;font-weight:bold">length</span>(jl)<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>),<span style="color:#d14">&#39;},\\{&#39;</span>,<span style="color:#d14">&#39;}@@@@\\{&#39;</span>),<span style="color:#d14">&#39;@@@@&#39;</span>)) <span style="color:#000;font-weight:bold">as</span> d 
-          <span style="color:#000;font-weight:bold">FROM</span> jsontest
-       ) tmp;
-
-<span style="color:#000;font-weight:bold">select</span> a.id,
-       json_tuple(b.jl,<span style="color:#d14">&#39;ts&#39;</span>,<span style="color:#d14">&#39;id&#39;</span>,<span style="color:#d14">&#39;log&#39;</span>) jld
-  <span style="color:#000;font-weight:bold">from</span> jsontest a 
-<span style="color:#000;font-weight:bold">LATERAL</span> <span style="color:#000;font-weight:bold">VIEW</span> explode(split(regexp_replace(substr(jl,<span style="color:#099">2</span>,<span style="color:#000;font-weight:bold">length</span>(jl)<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>),<span style="color:#d14">&#39;},\\{&#39;</span>,<span style="color:#d14">&#39;}@@@@\\{&#39;</span>),<span style="color:#d14">&#39;@@@@&#39;</span>)) b <span style="color:#000;font-weight:bold">as</span> jl; 
-
-<span style="color:#000;font-weight:bold">explain</span> 
-<span style="color:#000;font-weight:bold">select</span> t1.id,t2.<span style="color:#000;font-weight:bold">*</span>
-  <span style="color:#000;font-weight:bold">from</span> (<span style="color:#000;font-weight:bold">select</span> a.id  id,
-               b.dmc dmc
-          <span style="color:#000;font-weight:bold">from</span> jsontest a 
-               <span style="color:#000;font-weight:bold">LATERAL</span> <span style="color:#000;font-weight:bold">VIEW</span> explode(split(regexp_replace(substr(jl,<span style="color:#099">2</span>,<span style="color:#000;font-weight:bold">length</span>(jl)<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>),<span style="color:#d14">&#39;},\\{&#39;</span>,<span style="color:#d14">&#39;}@@@@\\{&#39;</span>),<span style="color:#d14">&#39;@@@@&#39;</span>)) b <span style="color:#000;font-weight:bold">as</span> dmc
-          <span style="color:#000;font-weight:bold">where</span> jl<span style="color:#000;font-weight:bold">!=</span><span style="color:#d14">&#39;[]&#39;</span>
-        ) t1 
-  <span style="color:#000;font-weight:bold">LATERAL</span> <span style="color:#000;font-weight:bold">VIEW</span> json_tuple(dmc,<span style="color:#d14">&#39;ts&#39;</span>,<span style="color:#d14">&#39;id&#39;</span>,<span style="color:#d14">&#39;log&#39;</span>) t2 <span style="color:#000;font-weight:bold">as</span> ts,tid,log; 
-
-<span style="color:#000;font-weight:bold">create</span> <span style="color:#000;font-weight:bold">table</span> jond2 
-    <span style="color:#000;font-weight:bold">as</span> 
-<span style="color:#000;font-weight:bold">select</span> a.id,b.<span style="color:#000;font-weight:bold">*</span>
-  <span style="color:#000;font-weight:bold">from</span> jontest a 
-  <span style="color:#000;font-weight:bold">LATERAL</span> <span style="color:#000;font-weight:bold">VIEW</span> json_tuple(dmc,<span style="color:#d14">&#39;ts&#39;</span>,<span style="color:#d14">&#39;id&#39;</span>,<span style="color:#d14">&#39;log&#39;</span>) b <span style="color:#000;font-weight:bold">as</span> ts,tid,log;
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">create</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">if</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">not</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">exists</span><span style="color:#bbb"> </span>jonliu_temp<span style="color:#bbb"> 
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb"> 
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>hostname,<span style="color:#000;font-weight:bold">sum</span>(<span style="color:#099">1</span>)<span style="color:#bbb"> </span>cnt<span style="color:#bbb">                 
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>dcdn_standard_access_log<span style="color:#bbb">           
+</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>data_date<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;2016-05-29&#39;</span><span style="color:#bbb">           
+</span><span style="color:#bbb">   </span><span style="color:#000;font-weight:bold">and</span><span style="color:#bbb"> </span>data_hour<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;20&#39;</span><span style="color:#bbb">   
+</span><span style="color:#bbb">   </span><span style="color:#000;font-weight:bold">and</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">host</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;get3.xiaopi.com&#39;</span><span style="color:#bbb">              
+</span><span style="color:#bbb">   </span><span style="color:#000;font-weight:bold">and</span><span style="color:#bbb"> </span>status<span style="color:#000;font-weight:bold">=</span><span style="color:#099">404</span><span style="color:#bbb">                          
+</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">group</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">by</span><span style="color:#bbb"> </span>hostname;<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>json_tuple(d,<span style="color:#d14">&#39;ts&#39;</span>,<span style="color:#d14">&#39;id&#39;</span>,<span style="color:#d14">&#39;log&#39;</span>)<span style="color:#bbb"> 
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>(<span style="color:#000;font-weight:bold">SELECT</span><span style="color:#bbb"> </span>explode(split(regexp_replace(substr(jl,<span style="color:#099">2</span>,<span style="color:#000;font-weight:bold">length</span>(jl)<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>),<span style="color:#d14">&#39;},\\{&#39;</span>,<span style="color:#d14">&#39;}@@@@\\{&#39;</span>),<span style="color:#d14">&#39;@@@@&#39;</span>))<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb"> </span>d<span style="color:#bbb"> 
+</span><span style="color:#bbb">          </span><span style="color:#000;font-weight:bold">FROM</span><span style="color:#bbb"> </span>jsontest<span style="color:#bbb">
+</span><span style="color:#bbb">       </span>)<span style="color:#bbb"> </span>tmp;<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>a.id,<span style="color:#bbb">
+</span><span style="color:#bbb">       </span>json_tuple(b.jl,<span style="color:#d14">&#39;ts&#39;</span>,<span style="color:#d14">&#39;id&#39;</span>,<span style="color:#d14">&#39;log&#39;</span>)<span style="color:#bbb"> </span>jld<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>jsontest<span style="color:#bbb"> </span>a<span style="color:#bbb"> 
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">LATERAL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">VIEW</span><span style="color:#bbb"> </span>explode(split(regexp_replace(substr(jl,<span style="color:#099">2</span>,<span style="color:#000;font-weight:bold">length</span>(jl)<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>),<span style="color:#d14">&#39;},\\{&#39;</span>,<span style="color:#d14">&#39;}@@@@\\{&#39;</span>),<span style="color:#d14">&#39;@@@@&#39;</span>))<span style="color:#bbb"> </span>b<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb"> </span>jl;<span style="color:#bbb"> 
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">explain</span><span style="color:#bbb"> 
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>t1.id,t2.<span style="color:#000;font-weight:bold">*</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>(<span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>a.id<span style="color:#bbb">  </span>id,<span style="color:#bbb">
+</span><span style="color:#bbb">               </span>b.dmc<span style="color:#bbb"> </span>dmc<span style="color:#bbb">
+</span><span style="color:#bbb">          </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>jsontest<span style="color:#bbb"> </span>a<span style="color:#bbb"> 
+</span><span style="color:#bbb">               </span><span style="color:#000;font-weight:bold">LATERAL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">VIEW</span><span style="color:#bbb"> </span>explode(split(regexp_replace(substr(jl,<span style="color:#099">2</span>,<span style="color:#000;font-weight:bold">length</span>(jl)<span style="color:#000;font-weight:bold">-</span><span style="color:#099">2</span>),<span style="color:#d14">&#39;},\\{&#39;</span>,<span style="color:#d14">&#39;}@@@@\\{&#39;</span>),<span style="color:#d14">&#39;@@@@&#39;</span>))<span style="color:#bbb"> </span>b<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb"> </span>dmc<span style="color:#bbb">
+</span><span style="color:#bbb">          </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>jl<span style="color:#000;font-weight:bold">!=</span><span style="color:#d14">&#39;[]&#39;</span><span style="color:#bbb">
+</span><span style="color:#bbb">        </span>)<span style="color:#bbb"> </span>t1<span style="color:#bbb"> 
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">LATERAL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">VIEW</span><span style="color:#bbb"> </span>json_tuple(dmc,<span style="color:#d14">&#39;ts&#39;</span>,<span style="color:#d14">&#39;id&#39;</span>,<span style="color:#d14">&#39;log&#39;</span>)<span style="color:#bbb"> </span>t2<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb"> </span>ts,tid,log;<span style="color:#bbb"> 
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">create</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span><span style="color:#bbb"> </span>jond2<span style="color:#bbb"> 
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb"> 
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>a.id,b.<span style="color:#000;font-weight:bold">*</span><span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>jontest<span style="color:#bbb"> </span>a<span style="color:#bbb"> 
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">LATERAL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">VIEW</span><span style="color:#bbb"> </span>json_tuple(dmc,<span style="color:#d14">&#39;ts&#39;</span>,<span style="color:#d14">&#39;id&#39;</span>,<span style="color:#d14">&#39;log&#39;</span>)<span style="color:#bbb"> </span>b<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb"> </span>ts,tid,log;<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><h2 id="hive命令参数">hive命令参数</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">set</span> hive.<span style="color:#000;font-weight:bold">exec</span>.compress.<span style="color:#000;font-weight:bold">output</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">true</span>;
-<span style="color:#000;font-weight:bold">set</span> mapred.job.queue.name<span style="color:#000;font-weight:bold">=</span>dcdn;
-<span style="color:#000;font-weight:bold">set</span> mapred.<span style="color:#000;font-weight:bold">max</span>.split.<span style="color:#000;font-weight:bold">size</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">512000000</span>;
-<span style="color:#000;font-weight:bold">set</span> mapred.<span style="color:#000;font-weight:bold">min</span>.split.<span style="color:#000;font-weight:bold">size</span>.per.node<span style="color:#000;font-weight:bold">=</span><span style="color:#099">512000000</span>;
-<span style="color:#000;font-weight:bold">set</span> mapred.<span style="color:#000;font-weight:bold">min</span>.split.<span style="color:#000;font-weight:bold">size</span>.per.rack<span style="color:#000;font-weight:bold">=</span><span style="color:#099">512000000</span>;
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">set</span><span style="color:#bbb"> </span>hive.<span style="color:#000;font-weight:bold">exec</span>.compress.<span style="color:#000;font-weight:bold">output</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">true</span>;<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">set</span><span style="color:#bbb"> </span>mapred.job.queue.name<span style="color:#000;font-weight:bold">=</span>dcdn;<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">set</span><span style="color:#bbb"> </span>mapred.<span style="color:#000;font-weight:bold">max</span>.split.<span style="color:#000;font-weight:bold">size</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">512000000</span>;<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">set</span><span style="color:#bbb"> </span>mapred.<span style="color:#000;font-weight:bold">min</span>.split.<span style="color:#000;font-weight:bold">size</span>.per.node<span style="color:#000;font-weight:bold">=</span><span style="color:#099">512000000</span>;<span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">set</span><span style="color:#bbb"> </span>mapred.<span style="color:#000;font-weight:bold">min</span>.split.<span style="color:#000;font-weight:bold">size</span>.per.rack<span style="color:#000;font-weight:bold">=</span><span style="color:#099">512000000</span>;<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div>
         </div>

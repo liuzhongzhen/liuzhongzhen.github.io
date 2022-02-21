@@ -217,13 +217,13 @@
 <h2 id="1用file_get_contents以get方式获取内容">1.用file_get_contents以get方式获取内容</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
 <span style="color:#008080">$url</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;https://wenda.shukaiming.com/&#39;</span>;
 <span style="color:#000;font-weight:bold">echo</span> file_get_contents(<span style="color:#008080">$url</span>);
 <span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
@@ -232,7 +232,7 @@
 </div><h2 id="2用fopen打开url-以get方式获取内容">2.用fopen打开url, 以get方式获取内容</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -244,7 +244,7 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
 <span style="color:#998;font-style:italic">//r标识read，即标识只读
 </span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$fp</span> <span style="color:#000;font-weight:bold">=</span> fopen(<span style="color:#008080">$url</span>, <span style="color:#d14">&#39;r&#39;</span>);
 stream_get_meta_data(<span style="color:#008080">$fp</span>);
@@ -259,7 +259,7 @@ fclose(<span style="color:#008080">$fp</span>);
 </div><h2 id="3用-file_get_contents函数以post方式获取url">3.用 file_get_contents函数,以post方式获取url</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -269,7 +269,7 @@ fclose(<span style="color:#008080">$fp</span>);
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
 <span style="color:#008080">$data</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">array</span>(‘foo<span style="color:#d14">&#39; =&gt; ‘bar&#39;</span>);
 <span style="color:#008080">$data</span> <span style="color:#000;font-weight:bold">=</span> http_build_query(<span style="color:#008080">$data</span>);
 <span style="color:#008080">$opts</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">array</span>(<span style="color:#d14">&#39;http&#39;</span> <span style="color:#000;font-weight:bold">=&gt;</span> <span style="color:#000;font-weight:bold">array</span>(<span style="color:#d14">&#39;method&#39;</span> <span style="color:#000;font-weight:bold">=&gt;</span> <span style="color:#d14">&#39;POST&#39;</span>, <span style="color:#d14">&#39;header&#39;</span> <span style="color:#000;font-weight:bold">=&gt;</span> <span style="color:#d14">&#39;Content-type: application/x-www-form-urlencodedrn&#39;</span> <span style="color:#000;font-weight:bold">.</span> <span style="color:#d14">&#39;Content-Length: &#39;</span> <span style="color:#000;font-weight:bold">.</span> strlen(<span style="color:#008080">$data</span>) <span style="color:#000;font-weight:bold">.</span> <span style="color:#d14">&#39;\r\n&#39;</span>, <span style="color:#d14">&#39;content&#39;</span> <span style="color:#000;font-weight:bold">=&gt;</span> <span style="color:#008080">$data</span>));
@@ -283,7 +283,7 @@ fclose(<span style="color:#008080">$fp</span>);
 <p>包括header和body,fsockopen需要 PHP.ini 中 allow_url_fopen 选项开启</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -318,7 +318,7 @@ fclose(<span style="color:#008080">$fp</span>);
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
 <span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">get_url</span>(<span style="color:#008080">$url</span>, <span style="color:#008080">$cookie</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">false</span>) {
     <span style="color:#008080">$url</span> <span style="color:#000;font-weight:bold">=</span> parse_url(<span style="color:#008080">$url</span>);
     <span style="color:#008080">$query</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$url</span>[path] <span style="color:#000;font-weight:bold">.</span> ” <span style="color:#000;font-weight:bold">?</span> ” <span style="color:#000;font-weight:bold">.</span> <span style="color:#008080">$url</span>[query];
@@ -356,7 +356,7 @@ fclose(<span style="color:#008080">$fp</span>);
 </div><h2 id="5用fsockopen函数打开url以post方式获取完整的数据包括header和body">5.用fsockopen函数打开url，以POST方式获取完整的数据，包括header和body</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -389,7 +389,7 @@ fclose(<span style="color:#008080">$fp</span>);
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
 <span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">HTTP_Post</span>(<span style="color:#008080">$URL</span>, <span style="color:#008080">$data</span>, <span style="color:#008080">$cookie</span>, <span style="color:#008080">$referrer</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;&#34;</span>) {
     <span style="color:#998;font-style:italic">// parsing the given URL
 </span><span style="color:#998;font-style:italic"></span>    <span style="color:#008080">$URL_Info</span> <span style="color:#000;font-weight:bold">=</span> parse_url(<span style="color:#008080">$URL</span>);
@@ -425,7 +425,7 @@ fclose(<span style="color:#008080">$fp</span>);
 </div><h2 id="6使用curl库使用curl库之前可能需要查看一下phpini是否已经打开了curl扩展">6.使用curl库，使用curl库之前，可能需要查看一下php.ini是否已经打开了curl扩展</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -437,7 +437,7 @@ fclose(<span style="color:#008080">$fp</span>);
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php 
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php 
 <span style="color:#008080">$ch</span> <span style="color:#000;font-weight:bold">=</span> curl_init(); 
 <span style="color:#008080">$timeout</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">5</span>; 
 <span style="color:#008080">$url</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;http://wenda.shukaiming.com&#39;</span>;

@@ -603,7 +603,7 @@ ISR 列表里面就是 follower 副本的 Broker 编号，只有跟得上 Leader
 <p>RoundRobin策略的工作原理：将所有主题的分区组成 TopicAndPartition 列表，然后对 TopicAndPartition 列表按照 hashCode 进行排序，这里文字可能说不清，看下面的代码应该会明白：</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -618,7 +618,7 @@ ISR 列表里面就是 follower 副本的 Broker 编号，只有跟得上 Leader
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#000;font-weight:bold">val</span> allTopicPartitions <span style="color:#000;font-weight:bold">=</span> ctx<span style="color:#000;font-weight:bold">.</span>partitionsForTopic<span style="color:#000;font-weight:bold">.</span>flatMap <span style="color:#000;font-weight:bold">{</span> <span style="color:#000;font-weight:bold">case</span><span style="color:#000;font-weight:bold">(</span>topic<span style="color:#000;font-weight:bold">,</span> partitions<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">=&gt;</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#000;font-weight:bold">val</span> allTopicPartitions <span style="color:#000;font-weight:bold">=</span> ctx<span style="color:#000;font-weight:bold">.</span>partitionsForTopic<span style="color:#000;font-weight:bold">.</span>flatMap <span style="color:#000;font-weight:bold">{</span> <span style="color:#000;font-weight:bold">case</span><span style="color:#000;font-weight:bold">(</span>topic<span style="color:#000;font-weight:bold">,</span> partitions<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">=&gt;</span>
   info<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;Consumer %s rebalancing the following partitions for topic %s: %s&#34;</span>
        <span style="color:#000;font-weight:bold">.</span>format<span style="color:#000;font-weight:bold">(</span>ctx<span style="color:#000;font-weight:bold">.</span>consumerId<span style="color:#000;font-weight:bold">,</span> topic<span style="color:#000;font-weight:bold">,</span> partitions<span style="color:#000;font-weight:bold">))</span>
   partitions<span style="color:#000;font-weight:bold">.</span>map<span style="color:#000;font-weight:bold">(</span>partition <span style="color:#000;font-weight:bold">=&gt;</span> <span style="color:#000;font-weight:bold">{</span>
@@ -679,7 +679,7 @@ ISR 列表里面就是 follower 副本的 Broker 编号，只有跟得上 Leader
 <p>如果要保证删除分区数据插入到其他分区保证有序性，那么实现起来逻辑就会非常复杂。</p>
 <h2 id="55kafka消息的存储机制">55.kafka消息的存储机制</h2>
 <p>kafka通过 topic来分主题存放数据，主题内有分区，分区可以有多个副本，分区的内部还细分为若干个 segment。都是持久化到磁盘，采用零拷贝技术。</p>
-<pre><code>1、高效检索
+<pre tabindex="0"><code>1、高效检索
 分区下面，会进行分段操作，每个分段都会有对应的素引，这样就可以根据 offset二分查找定位到消息在哪一段，根据段的索引文件，定位具体的 mle ssage
 
 2、分区副本可用性(1 eader选举，zk来协调)

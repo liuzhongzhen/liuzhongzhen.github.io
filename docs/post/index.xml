@@ -581,7 +581,7 @@
       <pubDate>Sat, 06 Feb 2016 23:20:44 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/Mysql-013%E8%A1%A8%E7%BB%93%E6%9E%84%E5%8F%98%E6%9B%B4/</guid>
-      <description>当前mysql最大的记录数是7亿级 Executing: 1 2 3 4 ALTER TABLE `live_http_origin`.`o_xylive_flashsdk_one_20170414` ADD COLUMN `httpdns_resptime` DOUBLE NULL AFTER `httpdns_time`, ADD COLUMN `httpdns_clientip` VARCHAR(45) NULL AFTER `httpdns_resptime`, ADD COLUMN `httpdns_host` VARCHAR(200) NULL AFTER `httpdns_clientip`; 杀死my</description>
+      <description>当前mysql最大的记录数是7亿级 Executing: 1 2 3 4 ALTERTABLE`live_http_origin`.`o_xylive_flashsdk_one_20170414`ADDCOLUMN`httpdns_resptime`DOUBLENULLAFTER`httpdns_time`,ADDCOLUMN`httpdns_clientip`VARCHAR(45)NULLAFTER`httpdns_resptime`,ADDCOLUMN`httpdns_host`VARCHAR(200)NULLAFTER`httpdns_clientip`; 杀死mysql连接 1 mysql -uroot -p123456 -e &amp;#34; show processlist &amp;#34; | grep graph_cluster | awk &amp;#39;{print &amp;#34;mysql -uroot -p123456</description>
     </item>
     
     <item>
@@ -689,7 +689,7 @@
       <pubDate>Fri, 01 Jan 2016 11:17:16 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/</guid>
-      <description>常用附加信息 1 2 3 4 5 6 ENGINE = InnoDB default character set = utf8mb4 collate = utf8mb4_general_ci comment = &amp;#39;任务类型扩展配置信息&amp;#39; ROW_FORMAT = Compact #压</description>
+      <description>常用附加信息 1 2 3 4 5 6 ENGINE=InnoDBdefaultcharacterset=utf8m</description>
     </item>
     
     <item>
@@ -822,12 +822,12 @@
 &lt;p&gt;response header 中添加 &lt;code&gt;Set-Cookie&lt;/code&gt;信息，cookie是一组key，value值。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
-&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
 &lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
 &lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
-&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Set-Cookie: &amp;lt;name&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;value&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;; &amp;lt;name&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;value&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;...
+&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Set-Cookie: &amp;lt;name&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;value&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;; &amp;lt;name&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;value&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;...
             &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;; &lt;span style=&#34;color:#008080&#34;&gt;expires&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;date&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;][&lt;/span&gt;; &lt;span style=&#34;color:#008080&#34;&gt;domain&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;domain_name&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;
             &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;; &lt;span style=&#34;color:#008080&#34;&gt;path&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;some_path&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;][&lt;/span&gt;; secure&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;][&lt;/span&gt;; httponly&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -1138,7 +1138,7 @@
       <pubDate>Sat, 02 Mar 2013 13:05:23 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
-      <description>Alter Column 1 2 3 4 5 6 7 8 9 10 -- 修改column属性（列名，列字段类型，列注释）： ALTER TABLE table_name CHANGE [COLUMN] col_old_name col_new_name column_type [COMMENT col_comment] [FIRST|AFTER column_name]</description>
+      <description>Alter Column 1 2 3 4 5 6 7 8 9 10 -- 修改column属性（列名，列字段类型，列注释）： ALTERTABLEtable_nameCHANGE[COLUMN]col_old_namecol_new_namecolumn_type[COMMENTcol_comment][FIRST|AFTERcolumn_name]-- 增加/替换column</description>
     </item>
     
     <item>

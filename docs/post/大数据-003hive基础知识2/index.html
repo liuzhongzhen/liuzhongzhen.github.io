@@ -337,17 +337,17 @@
 </ul>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span> <span style="color:#000;font-weight:bold">*</span> 
-  <span style="color:#000;font-weight:bold">from</span> users a
-  <span style="color:#000;font-weight:bold">left</span> <span style="color:#000;font-weight:bold">outer</span> <span style="color:#000;font-weight:bold">join</span> logs b
-    <span style="color:#000;font-weight:bold">on</span> a.usr_id <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">cast</span>(b.user_id <span style="color:#000;font-weight:bold">as</span> string)
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> 
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>users<span style="color:#bbb"> </span>a<span style="color:#bbb">
+</span><span style="color:#bbb">  </span><span style="color:#000;font-weight:bold">left</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">outer</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">join</span><span style="color:#bbb"> </span>logs<span style="color:#bbb"> </span>b<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">on</span><span style="color:#bbb"> </span>a.usr_id<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">cast</span>(b.user_id<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">as</span><span style="color:#bbb"> </span>string)<span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><h3 id="5开启数据倾斜时负载均衡">5.开启数据倾斜时负载均衡</h3>
 <ul>
@@ -409,7 +409,7 @@
 <h3 id="8常用参数">8.常用参数</h3>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -417,22 +417,22 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">//</span> <span style="color:#a61717;background-color:#e3d2d2">输出合并小文件</span>
-<span style="color:#000;font-weight:bold">SET</span> hive.merge.mapfiles <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">true</span>; <span style="color:#998;font-style:italic">-- 默认 true，在 map-only 任务结束时合并小文件
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">SET</span> hive.merge.mapredfiles <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">true</span>; <span style="color:#998;font-style:italic">-- 默认 false，在 map-reduce 任务结束时合并小文件
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">SET</span> hive.merge.<span style="color:#000;font-weight:bold">size</span>.per.task <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">268435456</span>; <span style="color:#998;font-style:italic">-- 默认 256M
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">//</span><span style="color:#bbb"> </span><span style="color:#a61717;background-color:#e3d2d2">输出合并小文件</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">SET</span><span style="color:#bbb"> </span>hive.merge.mapfiles<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">true</span>;<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">-- 默认 true，在 map-only 任务结束时合并小文件
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">SET</span><span style="color:#bbb"> </span>hive.merge.mapredfiles<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">true</span>;<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">-- 默认 false，在 map-reduce 任务结束时合并小文件
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">SET</span><span style="color:#bbb"> </span>hive.merge.<span style="color:#000;font-weight:bold">size</span>.per.task<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#099">268435456</span>;<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">-- 默认 256M
 </span><span style="color:#998;font-style:italic">-- 当输出文件的平均大小小于 16m 该值时，启动一个独立的 map-reduce 任务进行文件 merge
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">SET</span> hive.merge.smallfiles.avgsize <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">16777216</span>; 
-</code></pre></td></tr></table>
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">SET</span><span style="color:#bbb"> </span>hive.merge.smallfiles.avgsize<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#099">16777216</span>;<span style="color:#bbb"> 
+</span></code></pre></td></tr></table>
 </div>
 </div><h3 id="9开启-map-端-combiner不影响最终业务逻辑">9.开启 map 端 combiner（不影响最终业务逻辑）</h3>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">set</span> hive.<span style="color:#000;font-weight:bold">map</span>.aggr<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">true</span><span style="color:#a61717;background-color:#e3d2d2">；</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">set</span><span style="color:#bbb"> </span>hive.<span style="color:#000;font-weight:bold">map</span>.aggr<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">true</span><span style="color:#a61717;background-color:#e3d2d2">；</span><span style="color:#bbb">
+</span></code></pre></td></tr></table>
 </div>
 </div><h3 id="10压缩选择快的">10.压缩（选择快的）</h3>
 <p>设置 map 端输出、中间结果压缩。（不完全是解决数据倾斜的问题，但是减少了 IO 读写和网络传输，能提高很多效率）</p>

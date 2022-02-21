@@ -227,7 +227,7 @@
 <p>Tdw支持使用用户定义的proto文件来创建表，使用我们开发的编译器扩展对用的proto文件预处理后，
 通过proto文件自动抽取出表的结构，支持proto文件引用和message嵌套定义。
 例如：</p>
-<pre><code>message Person {
+<pre tabindex="0"><code>message Person {
     required string name = 1;
     required int32 id = 2; // Unique ID number for this person.optional 
     string email = 3;
@@ -242,7 +242,7 @@
     repeated PhoneNumber phone = 4;
 }
 </code></pre><p>创建的表结构为：</p>
-<pre><code>table person{
+<pre tabindex="0"><code>table person{
     name    string
     id      int
     email   string
@@ -274,12 +274,12 @@ mapreduce层与hive层的读写适配Serde层支持嵌套类型的message读写�
 <ul>
 <li>上传Proto定义文件。将proto文件上传到$QE_HOME/protobuf/upload/${UserName}/中</li>
 <li>准备Jar文件。用makejar脚本预处理proto文件，产生并上传对应表的读写接口jar包。
-<pre><code>示例：$QE_HOME/bin/makejar.sh pgurl user passwd dbname tablename username filename protoversion
+<pre tabindex="0"><code>示例：$QE_HOME/bin/makejar.sh pgurl user passwd dbname tablename username filename protoversion
 </code></pre></li>
 <li>创建protobuf格式的表。创建protobuf存储格式的TDW SQL语句是：
 CREATE TABLE <!-- raw HTML omitted --> [partition_def] STORED AS PB。
 示例：
-<pre><code>创建普通表（不包含分区）create table comp stored as pb
+<pre tabindex="0"><code>创建普通表（不包含分区）create table comp stored as pb
 创建带分区的表，假设comp message中包含log_date的字段，以log_date字段建立分区的SQL为：
 create table comp partition by list(log_date) (partition default) stored as pb
 </code></pre></li>
@@ -323,7 +323,7 @@ message AdImpression{ required string pageid = 1; repeated int adid_list =2; }</
 </tbody>
 </table>
 <p>对表做lateral view + explode 的SQL如下所示：</p>
-<pre><code>select pageid, adid 
+<pre tabindex="0"><code>select pageid, adid 
   from pageAds 
        lateral view explode(adid_list) adTable as adid;
 </code></pre><p>可以产生如下的输出：</p>

@@ -258,7 +258,7 @@
 <li>防火墙 和iptables 配置
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -274,7 +274,7 @@
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> iptables -I INPUT -s 10.33.35.184/16 -p tcp -m tcp --dport 24007:24008 -j ACCEPT <span style="color:#998;font-style:italic">#开放端口24007-24008,实际使用的是24007</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> iptables -I INPUT -s 10.33.35.184/16 -p tcp -m tcp --dport 24007:24008 -j ACCEPT <span style="color:#998;font-style:italic">#开放端口24007-24008,实际使用的是24007</span>
  iptables -I INPUT -s 10.19.1.148/24 -p tcp -m tcp --dport <span style="color:#099">24007</span> -j ACCEPT
  iptables -I INPUT -s 10.19.1.148/24 -p tcp -m tcp --dport 49152:49160 -j ACCEPT
  iptables -I INPUT -s 10.19.1.148/24 -p tcp -m tcp --dport 49152:49160 -j ACCEPT <span style="color:#998;font-style:italic">#开放传输服务端口</span>
@@ -300,11 +300,11 @@
 <li>glusterd 操作，在tw19348上面执行
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gluster peer probe tw19349 加入新节点
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gluster peer probe tw19349 加入新节点
 gluster peer probe tw19350 加入新节点
 </code></pre></td></tr></table>
 </div>
@@ -312,7 +312,7 @@ gluster peer probe tw19350 加入新节点
 <li>挂载目录
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
@@ -322,12 +322,12 @@ gluster peer probe tw19350 加入新节点
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">在3台服务器上面创建目录
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">在3台服务器上面创建目录
 mkdir -p /data/gluster_brick1 三个节点都执行
-    
+
 创建可以挂载的卷，任意一台机器执行 
 gluster volume create gluster_vol1 replica <span style="color:#099">3</span> transport tcp tw19348:/data/gluster_brick1 tw19349:/data/gluster_brick1 tw19350:/data/gluster_brick1
-    
+
 启动卷 
 gluster volume start gluster_vol1
 </code></pre></td></tr></table>
@@ -336,7 +336,7 @@ gluster volume start gluster_vol1
 <li>客户端挂载
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -348,7 +348,7 @@ gluster volume start gluster_vol1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">客户端安装yum install glusterfs glusterfs-fuse attr -y
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">客户端安装yum install glusterfs glusterfs-fuse attr -y
 配置host,里面有服务器的节点
 mount -t glusterfs tw06a2888:/gluster_vol1 /mnt/gluster_test
 或者指定vip，内网ip，外网ip
@@ -364,7 +364,7 @@ mount -t glusterfs -o acl 180.101.141.15:/gluster_vol1 /mnt/gluster_test
 <li>服务器运行两个服务
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
@@ -393,9 +393,9 @@ mount -t glusterfs -o acl 180.101.141.15:/gluster_vol1 /mnt/gluster_test
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemctl status glusterd.service 
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemctl status glusterd.service 
 systemctl status glusterfsd.service
-    
+
 基本操作:
 a. 查看卷状态 gluster volume status
 b. 不停机的情况下扩展卷
@@ -408,14 +408,14 @@ f. 强制重启gluster volume start gluster_vol1 force
 系统管理分成：节点管理，卷管理，brick管理
 设置 gluster volume <span style="color:#0086b3">set</span> gluster_vol1 performance.client-io-threads on
 设置nfs打开 gluster volume <span style="color:#0086b3">set</span> gluster_vol1 nfs.disable off
-    
+
 客户端对 GlusterFS 设置ACL规则
 设置其他用户对目录有读写权限：
 setfacl -m o::rwx -R arfa_nfs/
 setfacl -m d:o:rwx arfa_nfs/ 
 
 mount -t glusterfs -o acl 10.33.35.116:/gluster_vol1 /mnt/gluster_test
-    
+
 杀死进程：
 gluster volume stop gluster_vol1
 systemctl stop glusterd.service 
