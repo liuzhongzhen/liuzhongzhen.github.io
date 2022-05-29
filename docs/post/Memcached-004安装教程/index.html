@@ -235,22 +235,32 @@
 <p>通过yum 安装是相对简单的安装方式</p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum install memcached -y
-vim /etc/sysconfig/memcached
-<span style="color:#008080">PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;11211&#34;</span>     <span style="color:#998;font-style:italic">#监听端口</span>
-<span style="color:#008080">USER</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;memcached&#34;</span> <span style="color:#998;font-style:italic">#启动用户</span>
-<span style="color:#008080">MAXCONN</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;1024&#34;</span>   <span style="color:#998;font-style:italic">#最大连接数</span>
-<span style="color:#008080">CACHESIZE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;1024&#34;</span> <span style="color:#998;font-style:italic">#最大使用内存</span>
-<span style="color:#008080">OPTIONS</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;&#34;</span>       <span style="color:#998;font-style:italic">#其他选项</span>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">1. yum install memcached -y
+2. 编辑配置文件/etc/sysconfig/memcached 
+   vim /etc/sysconfig/memcached
+   <span style="color:#008080">PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;11211&#34;</span>     <span style="color:#998;font-style:italic">#监听端口</span>
+   <span style="color:#008080">USER</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;memcached&#34;</span> <span style="color:#998;font-style:italic">#启动用户或者nobody</span>
+   <span style="color:#008080">MAXCONN</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;1024&#34;</span>   <span style="color:#998;font-style:italic">#最大连接数</span>
+   <span style="color:#008080">CACHESIZE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;1024&#34;</span> <span style="color:#998;font-style:italic">#最大使用内存,单位MB</span>
+   <span style="color:#008080">OPTIONS</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;-l 0.0.0.0 -P /tmp/memcached.pid&#34;</span>       <span style="color:#998;font-style:italic">#其他选项</span>
+3. 启动memcached
+   systemctl start memcached
+4. 加入开机启动列表
+   systemctl <span style="color:#0086b3">enable</span> memcached
 </code></pre></td></tr></table>
 </div>
 </div><h3 id="编译安装">编译安装</h3>
@@ -902,6 +912,10 @@ Connection closed by foreign host.
 <ul class="widget-list">
     
     <li>
+        <a href="https://liuzhongzhen.github.io/post/Php-013centos7%E5%AE%89%E8%A3%85php7%E7%89%88%E6%9C%AC/" title="Php 013 centos7安装php7版本">Php 013 centos7安装php7版本</a>
+    </li>
+    
+    <li>
         <a href="https://liuzhongzhen.github.io/post/Redis-002centos7%E6%90%AD%E5%BB%BAredis%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/" title="Redis 002centos7搭建redis高可用集群">Redis 002centos7搭建redis高可用集群</a>
     </li>
     
@@ -935,10 +949,6 @@ Connection closed by foreign host.
     
     <li>
         <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据007clickhouse基础知识">大数据007clickhouse基础知识</a>
-    </li>
-    
-    <li>
-        <a href="https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="大数据006impala基础知识">大数据006impala基础知识</a>
     </li>
     
 </ul>
@@ -1036,7 +1046,7 @@ Connection closed by foreign host.
     
     <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Java/">语言Java (6)</a></li>
     
-    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Php/">语言Php (11)</a></li>
+    <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Php/">语言Php (13)</a></li>
     
     <li><a href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Python/">语言Python (2)</a></li>
     

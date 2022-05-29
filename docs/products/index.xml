@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Wed, 01 Sep 2021 16:41:10 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/products/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 May 2022 12:10:20 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/products/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>网心-Horizon可视化系统设计</title>
+      <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Horizon%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Sun, 01 May 2022 12:10:20 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Horizon%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</guid>
+      <description>一、目标 构建数据查看推送的可视化平台 二、模块 报表配置管理模块 可编辑表配置管理模块 维表配置管理模块 产品</description>
+    </item>
+    
     <item>
       <title>网心-Alita数据中台产品</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Alita%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BA%A7%E5%93%81/</link>
