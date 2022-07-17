@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 01 May 2022 12:10:20 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 May 2022 14:04:43 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hadoop技术内幕之深入解析MapReduce架构设计与实现原理</title>
+      <link>https://liuzhongzhen.github.io/books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90MapReduce%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Sun, 01 May 2022 14:04:43 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90MapReduce%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>网心-Horizon可视化系统设计</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Horizon%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</link>
@@ -36,7 +45,7 @@
     </item>
     
     <item>
-      <title>深入理解Java虚拟机：JVM高级特性与最佳实践（第3版）</title>
+      <title>深入理解Java虚拟机之JVM高级特性与最佳实践（第3版）</title>
       <link>https://liuzhongzhen.github.io/books/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
       <pubDate>Wed, 12 Jan 2022 22:04:52 +0800</pubDate>
       
@@ -513,7 +522,7 @@
     </item>
     
     <item>
-      <title>OpenResty完全开发指南: 构建百万级别并发的Web应用</title>
+      <title>OpenResty完全开发指南之构建百万级别并发的Web应用</title>
       <link>https://liuzhongzhen.github.io/books/OpenResty%E5%AE%8C%E5%85%A8%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</link>
       <pubDate>Fri, 21 Dec 2018 21:41:54 +0800</pubDate>
       
@@ -945,20 +954,20 @@
     </item>
     
     <item>
-      <title>PHP经典实例第3版</title>
-      <link>https://liuzhongzhen.github.io/books/PHP%E7%BB%8F%E5%85%B8%E5%AE%9E%E4%BE%8B%E7%AC%AC3%E7%89%88/</link>
-      <pubDate>Mon, 10 Aug 2015 00:46:46 +0800</pubDate>
-      
-      <guid>https://liuzhongzhen.github.io/books/PHP%E7%BB%8F%E5%85%B8%E5%AE%9E%E4%BE%8B%E7%AC%AC3%E7%89%88/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>设计模式 001基础</title>
       <link>https://liuzhongzhen.github.io/post/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-001%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Sat, 01 Aug 2015 01:41:49 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/post/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-001%E5%9F%BA%E7%A1%80/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MySQL技术内幕 第4版</title>
+      <link>https://liuzhongzhen.github.io/books/MySQL%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95-%E7%AC%AC4%E7%89%88/</link>
+      <pubDate>Wed, 01 Jul 2015 14:34:34 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/MySQL%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95-%E7%AC%AC4%E7%89%88/</guid>
       <description></description>
     </item>
     
@@ -999,12 +1008,30 @@
     </item>
     
     <item>
+      <title>高性能MySQL 第3版</title>
+      <link>https://liuzhongzhen.github.io/books/%E9%AB%98%E6%80%A7%E8%83%BDMySQL-%E7%AC%AC3%E7%89%88/</link>
+      <pubDate>Sun, 01 Mar 2015 14:29:19 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/%E9%AB%98%E6%80%A7%E8%83%BDMySQL-%E7%AC%AC3%E7%89%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>腾讯-ABTest效果评估系统</title>
       <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-ABTest%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Tue, 10 Feb 2015 23:20:00 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-ABTest%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 设计开发负责人 开发工具 后台开发语言php5,CodeIgniter 前端开发语言html5,css</description>
+    </item>
+    
+    <item>
+      <title>JavaScript权威指南 第六版</title>
+      <link>https://liuzhongzhen.github.io/books/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%89%88/</link>
+      <pubDate>Sun, 01 Feb 2015 14:25:57 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%89%88/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -1106,12 +1133,12 @@
     </item>
     
     <item>
-      <title>深入理解PHP内核</title>
-      <link>https://liuzhongzhen.github.io/books/PHP%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3PHP%E5%86%85%E6%A0%B8/</link>
-      <pubDate>Mon, 11 Aug 2014 15:04:57 +0800</pubDate>
+      <title>HTTP权威指南</title>
+      <link>https://liuzhongzhen.github.io/books/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Wed, 01 Oct 2014 14:13:29 +0800</pubDate>
       
-      <guid>https://liuzhongzhen.github.io/books/PHP%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3PHP%E5%86%85%E6%A0%B8/</guid>
-      <description>原文地址</description>
+      <guid>https://liuzhongzhen.github.io/books/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97/</guid>
+      <description></description>
     </item>
     
     <item>
@@ -1214,12 +1241,30 @@
     </item>
     
     <item>
+      <title>PHP经典实例第3版</title>
+      <link>https://liuzhongzhen.github.io/books/PHP%E7%BB%8F%E5%85%B8%E5%AE%9E%E4%BE%8B%E7%AC%AC3%E7%89%88/</link>
+      <pubDate>Thu, 01 May 2014 00:46:46 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/PHP%E7%BB%8F%E5%85%B8%E5%AE%9E%E4%BE%8B%E7%AC%AC3%E7%89%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>腾讯-DC数据接入平台</title>
       <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-DC%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E5%B9%B3%E5%8F%B0/</link>
       <pubDate>Tue, 01 Apr 2014 23:57:10 +0800</pubDate>
       
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-DC%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E5%B9%B3%E5%8F%B0/</guid>
       <description>角色 负责人，负责系统设计、开发与维护 背景 实时数据采集，离线文件数据采集nrt，db业务配置数据采集 打</description>
+    </item>
+    
+    <item>
+      <title>深入理解PHP内核</title>
+      <link>https://liuzhongzhen.github.io/books/PHP%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3PHP%E5%86%85%E6%A0%B8/</link>
+      <pubDate>Tue, 11 Mar 2014 15:04:57 +0800</pubDate>
+      
+      <guid>https://liuzhongzhen.github.io/books/PHP%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3PHP%E5%86%85%E6%A0%B8/</guid>
+      <description>原文地址</description>
     </item>
     
     <item>
