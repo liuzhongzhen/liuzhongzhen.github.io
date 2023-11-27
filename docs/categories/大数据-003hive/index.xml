@@ -10,28 +10,28 @@
     <lastBuildDate>Tue, 01 Mar 2016 23:15:23 +0800</lastBuildDate>
     <atom:link href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>大数据003hive基础知识2</title>
+      <title>大数据 003hive基础知识2</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/</link>
       <pubDate>Tue, 01 Mar 2016 23:15:23 +0800</pubDate>
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/</guid>
       <description>1.大表join小表产生的问题，怎么解决？ mapjoin方案 join因为空值导致长尾(key为空值是</description>
     </item>
     <item>
-      <title>大数据003hive基础知识</title>
+      <title>大数据 003hive基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 01 Mar 2016 23:05:23 +0800</pubDate>
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>转载外部-数仓-hive核心知识点 1.什么是Hive Hive是由Facebook开源用于解决海量结构</description>
     </item>
     <item>
-      <title>大数据003hive概念原理</title>
+      <title>大数据 003hive概念原理</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E6%A6%82%E5%BF%B5%E5%8E%9F%E7%90%86/</link>
       <pubDate>Tue, 01 Mar 2016 13:05:23 +0800</pubDate>
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E6%A6%82%E5%BF%B5%E5%8E%9F%E7%90%86/</guid>
       <description>转载外部 技术背景 因为mapreduce继承类和重写方法的固定化，导致编程代码模板化而且非常繁琐， 学习</description>
     </item>
     <item>
-      <title>大数据003hive优化相关</title>
+      <title>大数据 003hive优化相关</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E4%BC%98%E5%8C%96%E7%9B%B8%E5%85%B3/</link>
       <pubDate>Sat, 27 Feb 2016 23:05:23 +0800</pubDate>
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E4%BC%98%E5%8C%96%E7%9B%B8%E5%85%B3/</guid>

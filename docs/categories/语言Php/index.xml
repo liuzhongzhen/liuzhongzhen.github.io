@@ -10,14 +10,14 @@
     <lastBuildDate>Fri, 01 Apr 2022 12:16:24 +0800</lastBuildDate>
     <atom:link href="https://liuzhongzhen.github.io/categories/%E8%AF%AD%E8%A8%80Php/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Php 013 centos7安装php7版本</title>
+      <title>Php 013centos7安装php7版本</title>
       <link>https://liuzhongzhen.github.io/post/Php-013centos7%E5%AE%89%E8%A3%85php7%E7%89%88%E6%9C%AC/</link>
       <pubDate>Fri, 01 Apr 2022 12:16:24 +0800</pubDate>
       <guid>https://liuzhongzhen.github.io/post/Php-013centos7%E5%AE%89%E8%A3%85php7%E7%89%88%E6%9C%AC/</guid>
       <description>1. 下载php源码安装包 wget -c https://www.php.net/distributions/php-7.0.33.tar.gz &amp;amp;&amp;amp; tar xzf php-7.0.33.tar.gz; 2. 安装常用的依赖: yum -y install gcc gcc-c++ automake autoconf make \ libtool systemd-devel glibc glibc-devel \ mcrypt libmcrypt libmcrypt-devel mhash mhash-devel libxslt libxslt-devel \ libjpeg</description>
     </item>
     <item>
-      <title>Php 012 centos7安装php5.6版本</title>
+      <title>Php 012centos7安装php5.6版本</title>
       <link>https://liuzhongzhen.github.io/post/Php-012Centos7%E5%AE%89%E8%A3%85php5.6%E7%89%88%E6%9C%AC/</link>
       <pubDate>Fri, 09 Aug 2019 14:33:39 +0800</pubDate>
       <guid>https://liuzhongzhen.github.io/post/Php-012Centos7%E5%AE%89%E8%A3%85php5.6%E7%89%88%E6%9C%AC/</guid>
@@ -31,7 +31,7 @@
       <description>php7安装指南： yum install wget; 下载源代码包 wget http://cn2.php.net/distributions/php-7.2.4.tar.gz;tar -zxvf php-7.2.4.tar.gz; 或者wget http://cn.php.net/distributions/php-7.1.11.tar.gz;tar -zxvf php-7.1.11.tar.gz; 或者wget https://www.php.net/distributions/php-7.0.17.tar.gz;tar zxvf php-7.0.17.tar.gz; 解压代码包,最终选定</description>
     </item>
     <item>
-      <title>Php-010基础面试题</title>
+      <title>Php 010基础面试题</title>
       <link>https://liuzhongzhen.github.io/post/Php-010%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
       <pubDate>Sat, 09 Aug 2014 13:47:39 +0800</pubDate>
       <guid>https://liuzhongzhen.github.io/post/Php-010%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
