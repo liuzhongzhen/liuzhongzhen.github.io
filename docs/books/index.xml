@@ -1,237 +1,188 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Books on Liuzhongzhen的博客</title>
+    <title>Books on Liuzhongzhen的技术学习笔记</title>
     <link>https://liuzhongzhen.github.io/books/</link>
-    <description>Recent content in Books on Liuzhongzhen的博客</description>
+    <description>Recent content in Books on Liuzhongzhen的技术学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 15 May 2022 14:07:32 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/books/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 May 2022 14:07:32 +0800</lastBuildDate>
+    <atom:link href="https://liuzhongzhen.github.io/books/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hadoop技术内幕之深入解析YARN架构设计与实现原理</title>
       <link>https://liuzhongzhen.github.io/books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90YARN%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</link>
       <pubDate>Sun, 15 May 2022 14:07:32 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90YARN%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Hadoop技术内幕之深入解析MapReduce架构设计与实现原理</title>
       <link>https://liuzhongzhen.github.io/books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90MapReduce%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</link>
       <pubDate>Sun, 01 May 2022 14:04:43 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90MapReduce%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>深入理解Java虚拟机之JVM高级特性与最佳实践（第3版）</title>
       <link>https://liuzhongzhen.github.io/books/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
       <pubDate>Wed, 12 Jan 2022 22:04:52 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Netty4核心原理与手写RPC框架实战</title>
       <link>https://liuzhongzhen.github.io/books/Netty4%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/</link>
       <pubDate>Mon, 20 Dec 2021 21:48:25 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Netty4%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Netty权威指南第2版</title>
       <link>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC2%E7%89%88/</link>
       <pubDate>Wed, 17 Nov 2021 21:12:46 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC2%E7%89%88/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Netty权威指南第1版</title>
       <link>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC1%E7%89%88/</link>
       <pubDate>Wed, 17 Nov 2021 21:12:40 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC1%E7%89%88/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Netty实战</title>
       <link>https://liuzhongzhen.github.io/books/Netty%E5%AE%9E%E6%88%98/</link>
       <pubDate>Sat, 02 Oct 2021 22:00:27 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Netty%E5%AE%9E%E6%88%98/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Go语言编程</title>
       <link>https://liuzhongzhen.github.io/books/Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Sun, 01 Aug 2021 00:19:32 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>ClickHouse原理解析与应用实践</title>
       <link>https://liuzhongzhen.github.io/books/ClickHouse%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5/</link>
       <pubDate>Wed, 06 May 2020 10:20:26 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/ClickHouse%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>OpenResty完全开发指南之构建百万级别并发的Web应用</title>
       <link>https://liuzhongzhen.github.io/books/OpenResty%E5%AE%8C%E5%85%A8%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</link>
       <pubDate>Fri, 21 Dec 2018 21:41:54 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/OpenResty%E5%AE%8C%E5%85%A8%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Java编程的逻辑</title>
       <link>https://liuzhongzhen.github.io/books/Java%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91/</link>
       <pubDate>Sun, 01 Jul 2018 21:37:38 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Java%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Java编程思想</title>
       <link>https://liuzhongzhen.github.io/books/Java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/</link>
       <pubDate>Mon, 01 Jan 2018 23:02:30 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>MySQL技术内幕 第4版</title>
       <link>https://liuzhongzhen.github.io/books/MySQL%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95-%E7%AC%AC4%E7%89%88/</link>
       <pubDate>Wed, 01 Jul 2015 14:34:34 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/MySQL%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95-%E7%AC%AC4%E7%89%88/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>高性能MySQL 第3版</title>
       <link>https://liuzhongzhen.github.io/books/%E9%AB%98%E6%80%A7%E8%83%BDMySQL-%E7%AC%AC3%E7%89%88/</link>
       <pubDate>Sun, 01 Mar 2015 14:29:19 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/%E9%AB%98%E6%80%A7%E8%83%BDMySQL-%E7%AC%AC3%E7%89%88/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>JavaScript权威指南 第六版</title>
       <link>https://liuzhongzhen.github.io/books/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%89%88/</link>
       <pubDate>Sun, 01 Feb 2015 14:25:57 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%89%88/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>HTTP权威指南</title>
       <link>https://liuzhongzhen.github.io/books/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97/</link>
       <pubDate>Wed, 01 Oct 2014 14:13:29 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>PHP经典实例第3版</title>
       <link>https://liuzhongzhen.github.io/books/PHP%E7%BB%8F%E5%85%B8%E5%AE%9E%E4%BE%8B%E7%AC%AC3%E7%89%88/</link>
       <pubDate>Thu, 01 May 2014 00:46:46 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP%E7%BB%8F%E5%85%B8%E5%AE%9E%E4%BE%8B%E7%AC%AC3%E7%89%88/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>深入理解PHP内核</title>
       <link>https://liuzhongzhen.github.io/books/PHP%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3PHP%E5%86%85%E6%A0%B8/</link>
       <pubDate>Tue, 11 Mar 2014 15:04:57 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3PHP%E5%86%85%E6%A0%B8/</guid>
       <description>原文地址</description>
     </item>
-    
     <item>
       <title>跟兄弟连学PHP</title>
       <link>https://liuzhongzhen.github.io/books/PHP%E8%B7%9F%E5%85%84%E5%BC%9F%E8%BF%9E%E5%AD%A6PHP/</link>
       <pubDate>Fri, 10 Jan 2014 15:12:32 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP%E8%B7%9F%E5%85%84%E5%BC%9F%E8%BF%9E%E5%AD%A6PHP/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>PHP6高级编程</title>
       <link>https://liuzhongzhen.github.io/books/PHP6%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Sat, 03 Aug 2013 00:45:26 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP6%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>PHP和MySQL WEB开发 4th</title>
       <link>https://liuzhongzhen.github.io/books/PHP%E5%92%8CMySQL-WEB%E5%BC%80%E5%8F%91-4th/</link>
       <pubDate>Wed, 01 May 2013 00:42:09 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP%E5%92%8CMySQL-WEB%E5%BC%80%E5%8F%91-4th/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>PHP开发实战1200例</title>
       <link>https://liuzhongzhen.github.io/books/PHP%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%981200%E4%BE%8B/</link>
       <pubDate>Sat, 03 Nov 2012 00:45:26 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%981200%E4%BE%8B/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>PHP5高级应用开发实践</title>
       <link>https://liuzhongzhen.github.io/books/PHP5%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/</link>
       <pubDate>Wed, 03 Oct 2012 00:45:26 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP5%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>细说PHP 第2版</title>
       <link>https://liuzhongzhen.github.io/books/PHP%E7%BB%86%E8%AF%B4PHP-%E7%AC%AC2%E7%89%88/</link>
       <pubDate>Mon, 10 Sep 2012 15:12:32 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP%E7%BB%86%E8%AF%B4PHP-%E7%AC%AC2%E7%89%88/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>百年孤独</title>
       <link>https://liuzhongzhen.github.io/books/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/</link>
       <pubDate>Mon, 02 Jul 2012 20:39:32 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/</guid>
       <description>作者 加西亚·马尔克斯 简介 背影是真的人是假的 没什么执著 一百年前你不是你我不是我 悲哀是真的泪是假的 本来没</description>
     </item>
-    
   </channel>
 </rss>

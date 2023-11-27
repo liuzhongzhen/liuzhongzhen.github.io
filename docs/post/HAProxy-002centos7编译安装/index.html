@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>HAProxy 002centos7编译安装 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="HAProxy 002centos7编译安装 - Liuzhongzhen的博客">
+    <title>HAProxy 002centos7编译安装 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="HAProxy 002centos7编译安装 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2022-01-03T22:57:56&#43;08:00'>
@@ -49,7 +49,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="https://liuzhongzhen.github.io/">
-                        Liuzhongzhen的博客
+                        Liuzhongzhen的技术学习笔记
                     </a>
                 
                 <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
@@ -58,15 +58,13 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -227,167 +225,167 @@
  yum install build-essential libssl-dev zlib1g-dev libpcre3 libpcre3-dev -y #这个不需要
 </code></pre></li>
 <li>编译lua扩展包
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> <span style="color:#0086b3">cd</span> /usr/local/src/lua-5.4.4
- make linux <span style="color:#0086b3">test</span>
- /usr/local/src/lua.5.4.4/src/lua -v <span style="color:#998;font-style:italic">#显示lua版本即表示安装正确</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> <span style="color:#0086b3">cd</span> /usr/local/src/lua-5.4.4
+</span></span><span style="display:flex;"><span> make linux <span style="color:#0086b3">test</span>
+</span></span><span style="display:flex;"><span> /usr/local/src/lua.5.4.4/src/lua -v <span style="color:#998;font-style:italic">#显示lua版本即表示安装正确</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>编译安装haproxy,目标目录 /usr/local/services/haproxy
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">make <span style="color:#008080">TARGET</span><span style="color:#000;font-weight:bold">=</span>linux-glic <span style="color:#008080">ARCH</span><span style="color:#000;font-weight:bold">=</span>x86_64
-  <span style="color:#008080">USE_PCRE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_OPENSSL</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_LIBCRYPT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>  
-  <span style="color:#008080">USE_CRYPT_H</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_ZLIB</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_SYSTEMD</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>  
-  <span style="color:#008080">USE_CPU_AFFINITY</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_THREAD</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_DL</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>   
-  <span style="color:#008080">USE_PTHREAD_PSHARED</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_STATIC_PCRE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>   
-  <span style="color:#008080">USE_PROMEX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_SYSTEMD</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_OBSOLETE_LINKER</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>  
-  <span style="color:#008080">USE_THREAD_DUMP</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>  <span style="color:#008080">USE_LUA</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>  
-  <span style="color:#008080">LUA_INC</span><span style="color:#000;font-weight:bold">=</span>/usr/local/src/lua-5.4.4/src  
-  <span style="color:#008080">LUA_LIB</span><span style="color:#000;font-weight:bold">=</span>/usr/local/src/lua-5.4.4/src  
-  <span style="color:#008080">PCRE_LIB</span><span style="color:#000;font-weight:bold">=</span>/usr/local/services/pcre/lib 
-  <span style="color:#008080">PCRE_INC</span><span style="color:#000;font-weight:bold">=</span>/usr/local/services/pcre/include 
-  <span style="color:#008080">PREFIX</span><span style="color:#000;font-weight:bold">=</span>/usr/local/services/haproxy -j 12;
-
-make install <span style="color:#008080">PREFIX</span><span style="color:#000;font-weight:bold">=</span>/usr/local/services/haproxy <span style="color:#998;font-style:italic">#建立软连接</span>
-
-ln -s /usr/local/services/haproxy/sbin/haproxy /usr/sbin/haproxy <span style="color:#998;font-style:italic">#建立软连接</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>make <span style="color:#008080">TARGET</span><span style="color:#000;font-weight:bold">=</span>linux-glic <span style="color:#008080">ARCH</span><span style="color:#000;font-weight:bold">=</span>x86_64
+</span></span><span style="display:flex;"><span>  <span style="color:#008080">USE_PCRE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_OPENSSL</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_LIBCRYPT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#008080">USE_CRYPT_H</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_ZLIB</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_SYSTEMD</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#008080">USE_CPU_AFFINITY</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_THREAD</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_DL</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>   
+</span></span><span style="display:flex;"><span>  <span style="color:#008080">USE_PTHREAD_PSHARED</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_STATIC_PCRE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>   
+</span></span><span style="display:flex;"><span>  <span style="color:#008080">USE_PROMEX</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_SYSTEMD</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span> <span style="color:#008080">USE_OBSOLETE_LINKER</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#008080">USE_THREAD_DUMP</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>  <span style="color:#008080">USE_LUA</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#008080">LUA_INC</span><span style="color:#000;font-weight:bold">=</span>/usr/local/src/lua-5.4.4/src  
+</span></span><span style="display:flex;"><span>  <span style="color:#008080">LUA_LIB</span><span style="color:#000;font-weight:bold">=</span>/usr/local/src/lua-5.4.4/src  
+</span></span><span style="display:flex;"><span>  <span style="color:#008080">PCRE_LIB</span><span style="color:#000;font-weight:bold">=</span>/usr/local/services/pcre/lib 
+</span></span><span style="display:flex;"><span>  <span style="color:#008080">PCRE_INC</span><span style="color:#000;font-weight:bold">=</span>/usr/local/services/pcre/include 
+</span></span><span style="display:flex;"><span>  <span style="color:#008080">PREFIX</span><span style="color:#000;font-weight:bold">=</span>/usr/local/services/haproxy -j 12;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>make install <span style="color:#008080">PREFIX</span><span style="color:#000;font-weight:bold">=</span>/usr/local/services/haproxy <span style="color:#998;font-style:italic">#建立软连接</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ln -s /usr/local/services/haproxy/sbin/haproxy /usr/sbin/haproxy <span style="color:#998;font-style:italic">#建立软连接</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>创建用户及相关目录
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> 创建HAProxy运行账户和组
- groupadd haproxy <span style="color:#998;font-style:italic">#添加haproxy组</span>
- useradd -g haproxy haproxy -c <span style="color:#d14">&#34;haproxy&#34;</span> -d /var/lib/haproxy -s /sbin/nologin
- 或者
- groupadd -r -g <span style="color:#099">149</span> haproxy
- useradd -r -u <span style="color:#099">149</span> -g haproxy -s /sbin/nologin haproxy
-
- mkdir -p /etc/haproxy;
- mkdir -p /etc/haproxy/cert; <span style="color:#998;font-style:italic">#存放ssl证书相关的文件</span>
- mkdir -p /etc/haproxy/errorfiles; <span style="color:#998;font-style:italic">#存放http错误定向文件</span>
- touch /etc/haproxy/haproxy.cfg; <span style="color:#998;font-style:italic">#创建haproxy配置文件</span>
-
- mkdir -p /var/lib/haproxy;
- mkdir -p /var/log/haproxy;
-
- chown -R haproxy:haproxy /etc/haproxy;
- chown -R haproxy:haproxy /var/lib/haproxy;
- chown -R haproxy:haproxy /var/log/haproxy;
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> 创建HAProxy运行账户和组
+</span></span><span style="display:flex;"><span> groupadd haproxy <span style="color:#998;font-style:italic">#添加haproxy组</span>
+</span></span><span style="display:flex;"><span> useradd -g haproxy haproxy -c <span style="color:#d14">&#34;haproxy&#34;</span> -d /var/lib/haproxy -s /sbin/nologin
+</span></span><span style="display:flex;"><span> 或者
+</span></span><span style="display:flex;"><span> groupadd -r -g <span style="color:#099">149</span> haproxy
+</span></span><span style="display:flex;"><span> useradd -r -u <span style="color:#099">149</span> -g haproxy -s /sbin/nologin haproxy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> mkdir -p /etc/haproxy;
+</span></span><span style="display:flex;"><span> mkdir -p /etc/haproxy/cert; <span style="color:#998;font-style:italic">#存放ssl证书相关的文件</span>
+</span></span><span style="display:flex;"><span> mkdir -p /etc/haproxy/errorfiles; <span style="color:#998;font-style:italic">#存放http错误定向文件</span>
+</span></span><span style="display:flex;"><span> touch /etc/haproxy/haproxy.cfg; <span style="color:#998;font-style:italic">#创建haproxy配置文件</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> mkdir -p /var/lib/haproxy;
+</span></span><span style="display:flex;"><span> mkdir -p /var/log/haproxy;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> chown -R haproxy:haproxy /etc/haproxy;
+</span></span><span style="display:flex;"><span> chown -R haproxy:haproxy /var/lib/haproxy;
+</span></span><span style="display:flex;"><span> chown -R haproxy:haproxy /var/log/haproxy;
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>创建systemctl服务管理文件
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#0086b3">cd</span> /usr/lib/systemd/system/;
-vim haproxy.service
-写入以下内容
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#0086b3">cd</span> /usr/lib/systemd/system/;
+</span></span><span style="display:flex;"><span>vim haproxy.service
+</span></span><span style="display:flex;"><span>写入以下内容
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic">##/usr/lib/systemd/system/</span>
-<span style="color:#000;font-weight:bold">[</span>Unit<span style="color:#000;font-weight:bold">]</span>
-<span style="color:#008080">Description</span><span style="color:#000;font-weight:bold">=</span>HAProxy Load Balancer
-<span style="color:#008080">After</span><span style="color:#000;font-weight:bold">=</span>network-online.target
-<span style="color:#008080">Wants</span><span style="color:#000;font-weight:bold">=</span>network-online.target
-
-<span style="color:#000;font-weight:bold">[</span>Service<span style="color:#000;font-weight:bold">]</span>
-<span style="color:#008080">Environment</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;CONFIG=/etc/haproxy/haproxy.cfg&#34;</span> <span style="color:#d14">&#34;PIDFILE=/run/haproxy.pid&#34;</span> <span style="color:#d14">&#34;OPTIONS=-S /var/run/haproxy.sock&#34;</span>
-<span style="color:#008080">EnvironmentFile</span><span style="color:#000;font-weight:bold">=</span>-/etc/default/haproxy
-<span style="color:#008080">EnvironmentFile</span><span style="color:#000;font-weight:bold">=</span>-/etc/sysconfig/haproxy
-<span style="color:#008080">ExecStartPre</span><span style="color:#000;font-weight:bold">=</span>/usr/sbin/haproxy -f <span style="color:#008080">$CONFIG</span> -c -q <span style="color:#008080">$OPTIONS</span> 
-<span style="color:#008080">ExecStart</span><span style="color:#000;font-weight:bold">=</span>/usr/sbin/haproxy -Ws -f <span style="color:#008080">$CONFIG</span> -p <span style="color:#008080">$PIDFILE</span> <span style="color:#008080">$OPTIONS</span>
-<span style="color:#008080">ExecReload</span><span style="color:#000;font-weight:bold">=</span>/usr/sbin/haproxy -f <span style="color:#008080">$CONFIG</span> -c -q <span style="color:#008080">$OPTIONS</span>
-<span style="color:#008080">ExecReload</span><span style="color:#000;font-weight:bold">=</span>/bin/kill -USR2 <span style="color:#008080">$MAINPID</span>
-<span style="color:#008080">ExecStop</span><span style="color:#000;font-weight:bold">=</span>/bin/kill <span style="color:#d14">`</span>cat /run/haproxy.pid<span style="color:#d14">`</span>
-<span style="color:#008080">SuccessExitStatus</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">143</span>
-<span style="color:#008080">KillMode</span><span style="color:#000;font-weight:bold">=</span>mixed
-<span style="color:#008080">Restart</span><span style="color:#000;font-weight:bold">=</span>always
-<span style="color:#008080">Type</span><span style="color:#000;font-weight:bold">=</span>notify
-
-<span style="color:#000;font-weight:bold">[</span>Install<span style="color:#000;font-weight:bold">]</span>
-<span style="color:#008080">WantedBy</span><span style="color:#000;font-weight:bold">=</span>multi-user.target
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#998;font-style:italic">##/usr/lib/systemd/system/</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Unit<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Description</span><span style="color:#000;font-weight:bold">=</span>HAProxy Load Balancer
+</span></span><span style="display:flex;"><span><span style="color:#008080">After</span><span style="color:#000;font-weight:bold">=</span>network-online.target
+</span></span><span style="display:flex;"><span><span style="color:#008080">Wants</span><span style="color:#000;font-weight:bold">=</span>network-online.target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Service<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">Environment</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;CONFIG=/etc/haproxy/haproxy.cfg&#34;</span> <span style="color:#d14">&#34;PIDFILE=/run/haproxy.pid&#34;</span> <span style="color:#d14">&#34;OPTIONS=-S /var/run/haproxy.sock&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">EnvironmentFile</span><span style="color:#000;font-weight:bold">=</span>-/etc/default/haproxy
+</span></span><span style="display:flex;"><span><span style="color:#008080">EnvironmentFile</span><span style="color:#000;font-weight:bold">=</span>-/etc/sysconfig/haproxy
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecStartPre</span><span style="color:#000;font-weight:bold">=</span>/usr/sbin/haproxy -f <span style="color:#008080">$CONFIG</span> -c -q <span style="color:#008080">$OPTIONS</span> 
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecStart</span><span style="color:#000;font-weight:bold">=</span>/usr/sbin/haproxy -Ws -f <span style="color:#008080">$CONFIG</span> -p <span style="color:#008080">$PIDFILE</span> <span style="color:#008080">$OPTIONS</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecReload</span><span style="color:#000;font-weight:bold">=</span>/usr/sbin/haproxy -f <span style="color:#008080">$CONFIG</span> -c -q <span style="color:#008080">$OPTIONS</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecReload</span><span style="color:#000;font-weight:bold">=</span>/bin/kill -USR2 <span style="color:#008080">$MAINPID</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">ExecStop</span><span style="color:#000;font-weight:bold">=</span>/bin/kill <span style="color:#d14">`</span>cat /run/haproxy.pid<span style="color:#d14">`</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">SuccessExitStatus</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">143</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">KillMode</span><span style="color:#000;font-weight:bold">=</span>mixed
+</span></span><span style="display:flex;"><span><span style="color:#008080">Restart</span><span style="color:#000;font-weight:bold">=</span>always
+</span></span><span style="display:flex;"><span><span style="color:#008080">Type</span><span style="color:#000;font-weight:bold">=</span>notify
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Install<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">WantedBy</span><span style="color:#000;font-weight:bold">=</span>multi-user.target
+</span></span></code></pre></td></tr></table>
 </div>
 </div><pre><code>```shell
 执行命令 systemctl daemon-reload #重新加载服务配置文件
@@ -398,43 +396,43 @@ systemctl enable haproxy #添加开机启动文件
 </code></pre>
 <ol start="10">
 <li>配置rsyslog错误日志:
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ps afx|grep rsyslog <span style="color:#998;font-style:italic">#查看rsyslog服务是否启动</span>
-<span style="color:#0086b3">cd</span> /etc/rsyslog.d/; <span style="color:#998;font-style:italic">#进入rsyslogd服务配置文件</span>
-vim haproxy.conf    <span style="color:#998;font-style:italic">#创建配置文件</span>
-写入以下内容
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ps afx|grep rsyslog <span style="color:#998;font-style:italic">#查看rsyslog服务是否启动</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">cd</span> /etc/rsyslog.d/; <span style="color:#998;font-style:italic">#进入rsyslogd服务配置文件</span>
+</span></span><span style="display:flex;"><span>vim haproxy.conf    <span style="color:#998;font-style:italic">#创建配置文件</span>
+</span></span><span style="display:flex;"><span>写入以下内容
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic"># Collect log with UDP</span>
-<span style="color:#008080">$ModLoad</span> imudp
-<span style="color:#008080">$UDPServerAddress</span> 127.0.0.1
-<span style="color:#008080">$UDPServerRun</span> <span style="color:#099">514</span>
-
-<span style="color:#998;font-style:italic"># Creating separate log files based on the severity</span>
-local2.* /var/log/haproxy/haproxy-traffic.log
-local2.notice /var/log/haproxy/haproxy-admin.log
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># Collect log with UDP</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">$ModLoad</span> imudp
+</span></span><span style="display:flex;"><span><span style="color:#008080">$UDPServerAddress</span> 127.0.0.1
+</span></span><span style="display:flex;"><span><span style="color:#008080">$UDPServerRun</span> <span style="color:#099">514</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># Creating separate log files based on the severity</span>
+</span></span><span style="display:flex;"><span>local2.* /var/log/haproxy/haproxy-traffic.log
+</span></span><span style="display:flex;"><span>local2.notice /var/log/haproxy/haproxy-admin.log
+</span></span></code></pre></td></tr></table>
 </div>
 </div><pre><code>```shell
 systemctl restart rsyslog #重启rsyslog服务
@@ -443,435 +441,435 @@ systemctl restart rsyslog #重启rsyslog服务
 <ol start="11">
 <li>编辑haproxy配置文件</li>
 </ol>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">108
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">109
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">110
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">111
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">112
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">113
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">114
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">115
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">116
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">117
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">118
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">119
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">120
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">121
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">122
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">123
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">124
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">125
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">126
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">127
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">128
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">129
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">130
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">131
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">132
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">133
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">134
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">135
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">136
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">137
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">138
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">139
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">140
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">141
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">142
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">143
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">108
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">109
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">110
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">111
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">112
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">113
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">114
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">115
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">116
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">117
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">118
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">119
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">120
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">121
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">122
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">123
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">124
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">125
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">126
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">127
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">128
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">129
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">130
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">131
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">132
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">133
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">134
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">135
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">136
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">137
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">138
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">139
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">140
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">141
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">142
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">143
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic"># This HAProxy Config</span>
-
-global
-    log 127.0.0.1:514 local2
-    chroot  /var/lib/haproxy
-    pidfile /run/haproxy.pid
-    nbproc <span style="color:#099">1</span>
-    nbthread <span style="color:#099">24</span>
-    hard-stop-after 3600s
-    maxconn <span style="color:#099">32768</span>
-    user haproxy
-    group haproxy
-    daemon
-
-    <span style="color:#998;font-style:italic"># turn on stats unix socket</span>
-    stats socket /var/lib/haproxy/stats
-    tune.ssl.default-dh-param <span style="color:#099">2048</span>
-
-<span style="color:#998;font-style:italic">#---------------------------------------------------------------------</span>
-<span style="color:#998;font-style:italic"># common defaults that all the &#39;listen&#39; and &#39;backend&#39; sections will</span>
-<span style="color:#998;font-style:italic"># use if not designated in their block</span>
-<span style="color:#998;font-style:italic">#---------------------------------------------------------------------</span>
-defaults
-    mode                    http
-    log                     global
-    option                  httplog
-    option                  dontlognull
-    option                  http-server-close
-    option forwardfor       except 127.0.0.0/8
-    option                  redispatch
-    retries                 <span style="color:#099">3</span>
-    timeout http-request    10s
-    timeout queue           1m
-    timeout connect         10s
-    timeout client          1m
-    timeout server          1m
-    timeout http-keep-alive 10s
-    timeout check           10s
-    maxconn                 <span style="color:#099">3000</span>
-
-errorfile <span style="color:#099">403</span> /etc/haproxy/errorfiles/403.http
-errorfile <span style="color:#099">500</span> /etc/haproxy/errorfiles/500.http
-errorfile <span style="color:#099">502</span> /etc/haproxy/errorfiles/502.http
-errorfile <span style="color:#099">503</span> /etc/haproxy/errorfiles/503.http
-errorfile <span style="color:#099">504</span> /etc/haproxy/errorfiles/504.http
-
-<span style="color:#998;font-style:italic"># not matched</span>
-backend not_matched
-    mode http
-    http-request deny deny_status <span style="color:#099">503</span>
-
-
-userlist admin_users
-    user admin password xxxxxxxxxxx
-
-
-<span style="color:#998;font-style:italic"># This sets up the admin page for HA Proxy at port 1080.</span>
-listen stats
-    <span style="color:#0086b3">bind</span> 0.0.0.0:1080
-    balance
-    mode http
-    maxconn <span style="color:#099">1024</span>
-    stats <span style="color:#0086b3">enable</span>
-    stats refresh 30s
-    stats uri /
-    acl auth_admin http_auth<span style="color:#000;font-weight:bold">(</span>admin_users<span style="color:#000;font-weight:bold">)</span>
-    stats http-request auth realm Prove<span style="color:#d14">\ </span>me<span style="color:#d14">\ </span>baby unless auth_admin
-    stats show-legends
-
-<span style="color:#998;font-style:italic"># HTTP on port 443</span>
-frontend https_in
-    <span style="color:#0086b3">bind</span> 0.0.0.0:443 ssl crt /etc/haproxy/cert/oa.net.pem
-    maxconn <span style="color:#099">5000</span>
-    timeout client 10s
-    timeout http-request 10s
-    timeout http-keep-alive 10s
-    option forwardfor except 10.0.0.0/8
-
-    acl testoa hdr<span style="color:#000;font-weight:bold">(</span>host<span style="color:#000;font-weight:bold">)</span> -i test.oa.net
-    use_backend testoa_server <span style="color:#000;font-weight:bold">if</span> testoa
-    
-    <span style="color:#998;font-style:italic"># Default</span>
-    default_backend not_matched
-
-<span style="color:#998;font-style:italic"># HTTP on port 80</span>
-frontend http_in
-    <span style="color:#0086b3">bind</span> 0.0.0.0:80
-    maxconn <span style="color:#099">5000</span>
-    timeout client 10s
-    timeout http-request 10s
-    timeout http-keep-alive 10s
-    option forwardfor except 10.0.0.0/8
-
-    acl testoa hdr<span style="color:#000;font-weight:bold">(</span>host<span style="color:#000;font-weight:bold">)</span> -i test.oa.net
-    use_backend testoa_server <span style="color:#000;font-weight:bold">if</span> testoa
-
-<span style="color:#998;font-style:italic"># testoa</span>
-backend testoa_server
-    mode http
-    timeout check 10s
-    timeout connect 10s
-    timeout server 300s
-    timeout http-request 10s
-    timeout http-keep-alive 10s
-    timeout tunnel 300s
-    timeout queue 10s
-    balance roundrobin
-    <span style="color:#998;font-style:italic">#cookie SERVERNAME insert indirect nocache</span>
-    http-reuse safe
-    option httpchk OPTIONS /?haproxy HTTP/1.1<span style="color:#d14">\r\n</span>Host:<span style="color:#d14">\ </span>test.oa.net
-    server s1 192.168.126.21:80 check inter <span style="color:#099">5000</span> rise <span style="color:#099">3</span> fall <span style="color:#099">10</span> maxconn <span style="color:#099">1024</span> maxqueue <span style="color:#099">128</span> <span style="color:#998;font-style:italic">#disabled</span>
-    server s1 192.168.126.22:80 check inter <span style="color:#099">5000</span> rise <span style="color:#099">3</span> fall <span style="color:#099">10</span> maxconn <span style="color:#099">1024</span> maxqueue <span style="color:#099">128</span> <span style="color:#998;font-style:italic">#disabled</span>
-
-
-<span style="color:#998;font-style:italic"># MySQL </span>
-listen mysql_mynas
-    <span style="color:#0086b3">bind</span> 0.0.0.0:3305
-    mode    tcp
-    option  tcplog
-    maxconn <span style="color:#099">4096</span>
-    timeout client 300s
-    timeout client-fin 300s
-    timeout connect 3s
-    timeout server 300s
-    timeout tunnel 1800s
-    timeout queue 60s
-    retries <span style="color:#099">3</span>
-    <span style="color:#998;font-style:italic">#option mysql-check user root</span>
-    server mynas 192.168.126.22:3306 check rise <span style="color:#099">5</span> fall <span style="color:#099">10</span> maxconn <span style="color:#099">1024</span> maxqueue <span style="color:#099">512</span>
-
-<span style="color:#998;font-style:italic"># Redis</span>
-listen  redis_mynas
-    <span style="color:#0086b3">bind</span>    0.0.0.0:7000
-    mode    tcp
-    option  tcplog
-    maxconn <span style="color:#099">100000</span>
-    balance roundrobin
-    server redis1 192.168.126.22:6380 check
-    server redis2 192.168.126.22:6381 check
-    server redis3 192.168.126.22:6382 check
-    server redis4 192.168.126.22:6383 check
-    server redis5 192.168.126.22:6384 check
-    server redis6 192.168.126.22:6385 check
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># This HAProxy Config</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>global
+</span></span><span style="display:flex;"><span>    log 127.0.0.1:514 local2
+</span></span><span style="display:flex;"><span>    chroot  /var/lib/haproxy
+</span></span><span style="display:flex;"><span>    pidfile /run/haproxy.pid
+</span></span><span style="display:flex;"><span>    nbproc <span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span>    nbthread <span style="color:#099">24</span>
+</span></span><span style="display:flex;"><span>    hard-stop-after 3600s
+</span></span><span style="display:flex;"><span>    maxconn <span style="color:#099">32768</span>
+</span></span><span style="display:flex;"><span>    user haproxy
+</span></span><span style="display:flex;"><span>    group haproxy
+</span></span><span style="display:flex;"><span>    daemon
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># turn on stats unix socket</span>
+</span></span><span style="display:flex;"><span>    stats socket /var/lib/haproxy/stats
+</span></span><span style="display:flex;"><span>    tune.ssl.default-dh-param <span style="color:#099">2048</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#---------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># common defaults that all the &#39;listen&#39; and &#39;backend&#39; sections will</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># use if not designated in their block</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#---------------------------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>defaults
+</span></span><span style="display:flex;"><span>    mode                    http
+</span></span><span style="display:flex;"><span>    log                     global
+</span></span><span style="display:flex;"><span>    option                  httplog
+</span></span><span style="display:flex;"><span>    option                  dontlognull
+</span></span><span style="display:flex;"><span>    option                  http-server-close
+</span></span><span style="display:flex;"><span>    option forwardfor       except 127.0.0.0/8
+</span></span><span style="display:flex;"><span>    option                  redispatch
+</span></span><span style="display:flex;"><span>    retries                 <span style="color:#099">3</span>
+</span></span><span style="display:flex;"><span>    timeout http-request    10s
+</span></span><span style="display:flex;"><span>    timeout queue           1m
+</span></span><span style="display:flex;"><span>    timeout connect         10s
+</span></span><span style="display:flex;"><span>    timeout client          1m
+</span></span><span style="display:flex;"><span>    timeout server          1m
+</span></span><span style="display:flex;"><span>    timeout http-keep-alive 10s
+</span></span><span style="display:flex;"><span>    timeout check           10s
+</span></span><span style="display:flex;"><span>    maxconn                 <span style="color:#099">3000</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>errorfile <span style="color:#099">403</span> /etc/haproxy/errorfiles/403.http
+</span></span><span style="display:flex;"><span>errorfile <span style="color:#099">500</span> /etc/haproxy/errorfiles/500.http
+</span></span><span style="display:flex;"><span>errorfile <span style="color:#099">502</span> /etc/haproxy/errorfiles/502.http
+</span></span><span style="display:flex;"><span>errorfile <span style="color:#099">503</span> /etc/haproxy/errorfiles/503.http
+</span></span><span style="display:flex;"><span>errorfile <span style="color:#099">504</span> /etc/haproxy/errorfiles/504.http
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># not matched</span>
+</span></span><span style="display:flex;"><span>backend not_matched
+</span></span><span style="display:flex;"><span>    mode http
+</span></span><span style="display:flex;"><span>    http-request deny deny_status <span style="color:#099">503</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>userlist admin_users
+</span></span><span style="display:flex;"><span>    user admin password xxxxxxxxxxx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># This sets up the admin page for HA Proxy at port 1080.</span>
+</span></span><span style="display:flex;"><span>listen stats
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">bind</span> 0.0.0.0:1080
+</span></span><span style="display:flex;"><span>    balance
+</span></span><span style="display:flex;"><span>    mode http
+</span></span><span style="display:flex;"><span>    maxconn <span style="color:#099">1024</span>
+</span></span><span style="display:flex;"><span>    stats <span style="color:#0086b3">enable</span>
+</span></span><span style="display:flex;"><span>    stats refresh 30s
+</span></span><span style="display:flex;"><span>    stats uri /
+</span></span><span style="display:flex;"><span>    acl auth_admin http_auth<span style="color:#000;font-weight:bold">(</span>admin_users<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>    stats http-request auth realm Prove<span style="color:#d14">\ </span>me<span style="color:#d14">\ </span>baby unless auth_admin
+</span></span><span style="display:flex;"><span>    stats show-legends
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># HTTP on port 443</span>
+</span></span><span style="display:flex;"><span>frontend https_in
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">bind</span> 0.0.0.0:443 ssl crt /etc/haproxy/cert/oa.net.pem
+</span></span><span style="display:flex;"><span>    maxconn <span style="color:#099">5000</span>
+</span></span><span style="display:flex;"><span>    timeout client 10s
+</span></span><span style="display:flex;"><span>    timeout http-request 10s
+</span></span><span style="display:flex;"><span>    timeout http-keep-alive 10s
+</span></span><span style="display:flex;"><span>    option forwardfor except 10.0.0.0/8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    acl testoa hdr<span style="color:#000;font-weight:bold">(</span>host<span style="color:#000;font-weight:bold">)</span> -i test.oa.net
+</span></span><span style="display:flex;"><span>    use_backend testoa_server <span style="color:#000;font-weight:bold">if</span> testoa
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic"># Default</span>
+</span></span><span style="display:flex;"><span>    default_backend not_matched
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># HTTP on port 80</span>
+</span></span><span style="display:flex;"><span>frontend http_in
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">bind</span> 0.0.0.0:80
+</span></span><span style="display:flex;"><span>    maxconn <span style="color:#099">5000</span>
+</span></span><span style="display:flex;"><span>    timeout client 10s
+</span></span><span style="display:flex;"><span>    timeout http-request 10s
+</span></span><span style="display:flex;"><span>    timeout http-keep-alive 10s
+</span></span><span style="display:flex;"><span>    option forwardfor except 10.0.0.0/8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    acl testoa hdr<span style="color:#000;font-weight:bold">(</span>host<span style="color:#000;font-weight:bold">)</span> -i test.oa.net
+</span></span><span style="display:flex;"><span>    use_backend testoa_server <span style="color:#000;font-weight:bold">if</span> testoa
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># testoa</span>
+</span></span><span style="display:flex;"><span>backend testoa_server
+</span></span><span style="display:flex;"><span>    mode http
+</span></span><span style="display:flex;"><span>    timeout check 10s
+</span></span><span style="display:flex;"><span>    timeout connect 10s
+</span></span><span style="display:flex;"><span>    timeout server 300s
+</span></span><span style="display:flex;"><span>    timeout http-request 10s
+</span></span><span style="display:flex;"><span>    timeout http-keep-alive 10s
+</span></span><span style="display:flex;"><span>    timeout tunnel 300s
+</span></span><span style="display:flex;"><span>    timeout queue 10s
+</span></span><span style="display:flex;"><span>    balance roundrobin
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#cookie SERVERNAME insert indirect nocache</span>
+</span></span><span style="display:flex;"><span>    http-reuse safe
+</span></span><span style="display:flex;"><span>    option httpchk OPTIONS /?haproxy HTTP/1.1<span style="color:#d14">\r\n</span>Host:<span style="color:#d14">\ </span>test.oa.net
+</span></span><span style="display:flex;"><span>    server s1 192.168.126.21:80 check inter <span style="color:#099">5000</span> rise <span style="color:#099">3</span> fall <span style="color:#099">10</span> maxconn <span style="color:#099">1024</span> maxqueue <span style="color:#099">128</span> <span style="color:#998;font-style:italic">#disabled</span>
+</span></span><span style="display:flex;"><span>    server s1 192.168.126.22:80 check inter <span style="color:#099">5000</span> rise <span style="color:#099">3</span> fall <span style="color:#099">10</span> maxconn <span style="color:#099">1024</span> maxqueue <span style="color:#099">128</span> <span style="color:#998;font-style:italic">#disabled</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># MySQL </span>
+</span></span><span style="display:flex;"><span>listen mysql_mynas
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">bind</span> 0.0.0.0:3305
+</span></span><span style="display:flex;"><span>    mode    tcp
+</span></span><span style="display:flex;"><span>    option  tcplog
+</span></span><span style="display:flex;"><span>    maxconn <span style="color:#099">4096</span>
+</span></span><span style="display:flex;"><span>    timeout client 300s
+</span></span><span style="display:flex;"><span>    timeout client-fin 300s
+</span></span><span style="display:flex;"><span>    timeout connect 3s
+</span></span><span style="display:flex;"><span>    timeout server 300s
+</span></span><span style="display:flex;"><span>    timeout tunnel 1800s
+</span></span><span style="display:flex;"><span>    timeout queue 60s
+</span></span><span style="display:flex;"><span>    retries <span style="color:#099">3</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#998;font-style:italic">#option mysql-check user root</span>
+</span></span><span style="display:flex;"><span>    server mynas 192.168.126.22:3306 check rise <span style="color:#099">5</span> fall <span style="color:#099">10</span> maxconn <span style="color:#099">1024</span> maxqueue <span style="color:#099">512</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># Redis</span>
+</span></span><span style="display:flex;"><span>listen  redis_mynas
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">bind</span>    0.0.0.0:7000
+</span></span><span style="display:flex;"><span>    mode    tcp
+</span></span><span style="display:flex;"><span>    option  tcplog
+</span></span><span style="display:flex;"><span>    maxconn <span style="color:#099">100000</span>
+</span></span><span style="display:flex;"><span>    balance roundrobin
+</span></span><span style="display:flex;"><span>    server redis1 192.168.126.22:6380 check
+</span></span><span style="display:flex;"><span>    server redis2 192.168.126.22:6381 check
+</span></span><span style="display:flex;"><span>    server redis3 192.168.126.22:6382 check
+</span></span><span style="display:flex;"><span>    server redis4 192.168.126.22:6383 check
+</span></span><span style="display:flex;"><span>    server redis5 192.168.126.22:6384 check
+</span></span><span style="display:flex;"><span>    server redis6 192.168.126.22:6385 check
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="11">
 <li>errorfiles文件列表
 a. 400.http</li>
 </ol>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">HTTP/<span style="color:#099">1</span>.<span style="color:#099">0</span> <span style="color:#099">400</span> Bad request^M<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>Cache-Control: no-cache^M<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>Connection: close^M<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>Content-Type: text/html^M<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>^M<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>&lt;html&gt;&lt;body&gt;&lt;h1&gt;<span style="color:#099">400</span> Bad request&lt;/h1&gt;<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>Your browser sent an invalid request.<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>&lt;<span style="color:#009926">/body&gt;&lt;/</span>html&gt;<span style="color:#a61717;background-color:#e3d2d2">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>HTTP/<span style="color:#099">1</span>.<span style="color:#099">0</span> <span style="color:#099">400</span> Bad request^M
+</span></span><span style="display:flex;"><span>Cache-Control: no-cache^M
+</span></span><span style="display:flex;"><span>Connection: close^M
+</span></span><span style="display:flex;"><span>Content-Type: text/html^M
+</span></span><span style="display:flex;"><span>^M
+</span></span><span style="display:flex;"><span>&lt;html&gt;&lt;body&gt;&lt;h1&gt;<span style="color:#099">400</span> Bad request&lt;/h1&gt;
+</span></span><span style="display:flex;"><span>Your browser sent an invalid request.
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#009926">/body&gt;&lt;/</span>html&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>b. 500.http</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">HTTP/<span style="color:#099">1</span>.<span style="color:#099">0</span> <span style="color:#099">500</span> Internal Server Error^M<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>Cache-Control: no-cache^M<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>Connection: close^M<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>Content-Type: text/html^M<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>^M<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>&lt;html&gt;&lt;body&gt;&lt;h1&gt;<span style="color:#099">500</span> Internal Server Error&lt;/h1&gt;<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>An internal server error occurred.<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>&lt;<span style="color:#009926">/body&gt;&lt;/</span>html&gt;<span style="color:#a61717;background-color:#e3d2d2">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>HTTP/<span style="color:#099">1</span>.<span style="color:#099">0</span> <span style="color:#099">500</span> Internal Server Error^M
+</span></span><span style="display:flex;"><span>Cache-Control: no-cache^M
+</span></span><span style="display:flex;"><span>Connection: close^M
+</span></span><span style="display:flex;"><span>Content-Type: text/html^M
+</span></span><span style="display:flex;"><span>^M
+</span></span><span style="display:flex;"><span>&lt;html&gt;&lt;body&gt;&lt;h1&gt;<span style="color:#099">500</span> Internal Server Error&lt;/h1&gt;
+</span></span><span style="display:flex;"><span>An internal server error occurred.
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#009926">/body&gt;&lt;/</span>html&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>c. 503.http</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">HTTP/<span style="color:#099">1</span>.<span style="color:#099">0</span> <span style="color:#099">503</span> Service Unavailable^M<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>Cache-Control: no-cache^M<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>Connection: close^M<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>Content-Type: text/html^M<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>^M<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>&lt;html&gt;&lt;body&gt;&lt;h1&gt;<span style="color:#099">503</span> Service Unavailable&lt;/h1&gt;<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>No server is available to handle this request.<span style="color:#a61717;background-color:#e3d2d2">
-</span><span style="color:#a61717;background-color:#e3d2d2"></span>&lt;<span style="color:#009926">/body&gt;&lt;/</span>html&gt;<span style="color:#a61717;background-color:#e3d2d2">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>HTTP/<span style="color:#099">1</span>.<span style="color:#099">0</span> <span style="color:#099">503</span> Service Unavailable^M
+</span></span><span style="display:flex;"><span>Cache-Control: no-cache^M
+</span></span><span style="display:flex;"><span>Connection: close^M
+</span></span><span style="display:flex;"><span>Content-Type: text/html^M
+</span></span><span style="display:flex;"><span>^M
+</span></span><span style="display:flex;"><span>&lt;html&gt;&lt;body&gt;&lt;h1&gt;<span style="color:#099">503</span> Service Unavailable&lt;/h1&gt;
+</span></span><span style="display:flex;"><span>No server is available to handle this request.
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#009926">/body&gt;&lt;/</span>html&gt;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="12">
 <li>
 <p>相关操作</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/usr/sbin/haproxy -c -f /etc/haproxy/haproxy.cfg <span style="color:#998;font-style:italic">#检查配置正确与否</span>
-systemctl reload haproxy <span style="color:#998;font-style:italic">#重启命令</span>
-http://192.168.126.10:1080 <span style="color:#998;font-style:italic">#查看Haproxy页面管理控制台: </span>
-http://192.168.126.10:1080/metrics <span style="color:#998;font-style:italic">#查看haproxy统计度量信息</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/usr/sbin/haproxy -c -f /etc/haproxy/haproxy.cfg <span style="color:#998;font-style:italic">#检查配置正确与否</span>
+</span></span><span style="display:flex;"><span>systemctl reload haproxy <span style="color:#998;font-style:italic">#重启命令</span>
+</span></span><span style="display:flex;"><span>http://192.168.126.10:1080 <span style="color:#998;font-style:italic">#查看Haproxy页面管理控制台: </span>
+</span></span><span style="display:flex;"><span>http://192.168.126.10:1080/metrics <span style="color:#998;font-style:italic">#查看haproxy统计度量信息</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>用户加密相关操作
 参考<a href="https://www.haproxy.com/">haproxy</a><br>
 <a href="https://www.haproxy.com/documentation/hapee/latest/configuration/config-sections/userlist/">haproxy userlist</a></p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Use the following commands to generate an SHA-256 encrypted password.
-mkpasswd -m sha-256 mypassword123  
-
-<span style="color:#998;font-style:italic">## ubuntu系统</span>
-Use the following commands to generate an SHA-256 encrypted password.
-$ sudo apt install whois
-$ mkpasswd -m sha-256 mypassword123
-
-<span style="color:#008080">$5$s6Subz0X7FSX2zON$r94OtF6gOfWlGmySwvn3pDFIAHbIpe6mWneueqtBOm</span>/ 
-
-<span style="color:#0086b3">echo</span> <span style="color:#000;font-weight:bold">[</span>mypassword<span style="color:#000;font-weight:bold">]</span> | mkpasswd --stdin --method<span style="color:#000;font-weight:bold">=</span>sha-256
-
-<span style="color:#998;font-style:italic">## 执行如下命令获取的密码可以作为秘文</span>
-python -c <span style="color:#d14">&#39;import crypt; print(crypt.crypt(&#34;mypassword123&#34;))&#39;</span>
-
-<span style="color:#998;font-style:italic">## 或者参考这个工具</span>
-https://github.com/myENA/mkpasswd
-go get -u github.com/myENA/mkpasswd
-mkpasswd -hash sha256 -password mypassword123
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>Use the following commands to generate an SHA-256 encrypted password.
+</span></span><span style="display:flex;"><span>mkpasswd -m sha-256 mypassword123  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">## ubuntu系统</span>
+</span></span><span style="display:flex;"><span>Use the following commands to generate an SHA-256 encrypted password.
+</span></span><span style="display:flex;"><span>$ sudo apt install whois
+</span></span><span style="display:flex;"><span>$ mkpasswd -m sha-256 mypassword123
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">$5$s6Subz0X7FSX2zON$r94OtF6gOfWlGmySwvn3pDFIAHbIpe6mWneueqtBOm</span>/ 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">echo</span> <span style="color:#000;font-weight:bold">[</span>mypassword<span style="color:#000;font-weight:bold">]</span> | mkpasswd --stdin --method<span style="color:#000;font-weight:bold">=</span>sha-256
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">## 执行如下命令获取的密码可以作为秘文</span>
+</span></span><span style="display:flex;"><span>python -c <span style="color:#d14">&#39;import crypt; print(crypt.crypt(&#34;mypassword123&#34;))&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">## 或者参考这个工具</span>
+</span></span><span style="display:flex;"><span>https://github.com/myENA/mkpasswd
+</span></span><span style="display:flex;"><span>go get -u github.com/myENA/mkpasswd
+</span></span><span style="display:flex;"><span>mkpasswd -hash sha256 -password mypassword123
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -926,7 +924,7 @@ mkpasswd -hash sha256 -password mypassword123
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        &copy; 2023 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的技术学习笔记 By liuzhongzhen</a>
         
     </div>
     <br />

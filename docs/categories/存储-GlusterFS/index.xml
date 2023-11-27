@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>存储-GlusterFS on Liuzhongzhen的博客</title>
+    <title>存储-GlusterFS on Liuzhongzhen的技术学习笔记</title>
     <link>https://liuzhongzhen.github.io/categories/%E5%AD%98%E5%82%A8-GlusterFS/</link>
-    <description>Recent content in 存储-GlusterFS on Liuzhongzhen的博客</description>
+    <description>Recent content in 存储-GlusterFS on Liuzhongzhen的技术学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Sat, 09 Nov 2019 22:57:56 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/%E5%AD%98%E5%82%A8-GlusterFS/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Nov 2019 22:57:56 +0800</lastBuildDate>
+    <atom:link href="https://liuzhongzhen.github.io/categories/%E5%AD%98%E5%82%A8-GlusterFS/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GlusterFS 001基础知识</title>
       <link>https://liuzhongzhen.github.io/post/GlusterFS-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Sat, 09 Nov 2019 22:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/GlusterFS-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>参考文档 https://wiki.centos.org/zh/HowTos/GlusterFSonCentOS 推荐 https://wiki.centos.org/SpecialInterestGroup/Storage/gluster-Quickstart 安装文档 https://www.codercto.com/a/23851.html gluster高可用HA http://www.voidcn.com/article/p-mczwnjaz-tx.html HA高可用 https://blog.51cto.com/7424593/2165158 HA高可用 https://www.cnblogs.com/smlie/p/11799908.html 3种客户端挂载方案 https://blog.csdn.net/qq43748322/article/details/93875225 GlusterFS 配</description>
     </item>
-    
   </channel>
 </rss>

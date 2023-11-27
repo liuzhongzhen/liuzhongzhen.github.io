@@ -1,129 +1,104 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>数据库-Mysql on Liuzhongzhen的博客</title>
+    <title>数据库-Mysql on Liuzhongzhen的技术学习笔记</title>
     <link>https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/</link>
-    <description>Recent content in 数据库-Mysql on Liuzhongzhen的博客</description>
+    <description>Recent content in 数据库-Mysql on Liuzhongzhen的技术学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Sat, 06 Feb 2016 23:20:44 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Feb 2016 23:20:44 +0800</lastBuildDate>
+    <atom:link href="https://liuzhongzhen.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93-Mysql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mysql 013表结构变更</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-013%E8%A1%A8%E7%BB%93%E6%9E%84%E5%8F%98%E6%9B%B4/</link>
       <pubDate>Sat, 06 Feb 2016 23:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-013%E8%A1%A8%E7%BB%93%E6%9E%84%E5%8F%98%E6%9B%B4/</guid>
-      <description>当前mysql最大的记录数是7亿级 Executing: 1 2 3 4 ALTERTABLE`live_http_origin`.`o_xylive_flashsdk_one_20170414`ADDCOLUMN`httpdns_resptime`DOUBLENULLAFTER`httpdns_time`,ADDCOLUMN`httpdns_clientip`VARCHAR(45)NULLAFTER`httpdns_resptime`,ADDCOLUMN`httpdns_host`VARCHAR(200)NULLAFTER`httpdns_clientip`; 杀死mysql连接 1 mysql -uroot -p123456 -e &amp;#34; show processlist &amp;#34; | grep graph_cluster | awk &amp;#39;{print &amp;#34;mysql -uroot -p123456</description>
+      <description>当前mysql最大的记录数是7亿级 Executing: 1 2 3 4 ALTER TABLE `live_http_origin`.`o_xylive_flashsdk_one_20170414` ADD COLUMN `httpdns_resptime` DOUBLE NULL AFTER `httpdns_time`, ADD COLUMN `httpdns_clientip` VARCHAR(45) NULL AFTER `httpdns_resptime`, ADD COLUMN `httpdns_host` VARCHAR(200) NULL AFTER `httpdns_clientip`; 杀死my</description>
     </item>
-    
     <item>
       <title>Mysql 012mysql锁相关</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-012mysql%E9%94%81%E7%9B%B8%E5%85%B3/</link>
       <pubDate>Tue, 02 Feb 2016 23:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-012mysql%E9%94%81%E7%9B%B8%E5%85%B3/</guid>
       <description>information_schema.partitions 表的分区信息 information_schema.processlist 客户端连接信息 information_schema.innodb_trx 当前运行的所有事务 information_schema.innodb_locks 当前出现的锁 information_schema.innodb_lock_waits 锁等待的对应关系 查询发生锁等待占有</description>
     </item>
-    
     <item>
       <title>Mysql 011安装指南</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-011%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</link>
       <pubDate>Mon, 01 Feb 2016 23:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-011%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</guid>
       <description>一、安装mysql下载包 mysql5.7 centos7:https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm mysql5.7 centos6:https://dev.mysql.com/get/mysql57-community-release-el6-11.noarch.rpm mysql5.6 centos7:https://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm mysql5.6 centos6:https://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm 二、安装过程 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24</description>
     </item>
-    
     <item>
       <title>Mysql 010mysql索引介绍</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-010mysql%E7%B4%A2%E5%BC%95%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sun, 31 Jan 2016 23:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-010mysql%E7%B4%A2%E5%BC%95%E4%BB%8B%E7%BB%8D/</guid>
       <description>一、简介 MySQL目前主要有以下几种索引类型： 普通索引 唯一索引 主键索引 组合索引 全文索引 二、语句 1 2 3</description>
     </item>
-    
     <item>
       <title>Mysql 009mysql安装配置</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-009mysql%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sun, 31 Jan 2016 22:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-009mysql%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
       <description># This config is for: 64G, 2 * 6 physical cores with 24 threads [client] port = 3306 socket = /dev/shm/mysql.sock default-character-set = utf8 [mysqld_safe] basedir = /usr open-files-limit = 32000 user = mysql [mysqld] port = 3306 socket = /dev/shm/mysql.sock basedir = /usr datadir = /usr/local/mysql/data pid-file = /usr/local/mysql/data/mysqld.pid</description>
     </item>
-    
     <item>
       <title>Mysql 008基础操作</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-008%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Sat, 30 Jan 2016 22:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-008%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid>
       <description>1. 刷新mysql缓存信息 mysqladmin flush-hosts -h127.0.0.1 -P3306 -uroot -p&#39;123456&#39;; 2. 从sql语句恢复一个数据库方法 登入mysql，执行source</description>
     </item>
-    
     <item>
       <title>Mysql-007基础知识</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Fri, 29 Jan 2016 22:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>什么是SQL？ 结构化查询语言(Structured Query Language)简称SQL，是一种数据库查询语</description>
     </item>
-    
     <item>
       <title>Mysql-006解读事务和MVVC原理</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/</link>
       <pubDate>Thu, 28 Jan 2016 22:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/</guid>
       <description>转载外部-解读数据库原理 一、事务 概念 事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使</description>
     </item>
-    
     <item>
       <title>Mysql-005浅谈Mysql架构体系</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/</link>
       <pubDate>Thu, 28 Jan 2016 22:19:55 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/</guid>
       <description>转载外部-浅谈MySQL架构体系 一、数据库和数据库实例 在MySQL的学习研究中，存在两个非常容易混淆</description>
     </item>
-    
     <item>
       <title>Mysql-004Mysql优化</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-004Mysql%E4%BC%98%E5%8C%96/</link>
       <pubDate>Sun, 03 Jan 2016 21:17:16 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-004Mysql%E4%BC%98%E5%8C%96/</guid>
       <description>MySQL优化 配置优化 配置优化指的MySQL 的 server端的配置，一般对于业务方而言，可以不用关注</description>
     </item>
-    
     <item>
       <title>Mysql-003如何正确高效使用Mysql索引</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-003%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8Mysql%E7%B4%A2%E5%BC%95/</link>
       <pubDate>Sun, 03 Jan 2016 11:17:16 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-003%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8Mysql%E7%B4%A2%E5%BC%95/</guid>
       <description>转载外部-如何理解并正确高效的使用MySQL索引 概述 索引是存储引擎用于快速查找记录的一种数据结构，通</description>
     </item>
-    
     <item>
       <title>Mysql-002索引原理介绍</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-002%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sat, 02 Jan 2016 22:57:04 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-002%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/</guid>
       <description>转自外部深入剖析MySQL索引和SQL调优实战 MySQL索引 MySQL支持诸多存储引擎，而各种存储引</description>
     </item>
-    
     <item>
       <title>Mysql-001建表语句</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/</link>
       <pubDate>Fri, 01 Jan 2016 11:17:16 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/</guid>
-      <description>常用附加信息 1 2 3 4 5 6 ENGINE=InnoDBdefaultcharacterset=utf8m</description>
+      <description>常用附加信息 1 2 3 4 5 6 ENGINE = InnoDB default character set = utf8mb4 collate = utf8mb4_general_ci comment = &amp;#39;任务类型扩展配置信息&amp;#39; ROW_FORMAT = Compact #压</description>
     </item>
-    
   </channel>
 </rss>

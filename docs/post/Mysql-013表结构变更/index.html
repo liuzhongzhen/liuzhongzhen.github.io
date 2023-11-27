@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>Mysql 013表结构变更 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="Mysql 013表结构变更 - Liuzhongzhen的博客">
+    <title>Mysql 013表结构变更 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="Mysql 013表结构变更 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2016-02-06T23:20:44&#43;08:00'>
@@ -49,7 +49,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="https://liuzhongzhen.github.io/">
-                        Liuzhongzhen的博客
+                        Liuzhongzhen的技术学习笔记
                     </a>
                 
                 <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
@@ -58,15 +58,13 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -206,38 +204,38 @@
         <div class="post-content">
             <p>当前mysql最大的记录数是7亿级</p>
 <p>Executing:</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">ALTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">`</span>live_http_origin<span style="color:#000;font-weight:bold">`</span>.<span style="color:#000;font-weight:bold">`</span>o_xylive_flashsdk_one_20170414<span style="color:#000;font-weight:bold">`</span><span style="color:#bbb">   
-</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">ADD</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COLUMN</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">`</span>httpdns_resptime<span style="color:#000;font-weight:bold">`</span><span style="color:#bbb"> </span>DOUBLE<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">AFTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">`</span>httpdns_time<span style="color:#000;font-weight:bold">`</span>,<span style="color:#bbb">  
-</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">ADD</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COLUMN</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">`</span>httpdns_clientip<span style="color:#000;font-weight:bold">`</span><span style="color:#bbb"> </span><span style="color:#0086b3">VARCHAR</span>(<span style="color:#099">45</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">AFTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">`</span>httpdns_resptime<span style="color:#000;font-weight:bold">`</span>,<span style="color:#bbb">
-</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">ADD</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COLUMN</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">`</span>httpdns_host<span style="color:#000;font-weight:bold">`</span><span style="color:#bbb"> </span><span style="color:#0086b3">VARCHAR</span>(<span style="color:#099">200</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">AFTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">`</span>httpdns_clientip<span style="color:#000;font-weight:bold">`</span>;<span style="color:#bbb">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">ALTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">`</span>live_http_origin<span style="color:#000;font-weight:bold">`</span>.<span style="color:#000;font-weight:bold">`</span>o_xylive_flashsdk_one_20170414<span style="color:#000;font-weight:bold">`</span><span style="color:#bbb">   
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">ADD</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COLUMN</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">`</span>httpdns_resptime<span style="color:#000;font-weight:bold">`</span><span style="color:#bbb"> </span>DOUBLE<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">AFTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">`</span>httpdns_time<span style="color:#000;font-weight:bold">`</span>,<span style="color:#bbb">  
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">ADD</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COLUMN</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">`</span>httpdns_clientip<span style="color:#000;font-weight:bold">`</span><span style="color:#bbb"> </span><span style="color:#0086b3">VARCHAR</span>(<span style="color:#099">45</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">AFTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">`</span>httpdns_resptime<span style="color:#000;font-weight:bold">`</span>,<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">ADD</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COLUMN</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">`</span>httpdns_host<span style="color:#000;font-weight:bold">`</span><span style="color:#bbb"> </span><span style="color:#0086b3">VARCHAR</span>(<span style="color:#099">200</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">NULL</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">AFTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">`</span>httpdns_clientip<span style="color:#000;font-weight:bold">`</span>;<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>杀死mysql连接</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mysql -uroot -p123456 -e <span style="color:#d14">&#34; show processlist &#34;</span> | grep graph_cluster | awk  <span style="color:#d14">&#39;{print &#34;mysql -uroot -p123456 -e \&#34;kill &#34;$1&#34;;\&#34;;&#34;}&#39;</span> | sh
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mysql -uroot -p123456 -e <span style="color:#d14">&#34; show processlist &#34;</span> | grep graph_cluster | awk  <span style="color:#d14">&#39;{print &#34;mysql -uroot -p123456 -e \&#34;kill &#34;$1&#34;;\&#34;;&#34;}&#39;</span> | sh
+</span></span></code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">grant</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">select</span>,<span style="color:#000;font-weight:bold">show</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">view</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">on</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span>.<span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">to</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">data</span><span style="color:#000;font-weight:bold">@</span><span style="color:#d14">&#39;10.%&#39;</span><span style="color:#bbb"> </span>identified<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">by</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;123456&#39;</span>;<span style="color:#bbb">
-</span><span style="color:#bbb"></span>flush<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">privileges</span>;<span style="color:#bbb">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">grant</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">select</span>,<span style="color:#000;font-weight:bold">show</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">view</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">on</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span>.<span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">to</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">data</span><span style="color:#000;font-weight:bold">@</span><span style="color:#d14">&#39;10.%&#39;</span><span style="color:#bbb"> </span>identified<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">by</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;123456&#39;</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>flush<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">privileges</span>;<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>虽然 MySQL 5.6 支持了在线 DDL 操作，不过还是有些需要注意的问题，<br>
 最为重要的就是参数 <em>innodb_online_alter_log_max_size</em> 的配置。<br>
@@ -250,19 +248,19 @@
 <p>另一个小技巧是使用<br>
 ALTER TABLE &hellip; LOCK=NONE 来强制使用在线 DDL 操作，若操作不支持，则会抛出异常，<br>
 如：</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#000;font-weight:bold">ALTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>customers<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">DROP</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">PRIMARY</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">KEY</span><span style="color:#bbb"> </span>,<span style="color:#000;font-weight:bold">LOCK</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">NONE</span>;<span style="color:#bbb">
-</span><span style="color:#bbb">
-</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">ALTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>t1<span style="color:#bbb"> </span>ALGORITHM<span style="color:#000;font-weight:bold">=</span>INPLACE,<span style="color:#bbb"> </span>CHANGE<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COLUMN</span><span style="color:#bbb"> </span>c1<span style="color:#bbb"> </span>c1<span style="color:#bbb"> </span><span style="color:#0086b3">VARCHAR</span>(<span style="color:#099">255</span>);<span style="color:#bbb">
-</span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">ALTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>t1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">ADD</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COLUMN</span><span style="color:#bbb"> </span>new_column<span style="color:#bbb"> </span><span style="color:#0086b3">int</span>,ALGORITHM<span style="color:#000;font-weight:bold">=</span>INPLACE,<span style="color:#000;font-weight:bold">LOCK</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">DEFAULT</span>;<span style="color:#bbb">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">ALTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>customers<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">DROP</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">PRIMARY</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">KEY</span><span style="color:#bbb"> </span>,<span style="color:#000;font-weight:bold">LOCK</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">NONE</span>;<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">ALTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>t1<span style="color:#bbb"> </span>ALGORITHM<span style="color:#000;font-weight:bold">=</span>INPLACE,<span style="color:#bbb"> </span>CHANGE<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COLUMN</span><span style="color:#bbb"> </span>c1<span style="color:#bbb"> </span>c1<span style="color:#bbb"> </span><span style="color:#0086b3">VARCHAR</span>(<span style="color:#099">255</span>);<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">ALTER</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">TABLE</span><span style="color:#bbb"> </span>t1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">ADD</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">COLUMN</span><span style="color:#bbb"> </span>new_column<span style="color:#bbb"> </span><span style="color:#0086b3">int</span>,ALGORITHM<span style="color:#000;font-weight:bold">=</span>INPLACE,<span style="color:#000;font-weight:bold">LOCK</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">DEFAULT</span>;<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>ALGORITHM 子句用来指定执行 DDL 采用的方式，可取值为 DEFAULT、INPLACE、COPY<br>
 ALGORITHM = DEFAULT| INPLACE| COPY<br>
@@ -330,7 +328,7 @@ PT-OSC 原理如下图：</p>
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        &copy; 2023 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的技术学习笔记 By liuzhongzhen</a>
         
     </div>
     <br />

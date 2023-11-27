@@ -1,1676 +1,1311 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Liuzhongzhen的博客</title>
+    <title>Liuzhongzhen的技术学习笔记</title>
     <link>https://liuzhongzhen.github.io/</link>
-    <description>Recent content on Liuzhongzhen的博客</description>
+    <description>Recent content on Liuzhongzhen的技术学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 15 May 2022 14:07:32 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 May 2022 14:07:32 +0800</lastBuildDate>
+    <atom:link href="https://liuzhongzhen.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hadoop技术内幕之深入解析YARN架构设计与实现原理</title>
       <link>https://liuzhongzhen.github.io/books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90YARN%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</link>
       <pubDate>Sun, 15 May 2022 14:07:32 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90YARN%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Hadoop技术内幕之深入解析MapReduce架构设计与实现原理</title>
       <link>https://liuzhongzhen.github.io/books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90MapReduce%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</link>
       <pubDate>Sun, 01 May 2022 14:04:43 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90MapReduce%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>网心-Horizon可视化系统设计</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Horizon%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Sun, 01 May 2022 12:10:20 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Horizon%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</guid>
       <description>一、目标 构建数据查看推送的可视化平台 二、模块 报表配置管理模块 可编辑表配置管理模块 维表配置管理模块 产品</description>
     </item>
-    
     <item>
       <title>Php 013 centos7安装php7版本</title>
       <link>https://liuzhongzhen.github.io/post/Php-013centos7%E5%AE%89%E8%A3%85php7%E7%89%88%E6%9C%AC/</link>
       <pubDate>Fri, 01 Apr 2022 12:16:24 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Php-013centos7%E5%AE%89%E8%A3%85php7%E7%89%88%E6%9C%AC/</guid>
       <description>1. 下载php源码安装包 wget -c https://www.php.net/distributions/php-7.0.33.tar.gz &amp;amp;&amp;amp; tar xzf php-7.0.33.tar.gz; 2. 安装常用的依赖: yum -y install gcc gcc-c++ automake autoconf make \ libtool systemd-devel glibc glibc-devel \ mcrypt libmcrypt libmcrypt-devel mhash mhash-devel libxslt libxslt-devel \ libjpeg</description>
     </item>
-    
     <item>
       <title>Redis 002centos7搭建redis高可用集群</title>
       <link>https://liuzhongzhen.github.io/post/Redis-002centos7%E6%90%AD%E5%BB%BAredis%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/</link>
       <pubDate>Tue, 01 Feb 2022 11:17:16 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Redis-002centos7%E6%90%AD%E5%BB%BAredis%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/</guid>
       <description>一、方案规划 申请 vip 绑定到hostServerHA11，hostServerHA12 hostServerHA11 192.168.126.11 #安装hapr</description>
     </item>
-    
     <item>
       <title>深入理解Java虚拟机之JVM高级特性与最佳实践（第3版）</title>
       <link>https://liuzhongzhen.github.io/books/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/</link>
       <pubDate>Wed, 12 Jan 2022 22:04:52 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>HAProxy 002centos7编译安装</title>
       <link>https://liuzhongzhen.github.io/post/HAProxy-002centos7%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link>
       <pubDate>Mon, 03 Jan 2022 22:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/HAProxy-002centos7%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid>
       <description>一、参考资料 CentOS7安装HAProxy2.4.3 CentOS7—HAProxy安装与配置 HAProxy 2.4.3 编</description>
     </item>
-    
     <item>
       <title>Netty4核心原理与手写RPC框架实战</title>
       <link>https://liuzhongzhen.github.io/books/Netty4%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/</link>
       <pubDate>Mon, 20 Dec 2021 21:48:25 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Netty4%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>网络 深入理解Linux五种IO模型</title>
       <link>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9C-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Linux%E4%BA%94%E7%A7%8DIO%E6%A8%A1%E5%9E%8B/</link>
       <pubDate>Sat, 18 Dec 2021 12:11:23 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9C-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Linux%E4%BA%94%E7%A7%8DIO%E6%A8%A1%E5%9E%8B/</guid>
       <description>**转自外部-深入理解Linux五种IO模型 一、相关概念讲解 1、同步与异步 同步就是一个任务的完成需要</description>
     </item>
-    
     <item>
       <title>Netty权威指南第2版</title>
       <link>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC2%E7%89%88/</link>
       <pubDate>Wed, 17 Nov 2021 21:12:46 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC2%E7%89%88/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Netty权威指南第1版</title>
       <link>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC1%E7%89%88/</link>
       <pubDate>Wed, 17 Nov 2021 21:12:40 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Netty%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E7%AC%AC1%E7%89%88/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Netty实战</title>
       <link>https://liuzhongzhen.github.io/books/Netty%E5%AE%9E%E6%88%98/</link>
       <pubDate>Sat, 02 Oct 2021 22:00:27 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Netty%E5%AE%9E%E6%88%98/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>网心-Alita数据中台产品</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Alita%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BA%A7%E5%93%81/</link>
       <pubDate>Wed, 01 Sep 2021 16:41:10 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Alita%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BA%A7%E5%93%81/</guid>
       <description>一、目标 构建一站式数据采集、ETL、开发、应用、运维管理平台 二、应用技术 后端技术架构 开发语言: java 开发</description>
     </item>
-    
     <item>
       <title>Go语言编程</title>
       <link>https://liuzhongzhen.github.io/books/Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Sun, 01 Aug 2021 00:19:32 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>大数据 015运维管理</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-015%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/</link>
       <pubDate>Mon, 21 Jun 2021 08:43:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-015%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>大数据 014zookeeper介绍</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-014zookeeper%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Fri, 21 May 2021 08:43:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-014zookeeper%E4%BB%8B%E7%BB%8D/</guid>
       <description>一、概况 概况： 一个分布式的协调系统，为了高可靠，高可用实现； 自身也可以配置成集群达到高可用 设计目标:</description>
     </item>
-    
     <item>
       <title>大数据012数据集成调研</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-012%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/</link>
       <pubDate>Sat, 01 May 2021 01:10:13 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-012%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/</guid>
       <description>公司 DataPipeline Fivetran 神策数据 日志易 数数科技 Conviva GrowingIO TalkingData 友盟 袋鼠云 滴普 奇点云 七牛云 网易数帆 数梦工厂 海致BDP 明略科技 阿里</description>
     </item>
-    
     <item>
       <title>大数据006impala与hive对比详解</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/</link>
       <pubDate>Thu, 22 Apr 2021 08:42:20 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/</guid>
       <description>Impala简介 Impala是由Cloudera公司开发的新型查询系统，它提供SQL语义，能查询存储</description>
     </item>
-    
     <item>
       <title>大数据009kafka基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 21 Apr 2021 08:43:21 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-009kafka%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>一.Kafka名词解释和工作方式 Producer ：消息生产者，就是向kafka broker发消息的客户端。 Consumer ：消息</description>
     </item>
-    
     <item>
       <title>大数据007clickhouse基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 21 Apr 2021 08:42:33 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-007clickhouse%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>大数据006impala基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 21 Apr 2021 08:42:20 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>一、相关资料 CDH文档 https://docs.cloudera.com/documentation/enterprise/latest/topics/impala.html 官方文档 http://impala.apache.org/downloads.html Impala3.4对接Iceberg在网易的最新实践 Impala3</description>
     </item>
-    
     <item>
       <title>大数据005flink基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Wed, 21 Apr 2021 08:41:35 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-005flink%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>一、flink on yarn执行流程 Flink任务提交后，Client向HDFS上传Flink的Jar包</description>
     </item>
-    
     <item>
       <title>归档</title>
       <link>https://liuzhongzhen.github.io/archives/</link>
       <pubDate>Thu, 01 Apr 2021 20:37:26 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/archives/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>网心-Angela基于spark的实时开发系统</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Angela%E5%9F%BA%E4%BA%8Espark%E7%9A%84%E5%AE%9E%E6%97%B6%E5%BC%80%E5%8F%91%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Fri, 01 Jan 2021 00:40:00 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Angela%E5%9F%BA%E4%BA%8Espark%E7%9A%84%E5%AE%9E%E6%97%B6%E5%BC%80%E5%8F%91%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 设计开发负责人 背景 sparkSQL实时开发每次都要写代码，打包，调试，发布，上线比较繁琐，耗时长</description>
     </item>
-    
     <item>
       <title>大数据 004PySparkSQL常用函数</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004PySparkSQL%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</link>
       <pubDate>Tue, 22 Dec 2020 09:40:57 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004PySparkSQL%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</guid>
       <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50</description>
     </item>
-    
     <item>
       <title>大数据 004PySparkRDD对象常用函数</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004PySpark%E5%AF%B9%E8%B1%A1%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</link>
       <pubDate>Tue, 22 Dec 2020 08:40:57 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004PySpark%E5%AF%B9%E8%B1%A1%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/</guid>
       <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50</description>
     </item>
-    
     <item>
       <title>大数据004spark基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Mon, 21 Dec 2020 08:40:57 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>spark学习之路 Spark学习之路 （一）Spark初识 Spark学习之路 （二）Spark2.3 HA</description>
     </item>
-    
     <item>
       <title>大数据004spark知识整理</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</link>
       <pubDate>Sat, 19 Dec 2020 08:40:57 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-004spark%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</guid>
       <description>1.rdd的属性 一组分片（Partition），即数据集的基本组成单位。对于RDD来说，每个分片都会</description>
     </item>
-    
     <item>
       <title>ClickHouse原理解析与应用实践</title>
       <link>https://liuzhongzhen.github.io/books/ClickHouse%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5/</link>
       <pubDate>Wed, 06 May 2020 10:20:26 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/ClickHouse%E5%8E%9F%E7%90%86%E8%A7%A3%E6%9E%90%E4%B8%8E%E5%BA%94%E7%94%A8%E5%AE%9E%E8%B7%B5/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>数据结构-20200401-12文件操作</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-12%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Tue, 07 Apr 2020 22:33:58 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-12%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</guid>
       <description>一、文件 1. 文件是由大量性质相同对记录组成对集合.按其记录对类型不同而分成两类：操作系统对文件和数据库</description>
     </item>
-    
     <item>
       <title>数据结构-20200401-11外部排序</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-11%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F/</link>
       <pubDate>Tue, 07 Apr 2020 22:32:04 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-11%E5%A4%96%E9%83%A8%E6%8E%92%E5%BA%8F/</guid>
       <description>一、外部排序： 指的是大文件的排序，待排序的记录存储在外存储器上，需要进行内外存交换。 外部存储设备：磁</description>
     </item>
-    
     <item>
       <title>数据结构-20200401-10内部排序</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-10%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F/</link>
       <pubDate>Tue, 07 Apr 2020 22:28:11 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-10%E5%86%85%E9%83%A8%E6%8E%92%E5%BA%8F/</guid>
       <description>一、内部排序 1. 排序sorting是计算机程序设计中的一种重要操作，它的功能是将一个数据元素或记录的任</description>
     </item>
-    
     <item>
       <title>数据结构-20200401-09查找</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-09%E6%9F%A5%E6%89%BE/</link>
       <pubDate>Tue, 07 Apr 2020 22:20:30 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-09%E6%9F%A5%E6%89%BE/</guid>
       <description>一、查找表(search table):是由同一类型的数据元素或记录构成的集合。分成有序表查找和无序表</description>
     </item>
-    
     <item>
       <title>数据结构-20200401-08动态存储管理</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-08%E5%8A%A8%E6%80%81%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/</link>
       <pubDate>Tue, 07 Apr 2020 22:18:40 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-08%E5%8A%A8%E6%80%81%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86/</guid>
       <description>如何分配和管理内存 可利用空间表及分配方法 边界标识法：分配和回收算法 伙伴系统：分配和回收算法 无用单元收</description>
     </item>
-    
     <item>
       <title>数据结构-20200401-07图</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-07%E5%9B%BE/</link>
       <pubDate>Tue, 07 Apr 2020 22:16:59 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-07%E5%9B%BE/</guid>
       <description>一、图(graph)是一种更为复杂的数据结构，结点之间的关系是任意的，图中任意两个数据元素之间都可能</description>
     </item>
-    
     <item>
       <title>数据结构-20200401-06树与二叉树</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-06%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91/</link>
       <pubDate>Tue, 07 Apr 2020 22:13:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-06%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91/</guid>
       <description>一、树是n个节点的有限集。 子树,树的结构定义是一个递归的定义，在树的定义中又用到了树的概念。 一般来说</description>
     </item>
-    
     <item>
       <title>数据结构-20200401-05数组和广义表</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-05%E6%95%B0%E7%BB%84%E5%92%8C%E5%B9%BF%E4%B9%89%E8%A1%A8/</link>
       <pubDate>Tue, 07 Apr 2020 22:11:36 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-05%E6%95%B0%E7%BB%84%E5%92%8C%E5%B9%BF%E4%B9%89%E8%A1%A8/</guid>
       <description>一、数组的维数: 多维数组 数组的顺序存储表示： 行式存储，列式存储，计算存储位置 二、矩阵的压缩存储 在高阶</description>
     </item>
-    
     <item>
       <title>数据结构-20200401-04字符串</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-04%E5%AD%97%E7%AC%A6%E4%B8%B2/</link>
       <pubDate>Tue, 07 Apr 2020 22:09:09 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-04%E5%AD%97%E7%AC%A6%E4%B8%B2/</guid>
       <description>一、串：非数值处理的对象基本上是字符串数据， 字符串作为常量，变量，基本操作。 信息检索系统，文字编辑程</description>
     </item>
-    
     <item>
       <title>数据结构-20200401-03栈和队列</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-03%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/</link>
       <pubDate>Tue, 07 Apr 2020 22:07:02 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-03%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/</guid>
       <description>一、栈和队列：是操作受限的线性表 栈：限定只在表尾进行插入或删除操作的线性表，后进先出LIFO 栈顶to</description>
     </item>
-    
     <item>
       <title>数据结构-20200401-02线性表</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-02%E7%BA%BF%E6%80%A7%E8%A1%A8/</link>
       <pubDate>Tue, 07 Apr 2020 22:03:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-02%E7%BA%BF%E6%80%A7%E8%A1%A8/</guid>
       <description>一、线性表是最常用、最简单的数据结构， 1个线性表是n个数据元素的有限序列 数据项=&amp;gt;记录(元素)</description>
     </item>
-    
     <item>
       <title>数据结构-20200401-01绪论</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-01%E7%BB%AA%E8%AE%BA/</link>
       <pubDate>Tue, 07 Apr 2020 21:53:12 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-20200401-01%E7%BB%AA%E8%AE%BA/</guid>
       <description>《严蔚敏数据结构C语言版描述》 一、数据,数据元素（数据项),数据对象 数据是对客观事物的符号表示； 数据</description>
     </item>
-    
     <item>
       <title>MinIO 001基础知识</title>
       <link>https://liuzhongzhen.github.io/post/MinIO-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Mon, 09 Mar 2020 22:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/MinIO-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>一、一个开源的对象存储系统 官方网站http://www.minio.org.cn/</description>
     </item>
-    
     <item>
       <title>0001TwoSum</title>
       <link>https://liuzhongzhen.github.io/leetcode/0001-TwoSum/</link>
       <pubDate>Wed, 01 Jan 2020 23:41:13 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/leetcode/0001-TwoSum/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>个人简介</title>
       <link>https://liuzhongzhen.github.io/about/</link>
       <pubDate>Wed, 01 Jan 2020 20:42:01 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/about/</guid>
       <description>关于作者 性别：男 生日：1989.11 学历：本科 现居：广东省深圳市宝安区 籍贯：河北省衡水市故城县 地址：</description>
     </item>
-    
     <item>
       <title>OpenResty 006logrotate日志切割使用</title>
       <link>https://liuzhongzhen.github.io/post/OpenResty-006logrotate%E6%97%A5%E5%BF%97%E5%88%87%E5%89%B2%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Fri, 22 Nov 2019 15:00:59 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/OpenResty-006logrotate%E6%97%A5%E5%BF%97%E5%88%87%E5%89%B2%E4%BD%BF%E7%94%A8/</guid>
       <description>1.基本配置 参考文档: https://www.cnblogs.com/clsn/p/8428257.html 1 2 3 4 5 6 7 cat /etc/redhat-release uname -r 安装方法yum -y install logrotate crontabs rpm -ql logrotate 显示软件包信息 /etc/cron.daily/logrotate /etc/logrotate.conf # 主配置</description>
     </item>
-    
     <item>
       <title>OpenResty 005logrotate日志切割介绍</title>
       <link>https://liuzhongzhen.github.io/post/OpenResty-005logrotate%E6%97%A5%E5%BF%97%E5%88%87%E5%89%B2%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Fri, 22 Nov 2019 14:50:59 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/OpenResty-005logrotate%E6%97%A5%E5%BF%97%E5%88%87%E5%89%B2%E4%BB%8B%E7%BB%8D/</guid>
       <description>logrotate是linux自带的日志切割程序，可以方便的对日志进行切割，并且执行相关命令。 一、安</description>
     </item>
-    
     <item>
       <title>网心-Arfa离线数据开发平台</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Arfa%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/</link>
       <pubDate>Wed, 20 Nov 2019 00:37:59 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Arfa%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/</guid>
       <description>角色 设计开发负责人 背景 面临的问题 如何提高数据管理的效率，数据开发的效率 如何管理任务资源的使用 如何解决</description>
     </item>
-    
     <item>
       <title>GlusterFS 001基础知识</title>
       <link>https://liuzhongzhen.github.io/post/GlusterFS-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Sat, 09 Nov 2019 22:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/GlusterFS-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>参考文档 https://wiki.centos.org/zh/HowTos/GlusterFSonCentOS 推荐 https://wiki.centos.org/SpecialInterestGroup/Storage/gluster-Quickstart 安装文档 https://www.codercto.com/a/23851.html gluster高可用HA http://www.voidcn.com/article/p-mczwnjaz-tx.html HA高可用 https://blog.51cto.com/7424593/2165158 HA高可用 https://www.cnblogs.com/smlie/p/11799908.html 3种客户端挂载方案 https://blog.csdn.net/qq43748322/article/details/93875225 GlusterFS 配</description>
     </item>
-    
     <item>
       <title>Influxdb 基础知识</title>
       <link>https://liuzhongzhen.github.io/post/Influxdb-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 05 Nov 2019 11:17:16 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Influxdb-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>一、ide工具： InfluxDBWorkBench: https://github.com/JorgeMaker/InfluxDBWorkBench InfluxdbStudio：https://github.com/Cymati</description>
     </item>
-    
     <item>
       <title>公共-软件项目开发流程</title>
       <link>https://liuzhongzhen.github.io/products/%E5%85%AC%E5%85%B1-%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/</link>
       <pubDate>Tue, 15 Oct 2019 23:20:54 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E5%85%AC%E5%85%B1-%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/</guid>
       <description>项目调研说明书 发现痛点，耗时，耗人力，不自动化的地方，找出待改进的地方，待优化的流程 复杂的事情简单化</description>
     </item>
-    
     <item>
       <title>网心-数据平台架构</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/</link>
       <pubDate>Tue, 15 Oct 2019 23:04:55 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/</guid>
       <description>大数据平台整体架构 数据流转图</description>
     </item>
-    
     <item>
       <title>Php 012 centos7安装php5.6版本</title>
       <link>https://liuzhongzhen.github.io/post/Php-012Centos7%E5%AE%89%E8%A3%85php5.6%E7%89%88%E6%9C%AC/</link>
       <pubDate>Fri, 09 Aug 2019 14:33:39 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Php-012Centos7%E5%AE%89%E8%A3%85php5.6%E7%89%88%E6%9C%AC/</guid>
       <description>centos7 安装 php5.6版本 参考安装文档: https://blog.csdn.net/weixin_33862993/article/details/91938824 https://www.cnblogs.com/sharktech/p/14194728.html 1. 下载php源码安装包 wget https://www.php.net/distributions/php-5.6.40.tar.gz 2. 安装常用的依赖 yum -y install gcc gcc-c++ automake autoconf make \</description>
     </item>
-    
     <item>
       <title>NFS 001基本介绍</title>
       <link>https://liuzhongzhen.github.io/post/NFS-001%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Thu, 09 May 2019 22:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/NFS-001%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D/</guid>
       <description>一、NFS简介 什么是NFS？ (1) NFS是Net File System的简写，即网络文件系统。NFS是由SUN公</description>
     </item>
-    
     <item>
       <title>NFS 002服务配置指南</title>
       <link>https://liuzhongzhen.github.io/post/NFS-002%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</link>
       <pubDate>Thu, 09 May 2019 20:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/NFS-002%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE%E6%8C%87%E5%8D%97/</guid>
       <description>概述 nfs(Network File System)网络文件系统，它允许网络中的计算机直接通过TCP/IP网络共享资源。 在NFS的</description>
     </item>
-    
     <item>
       <title>大数据 008hbase核心知识整理</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</link>
       <pubDate>Fri, 22 Mar 2019 08:42:41 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</guid>
       <description>一.Hbase调优的方法 高可用 在HBase中Hmaster负责监控RegionServer的生命周期</description>
     </item>
-    
     <item>
       <title>大数据 008hbase基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Thu, 21 Mar 2019 08:42:41 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>转载外部-HBase 内部探险 一、数据模型 1、重要概念回顾 Namespace（表命名空间）：将多个表分</description>
     </item>
-    
     <item>
       <title>系统设计-001常见架构</title>
       <link>https://liuzhongzhen.github.io/post/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-001%E5%B8%B8%E8%A7%81%E6%9E%B6%E6%9E%84/</link>
       <pubDate>Wed, 23 Jan 2019 22:13:04 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-001%E5%B8%B8%E8%A7%81%E6%9E%B6%E6%9E%84/</guid>
       <description>转载外部-如何设计大型系统</description>
     </item>
-    
     <item>
       <title>系统设计-002服务端架构演进之路</title>
       <link>https://liuzhongzhen.github.io/post/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-002%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B%E4%B9%8B%E8%B7%AF/</link>
       <pubDate>Wed, 23 Jan 2019 22:13:04 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-002%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B%E4%B9%8B%E8%B7%AF/</guid>
       <description>转载自外部-服务端高并发分布式架构演进之路 1、概述 本文以淘宝作为例子，介绍从一百个并发到千万级并发情</description>
     </item>
-    
     <item>
       <title>OpenResty完全开发指南之构建百万级别并发的Web应用</title>
       <link>https://liuzhongzhen.github.io/books/OpenResty%E5%AE%8C%E5%85%A8%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</link>
       <pubDate>Fri, 21 Dec 2018 21:41:54 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/OpenResty%E5%AE%8C%E5%85%A8%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Java编程的逻辑</title>
       <link>https://liuzhongzhen.github.io/books/Java%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91/</link>
       <pubDate>Sun, 01 Jul 2018 21:37:38 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Java%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>PostgreSQL 001基本使用</title>
       <link>https://liuzhongzhen.github.io/post/PostgreSQL-001%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Sat, 21 Apr 2018 23:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/PostgreSQL-001%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/</guid>
       <description>一、基本使用 第一件事是使用\password命令，为postgres用户设置一个密码。 \password postgres 第二件事是</description>
     </item>
-    
     <item>
       <title>3Proxy 001代理软件</title>
       <link>https://liuzhongzhen.github.io/post/3Proxy-001%E4%BB%A3%E7%90%86%E8%BD%AF%E4%BB%B6/</link>
       <pubDate>Fri, 09 Mar 2018 22:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/3Proxy-001%E4%BB%A3%E7%90%86%E8%BD%AF%E4%BB%B6/</guid>
       <description>一、概述 3proxy是一个由俄罗斯人开发的多平台代理软件，支持http/https/ftp/sock</description>
     </item>
-    
     <item>
       <title>DNS 001搭建自己的DNS服务</title>
       <link>https://liuzhongzhen.github.io/post/DNS-001%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84DNS%E6%9C%8D%E5%8A%A1/</link>
       <pubDate>Mon, 05 Mar 2018 23:14:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/DNS-001%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84DNS%E6%9C%8D%E5%8A%A1/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>HAProxy 001基础知识</title>
       <link>https://liuzhongzhen.github.io/post/HAProxy-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Fri, 09 Feb 2018 22:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/HAProxy-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>一、概述 接入层代理服务器，支持四层tcp网络层代理和七层http应用层代理 部署方案 两台服务hostH</description>
     </item>
-    
     <item>
       <title>Python 002后端架构演变</title>
       <link>https://liuzhongzhen.github.io/post/Python-002%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8F%98/</link>
       <pubDate>Fri, 12 Jan 2018 10:07:47 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Python-002%E5%90%8E%E7%AB%AF%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8F%98/</guid>
       <description>转载自外部-Python后端架构演进 前言 来腾讯之前在前公司做了3年的后端开发, 经历一款SaaS产品从</description>
     </item>
-    
     <item>
       <title>Python 001相关学习资料</title>
       <link>https://liuzhongzhen.github.io/post/Python-001%E7%9B%B8%E5%85%B3%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</link>
       <pubDate>Thu, 11 Jan 2018 10:07:47 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Python-001%E7%9B%B8%E5%85%B3%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</guid>
       <description>常用开发框架 名字 链接 项目 备注 django https://www.djangoproject.com/ hue flask https://flask.palletsprojects.com/en/1.1.x/ redash,superset,flaskbb tornado https://www.tornadoweb.org/en/stable/# twisted https://twistedmatrix.com/trac/ sanic https://sanic.readthedocs.io/en/latest/ fastapi https://fastapi.tiangolo.com/ vibora https://github.com/vibora-io/vibora pyramid https://www.trypyramid.com/ cherryPy https://cherrypy.org/ hue的WebServer bottlePy http://www.bottlepy.com/docs/dev/ webpy</description>
     </item>
-    
     <item>
       <title>Java编程思想</title>
       <link>https://liuzhongzhen.github.io/books/Java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/</link>
       <pubDate>Mon, 01 Jan 2018 23:02:30 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/Java%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>网心-Asima动态数据入库系统设计开发</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Asima%E5%8A%A8%E6%80%81%E6%95%B0%E6%8D%AE%E5%85%A5%E5%BA%93%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/</link>
       <pubDate>Sun, 01 Oct 2017 00:38:40 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Asima%E5%8A%A8%E6%80%81%E6%95%B0%E6%8D%AE%E5%85%A5%E5%BA%93%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/</guid>
       <description>角色 设计开发负责人 背景 数据采集入库整体流转图 由于flume没有写Parquet文件的功能，而hive</description>
     </item>
-    
     <item>
       <title>网心-Apana基于openResty的http数据上报系统</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Apana%E5%9F%BA%E4%BA%8EopenResty%E7%9A%84http%E6%95%B0%E6%8D%AE%E4%B8%8A%E6%8A%A5%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Thu, 03 Aug 2017 00:39:06 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Apana%E5%9F%BA%E4%BA%8EopenResty%E7%9A%84http%E6%95%B0%E6%8D%AE%E4%B8%8A%E6%8A%A5%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 设计开发负责人 背景 为支持sdk上报，web上报，小程序上报，插件上报，模调上报，快速数据上报开发</description>
     </item>
-    
     <item>
       <title>Java 006几种序列化协议的介绍(转)</title>
       <link>https://liuzhongzhen.github.io/post/Java-006%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Tue, 06 Jun 2017 18:53:49 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Java-006%E5%87%A0%E7%A7%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%8D%8F%E8%AE%AE%E7%9A%84%E4%BB%8B%E7%BB%8D/</guid>
       <description>序列化概述 1.序列化定义 序列化（serialization）就是将对象序列化为二进制形式（字节数组）</description>
     </item>
-    
     <item>
       <title>Java 005springboot前后端参数传递方式</title>
       <link>https://liuzhongzhen.github.io/post/Java-005springboot%E5%89%8D%E5%90%8E%E7%AB%AF%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%96%B9%E5%BC%8F/</link>
       <pubDate>Mon, 05 Jun 2017 18:53:49 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Java-005springboot%E5%89%8D%E5%90%8E%E7%AB%AF%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%96%B9%E5%BC%8F/</guid>
       <description>一、GET请求方式 01.单个键值对参数 1 2 3 4 5 6 7 /** * GET 方式传递参数 单个参数 * */ @GetMapping(&amp;#34;/get01&amp;#34;) public String get01(String comment) { return comment ==</description>
     </item>
-    
     <item>
       <title>Java 004springboot组件依赖列表</title>
       <link>https://liuzhongzhen.github.io/post/Java-004springboot%E7%BB%84%E4%BB%B6%E4%BE%9D%E8%B5%96%E5%88%97%E8%A1%A8/</link>
       <pubDate>Sat, 03 Jun 2017 18:53:49 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Java-004springboot%E7%BB%84%E4%BB%B6%E4%BE%9D%E8%B5%96%E5%88%97%E8%A1%A8/</guid>
       <description>转载外部 github地址</description>
     </item>
-    
     <item>
       <title>Java 003maven仓库配置</title>
       <link>https://liuzhongzhen.github.io/post/Java-003maven%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Fri, 02 Jun 2017 18:53:49 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Java-003maven%E4%BB%93%E5%BA%93%E9%85%8D%E7%BD%AE/</guid>
       <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 &amp;lt;repositories&amp;gt; &amp;lt;repository&amp;gt; &amp;lt;id&amp;gt;mymvn&amp;lt;/id&amp;gt; &amp;lt;url&amp;gt;file:///Users/xxxx/maven_repo&amp;lt;/url&amp;gt; &amp;lt;/repository&amp;gt; &amp;lt;repository&amp;gt; &amp;lt;id&amp;gt;alimaven&amp;lt;/id&amp;gt; &amp;lt;url&amp;gt;http://maven.aliyun.com/nexus/content/groups/public/&amp;lt;/url&amp;gt; &amp;lt;/repository&amp;gt; &amp;lt;repository&amp;gt; &amp;lt;id&amp;gt;repo1&amp;lt;/id&amp;gt; &amp;lt;name&amp;gt;Maven Repository&amp;lt;/name&amp;gt; &amp;lt;url&amp;gt;https://repo1.maven.org/maven2&amp;lt;/url&amp;gt; &amp;lt;/repository&amp;gt; &amp;lt;/repositories&amp;gt;</description>
     </item>
-    
     <item>
       <title>Java 002初识Servlet并发处理与线程安全</title>
       <link>https://liuzhongzhen.github.io/post/Java-002%E5%88%9D%E8%AF%86Servlet%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86%E4%B8%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</link>
       <pubDate>Fri, 02 Jun 2017 16:53:49 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Java-002%E5%88%9D%E8%AF%86Servlet%E5%B9%B6%E5%8F%91%E5%A4%84%E7%90%86%E4%B8%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</guid>
       <description>转载自外部-初识Servlet并发处理与线程安全 并发处理概念 在实际开发过程中，我们开发出来的web应</description>
     </item>
-    
     <item>
       <title>Java 001基础学习资源</title>
       <link>https://liuzhongzhen.github.io/post/Java-001%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/</link>
       <pubDate>Thu, 01 Jun 2017 16:53:49 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Java-001%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/</guid>
       <description>Java资源大全中文版 JavaWeb基础知识 SpringBoot Spring Web MVC Spring WebFlux Hutool</description>
     </item>
-    
     <item>
       <title>大数据010flume基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Sat, 22 Apr 2017 08:43:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>一.什么是flume Flume是一个分布式、可靠、和高可用的海量日志采集、聚合和传输的系统。 Flum</description>
     </item>
-    
     <item>
       <title>大数据 010flume常用架构</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%B8%B8%E7%94%A8%E6%9E%B6%E6%9E%84/</link>
       <pubDate>Fri, 21 Apr 2017 08:43:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%B8%B8%E7%94%A8%E6%9E%B6%E6%9E%84/</guid>
       <description>一、常用架构 二、组件结构 Flume是一个分布式、高可靠、高可用的日志收集系统。能够有效的收集、聚合、</description>
     </item>
-    
     <item>
       <title>网心-数据接入管理系统</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Mon, 02 Jan 2017 02:10:14 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 设计开发负责人 背景 一站式数据接入管理平台，支持flume数据接入， 支持service配置管理 支持</description>
     </item>
-    
     <item>
       <title>OpenResty 004安装指南</title>
       <link>https://liuzhongzhen.github.io/post/OpenResty-004%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</link>
       <pubDate>Thu, 12 May 2016 08:05:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/OpenResty-004%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</guid>
       <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50</description>
     </item>
-    
     <item>
       <title>OpenResty 003基于openresty的几个开发框架</title>
       <link>https://liuzhongzhen.github.io/post/OpenResty-003%E5%9F%BA%E4%BA%8Eopenresty%E7%9A%84%E5%87%A0%E4%B8%AA%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/</link>
       <pubDate>Wed, 11 May 2016 08:01:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/OpenResty-003%E5%9F%BA%E4%BA%8Eopenresty%E7%9A%84%E5%87%A0%E4%B8%AA%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/</guid>
       <description>kong api gateway Github: https://github.com/Mashape/kong orange api gateway Github: https://github.com/sumory/orange Lapis web 开发框架 Github: https://github.com/leafo/lapis Vanilla web 开发框架 Github: https://github.com/idevz/vanilla Lor web 开发框架 Github: https://github.com/sumory/lor</description>
     </item>
-    
     <item>
       <title>OpenResty 002openResty内置变量</title>
       <link>https://liuzhongzhen.github.io/post/OpenResty-002openResty%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F/</link>
       <pubDate>Tue, 10 May 2016 07:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/OpenResty-002openResty%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F/</guid>
       <description>openResty变量 请求如下:http://baidu.com/liveroom?d=10&amp;amp</description>
     </item>
-    
     <item>
       <title>OpenResty 001openResty中lua库查找路径</title>
       <link>https://liuzhongzhen.github.io/post/OpenResty-001openResty%E4%B8%ADlua%E5%BA%93%E6%9F%A5%E6%89%BE%E8%B7%AF%E5%BE%84/</link>
       <pubDate>Sun, 08 May 2016 22:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/OpenResty-001openResty%E4%B8%ADlua%E5%BA%93%E6%9F%A5%E6%89%BE%E8%B7%AF%E5%BE%84/</guid>
       <description>lua查找库的路径: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40</description>
     </item>
-    
     <item>
       <title>网心-Eagle可视化邮件配置推送系统</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Eagle%E5%8F%AF%E8%A7%86%E5%8C%96%E9%82%AE%E4%BB%B6%E9%85%8D%E7%BD%AE%E6%8E%A8%E9%80%81%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Sun, 01 May 2016 22:49:59 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Eagle%E5%8F%AF%E8%A7%86%E5%8C%96%E9%82%AE%E4%BB%B6%E9%85%8D%E7%BD%AE%E6%8E%A8%E9%80%81%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 设计开发负责人 背景 快速配置邮件，支持文字，图形和表格 开发工具 前端开发框架: js,jquery,jqueryuid,seajs,mmgrid,laydate,highcharts,bootstrap,css3,html5 后端开发语言: php7 后端</description>
     </item>
-    
     <item>
       <title>大数据003hive基础知识2</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/</link>
       <pubDate>Tue, 01 Mar 2016 23:15:23 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/</guid>
       <description>1.大表join小表产生的问题，怎么解决？ mapjoin方案 join因为空值导致长尾(key为空值是</description>
     </item>
-    
     <item>
       <title>大数据003hive基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 01 Mar 2016 23:05:23 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>转载外部-数仓-hive核心知识点 1.什么是Hive Hive是由Facebook开源用于解决海量结构</description>
     </item>
-    
     <item>
       <title>大数据002hadoop之yarn基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 01 Mar 2016 23:04:07 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>yarn架构 yarn负责作业资源调度，在集群中找到满足业务的资源，帮助作业启动任务，管理作业的生命周</description>
     </item>
-    
     <item>
       <title>大数据001hadoop之hdfs基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 01 Mar 2016 23:02:51 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>HDFS系统架构 HDFS数据安全性如何保证 存储在HDFS系统上的文件，会分割成128M大小的bloc</description>
     </item>
-    
     <item>
       <title>大数据003hive概念原理</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E6%A6%82%E5%BF%B5%E5%8E%9F%E7%90%86/</link>
       <pubDate>Tue, 01 Mar 2016 13:05:23 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E6%A6%82%E5%BF%B5%E5%8E%9F%E7%90%86/</guid>
       <description>转载外部 技术背景 因为mapreduce继承类和重写方法的固定化，导致编程代码模板化而且非常繁琐， 学习</description>
     </item>
-    
     <item>
       <title>大数据 001hadoop之hdfs常用操作</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Tue, 01 Mar 2016 08:02:51 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-001hadoop%E4%B9%8Bhdfs%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
       <description>hadoop fs -stat命令 d 当向HDFS上写文件时，可以通过设置dfs.block.size配置项来设置文件</description>
     </item>
-    
     <item>
       <title>大数据003hive优化相关</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E4%BC%98%E5%8C%96%E7%9B%B8%E5%85%B3/</link>
       <pubDate>Sat, 27 Feb 2016 23:05:23 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E4%BC%98%E5%8C%96%E7%9B%B8%E5%85%B3/</guid>
       <description>一.HIVE执行过程 二.hive表优化 1.分区 静态分区 动态分区 set hive.exec.dynamic.partition=true; set hive.exec.dynamic.partltlon.mode=nonstrict; 2.分桶 - set hive.enforce.bucketing=true; - set hive.enforce.sorting=true; 表优化数据</description>
     </item>
-    
     <item>
       <title>Mysql 013表结构变更</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-013%E8%A1%A8%E7%BB%93%E6%9E%84%E5%8F%98%E6%9B%B4/</link>
       <pubDate>Sat, 06 Feb 2016 23:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-013%E8%A1%A8%E7%BB%93%E6%9E%84%E5%8F%98%E6%9B%B4/</guid>
-      <description>当前mysql最大的记录数是7亿级 Executing: 1 2 3 4 ALTERTABLE`live_http_origin`.`o_xylive_flashsdk_one_20170414`ADDCOLUMN`httpdns_resptime`DOUBLENULLAFTER`httpdns_time`,ADDCOLUMN`httpdns_clientip`VARCHAR(45)NULLAFTER`httpdns_resptime`,ADDCOLUMN`httpdns_host`VARCHAR(200)NULLAFTER`httpdns_clientip`; 杀死mysql连接 1 mysql -uroot -p123456 -e &amp;#34; show processlist &amp;#34; | grep graph_cluster | awk &amp;#39;{print &amp;#34;mysql -uroot -p123456</description>
+      <description>当前mysql最大的记录数是7亿级 Executing: 1 2 3 4 ALTER TABLE `live_http_origin`.`o_xylive_flashsdk_one_20170414` ADD COLUMN `httpdns_resptime` DOUBLE NULL AFTER `httpdns_time`, ADD COLUMN `httpdns_clientip` VARCHAR(45) NULL AFTER `httpdns_resptime`, ADD COLUMN `httpdns_host` VARCHAR(200) NULL AFTER `httpdns_clientip`; 杀死my</description>
     </item>
-    
     <item>
       <title>Mysql 012mysql锁相关</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-012mysql%E9%94%81%E7%9B%B8%E5%85%B3/</link>
       <pubDate>Tue, 02 Feb 2016 23:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-012mysql%E9%94%81%E7%9B%B8%E5%85%B3/</guid>
       <description>information_schema.partitions 表的分区信息 information_schema.processlist 客户端连接信息 information_schema.innodb_trx 当前运行的所有事务 information_schema.innodb_locks 当前出现的锁 information_schema.innodb_lock_waits 锁等待的对应关系 查询发生锁等待占有</description>
     </item>
-    
     <item>
       <title>Mysql 011安装指南</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-011%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</link>
       <pubDate>Mon, 01 Feb 2016 23:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-011%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</guid>
       <description>一、安装mysql下载包 mysql5.7 centos7:https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm mysql5.7 centos6:https://dev.mysql.com/get/mysql57-community-release-el6-11.noarch.rpm mysql5.6 centos7:https://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm mysql5.6 centos6:https://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm 二、安装过程 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24</description>
     </item>
-    
     <item>
       <title>Mysql 010mysql索引介绍</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-010mysql%E7%B4%A2%E5%BC%95%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sun, 31 Jan 2016 23:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-010mysql%E7%B4%A2%E5%BC%95%E4%BB%8B%E7%BB%8D/</guid>
       <description>一、简介 MySQL目前主要有以下几种索引类型： 普通索引 唯一索引 主键索引 组合索引 全文索引 二、语句 1 2 3</description>
     </item>
-    
     <item>
       <title>Mysql 009mysql安装配置</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-009mysql%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</link>
       <pubDate>Sun, 31 Jan 2016 22:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-009mysql%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/</guid>
       <description># This config is for: 64G, 2 * 6 physical cores with 24 threads [client] port = 3306 socket = /dev/shm/mysql.sock default-character-set = utf8 [mysqld_safe] basedir = /usr open-files-limit = 32000 user = mysql [mysqld] port = 3306 socket = /dev/shm/mysql.sock basedir = /usr datadir = /usr/local/mysql/data pid-file = /usr/local/mysql/data/mysqld.pid</description>
     </item>
-    
     <item>
       <title>Mysql 008基础操作</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-008%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Sat, 30 Jan 2016 22:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-008%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid>
       <description>1. 刷新mysql缓存信息 mysqladmin flush-hosts -h127.0.0.1 -P3306 -uroot -p&#39;123456&#39;; 2. 从sql语句恢复一个数据库方法 登入mysql，执行source</description>
     </item>
-    
     <item>
       <title>Mysql-007基础知识</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Fri, 29 Jan 2016 22:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-007%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>什么是SQL？ 结构化查询语言(Structured Query Language)简称SQL，是一种数据库查询语</description>
     </item>
-    
     <item>
       <title>Mysql-006解读事务和MVVC原理</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/</link>
       <pubDate>Thu, 28 Jan 2016 22:20:44 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-006%E8%A7%A3%E8%AF%BB%E4%BA%8B%E5%8A%A1%E5%92%8CMVVC%E5%8E%9F%E7%90%86/</guid>
       <description>转载外部-解读数据库原理 一、事务 概念 事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使</description>
     </item>
-    
     <item>
       <title>Mysql-005浅谈Mysql架构体系</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/</link>
       <pubDate>Thu, 28 Jan 2016 22:19:55 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-005%E6%B5%85%E8%B0%88Mysql%E6%9E%B6%E6%9E%84%E4%BD%93%E7%B3%BB/</guid>
       <description>转载外部-浅谈MySQL架构体系 一、数据库和数据库实例 在MySQL的学习研究中，存在两个非常容易混淆</description>
     </item>
-    
     <item>
       <title>Mysql-004Mysql优化</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-004Mysql%E4%BC%98%E5%8C%96/</link>
       <pubDate>Sun, 03 Jan 2016 21:17:16 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-004Mysql%E4%BC%98%E5%8C%96/</guid>
       <description>MySQL优化 配置优化 配置优化指的MySQL 的 server端的配置，一般对于业务方而言，可以不用关注</description>
     </item>
-    
     <item>
       <title>Mysql-003如何正确高效使用Mysql索引</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-003%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8Mysql%E7%B4%A2%E5%BC%95/</link>
       <pubDate>Sun, 03 Jan 2016 11:17:16 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-003%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8Mysql%E7%B4%A2%E5%BC%95/</guid>
       <description>转载外部-如何理解并正确高效的使用MySQL索引 概述 索引是存储引擎用于快速查找记录的一种数据结构，通</description>
     </item>
-    
     <item>
       <title>Mysql-002索引原理介绍</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-002%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sat, 02 Jan 2016 22:57:04 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-002%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D/</guid>
       <description>转自外部深入剖析MySQL索引和SQL调优实战 MySQL索引 MySQL支持诸多存储引擎，而各种存储引</description>
     </item>
-    
     <item>
       <title>Mysql-001建表语句</title>
       <link>https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/</link>
       <pubDate>Fri, 01 Jan 2016 11:17:16 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Mysql-001%E5%BB%BA%E8%A1%A8%E8%AF%AD%E5%8F%A5/</guid>
-      <description>常用附加信息 1 2 3 4 5 6 ENGINE=InnoDBdefaultcharacterset=utf8m</description>
+      <description>常用附加信息 1 2 3 4 5 6 ENGINE = InnoDB default character set = utf8mb4 collate = utf8mb4_general_ci comment = &amp;#39;任务类型扩展配置信息&amp;#39; ROW_FORMAT = Compact #压</description>
     </item>
-    
     <item>
       <title>腾讯-数据平台架构</title>
       <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/</link>
       <pubDate>Thu, 10 Dec 2015 12:50:58 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/</guid>
       <description>数据平台整体架构 SNG数据处理变迁 SNG数据采集变迁</description>
     </item>
-    
     <item>
       <title>数学 002运筹学</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-002%E8%BF%90%E7%AD%B9%E5%AD%A6/</link>
       <pubDate>Wed, 02 Sep 2015 01:41:49 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-002%E8%BF%90%E7%AD%B9%E5%AD%A6/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>数学 001离散数学</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-001%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</link>
       <pubDate>Tue, 01 Sep 2015 01:41:49 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E5%AD%A6-001%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>设计模式 001基础</title>
       <link>https://liuzhongzhen.github.io/post/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-001%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Sat, 01 Aug 2015 01:41:49 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F-001%E5%9F%BA%E7%A1%80/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>MySQL技术内幕 第4版</title>
       <link>https://liuzhongzhen.github.io/books/MySQL%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95-%E7%AC%AC4%E7%89%88/</link>
       <pubDate>Wed, 01 Jul 2015 14:34:34 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/MySQL%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95-%E7%AC%AC4%E7%89%88/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>组成原理 001基础</title>
       <link>https://liuzhongzhen.github.io/post/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-001%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Wed, 01 Jul 2015 01:41:49 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86-001%E5%9F%BA%E7%A1%80/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>操作系统 20150601 001基础</title>
       <link>https://liuzhongzhen.github.io/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-001%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Mon, 01 Jun 2015 01:41:49 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-001%E5%9F%BA%E7%A1%80/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>网络 001基础</title>
       <link>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9C-001%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Fri, 01 May 2015 01:41:49 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9C-001%E5%9F%BA%E7%A1%80/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>数据库 001基础</title>
       <link>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93-001%E5%9F%BA%E7%A1%80/</link>
       <pubDate>Sun, 01 Mar 2015 22:33:58 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93-001%E5%9F%BA%E7%A1%80/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>高性能MySQL 第3版</title>
       <link>https://liuzhongzhen.github.io/books/%E9%AB%98%E6%80%A7%E8%83%BDMySQL-%E7%AC%AC3%E7%89%88/</link>
       <pubDate>Sun, 01 Mar 2015 14:29:19 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/%E9%AB%98%E6%80%A7%E8%83%BDMySQL-%E7%AC%AC3%E7%89%88/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>腾讯-ABTest效果评估系统</title>
       <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-ABTest%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Tue, 10 Feb 2015 23:20:00 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-ABTest%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 设计开发负责人 开发工具 后台开发语言php5,CodeIgniter 前端开发语言html5,css</description>
     </item>
-    
     <item>
       <title>JavaScript权威指南 第六版</title>
       <link>https://liuzhongzhen.github.io/books/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%89%88/</link>
       <pubDate>Sun, 01 Feb 2015 14:25:57 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/JavaScript%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%85%AD%E7%89%88/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Http 008提交数据的几种方式比较</title>
       <link>https://liuzhongzhen.github.io/post/Http-008%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83/</link>
       <pubDate>Sun, 04 Jan 2015 12:44:53 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Http-008%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%E6%AF%94%E8%BE%83/</guid>
       <description>1.表单类型 MediaType，即是Internet Media Type，互联网媒体类型；也叫做MIME类型，</description>
     </item>
-    
     <item>
       <title>Http 007http_range详解</title>
       <link>https://liuzhongzhen.github.io/post/Http-007http_range%E8%AF%A6%E8%A7%A3/</link>
       <pubDate>Sun, 04 Jan 2015 11:44:53 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Http-007http_range%E8%AF%A6%E8%A7%A3/</guid>
       <description>Range，是在 HTTP/1.1（http://www.w3.org/Protocols/rfc26</description>
     </item>
-    
     <item>
       <title>Http 006http请求头信息</title>
       <link>https://liuzhongzhen.github.io/post/Http-006http%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%BF%A1%E6%81%AF/</link>
       <pubDate>Sun, 04 Jan 2015 10:44:53 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Http-006http%E8%AF%B7%E6%B1%82%E5%A4%B4%E4%BF%A1%E6%81%AF/</guid>
       <description>http客户请求的数据格式说明 请求行(method,uri,protocol,version)、头部</description>
     </item>
-    
     <item>
       <title>Http 005POST提交数据的几种方法</title>
       <link>https://liuzhongzhen.github.io/post/Http-005POST%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</link>
       <pubDate>Sun, 04 Jan 2015 09:44:53 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Http-005POST%E6%8F%90%E4%BA%A4%E6%95%B0%E6%8D%AE%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95/</guid>
       <description>POST请求的消息主体放在entity body中，服务端根据请求头中的Content-Type字段来</description>
     </item>
-    
     <item>
       <title>Http 004CGI相关概念介绍</title>
       <link>https://liuzhongzhen.github.io/post/Http-004CGI%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sun, 04 Jan 2015 07:44:53 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Http-004CGI%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E4%BB%8B%E7%BB%8D/</guid>
       <description>1. CGI 1.1 CGI简介 CGI，（Common Gateway Interface）通用网关接口，是一个协议，是外部应用程序</description>
     </item>
-    
     <item>
       <title>Http 003后台接口cgi介绍</title>
       <link>https://liuzhongzhen.github.io/post/Http-003%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3cgi%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sat, 03 Jan 2015 22:44:53 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Http-003%E5%90%8E%E5%8F%B0%E6%8E%A5%E5%8F%A3cgi%E4%BB%8B%E7%BB%8D/</guid>
       <description>转载外部 背景 在腾讯，一个非常让我困惑和别扭的东西，就是在这里会经常听到 CGI 这个词。 我一直很疑问:CGI</description>
     </item>
-    
     <item>
       <title>Http 002Cookies介绍</title>
       <link>https://liuzhongzhen.github.io/post/Http-002Cookies/</link>
       <pubDate>Fri, 02 Jan 2015 22:44:53 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Http-002Cookies/</guid>
       <description>&lt;p&gt;&lt;strong&gt;转载外部&lt;/strong&gt;&lt;/p&gt;
 &lt;h3 id=&#34;什么是cooki&#34;&gt;什么是Cooki&lt;/h3&gt;
 &lt;p&gt;Cookie用于存储http请求中的用户认证信息，用户在通过登录认证后，服务器在response header中设置Cookie，用户浏览器自动带Cookie访问该网站。&lt;/p&gt;
 &lt;h3 id=&#34;response-中的-cookie&#34;&gt;response 中的 Cookie&lt;/h3&gt;
 &lt;p&gt;response header 中添加 &lt;code&gt;Set-Cookie&lt;/code&gt;信息，cookie是一组key，value值。&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;
-&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
-&lt;/span&gt;&lt;span style=&#34;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Set-Cookie: &amp;lt;name&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;value&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;; &amp;lt;name&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;value&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;...
-            &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;; &lt;span style=&#34;color:#008080&#34;&gt;expires&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;date&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;][&lt;/span&gt;; &lt;span style=&#34;color:#008080&#34;&gt;domain&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;domain_name&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;
-            &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;; &lt;span style=&#34;color:#008080&#34;&gt;path&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;some_path&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;][&lt;/span&gt;; secure&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;][&lt;/span&gt;; httponly&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Set-Cookie: &amp;lt;name&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;value&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;; &amp;lt;name&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;value&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;; &lt;span style=&#34;color:#008080&#34;&gt;expires&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;date&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;][&lt;/span&gt;; &lt;span style=&#34;color:#008080&#34;&gt;domain&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;domain_name&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;; &lt;span style=&#34;color:#008080&#34;&gt;path&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;=&lt;/span&gt;&amp;lt;some_path&amp;gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;][&lt;/span&gt;; secure&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;][&lt;/span&gt;; httponly&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;</description>
     </item>
-    
     <item>
       <title>Http 001协议原理</title>
       <link>https://liuzhongzhen.github.io/post/Http-001%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86/</link>
       <pubDate>Thu, 01 Jan 2015 22:47:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Http-001%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86/</guid>
       <description>转发 51 张图助你彻底掌握 HTTP 协议 前言 如果说 TCP/IP 协议是互联网通信的根基，那么 HTTP 就是其中当之无愧的王者，小到日</description>
     </item>
-    
     <item>
       <title>腾讯-罗盘权限管理系统</title>
       <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-%E7%BD%97%E7%9B%98%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Thu, 01 Jan 2015 17:32:02 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-%E7%BD%97%E7%9B%98%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
       <description>一、权限系统介绍 权限系统简单定义：“who 对 what 进行 how 的操作”的表达式是否为真。 系统涉及到的概念： Wh</description>
     </item>
-    
     <item>
       <title>HTTP权威指南</title>
       <link>https://liuzhongzhen.github.io/books/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97/</link>
       <pubDate>Wed, 01 Oct 2014 14:13:29 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/HTTP%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Php 011安装指南</title>
       <link>https://liuzhongzhen.github.io/post/Php-011%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</link>
       <pubDate>Sat, 09 Aug 2014 14:33:39 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Php-011%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</guid>
       <description>php7安装指南： yum install wget; 下载源代码包 wget http://cn2.php.net/distributions/php-7.2.4.tar.gz;tar -zxvf php-7.2.4.tar.gz; 或者wget http://cn.php.net/distributions/php-7.1.11.tar.gz;tar -zxvf php-7.1.11.tar.gz; 或者wget https://www.php.net/distributions/php-7.0.17.tar.gz;tar zxvf php-7.0.17.tar.gz; 解压代码包,最终选定</description>
     </item>
-    
     <item>
       <title>Php-010基础面试题</title>
       <link>https://liuzhongzhen.github.io/post/Php-010%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
       <pubDate>Sat, 09 Aug 2014 13:47:39 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Php-010%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
       <description>1、PHP语言的一大优势是跨平台，什么是跨平台？ PHP的运行环境最优搭配为Apache+MySQL+</description>
     </item>
-    
     <item>
       <title>Php-009提高php效率50点</title>
       <link>https://liuzhongzhen.github.io/post/Php-009%E6%8F%90%E9%AB%98php%E6%95%88%E7%8E%8750%E7%82%B9/</link>
       <pubDate>Sat, 09 Aug 2014 11:47:39 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Php-009%E6%8F%90%E9%AB%98php%E6%95%88%E7%8E%8750%E7%82%B9/</guid>
       <description>0、用单引号代替双引号来包含字符串，这样做会更快一些。因为PHP会在双引号包围的字符串中搜寻变量，单</description>
     </item>
-    
     <item>
       <title>Php-008高流量站点NGINX与php-Fpm配置优化</title>
       <link>https://liuzhongzhen.github.io/post/Php-008%E9%AB%98%E6%B5%81%E9%87%8F%E7%AB%99%E7%82%B9NGINX%E4%B8%8Ephp-fpm%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96/</link>
       <pubDate>Fri, 08 Aug 2014 11:47:39 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Php-008%E9%AB%98%E6%B5%81%E9%87%8F%E7%AB%99%E7%82%B9NGINX%E4%B8%8Ephp-fpm%E9%85%8D%E7%BD%AE%E4%BC%98%E5%8C%96/</guid>
       <description>1. 将TCP切换为UNIX域套接字 UNIX域套接字相比TCP套接字在loopback接口上能提供更好的</description>
     </item>
-    
     <item>
       <title>Php-007深入pack和unpack</title>
       <link>https://liuzhongzhen.github.io/post/Php-007%E6%B7%B1%E5%85%A5pack%E5%92%8Cunpack/</link>
       <pubDate>Thu, 07 Aug 2014 11:47:39 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Php-007%E6%B7%B1%E5%85%A5pack%E5%92%8Cunpack/</guid>
       <description>PHP作为一门为web而生的服务器端开发语言，被越来越多的公司所采用。其中不乏大公司，如腾迅、盛大、</description>
     </item>
-    
     <item>
       <title>Php-006输入流php Input介绍</title>
       <link>https://liuzhongzhen.github.io/post/Php-006%E8%BE%93%E5%85%A5%E6%B5%81php-input%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Wed, 06 Aug 2014 11:47:39 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Php-006%E8%BE%93%E5%85%A5%E6%B5%81php-input%E4%BB%8B%E7%BB%8D/</guid>
       <description>在使用xml-rpc的时候，server端获取client数据，主要是通过php输入流input，而</description>
     </item>
-    
     <item>
       <title>Php-005发送http请求</title>
       <link>https://liuzhongzhen.github.io/post/Php-005%E5%8F%91%E9%80%81http%E8%AF%B7%E6%B1%82/</link>
       <pubDate>Tue, 05 Aug 2014 11:47:39 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Php-005%E5%8F%91%E9%80%81http%E8%AF%B7%E6%B1%82/</guid>
       <description>PHP发送HTTP请求的6种方法 1.用file_get_contents以get方式获取内容 1 2 3 4</description>
     </item>
-    
     <item>
       <title>Php-004redis库介绍</title>
       <link>https://liuzhongzhen.github.io/post/Php-004redis%E5%BA%93%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Mon, 04 Aug 2014 11:47:39 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Php-004redis%E5%BA%93%E4%BB%8B%E7%BB%8D/</guid>
       <description>PHP 使用 Redis php pecl redis扩展下载页面 安装redis服务程序 开始在 PHP 中使用 Redis 前， 我们需要确保已经安装了 redis</description>
     </item>
-    
     <item>
       <title>Php-003mysql库介绍</title>
       <link>https://liuzhongzhen.github.io/post/Php-003mysql%E5%BA%93%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sun, 03 Aug 2014 11:47:39 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Php-003mysql%E5%BA%93%E4%BB%8B%E7%BB%8D/</guid>
       <description>PHP连接MySQL数据库的几种方法 1. 最简单的方式-mysql（面向过程） 1 2 3 4 5 6 7 8 9 10 11 12 13</description>
     </item>
-    
     <item>
       <title>Php-002memcache库介绍</title>
       <link>https://liuzhongzhen.github.io/post/Php-002memcache%E5%BA%93%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sat, 02 Aug 2014 11:47:39 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Php-002memcache%E5%BA%93%E4%BB%8B%E7%BB%8D/</guid>
       <description>Memcache 和 Memcached 有什么区别 Memcache 和 Memcached 看起来只是相差一个字母，平时老是搞混，今天整理下两者之间的区别。 Memcach</description>
     </item>
-    
     <item>
       <title>Php-001学习资料整理</title>
       <link>https://liuzhongzhen.github.io/post/Php-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/</link>
       <pubDate>Fri, 01 Aug 2014 11:47:39 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Php-001%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99%E6%95%B4%E7%90%86/</guid>
       <description>Php官网 Swoole官网 Pecl Pear Lamp一键安装包 Lnmp一键安装包 oneinstack Composer Laravel workerman ampps wampserver PhpStudy php编程之道 php</description>
     </item>
-    
     <item>
       <title>PHP经典实例第3版</title>
       <link>https://liuzhongzhen.github.io/books/PHP%E7%BB%8F%E5%85%B8%E5%AE%9E%E4%BE%8B%E7%AC%AC3%E7%89%88/</link>
       <pubDate>Thu, 01 May 2014 00:46:46 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP%E7%BB%8F%E5%85%B8%E5%AE%9E%E4%BE%8B%E7%AC%AC3%E7%89%88/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>腾讯-DC数据接入平台</title>
       <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-DC%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E5%B9%B3%E5%8F%B0/</link>
       <pubDate>Tue, 01 Apr 2014 23:57:10 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-DC%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E5%B9%B3%E5%8F%B0/</guid>
       <description>角色 负责人，负责系统设计、开发与维护 背景 实时数据采集，离线文件数据采集nrt，db业务配置数据采集 打</description>
     </item>
-    
     <item>
       <title>深入理解PHP内核</title>
       <link>https://liuzhongzhen.github.io/books/PHP%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3PHP%E5%86%85%E6%A0%B8/</link>
       <pubDate>Tue, 11 Mar 2014 15:04:57 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3PHP%E5%86%85%E6%A0%B8/</guid>
       <description>原文地址</description>
     </item>
-    
     <item>
       <title>KeepAlived 001基础知识</title>
       <link>https://liuzhongzhen.github.io/post/KeepAlived-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Sun, 09 Mar 2014 22:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/KeepAlived-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
-      <description>常用命令： 1 2 3 service keepalived status service keepalived reload/force-reload service keepalived start/stop/restart/try-restart 配置文件: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 /etc/keepalived/keepalived.conf! Configuration</description>
+      <description>常用命令： 1 2 3 service keepalived status service keepalived reload/force-reload service keepalived start/stop/restart/try-restart 配置文件: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 /etc/keepalived/keepalived.conf !</description>
     </item>
-    
     <item>
       <title>LVS 001基础知识</title>
       <link>https://liuzhongzhen.github.io/post/LVS-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Sun, 09 Feb 2014 22:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/LVS-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>腾讯009TDW计算引擎解析Scheduler</title>
       <link>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF009TDW%E8%AE%A1%E7%AE%97%E5%BC%95%E6%93%8E%E8%A7%A3%E6%9E%90Scheduler/</link>
       <pubDate>Thu, 23 Jan 2014 22:13:04 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF009TDW%E8%AE%A1%E7%AE%97%E5%BC%95%E6%93%8E%E8%A7%A3%E6%9E%90Scheduler/</guid>
       <description>腾讯分布式数据仓库（Tencent distributed Data Warehouse, 简称TDW）基于开源软件Hadoop和Hive进行构建，并且</description>
     </item>
-    
     <item>
       <title>腾讯008TDW计算引擎解析Shuffle</title>
       <link>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF008TDW%E8%AE%A1%E7%AE%97%E5%BC%95%E6%93%8E%E8%A7%A3%E6%9E%90Shuffle/</link>
       <pubDate>Wed, 22 Jan 2014 22:13:04 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF008TDW%E8%AE%A1%E7%AE%97%E5%BC%95%E6%93%8E%E8%A7%A3%E6%9E%90Shuffle/</guid>
       <description>腾讯分布式数据仓库（Tencent distributed Data Warehouse, 简称TDW）基于开源软件Hadoop和Hive进行构建，并且</description>
     </item>
-    
     <item>
       <title>腾讯007大数据基础平台介绍</title>
       <link>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF007%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%9F%BA%E7%A1%80%E5%B9%B3%E5%8F%B0%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Tue, 21 Jan 2014 22:13:04 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF007%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%9F%BA%E7%A1%80%E5%B9%B3%E5%8F%B0%E4%BB%8B%E7%BB%8D/</guid>
       <description>前言 在5月17日，大数据开放日（深圳站）活动中，来自腾讯数据平台部的高级工程师、TDW技术负责人赵伟</description>
     </item>
-    
     <item>
       <title>腾讯006Protobuf在数据仓库TDW的使用</title>
       <link>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF006Protobuf%E5%9C%A8%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93TDW%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Mon, 20 Jan 2014 22:13:04 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF006Protobuf%E5%9C%A8%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93TDW%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
       <description>来源网络整理 简介 protobuf是google提供的一个开源序列化框架，类似于XML、JSON这样的</description>
     </item>
-    
     <item>
       <title>腾讯005Protobuf存储格式功能介绍</title>
       <link>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF005Protobuf%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Sun, 19 Jan 2014 22:48:02 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF005Protobuf%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D/</guid>
       <description>来源网络整理 前言 Protobuf是Google提供的一个开源序列化框架，类似于XML、JSON这样的</description>
     </item>
-    
     <item>
       <title>腾讯004TDW与PostgreSQL数据互访问功能</title>
       <link>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF004TDW%E4%B8%8EPostgreSQL%E6%95%B0%E6%8D%AE%E4%BA%92%E8%AE%BF%E9%97%AE%E5%8A%9F%E8%83%BD/</link>
       <pubDate>Sat, 18 Jan 2014 22:48:02 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF004TDW%E4%B8%8EPostgreSQL%E6%95%B0%E6%8D%AE%E4%BA%92%E8%AE%BF%E9%97%AE%E5%8A%9F%E8%83%BD/</guid>
       <description>来源网络整理 前言 TDW作为一个离线数据分析系统，在处理海量数据方面，通过并行计算，有很好的性能优势。</description>
     </item>
-    
     <item>
       <title>腾讯003元数据重构方案与效果展示</title>
       <link>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF003%E5%85%83%E6%95%B0%E6%8D%AE%E9%87%8D%E6%9E%84%E6%96%B9%E6%A1%88%E4%B8%8E%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA/</link>
       <pubDate>Fri, 17 Jan 2014 22:48:02 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF003%E5%85%83%E6%95%B0%E6%8D%AE%E9%87%8D%E6%9E%84%E6%96%B9%E6%A1%88%E4%B8%8E%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA/</guid>
       <description>来源网络整理 前言 面对大规模应用场景下HIVE暴露出来的问题，如HIVE进行内存占用高、GC频繁，元数</description>
     </item>
-    
     <item>
       <title>腾讯002大规模hadoop集群实践</title>
       <link>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF002%E5%A4%A7%E8%A7%84%E6%A8%A1hadoop%E9%9B%86%E7%BE%A4%E5%AE%9E%E8%B7%B5/</link>
       <pubDate>Thu, 16 Jan 2014 22:48:02 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF002%E5%A4%A7%E8%A7%84%E6%A8%A1hadoop%E9%9B%86%E7%BE%A4%E5%AE%9E%E8%B7%B5/</guid>
       <description>来源网络整理 前言 关于腾讯大规模Hadoop集群的实践，来自腾讯数据平台不的翟艳堂为我们进行了详细介绍</description>
     </item>
-    
     <item>
       <title>腾讯001大数据能力输出之路</title>
       <link>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF001%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%83%BD%E5%8A%9B%E8%BE%93%E5%87%BA%E4%B9%8B%E8%B7%AF/</link>
       <pubDate>Wed, 15 Jan 2014 22:48:02 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-%E8%85%BE%E8%AE%AF001%E5%A4%A7%E6%95%B0%E6%8D%AE%E8%83%BD%E5%8A%9B%E8%BE%93%E5%87%BA%E4%B9%8B%E8%B7%AF/</guid>
       <description>来源网络整理 前言 腾讯分布式数据仓库(Tencent distributed Data Warehouse，简称TDW)是腾讯工程技术</description>
     </item>
-    
     <item>
       <title>奇虎360Xmanager集群管理系统介绍</title>
       <link>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-360Xmanager%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Mon, 13 Jan 2014 22:48:02 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E7%BD%91%E7%BB%9CPPT-360Xmanager%E9%9B%86%E7%BE%A4%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E4%BB%8B%E7%BB%8D/</guid>
       <description>转载自外部-lxw的大数据田地 » xManager–通用产品集成、快速交付、监控运维解决方案 xMana</description>
     </item>
-    
     <item>
       <title>跟兄弟连学PHP</title>
       <link>https://liuzhongzhen.github.io/books/PHP%E8%B7%9F%E5%85%84%E5%BC%9F%E8%BF%9E%E5%AD%A6PHP/</link>
       <pubDate>Fri, 10 Jan 2014 15:12:32 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP%E8%B7%9F%E5%85%84%E5%BC%9F%E8%BF%9E%E5%AD%A6PHP/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>PHP6高级编程</title>
       <link>https://liuzhongzhen.github.io/books/PHP6%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/</link>
       <pubDate>Sat, 03 Aug 2013 00:45:26 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP6%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Redis 001高可用最佳实践</title>
       <link>https://liuzhongzhen.github.io/post/Redis-001%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</link>
       <pubDate>Mon, 01 Jul 2013 11:17:16 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Redis-001%E9%AB%98%E5%8F%AF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</guid>
       <description>1、前言 2017 年 5 月 13 日，应用性能管理大讲堂广州站圆满落幕，其中来自三七互娱的 DBA 温国兵在会场与各位进行了</description>
     </item>
-    
     <item>
       <title>PHP和MySQL WEB开发 4th</title>
       <link>https://liuzhongzhen.github.io/books/PHP%E5%92%8CMySQL-WEB%E5%BC%80%E5%8F%91-4th/</link>
       <pubDate>Wed, 01 May 2013 00:42:09 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP%E5%92%8CMySQL-WEB%E5%BC%80%E5%8F%91-4th/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>腾讯-罗盘BI可视化平台</title>
       <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-%E7%BD%97%E7%9B%98BI%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/</link>
       <pubDate>Mon, 01 Apr 2013 23:58:32 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-%E7%BD%97%E7%9B%98BI%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/</guid>
       <description>角色 负责人之一，负责多个模块的设计与开发 背景 前身是OZ(Operation Zone),系统太旧,不能</description>
     </item>
-    
     <item>
       <title>Html 001html常见问题</title>
       <link>https://liuzhongzhen.github.io/post/Html-001html%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
       <pubDate>Mon, 01 Apr 2013 23:14:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Html-001html%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
       <description>1.XHTML和HTML有什么区别 HTML是一种基本的WEB网页设计语言， XHTML是一个基于XML</description>
     </item>
-    
     <item>
       <title>JavaScript 002Jquery基础知识</title>
       <link>https://liuzhongzhen.github.io/post/JavaScript-002Jquery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Thu, 21 Mar 2013 08:11:32 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/JavaScript-002Jquery%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>1. 你觉得jQuery或zepto源码有哪些写的好的地方 jquery源码封装在一个匿名函数的自执行环境</description>
     </item>
-    
     <item>
       <title>JavaScript 001常见问题</title>
       <link>https://liuzhongzhen.github.io/post/JavaScript-001%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 21 Mar 2013 07:14:32 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/JavaScript-001%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
       <description>1.谈一谈JavaScript作用域链 当执行一段JavaScript代码（全局代码或函数）时，Jav</description>
     </item>
-    
     <item>
       <title>CSS 006常见问题</title>
       <link>https://liuzhongzhen.github.io/post/CSS-006%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
       <pubDate>Wed, 06 Mar 2013 07:14:32 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/CSS-006%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
       <description>1.css sprite是什么,有什么优缺点 概念：将多个小图片拼接到一个图片中。通过background-po</description>
     </item>
-    
     <item>
       <title>CSS 005定位position详解</title>
       <link>https://liuzhongzhen.github.io/post/CSS-005%E5%AE%9A%E4%BD%8Dposition%E8%AF%A6%E8%A7%A3/</link>
       <pubDate>Tue, 05 Mar 2013 23:14:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/CSS-005%E5%AE%9A%E4%BD%8Dposition%E8%AF%A6%E8%A7%A3/</guid>
       <description>转载 阮一峰 CSS 定位详解 CSS 有两个最重要的基本属性，前端开发必须掌握：display 和 position。 d</description>
     </item>
-    
     <item>
       <title>CSS 004Flex布局</title>
       <link>https://liuzhongzhen.github.io/post/CSS-004Flex%E5%B8%83%E5%B1%80/</link>
       <pubDate>Mon, 04 Mar 2013 23:14:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/CSS-004Flex%E5%B8%83%E5%B1%80/</guid>
       <description>转载 阮一峰 Flexbox 布局的最简单表单 转载 阮一峰 Flex 布局教程-语法篇 转载 阮一峰 Flex 布局教程-实例篇 一、flex语法</description>
     </item>
-    
     <item>
       <title>CSS 003Grid网格布局</title>
       <link>https://liuzhongzhen.github.io/post/CSS-003Grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/</link>
       <pubDate>Sun, 03 Mar 2013 23:14:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/CSS-003Grid%E7%BD%91%E6%A0%BC%E5%B8%83%E5%B1%80/</guid>
       <description>转载 阮一峰 CSS Grid 网格布局教程 一、概述 网格布局（Grid）是最强大的 CSS 布局方案。 它将网页划分成一个个网格</description>
     </item>
-    
     <item>
       <title>CSS 002一行代码实现5种Css经典布局</title>
       <link>https://liuzhongzhen.github.io/post/CSS-002%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B05%E7%A7%8DCss%E7%BB%8F%E5%85%B8%E5%B8%83%E5%B1%80/</link>
       <pubDate>Sat, 02 Mar 2013 23:14:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/CSS-002%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B05%E7%A7%8DCss%E7%BB%8F%E5%85%B8%E5%B8%83%E5%B1%80/</guid>
       <description>转载 阮一峰 一行代码实现5种CSS经典布局 简介 页面布局是样式开发的第一步，也是 CSS 最重要的功能之一。 常用</description>
     </item>
-    
     <item>
       <title>大数据 003hive常用操作</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Sat, 02 Mar 2013 13:05:23 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
-      <description>Alter Column 1 2 3 4 5 6 7 8 9 10 -- 修改column属性（列名，列字段类型，列注释）： ALTERTABLEtable_nameCHANGE[COLUMN]col_old_namecol_new_namecolumn_type[COMMENTcol_comment][FIRST|AFTERcolumn_name]-- 增加/替换column</description>
+      <description>Alter Column 1 2 3 4 5 6 7 8 9 10 -- 修改column属性（列名，列字段类型，列注释）： ALTER TABLE table_name CHANGE [COLUMN] col_old_name col_new_name column_type [COMMENT col_comment] [FIRST|AFTER column_name]</description>
     </item>
-    
     <item>
       <title>CSS 001HTML模板和CSS基准样式</title>
       <link>https://liuzhongzhen.github.io/post/CSS-001HTML%E6%A8%A1%E6%9D%BF%E5%92%8CCSS%E5%9F%BA%E5%87%86%E6%A0%B7%E5%BC%8F/</link>
       <pubDate>Fri, 01 Mar 2013 23:14:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/CSS-001HTML%E6%A8%A1%E6%9D%BF%E5%92%8CCSS%E5%9F%BA%E5%87%86%E6%A0%B7%E5%BC%8F/</guid>
       <description>转发 HTML模板和CSS基准样式-1 转发 HTML模板和CSS基准样式-2 转发 HTML模板和CSS基准</description>
     </item>
-    
     <item>
       <title>腾讯-Lhotse调度系统</title>
       <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-lhotse%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Fri, 01 Mar 2013 23:07:09 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-lhotse%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 参与者，负责其中某些runner的设计开发 背景 周期性运行离线计算任务，用来替代Oracle中的J</description>
     </item>
-    
     <item>
       <title>大数据 003hive函数大全</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/</link>
       <pubDate>Fri, 01 Mar 2013 13:05:23 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/</guid>
       <description>一、关系运算： 1. 等值比较: = 语法：A=B 操作类型：所有基本类型 描述: 如果表达式A与表达式B相等，则为</description>
     </item>
-    
     <item>
       <title>Memcached 005基本安装过程</title>
       <link>https://liuzhongzhen.github.io/post/Memcached-005%E5%9F%BA%E6%9C%AC%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/</link>
       <pubDate>Sun, 03 Feb 2013 13:17:16 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Memcached-005%E5%9F%BA%E6%9C%AC%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B/</guid>
       <description>centos memcached安装手册: 一、安装libevent函数库 libevent各版本地址：http:/</description>
     </item>
-    
     <item>
       <title>Memcached 004安装教程</title>
       <link>https://liuzhongzhen.github.io/post/Memcached-004%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</link>
       <pubDate>Sun, 03 Feb 2013 12:17:16 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Memcached-004%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</guid>
       <description>单机安装 Memcached 支持许多平台：Linux、FreeBSD、Solaris、Mac OS，也可以安装在Wind</description>
     </item>
-    
     <item>
       <title>Memcached 003学习资源</title>
       <link>https://liuzhongzhen.github.io/post/Memcached-003%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/</link>
       <pubDate>Sun, 03 Feb 2013 11:17:16 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Memcached-003%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/</guid>
       <description>菜鸟笔记-Memcached 教程 面包圈-Memcached 教程 W3Cschool-Memcached</description>
     </item>
-    
     <item>
       <title>Memcached 002常见面试题</title>
       <link>https://liuzhongzhen.github.io/post/Memcached-002%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
       <pubDate>Sat, 02 Feb 2013 11:17:16 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Memcached-002%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
       <description>1、memcached是怎么工作的？ Memcached的神奇来自两阶段哈希（two-stagehas</description>
     </item>
-    
     <item>
       <title>Memcached 001超详细解读</title>
       <link>https://liuzhongzhen.github.io/post/Memcached-001%E8%B6%85%E8%AF%A6%E7%BB%86%E8%A7%A3%E8%AF%BB/</link>
       <pubDate>Fri, 01 Feb 2013 11:17:16 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Memcached-001%E8%B6%85%E8%AF%A6%E7%BB%86%E8%A7%A3%E8%AF%BB/</guid>
       <description>转载外部-MemCache 超详细解读 Memcached官网 MemCache是什么 MemCache是一</description>
     </item>
-    
     <item>
       <title>Nginx 002nginx返回码</title>
       <link>https://liuzhongzhen.github.io/post/Nginx-002nginx%E8%BF%94%E5%9B%9E%E7%A0%81/</link>
       <pubDate>Wed, 09 Jan 2013 22:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Nginx-002nginx%E8%BF%94%E5%9B%9E%E7%A0%81/</guid>
       <description>常用返回码 200：服务器成功返回网页 403：服务器拒绝请求。 404：请求的网页不存在 499：客户端主</description>
     </item>
-    
     <item>
       <title>Nginx 001详细介绍</title>
       <link>https://liuzhongzhen.github.io/post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Mon, 07 Jan 2013 22:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Nginx-001%E8%AF%A6%E7%BB%86%E4%BB%8B%E7%BB%8D/</guid>
       <description>转发 万字总结，体系化带你全面认识 Nginx 前言 作为一名前端开发人员，你是不是经常碰到领导让你上服务器去修改 Nginx</description>
     </item>
-    
     <item>
       <title>PHP开发实战1200例</title>
       <link>https://liuzhongzhen.github.io/books/PHP%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%981200%E4%BE%8B/</link>
       <pubDate>Sat, 03 Nov 2012 00:45:26 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%981200%E4%BE%8B/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>PHP5高级应用开发实践</title>
       <link>https://liuzhongzhen.github.io/books/PHP5%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/</link>
       <pubDate>Wed, 03 Oct 2012 00:45:26 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP5%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>细说PHP 第2版</title>
       <link>https://liuzhongzhen.github.io/books/PHP%E7%BB%86%E8%AF%B4PHP-%E7%AC%AC2%E7%89%88/</link>
       <pubDate>Mon, 10 Sep 2012 15:12:32 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/PHP%E7%BB%86%E8%AF%B4PHP-%E7%AC%AC2%E7%89%88/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>大数据000数据分析方法论</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E8%AE%BA/</link>
       <pubDate>Tue, 03 Jul 2012 01:10:13 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E8%AE%BA/</guid>
       <description>转载外部-数据分析方法论 产品经理的概念在不断泛化。近些年来，随着互联网行业的发展，越来越多的企业意识</description>
     </item>
-    
     <item>
       <title>百年孤独</title>
       <link>https://liuzhongzhen.github.io/books/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/</link>
       <pubDate>Mon, 02 Jul 2012 20:39:32 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/books/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/</guid>
       <description>作者 加西亚·马尔克斯 简介 背影是真的人是假的 没什么执著 一百年前你不是你我不是我 悲哀是真的泪是假的 本来没</description>
     </item>
-    
     <item>
       <title>大数据000数据分析操作</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Mon, 02 Jul 2012 01:10:13 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%93%8D%E4%BD%9C/</guid>
       <description>大数据简介</description>
     </item>
-    
     <item>
       <title>大数据000数据分析</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</link>
       <pubDate>Sun, 01 Jul 2012 01:10:13 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-000%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</guid>
       <description>转载外部-细分十一步,助你构建完整的数据运营体系 未来30年数据将成为生产资料，计算会是生产力，互联网</description>
     </item>
-    
     <item>
       <title>学校-课外实践项目</title>
       <link>https://liuzhongzhen.github.io/products/%E5%AD%A6%E6%A0%A1-%E8%AF%BE%E5%A4%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/</link>
       <pubDate>Wed, 01 Feb 2012 20:36:26 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E5%AD%A6%E6%A0%A1-%E8%AF%BE%E5%A4%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/</guid>
       <description>小型网络信息检索系统 油田地质数据建模系统 油田场站工艺仿真系统 常用算法动态演示系统 其他</description>
     </item>
-    
   </channel>
 </rss>

@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>OpenResty 005logrotate日志切割介绍 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="OpenResty 005logrotate日志切割介绍 - Liuzhongzhen的博客">
+    <title>OpenResty 005logrotate日志切割介绍 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="OpenResty 005logrotate日志切割介绍 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2019-11-22T14:50:59&#43;08:00'>
@@ -49,7 +49,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="https://liuzhongzhen.github.io/">
-                        Liuzhongzhen的博客
+                        Liuzhongzhen的技术学习笔记
                     </a>
                 
                 <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
@@ -58,15 +58,13 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -224,97 +222,97 @@ yum -y install logrotate crontabs</li>
 <li>显示软件包信息<br>
 rpm -qa logrotate</li>
 <li>主要配置文件
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/etc/cron.daily/logrotate
-/etc/logrotate.conf <span style="color:#998;font-style:italic">#主配置文件</span>
-/etc/logrotate.d <span style="color:#998;font-style:italic">#配置文件目录</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/etc/cron.daily/logrotate
+</span></span><span style="display:flex;"><span>/etc/logrotate.conf <span style="color:#998;font-style:italic">#主配置文件</span>
+</span></span><span style="display:flex;"><span>/etc/logrotate.d <span style="color:#998;font-style:italic">#配置文件目录</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
 <p>logrotate的配置文件是/etc/logrotate.conf，通常不需要对它进行修改。<br>
 日志文件的轮循设置在独立的配置文件中，它（们）放在/etc/logrotate.d/目录下。<br>
 随机生成一个10MB的文件</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic"># touch /var/log/log-file </span>
-<span style="color:#998;font-style:italic"># head -c 10M &lt; /dev/urandom &gt; /var/log/log-file</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># touch /var/log/log-file </span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"># head -c 10M &lt; /dev/urandom &gt; /var/log/log-file</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="二准备配置文件">二、准备配置文件</h2>
 <ol>
 <li>如果不知道如何写配置文件，可以看/etc/logrotate.d目录下面的</li>
 <li>vim /etc/logrotate.d/my-cut-log</li>
 </ol>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/data/wwwlogs/arfa/nginx_access.log
-/data/wwwlogs/arfa/arfa_gunicorn_access.log
-/data/wwwlogs/dcapi/nginx_access.log
-/data/wwwlogs/eagle/access.log
-/data/wwwlogs/horizon/nginx_access.log
-/data/wwwlogs/hulkweb/nginx_access.log
-/data/wwwlogs/portal/nginx_access.log
-/data/wwwlogs/portal/nginx_error.log
-<span style="color:#000;font-weight:bold">{</span>
-    daily
-    missingok
-    rotate <span style="color:#099">8</span>
-    compress
-    delaycompress
-    notifempty
-    dateext
-    dateformat .%Y%m%d
-    sharedscripts
-    postrotate
-        <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">[</span> -f /usr/local/services/openresty_httpsrv/nginx/run/nginx.pid <span style="color:#000;font-weight:bold">]</span>; <span style="color:#000;font-weight:bold">then</span>
-          <span style="color:#0086b3">kill</span> -USR1 <span style="color:#d14">`</span>cat /usr/local/services/openresty_httpsrv/nginx/run/nginx.pid<span style="color:#d14">`</span>
-          <span style="color:#0086b3">echo</span> <span style="color:#d14">&#39;restart nginx&#39;</span>
-        <span style="color:#000;font-weight:bold">fi</span>
-        <span style="color:#0086b3">cd</span> /usr/local/sandai/arfa/backend
-        ../env/bin/supervisorctl -c supervisord.conf reload
-    endscript
-<span style="color:#000;font-weight:bold">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/data/wwwlogs/arfa/nginx_access.log
+</span></span><span style="display:flex;"><span>/data/wwwlogs/arfa/arfa_gunicorn_access.log
+</span></span><span style="display:flex;"><span>/data/wwwlogs/dcapi/nginx_access.log
+</span></span><span style="display:flex;"><span>/data/wwwlogs/eagle/access.log
+</span></span><span style="display:flex;"><span>/data/wwwlogs/horizon/nginx_access.log
+</span></span><span style="display:flex;"><span>/data/wwwlogs/hulkweb/nginx_access.log
+</span></span><span style="display:flex;"><span>/data/wwwlogs/portal/nginx_access.log
+</span></span><span style="display:flex;"><span>/data/wwwlogs/portal/nginx_error.log
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span>    daily
+</span></span><span style="display:flex;"><span>    missingok
+</span></span><span style="display:flex;"><span>    rotate <span style="color:#099">8</span>
+</span></span><span style="display:flex;"><span>    compress
+</span></span><span style="display:flex;"><span>    delaycompress
+</span></span><span style="display:flex;"><span>    notifempty
+</span></span><span style="display:flex;"><span>    dateext
+</span></span><span style="display:flex;"><span>    dateformat .%Y%m%d
+</span></span><span style="display:flex;"><span>    sharedscripts
+</span></span><span style="display:flex;"><span>    postrotate
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">[</span> -f /usr/local/services/openresty_httpsrv/nginx/run/nginx.pid <span style="color:#000;font-weight:bold">]</span>; <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#0086b3">kill</span> -USR1 <span style="color:#d14">`</span>cat /usr/local/services/openresty_httpsrv/nginx/run/nginx.pid<span style="color:#d14">`</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#0086b3">echo</span> <span style="color:#d14">&#39;restart nginx&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">fi</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#0086b3">cd</span> /usr/local/sandai/arfa/backend
+</span></span><span style="display:flex;"><span>        ../env/bin/supervisorctl -c supervisord.conf reload
+</span></span><span style="display:flex;"><span>    endscript
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>上面的模板是通用的，而配置参数则根据你的需求进行调整，不是所有的参数都是必要的。也可以通过man手册中的例子进行配置。</p>
 <h2 id="三配置文件说明">三、配置文件说明</h2>
@@ -328,7 +326,7 @@ rpm -qa logrotate</li>
 <tbody>
 <tr>
 <td>monthly</td>
-<td>日志文件将按月轮循。其它可用值为&rsquo;daily'，&lsquo;weekly&rsquo;或者&rsquo;yearly&rsquo;。</td>
+<td>日志文件将按月轮循。其它可用值为&rsquo;daily&rsquo;，&lsquo;weekly&rsquo;或者&rsquo;yearly&rsquo;。</td>
 </tr>
 <tr>
 <td>rotate 5</td>
@@ -435,7 +433,7 @@ logrotate -vf -s /var/log/logrotate-status /etc/logrotate.d/log-file</p>
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        &copy; 2023 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的技术学习笔记 By liuzhongzhen</a>
         
     </div>
     <br />

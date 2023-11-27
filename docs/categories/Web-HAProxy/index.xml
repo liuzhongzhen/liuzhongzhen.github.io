@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Web-HAProxy on Liuzhongzhen的博客</title>
+    <title>Web-HAProxy on Liuzhongzhen的技术学习笔记</title>
     <link>https://liuzhongzhen.github.io/categories/Web-HAProxy/</link>
-    <description>Recent content in Web-HAProxy on Liuzhongzhen的博客</description>
+    <description>Recent content in Web-HAProxy on Liuzhongzhen的技术学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Mon, 03 Jan 2022 22:57:56 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-HAProxy/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 03 Jan 2022 22:57:56 +0800</lastBuildDate>
+    <atom:link href="https://liuzhongzhen.github.io/categories/Web-HAProxy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>HAProxy 002centos7编译安装</title>
       <link>https://liuzhongzhen.github.io/post/HAProxy-002centos7%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link>
       <pubDate>Mon, 03 Jan 2022 22:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/HAProxy-002centos7%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid>
       <description>一、参考资料 CentOS7安装HAProxy2.4.3 CentOS7—HAProxy安装与配置 HAProxy 2.4.3 编</description>
     </item>
-    
     <item>
       <title>HAProxy 001基础知识</title>
       <link>https://liuzhongzhen.github.io/post/HAProxy-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Fri, 09 Feb 2018 22:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/HAProxy-001%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>一、概述 接入层代理服务器，支持四层tcp网络层代理和七层http应用层代理 部署方案 两台服务hostH</description>
     </item>
-    
   </channel>
 </rss>

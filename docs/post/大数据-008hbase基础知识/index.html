@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>大数据 008hbase基础知识 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="大数据 008hbase基础知识 - Liuzhongzhen的博客">
+    <title>大数据 008hbase基础知识 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="大数据 008hbase基础知识 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2019-03-21T08:42:41&#43;08:00'>
@@ -49,7 +49,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="https://liuzhongzhen.github.io/">
-                        Liuzhongzhen的博客
+                        Liuzhongzhen的技术学习笔记
                     </a>
                 
                 <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
@@ -58,15 +58,13 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -318,23 +316,23 @@ Region 内部架构</p>
 <h2 id="4预写日志wal">4、预写日志（WAL）</h2>
 <p>预写日志（Write-ahead log，WAL）就是设计来解决宕机之后的操作恢复问题的，数据到达 Region 的时候是先写入 WAL，然后再被加载到 Memstore，就算 Region 的机器宕掉了，由于 WAL 的数据是存储在 HDFS 上的，所以数据并不会丢失。</p>
 <p>WAL 是默认开启的，可以通过下面的代码关闭 WAL。</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Mutation.setDurability<span style="color:#000;font-weight:bold">(</span>Durability.SKIP_WAL<span style="color:#000;font-weight:bold">)</span>;
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Mutation.setDurability<span style="color:#000;font-weight:bold">(</span>Durability.SKIP_WAL<span style="color:#000;font-weight:bold">)</span>;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>Put、Append、Increment、Delete 都是 Mutation 的子类，所以他们都有 setDurability 方法，这样可以让该数据操作快一点，<strong>但是最好不要这样做</strong>，因为当服务器宕机时，数据就会丢失。</p>
 <p>如果你实在想不惜通过关闭 WAL 来提高性能，可以选择<strong>异步写入</strong> WAL。</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Mutation.setDurability<span style="color:#000;font-weight:bold">(</span>Durability.ASYNC WAL<span style="color:#000;font-weight:bold">)</span>;
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Mutation.setDurability<span style="color:#000;font-weight:bold">(</span>Durability.ASYNC WAL<span style="color:#000;font-weight:bold">)</span>;
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>这样设定后 Region 会等到条件满足的时候才把操作写入 WAL，这里提到的条件主要指的是时间间隔 <code>hbase.regionserver.optionallogflushinterval</code>，这个时间间隔的意思是 HBase 间隔多久会把操作从内存写入 WAL，默认值是 1s。</p>
 <blockquote>
@@ -596,7 +594,7 @@ StoreScanne 扫描数据</p>
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        &copy; 2023 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的技术学习笔记 By liuzhongzhen</a>
         
     </div>
     <br />

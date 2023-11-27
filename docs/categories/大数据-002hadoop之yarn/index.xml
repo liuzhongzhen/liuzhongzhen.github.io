@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>大数据-002hadoop之yarn on Liuzhongzhen的博客</title>
+    <title>大数据-002hadoop之yarn on Liuzhongzhen的技术学习笔记</title>
     <link>https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/</link>
-    <description>Recent content in 大数据-002hadoop之yarn on Liuzhongzhen的博客</description>
+    <description>Recent content in 大数据-002hadoop之yarn on Liuzhongzhen的技术学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 01 Mar 2016 23:04:07 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Mar 2016 23:04:07 +0800</lastBuildDate>
+    <atom:link href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>大数据002hadoop之yarn基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 01 Mar 2016 23:04:07 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-002hadoop%E4%B9%8Byarn%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>yarn架构 yarn负责作业资源调度，在集群中找到满足业务的资源，帮助作业启动任务，管理作业的生命周</description>
     </item>
-    
   </channel>
 </rss>

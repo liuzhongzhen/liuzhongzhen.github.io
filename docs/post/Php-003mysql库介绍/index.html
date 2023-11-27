@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>Php-003mysql库介绍 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="Php-003mysql库介绍 - Liuzhongzhen的博客">
+    <title>Php-003mysql库介绍 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="Php-003mysql库介绍 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2014-08-03T11:47:39&#43;08:00'>
@@ -49,7 +49,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="https://liuzhongzhen.github.io/">
-                        Liuzhongzhen的博客
+                        Liuzhongzhen的技术学习笔记
                     </a>
                 
                 <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
@@ -58,15 +58,13 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -221,244 +219,244 @@
         <div class="post-content">
             <h1 id="php连接mysql数据库的几种方法">PHP连接MySQL数据库的几种方法</h1>
 <h2 id="1-最简单的方式-mysql面向过程">1. 最简单的方式-mysql（面向过程）</h2>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
-<span style="color:#008080">$con</span> <span style="color:#000;font-weight:bold">=</span> mysql_connect(<span style="color:#d14">&#34;localhost&#34;</span>,<span style="color:#d14">&#34;root&#34;</span>,<span style="color:#d14">&#34;password&#34;</span>);
-<span style="color:#008080">$select_db</span> <span style="color:#000;font-weight:bold">=</span> mysql_select_db(<span style="color:#d14">&#39;test&#39;</span>);
-<span style="color:#000;font-weight:bold">if</span> (<span style="color:#000;font-weight:bold">!</span><span style="color:#008080">$select_db</span>) {
-    <span style="color:#000;font-weight:bold">die</span>(<span style="color:#d14">&#34;could not connect to the db:</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">.</span>  mysql_error());
-}
-<span style="color:#998;font-style:italic">//查询代码
-</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$sql</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;select * from db_table&#34;</span>;
-<span style="color:#008080">$res</span> <span style="color:#000;font-weight:bold">=</span> mysql_query(<span style="color:#008080">$sql</span>);
-<span style="color:#000;font-weight:bold">if</span> (<span style="color:#000;font-weight:bold">!</span><span style="color:#008080">$res</span>) {
-    <span style="color:#000;font-weight:bold">die</span>(<span style="color:#d14">&#34;could get the res:</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">.</span> mysql_error());
-}
-<span style="color:#998;font-style:italic">//抓取查询结果
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">while</span> (<span style="color:#008080">$row</span> <span style="color:#000;font-weight:bold">=</span> mysql_fetch_assoc(<span style="color:#008080">$res</span>)) {
-    print_r(<span style="color:#008080">$row</span>);
-}
-<span style="color:#998;font-style:italic">//关闭数据库连接
-</span><span style="color:#998;font-style:italic"></span>mysql_close(<span style="color:#008080">$con</span>);
-<span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;?</span>php
+</span></span><span style="display:flex;"><span><span style="color:#008080">$con</span> <span style="color:#000;font-weight:bold">=</span> mysql_connect(<span style="color:#d14">&#34;localhost&#34;</span>,<span style="color:#d14">&#34;root&#34;</span>,<span style="color:#d14">&#34;password&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#008080">$select_db</span> <span style="color:#000;font-weight:bold">=</span> mysql_select_db(<span style="color:#d14">&#39;test&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span> (<span style="color:#000;font-weight:bold">!</span><span style="color:#008080">$select_db</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">die</span>(<span style="color:#d14">&#34;could not connect to the db:</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">.</span>  mysql_error());
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//查询代码
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$sql</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;select * from db_table&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#008080">$res</span> <span style="color:#000;font-weight:bold">=</span> mysql_query(<span style="color:#008080">$sql</span>);
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span> (<span style="color:#000;font-weight:bold">!</span><span style="color:#008080">$res</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">die</span>(<span style="color:#d14">&#34;could get the res:</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">.</span> mysql_error());
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//抓取查询结果
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">while</span> (<span style="color:#008080">$row</span> <span style="color:#000;font-weight:bold">=</span> mysql_fetch_assoc(<span style="color:#008080">$res</span>)) {
+</span></span><span style="display:flex;"><span>    print_r(<span style="color:#008080">$row</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//关闭数据库连接
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>mysql_close(<span style="color:#008080">$con</span>);
+</span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="2新的方式-mysqli面向过程">2.新的方式-mysqli（面向过程）</h2>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php 
-<span style="color:#008080">$mysql_server_name</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;localhost&#39;</span>; <span style="color:#998;font-style:italic">//改成自己的mysql数据库服务器
-</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$mysql_username</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;root&#39;</span>; <span style="color:#998;font-style:italic">//改成自己的mysql数据库用户名
-</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$mysql_password</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;password&#39;</span>; <span style="color:#998;font-style:italic">//改成自己的mysql数据库密码
-</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$mysql_database</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;test&#39;</span>; <span style="color:#998;font-style:italic">//改成自己的mysql数据库名
-</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">=</span>mysqli_connect(<span style="color:#008080">$mysql_server_name</span>,<span style="color:#008080">$mysql_username</span>,<span style="color:#008080">$mysql_password</span>,<span style="color:#008080">$mysql_database</span>); <span style="color:#998;font-style:italic">//连接数据库
-</span><span style="color:#998;font-style:italic">//连接数据库错误提示
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">if</span> (mysqli_connect_errno(<span style="color:#008080">$conn</span>)) { 
-    <span style="color:#000;font-weight:bold">die</span>(<span style="color:#d14">&#34;连接 MySQL 失败: &#34;</span> <span style="color:#000;font-weight:bold">.</span> mysqli_connect_error()); 
-}
-mysqli_query(<span style="color:#008080">$conn</span>,<span style="color:#d14">&#34;set names utf8&#34;</span>); <span style="color:#998;font-style:italic">//数据库编码格式
-</span><span style="color:#998;font-style:italic">// mysqli_set_charset($conn,&#34;utf8&#34;);//设置默认客户端字符集。
-</span><span style="color:#998;font-style:italic">// mysqli_select_db($conn,$mysql_database); //更改连接的默认数据库
-</span><span style="color:#998;font-style:italic"></span>
-<span style="color:#998;font-style:italic">//查询代码
-</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$sql</span> <span style="color:#000;font-weight:bold">=</span> “select <span style="color:#000;font-weight:bold">*</span> from db_table”;
-<span style="color:#008080">$query</span> <span style="color:#000;font-weight:bold">=</span> mysqli_query(<span style="color:#008080">$conn</span>,<span style="color:#008080">$sql</span>);
-<span style="color:#998;font-style:italic">//抓取结果
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">while</span>(<span style="color:#008080">$row</span> <span style="color:#000;font-weight:bold">=</span> mysqli_fetch_array(<span style="color:#008080">$query</span>)){
-    <span style="color:#000;font-weight:bold">echo</span> <span style="color:#008080">$row</span>[<span style="color:#d14">&#39;title&#39;</span>];
-}
-<span style="color:#998;font-style:italic">// 释放结果集+关闭MySQL数据库连接
-</span><span style="color:#998;font-style:italic"></span>mysqli_free_result(<span style="color:#008080">$result</span>);
-mysqli_close(<span style="color:#008080">$conn</span>);
-<span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;?</span>php 
+</span></span><span style="display:flex;"><span><span style="color:#008080">$mysql_server_name</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;localhost&#39;</span>; <span style="color:#998;font-style:italic">//改成自己的mysql数据库服务器
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$mysql_username</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;root&#39;</span>; <span style="color:#998;font-style:italic">//改成自己的mysql数据库用户名
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$mysql_password</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;password&#39;</span>; <span style="color:#998;font-style:italic">//改成自己的mysql数据库密码
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$mysql_database</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;test&#39;</span>; <span style="color:#998;font-style:italic">//改成自己的mysql数据库名
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">=</span>mysqli_connect(<span style="color:#008080">$mysql_server_name</span>,<span style="color:#008080">$mysql_username</span>,<span style="color:#008080">$mysql_password</span>,<span style="color:#008080">$mysql_database</span>); <span style="color:#998;font-style:italic">//连接数据库
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//连接数据库错误提示
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">if</span> (mysqli_connect_errno(<span style="color:#008080">$conn</span>)) { 
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">die</span>(<span style="color:#d14">&#34;连接 MySQL 失败: &#34;</span> <span style="color:#000;font-weight:bold">.</span> mysqli_connect_error()); 
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>mysqli_query(<span style="color:#008080">$conn</span>,<span style="color:#d14">&#34;set names utf8&#34;</span>); <span style="color:#998;font-style:italic">//数据库编码格式
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">// mysqli_set_charset($conn,&#34;utf8&#34;);//设置默认客户端字符集。
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">// mysqli_select_db($conn,$mysql_database); //更改连接的默认数据库
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//查询代码
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$sql</span> <span style="color:#000;font-weight:bold">=</span> “select <span style="color:#000;font-weight:bold">*</span> from db_table”;
+</span></span><span style="display:flex;"><span><span style="color:#008080">$query</span> <span style="color:#000;font-weight:bold">=</span> mysqli_query(<span style="color:#008080">$conn</span>,<span style="color:#008080">$sql</span>);
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//抓取结果
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">while</span>(<span style="color:#008080">$row</span> <span style="color:#000;font-weight:bold">=</span> mysqli_fetch_array(<span style="color:#008080">$query</span>)){
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">echo</span> <span style="color:#008080">$row</span>[<span style="color:#d14">&#39;title&#39;</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">// 释放结果集+关闭MySQL数据库连接
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>mysqli_free_result(<span style="color:#008080">$result</span>);
+</span></span><span style="display:flex;"><span>mysqli_close(<span style="color:#008080">$conn</span>);
+</span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="3常用方式-mysqli面向对象">3.常用方式-mysqli（面向对象）</h2>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
-<span style="color:#998;font-style:italic">//连接数据库方式1
-</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$conn</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> mysqli(<span style="color:#d14">&#39;localhost&#39;</span>, <span style="color:#d14">&#39;root&#39;</span>, <span style="color:#d14">&#39;password&#39;</span>, <span style="color:#d14">&#39;test&#39;</span>);
-<span style="color:#998;font-style:italic">//连接数据库方式2
-</span><span style="color:#998;font-style:italic">// $conn = new mysqli();
-</span><span style="color:#998;font-style:italic">// $conn -&gt; connect(&#39;localhost&#39;, &#39;root&#39;, &#39;password&#39;, &#39;test&#39;);
-</span><span style="color:#998;font-style:italic">//check connection (检查PHP是否连接上MYSQL)
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">if</span> (<span style="color:#008080">$conn</span> <span style="color:#000;font-weight:bold">-&gt;</span> <span style="color:#008080">connect_errno</span>) {
-    printf(<span style="color:#d14">&#34;Connect failed: %s</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>, <span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">connect_error</span>);
-    <span style="color:#000;font-weight:bold">exit</span>();
-}
-<span style="color:#998;font-style:italic">//查询代码
-</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$sql</span> <span style="color:#000;font-weight:bold">=</span> “select <span style="color:#000;font-weight:bold">*</span> from db_table”;
-<span style="color:#008080">$query</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">query</span>(<span style="color:#008080">$sql</span>);
-<span style="color:#000;font-weight:bold">while</span>(<span style="color:#008080">$row</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$query</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">fetch_array</span>()){
-    <span style="color:#000;font-weight:bold">echo</span> <span style="color:#008080">$row</span>[<span style="color:#d14">&#39;title&#39;</span>];
-}
-<span style="color:#998;font-style:italic">//释放结果集+关闭MySQL连接
-</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$query1</span> <span style="color:#000;font-weight:bold">-&gt;</span> <span style="color:#008080">free_result</span>();
-<span style="color:#008080">$conn</span> <span style="color:#000;font-weight:bold">-&gt;</span> <span style="color:#008080">close</span>();
-<span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;?</span>php
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//连接数据库方式1
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$conn</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> mysqli(<span style="color:#d14">&#39;localhost&#39;</span>, <span style="color:#d14">&#39;root&#39;</span>, <span style="color:#d14">&#39;password&#39;</span>, <span style="color:#d14">&#39;test&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//连接数据库方式2
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">// $conn = new mysqli();
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">// $conn -&gt; connect(&#39;localhost&#39;, &#39;root&#39;, &#39;password&#39;, &#39;test&#39;);
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//check connection (检查PHP是否连接上MYSQL)
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">if</span> (<span style="color:#008080">$conn</span> <span style="color:#000;font-weight:bold">-&gt;</span> <span style="color:#008080">connect_errno</span>) {
+</span></span><span style="display:flex;"><span>    printf(<span style="color:#d14">&#34;Connect failed: %s</span><span style="color:#d14">\n</span><span style="color:#d14">&#34;</span>, <span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">connect_error</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">exit</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//查询代码
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$sql</span> <span style="color:#000;font-weight:bold">=</span> “select <span style="color:#000;font-weight:bold">*</span> from db_table”;
+</span></span><span style="display:flex;"><span><span style="color:#008080">$query</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">query</span>(<span style="color:#008080">$sql</span>);
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">while</span>(<span style="color:#008080">$row</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$query</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">fetch_array</span>()){
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">echo</span> <span style="color:#008080">$row</span>[<span style="color:#d14">&#39;title&#39;</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//释放结果集+关闭MySQL连接
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$query1</span> <span style="color:#000;font-weight:bold">-&gt;</span> <span style="color:#008080">free_result</span>();
+</span></span><span style="display:flex;"><span><span style="color:#008080">$conn</span> <span style="color:#000;font-weight:bold">-&gt;</span> <span style="color:#008080">close</span>();
+</span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="4pdo连接mysql数据库">4.PDO连接MySQL数据库</h2>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
-<span style="color:#008080">$db</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> PDO(<span style="color:#d14">&#39;mysql:host=localhost;dbname=test&#39;</span>, <span style="color:#d14">&#39;root&#39;</span>, <span style="color:#d14">&#39;password&#39;</span>);
-<span style="color:#000;font-weight:bold">try</span> {
-    <span style="color:#000;font-weight:bold">foreach</span> (<span style="color:#008080">$db</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">query</span>(<span style="color:#d14">&#39;select * from db_table&#39;</span>) <span style="color:#000;font-weight:bold">as</span> <span style="color:#008080">$row</span>){
-        print_r(<span style="color:#008080">$row</span>);
-    }
-    <span style="color:#008080">$db</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">null</span>; <span style="color:#998;font-style:italic">//关闭数据库
-</span><span style="color:#998;font-style:italic"></span>} 
-<span style="color:#000;font-weight:bold">catch</span> (PDOException <span style="color:#008080">$e</span>) {
-    <span style="color:#000;font-weight:bold">echo</span> <span style="color:#008080">$e</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">getMessage</span>();
-}
-<span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;?</span>php
+</span></span><span style="display:flex;"><span><span style="color:#008080">$db</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> PDO(<span style="color:#d14">&#39;mysql:host=localhost;dbname=test&#39;</span>, <span style="color:#d14">&#39;root&#39;</span>, <span style="color:#d14">&#39;password&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">foreach</span> (<span style="color:#008080">$db</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">query</span>(<span style="color:#d14">&#39;select * from db_table&#39;</span>) <span style="color:#000;font-weight:bold">as</span> <span style="color:#008080">$row</span>){
+</span></span><span style="display:flex;"><span>        print_r(<span style="color:#008080">$row</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#008080">$db</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">null</span>; <span style="color:#998;font-style:italic">//关闭数据库
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span>} 
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">catch</span> (PDOException <span style="color:#008080">$e</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">echo</span> <span style="color:#008080">$e</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">getMessage</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="5adodb连接mysql数据库">5.ADODB连接MySQL数据库</h2>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#000;font-weight:bold">&lt;?</span>php
-<span style="color:#998;font-style:italic">//安装驱动-引入类即可
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">require_once</span> <span style="color:#d14">&#39;./adodb5/adodb.inc.php&#39;</span>;
-<span style="color:#008080">$conn</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">&amp;</span>ADONewConnection(<span style="color:#d14">&#39;mysql&#39;</span>);
-<span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">connect</span>(<span style="color:#d14">&#39;localhost&#39;</span>,<span style="color:#d14">&#39;root&#39;</span>,<span style="color:#d14">&#39;password&#39;</span>,<span style="color:#d14">&#39;test&#39;</span>);
-<span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">Execute</span>(<span style="color:#d14">&#34;set names utf8&#34;</span>);
-<span style="color:#998;font-style:italic">//查询代码
-</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$res</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">Execute</span>(<span style="color:#d14">&#34;select * from db_table&#34;</span>);
-<span style="color:#000;font-weight:bold">if</span> (<span style="color:#000;font-weight:bold">!</span><span style="color:#008080">$res</span>){
-    <span style="color:#000;font-weight:bold">echo</span> <span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">ErrorMsg</span>();
-}
-<span style="color:#000;font-weight:bold">else</span>{
-    var_dump(<span style="color:#008080">$res</span>);
-}
-<span style="color:#998;font-style:italic">//关闭连接
-</span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">close</span>();
-<span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
-</span></code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">&lt;?</span>php
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//安装驱动-引入类即可
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">require_once</span> <span style="color:#d14">&#39;./adodb5/adodb.inc.php&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#008080">$conn</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">&amp;</span>ADONewConnection(<span style="color:#d14">&#39;mysql&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">connect</span>(<span style="color:#d14">&#39;localhost&#39;</span>,<span style="color:#d14">&#39;root&#39;</span>,<span style="color:#d14">&#39;password&#39;</span>,<span style="color:#d14">&#39;test&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">Execute</span>(<span style="color:#d14">&#34;set names utf8&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//查询代码
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$res</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">Execute</span>(<span style="color:#d14">&#34;select * from db_table&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span> (<span style="color:#000;font-weight:bold">!</span><span style="color:#008080">$res</span>){
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">echo</span> <span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">ErrorMsg</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">else</span>{
+</span></span><span style="display:flex;"><span>    var_dump(<span style="color:#008080">$res</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">//关闭连接
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">close</span>();
+</span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">?&gt;</span><span style="color:#a61717;background-color:#e3d2d2">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="6总结-关闭mysql数据库的连接方法">6.总结-关闭mysql数据库的连接方法</h2>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php">MySQL <span style="color:#000;font-weight:bold">-</span> 面向过程 mysql_close(<span style="color:#008080">$conn</span>);
-MySQLi <span style="color:#000;font-weight:bold">-</span> 面向过程 mysqli_close(<span style="color:#008080">$conn</span>);
-MySQLi <span style="color:#000;font-weight:bold">-</span> 面向对象 <span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">close</span>();
-PDO <span style="color:#008080">$conn</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">null</span>;
-ADODB <span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">close</span>();或 <span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">free</span>();
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>MySQL <span style="color:#000;font-weight:bold">-</span> 面向过程 mysql_close(<span style="color:#008080">$conn</span>);
+</span></span><span style="display:flex;"><span>MySQLi <span style="color:#000;font-weight:bold">-</span> 面向过程 mysqli_close(<span style="color:#008080">$conn</span>);
+</span></span><span style="display:flex;"><span>MySQLi <span style="color:#000;font-weight:bold">-</span> 面向对象 <span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">close</span>();
+</span></span><span style="display:flex;"><span>PDO <span style="color:#008080">$conn</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">null</span>;
+</span></span><span style="display:flex;"><span>ADODB <span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">close</span>();或 <span style="color:#008080">$conn</span><span style="color:#000;font-weight:bold">-&gt;</span><span style="color:#008080">free</span>();
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p><a href="https://www.runoob.com/php/php-mysql-connect.html">php操作mysql</a></p>
 <h2 id="简要谈谈php中mysqlmysqlimysqlndpdo到底是什么">简要谈谈php中mysql,mysqli,mysqlnd,pdo到底是什么?</h2>
@@ -495,141 +493,141 @@ PDO PHP Data Objects PHP数据对象，是PHP应用中的一个数据库抽象�
 --with-mysqli
 --with-mysql //php7的已经不再支持，此参数configure 的时候会报ERROR
 </code></pre><p>php安装完模块</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># /usr/local/services/php7/bin/php -m</span>
-<span style="color:#000;font-weight:bold">[</span>PHP Modules<span style="color:#000;font-weight:bold">]</span>
-bcmath
-bz2
-calendar
-Core
-ctype
-curl
-date
-dba
-dom
-exif
-fileinfo
-filter
-ftp
-gd
-gettext
-gmp
-<span style="color:#0086b3">hash</span>
-iconv
-igbinary
-intl
-json
-libxml
-mbstring
-mcrypt
-memcache
-memcached
-msgpack
-mysqli
-mysqlnd
-openssl
-pcntl
-pcre
-PDO
-pdo_mysql
-pdo_sqlite
-Phar
-posix
-readline
-Reflection
-session
-shmop
-SimpleXML
-soap
-sockets
-SPL
-sqlite3
-standard
-sysvmsg
-sysvsem
-sysvshm
-tokenizer
-wddx
-xml
-xmlreader
-xmlrpc
-xmlwriter
-xsl
-Zend OPcache
-zip
-zlib
-
-<span style="color:#000;font-weight:bold">[</span>Zend Modules<span style="color:#000;font-weight:bold">]</span>
-Zend OPcache
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#998;font-style:italic"># /usr/local/services/php7/bin/php -m</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>PHP Modules<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>bcmath
+</span></span><span style="display:flex;"><span>bz2
+</span></span><span style="display:flex;"><span>calendar
+</span></span><span style="display:flex;"><span>Core
+</span></span><span style="display:flex;"><span>ctype
+</span></span><span style="display:flex;"><span>curl
+</span></span><span style="display:flex;"><span>date
+</span></span><span style="display:flex;"><span>dba
+</span></span><span style="display:flex;"><span>dom
+</span></span><span style="display:flex;"><span>exif
+</span></span><span style="display:flex;"><span>fileinfo
+</span></span><span style="display:flex;"><span>filter
+</span></span><span style="display:flex;"><span>ftp
+</span></span><span style="display:flex;"><span>gd
+</span></span><span style="display:flex;"><span>gettext
+</span></span><span style="display:flex;"><span>gmp
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">hash</span>
+</span></span><span style="display:flex;"><span>iconv
+</span></span><span style="display:flex;"><span>igbinary
+</span></span><span style="display:flex;"><span>intl
+</span></span><span style="display:flex;"><span>json
+</span></span><span style="display:flex;"><span>libxml
+</span></span><span style="display:flex;"><span>mbstring
+</span></span><span style="display:flex;"><span>mcrypt
+</span></span><span style="display:flex;"><span>memcache
+</span></span><span style="display:flex;"><span>memcached
+</span></span><span style="display:flex;"><span>msgpack
+</span></span><span style="display:flex;"><span>mysqli
+</span></span><span style="display:flex;"><span>mysqlnd
+</span></span><span style="display:flex;"><span>openssl
+</span></span><span style="display:flex;"><span>pcntl
+</span></span><span style="display:flex;"><span>pcre
+</span></span><span style="display:flex;"><span>PDO
+</span></span><span style="display:flex;"><span>pdo_mysql
+</span></span><span style="display:flex;"><span>pdo_sqlite
+</span></span><span style="display:flex;"><span>Phar
+</span></span><span style="display:flex;"><span>posix
+</span></span><span style="display:flex;"><span>readline
+</span></span><span style="display:flex;"><span>Reflection
+</span></span><span style="display:flex;"><span>session
+</span></span><span style="display:flex;"><span>shmop
+</span></span><span style="display:flex;"><span>SimpleXML
+</span></span><span style="display:flex;"><span>soap
+</span></span><span style="display:flex;"><span>sockets
+</span></span><span style="display:flex;"><span>SPL
+</span></span><span style="display:flex;"><span>sqlite3
+</span></span><span style="display:flex;"><span>standard
+</span></span><span style="display:flex;"><span>sysvmsg
+</span></span><span style="display:flex;"><span>sysvsem
+</span></span><span style="display:flex;"><span>sysvshm
+</span></span><span style="display:flex;"><span>tokenizer
+</span></span><span style="display:flex;"><span>wddx
+</span></span><span style="display:flex;"><span>xml
+</span></span><span style="display:flex;"><span>xmlreader
+</span></span><span style="display:flex;"><span>xmlrpc
+</span></span><span style="display:flex;"><span>xmlwriter
+</span></span><span style="display:flex;"><span>xsl
+</span></span><span style="display:flex;"><span>Zend OPcache
+</span></span><span style="display:flex;"><span>zip
+</span></span><span style="display:flex;"><span>zlib
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>Zend Modules<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>Zend OPcache
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -682,7 +680,7 @@ Zend OPcache
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        &copy; 2023 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的技术学习笔记 By liuzhongzhen</a>
         
     </div>
     <br />

@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>网心-Arfa离线数据开发平台 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="网心-Arfa离线数据开发平台 - Liuzhongzhen的博客">
+    <title>网心-Arfa离线数据开发平台 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="网心-Arfa离线数据开发平台 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2019-11-20T00:37:59&#43;08:00'>
@@ -49,7 +49,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="https://liuzhongzhen.github.io/">
-                        Liuzhongzhen的博客
+                        Liuzhongzhen的技术学习笔记
                     </a>
                 
                 <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
@@ -58,15 +58,13 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -282,7 +280,7 @@ cycle计算数据更新周期:
     单词太长，可以只取前面几个字段,详细名称和解释写入备注，
     禁止用_和数字开头,禁止用关键字命名
 第1个字段统一是stime（全部精确到秒）
-    在impala和hive中是timestamp类型，统一所有格式是YYYY-MM-DD HH:II:SS，('2017-11-10 10:20:30')
+    在impala和hive中是timestamp类型，统一所有格式是YYYY-MM-DD HH:II:SS，(&#39;2017-11-10 10:20:30&#39;)
     在mysql和tidb中统一使用datetime类型，格式YYYY-MM-DD HH:II:SS，不区分分钟/小时/日/周/月
     在clickhouse中统一使用datetime类型，格式YYYY-MM-DD HH:II:SS
 第2个字段如果是多维分析计算
@@ -293,9 +291,9 @@ cycle计算数据更新周期:
         如果是1小时:ptime=20171113010000
         如果是1天：ptime=20171113000000
     mysql和tidb中一级分区统一是range分区，
-        分钟分区:p201711131003 values less than('2017-11-13 10:04:00') 代表2017-11-13号10点03分的分区
-        小时分区:p201711131100 values less than('2017-11-13 12:00:00') 代表2017-11-13号11点的分区
-        按天分区:p201711130000 values less than('2017-11-14 00:00:00') 代表2017-11-13号分区
+        分钟分区:p201711131003 values less than(&#39;2017-11-13 10:04:00&#39;) 代表2017-11-13号10点03分的分区
+        小时分区:p201711131100 values less than(&#39;2017-11-13 12:00:00&#39;) 代表2017-11-13号11点的分区
+        按天分区:p201711130000 values less than(&#39;2017-11-14 00:00:00&#39;) 代表2017-11-13号分区
     clickhouse中，第一分区统一是range分区
         天分区:toDate
         周分区:toMonday
@@ -401,7 +399,7 @@ cycle计算数据更新周期:
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        &copy; 2023 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的技术学习笔记 By liuzhongzhen</a>
         
     </div>
     <br />

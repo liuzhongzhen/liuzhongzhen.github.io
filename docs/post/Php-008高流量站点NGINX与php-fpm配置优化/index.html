@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>Php-008高流量站点NGINX与php-Fpm配置优化 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="Php-008高流量站点NGINX与php-Fpm配置优化 - Liuzhongzhen的博客">
+    <title>Php-008高流量站点NGINX与php-Fpm配置优化 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="Php-008高流量站点NGINX与php-Fpm配置优化 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2014-08-08T11:47:39&#43;08:00'>
@@ -49,7 +49,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="https://liuzhongzhen.github.io/">
-                        Liuzhongzhen的博客
+                        Liuzhongzhen的技术学习笔记
                     </a>
                 
                 <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
@@ -58,15 +58,13 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -235,22 +233,22 @@
 <p>多数情况下，你的Web服务器都不会配置为处理多种任务（比如作为Web服务器提供服务的同时也是一个打印服务器），你可以配置NGINX使用所有可用的处理器，NGINX工作进程并不是多线程的。</p>
 <p>运行以下命令可以获知你的机器有多少个处理器：</p>
 <p>Linux上 -</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /proc/cpuinfo | grep processor
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cat /proc/cpuinfo | grep processor
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>FreeBSD上 -</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sysctl dev .cpu | grep location
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sysctl dev .cpu | grep location
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>将nginx.conf文件中work_processes的值设置为机器的处理器核数。</p>
 <p>同时，增大worker_connections（每个处理器核心可以处理多少个连接）的值，以及将&quot;multi_accept&quot;设置为ON，如果你使用的是Linux，则也使用&quot;epoll&quot;：</p>
@@ -271,88 +269,88 @@ events
     server unix:/var/run/php5-fpm.sock2 weight=100 max_fails=5 fail_timeout=5;
 }
 </code></pre><p>以下是两个来自php-fpm.conf的进程池：</p>
-<pre tabindex="0"><code class="language-conf" data-lang="conf">&lt;section name=&quot;pool&quot;&gt;
+<pre tabindex="0"><code class="language-conf" data-lang="conf">&lt;section name=&#34;pool&#34;&gt;
 
-    &lt;value name=&quot;name&quot;&gt;www1&lt;/value&gt;
-    &lt;value name=&quot;listen_address&quot;&gt;/var/run/php5-fpm.sock1&lt;/value&gt;
+    &lt;value name=&#34;name&#34;&gt;www1&lt;/value&gt;
+    &lt;value name=&#34;listen_address&#34;&gt;/var/run/php5-fpm.sock1&lt;/value&gt;
 
-    &lt;value name=&quot;listen_options&quot;&gt;
-        &lt;value name=&quot;backlog&quot;&gt;-1&lt;/value&gt;
-        &lt;value name=&quot;owner&quot;&gt;&lt;/value&gt;
-        &lt;value name=&quot;group&quot;&gt;&lt;/value&gt;
-        &lt;value name=&quot;mode&quot;&gt;0666&lt;/value&gt;
+    &lt;value name=&#34;listen_options&#34;&gt;
+        &lt;value name=&#34;backlog&#34;&gt;-1&lt;/value&gt;
+        &lt;value name=&#34;owner&#34;&gt;&lt;/value&gt;
+        &lt;value name=&#34;group&#34;&gt;&lt;/value&gt;
+        &lt;value name=&#34;mode&#34;&gt;0666&lt;/value&gt;
     &lt;/value&gt;
 
-    &lt;value name=&quot;user&quot;&gt;www&lt;/value&gt;
-    &lt;value name=&quot;group&quot;&gt;www&lt;/value&gt;
+    &lt;value name=&#34;user&#34;&gt;www&lt;/value&gt;
+    &lt;value name=&#34;group&#34;&gt;www&lt;/value&gt;
 
-    &lt;value name=&quot;pm&quot;&gt;
-        &lt;value name=&quot;style&quot;&gt;static&lt;/value&gt;
-        &lt;value name=&quot;max_children&quot;&gt;500&lt;/value&gt;
+    &lt;value name=&#34;pm&#34;&gt;
+        &lt;value name=&#34;style&#34;&gt;static&lt;/value&gt;
+        &lt;value name=&#34;max_children&#34;&gt;500&lt;/value&gt;
     &lt;/value&gt;
 
-    &lt;value name=&quot;rlimit_files&quot;&gt;50000&lt;/value&gt;
-    &lt;value name=&quot;rlimit_core&quot;&gt;0&lt;/value&gt;
-    &lt;value name=&quot;request_slowlog_timeout&quot;&gt;20s&lt;/value&gt;
-    &lt;value name=&quot;slowlog&quot;&gt;/var/log/php-slow.log&lt;/value&gt;
-    &lt;value name=&quot;chroot&quot;&gt;&lt;/value&gt;
-    &lt;value name=&quot;chdir&quot;&gt;&lt;/value&gt;
-    &lt;value name=&quot;catch_workers_output&quot;&gt;no&lt;/value&gt;
-    &lt;value name=&quot;max_requests&quot;&gt;5000&lt;/value&gt;
-    &lt;value name=&quot;allowed_clients&quot;&gt;127.0.0.1&lt;/value&gt;
+    &lt;value name=&#34;rlimit_files&#34;&gt;50000&lt;/value&gt;
+    &lt;value name=&#34;rlimit_core&#34;&gt;0&lt;/value&gt;
+    &lt;value name=&#34;request_slowlog_timeout&#34;&gt;20s&lt;/value&gt;
+    &lt;value name=&#34;slowlog&#34;&gt;/var/log/php-slow.log&lt;/value&gt;
+    &lt;value name=&#34;chroot&#34;&gt;&lt;/value&gt;
+    &lt;value name=&#34;chdir&#34;&gt;&lt;/value&gt;
+    &lt;value name=&#34;catch_workers_output&#34;&gt;no&lt;/value&gt;
+    &lt;value name=&#34;max_requests&#34;&gt;5000&lt;/value&gt;
+    &lt;value name=&#34;allowed_clients&#34;&gt;127.0.0.1&lt;/value&gt;
 
-    &lt;value name=&quot;environment&quot;&gt;
-        &lt;value name=&quot;HOSTNAME&quot;&gt;$HOSTNAME&lt;/value&gt;
-        &lt;value name=&quot;PATH&quot;&gt;/usr/local/bin:/usr/bin:/bin&lt;/value&gt;
-        &lt;value name=&quot;TMP&quot;&gt;/usr/tmp&lt;/value&gt;
-        &lt;value name=&quot;TMPDIR&quot;&gt;/usr/tmp&lt;/value&gt;
-        &lt;value name=&quot;TEMP&quot;&gt;/usr/tmp&lt;/value&gt;
-        &lt;value name=&quot;OSTYPE&quot;&gt;$OSTYPE&lt;/value&gt;
-        &lt;value name=&quot;MACHTYPE&quot;&gt;$MACHTYPE&lt;/value&gt;
-        &lt;value name=&quot;MALLOC_CHECK_&quot;&gt;2&lt;/value&gt;
+    &lt;value name=&#34;environment&#34;&gt;
+        &lt;value name=&#34;HOSTNAME&#34;&gt;$HOSTNAME&lt;/value&gt;
+        &lt;value name=&#34;PATH&#34;&gt;/usr/local/bin:/usr/bin:/bin&lt;/value&gt;
+        &lt;value name=&#34;TMP&#34;&gt;/usr/tmp&lt;/value&gt;
+        &lt;value name=&#34;TMPDIR&#34;&gt;/usr/tmp&lt;/value&gt;
+        &lt;value name=&#34;TEMP&#34;&gt;/usr/tmp&lt;/value&gt;
+        &lt;value name=&#34;OSTYPE&#34;&gt;$OSTYPE&lt;/value&gt;
+        &lt;value name=&#34;MACHTYPE&#34;&gt;$MACHTYPE&lt;/value&gt;
+        &lt;value name=&#34;MALLOC_CHECK_&#34;&gt;2&lt;/value&gt;
     &lt;/value&gt;
 
 &lt;/section&gt;
 
-&lt;section name=&quot;pool&quot;&gt;
+&lt;section name=&#34;pool&#34;&gt;
 
-    &lt;value name=&quot;name&quot;&gt;www2&lt;/value&gt;
-    &lt;value name=&quot;listen_address&quot;&gt;/var/run/php5-fpm.sock2&lt;/value&gt;
+    &lt;value name=&#34;name&#34;&gt;www2&lt;/value&gt;
+    &lt;value name=&#34;listen_address&#34;&gt;/var/run/php5-fpm.sock2&lt;/value&gt;
 
-    &lt;value name=&quot;listen_options&quot;&gt;
-        &lt;value name=&quot;backlog&quot;&gt;-1&lt;/value&gt;
-        &lt;value name=&quot;owner&quot;&gt;&lt;/value&gt;
-        &lt;value name=&quot;group&quot;&gt;&lt;/value&gt;
-        &lt;value name=&quot;mode&quot;&gt;0666&lt;/value&gt;
+    &lt;value name=&#34;listen_options&#34;&gt;
+        &lt;value name=&#34;backlog&#34;&gt;-1&lt;/value&gt;
+        &lt;value name=&#34;owner&#34;&gt;&lt;/value&gt;
+        &lt;value name=&#34;group&#34;&gt;&lt;/value&gt;
+        &lt;value name=&#34;mode&#34;&gt;0666&lt;/value&gt;
     &lt;/value&gt;
 
-    &lt;value name=&quot;user&quot;&gt;www&lt;/value&gt;
-    &lt;value name=&quot;group&quot;&gt;www&lt;/value&gt;
+    &lt;value name=&#34;user&#34;&gt;www&lt;/value&gt;
+    &lt;value name=&#34;group&#34;&gt;www&lt;/value&gt;
 
-    &lt;value name=&quot;pm&quot;&gt;
-        &lt;value name=&quot;style&quot;&gt;static&lt;/value&gt;
-        &lt;value name=&quot;max_children&quot;&gt;500&lt;/value&gt;
+    &lt;value name=&#34;pm&#34;&gt;
+        &lt;value name=&#34;style&#34;&gt;static&lt;/value&gt;
+        &lt;value name=&#34;max_children&#34;&gt;500&lt;/value&gt;
     &lt;/value&gt;
 
-    &lt;value name=&quot;rlimit_files&quot;&gt;50000&lt;/value&gt;
-    &lt;value name=&quot;rlimit_core&quot;&gt;0&lt;/value&gt;
-    &lt;value name=&quot;request_slowlog_timeout&quot;&gt;20s&lt;/value&gt;
-    &lt;value name=&quot;slowlog&quot;&gt;/var/log/php-slow.log&lt;/value&gt;
-    &lt;value name=&quot;chroot&quot;&gt;&lt;/value&gt;
-    &lt;value name=&quot;chdir&quot;&gt;&lt;/value&gt;
-    &lt;value name=&quot;catch_workers_output&quot;&gt;no&lt;/value&gt;
-    &lt;value name=&quot;max_requests&quot;&gt;5000&lt;/value&gt;
-    &lt;value name=&quot;allowed_clients&quot;&gt;127.0.0.1&lt;/value&gt;
+    &lt;value name=&#34;rlimit_files&#34;&gt;50000&lt;/value&gt;
+    &lt;value name=&#34;rlimit_core&#34;&gt;0&lt;/value&gt;
+    &lt;value name=&#34;request_slowlog_timeout&#34;&gt;20s&lt;/value&gt;
+    &lt;value name=&#34;slowlog&#34;&gt;/var/log/php-slow.log&lt;/value&gt;
+    &lt;value name=&#34;chroot&#34;&gt;&lt;/value&gt;
+    &lt;value name=&#34;chdir&#34;&gt;&lt;/value&gt;
+    &lt;value name=&#34;catch_workers_output&#34;&gt;no&lt;/value&gt;
+    &lt;value name=&#34;max_requests&#34;&gt;5000&lt;/value&gt;
+    &lt;value name=&#34;allowed_clients&#34;&gt;127.0.0.1&lt;/value&gt;
 
-    &lt;value name=&quot;environment&quot;&gt;
-        &lt;value name=&quot;HOSTNAME&quot;&gt;$HOSTNAME&lt;/value&gt;
-        &lt;value name=&quot;PATH&quot;&gt;/usr/local/bin:/usr/bin:/bin&lt;/value&gt;
-        &lt;value name=&quot;TMP&quot;&gt;/usr/tmp&lt;/value&gt;
-        &lt;value name=&quot;TMPDIR&quot;&gt;/usr/tmp&lt;/value&gt;
-        &lt;value name=&quot;TEMP&quot;&gt;/usr/tmp&lt;/value&gt;
-        &lt;value name=&quot;OSTYPE&quot;&gt;$OSTYPE&lt;/value&gt;
-        &lt;value name=&quot;MACHTYPE&quot;&gt;$MACHTYPE&lt;/value&gt;
-        &lt;value name=&quot;MALLOC_CHECK_&quot;&gt;2&lt;/value&gt;
+    &lt;value name=&#34;environment&#34;&gt;
+        &lt;value name=&#34;HOSTNAME&#34;&gt;$HOSTNAME&lt;/value&gt;
+        &lt;value name=&#34;PATH&#34;&gt;/usr/local/bin:/usr/bin:/bin&lt;/value&gt;
+        &lt;value name=&#34;TMP&#34;&gt;/usr/tmp&lt;/value&gt;
+        &lt;value name=&#34;TMPDIR&#34;&gt;/usr/tmp&lt;/value&gt;
+        &lt;value name=&#34;TEMP&#34;&gt;/usr/tmp&lt;/value&gt;
+        &lt;value name=&#34;OSTYPE&#34;&gt;$OSTYPE&lt;/value&gt;
+        &lt;value name=&#34;MACHTYPE&#34;&gt;$MACHTYPE&lt;/value&gt;
+        &lt;value name=&#34;MALLOC_CHECK_&#34;&gt;2&lt;/value&gt;
     &lt;/value&gt;
 
 &lt;/section&gt;
@@ -365,7 +363,7 @@ error_log /var/log/nginx-error.log warn;
 <pre tabindex="0"><code class="language-conf" data-lang="conf">access_log /var/log/nginx/access.log main buffer=16k;
 </code></pre><h2 id="5-启用gzip">5. 启用GZip</h2>
 <pre tabindex="0"><code class="language-conf" data-lang="conf">gzip on;
-gzip_disable &quot;msie6&quot;;
+gzip_disable &#34;msie6&#34;;
 gzip_vary on;
 gzip_proxied any;
 gzip_comp_level 6;
@@ -494,7 +492,7 @@ make install BATCH=yes
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        &copy; 2023 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的技术学习笔记 By liuzhongzhen</a>
         
     </div>
     <br />

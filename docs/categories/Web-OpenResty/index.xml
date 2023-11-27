@@ -1,66 +1,55 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Web-OpenResty on Liuzhongzhen的博客</title>
+    <title>Web-OpenResty on Liuzhongzhen的技术学习笔记</title>
     <link>https://liuzhongzhen.github.io/categories/Web-OpenResty/</link>
-    <description>Recent content in Web-OpenResty on Liuzhongzhen的博客</description>
+    <description>Recent content in Web-OpenResty on Liuzhongzhen的技术学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 22 Nov 2019 15:00:59 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-OpenResty/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Nov 2019 15:00:59 +0800</lastBuildDate>
+    <atom:link href="https://liuzhongzhen.github.io/categories/Web-OpenResty/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OpenResty 006logrotate日志切割使用</title>
       <link>https://liuzhongzhen.github.io/post/OpenResty-006logrotate%E6%97%A5%E5%BF%97%E5%88%87%E5%89%B2%E4%BD%BF%E7%94%A8/</link>
       <pubDate>Fri, 22 Nov 2019 15:00:59 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/OpenResty-006logrotate%E6%97%A5%E5%BF%97%E5%88%87%E5%89%B2%E4%BD%BF%E7%94%A8/</guid>
       <description>1.基本配置 参考文档: https://www.cnblogs.com/clsn/p/8428257.html 1 2 3 4 5 6 7 cat /etc/redhat-release uname -r 安装方法yum -y install logrotate crontabs rpm -ql logrotate 显示软件包信息 /etc/cron.daily/logrotate /etc/logrotate.conf # 主配置</description>
     </item>
-    
     <item>
       <title>OpenResty 005logrotate日志切割介绍</title>
       <link>https://liuzhongzhen.github.io/post/OpenResty-005logrotate%E6%97%A5%E5%BF%97%E5%88%87%E5%89%B2%E4%BB%8B%E7%BB%8D/</link>
       <pubDate>Fri, 22 Nov 2019 14:50:59 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/OpenResty-005logrotate%E6%97%A5%E5%BF%97%E5%88%87%E5%89%B2%E4%BB%8B%E7%BB%8D/</guid>
       <description>logrotate是linux自带的日志切割程序，可以方便的对日志进行切割，并且执行相关命令。 一、安</description>
     </item>
-    
     <item>
       <title>OpenResty 004安装指南</title>
       <link>https://liuzhongzhen.github.io/post/OpenResty-004%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</link>
       <pubDate>Thu, 12 May 2016 08:05:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/OpenResty-004%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97/</guid>
       <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50</description>
     </item>
-    
     <item>
       <title>OpenResty 003基于openresty的几个开发框架</title>
       <link>https://liuzhongzhen.github.io/post/OpenResty-003%E5%9F%BA%E4%BA%8Eopenresty%E7%9A%84%E5%87%A0%E4%B8%AA%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/</link>
       <pubDate>Wed, 11 May 2016 08:01:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/OpenResty-003%E5%9F%BA%E4%BA%8Eopenresty%E7%9A%84%E5%87%A0%E4%B8%AA%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/</guid>
       <description>kong api gateway Github: https://github.com/Mashape/kong orange api gateway Github: https://github.com/sumory/orange Lapis web 开发框架 Github: https://github.com/leafo/lapis Vanilla web 开发框架 Github: https://github.com/idevz/vanilla Lor web 开发框架 Github: https://github.com/sumory/lor</description>
     </item>
-    
     <item>
       <title>OpenResty 002openResty内置变量</title>
       <link>https://liuzhongzhen.github.io/post/OpenResty-002openResty%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F/</link>
       <pubDate>Tue, 10 May 2016 07:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/OpenResty-002openResty%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F/</guid>
       <description>openResty变量 请求如下:http://baidu.com/liveroom?d=10&amp;amp</description>
     </item>
-    
     <item>
       <title>OpenResty 001openResty中lua库查找路径</title>
       <link>https://liuzhongzhen.github.io/post/OpenResty-001openResty%E4%B8%ADlua%E5%BA%93%E6%9F%A5%E6%89%BE%E8%B7%AF%E5%BE%84/</link>
       <pubDate>Sun, 08 May 2016 22:57:56 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/OpenResty-001openResty%E4%B8%ADlua%E5%BA%93%E6%9F%A5%E6%89%BE%E8%B7%AF%E5%BE%84/</guid>
       <description>lua查找库的路径: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40</description>
     </item>
-    
   </channel>
 </rss>

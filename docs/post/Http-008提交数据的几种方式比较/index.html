@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>Http 008提交数据的几种方式比较 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="Http 008提交数据的几种方式比较 - Liuzhongzhen的博客">
+    <title>Http 008提交数据的几种方式比较 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="Http 008提交数据的几种方式比较 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2015-01-04T12:44:53&#43;08:00'>
@@ -49,7 +49,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="https://liuzhongzhen.github.io/">
-                        Liuzhongzhen的博客
+                        Liuzhongzhen的技术学习笔记
                     </a>
                 
                 <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
@@ -58,15 +58,13 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -220,123 +218,123 @@
             <h2 id="1表单类型">1.表单类型</h2>
 <p>MediaType，即是Internet Media Type，互联网媒体类型；也叫做MIME类型，在Http协议消息头中，使用Content-Type来表示具体请求中的媒体类型信息。Content-Type头部后面可以追加;charset=UTF-8指定编码格式,例如：Content-Type:x-www-from-urlencoded;charset=UTF-8</p>
 <p>Content-Type字段表明了请求的请求体类型，可以是如下几种常见的类型：</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">常见媒体格式如下:
-text/html   ： HTML格式
-text/plain  ：纯文本格式
-text/xml    ： XML格式
-image/gif   ：gif图片格式
-image/jpeg  ：jpg图片格式
-image/png   ：png图片格式
-multipart/form-data：（体数据被编码为一条消息，页上的每个控件对应消息中的一个部分，这个一般文件上传时用）
-
-以application开头的媒体格式类型：
-application/xhtml+xml ：XHTML格式
-application/xml ： XML数据格式
-application/atom+xml ：Atom XML聚合格式
-application/json ： JSON数据格式
-application/pdf ：pdf格式
-application/msword ： Word文档格式
-application/octet-stream ： 二进制流数据（如常见的文件下载）
-application/x-www-form-urlencoded ： 默认的encType,form表单数据被编码为key/value格式发送到服务器（表单默认的提交数据的格式）
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>常见媒体格式如下:
+</span></span><span style="display:flex;"><span>text/html   ： HTML格式
+</span></span><span style="display:flex;"><span>text/plain  ：纯文本格式
+</span></span><span style="display:flex;"><span>text/xml    ： XML格式
+</span></span><span style="display:flex;"><span>image/gif   ：gif图片格式
+</span></span><span style="display:flex;"><span>image/jpeg  ：jpg图片格式
+</span></span><span style="display:flex;"><span>image/png   ：png图片格式
+</span></span><span style="display:flex;"><span>multipart/form-data：（体数据被编码为一条消息，页上的每个控件对应消息中的一个部分，这个一般文件上传时用）
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>以application开头的媒体格式类型：
+</span></span><span style="display:flex;"><span>application/xhtml+xml ：XHTML格式
+</span></span><span style="display:flex;"><span>application/xml ： XML数据格式
+</span></span><span style="display:flex;"><span>application/atom+xml ：Atom XML聚合格式
+</span></span><span style="display:flex;"><span>application/json ： JSON数据格式
+</span></span><span style="display:flex;"><span>application/pdf ：pdf格式
+</span></span><span style="display:flex;"><span>application/msword ： Word文档格式
+</span></span><span style="display:flex;"><span>application/octet-stream ： 二进制流数据（如常见的文件下载）
+</span></span><span style="display:flex;"><span>application/x-www-form-urlencoded ： 默认的encType,form表单数据被编码为key/value格式发送到服务器（表单默认的提交数据的格式）
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="2get请求方式">2.GET请求方式</h2>
 <p>读取get url中的queryString(查询字符串)</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">getParameterMap    读取参数的数组列表<span style="color:#000;font-weight:bold">{</span>k1<span style="color:#000;font-weight:bold">:[],</span>k2<span style="color:#000;font-weight:bold">:[]}</span>
-getParameterValues 读取参数k的值列表数组<span style="color:#000;font-weight:bold">[</span>v1<span style="color:#000;font-weight:bold">,</span>v2<span style="color:#000;font-weight:bold">,...]</span>
-getParameter       读取参数k的第一个值v1
-getInputStream     读取http请求body内容
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>getParameterMap<span style="color:#bbb">    </span>读取参数的数组列表{k1:<span style="color:#000;font-weight:bold">[]</span>,k2:<span style="color:#000;font-weight:bold">[]</span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>getParameterValues<span style="color:#bbb"> </span>读取参数k的值列表数组<span style="color:#000;font-weight:bold">[</span>v1,v2,...<span style="color:#000;font-weight:bold">]</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>getParameter<span style="color:#bbb">       </span>读取参数k的第一个值v1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>getInputStream<span style="color:#bbb">     </span>读取http请求body内容<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">不用增加注解
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>不用增加注解<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="3post请求方式-applicationx-www-form-urlencoded">3.POST请求方式 application/x-www-form-urlencoded</h2>
 <p>会读取url中的queryString和请求body中的内容，进行合并</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">getParameterMap    读取合并的参数字典
-getInputStream     为空
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>getParameterMap<span style="color:#bbb">    </span>读取合并的参数字典<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>getInputStream<span style="color:#bbb">     </span>为空<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">请求参数会合并
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>请求参数会合并<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="4post请求方式-applicationjson">4.POST请求方式 application/json</h2>
 <p>会读取url中的queryString和请求body中的内容</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">getParameterMap    读取queryString参数的数组列表
-getInputStream     读取json数据
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>getParameterMap<span style="color:#bbb">    </span>读取queryString参数的数组列表<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>getInputStream<span style="color:#bbb">     </span>读取json数据<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">增加<span style="color:#3c5d5d;font-weight:bold">@RequestBody注解</span>   读取json数据
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>增加<span style="color:#3c5d5d;font-weight:bold">@RequestBody注解</span><span style="color:#bbb">   </span>读取json数据<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="5post请求方式-multipartform-data">5.POST请求方式 multipart/form-data</h2>
 <p>会读取url中的queryString和请求body中的内容,主要用来处理上传数据</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">getParameterMap    读取queryString参数的数组列表
-getInputStream     读取boundary指定分割符分割的内容
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>getParameterMap<span style="color:#bbb">    </span>读取queryString参数的数组列表<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>getInputStream<span style="color:#bbb">     </span>读取boundary指定分割符分割的内容<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="总结">总结</h2>
 <p>综上所述，url中的queryString查询参数内容都能获取到的。http协议中请求Body中的内容可以根据不同的Content-Type来进行响应处理。</p>
@@ -357,311 +355,309 @@ getInputStream     读取boundary指定分割符分割的内容
         <img class="mx-auto" alt="cgi" src="../../imgs/post/java/a005.jpg" />   
     </p>
 <h2 id="python-flask-处理">python flask 处理</h2>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param<span style="color:#000;font-weight:bold">=</span>{}
-<span style="color:#998;font-style:italic">#获取所有的请求参数</span>
-<span style="color:#000;font-weight:bold">for</span> k,v <span style="color:#000;font-weight:bold">in</span> request<span style="color:#000;font-weight:bold">.</span>values<span style="color:#000;font-weight:bold">.</span>iterlists():
-    <span style="color:#000;font-weight:bold">if</span> <span style="color:#0086b3">len</span>(v)<span style="color:#000;font-weight:bold">==</span><span style="color:#099">1</span>:
-        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param[k]<span style="color:#000;font-weight:bold">=</span>v[<span style="color:#099">0</span>]
-    <span style="color:#000;font-weight:bold">else</span>:
-        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param[k]<span style="color:#000;font-weight:bold">=</span>v
-<span style="color:#000;font-weight:bold">if</span> request<span style="color:#000;font-weight:bold">.</span>is_json:
-    <span style="color:#000;font-weight:bold">try</span>:
-        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param<span style="color:#000;font-weight:bold">=</span><span style="color:#0086b3">dict</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param,<span style="color:#000;font-weight:bold">**</span><span style="color:#0086b3">dict</span>(request<span style="color:#000;font-weight:bold">.</span>get_json()))
-    <span style="color:#000;font-weight:bold">except</span> <span style="color:#900;font-weight:bold">Exception</span>,ex:
-        <span style="color:#000;font-weight:bold">pass</span>
-<span style="color:#000;font-weight:bold">if</span> <span style="color:#0086b3">str</span>(request<span style="color:#000;font-weight:bold">.</span>content_type)<span style="color:#000;font-weight:bold">.</span>find(<span style="color:#d14">&#39;text/plain&#39;</span>)<span style="color:#000;font-weight:bold">&gt;-</span><span style="color:#099">1</span>:
-    <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param[<span style="color:#d14">&#39;data&#39;</span>]<span style="color:#000;font-weight:bold">=</span>request<span style="color:#000;font-weight:bold">.</span>get_data()
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param<span style="color:#000;font-weight:bold">=</span>{}
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#获取所有的请求参数</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> k,v <span style="color:#000;font-weight:bold">in</span> request<span style="color:#000;font-weight:bold">.</span>values<span style="color:#000;font-weight:bold">.</span>iterlists():
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> <span style="color:#0086b3">len</span>(v)<span style="color:#000;font-weight:bold">==</span><span style="color:#099">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param[k]<span style="color:#000;font-weight:bold">=</span>v[<span style="color:#099">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param[k]<span style="color:#000;font-weight:bold">=</span>v
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span> request<span style="color:#000;font-weight:bold">.</span>is_json:
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">try</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param<span style="color:#000;font-weight:bold">=</span><span style="color:#0086b3">dict</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param,<span style="color:#000;font-weight:bold">**</span><span style="color:#0086b3">dict</span>(request<span style="color:#000;font-weight:bold">.</span>get_json()))
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">except</span> <span style="color:#900;font-weight:bold">Exception</span>,ex:
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">pass</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span> <span style="color:#0086b3">str</span>(request<span style="color:#000;font-weight:bold">.</span>content_type)<span style="color:#000;font-weight:bold">.</span>find(<span style="color:#d14">&#39;text/plain&#39;</span>)<span style="color:#000;font-weight:bold">&gt;-</span><span style="color:#099">1</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>req_param[<span style="color:#d14">&#39;data&#39;</span>]<span style="color:#000;font-weight:bold">=</span>request<span style="color:#000;font-weight:bold">.</span>get_data()
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>python 框架request发送请求也有对应的设置方式</p>
 <h2 id="openresty-lua-处理">openResty lua 处理</h2>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">108
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">109
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">110
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">111
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">112
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">113
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">114
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">115
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">116
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">117
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">118
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">119
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">120
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">121
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">122
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">123
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">124
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">  9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 54
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 55
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 56
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 57
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 58
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 59
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 60
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 61
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 62
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 63
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 64
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 65
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 66
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 67
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 68
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 69
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 70
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 71
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 72
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 73
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 74
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 75
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 76
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 77
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 78
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 79
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 80
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 81
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 82
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 83
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 84
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 85
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 86
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 87
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 88
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 89
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 90
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 91
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 92
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 93
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 94
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 95
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 96
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 97
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 98
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 99
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">100
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">101
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">102
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">103
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">104
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">105
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">106
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">107
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">108
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">109
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">110
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">111
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">112
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">113
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">114
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">115
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">116
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">117
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">118
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">119
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">120
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">121
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">122
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">123
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">queryString查询字符串的变量获取方式
-ngx.var.arg_xxxx
-<span style="color:#a61717;background-color:#e3d2d2">例如</span>
-<span style="color:#000;font-weight:bold">local</span> name<span style="color:#000;font-weight:bold">=</span>ngx.var.arg_name
-
-http协议请求体中body数据获取方式
-
-<span style="color:#998;font-style:italic">-- requtil.lua</span>
-
-<span style="color:#000;font-weight:bold">local</span> type<span style="color:#000;font-weight:bold">=</span>type
-<span style="color:#000;font-weight:bold">local</span> table<span style="color:#000;font-weight:bold">=</span>table
-<span style="color:#000;font-weight:bold">local</span> string<span style="color:#000;font-weight:bold">=</span>string
-<span style="color:#000;font-weight:bold">local</span> tostring<span style="color:#000;font-weight:bold">=</span>tostring
-<span style="color:#000;font-weight:bold">local</span> tonumber<span style="color:#000;font-weight:bold">=</span>tonumber
-<span style="color:#000;font-weight:bold">local</span> pairs<span style="color:#000;font-weight:bold">=</span>pairs
-<span style="color:#000;font-weight:bold">local</span> ipairs <span style="color:#000;font-weight:bold">=</span>ipairs
-<span style="color:#000;font-weight:bold">local</span> logdirlist<span style="color:#000;font-weight:bold">=</span> require(<span style="color:#d14">&#34;common.logdirlist&#34;</span>)
-<span style="color:#000;font-weight:bold">local</span> logutil<span style="color:#000;font-weight:bold">=</span>require(<span style="color:#d14">&#34;common.logutil&#34;</span>)
-<span style="color:#000;font-weight:bold">local</span> zlib<span style="color:#000;font-weight:bold">=</span>require(<span style="color:#d14">&#34;zlib&#34;</span>)
-
-
-<span style="color:#998;font-style:italic">--请求体的size大于nginx配置里的client_body_buffer_size，</span>
-<span style="color:#998;font-style:italic">--则会导致请求体被缓冲到磁盘临时文件里，</span>
-<span style="color:#998;font-style:italic">--client_body_buffer_size默认是8k或者16k</span>
-<span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">getBodyData</span>()
-    <span style="color:#000;font-weight:bold">local</span> retcode<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">true</span>
-    <span style="color:#000;font-weight:bold">local</span> retdata<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
-    ngx.req.read_body()
-    <span style="color:#000;font-weight:bold">local</span> bodydata<span style="color:#000;font-weight:bold">=</span>ngx.req.get_body_data()
-    <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> bodydata <span style="color:#000;font-weight:bold">then</span>
-        <span style="color:#000;font-weight:bold">local</span> datafile<span style="color:#000;font-weight:bold">=</span>ngx.req.get_body_file()
-        <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> datafile <span style="color:#000;font-weight:bold">then</span>
-            retcode<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">false</span>
-            retdata<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;no request body found&#39;</span>
-        <span style="color:#000;font-weight:bold">else</span>
-            <span style="color:#000;font-weight:bold">local</span> fh, err <span style="color:#000;font-weight:bold">=</span> io.open(datafile, <span style="color:#d14">&#34;r&#34;</span>)
-            <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> fh <span style="color:#000;font-weight:bold">then</span>
-                retcode<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">false</span>
-                retdata<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;failed to open &#34;</span> <span style="color:#000;font-weight:bold">..</span> tostring(datafile) <span style="color:#000;font-weight:bold">..</span> <span style="color:#d14">&#34;for reading: &#34;</span> <span style="color:#000;font-weight:bold">..</span> tostring(err)
-            <span style="color:#000;font-weight:bold">else</span>
-                fh:seek(<span style="color:#d14">&#34;set&#34;</span>)
-                retdata<span style="color:#000;font-weight:bold">=</span>fh:read(<span style="color:#d14">&#34;*a&#34;</span>)
-                fh:close()
-            <span style="color:#000;font-weight:bold">end</span>
-        <span style="color:#000;font-weight:bold">end</span>
-    <span style="color:#000;font-weight:bold">else</span>
-        retdata<span style="color:#000;font-weight:bold">=</span>bodydata
-    <span style="color:#000;font-weight:bold">end</span>
-    <span style="color:#000;font-weight:bold">local</span> reqheaders<span style="color:#000;font-weight:bold">=</span>ngx.req.get_headers()
-    <span style="color:#000;font-weight:bold">local</span> encoding <span style="color:#000;font-weight:bold">=</span> reqheaders[<span style="color:#d14">&#34;content-encoding&#34;</span>]
-    <span style="color:#000;font-weight:bold">if</span> encoding<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;gzip&#34;</span> <span style="color:#000;font-weight:bold">and</span> retdata<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">then</span>
-        <span style="color:#000;font-weight:bold">local</span> stream <span style="color:#000;font-weight:bold">=</span> zlib.inflate()
-        retdata<span style="color:#000;font-weight:bold">=</span>stream(retdata)
-        ngx.req.set_body_data(retdata)
-    <span style="color:#000;font-weight:bold">end</span>
-    <span style="color:#000;font-weight:bold">return</span> retcode,retdata
-<span style="color:#000;font-weight:bold">end</span>
-
-<span style="color:#998;font-style:italic">--获取请求的参数</span>
-<span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">getReqParam</span>()
-    <span style="color:#000;font-weight:bold">local</span> retcode<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">false</span>
-    <span style="color:#000;font-weight:bold">local</span> retdata<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
-    <span style="color:#000;font-weight:bold">local</span> args<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
-    <span style="color:#000;font-weight:bold">local</span> reqbody<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
-    <span style="color:#000;font-weight:bold">local</span> method<span style="color:#000;font-weight:bold">=</span>ngx.var.request_method
-    <span style="color:#000;font-weight:bold">local</span> reqheaders<span style="color:#000;font-weight:bold">=</span>ngx.req.get_headers()
-    <span style="color:#000;font-weight:bold">local</span> encoding<span style="color:#000;font-weight:bold">=</span>reqheaders[<span style="color:#d14">&#34;content-encoding&#34;</span>]
-    <span style="color:#000;font-weight:bold">if</span> method<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#39;POST&#39;</span> <span style="color:#000;font-weight:bold">then</span>
-        <span style="color:#000;font-weight:bold">local</span> content_type<span style="color:#000;font-weight:bold">=</span>reqheaders[<span style="color:#d14">&#39;content-type&#39;</span>]
-        <span style="color:#000;font-weight:bold">if</span> content_type<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">and</span> string.sub(content_type,<span style="color:#099">1</span>,<span style="color:#099">20</span>)<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;multipart/form-data;&#34;</span> <span style="color:#000;font-weight:bold">then</span>
-            retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
-            args<span style="color:#000;font-weight:bold">=</span>{}
-            args[<span style="color:#099">1</span>]<span style="color:#000;font-weight:bold">=</span>retdata
-        <span style="color:#000;font-weight:bold">elseif</span> content_type<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">and</span> string.sub(content_type,<span style="color:#099">1</span>,<span style="color:#099">16</span>)<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;application/json&#34;</span> <span style="color:#000;font-weight:bold">then</span>
-            retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
-            <span style="color:#000;font-weight:bold">if</span> retcode <span style="color:#000;font-weight:bold">and</span> retdata<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">then</span>
-                reqbody<span style="color:#000;font-weight:bold">=</span>retdata
-                args<span style="color:#000;font-weight:bold">=</span>logutil.json_decode(retdata)
-            <span style="color:#000;font-weight:bold">else</span>
-                args<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
-            <span style="color:#000;font-weight:bold">end</span>
-        <span style="color:#000;font-weight:bold">elseif</span> content_type<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">and</span> string.sub(content_type,<span style="color:#099">1</span>,<span style="color:#099">33</span>)<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;application/x-www-form-urlencoded&#34;</span> <span style="color:#000;font-weight:bold">then</span>
-            <span style="color:#000;font-weight:bold">if</span> encoding<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;gzip&#34;</span> <span style="color:#000;font-weight:bold">then</span>
-                retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
-            <span style="color:#000;font-weight:bold">end</span>
-            ngx.req.read_body()
-            args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_post_args()
-        <span style="color:#000;font-weight:bold">elseif</span> content_type<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">and</span> (string.sub(content_type,<span style="color:#099">1</span>,<span style="color:#099">5</span>)<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;text/&#34;</span> <span style="color:#000;font-weight:bold">or</span> string.sub(content_type,<span style="color:#099">1</span>,<span style="color:#099">24</span>)<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;application/octet-stream&#34;</span>) <span style="color:#000;font-weight:bold">then</span>
-            retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
-            <span style="color:#000;font-weight:bold">if</span> retcode <span style="color:#000;font-weight:bold">and</span> retdata<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">then</span>
-                args<span style="color:#000;font-weight:bold">=</span>{}
-                args[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">=</span>tostring(retdata)
-            <span style="color:#000;font-weight:bold">else</span>
-                args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_uri_args()
-                <span style="color:#000;font-weight:bold">if</span> logutil.tableIsEmpty(args) <span style="color:#000;font-weight:bold">then</span>
-                    args<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
-                <span style="color:#000;font-weight:bold">end</span>
-            <span style="color:#000;font-weight:bold">end</span>
-        <span style="color:#000;font-weight:bold">else</span>
-            retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
-            args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_post_args()
-            <span style="color:#000;font-weight:bold">if</span> retcode <span style="color:#000;font-weight:bold">and</span> retdata<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">then</span>
-                args<span style="color:#000;font-weight:bold">=</span>logutil.json_decode(retdata)
-            <span style="color:#000;font-weight:bold">end</span>
-            <span style="color:#000;font-weight:bold">if</span> args<span style="color:#000;font-weight:bold">==</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">then</span>
-                args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_post_args()
-            <span style="color:#000;font-weight:bold">end</span>
-        <span style="color:#000;font-weight:bold">end</span>
-    <span style="color:#000;font-weight:bold">elseif</span> method<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#39;GET&#39;</span> <span style="color:#000;font-weight:bold">then</span>
-        <span style="color:#000;font-weight:bold">if</span> encoding<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;gzip&#34;</span> <span style="color:#000;font-weight:bold">then</span>
-            retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
-        <span style="color:#000;font-weight:bold">end</span>
-        args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_uri_args()
-    <span style="color:#000;font-weight:bold">else</span>
-        args<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
-        ngx.exit(<span style="color:#099">200</span>)
-    <span style="color:#000;font-weight:bold">end</span>
-    <span style="color:#000;font-weight:bold">if</span> args<span style="color:#000;font-weight:bold">==</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">or</span> type(args)<span style="color:#000;font-weight:bold">~=</span><span style="color:#d14">&#39;table&#39;</span> <span style="color:#000;font-weight:bold">or</span> logutil.tableIsEmpty(args) <span style="color:#000;font-weight:bold">then</span>
-        args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_uri_args()
-    <span style="color:#000;font-weight:bold">end</span>
-    ngx.ctx.args<span style="color:#000;font-weight:bold">=</span>args
-    ngx.ctx.reqbody<span style="color:#000;font-weight:bold">=</span>reqbody
-<span style="color:#000;font-weight:bold">end</span>
-
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>queryString查询字符串的变量获取方式
+</span></span><span style="display:flex;"><span>ngx.var.arg_xxxx
+</span></span><span style="display:flex;"><span><span style="color:#a61717;background-color:#e3d2d2">例如</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">local</span> name<span style="color:#000;font-weight:bold">=</span>ngx.var.arg_name
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>http协议请求体中body数据获取方式
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">-- requtil.lua</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">local</span> type<span style="color:#000;font-weight:bold">=</span>type
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">local</span> table<span style="color:#000;font-weight:bold">=</span>table
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">local</span> string<span style="color:#000;font-weight:bold">=</span>string
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">local</span> tostring<span style="color:#000;font-weight:bold">=</span>tostring
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">local</span> tonumber<span style="color:#000;font-weight:bold">=</span>tonumber
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">local</span> pairs<span style="color:#000;font-weight:bold">=</span>pairs
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">local</span> ipairs <span style="color:#000;font-weight:bold">=</span>ipairs
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">local</span> logdirlist<span style="color:#000;font-weight:bold">=</span> require(<span style="color:#d14">&#34;common.logdirlist&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">local</span> logutil<span style="color:#000;font-weight:bold">=</span>require(<span style="color:#d14">&#34;common.logutil&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">local</span> zlib<span style="color:#000;font-weight:bold">=</span>require(<span style="color:#d14">&#34;zlib&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">--请求体的size大于nginx配置里的client_body_buffer_size，</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">--则会导致请求体被缓冲到磁盘临时文件里，</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">--client_body_buffer_size默认是8k或者16k</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">getBodyData</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">local</span> retcode<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">local</span> retdata<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
+</span></span><span style="display:flex;"><span>    ngx.req.read_body()
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">local</span> bodydata<span style="color:#000;font-weight:bold">=</span>ngx.req.get_body_data()
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> bodydata <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">local</span> datafile<span style="color:#000;font-weight:bold">=</span>ngx.req.get_body_file()
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> datafile <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>            retcode<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">false</span>
+</span></span><span style="display:flex;"><span>            retdata<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;no request body found&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">local</span> fh, err <span style="color:#000;font-weight:bold">=</span> io.open(datafile, <span style="color:#d14">&#34;r&#34;</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> fh <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>                retcode<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">false</span>
+</span></span><span style="display:flex;"><span>                retdata<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;failed to open &#34;</span> <span style="color:#000;font-weight:bold">..</span> tostring(datafile) <span style="color:#000;font-weight:bold">..</span> <span style="color:#d14">&#34;for reading: &#34;</span> <span style="color:#000;font-weight:bold">..</span> tostring(err)
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>                fh:seek(<span style="color:#d14">&#34;set&#34;</span>)
+</span></span><span style="display:flex;"><span>                retdata<span style="color:#000;font-weight:bold">=</span>fh:read(<span style="color:#d14">&#34;*a&#34;</span>)
+</span></span><span style="display:flex;"><span>                fh:close()
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>        retdata<span style="color:#000;font-weight:bold">=</span>bodydata
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">local</span> reqheaders<span style="color:#000;font-weight:bold">=</span>ngx.req.get_headers()
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">local</span> encoding <span style="color:#000;font-weight:bold">=</span> reqheaders[<span style="color:#d14">&#34;content-encoding&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> encoding<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;gzip&#34;</span> <span style="color:#000;font-weight:bold">and</span> retdata<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">local</span> stream <span style="color:#000;font-weight:bold">=</span> zlib.inflate()
+</span></span><span style="display:flex;"><span>        retdata<span style="color:#000;font-weight:bold">=</span>stream(retdata)
+</span></span><span style="display:flex;"><span>        ngx.req.set_body_data(retdata)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> retcode,retdata
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">--获取请求的参数</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">function</span> <span style="color:#900;font-weight:bold">getReqParam</span>()
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">local</span> retcode<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">false</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">local</span> retdata<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">local</span> args<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">local</span> reqbody<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">local</span> method<span style="color:#000;font-weight:bold">=</span>ngx.var.request_method
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">local</span> reqheaders<span style="color:#000;font-weight:bold">=</span>ngx.req.get_headers()
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">local</span> encoding<span style="color:#000;font-weight:bold">=</span>reqheaders[<span style="color:#d14">&#34;content-encoding&#34;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> method<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#39;POST&#39;</span> <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">local</span> content_type<span style="color:#000;font-weight:bold">=</span>reqheaders[<span style="color:#d14">&#39;content-type&#39;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span> content_type<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">and</span> string.sub(content_type,<span style="color:#099">1</span>,<span style="color:#099">20</span>)<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;multipart/form-data;&#34;</span> <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>            retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
+</span></span><span style="display:flex;"><span>            args<span style="color:#000;font-weight:bold">=</span>{}
+</span></span><span style="display:flex;"><span>            args[<span style="color:#099">1</span>]<span style="color:#000;font-weight:bold">=</span>retdata
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">elseif</span> content_type<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">and</span> string.sub(content_type,<span style="color:#099">1</span>,<span style="color:#099">16</span>)<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;application/json&#34;</span> <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>            retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span> retcode <span style="color:#000;font-weight:bold">and</span> retdata<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>                reqbody<span style="color:#000;font-weight:bold">=</span>retdata
+</span></span><span style="display:flex;"><span>                args<span style="color:#000;font-weight:bold">=</span>logutil.json_decode(retdata)
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>                args<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">elseif</span> content_type<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">and</span> string.sub(content_type,<span style="color:#099">1</span>,<span style="color:#099">33</span>)<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;application/x-www-form-urlencoded&#34;</span> <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span> encoding<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;gzip&#34;</span> <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>                retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>            ngx.req.read_body()
+</span></span><span style="display:flex;"><span>            args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_post_args()
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">elseif</span> content_type<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">and</span> (string.sub(content_type,<span style="color:#099">1</span>,<span style="color:#099">5</span>)<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;text/&#34;</span> <span style="color:#000;font-weight:bold">or</span> string.sub(content_type,<span style="color:#099">1</span>,<span style="color:#099">24</span>)<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;application/octet-stream&#34;</span>) <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>            retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span> retcode <span style="color:#000;font-weight:bold">and</span> retdata<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>                args<span style="color:#000;font-weight:bold">=</span>{}
+</span></span><span style="display:flex;"><span>                args[<span style="color:#099">0</span>]<span style="color:#000;font-weight:bold">=</span>tostring(retdata)
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>                args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_uri_args()
+</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">if</span> logutil.tableIsEmpty(args) <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>                    args<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>            retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
+</span></span><span style="display:flex;"><span>            args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_post_args()
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span> retcode <span style="color:#000;font-weight:bold">and</span> retdata<span style="color:#000;font-weight:bold">~=</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>                args<span style="color:#000;font-weight:bold">=</span>logutil.json_decode(retdata)
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span> args<span style="color:#000;font-weight:bold">==</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>                args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_post_args()
+</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">elseif</span> method<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#39;GET&#39;</span> <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span> encoding<span style="color:#000;font-weight:bold">==</span><span style="color:#d14">&#34;gzip&#34;</span> <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>            retcode,retdata<span style="color:#000;font-weight:bold">=</span>getBodyData()
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>        args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_uri_args()
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>        args<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">nil</span>
+</span></span><span style="display:flex;"><span>        ngx.exit(<span style="color:#099">200</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> args<span style="color:#000;font-weight:bold">==</span><span style="color:#000;font-weight:bold">nil</span> <span style="color:#000;font-weight:bold">or</span> type(args)<span style="color:#000;font-weight:bold">~=</span><span style="color:#d14">&#39;table&#39;</span> <span style="color:#000;font-weight:bold">or</span> logutil.tableIsEmpty(args) <span style="color:#000;font-weight:bold">then</span>
+</span></span><span style="display:flex;"><span>        args<span style="color:#000;font-weight:bold">=</span>ngx.req.get_uri_args()
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>    ngx.ctx.args<span style="color:#000;font-weight:bold">=</span>args
+</span></span><span style="display:flex;"><span>    ngx.ctx.reqbody<span style="color:#000;font-weight:bold">=</span>reqbody
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">end</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="php-处理请求参数">php 处理请求参数</h2>
 <pre tabindex="0"><code>queryString查询字符串参数，
-获取地址栏参数   $_SERVER['QUERY_STRING'] 
-GET 方式       $_GET['a']  
-POST方式       $_POST['a']
-任何方式:       $_REQUEST['a']
+获取地址栏参数   $_SERVER[&#39;QUERY_STRING&#39;] 
+GET 方式       $_GET[&#39;a&#39;]  
+POST方式       $_POST[&#39;a&#39;]
+任何方式:       $_REQUEST[&#39;a&#39;]
 
 对于http请求body中的数据
 
 如果content-type是application/x-www-form-urlencoded，上报格式是k1=v1&amp;k2=v2这种kv形式的数据
-可以使用$b = $_POST['b'] 或 $_REQUEST['b']
+可以使用$b = $_POST[&#39;b&#39;] 或 $_REQUEST[&#39;b&#39;]
 
-如果content-type是multipart/form-data, 可以使用$_FILE['']
+如果content-type是multipart/form-data, 可以使用$_FILE[&#39;&#39;]
 
-php://input  ，$HTTP_RAW_POST_DATA 不能用于 enctype=&quot;multipart/form-data&quot;  因为 php会试图解析所收到的数据，能解析就放入 $_POST, $_GET 数组里，不能解析，才会放到 php://input 里。
+php://input  ，$HTTP_RAW_POST_DATA 不能用于 enctype=&#34;multipart/form-data&#34;  因为 php会试图解析所收到的数据，能解析就放入 $_POST, $_GET 数组里，不能解析，才会放到 php://input 里。
 php://input比$HTTP_RAW_POST_DATA有更好的内存使用效率
 file_get_contents(“php://input”);
 </code></pre><h2 id="url编码方法">url编码方法</h2>
@@ -722,7 +718,7 @@ file_get_contents(“php://input”);
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        &copy; 2023 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的技术学习笔记 By liuzhongzhen</a>
         
     </div>
     <br />

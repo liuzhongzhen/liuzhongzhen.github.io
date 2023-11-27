@@ -1,165 +1,132 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Products on Liuzhongzhen的博客</title>
+    <title>Products on Liuzhongzhen的技术学习笔记</title>
     <link>https://liuzhongzhen.github.io/products/</link>
-    <description>Recent content in Products on Liuzhongzhen的博客</description>
+    <description>Recent content in Products on Liuzhongzhen的技术学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Sun, 01 May 2022 12:10:20 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/products/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 May 2022 12:10:20 +0800</lastBuildDate>
+    <atom:link href="https://liuzhongzhen.github.io/products/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>网心-Horizon可视化系统设计</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Horizon%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</link>
       <pubDate>Sun, 01 May 2022 12:10:20 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Horizon%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</guid>
       <description>一、目标 构建数据查看推送的可视化平台 二、模块 报表配置管理模块 可编辑表配置管理模块 维表配置管理模块 产品</description>
     </item>
-    
     <item>
       <title>网心-Alita数据中台产品</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Alita%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BA%A7%E5%93%81/</link>
       <pubDate>Wed, 01 Sep 2021 16:41:10 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Alita%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BA%A7%E5%93%81/</guid>
       <description>一、目标 构建一站式数据采集、ETL、开发、应用、运维管理平台 二、应用技术 后端技术架构 开发语言: java 开发</description>
     </item>
-    
     <item>
       <title>网心-Angela基于spark的实时开发系统</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Angela%E5%9F%BA%E4%BA%8Espark%E7%9A%84%E5%AE%9E%E6%97%B6%E5%BC%80%E5%8F%91%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Fri, 01 Jan 2021 00:40:00 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Angela%E5%9F%BA%E4%BA%8Espark%E7%9A%84%E5%AE%9E%E6%97%B6%E5%BC%80%E5%8F%91%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 设计开发负责人 背景 sparkSQL实时开发每次都要写代码，打包，调试，发布，上线比较繁琐，耗时长</description>
     </item>
-    
     <item>
       <title>网心-Arfa离线数据开发平台</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Arfa%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/</link>
       <pubDate>Wed, 20 Nov 2019 00:37:59 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Arfa%E7%A6%BB%E7%BA%BF%E6%95%B0%E6%8D%AE%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/</guid>
       <description>角色 设计开发负责人 背景 面临的问题 如何提高数据管理的效率，数据开发的效率 如何管理任务资源的使用 如何解决</description>
     </item>
-    
     <item>
       <title>公共-软件项目开发流程</title>
       <link>https://liuzhongzhen.github.io/products/%E5%85%AC%E5%85%B1-%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/</link>
       <pubDate>Tue, 15 Oct 2019 23:20:54 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E5%85%AC%E5%85%B1-%E8%BD%AF%E4%BB%B6%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/</guid>
       <description>项目调研说明书 发现痛点，耗时，耗人力，不自动化的地方，找出待改进的地方，待优化的流程 复杂的事情简单化</description>
     </item>
-    
     <item>
       <title>网心-数据平台架构</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/</link>
       <pubDate>Tue, 15 Oct 2019 23:04:55 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/</guid>
       <description>大数据平台整体架构 数据流转图</description>
     </item>
-    
     <item>
       <title>网心-Asima动态数据入库系统设计开发</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Asima%E5%8A%A8%E6%80%81%E6%95%B0%E6%8D%AE%E5%85%A5%E5%BA%93%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/</link>
       <pubDate>Sun, 01 Oct 2017 00:38:40 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Asima%E5%8A%A8%E6%80%81%E6%95%B0%E6%8D%AE%E5%85%A5%E5%BA%93%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%BC%80%E5%8F%91/</guid>
       <description>角色 设计开发负责人 背景 数据采集入库整体流转图 由于flume没有写Parquet文件的功能，而hive</description>
     </item>
-    
     <item>
       <title>网心-Apana基于openResty的http数据上报系统</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Apana%E5%9F%BA%E4%BA%8EopenResty%E7%9A%84http%E6%95%B0%E6%8D%AE%E4%B8%8A%E6%8A%A5%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Thu, 03 Aug 2017 00:39:06 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Apana%E5%9F%BA%E4%BA%8EopenResty%E7%9A%84http%E6%95%B0%E6%8D%AE%E4%B8%8A%E6%8A%A5%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 设计开发负责人 背景 为支持sdk上报，web上报，小程序上报，插件上报，模调上报，快速数据上报开发</description>
     </item>
-    
     <item>
       <title>网心-数据接入管理系统</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Mon, 02 Jan 2017 02:10:14 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 设计开发负责人 背景 一站式数据接入管理平台，支持flume数据接入， 支持service配置管理 支持</description>
     </item>
-    
     <item>
       <title>网心-Eagle可视化邮件配置推送系统</title>
       <link>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Eagle%E5%8F%AF%E8%A7%86%E5%8C%96%E9%82%AE%E4%BB%B6%E9%85%8D%E7%BD%AE%E6%8E%A8%E9%80%81%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Sun, 01 May 2016 22:49:59 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Eagle%E5%8F%AF%E8%A7%86%E5%8C%96%E9%82%AE%E4%BB%B6%E9%85%8D%E7%BD%AE%E6%8E%A8%E9%80%81%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 设计开发负责人 背景 快速配置邮件，支持文字，图形和表格 开发工具 前端开发框架: js,jquery,jqueryuid,seajs,mmgrid,laydate,highcharts,bootstrap,css3,html5 后端开发语言: php7 后端</description>
     </item>
-    
     <item>
       <title>腾讯-数据平台架构</title>
       <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/</link>
       <pubDate>Thu, 10 Dec 2015 12:50:58 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-%E6%95%B0%E6%8D%AE%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84/</guid>
       <description>数据平台整体架构 SNG数据处理变迁 SNG数据采集变迁</description>
     </item>
-    
     <item>
       <title>腾讯-ABTest效果评估系统</title>
       <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-ABTest%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Tue, 10 Feb 2015 23:20:00 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-ABTest%E6%95%88%E6%9E%9C%E8%AF%84%E4%BC%B0%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 设计开发负责人 开发工具 后台开发语言php5,CodeIgniter 前端开发语言html5,css</description>
     </item>
-    
     <item>
       <title>腾讯-罗盘权限管理系统</title>
       <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-%E7%BD%97%E7%9B%98%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Thu, 01 Jan 2015 17:32:02 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-%E7%BD%97%E7%9B%98%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</guid>
       <description>一、权限系统介绍 权限系统简单定义：“who 对 what 进行 how 的操作”的表达式是否为真。 系统涉及到的概念： Wh</description>
     </item>
-    
     <item>
       <title>腾讯-DC数据接入平台</title>
       <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-DC%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E5%B9%B3%E5%8F%B0/</link>
       <pubDate>Tue, 01 Apr 2014 23:57:10 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-DC%E6%95%B0%E6%8D%AE%E6%8E%A5%E5%85%A5%E5%B9%B3%E5%8F%B0/</guid>
       <description>角色 负责人，负责系统设计、开发与维护 背景 实时数据采集，离线文件数据采集nrt，db业务配置数据采集 打</description>
     </item>
-    
     <item>
       <title>腾讯-罗盘BI可视化平台</title>
       <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-%E7%BD%97%E7%9B%98BI%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/</link>
       <pubDate>Mon, 01 Apr 2013 23:58:32 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-%E7%BD%97%E7%9B%98BI%E5%8F%AF%E8%A7%86%E5%8C%96%E5%B9%B3%E5%8F%B0/</guid>
       <description>角色 负责人之一，负责多个模块的设计与开发 背景 前身是OZ(Operation Zone),系统太旧,不能</description>
     </item>
-    
     <item>
       <title>腾讯-Lhotse调度系统</title>
       <link>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-lhotse%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Fri, 01 Mar 2013 23:07:09 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E8%85%BE%E8%AE%AF-lhotse%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9F/</guid>
       <description>角色 参与者，负责其中某些runner的设计开发 背景 周期性运行离线计算任务，用来替代Oracle中的J</description>
     </item>
-    
     <item>
       <title>学校-课外实践项目</title>
       <link>https://liuzhongzhen.github.io/products/%E5%AD%A6%E6%A0%A1-%E8%AF%BE%E5%A4%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/</link>
       <pubDate>Wed, 01 Feb 2012 20:36:26 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/products/%E5%AD%A6%E6%A0%A1-%E8%AF%BE%E5%A4%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/</guid>
       <description>小型网络信息检索系统 油田地质数据建模系统 油田场站工艺仿真系统 常用算法动态演示系统 其他</description>
     </item>
-    
   </channel>
 </rss>

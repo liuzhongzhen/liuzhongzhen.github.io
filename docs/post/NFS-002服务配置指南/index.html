@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>NFS 002服务配置指南 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="NFS 002服务配置指南 - Liuzhongzhen的博客">
+    <title>NFS 002服务配置指南 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="NFS 002服务配置指南 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2019-05-09T20:57:56&#43;08:00'>
@@ -49,7 +49,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="https://liuzhongzhen.github.io/">
-                        Liuzhongzhen的博客
+                        Liuzhongzhen的技术学习笔记
                     </a>
                 
                 <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
@@ -58,15 +58,13 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -246,43 +244,43 @@ chown -R nobody:nobody #设置权限，允许nobody用户访问</p>
 <li>
 <p>编辑/ets/hosts.allow，允许外部程序可以访问<br>
 增加如下内容：</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic">#nfs config</span>
-all:127.0.0.1
-rpcbind: ALL :allow
-mountd: ALL :allow
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#998;font-style:italic">#nfs config</span>
+</span></span><span style="display:flex;"><span>all:127.0.0.1
+</span></span><span style="display:flex;"><span>rpcbind: ALL :allow
+</span></span><span style="display:flex;"><span>mountd: ALL :allow
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>编辑/etc/netconfig配置文件，注释掉udp6,tcp6行，禁用ip6,如下:</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#998;font-style:italic">#udp6       tpi_clts      v     inet6    udp     -       -</span>
-<span style="color:#998;font-style:italic">#tcp6       tpi_cots_ord  v     inet6    tcp     -       -</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#998;font-style:italic">#udp6       tpi_clts      v     inet6    udp     -       -</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#tcp6       tpi_cots_ord  v     inet6    tcp     -       -</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>编辑配置文件/etc/exports，设置共享目录，权限，用户，增加如下：</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/usr/local/services/arfa_nfs 10.0.0.0/8<span style="color:#000;font-weight:bold">(</span>rw,sync,all_squash,anonuid<span style="color:#000;font-weight:bold">=</span>99,anongid<span style="color:#000;font-weight:bold">=</span>99<span style="color:#000;font-weight:bold">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/usr/local/services/arfa_nfs 10.0.0.0/8<span style="color:#000;font-weight:bold">(</span>rw,sync,all_squash,anonuid<span style="color:#000;font-weight:bold">=</span>99,anongid<span style="color:#000;font-weight:bold">=</span>99<span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>&mdash;&mdash;&mdash;-下面是各个内容的详细解释&mdash;&mdash;&mdash;&ndash;<br>
 格式：共享目录     指定共享对象(共享参数)<br>
@@ -310,21 +308,21 @@ anonuid 指的是 UID 而 anongid 则是群组的 GID 啰
 </li>
 <li>
 <p>配置服务端口号,编辑文件/etc/sysconfig/nfs</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#008080">RQUOTAD_PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30001</span>
-<span style="color:#008080">LOCKD_TCPPORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30002</span>
-<span style="color:#008080">LOCKD_UDPPORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30002</span>
-<span style="color:#008080">MOUNTD_PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30003</span>
-<span style="color:#008080">STATD_PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30004</span>  
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#008080">RQUOTAD_PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30001</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">LOCKD_TCPPORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30002</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">LOCKD_UDPPORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30002</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">MOUNTD_PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30003</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">STATD_PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">30004</span>  
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>30001 是 rpc.rquotad<br>
 30002 是 nlockmgr块管理<br>
@@ -334,23 +332,23 @@ anonuid 指的是 UID 而 anongid 则是群组的 GID 啰
 </li>
 <li>
 <p>iptables配置，允许防火墙访问，编辑配置文件/etc//sysconfig/iptables</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">-A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p tcp -m tcp --dport <span style="color:#099">111</span> -j ACCEPT 
--A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p udp -m udp --dport <span style="color:#099">111</span> -j ACCEPT
--A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p tcp -m tcp --dport <span style="color:#099">2049</span> -j ACCEPT
--A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p udp -m udp --dport <span style="color:#099">2049</span> -j ACCEPT
--A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p tcp -m tcp --dport 30001:30004 -j ACCEPT
--A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p udp -m udp --dport 30001:30004 -j ACCEPT
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p tcp -m tcp --dport <span style="color:#099">111</span> -j ACCEPT 
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p udp -m udp --dport <span style="color:#099">111</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p tcp -m tcp --dport <span style="color:#099">2049</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p udp -m udp --dport <span style="color:#099">2049</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p tcp -m tcp --dport 30001:30004 -j ACCEPT
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.0.0.0/8 -p udp -m udp --dport 30001:30004 -j ACCEPT
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;重启防火墙,使配置生效&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-<br>
 service iptables restart</p>
@@ -368,77 +366,77 @@ service nfs restart</p>
 <p>查看RPC服务注册状态<br>
 rpcinfo -p localhost<br>
 输出如下：</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">program vers proto   port  service
-<span style="color:#099">100000</span>    <span style="color:#099">4</span>   tcp    <span style="color:#099">111</span>  portmapper
-<span style="color:#099">100000</span>    <span style="color:#099">3</span>   tcp    <span style="color:#099">111</span>  portmapper
-<span style="color:#099">100000</span>    <span style="color:#099">2</span>   tcp    <span style="color:#099">111</span>  portmapper
-<span style="color:#099">100000</span>    <span style="color:#099">4</span>   udp    <span style="color:#099">111</span>  portmapper
-<span style="color:#099">100000</span>    <span style="color:#099">3</span>   udp    <span style="color:#099">111</span>  portmapper
-<span style="color:#099">100000</span>    <span style="color:#099">2</span>   udp    <span style="color:#099">111</span>  portmapper
-<span style="color:#099">100011</span>    <span style="color:#099">1</span>   udp  <span style="color:#099">30001</span>  rquotad
-<span style="color:#099">100011</span>    <span style="color:#099">2</span>   udp  <span style="color:#099">30001</span>  rquotad
-<span style="color:#099">100011</span>    <span style="color:#099">1</span>   tcp  <span style="color:#099">30001</span>  rquotad
-<span style="color:#099">100011</span>    <span style="color:#099">2</span>   tcp  <span style="color:#099">30001</span>  rquotad
-<span style="color:#099">100005</span>    <span style="color:#099">1</span>   udp  <span style="color:#099">30003</span>  mountd
-<span style="color:#099">100005</span>    <span style="color:#099">1</span>   tcp  <span style="color:#099">30003</span>  mountd
-<span style="color:#099">100005</span>    <span style="color:#099">2</span>   udp  <span style="color:#099">30003</span>  mountd
-<span style="color:#099">100005</span>    <span style="color:#099">2</span>   tcp  <span style="color:#099">30003</span>  mountd
-<span style="color:#099">100005</span>    <span style="color:#099">3</span>   udp  <span style="color:#099">30003</span>  mountd
-<span style="color:#099">100005</span>    <span style="color:#099">3</span>   tcp  <span style="color:#099">30003</span>  mountd
-<span style="color:#099">100003</span>    <span style="color:#099">2</span>   tcp   <span style="color:#099">2049</span>  nfs
-<span style="color:#099">100003</span>    <span style="color:#099">3</span>   tcp   <span style="color:#099">2049</span>  nfs
-<span style="color:#099">100003</span>    <span style="color:#099">4</span>   tcp   <span style="color:#099">2049</span>  nfs
-<span style="color:#099">100227</span>    <span style="color:#099">2</span>   tcp   <span style="color:#099">2049</span>  nfs_acl
-<span style="color:#099">100227</span>    <span style="color:#099">3</span>   tcp   <span style="color:#099">2049</span>  nfs_acl
-<span style="color:#099">100003</span>    <span style="color:#099">2</span>   udp   <span style="color:#099">2049</span>  nfs
-<span style="color:#099">100003</span>    <span style="color:#099">3</span>   udp   <span style="color:#099">2049</span>  nfs
-<span style="color:#099">100003</span>    <span style="color:#099">4</span>   udp   <span style="color:#099">2049</span>  nfs
-<span style="color:#099">100227</span>    <span style="color:#099">2</span>   udp   <span style="color:#099">2049</span>  nfs_acl
-<span style="color:#099">100227</span>    <span style="color:#099">3</span>   udp   <span style="color:#099">2049</span>  nfs_acl
-<span style="color:#099">100021</span>    <span style="color:#099">1</span>   udp  <span style="color:#099">30002</span>  nlockmgr
-<span style="color:#099">100021</span>    <span style="color:#099">3</span>   udp  <span style="color:#099">30002</span>  nlockmgr
-<span style="color:#099">100021</span>    <span style="color:#099">4</span>   udp  <span style="color:#099">30002</span>  nlockmgr
-<span style="color:#099">100021</span>    <span style="color:#099">1</span>   tcp  <span style="color:#099">30002</span>  nlockmgr
-<span style="color:#099">100021</span>    <span style="color:#099">3</span>   tcp  <span style="color:#099">30002</span>  nlockmgr
-<span style="color:#099">100021</span>    <span style="color:#099">4</span>   tcp  <span style="color:#099">30002</span>  nlockmgr
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>program vers proto   port  service
+</span></span><span style="display:flex;"><span><span style="color:#099">100000</span>    <span style="color:#099">4</span>   tcp    <span style="color:#099">111</span>  portmapper
+</span></span><span style="display:flex;"><span><span style="color:#099">100000</span>    <span style="color:#099">3</span>   tcp    <span style="color:#099">111</span>  portmapper
+</span></span><span style="display:flex;"><span><span style="color:#099">100000</span>    <span style="color:#099">2</span>   tcp    <span style="color:#099">111</span>  portmapper
+</span></span><span style="display:flex;"><span><span style="color:#099">100000</span>    <span style="color:#099">4</span>   udp    <span style="color:#099">111</span>  portmapper
+</span></span><span style="display:flex;"><span><span style="color:#099">100000</span>    <span style="color:#099">3</span>   udp    <span style="color:#099">111</span>  portmapper
+</span></span><span style="display:flex;"><span><span style="color:#099">100000</span>    <span style="color:#099">2</span>   udp    <span style="color:#099">111</span>  portmapper
+</span></span><span style="display:flex;"><span><span style="color:#099">100011</span>    <span style="color:#099">1</span>   udp  <span style="color:#099">30001</span>  rquotad
+</span></span><span style="display:flex;"><span><span style="color:#099">100011</span>    <span style="color:#099">2</span>   udp  <span style="color:#099">30001</span>  rquotad
+</span></span><span style="display:flex;"><span><span style="color:#099">100011</span>    <span style="color:#099">1</span>   tcp  <span style="color:#099">30001</span>  rquotad
+</span></span><span style="display:flex;"><span><span style="color:#099">100011</span>    <span style="color:#099">2</span>   tcp  <span style="color:#099">30001</span>  rquotad
+</span></span><span style="display:flex;"><span><span style="color:#099">100005</span>    <span style="color:#099">1</span>   udp  <span style="color:#099">30003</span>  mountd
+</span></span><span style="display:flex;"><span><span style="color:#099">100005</span>    <span style="color:#099">1</span>   tcp  <span style="color:#099">30003</span>  mountd
+</span></span><span style="display:flex;"><span><span style="color:#099">100005</span>    <span style="color:#099">2</span>   udp  <span style="color:#099">30003</span>  mountd
+</span></span><span style="display:flex;"><span><span style="color:#099">100005</span>    <span style="color:#099">2</span>   tcp  <span style="color:#099">30003</span>  mountd
+</span></span><span style="display:flex;"><span><span style="color:#099">100005</span>    <span style="color:#099">3</span>   udp  <span style="color:#099">30003</span>  mountd
+</span></span><span style="display:flex;"><span><span style="color:#099">100005</span>    <span style="color:#099">3</span>   tcp  <span style="color:#099">30003</span>  mountd
+</span></span><span style="display:flex;"><span><span style="color:#099">100003</span>    <span style="color:#099">2</span>   tcp   <span style="color:#099">2049</span>  nfs
+</span></span><span style="display:flex;"><span><span style="color:#099">100003</span>    <span style="color:#099">3</span>   tcp   <span style="color:#099">2049</span>  nfs
+</span></span><span style="display:flex;"><span><span style="color:#099">100003</span>    <span style="color:#099">4</span>   tcp   <span style="color:#099">2049</span>  nfs
+</span></span><span style="display:flex;"><span><span style="color:#099">100227</span>    <span style="color:#099">2</span>   tcp   <span style="color:#099">2049</span>  nfs_acl
+</span></span><span style="display:flex;"><span><span style="color:#099">100227</span>    <span style="color:#099">3</span>   tcp   <span style="color:#099">2049</span>  nfs_acl
+</span></span><span style="display:flex;"><span><span style="color:#099">100003</span>    <span style="color:#099">2</span>   udp   <span style="color:#099">2049</span>  nfs
+</span></span><span style="display:flex;"><span><span style="color:#099">100003</span>    <span style="color:#099">3</span>   udp   <span style="color:#099">2049</span>  nfs
+</span></span><span style="display:flex;"><span><span style="color:#099">100003</span>    <span style="color:#099">4</span>   udp   <span style="color:#099">2049</span>  nfs
+</span></span><span style="display:flex;"><span><span style="color:#099">100227</span>    <span style="color:#099">2</span>   udp   <span style="color:#099">2049</span>  nfs_acl
+</span></span><span style="display:flex;"><span><span style="color:#099">100227</span>    <span style="color:#099">3</span>   udp   <span style="color:#099">2049</span>  nfs_acl
+</span></span><span style="display:flex;"><span><span style="color:#099">100021</span>    <span style="color:#099">1</span>   udp  <span style="color:#099">30002</span>  nlockmgr
+</span></span><span style="display:flex;"><span><span style="color:#099">100021</span>    <span style="color:#099">3</span>   udp  <span style="color:#099">30002</span>  nlockmgr
+</span></span><span style="display:flex;"><span><span style="color:#099">100021</span>    <span style="color:#099">4</span>   udp  <span style="color:#099">30002</span>  nlockmgr
+</span></span><span style="display:flex;"><span><span style="color:#099">100021</span>    <span style="color:#099">1</span>   tcp  <span style="color:#099">30002</span>  nlockmgr
+</span></span><span style="display:flex;"><span><span style="color:#099">100021</span>    <span style="color:#099">3</span>   tcp  <span style="color:#099">30002</span>  nlockmgr
+</span></span><span style="display:flex;"><span><span style="color:#099">100021</span>    <span style="color:#099">4</span>   tcp  <span style="color:#099">30002</span>  nlockmgr
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -464,27 +462,27 @@ mount -t nfs 10.65.9.136:/usr/local/services/arfa_nfs /data/arfa_nfs -o proto=tc
 umount /data/arfa_nfs</li>
 <li>查看nfs的磁盘挂载信息<br>
 df -h
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">---------------客户端挂载参数说明----------------------
-noatime       不更新文件的inode访问时间戳，文件很多时此参数可以提高效率。
-nodiratime    不更新目录的访问时间戳，同上。
-nosuid         关闭挂载目录的suid
-noexec         不允许执行二进制文件。shell脚本无法直接使用，但是用sh  xxx.sh依然可以调用。
-rsize          系统每次读取的最大字节，centos6.5默认131072，此参数过小会影响系统的I/O效率.
-wsize          系统每次写入的最大字节，同上
-defaults       使用默认的选项。默认选项为rw、suid、dev、exec、anto  nouser与async。 
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>---------------客户端挂载参数说明----------------------
+</span></span><span style="display:flex;"><span>noatime       不更新文件的inode访问时间戳，文件很多时此参数可以提高效率。
+</span></span><span style="display:flex;"><span>nodiratime    不更新目录的访问时间戳，同上。
+</span></span><span style="display:flex;"><span>nosuid         关闭挂载目录的suid
+</span></span><span style="display:flex;"><span>noexec         不允许执行二进制文件。shell脚本无法直接使用，但是用sh  xxx.sh依然可以调用。
+</span></span><span style="display:flex;"><span>rsize          系统每次读取的最大字节，centos6.5默认131072，此参数过小会影响系统的I/O效率.
+</span></span><span style="display:flex;"><span>wsize          系统每次写入的最大字节，同上
+</span></span><span style="display:flex;"><span>defaults       使用默认的选项。默认选项为rw、suid、dev、exec、anto  nouser与async。 
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>查看nfs状态:<br>
@@ -585,7 +583,7 @@ NFS服务器到底使用哪个端口来进行数据传输呢？基本上NFS这�
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        &copy; 2023 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的技术学习笔记 By liuzhongzhen</a>
         
     </div>
     <br />

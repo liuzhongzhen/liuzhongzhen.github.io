@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>NFS 001基本介绍 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="NFS 001基本介绍 - Liuzhongzhen的博客">
+    <title>NFS 001基本介绍 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="NFS 001基本介绍 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2019-05-09T22:57:56&#43;08:00'>
@@ -49,7 +49,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="https://liuzhongzhen.github.io/">
-                        Liuzhongzhen的博客
+                        Liuzhongzhen的技术学习笔记
                     </a>
                 
                 <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
@@ -58,15 +58,13 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -286,23 +284,23 @@ rpcbind: RPC主程序</p>
 <h2 id="三基本安装过程">三、基本安装过程</h2>
 <h3 id="31-环境准备机器3台">3.1 环境准备，机器3台</h3>
 <p>CentOS 7.3 ，IP可以自定义，查看系统信息 ；</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@NFS ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /etc/redhat-release </span>
-CentOS release 7.3.1611 <span style="color:#000;font-weight:bold">(</span>Final<span style="color:#000;font-weight:bold">)</span>
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /etc/redhat-release</span>
-CentOS release 7.3.1611 <span style="color:#000;font-weight:bold">(</span>AltArch<span style="color:#000;font-weight:bold">)</span>
-root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># uname -a</span>
-Linux server7.ctos.zu 3.10.0-514.el7.centos.plus.i686 <span style="color:#998;font-style:italic">#1 SMP Wed Jan 25 12:55:04 UTC 2017 i686 i686 i386 GNU/Linux</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@NFS ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /etc/redhat-release </span>
+</span></span><span style="display:flex;"><span>CentOS release 7.3.1611 <span style="color:#000;font-weight:bold">(</span>Final<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /etc/redhat-release</span>
+</span></span><span style="display:flex;"><span>CentOS release 7.3.1611 <span style="color:#000;font-weight:bold">(</span>AltArch<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># uname -a</span>
+</span></span><span style="display:flex;"><span>Linux server7.ctos.zu 3.10.0-514.el7.centos.plus.i686 <span style="color:#998;font-style:italic">#1 SMP Wed Jan 25 12:55:04 UTC 2017 i686 i686 i386 GNU/Linux</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><table>
 <thead>
@@ -338,44 +336,44 @@ Linux server7.ctos.zu 3.10.0-514.el7.centos.plus.i686 <span style="color:#998;fo
 <ol>
 <li>
 <p>查看系统是否已经安装nfs,rpcbind</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpm -qa | egrep &#34;nfs|rpcbind&#34;</span>
-Yum搜寻下安装包是否存在
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum search nfs-utils  rpcbind</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpm -qa | egrep &#34;nfs|rpcbind&#34;</span>
+</span></span><span style="display:flex;"><span>Yum搜寻下安装包是否存在
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum search nfs-utils  rpcbind</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>安装NFS和RPC服务</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum install nfs-utils  rpcbind</span>
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpm -qa  | egrep &#34;nfs|rpcbind&#34;</span>
-
- rpcbind-0.2.0-38.el7_3.1.i686
- nfs-utils-1.3.0-0.33.el7_3.i686
- libnfsidmap-0.25-15.el7.i686
-
-查看这两个软件包在电脑里都安装了什么文件；
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpm -ql nfs-utils</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum install nfs-utils  rpcbind</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpm -qa  | egrep &#34;nfs|rpcbind&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> rpcbind-0.2.0-38.el7_3.1.i686
+</span></span><span style="display:flex;"><span> nfs-utils-1.3.0-0.33.el7_3.i686
+</span></span><span style="display:flex;"><span> libnfsidmap-0.25-15.el7.i686
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>查看这两个软件包在电脑里都安装了什么文件；
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpm -ql nfs-utils</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -384,61 +382,61 @@ Yum搜寻下安装包是否存在
 nfsnobody用户在安装nfs时会自动创建。<br>
 如果不指定共享用户，则nfs系统在分配权限时会以用户uid为主，<br>
 客户端如果用root账户会在服务器被自动降级至nfsnobody。</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir -p /data/arfa_nfs
-chown -R nfsnobody:nfsnobody /data/arfa_nfs
-chmod <span style="color:#099">666</span> /data/arfa_nfs/
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>mkdir -p /data/arfa_nfs
+</span></span><span style="display:flex;"><span>chown -R nfsnobody:nfsnobody /data/arfa_nfs
+</span></span><span style="display:flex;"><span>chmod <span style="color:#099">666</span> /data/arfa_nfs/
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>编辑/etc/hosts.allow</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">增加如下内容：
-all:127.0.0.1
-rpcbind: ALL :allow
-mountd: ALL :allow
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>增加如下内容：
+</span></span><span style="display:flex;"><span>all:127.0.0.1
+</span></span><span style="display:flex;"><span>rpcbind: ALL :allow
+</span></span><span style="display:flex;"><span>mountd: ALL :allow
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>编辑/etc/netconfig</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">注释掉 udp6,tcp6行
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>注释掉 udp6,tcp6行
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>编辑配置文件/etc/exports
 vim /etc/exports 写入以下内容</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">/data1/arfa_nfs 192.168.0.0/16<span style="color:#000;font-weight:bold">(</span>rw,sync<span style="color:#000;font-weight:bold">)</span>
-/data1/hulk_nfs 192.168.86.131<span style="color:#000;font-weight:bold">(</span>rw,sync<span style="color:#000;font-weight:bold">)</span>
-/data1/share    192.168.1.0/24<span style="color:#000;font-weight:bold">(</span>rw,sync,all_squash,anonuid<span style="color:#000;font-weight:bold">=</span>2000,anongid<span style="color:#000;font-weight:bold">=</span>2000<span style="color:#000;font-weight:bold">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>/data1/arfa_nfs 192.168.0.0/16<span style="color:#000;font-weight:bold">(</span>rw,sync<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>/data1/hulk_nfs 192.168.86.131<span style="color:#000;font-weight:bold">(</span>rw,sync<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>/data1/share    192.168.1.0/24<span style="color:#000;font-weight:bold">(</span>rw,sync,all_squash,anonuid<span style="color:#000;font-weight:bold">=</span>2000,anongid<span style="color:#000;font-weight:bold">=</span>2000<span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>注意红色部分不能有空格！！生产环境中常用的一种配置，适合多客户端共享一个NFS目录。<br>
 All_squash 也就是说不管客户端是以什么样的身份来进行访问的，都会被压缩成为all_squash后面所接的用户和群组身份。这边用anonuid、anongid编号来标示<br>
@@ -464,13 +462,13 @@ anongid： 同anongid，就是把uid换成gid而已</p>
 </li>
 <li>
 <p>让配置文件生效</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">exportfs -arv                     
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>exportfs -arv                     
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
@@ -483,285 +481,285 @@ anongid： 同anongid，就是把uid换成gid而已</p>
 </code></pre></li>
 <li>
 <p>启动NFS服务</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">启动NFS服务之前先启动rpcbind服务
-查看rcpbind状态:
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># systemctl status rpcbind</span>
-rpcbind安装成功后默认已经开启，并且为开机自动启动。如果没有启动的话，我们来重新启动rcpbind服务
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># systemctl restart  rpcbind</span>
-查看PRC端口
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum install net-tools lsof</span>
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># lsof  -i:111</span>
-查看rpcbind相关服务和端口
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># netstat -tlunp |grep rpcbind</span>
-未启动NFS之前查看NFS服务向PRC注册的端口信息
-查看 RPC 服务的注册状况
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpcinfo -p localhost</span>
-RPC服务启动后再启动NFS服务
-查看状态
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># systemctl status  nfs</span>
-默认未启动，系统开机重启后不启动，启动nfs服务。
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># systemctl start nfs</span>
-将nfs服务设置为开机启动
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># systemctl enable nfs</span>
-查看nfs服务状态
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># systemctl status  nfs</span>
-启动NFS后我们再次查看rpc注册的端口信息
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpcinfo -p localhost</span>
-在确认启动没用问题后我们看一看NFS到底开了哪些端口
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># netstat -tulnp |grep -E &#39;(rpc|nfs)&#39;</span>
-NFS常见进程详解
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps -ef |egrep &#34;rpc|nfs“</span>
-rpc       <span style="color:#099">3584</span>     <span style="color:#099">1</span>  <span style="color:#099">0</span> 10:03 ?        00:00:00 /sbin/rpcbind -w
-rpcuser   <span style="color:#099">3634</span>     <span style="color:#099">1</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 /usr/sbin/rpc.statd --no-notify
-root      <span style="color:#099">3637</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>rpciod<span style="color:#000;font-weight:bold">]</span>
-root      <span style="color:#099">3642</span>     <span style="color:#099">1</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 /usr/sbin/rpc.mountd
-root      <span style="color:#099">3652</span>     <span style="color:#099">1</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 /usr/sbin/rpc.idmapd
-root      <span style="color:#099">3657</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd4_callbacks<span style="color:#000;font-weight:bold">]</span>
-root      <span style="color:#099">3663</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
-root      <span style="color:#099">3664</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
-root      <span style="color:#099">3665</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
-root      <span style="color:#099">3666</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
-root      <span style="color:#099">3667</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
-root      <span style="color:#099">3668</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
-root      <span style="color:#099">3669</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
-root      <span style="color:#099">3670</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
-root      <span style="color:#099">3705</span>  <span style="color:#099">3267</span>  <span style="color:#099">0</span> 10:23 pts/0    00:00:00 grep -E --color<span style="color:#000;font-weight:bold">=</span>auto rpc|nfs
-
-nfsd： 最主要的NFS服务提供程序，这个daemon主要的功能就是管理客户端是否能够使用服务器文件系统挂载信息，其中还包含判断这个登录用户的ID。
-
-rpc.mountd： 这个daemon主要功能则是管理NFS的文件系统。当client端顺利通过rpc.nfsd登入主机后，在它可以使用NFS服务器提供规定文件之前，还会经过文件使用权限的认证程序。它会去读取NFS的配置　　文件/etc/exports来对比客户端的权限，当通过这一关之后，client端也就取得使用NFS文件的权限。
-
-rpc.lockd <span style="color:#000;font-weight:bold">(</span>非必要<span style="color:#000;font-weight:bold">)</span>： 这个daemon用于管理文件的锁定方面，当多个客户端同时尝试写入某个文件时就可以对该文件造成一些问题。rpc.lockd则可以用来克服这此问题。但rpc.lockd必须要同时在客户端和服务器端都开　启才行。
-
-rpc.statd<span style="color:#000;font-weight:bold">(</span>非必要<span style="color:#000;font-weight:bold">)</span>：这个daemon可以用来检查文件的一致性，若发生因为客户端同时使用同一个文件造成文件损坏时，rpc.statd可以用来检测并尝试恢复该文件
-
-查看nfs开启的rpc端口
-<span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpcinfo -p | grep -E &#39;(rquota|mount|nlock)&#39;</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>启动NFS服务之前先启动rpcbind服务
+</span></span><span style="display:flex;"><span>查看rcpbind状态:
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># systemctl status rpcbind</span>
+</span></span><span style="display:flex;"><span>rpcbind安装成功后默认已经开启，并且为开机自动启动。如果没有启动的话，我们来重新启动rcpbind服务
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># systemctl restart  rpcbind</span>
+</span></span><span style="display:flex;"><span>查看PRC端口
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum install net-tools lsof</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># lsof  -i:111</span>
+</span></span><span style="display:flex;"><span>查看rpcbind相关服务和端口
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># netstat -tlunp |grep rpcbind</span>
+</span></span><span style="display:flex;"><span>未启动NFS之前查看NFS服务向PRC注册的端口信息
+</span></span><span style="display:flex;"><span>查看 RPC 服务的注册状况
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpcinfo -p localhost</span>
+</span></span><span style="display:flex;"><span>RPC服务启动后再启动NFS服务
+</span></span><span style="display:flex;"><span>查看状态
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># systemctl status  nfs</span>
+</span></span><span style="display:flex;"><span>默认未启动，系统开机重启后不启动，启动nfs服务。
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># systemctl start nfs</span>
+</span></span><span style="display:flex;"><span>将nfs服务设置为开机启动
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># systemctl enable nfs</span>
+</span></span><span style="display:flex;"><span>查看nfs服务状态
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># systemctl status  nfs</span>
+</span></span><span style="display:flex;"><span>启动NFS后我们再次查看rpc注册的端口信息
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpcinfo -p localhost</span>
+</span></span><span style="display:flex;"><span>在确认启动没用问题后我们看一看NFS到底开了哪些端口
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># netstat -tulnp |grep -E &#39;(rpc|nfs)&#39;</span>
+</span></span><span style="display:flex;"><span>NFS常见进程详解
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ps -ef |egrep &#34;rpc|nfs“</span>
+</span></span><span style="display:flex;"><span>rpc       <span style="color:#099">3584</span>     <span style="color:#099">1</span>  <span style="color:#099">0</span> 10:03 ?        00:00:00 /sbin/rpcbind -w
+</span></span><span style="display:flex;"><span>rpcuser   <span style="color:#099">3634</span>     <span style="color:#099">1</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 /usr/sbin/rpc.statd --no-notify
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">3637</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>rpciod<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">3642</span>     <span style="color:#099">1</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 /usr/sbin/rpc.mountd
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">3652</span>     <span style="color:#099">1</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 /usr/sbin/rpc.idmapd
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">3657</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd4_callbacks<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">3663</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">3664</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">3665</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">3666</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">3667</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">3668</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">3669</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">3670</span>     <span style="color:#099">2</span>  <span style="color:#099">0</span> 10:15 ?        00:00:00 <span style="color:#000;font-weight:bold">[</span>nfsd<span style="color:#000;font-weight:bold">]</span>
+</span></span><span style="display:flex;"><span>root      <span style="color:#099">3705</span>  <span style="color:#099">3267</span>  <span style="color:#099">0</span> 10:23 pts/0    00:00:00 grep -E --color<span style="color:#000;font-weight:bold">=</span>auto rpc|nfs
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>nfsd： 最主要的NFS服务提供程序，这个daemon主要的功能就是管理客户端是否能够使用服务器文件系统挂载信息，其中还包含判断这个登录用户的ID。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rpc.mountd： 这个daemon主要功能则是管理NFS的文件系统。当client端顺利通过rpc.nfsd登入主机后，在它可以使用NFS服务器提供规定文件之前，还会经过文件使用权限的认证程序。它会去读取NFS的配置　　文件/etc/exports来对比客户端的权限，当通过这一关之后，client端也就取得使用NFS文件的权限。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rpc.lockd <span style="color:#000;font-weight:bold">(</span>非必要<span style="color:#000;font-weight:bold">)</span>： 这个daemon用于管理文件的锁定方面，当多个客户端同时尝试写入某个文件时就可以对该文件造成一些问题。rpc.lockd则可以用来克服这此问题。但rpc.lockd必须要同时在客户端和服务器端都开　启才行。
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rpc.statd<span style="color:#000;font-weight:bold">(</span>非必要<span style="color:#000;font-weight:bold">)</span>：这个daemon可以用来检查文件的一致性，若发生因为客户端同时使用同一个文件造成文件损坏时，rpc.statd可以用来检测并尝试恢复该文件
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>查看nfs开启的rpc端口
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@server7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># rpcinfo -p | grep -E &#39;(rquota|mount|nlock)&#39;</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>本机测试， 显示挂载信息</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">查询nfs挂载，showmount  -e  192.168.1.240 后面可以接ip来查看。
-<span style="color:#000;font-weight:bold">[</span>root@localhost data<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># showmount -e</span>
-Export list <span style="color:#000;font-weight:bold">for</span> localhost:
-/data/nfs 192.168.1.0/24,192.168.86.131
-
-NFS服务开启后，查看共享目录参数
-<span style="color:#000;font-weight:bold">[</span>root@localhost data<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /var/lib/nfs/etab</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>查询nfs挂载，showmount  -e  192.168.1.240 后面可以接ip来查看。
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost data<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># showmount -e</span>
+</span></span><span style="display:flex;"><span>Export list <span style="color:#000;font-weight:bold">for</span> localhost:
+</span></span><span style="display:flex;"><span>/data/nfs 192.168.1.0/24,192.168.86.131
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NFS服务开启后，查看共享目录参数
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost data<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /var/lib/nfs/etab</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>
 <p>配置防火墙，对外开放NFS服务</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">iptables -A INPUT -p tcp --dport <span style="color:#099">111</span> -j ACCEPT
-iptables -A INPUT -p udp --dport <span style="color:#099">111</span> -j ACCEPT
-iptables -A INPUT -p tcp --dport <span style="color:#099">2049</span> -j ACCEPT
-iptables -A INPUT -p udp --dport <span style="color:#099">2049</span> -j ACCEPT
-iptables -A INPUT -p tcp --dport 30000:30010 -j ACCEPT
-iptables -A INPUT -p udp --dport 30000:30010 -j ACCEPT
-修改配置文件
--A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p tcp -m tcp --dport <span style="color:#099">111</span> -j ACCEPT 
--A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p udp -m udp --dport <span style="color:#099">111</span> -j ACCEPT
--A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p tcp -m tcp --dport <span style="color:#099">2049</span> -j ACCEPT
--A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p udp -m udp --dport <span style="color:#099">2049</span> -j ACCEPT
--A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p tcp -m tcp --dport <span style="color:#099">30001</span> -j ACCEPT
--A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p udp -m udp --dport <span style="color:#099">30001</span> -j ACCEPT
--A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p tcp -m tcp --dport <span style="color:#099">30002</span> -j ACCEPT
--A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p udp -m udp --dport <span style="color:#099">30002</span> -j ACCEPT
--A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p tcp -m tcp --dport <span style="color:#099">30003</span> -j ACCEPT
--A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p udp -m udp --dport <span style="color:#099">30003</span> -j ACCEPT
--A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p tcp -m tcp --dport <span style="color:#099">30004</span> -j ACCEPT
--A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p udp -m udp --dport <span style="color:#099">30004</span> -j ACCEPT
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>iptables -A INPUT -p tcp --dport <span style="color:#099">111</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>iptables -A INPUT -p udp --dport <span style="color:#099">111</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>iptables -A INPUT -p tcp --dport <span style="color:#099">2049</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>iptables -A INPUT -p udp --dport <span style="color:#099">2049</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>iptables -A INPUT -p tcp --dport 30000:30010 -j ACCEPT
+</span></span><span style="display:flex;"><span>iptables -A INPUT -p udp --dport 30000:30010 -j ACCEPT
+</span></span><span style="display:flex;"><span>修改配置文件
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p tcp -m tcp --dport <span style="color:#099">111</span> -j ACCEPT 
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p udp -m udp --dport <span style="color:#099">111</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p tcp -m tcp --dport <span style="color:#099">2049</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p udp -m udp --dport <span style="color:#099">2049</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p tcp -m tcp --dport <span style="color:#099">30001</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p udp -m udp --dport <span style="color:#099">30001</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p tcp -m tcp --dport <span style="color:#099">30002</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p udp -m udp --dport <span style="color:#099">30002</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p tcp -m tcp --dport <span style="color:#099">30003</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p udp -m udp --dport <span style="color:#099">30003</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p tcp -m tcp --dport <span style="color:#099">30004</span> -j ACCEPT
+</span></span><span style="display:flex;"><span>-A RH-Firewall-1-INPUT -s 10.33.0.0/16 -p udp -m udp --dport <span style="color:#099">30004</span> -j ACCEPT
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
 <h3 id="33-客户端安装过程">3.3 客户端安装过程</h3>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">安装rpcbind和nfs，启动rpcbind，nfs可以不启动。
-yum install rpcbind
-systemctl restart  rpcbind
-显示NFS服务器的共享目录
-showmount -e 192.168.1.240
-安装nfs-utils客户端
-yum -y install nfs-utils
-创建挂载目录
-mkdir -p /data/arfa_nfs
-挂载目录
-mount -t nfs 192.168.1.240:/data1/arfa_nfs /data1/arfa_nfs -o <span style="color:#008080">proto</span><span style="color:#000;font-weight:bold">=</span>tcp -o nolock
-查看挂载情况
-df -h
-卸载nfs  
-umount /data1/arfa_nfs
-强制卸载nfs
-umount -l /data/arfa_nfs
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>安装rpcbind和nfs，启动rpcbind，nfs可以不启动。
+</span></span><span style="display:flex;"><span>yum install rpcbind
+</span></span><span style="display:flex;"><span>systemctl restart  rpcbind
+</span></span><span style="display:flex;"><span>显示NFS服务器的共享目录
+</span></span><span style="display:flex;"><span>showmount -e 192.168.1.240
+</span></span><span style="display:flex;"><span>安装nfs-utils客户端
+</span></span><span style="display:flex;"><span>yum -y install nfs-utils
+</span></span><span style="display:flex;"><span>创建挂载目录
+</span></span><span style="display:flex;"><span>mkdir -p /data/arfa_nfs
+</span></span><span style="display:flex;"><span>挂载目录
+</span></span><span style="display:flex;"><span>mount -t nfs 192.168.1.240:/data1/arfa_nfs /data1/arfa_nfs -o <span style="color:#008080">proto</span><span style="color:#000;font-weight:bold">=</span>tcp -o nolock
+</span></span><span style="display:flex;"><span>查看挂载情况
+</span></span><span style="display:flex;"><span>df -h
+</span></span><span style="display:flex;"><span>卸载nfs  
+</span></span><span style="display:flex;"><span>umount /data1/arfa_nfs
+</span></span><span style="display:flex;"><span>强制卸载nfs
+</span></span><span style="display:flex;"><span>umount -l /data/arfa_nfs
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>一般不将nfs挂载信息写入fstab，因为nfs依赖于rpc服务，rpc服务启动晚于fstab时会出错。<br>
 可以将挂载信息写入 /etc/rc.local</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">vim  /etc/rc.local
-<span style="color:#998;font-style:italic">#mount nfs_data</span>
-mount -t nfs 192.168.1.240:/data/www/image/  /data/www/image/
-mount -t nfs 192.168.1.240:/data/www/user/  /data/www/user/
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>vim  /etc/rc.local
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#mount nfs_data</span>
+</span></span><span style="display:flex;"><span>mount -t nfs 192.168.1.240:/data/www/image/  /data/www/image/
+</span></span><span style="display:flex;"><span>mount -t nfs 192.168.1.240:/data/www/user/  /data/www/user/
+</span></span></code></pre></td></tr></table>
 </div>
-</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">umount /data/arfa_nfs;
-mount -t nfs 192.168.1.240:/data/arfa_nfs /data/arfa_nfs -o <span style="color:#008080">proto</span><span style="color:#000;font-weight:bold">=</span>tcp -o nolock
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>umount /data/arfa_nfs;
+</span></span><span style="display:flex;"><span>mount -t nfs 192.168.1.240:/data/arfa_nfs /data/arfa_nfs -o <span style="color:#008080">proto</span><span style="color:#000;font-weight:bold">=</span>tcp -o nolock
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>关于默认账户</p>
 <p>nfs客户端写数据除了nfs配置文件要有rw权限，对于目录也要有对应操作权限。</p>
 <p>如果/data/nfs目录没有给写入权限，即使exports里设置了rw也是没有权限写入的。客户端默认操作账户为nfsnobody。</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /var/lib/nfs/etab</span>
-/data/nfs   192.168.86.131<span style="color:#000;font-weight:bold">(</span>rw,sync,wdelay,hide,nocrossmnt,secure,root_squash,no_all_squash,no_subtree_check,secure_locks,acl,anonuid<span style="color:#000;font-weight:bold">=</span>65534,anongid<span style="color:#000;font-weight:bold">=</span>65534,sec<span style="color:#000;font-weight:bold">=</span>sys,rw,root_squash,no_all_squash<span style="color:#000;font-weight:bold">)</span>
-/data/nfs   192.168.1.0/24<span style="color:#000;font-weight:bold">(</span>rw,sync,wdelay,hide,nocrossmnt,secure,root_squash,no_all_squash,no_subtree_check,secure_locks,acl,anonuid<span style="color:#000;font-weight:bold">=</span>65534,anongid<span style="color:#000;font-weight:bold">=</span>65534,sec<span style="color:#000;font-weight:bold">=</span>sys,rw,root_squash,no_all_squash<span style="color:#000;font-weight:bold">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /var/lib/nfs/etab</span>
+</span></span><span style="display:flex;"><span>/data/nfs   192.168.86.131<span style="color:#000;font-weight:bold">(</span>rw,sync,wdelay,hide,nocrossmnt,secure,root_squash,no_all_squash,no_subtree_check,secure_locks,acl,anonuid<span style="color:#000;font-weight:bold">=</span>65534,anongid<span style="color:#000;font-weight:bold">=</span>65534,sec<span style="color:#000;font-weight:bold">=</span>sys,rw,root_squash,no_all_squash<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>/data/nfs   192.168.1.0/24<span style="color:#000;font-weight:bold">(</span>rw,sync,wdelay,hide,nocrossmnt,secure,root_squash,no_all_squash,no_subtree_check,secure_locks,acl,anonuid<span style="color:#000;font-weight:bold">=</span>65534,anongid<span style="color:#000;font-weight:bold">=</span>65534,sec<span style="color:#000;font-weight:bold">=</span>sys,rw,root_squash,no_all_squash<span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>查看/var/lib/nfs/etab其中 anonuid=65534,anongid=65534 为默认账户uid，即nfsnobody的默认uid。
 查看已挂载设备挂载参数 cat /proc/mounts</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /proc/mounts |grep 192</span>
-192.168.1.240:/data/nfs /mnt nfs4 rw,noexec,relatime,vers<span style="color:#000;font-weight:bold">=</span>4,rsize<span style="color:#000;font-weight:bold">=</span>131072,wsize<span style="color:#000;font-weight:bold">=</span>131072,namlen<span style="color:#000;font-weight:bold">=</span>255,hard,proto<span style="color:#000;font-weight:bold">=</span>tcp,port<span style="color:#000;font-weight:bold">=</span>0,timeo<span style="color:#000;font-weight:bold">=</span>600,retrans<span style="color:#000;font-weight:bold">=</span>2,sec<span style="color:#000;font-weight:bold">=</span>sys,clientaddr<span style="color:#000;font-weight:bold">=</span>192.168.1.240,minorversion<span style="color:#000;font-weight:bold">=</span>0,local_lock<span style="color:#000;font-weight:bold">=</span>none,addr<span style="color:#000;font-weight:bold">=</span>192.168.1.240 <span style="color:#099">0</span> <span style="color:#099">0</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@localhost ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cat /proc/mounts |grep 192</span>
+</span></span><span style="display:flex;"><span>192.168.1.240:/data/nfs /mnt nfs4 rw,noexec,relatime,vers<span style="color:#000;font-weight:bold">=</span>4,rsize<span style="color:#000;font-weight:bold">=</span>131072,wsize<span style="color:#000;font-weight:bold">=</span>131072,namlen<span style="color:#000;font-weight:bold">=</span>255,hard,proto<span style="color:#000;font-weight:bold">=</span>tcp,port<span style="color:#000;font-weight:bold">=</span>0,timeo<span style="color:#000;font-weight:bold">=</span>600,retrans<span style="color:#000;font-weight:bold">=</span>2,sec<span style="color:#000;font-weight:bold">=</span>sys,clientaddr<span style="color:#000;font-weight:bold">=</span>192.168.1.240,minorversion<span style="color:#000;font-weight:bold">=</span>0,local_lock<span style="color:#000;font-weight:bold">=</span>none,addr<span style="color:#000;font-weight:bold">=</span>192.168.1.240 <span style="color:#099">0</span> <span style="color:#099">0</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>客户端挂载优化参数</p>
 <ol>
@@ -773,21 +771,21 @@ mount -t nfs 192.168.1.240:/data/arfa_nfs /data/arfa_nfs -o <span style="color:#
 <li>wsize          系统每次写入的最大字节，同上</li>
 <li>defaults 使用默认的选项。默认选项为rw、suid、dev、exec、anto  nouser与async。</li>
 </ol>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">例：
-mount -o nosuid noexec noatime  -t nfs  192.168.1.240:/data/nfs  /mnt
-
-卸载挂载点,如果提示 /mnt: device is busy ，可以用lf参数强制卸载
-umount  -lf  /mnt  
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>例：
+</span></span><span style="display:flex;"><span>mount -o nosuid noexec noatime  -t nfs  192.168.1.240:/data/nfs  /mnt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>卸载挂载点,如果提示 /mnt: device is busy ，可以用lf参数强制卸载
+</span></span><span style="display:flex;"><span>umount  -lf  /mnt  
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="参考链接">参考链接</h2>
 <ol>
@@ -848,7 +846,7 @@ umount  -lf  /mnt
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        &copy; 2023 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的技术学习笔记 By liuzhongzhen</a>
         
     </div>
     <br />

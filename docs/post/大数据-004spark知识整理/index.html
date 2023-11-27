@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>大数据004spark知识整理 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="大数据004spark知识整理 - Liuzhongzhen的博客">
+    <title>大数据004spark知识整理 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="大数据004spark知识整理 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2020-12-19T08:40:57&#43;08:00'>
@@ -49,7 +49,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="https://liuzhongzhen.github.io/">
-                        Liuzhongzhen的博客
+                        Liuzhongzhen的技术学习笔记
                     </a>
                 
                 <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
@@ -58,15 +58,13 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -296,34 +294,34 @@
 <ol>
 <li>集合并行化创建(有数据)</li>
 </ol>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#000;font-weight:bold">val</span> arr <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">4</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">5</span><span style="color:#000;font-weight:bold">)</span>
-<span style="color:#000;font-weight:bold">val</span> rdd <span style="color:#000;font-weight:bold">=</span> sc<span style="color:#000;font-weight:bold">.</span>parallelize<span style="color:#000;font-weight:bold">(</span>arr<span style="color:#000;font-weight:bold">)</span>
-<span style="color:#000;font-weight:bold">val</span> rdd <span style="color:#000;font-weight:bold">=</span>sc<span style="color:#000;font-weight:bold">.</span>makeRDD<span style="color:#000;font-weight:bold">(</span>arr<span style="color:#000;font-weight:bold">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">val</span> arr <span style="color:#000;font-weight:bold">=</span> <span style="color:#458;font-weight:bold">Array</span><span style="color:#000;font-weight:bold">(</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">2</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">3</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">4</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">5</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">val</span> rdd <span style="color:#000;font-weight:bold">=</span> sc<span style="color:#000;font-weight:bold">.</span>parallelize<span style="color:#000;font-weight:bold">(</span>arr<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">val</span> rdd <span style="color:#000;font-weight:bold">=</span>sc<span style="color:#000;font-weight:bold">.</span>makeRDD<span style="color:#000;font-weight:bold">(</span>arr<span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="2">
 <li>读取外部文件系统，如hdfs，或者读取本地文件(最常用的方式)(没数据)</li>
 </ol>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#998;font-style:italic">// 读取hdfs文件
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">val</span> rdd2 <span style="color:#000;font-weight:bold">=</span> sc<span style="color:#000;font-weight:bold">.</span>textFile<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;hdfs://hdp-01:9000/words.txt&#34;</span><span style="color:#000;font-weight:bold">)</span>
-<span style="color:#998;font-style:italic">// 读取本地文件
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">val</span> rdd2 <span style="color:#000;font-weight:bold">=</span> sc<span style="color:#000;font-weight:bold">.</span>textFile<span style="color:#000;font-weight:bold">(</span><span style="color:#a61717;background-color:#e3d2d2">“</span>file<span style="color:#000;font-weight:bold">:</span><span style="color:#998;font-style:italic">///root/words.txt”)
-</span></code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scala" data-lang="scala"><span style="display:flex;"><span><span style="color:#998;font-style:italic">// 读取hdfs文件
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">val</span> rdd2 <span style="color:#000;font-weight:bold">=</span> sc<span style="color:#000;font-weight:bold">.</span>textFile<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;hdfs://hdp-01:9000/words.txt&#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">// 读取本地文件
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">val</span> rdd2 <span style="color:#000;font-weight:bold">=</span> sc<span style="color:#000;font-weight:bold">.</span>textFile<span style="color:#000;font-weight:bold">(</span><span style="color:#a61717;background-color:#e3d2d2">“</span>file<span style="color:#000;font-weight:bold">:</span><span style="color:#998;font-style:italic">///root/words.txt”)
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><ol start="3">
 <li>
@@ -391,97 +389,97 @@ reduceByKey会传一个聚合函数， 相当于  groupByKey + mapValues</p>
 <p>2.checkpoint 也是在触发action之后，执行任务。单独再启动一个job，负责写入数据到hdfs中。（把rdd中的数据，以二进制文本的方式写入到hdfs中，有几个分区，就有几个二进制文件）</p>
 <p>3.某一个RDD被checkpoint之后，他的父依赖关系会被删除，血缘关系被截断，该RDD转换成了CheckPointRDD，以后再对该rdd的所有操作，都是从hdfs中的checkpoint的具体目录来读取数据。缓存之后，rdd的依赖关系还是存在的。</p>
 <h2 id="11spark-streaming流式统计单词数量代码">11.spark streaming流式统计单词数量代码</h2>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">object WordCountAll <span style="color:#000;font-weight:bold">{</span>
-  <span style="color:#998;font-style:italic">// newValues当前批次的出现的单词次数， runningCount表示之前运行的单词出现的结果
-</span><span style="color:#998;font-style:italic"></span> <span style="color:#998;font-style:italic">/* def updateFunction(newValues: Seq[Int], runningCount: Option[Int]): Option[Int] = {
-</span><span style="color:#998;font-style:italic">    val newCount =  newValues.sum + runningCount.getOrElse(0)// 将历史前几个批次的值和当前批次的值进行累加返回当前批次最终的结果
-</span><span style="color:#998;font-style:italic">    Some(newCount)
-</span><span style="color:#998;font-style:italic">  }*/</span>
-  <span style="color:#998;font-style:italic">/**
-</span><span style="color:#998;font-style:italic">    * String : 单词 hello
-</span><span style="color:#998;font-style:italic">    * Seq[Int] ：单词在当前批次出现的次数
-</span><span style="color:#998;font-style:italic">    * Option[Int] ：历史结果
-</span><span style="color:#998;font-style:italic">    */</span>
-  val updateFunc <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">(</span>iter<span style="color:#000;font-weight:bold">:</span> Iterator<span style="color:#000;font-weight:bold">[(</span>String<span style="color:#000;font-weight:bold">,</span> Seq<span style="color:#000;font-weight:bold">[</span>Int<span style="color:#000;font-weight:bold">],</span> Option<span style="color:#000;font-weight:bold">[</span>Int<span style="color:#000;font-weight:bold">])])</span> <span style="color:#000;font-weight:bold">=&gt;</span> <span style="color:#000;font-weight:bold">{</span>
-    <span style="color:#998;font-style:italic">//iter.flatMap(it=&gt;Some(it._2.sum + it._3.getOrElse(0)).map(x=&gt;(it._1,x)))
-</span><span style="color:#998;font-style:italic"></span>    iter<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">flatMap</span><span style="color:#000;font-weight:bold">{</span><span style="color:#000;font-weight:bold">case</span><span style="color:#000;font-weight:bold">(</span>x<span style="color:#000;font-weight:bold">,</span>y<span style="color:#000;font-weight:bold">,</span>z<span style="color:#000;font-weight:bold">)=&gt;</span>Some<span style="color:#000;font-weight:bold">(</span>y<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">sum</span> <span style="color:#000;font-weight:bold">+</span> z<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getOrElse</span><span style="color:#000;font-weight:bold">(</span>0<span style="color:#000;font-weight:bold">)).</span><span style="color:#008080">map</span><span style="color:#000;font-weight:bold">(</span>m<span style="color:#000;font-weight:bold">=&gt;(</span>x<span style="color:#000;font-weight:bold">,</span> m<span style="color:#000;font-weight:bold">))}</span>
-  <span style="color:#000;font-weight:bold">}</span>
-  <span style="color:#998;font-style:italic">// 屏蔽日志
-</span><span style="color:#998;font-style:italic"></span>  Logger<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getLogger</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;org.apache&#34;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#008080">setLevel</span><span style="color:#000;font-weight:bold">(</span>Level<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">ERROR</span><span style="color:#000;font-weight:bold">)</span>
-  def <span style="color:#900;font-weight:bold">main</span><span style="color:#000;font-weight:bold">(</span>args<span style="color:#000;font-weight:bold">:</span> Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">])</span> <span style="color:#000;font-weight:bold">{</span>
-    <span style="color:#998;font-style:italic">// 必须要开启2个以上的线程，一个线程用来接收数据，另外一个线程用来计算
-</span><span style="color:#998;font-style:italic"></span>    val conf <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> SparkConf<span style="color:#000;font-weight:bold">().</span><span style="color:#008080">setMaster</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;local[2]&#34;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#008080">setAppName</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;NetworkWordCount&#34;</span><span style="color:#000;font-weight:bold">)</span>
-      <span style="color:#998;font-style:italic">// 设置sparkjob计算时所采用的序列化方式
-</span><span style="color:#998;font-style:italic"></span>      <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">set</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;spark.serializer&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;org.apache.spark.serializer.KryoSerializer&#34;</span><span style="color:#000;font-weight:bold">)</span>
-      <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">set</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;spark.rdd.compress&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;true&#34;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#998;font-style:italic">// 节约大量的内存内容
-</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// 如果你的程序出现垃圾回收时间过程，可以设置一下java的垃圾回收参数
-</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// 同时也会创建sparkContext对象
-</span><span style="color:#998;font-style:italic"></span>    <span style="color:#998;font-style:italic">// 批次时间 &gt;= 批次处理的总时间 (批次数据量，集群的计算节点数量和配置)
-</span><span style="color:#998;font-style:italic"></span>    val ssc <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> StreamingContext<span style="color:#000;font-weight:bold">(</span>conf<span style="color:#000;font-weight:bold">,</span> Seconds<span style="color:#000;font-weight:bold">(</span>5<span style="color:#000;font-weight:bold">))</span>
-
-    <span style="color:#998;font-style:italic">//做checkpoint 写入共享存储中
-</span><span style="color:#998;font-style:italic"></span>    ssc<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">checkpoint</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;c://aaa&#34;</span><span style="color:#000;font-weight:bold">)</span>
-
-    <span style="color:#998;font-style:italic">// 创建一个将要连接到 hostname:port 的 DStream，如 localhost:9999
-</span><span style="color:#998;font-style:italic"></span>    val lines<span style="color:#000;font-weight:bold">:</span> ReceiverInputDStream<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> ssc<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">socketTextStream</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;192.168.175.101&#34;</span><span style="color:#000;font-weight:bold">,</span> 44444<span style="color:#000;font-weight:bold">)</span>
-    <span style="color:#998;font-style:italic">//updateStateByKey结果可以累加但是需要传入一个自定义的累加函数：updateFunc
-</span><span style="color:#998;font-style:italic"></span>    val results <span style="color:#000;font-weight:bold">=</span> lines<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">flatMap</span><span style="color:#000;font-weight:bold">(</span>_<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">split</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34; &#34;</span><span style="color:#000;font-weight:bold">)).</span><span style="color:#008080">map</span><span style="color:#000;font-weight:bold">((</span>_<span style="color:#000;font-weight:bold">,</span>1<span style="color:#000;font-weight:bold">)).</span><span style="color:#008080">updateStateByKey</span><span style="color:#000;font-weight:bold">(</span>updateFunc<span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">new</span> HashPartitioner<span style="color:#000;font-weight:bold">(</span>ssc<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">sparkContext</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">defaultParallelism</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#000;font-weight:bold">true</span><span style="color:#000;font-weight:bold">)</span>
-    <span style="color:#998;font-style:italic">//打印结果到控制台
-</span><span style="color:#998;font-style:italic"></span>    results<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">print</span><span style="color:#000;font-weight:bold">()</span>
-    <span style="color:#998;font-style:italic">//开始计算
-</span><span style="color:#998;font-style:italic"></span>    ssc<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">start</span><span style="color:#000;font-weight:bold">()</span>
-    <span style="color:#998;font-style:italic">//等待停止
-</span><span style="color:#998;font-style:italic"></span>    ssc<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">awaitTermination</span><span style="color:#000;font-weight:bold">()</span>
-  <span style="color:#000;font-weight:bold">}</span>
-<span style="color:#000;font-weight:bold">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>object<span style="color:#bbb"> </span>WordCountAll<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#998;font-style:italic">// newValues当前批次的出现的单词次数， runningCount表示之前运行的单词出现的结果</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"> </span><span style="color:#998;font-style:italic">/* def updateFunction(newValues: Seq[Int], runningCount: Option[Int]): Option[Int] = {
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    val newCount =  newValues.sum + runningCount.getOrElse(0)// 将历史前几个批次的值和当前批次的值进行累加返回当前批次最终的结果
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    Some(newCount)
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">  }*/</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#998;font-style:italic">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    * String : 单词 hello
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    * Seq[Int] ：单词在当前批次出现的次数
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    * Option[Int] ：历史结果
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">    */</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>val<span style="color:#bbb"> </span>updateFunc<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>(iter:<span style="color:#bbb"> </span>Iterator<span style="color:#000;font-weight:bold">[</span>(String,<span style="color:#bbb"> </span>Seq<span style="color:#000;font-weight:bold">[</span>Int<span style="color:#000;font-weight:bold">]</span>,<span style="color:#bbb"> </span>Option<span style="color:#000;font-weight:bold">[</span>Int<span style="color:#000;font-weight:bold">]</span>)<span style="color:#000;font-weight:bold">]</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#998;font-style:italic">//iter.flatMap(it=&gt;Some(it._2.sum + it._3.getOrElse(0)).map(x=&gt;(it._1,x)))</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>iter.<span style="color:#008080">flatMap</span>{<span style="color:#000;font-weight:bold">case</span>(x,y,z)<span style="color:#000;font-weight:bold">=&gt;</span>Some(y.<span style="color:#008080">sum</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">+</span><span style="color:#bbb"> </span>z.<span style="color:#008080">getOrElse</span>(0)).<span style="color:#008080">map</span>(m<span style="color:#000;font-weight:bold">=&gt;</span>(x,<span style="color:#bbb"> </span>m))}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span><span style="color:#998;font-style:italic">// 屏蔽日志</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>Logger.<span style="color:#008080">getLogger</span>(<span style="color:#d14">&#34;org.apache&#34;</span>).<span style="color:#008080">setLevel</span>(Level.<span style="color:#008080">ERROR</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>def<span style="color:#bbb"> </span><span style="color:#900;font-weight:bold">main</span>(args:<span style="color:#bbb"> </span>Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]</span>)<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#998;font-style:italic">// 必须要开启2个以上的线程，一个线程用来接收数据，另外一个线程用来计算</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>val<span style="color:#bbb"> </span>conf<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">new</span><span style="color:#bbb"> </span>SparkConf().<span style="color:#008080">setMaster</span>(<span style="color:#d14">&#34;local[2]&#34;</span>).<span style="color:#008080">setAppName</span>(<span style="color:#d14">&#34;NetworkWordCount&#34;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span><span style="color:#998;font-style:italic">// 设置sparkjob计算时所采用的序列化方式</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>.<span style="color:#008080">set</span>(<span style="color:#d14">&#34;spark.serializer&#34;</span>,<span style="color:#bbb"> </span><span style="color:#d14">&#34;org.apache.spark.serializer.KryoSerializer&#34;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">      </span>.<span style="color:#008080">set</span>(<span style="color:#d14">&#34;spark.rdd.compress&#34;</span>,<span style="color:#bbb"> </span><span style="color:#d14">&#34;true&#34;</span>)<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">// 节约大量的内存内容</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#998;font-style:italic">// 如果你的程序出现垃圾回收时间过程，可以设置一下java的垃圾回收参数</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#998;font-style:italic">// 同时也会创建sparkContext对象</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#998;font-style:italic">// 批次时间 &gt;= 批次处理的总时间 (批次数据量，集群的计算节点数量和配置)</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>val<span style="color:#bbb"> </span>ssc<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">new</span><span style="color:#bbb"> </span>StreamingContext(conf,<span style="color:#bbb"> </span>Seconds(5))<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#998;font-style:italic">//做checkpoint 写入共享存储中</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>ssc.<span style="color:#008080">checkpoint</span>(<span style="color:#d14">&#34;c://aaa&#34;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#998;font-style:italic">// 创建一个将要连接到 hostname:port 的 DStream，如 localhost:9999</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>val<span style="color:#bbb"> </span>lines:<span style="color:#bbb"> </span>ReceiverInputDStream<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>ssc.<span style="color:#008080">socketTextStream</span>(<span style="color:#d14">&#34;192.168.175.101&#34;</span>,<span style="color:#bbb"> </span>44444)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#998;font-style:italic">//updateStateByKey结果可以累加但是需要传入一个自定义的累加函数：updateFunc</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>val<span style="color:#bbb"> </span>results<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>lines.<span style="color:#008080">flatMap</span>(_.<span style="color:#008080">split</span>(<span style="color:#d14">&#34; &#34;</span>)).<span style="color:#008080">map</span>((_,1)).<span style="color:#008080">updateStateByKey</span>(updateFunc,<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">new</span><span style="color:#bbb"> </span>HashPartitioner(ssc.<span style="color:#008080">sparkContext</span>.<span style="color:#008080">defaultParallelism</span>),<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">true</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#998;font-style:italic">//打印结果到控制台</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>results.<span style="color:#008080">print</span>()<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#998;font-style:italic">//开始计算</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>ssc.<span style="color:#008080">start</span>()<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#998;font-style:italic">//等待停止</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>ssc.<span style="color:#008080">awaitTermination</span>()<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">  </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="12简述map和flatmap的区别和应用场景">12.简述map和flatMap的区别和应用场景</h2>
 <p>map是对每一个元素进行操作，flatmap是对每一个元素操作后并压平,一行变多行</p>
@@ -506,68 +504,68 @@ reduceByKey会传一个聚合函数， 相当于  groupByKey + mapValues</p>
 <p>转换算子：map,map,filter,reduceByKey,groupByKey,groupBy</p>
 <p>行动算子：foreach，foreachpartition,collect,collectAsMap,take,top,first,count,countByKey</p>
 <h2 id="15按照需求使用spark编写以下程序要求使用scala语言">15.按照需求使用spark编写以下程序，要求使用scala语言</h2>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">当前文件a<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">txt的格式</span><span style="color:#a61717;background-color:#e3d2d2">，</span>请统计每个单词出现的次数
-A<span style="color:#000;font-weight:bold">,</span>b<span style="color:#000;font-weight:bold">,</span>c
-B<span style="color:#000;font-weight:bold">,</span>b<span style="color:#000;font-weight:bold">,</span>f<span style="color:#000;font-weight:bold">,</span>e
-
-object WordCount <span style="color:#000;font-weight:bold">{</span>
-    def <span style="color:#900;font-weight:bold">main</span><span style="color:#000;font-weight:bold">(</span>args<span style="color:#000;font-weight:bold">:</span> Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]):</span> Unit <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">{</span>
-        val conf <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> SparkConf<span style="color:#000;font-weight:bold">()</span>
-        <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">setAppName</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">this</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getClass</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getSimpleName</span><span style="color:#000;font-weight:bold">)</span>
-        <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">setMaster</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;local[*]&#34;</span><span style="color:#000;font-weight:bold">)</span>
-        val sc <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> SparkContext<span style="color:#000;font-weight:bold">(</span>conf<span style="color:#000;font-weight:bold">)</span>
-        var sData<span style="color:#000;font-weight:bold">:</span> RDD<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> sc<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">textFile</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;a.txt&#34;</span><span style="color:#000;font-weight:bold">)</span>
-        val sortData<span style="color:#000;font-weight:bold">:</span> RDD<span style="color:#000;font-weight:bold">[(</span>String<span style="color:#000;font-weight:bold">,</span> Int<span style="color:#000;font-weight:bold">)]</span> <span style="color:#000;font-weight:bold">=</span> sData<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">flatMap</span><span style="color:#000;font-weight:bold">(</span>_<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">split</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;,&#34;</span><span style="color:#000;font-weight:bold">)).</span><span style="color:#008080">map</span><span style="color:#000;font-weight:bold">((</span>_<span style="color:#000;font-weight:bold">,</span>1<span style="color:#000;font-weight:bold">)).</span><span style="color:#008080">reduceByKey</span><span style="color:#000;font-weight:bold">(</span>_<span style="color:#000;font-weight:bold">+</span>_<span style="color:#000;font-weight:bold">)</span>
-        sortData<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">foreach</span><span style="color:#000;font-weight:bold">(</span>print<span style="color:#000;font-weight:bold">)</span>
-    <span style="color:#000;font-weight:bold">}</span>
-<span style="color:#000;font-weight:bold">}</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>当前文件a.<span style="color:#008080">txt的格式</span><span style="color:#a61717;background-color:#e3d2d2">，</span>请统计每个单词出现的次数<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>A,b,c<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>B,b,f,e<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>object<span style="color:#bbb"> </span>WordCount<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>def<span style="color:#bbb"> </span><span style="color:#900;font-weight:bold">main</span>(args:<span style="color:#bbb"> </span>Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]</span>):<span style="color:#bbb"> </span>Unit<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>val<span style="color:#bbb"> </span>conf<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">new</span><span style="color:#bbb"> </span>SparkConf()<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>.<span style="color:#008080">setAppName</span>(<span style="color:#000;font-weight:bold">this</span>.<span style="color:#008080">getClass</span>.<span style="color:#008080">getSimpleName</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>.<span style="color:#008080">setMaster</span>(<span style="color:#d14">&#34;local[*]&#34;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>val<span style="color:#bbb"> </span>sc<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">new</span><span style="color:#bbb"> </span>SparkContext(conf)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span><span style="color:#000;font-weight:bold">var</span><span style="color:#bbb"> </span>sData:<span style="color:#bbb"> </span>RDD<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>sc.<span style="color:#008080">textFile</span>(<span style="color:#d14">&#34;a.txt&#34;</span>)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>val<span style="color:#bbb"> </span>sortData:<span style="color:#bbb"> </span>RDD<span style="color:#000;font-weight:bold">[</span>(String,<span style="color:#bbb"> </span>Int)<span style="color:#000;font-weight:bold">]</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>sData.<span style="color:#008080">flatMap</span>(_.<span style="color:#008080">split</span>(<span style="color:#d14">&#34;,&#34;</span>)).<span style="color:#008080">map</span>((_,1)).<span style="color:#008080">reduceByKey</span>(_<span style="color:#000;font-weight:bold">+</span>_)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>sortData.<span style="color:#008080">foreach</span>(print)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="16spark应用程序的执行命令是什么">16.spark应用程序的执行命令是什么？</h2>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/usr/local/spark-current2.3/bin/spark-submit <span style="color:#d14">\
-</span><span style="color:#d14"></span>--class com.wedoctor.Application <span style="color:#d14">\
-</span><span style="color:#d14"></span>--master yarn <span style="color:#d14">\
-</span><span style="color:#d14"></span>--deploy-mode client <span style="color:#d14">\
-</span><span style="color:#d14"></span>--driver-memory 1g <span style="color:#d14">\
-</span><span style="color:#d14"></span>--executor-memory 2g <span style="color:#d14">\
-</span><span style="color:#d14"></span>--queue root.wedw <span style="color:#d14">\
-</span><span style="color:#d14"></span>--num-executors <span style="color:#099">200</span> <span style="color:#d14">\
-</span><span style="color:#d14"></span>--jars /home/pgxl/liuzc/config-1.3.0.jar,/home/pgxl/liuzc/hadoop-lzo-0.4.20.jar,/home/pgxl/liuzc/elasticsearch-hadoop-hive-2.3.4.jar <span style="color:#d14">\
-</span><span style="color:#d14"></span>/home/pgxl/liuzc/sen.jar
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/local/spark-current2.3/bin/spark-submit <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>--class com.wedoctor.Application <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>--master yarn <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>--deploy-mode client <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>--driver-memory 1g <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>--executor-memory 2g <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>--queue root.wedw <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>--num-executors <span style="color:#099">200</span> <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>--jars /home/pgxl/liuzc/config-1.3.0.jar,/home/pgxl/liuzc/hadoop-lzo-0.4.20.jar,/home/pgxl/liuzc/elasticsearch-hadoop-hive-2.3.4.jar <span style="color:#d14">\
+</span></span></span><span style="display:flex;"><span><span style="color:#d14"></span>/home/pgxl/liuzc/sen.jar
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="17spark应用执行有哪些模式其中哪几种是集群模式">17.Spark应用执行有哪些模式，其中哪几种是集群模式</h2>
 <ul>
@@ -581,15 +579,15 @@ object WordCount <span style="color:#000;font-weight:bold">{</span>
 <p>使用广播变量，每个 Executor 的内存中，只驻留一份变量副本，而不是对 每个 task 都传输一次大变量，省了很多的网络传输， 对性能提升具有很大帮助， 而且会通过高效的广播算法来减少传输代价。</p>
 <h2 id="19以下代码会报错吗如果会怎么解决">19.以下代码会报错吗？如果会怎么解决</h2>
 <p>val arr = new ArrayList[String]; arr.foreach(println)</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">val arr <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> ArrayList<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">];</span> 这里会报错<span style="color:#a61717;background-color:#e3d2d2">，</span>需要改成 val arr<span style="color:#000;font-weight:bold">:</span> Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">](</span>10<span style="color:#000;font-weight:bold">)</span>
-arr<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">foreach</span><span style="color:#000;font-weight:bold">(</span>println<span style="color:#000;font-weight:bold">)</span>打印不会报空指针
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>val<span style="color:#bbb"> </span>arr<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">new</span><span style="color:#bbb"> </span>ArrayList<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]</span>;<span style="color:#bbb"> </span>这里会报错<span style="color:#a61717;background-color:#e3d2d2">，</span>需要改成<span style="color:#bbb"> </span>val<span style="color:#bbb"> </span>arr:<span style="color:#bbb"> </span>Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">new</span><span style="color:#bbb"> </span>Array<span style="color:#000;font-weight:bold">[</span>String<span style="color:#000;font-weight:bold">]</span>(10)<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span>arr.<span style="color:#008080">foreach</span>(println)打印不会报空指针<span style="color:#bbb">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="20写出你用过的spark中的算子其中哪些会产生shuffle过程">20.写出你用过的spark中的算子，其中哪些会产生shuffle过程</h2>
 <p>reduceBykey：</p>
@@ -729,7 +727,7 @@ arr<span style="color:#000;font-weight:bold">.</span><span style="color:#008080"
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        &copy; 2023 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的技术学习笔记 By liuzhongzhen</a>
         
     </div>
     <br />

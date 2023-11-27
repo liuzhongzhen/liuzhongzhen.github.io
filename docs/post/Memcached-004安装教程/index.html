@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>Memcached 004安装教程 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="Memcached 004安装教程 - Liuzhongzhen的博客">
+    <title>Memcached 004安装教程 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="Memcached 004安装教程 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2013-02-03T12:17:16&#43;08:00'>
@@ -49,7 +49,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="https://liuzhongzhen.github.io/">
-                        Liuzhongzhen的博客
+                        Liuzhongzhen的技术学习笔记
                     </a>
                 
                 <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
@@ -58,15 +58,13 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -233,139 +231,139 @@
 </ul>
 <h3 id="yum安装与启动">yum安装与启动</h3>
 <p>通过yum 安装是相对简单的安装方式</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">1. yum install memcached -y
-2. 编辑配置文件/etc/sysconfig/memcached 
-   vim /etc/sysconfig/memcached
-   <span style="color:#008080">PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;11211&#34;</span>     <span style="color:#998;font-style:italic">#监听端口</span>
-   <span style="color:#008080">USER</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;memcached&#34;</span> <span style="color:#998;font-style:italic">#启动用户或者nobody</span>
-   <span style="color:#008080">MAXCONN</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;1024&#34;</span>   <span style="color:#998;font-style:italic">#最大连接数</span>
-   <span style="color:#008080">CACHESIZE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;1024&#34;</span> <span style="color:#998;font-style:italic">#最大使用内存,单位MB</span>
-   <span style="color:#008080">OPTIONS</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;-l 0.0.0.0 -P /tmp/memcached.pid&#34;</span>       <span style="color:#998;font-style:italic">#其他选项</span>
-3. 启动memcached
-   systemctl start memcached
-4. 加入开机启动列表
-   systemctl <span style="color:#0086b3">enable</span> memcached
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>1. yum install memcached -y
+</span></span><span style="display:flex;"><span>2. 编辑配置文件/etc/sysconfig/memcached 
+</span></span><span style="display:flex;"><span>   vim /etc/sysconfig/memcached
+</span></span><span style="display:flex;"><span>   <span style="color:#008080">PORT</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;11211&#34;</span>     <span style="color:#998;font-style:italic">#监听端口</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#008080">USER</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;memcached&#34;</span> <span style="color:#998;font-style:italic">#启动用户或者nobody</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#008080">MAXCONN</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;1024&#34;</span>   <span style="color:#998;font-style:italic">#最大连接数</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#008080">CACHESIZE</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;1024&#34;</span> <span style="color:#998;font-style:italic">#最大使用内存,单位MB</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#008080">OPTIONS</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;-l 0.0.0.0 -P /tmp/memcached.pid&#34;</span>       <span style="color:#998;font-style:italic">#其他选项</span>
+</span></span><span style="display:flex;"><span>3. 启动memcached
+</span></span><span style="display:flex;"><span>   systemctl start memcached
+</span></span><span style="display:flex;"><span>4. 加入开机启动列表
+</span></span><span style="display:flex;"><span>   systemctl <span style="color:#0086b3">enable</span> memcached
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="编译安装">编译安装</h3>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#yum –y install gcc  libevent-devel </span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#wget http://memcached.org/files/memcached-1.5.22.tar.gz</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#tar xvf  memcached-1.5.22.tar.gz </span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#cd memcached-1.5.22/</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#./configure  --prefix=/apps/memcached</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#make &amp;&amp; make install </span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#tree /apps/memcached/</span>
-/apps/memcached/
-├── bin
-│?? └── memcached
-├── include
-│?? └── memcached
-│??     └── protocol_binary.h
-└── share
-    └── man
-        └── man1
-            └── memcached.1
-
-<span style="color:#099">6</span> directories, <span style="color:#099">3</span> files
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#echo &#39;PATH=/apps/memcached/bin:$PATH&#39; &gt; /etc/profile.d/memcached.sh</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#. /etc/profile.d/memcached.sh</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#useradd -r -s /sbin/nologin memcached</span>
-
-<span style="color:#998;font-style:italic">#默认前台执行</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#memcached -u memcached  -m 2048 -c 65536 -f 2  -vv </span>
-<span style="color:#998;font-style:italic">#以台方式执行</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#memcached -u memcached  -m 2048 -c 65536 &amp; </span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#ss -ntl</span>
-State      Recv-Q Send-Q          Local Address:Port                         Peer Address:Port              
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">100</span>                 127.0.0.1:25                                      *:*                  
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                         *:11211                                   *:*                  
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                         *:22                                      *:*                  
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">100</span>                     <span style="color:#000;font-weight:bold">[</span>::1<span style="color:#000;font-weight:bold">]</span>:25                                   <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*                  
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                      <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:11211                                <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*                  
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                      <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:22                                   <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*                  
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#yum –y install gcc  libevent-devel </span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#wget http://memcached.org/files/memcached-1.5.22.tar.gz</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#tar xvf  memcached-1.5.22.tar.gz </span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#cd memcached-1.5.22/</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#./configure  --prefix=/apps/memcached</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#make &amp;&amp; make install </span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#tree /apps/memcached/</span>
+</span></span><span style="display:flex;"><span>/apps/memcached/
+</span></span><span style="display:flex;"><span>├── bin
+</span></span><span style="display:flex;"><span>│?? └── memcached
+</span></span><span style="display:flex;"><span>├── include
+</span></span><span style="display:flex;"><span>│?? └── memcached
+</span></span><span style="display:flex;"><span>│??     └── protocol_binary.h
+</span></span><span style="display:flex;"><span>└── share
+</span></span><span style="display:flex;"><span>    └── man
+</span></span><span style="display:flex;"><span>        └── man1
+</span></span><span style="display:flex;"><span>            └── memcached.1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#099">6</span> directories, <span style="color:#099">3</span> files
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#echo &#39;PATH=/apps/memcached/bin:$PATH&#39; &gt; /etc/profile.d/memcached.sh</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#. /etc/profile.d/memcached.sh</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#useradd -r -s /sbin/nologin memcached</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#默认前台执行</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#memcached -u memcached  -m 2048 -c 65536 -f 2  -vv </span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#以台方式执行</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#memcached -u memcached  -m 2048 -c 65536 &amp; </span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#ss -ntl</span>
+</span></span><span style="display:flex;"><span>State      Recv-Q Send-Q          Local Address:Port                         Peer Address:Port              
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">100</span>                 127.0.0.1:25                                      *:*                  
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                         *:11211                                   *:*                  
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                         *:22                                      *:*                  
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">100</span>                     <span style="color:#000;font-weight:bold">[</span>::1<span style="color:#000;font-weight:bold">]</span>:25                                   <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*                  
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                      <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:11211                                <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*                  
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                      <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:22                                   <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*                  
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="python操作memcached">python操作memcached</h3>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#998;font-style:italic">#!/usr/bin/env python</span>
-<span style="color:#998;font-style:italic">#coding:utf-8</span>
-
-<span style="color:#000;font-weight:bold">import</span> <span style="color:#555">memcache</span>
-m <span style="color:#000;font-weight:bold">=</span> memcache<span style="color:#000;font-weight:bold">.</span>Client([<span style="color:#d14">&#39;172.18.200.106:11211&#39;</span>], debug<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">True</span>)
-<span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">100</span>):
-    m<span style="color:#000;font-weight:bold">.</span>set(<span style="color:#d14">&#34;key</span><span style="color:#d14">%d</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">%</span> i,<span style="color:#d14">&#34;v</span><span style="color:#d14">%d</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">%</span> i)
-    ret <span style="color:#000;font-weight:bold">=</span> m<span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#39;key</span><span style="color:#d14">%d</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> i)
-    <span style="color:#0086b3">print</span> ret
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#998;font-style:italic">#!/usr/bin/env python</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#coding:utf-8</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">memcache</span>
+</span></span><span style="display:flex;"><span>m <span style="color:#000;font-weight:bold">=</span> memcache<span style="color:#000;font-weight:bold">.</span>Client([<span style="color:#d14">&#39;172.18.200.106:11211&#39;</span>], debug<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">100</span>):
+</span></span><span style="display:flex;"><span>    m<span style="color:#000;font-weight:bold">.</span>set(<span style="color:#d14">&#34;key</span><span style="color:#d14">%d</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">%</span> i,<span style="color:#d14">&#34;v</span><span style="color:#d14">%d</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">%</span> i)
+</span></span><span style="display:flex;"><span>    ret <span style="color:#000;font-weight:bold">=</span> m<span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#39;key</span><span style="color:#d14">%d</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> i)
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span> ret
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="集群部署架构">集群部署架构</h2>
 <h3 id="基于magent的部署架构">基于magent的部署架构</h3>
@@ -390,418 +388,418 @@ master也会侦测到连接断，它就会重新 listen等待新的 slave加入�
         <img class="mx-auto" alt="tw1" src="../../imgs/post/memcached/a13.png" />   
     </p>
 <h3 id="部署repcached">部署repcached</h3>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum install libevent libevent-devel</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># wget https://jaist.dl.sourceforge.net/project/repcached/repcached/2.2.1-1.2.8/memcached-1.2.8-repcached-2.2.1.tar.gz</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># tar xvf memcached-1.2.8-repcached-2.2.1.tar.gz</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cd memcached-1.2.8-repcached-2.2.1</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 memcached-1.2.8-repcached-2.2.1<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ./configure --prefix=/usr/local/repcached --enable-replication</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 memcached-1.2.8-repcached-2.2.1<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># make #报错如下</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># yum install libevent libevent-devel</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># wget https://jaist.dl.sourceforge.net/project/repcached/repcached/2.2.1-1.2.8/memcached-1.2.8-repcached-2.2.1.tar.gz</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># tar xvf memcached-1.2.8-repcached-2.2.1.tar.gz</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># cd memcached-1.2.8-repcached-2.2.1</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 memcached-1.2.8-repcached-2.2.1<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># ./configure --prefix=/usr/local/repcached --enable-replication</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 memcached-1.2.8-repcached-2.2.1<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># make #报错如下</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>
         <img class="mx-auto" alt="tw1" src="../../imgs/post/memcached/a15.png" />   
     </p>
 <p>解决办法：</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 memcached-1.2.8-repcached-2.2.1<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># vim memcached.c</span>
-<span style="color:#099">56</span> <span style="color:#998;font-style:italic">#ifndef IOV_MAX</span>
-<span style="color:#099">57</span> <span style="color:#998;font-style:italic">#if defined(__FreeBSD__) || defined(__APPLE__)</span>
-<span style="color:#099">58</span> <span style="color:#998;font-style:italic"># define IOV_MAX 1024</span>
-<span style="color:#099">59</span> <span style="color:#998;font-style:italic">#endif</span>
-<span style="color:#099">60</span> <span style="color:#998;font-style:italic">#endif</span>
-改为如下内容，即删除原有的第57，59行
-<span style="color:#099">56</span> <span style="color:#998;font-style:italic">#ifndef IOV_MAX</span>
-<span style="color:#099">57</span> <span style="color:#998;font-style:italic"># define IOV_MAX 1024</span>
-<span style="color:#099">58</span> <span style="color:#998;font-style:italic">#endif</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 memcached-1.2.8-repcached-2.2.1<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic"># vim memcached.c</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">56</span> <span style="color:#998;font-style:italic">#ifndef IOV_MAX</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">57</span> <span style="color:#998;font-style:italic">#if defined(__FreeBSD__) || defined(__APPLE__)</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">58</span> <span style="color:#998;font-style:italic"># define IOV_MAX 1024</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">59</span> <span style="color:#998;font-style:italic">#endif</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">60</span> <span style="color:#998;font-style:italic">#endif</span>
+</span></span><span style="display:flex;"><span>改为如下内容，即删除原有的第57，59行
+</span></span><span style="display:flex;"><span><span style="color:#099">56</span> <span style="color:#998;font-style:italic">#ifndef IOV_MAX</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">57</span> <span style="color:#998;font-style:italic"># define IOV_MAX 1024</span>
+</span></span><span style="display:flex;"><span><span style="color:#099">58</span> <span style="color:#998;font-style:italic">#endif</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>再次编译安装：</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 memcached-1.2.8-repcached-2.2.1<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#make &amp;&amp; make install </span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#tree /apps/repcached/</span>
-/apps/repcached/
-├── bin
-│?? ├── memcached
-│?? └── memcached-debug
-└── share
-    └── man
-        └── man1
-            └── memcached.1
-
-<span style="color:#099">4</span> directories, <span style="color:#099">3</span> files
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 memcached-1.2.8-repcached-2.2.1<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#make &amp;&amp; make install </span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#tree /apps/repcached/</span>
+</span></span><span style="display:flex;"><span>/apps/repcached/
+</span></span><span style="display:flex;"><span>├── bin
+</span></span><span style="display:flex;"><span>│?? ├── memcached
+</span></span><span style="display:flex;"><span>│?? └── memcached-debug
+</span></span><span style="display:flex;"><span>└── share
+</span></span><span style="display:flex;"><span>    └── man
+</span></span><span style="display:flex;"><span>        └── man1
+</span></span><span style="display:flex;"><span>            └── memcached.1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#099">4</span> directories, <span style="color:#099">3</span> files
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>
         <img class="mx-auto" alt="tw1" src="../../imgs/post/memcached/a16.png" />   
     </p>
 <p>验证是否可执行</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#echo &#39;PATH=/apps/repcached/bin:$PATH&#39; &gt; /etc/profile.d/repcached.sh</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#. /etc/profile.d/repcached.sh</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#memcached -h</span>
-memcached 1.2.8
-repcached 2.2.1
--p &lt;num&gt;      TCP port number to listen on <span style="color:#000;font-weight:bold">(</span>default: 11211<span style="color:#000;font-weight:bold">)</span>
--U &lt;num&gt;      UDP port number to listen on <span style="color:#000;font-weight:bold">(</span>default: 11211, <span style="color:#099">0</span> is off<span style="color:#000;font-weight:bold">)</span>
--s &lt;file&gt;     unix socket path to listen on <span style="color:#000;font-weight:bold">(</span>disables network support<span style="color:#000;font-weight:bold">)</span>
--a &lt;mask&gt;     access mask <span style="color:#000;font-weight:bold">for</span> unix socket, in octal <span style="color:#000;font-weight:bold">(</span>default 0700<span style="color:#000;font-weight:bold">)</span>
--l &lt;ip_addr&gt;  interface to listen on, default is INDRR_ANY
--d            run as a daemon
--r            maximize core file limit
--u &lt;username&gt; assume identity of &lt;username&gt; <span style="color:#000;font-weight:bold">(</span>only when run as root<span style="color:#000;font-weight:bold">)</span>
--m &lt;num&gt;      max memory to use <span style="color:#000;font-weight:bold">for</span> items in megabytes, default is <span style="color:#099">64</span> MB
--M            <span style="color:#000;font-weight:bold">return</span> error on memory exhausted <span style="color:#000;font-weight:bold">(</span>rather than removing items<span style="color:#000;font-weight:bold">)</span>
--c &lt;num&gt;      max simultaneous connections, default is <span style="color:#099">1024</span>
--k            lock down all paged memory.  Note that there is a
-              limit on how much memory you may lock.  Trying to
-              allocate more than that would fail, so be sure you
-              <span style="color:#0086b3">set</span> the limit correctly <span style="color:#000;font-weight:bold">for</span> the user you started
-              the daemon with <span style="color:#000;font-weight:bold">(</span>not <span style="color:#000;font-weight:bold">for</span> -u &lt;username&gt; user;
-              under sh this is <span style="color:#000;font-weight:bold">done</span> with <span style="color:#d14">&#39;ulimit -S -l NUM_KB&#39;</span><span style="color:#000;font-weight:bold">)</span>.
--v            verbose <span style="color:#000;font-weight:bold">(</span>print errors/warnings <span style="color:#000;font-weight:bold">while</span> in event loop<span style="color:#000;font-weight:bold">)</span>
--vv           very verbose <span style="color:#000;font-weight:bold">(</span>also print client commands/reponses<span style="color:#000;font-weight:bold">)</span>
--h            print this <span style="color:#0086b3">help</span> and <span style="color:#0086b3">exit</span>
--i            print memcached and libevent license
--P &lt;file&gt;     save PID in &lt;file&gt;, only used with -d option
--f &lt;factor&gt;   chunk size growth factor, default 1.25
--n &lt;bytes&gt;    minimum space allocated <span style="color:#000;font-weight:bold">for</span> key+value+flags, default <span style="color:#099">48</span>
--R            Maximum number of requests per event
-              limits the number of requests process <span style="color:#000;font-weight:bold">for</span> a given con nection
-              to prevent starvation.  default <span style="color:#099">20</span>
--b            Set the backlog queue limit <span style="color:#000;font-weight:bold">(</span>default 1024<span style="color:#000;font-weight:bold">)</span>
--x &lt;ip_addr&gt;  hostname or IP address of peer repcached
--X &lt;num:num&gt;  TCP port number <span style="color:#000;font-weight:bold">for</span> replication. &lt;listen:connect&gt; <span style="color:#000;font-weight:bold">(</span>default: 11212<span style="color:#000;font-weight:bold">)</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#echo &#39;PATH=/apps/repcached/bin:$PATH&#39; &gt; /etc/profile.d/repcached.sh</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#. /etc/profile.d/repcached.sh</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#memcached -h</span>
+</span></span><span style="display:flex;"><span>memcached 1.2.8
+</span></span><span style="display:flex;"><span>repcached 2.2.1
+</span></span><span style="display:flex;"><span>-p &lt;num&gt;      TCP port number to listen on <span style="color:#000;font-weight:bold">(</span>default: 11211<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>-U &lt;num&gt;      UDP port number to listen on <span style="color:#000;font-weight:bold">(</span>default: 11211, <span style="color:#099">0</span> is off<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>-s &lt;file&gt;     unix socket path to listen on <span style="color:#000;font-weight:bold">(</span>disables network support<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>-a &lt;mask&gt;     access mask <span style="color:#000;font-weight:bold">for</span> unix socket, in octal <span style="color:#000;font-weight:bold">(</span>default 0700<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>-l &lt;ip_addr&gt;  interface to listen on, default is INDRR_ANY
+</span></span><span style="display:flex;"><span>-d            run as a daemon
+</span></span><span style="display:flex;"><span>-r            maximize core file limit
+</span></span><span style="display:flex;"><span>-u &lt;username&gt; assume identity of &lt;username&gt; <span style="color:#000;font-weight:bold">(</span>only when run as root<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>-m &lt;num&gt;      max memory to use <span style="color:#000;font-weight:bold">for</span> items in megabytes, default is <span style="color:#099">64</span> MB
+</span></span><span style="display:flex;"><span>-M            <span style="color:#000;font-weight:bold">return</span> error on memory exhausted <span style="color:#000;font-weight:bold">(</span>rather than removing items<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>-c &lt;num&gt;      max simultaneous connections, default is <span style="color:#099">1024</span>
+</span></span><span style="display:flex;"><span>-k            lock down all paged memory.  Note that there is a
+</span></span><span style="display:flex;"><span>              limit on how much memory you may lock.  Trying to
+</span></span><span style="display:flex;"><span>              allocate more than that would fail, so be sure you
+</span></span><span style="display:flex;"><span>              <span style="color:#0086b3">set</span> the limit correctly <span style="color:#000;font-weight:bold">for</span> the user you started
+</span></span><span style="display:flex;"><span>              the daemon with <span style="color:#000;font-weight:bold">(</span>not <span style="color:#000;font-weight:bold">for</span> -u &lt;username&gt; user;
+</span></span><span style="display:flex;"><span>              under sh this is <span style="color:#000;font-weight:bold">done</span> with <span style="color:#d14">&#39;ulimit -S -l NUM_KB&#39;</span><span style="color:#000;font-weight:bold">)</span>.
+</span></span><span style="display:flex;"><span>-v            verbose <span style="color:#000;font-weight:bold">(</span>print errors/warnings <span style="color:#000;font-weight:bold">while</span> in event loop<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>-vv           very verbose <span style="color:#000;font-weight:bold">(</span>also print client commands/reponses<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>-h            print this <span style="color:#0086b3">help</span> and <span style="color:#0086b3">exit</span>
+</span></span><span style="display:flex;"><span>-i            print memcached and libevent license
+</span></span><span style="display:flex;"><span>-P &lt;file&gt;     save PID in &lt;file&gt;, only used with -d option
+</span></span><span style="display:flex;"><span>-f &lt;factor&gt;   chunk size growth factor, default 1.25
+</span></span><span style="display:flex;"><span>-n &lt;bytes&gt;    minimum space allocated <span style="color:#000;font-weight:bold">for</span> key+value+flags, default <span style="color:#099">48</span>
+</span></span><span style="display:flex;"><span>-R            Maximum number of requests per event
+</span></span><span style="display:flex;"><span>              limits the number of requests process <span style="color:#000;font-weight:bold">for</span> a given con nection
+</span></span><span style="display:flex;"><span>              to prevent starvation.  default <span style="color:#099">20</span>
+</span></span><span style="display:flex;"><span>-b            Set the backlog queue limit <span style="color:#000;font-weight:bold">(</span>default 1024<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>-x &lt;ip_addr&gt;  hostname or IP address of peer repcached
+</span></span><span style="display:flex;"><span>-X &lt;num:num&gt;  TCP port number <span style="color:#000;font-weight:bold">for</span> replication. &lt;listen:connect&gt; <span style="color:#000;font-weight:bold">(</span>default: 11212<span style="color:#000;font-weight:bold">)</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h3 id="启动memcache">启动memcache</h3>
 <p>server 1相关操作</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#useradd -r -s /sbin/nologin memcached</span>
-<span style="color:#998;font-style:italic">#-x 10.0.0.17为对端memcached的地址 </span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#memcached -d -m 2048 -p 11211 -u memcached  -c 2048 -x 10.0.0.17 </span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#ss -ntl</span>
-State      Recv-Q Send-Q          Local Address:Port                 Peer Address:Port   
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">100</span>                 127.0.0.1:25                             *:*       
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                         *:11211                          *:*  
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                         *:11212                          *:*
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                         *:22                             *:*       
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">100</span>                     <span style="color:#000;font-weight:bold">[</span>::1<span style="color:#000;font-weight:bold">]</span>:25                            <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*     
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                      <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:11211                         <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*     
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                      <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:22                            <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:* 
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#useradd -r -s /sbin/nologin memcached</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#-x 10.0.0.17为对端memcached的地址 </span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#memcached -d -m 2048 -p 11211 -u memcached  -c 2048 -x 10.0.0.17 </span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#ss -ntl</span>
+</span></span><span style="display:flex;"><span>State      Recv-Q Send-Q          Local Address:Port                 Peer Address:Port   
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">100</span>                 127.0.0.1:25                             *:*       
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                         *:11211                          *:*  
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                         *:11212                          *:*
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                         *:22                             *:*       
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">100</span>                     <span style="color:#000;font-weight:bold">[</span>::1<span style="color:#000;font-weight:bold">]</span>:25                            <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*     
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                      <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:11211                         <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*     
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                      <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:22                            <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:* 
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>server 2相关操作</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#memcached -d -m 2048 -p 11211 -u memcached -c 2048 -x 10.0.0.7</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#ss -ntl</span>
-State      Recv-Q Send-Q          Local Address:Port                Peer Address:Port     
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">100</span>                 127.0.0.1:25                              *:*       
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                      *:11211                              *:*       LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                         *:22                                *:*     
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">100</span>                     <span style="color:#000;font-weight:bold">[</span>::1<span style="color:#000;font-weight:bold">]</span>:25                            <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*     
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                   <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:11211                            <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*     
-LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                      <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:22                            <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#memcached -d -m 2048 -p 11211 -u memcached -c 2048 -x 10.0.0.7</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#ss -ntl</span>
+</span></span><span style="display:flex;"><span>State      Recv-Q Send-Q          Local Address:Port                Peer Address:Port     
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">100</span>                 127.0.0.1:25                              *:*       
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                      *:11211                              *:*       LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                         *:22                                *:*     
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">100</span>                     <span style="color:#000;font-weight:bold">[</span>::1<span style="color:#000;font-weight:bold">]</span>:25                            <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*     
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                   <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:11211                            <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*     
+</span></span><span style="display:flex;"><span>LISTEN     <span style="color:#099">0</span>      <span style="color:#099">128</span>                      <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:22                            <span style="color:#000;font-weight:bold">[</span>::<span style="color:#000;font-weight:bold">]</span>:*
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="连接到memcache验证数据">连接到memcache验证数据</h2>
 <p>shell命令</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic">#在第一台memcached上创建数据</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#telnet 10.0.0.7 11211</span>
-Trying 10.0.0.7...
-Connected to 10.0.0.7.
-Escape character is <span style="color:#d14">&#39;^]&#39;</span>.
-add name <span style="color:#099">0</span> <span style="color:#099">0</span> <span style="color:#099">4</span>  <span style="color:#998;font-style:italic">#key 的名为name，且永不超时</span>
-wang
-STORED
-get name
-VALUE name <span style="color:#099">0</span> <span style="color:#099">4</span>
-wang
-END
-quit
-Connection closed by foreign host.
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#</span>
-
-<span style="color:#998;font-style:italic">#到另外一台memcached服务器验证是否有同步过来的数据</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#telnet 10.0.0.17 11211 </span>
-Trying 10.0.0.17...
-Connected to 10.0.0.17.
-Escape character is <span style="color:#d14">&#39;^]&#39;</span>.
-get name
-VALUE name <span style="color:#099">0</span> <span style="color:#099">4</span>
-wang
-END
-quit
-Connection closed by foreign host.
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#998;font-style:italic">#在第一台memcached上创建数据</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#telnet 10.0.0.7 11211</span>
+</span></span><span style="display:flex;"><span>Trying 10.0.0.7...
+</span></span><span style="display:flex;"><span>Connected to 10.0.0.7.
+</span></span><span style="display:flex;"><span>Escape character is <span style="color:#d14">&#39;^]&#39;</span>.
+</span></span><span style="display:flex;"><span>add name <span style="color:#099">0</span> <span style="color:#099">0</span> <span style="color:#099">4</span>  <span style="color:#998;font-style:italic">#key 的名为name，且永不超时</span>
+</span></span><span style="display:flex;"><span>wang
+</span></span><span style="display:flex;"><span>STORED
+</span></span><span style="display:flex;"><span>get name
+</span></span><span style="display:flex;"><span>VALUE name <span style="color:#099">0</span> <span style="color:#099">4</span>
+</span></span><span style="display:flex;"><span>wang
+</span></span><span style="display:flex;"><span>END
+</span></span><span style="display:flex;"><span>quit
+</span></span><span style="display:flex;"><span>Connection closed by foreign host.
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#到另外一台memcached服务器验证是否有同步过来的数据</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#telnet 10.0.0.17 11211 </span>
+</span></span><span style="display:flex;"><span>Trying 10.0.0.17...
+</span></span><span style="display:flex;"><span>Connected to 10.0.0.17.
+</span></span><span style="display:flex;"><span>Escape character is <span style="color:#d14">&#39;^]&#39;</span>.
+</span></span><span style="display:flex;"><span>get name
+</span></span><span style="display:flex;"><span>VALUE name <span style="color:#099">0</span> <span style="color:#099">4</span>
+</span></span><span style="display:flex;"><span>wang
+</span></span><span style="display:flex;"><span>END
+</span></span><span style="display:flex;"><span>quit
+</span></span><span style="display:flex;"><span>Connection closed by foreign host.
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>python 脚本连接memcached</p>
 <p>示例：测试连接memcached的Python脚本</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#998;font-style:italic">#!/usr/bin/env python</span>
-<span style="color:#998;font-style:italic">#coding:utf-8</span>
-
-<span style="color:#000;font-weight:bold">import</span> <span style="color:#555">memcache</span>
-m <span style="color:#000;font-weight:bold">=</span> memcache<span style="color:#000;font-weight:bold">.</span>Client([<span style="color:#d14">&#39;10.0.0.100:11211&#39;</span>], debug<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">True</span>)
-<span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">100</span>):
-    m<span style="color:#000;font-weight:bold">.</span>set(<span style="color:#d14">&#34;key</span><span style="color:#d14">%d</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">%</span> i,<span style="color:#d14">&#34;v</span><span style="color:#d14">%d</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">%</span> i)
-    ret <span style="color:#000;font-weight:bold">=</span> m<span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#39;key</span><span style="color:#d14">%d</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> i)
-    <span style="color:#0086b3">print</span> ret
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#998;font-style:italic">#!/usr/bin/env python</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#coding:utf-8</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">memcache</span>
+</span></span><span style="display:flex;"><span>m <span style="color:#000;font-weight:bold">=</span> memcache<span style="color:#000;font-weight:bold">.</span>Client([<span style="color:#d14">&#39;10.0.0.100:11211&#39;</span>], debug<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">True</span>)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">100</span>):
+</span></span><span style="display:flex;"><span>    m<span style="color:#000;font-weight:bold">.</span>set(<span style="color:#d14">&#34;key</span><span style="color:#d14">%d</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">%</span> i,<span style="color:#d14">&#34;v</span><span style="color:#d14">%d</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">%</span> i)
+</span></span><span style="display:flex;"><span>    ret <span style="color:#000;font-weight:bold">=</span> m<span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#39;key</span><span style="color:#d14">%d</span><span style="color:#d14">&#39;</span> <span style="color:#000;font-weight:bold">%</span> i)
+</span></span><span style="display:flex;"><span>    <span style="color:#0086b3">print</span> ret
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>范例：</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#yum -y install python-memcached </span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#cat  ./m.py</span>
-<span style="color:#998;font-style:italic">#!/usr/bin/env python</span>
-<span style="color:#998;font-style:italic">#coding:utf-8</span>
-
-import memcache
-<span style="color:#008080">m</span> <span style="color:#000;font-weight:bold">=</span> memcache.Client<span style="color:#000;font-weight:bold">([</span><span style="color:#d14">&#39;10.0.0.7:11211&#39;</span><span style="color:#000;font-weight:bold">]</span>, <span style="color:#008080">debug</span><span style="color:#000;font-weight:bold">=</span>True<span style="color:#000;font-weight:bold">)</span>
-<span style="color:#000;font-weight:bold">for</span> i in range<span style="color:#000;font-weight:bold">(</span>10<span style="color:#000;font-weight:bold">)</span>:
-    m.set<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;key%d&#34;</span> % i,<span style="color:#d14">&#34;v%d&#34;</span> % i<span style="color:#000;font-weight:bold">)</span>
-    <span style="color:#008080">ret</span> <span style="color:#000;font-weight:bold">=</span> m.get<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#39;key%d&#39;</span> % i<span style="color:#000;font-weight:bold">)</span>
-    print ret
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#chmod +x m.py</span>
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#./m.py</span>
-v0
-v1
-v2
-
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#telnet 10.0.0.7 11211</span>
-Trying 10.0.0.7...
-Connected to 10.0.0.7.
-Escape character is <span style="color:#d14">&#39;^]&#39;</span>.
-get key1
-VALUE key1 <span style="color:#099">0</span> <span style="color:#099">2</span>
-v1
-END
-get key6
-VALUE key6 <span style="color:#099">0</span> <span style="color:#099">2</span>
-v6
-END
-get key10
-END
-quit
-Connection closed by foreign host.
-
-在第二台memcached上验证同步的数据
-<span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#telnet 10.0.0.17 11211</span>
-Trying 10.0.0.17...
-Connected to 10.0.0.17.
-Escape character is <span style="color:#d14">&#39;^]&#39;</span>.
-get key1
-VALUE key1 <span style="color:#099">0</span> <span style="color:#099">2</span>
-v1
-END
-get key6
-VALUE key6 <span style="color:#099">0</span> <span style="color:#099">2</span>
-v6
-END
-get key10
-END
-quit
-Connection closed by foreign host.
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#yum -y install python-memcached </span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#cat  ./m.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#!/usr/bin/env python</span>
+</span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic">#coding:utf-8</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>import memcache
+</span></span><span style="display:flex;"><span><span style="color:#008080">m</span> <span style="color:#000;font-weight:bold">=</span> memcache.Client<span style="color:#000;font-weight:bold">([</span><span style="color:#d14">&#39;10.0.0.7:11211&#39;</span><span style="color:#000;font-weight:bold">]</span>, <span style="color:#008080">debug</span><span style="color:#000;font-weight:bold">=</span>True<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> i in range<span style="color:#000;font-weight:bold">(</span>10<span style="color:#000;font-weight:bold">)</span>:
+</span></span><span style="display:flex;"><span>    m.set<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;key%d&#34;</span> % i,<span style="color:#d14">&#34;v%d&#34;</span> % i<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#008080">ret</span> <span style="color:#000;font-weight:bold">=</span> m.get<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#39;key%d&#39;</span> % i<span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span>    print ret
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#chmod +x m.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#./m.py</span>
+</span></span><span style="display:flex;"><span>v0
+</span></span><span style="display:flex;"><span>v1
+</span></span><span style="display:flex;"><span>v2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#telnet 10.0.0.7 11211</span>
+</span></span><span style="display:flex;"><span>Trying 10.0.0.7...
+</span></span><span style="display:flex;"><span>Connected to 10.0.0.7.
+</span></span><span style="display:flex;"><span>Escape character is <span style="color:#d14">&#39;^]&#39;</span>.
+</span></span><span style="display:flex;"><span>get key1
+</span></span><span style="display:flex;"><span>VALUE key1 <span style="color:#099">0</span> <span style="color:#099">2</span>
+</span></span><span style="display:flex;"><span>v1
+</span></span><span style="display:flex;"><span>END
+</span></span><span style="display:flex;"><span>get key6
+</span></span><span style="display:flex;"><span>VALUE key6 <span style="color:#099">0</span> <span style="color:#099">2</span>
+</span></span><span style="display:flex;"><span>v6
+</span></span><span style="display:flex;"><span>END
+</span></span><span style="display:flex;"><span>get key10
+</span></span><span style="display:flex;"><span>END
+</span></span><span style="display:flex;"><span>quit
+</span></span><span style="display:flex;"><span>Connection closed by foreign host.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>在第二台memcached上验证同步的数据
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">[</span>root@centos7 ~<span style="color:#000;font-weight:bold">]</span><span style="color:#998;font-style:italic">#telnet 10.0.0.17 11211</span>
+</span></span><span style="display:flex;"><span>Trying 10.0.0.17...
+</span></span><span style="display:flex;"><span>Connected to 10.0.0.17.
+</span></span><span style="display:flex;"><span>Escape character is <span style="color:#d14">&#39;^]&#39;</span>.
+</span></span><span style="display:flex;"><span>get key1
+</span></span><span style="display:flex;"><span>VALUE key1 <span style="color:#099">0</span> <span style="color:#099">2</span>
+</span></span><span style="display:flex;"><span>v1
+</span></span><span style="display:flex;"><span>END
+</span></span><span style="display:flex;"><span>get key6
+</span></span><span style="display:flex;"><span>VALUE key6 <span style="color:#099">0</span> <span style="color:#099">2</span>
+</span></span><span style="display:flex;"><span>v6
+</span></span><span style="display:flex;"><span>END
+</span></span><span style="display:flex;"><span>get key10
+</span></span><span style="display:flex;"><span>END
+</span></span><span style="display:flex;"><span>quit
+</span></span><span style="display:flex;"><span>Connection closed by foreign host.
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -854,7 +852,7 @@ Connection closed by foreign host.
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        &copy; 2023 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的技术学习笔记 By liuzhongzhen</a>
         
     </div>
     <br />

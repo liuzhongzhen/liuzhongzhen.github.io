@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>大数据-010flume on Liuzhongzhen的博客</title>
+    <title>大数据-010flume on Liuzhongzhen的技术学习笔记</title>
     <link>https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/</link>
-    <description>Recent content in 大数据-010flume on Liuzhongzhen的博客</description>
+    <description>Recent content in 大数据-010flume on Liuzhongzhen的技术学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Sat, 22 Apr 2017 08:43:31 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 22 Apr 2017 08:43:31 +0800</lastBuildDate>
+    <atom:link href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>大数据010flume基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Sat, 22 Apr 2017 08:43:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>一.什么是flume Flume是一个分布式、可靠、和高可用的海量日志采集、聚合和传输的系统。 Flum</description>
     </item>
-    
     <item>
       <title>大数据 010flume常用架构</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%B8%B8%E7%94%A8%E6%9E%B6%E6%9E%84/</link>
       <pubDate>Fri, 21 Apr 2017 08:43:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-010flume%E5%B8%B8%E7%94%A8%E6%9E%B6%E6%9E%84/</guid>
       <description>一、常用架构 二、组件结构 Flume是一个分布式、高可靠、高可用的日志收集系统。能够有效的收集、聚合、</description>
     </item>
-    
   </channel>
 </rss>

@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>GlusterFS 001基础知识 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="GlusterFS 001基础知识 - Liuzhongzhen的博客">
+    <title>GlusterFS 001基础知识 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="GlusterFS 001基础知识 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2019-11-09T22:57:56&#43;08:00'>
@@ -49,7 +49,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="https://liuzhongzhen.github.io/">
-                        Liuzhongzhen的博客
+                        Liuzhongzhen的技术学习笔记
                     </a>
                 
                 <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
@@ -58,15 +58,13 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -256,39 +254,39 @@
 <li>yum install glusterfs glusterfs-api glusterfs-cli glusterfs-fuse glusterfs-libs glusterfs-server glusterfs-geo-replication glusterfs-rdma 服务器安装组件</li>
 <li>yum install glusterfs glusterfs-fuse attr -y 客户端安装组件</li>
 <li>防火墙 和iptables 配置
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"> iptables -I INPUT -s 10.33.35.184/16 -p tcp -m tcp --dport 24007:24008 -j ACCEPT <span style="color:#998;font-style:italic">#开放端口24007-24008,实际使用的是24007</span>
- iptables -I INPUT -s 10.19.1.148/24 -p tcp -m tcp --dport <span style="color:#099">24007</span> -j ACCEPT
- iptables -I INPUT -s 10.19.1.148/24 -p tcp -m tcp --dport 49152:49160 -j ACCEPT
- iptables -I INPUT -s 10.19.1.148/24 -p tcp -m tcp --dport 49152:49160 -j ACCEPT <span style="color:#998;font-style:italic">#开放传输服务端口</span>
- iptables -I INPUT -s 116.211.206.147 -p tcp -m tcp --dport 49152:49160 -j ACCEPT <span style="color:#998;font-style:italic">#必须开通端口，要不无法访问</span>
- 其他防火墙配置例子
- firewall-cmd --zone<span style="color:#000;font-weight:bold">=</span>public --add-port<span style="color:#000;font-weight:bold">=</span>24007-24008/tcp --permanent
- firewall-cmd --reload
- iptables -A INPUT -p tcp --dport 24007:24008 -j ACCEPT
- iptables -I INPUT -p all -s 192.168.126.191 -j ACCEPT 
- iptables -I INPUT -p all -s 192.168.126.191/16 -j ACCEPT 
- iptables -A INPUT -p tcp --dport 24007:25000 -j ACCEPT
- iptables -A INPUT -p tcp --dport 49152:49160 -j ACCEPT
- iptables -A INPUT -p udp --dport <span style="color:#099">867</span> -j ACCEPT
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span> iptables -I INPUT -s 10.33.35.184/16 -p tcp -m tcp --dport 24007:24008 -j ACCEPT <span style="color:#998;font-style:italic">#开放端口24007-24008,实际使用的是24007</span>
+</span></span><span style="display:flex;"><span> iptables -I INPUT -s 10.19.1.148/24 -p tcp -m tcp --dport <span style="color:#099">24007</span> -j ACCEPT
+</span></span><span style="display:flex;"><span> iptables -I INPUT -s 10.19.1.148/24 -p tcp -m tcp --dport 49152:49160 -j ACCEPT
+</span></span><span style="display:flex;"><span> iptables -I INPUT -s 10.19.1.148/24 -p tcp -m tcp --dport 49152:49160 -j ACCEPT <span style="color:#998;font-style:italic">#开放传输服务端口</span>
+</span></span><span style="display:flex;"><span> iptables -I INPUT -s 116.211.206.147 -p tcp -m tcp --dport 49152:49160 -j ACCEPT <span style="color:#998;font-style:italic">#必须开通端口，要不无法访问</span>
+</span></span><span style="display:flex;"><span> 其他防火墙配置例子
+</span></span><span style="display:flex;"><span> firewall-cmd --zone<span style="color:#000;font-weight:bold">=</span>public --add-port<span style="color:#000;font-weight:bold">=</span>24007-24008/tcp --permanent
+</span></span><span style="display:flex;"><span> firewall-cmd --reload
+</span></span><span style="display:flex;"><span> iptables -A INPUT -p tcp --dport 24007:24008 -j ACCEPT
+</span></span><span style="display:flex;"><span> iptables -I INPUT -p all -s 192.168.126.191 -j ACCEPT 
+</span></span><span style="display:flex;"><span> iptables -I INPUT -p all -s 192.168.126.191/16 -j ACCEPT 
+</span></span><span style="display:flex;"><span> iptables -A INPUT -p tcp --dport 24007:25000 -j ACCEPT
+</span></span><span style="display:flex;"><span> iptables -A INPUT -p tcp --dport 49152:49160 -j ACCEPT
+</span></span><span style="display:flex;"><span> iptables -A INPUT -p udp --dport <span style="color:#099">867</span> -j ACCEPT
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>service iptables save 保存iptable配置</li>
@@ -298,129 +296,129 @@
 <li>systemctl start glusterd.service  #启动服务</li>
 <li>systemctl list-units &ndash;type=service 列出开机启动的服务</li>
 <li>glusterd 操作，在tw19348上面执行
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gluster peer probe tw19349 加入新节点
-gluster peer probe tw19350 加入新节点
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>gluster peer probe tw19349 加入新节点
+</span></span><span style="display:flex;"><span>gluster peer probe tw19350 加入新节点
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>挂载目录
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">在3台服务器上面创建目录
-mkdir -p /data/gluster_brick1 三个节点都执行
-
-创建可以挂载的卷，任意一台机器执行 
-gluster volume create gluster_vol1 replica <span style="color:#099">3</span> transport tcp tw19348:/data/gluster_brick1 tw19349:/data/gluster_brick1 tw19350:/data/gluster_brick1
-
-启动卷 
-gluster volume start gluster_vol1
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>在3台服务器上面创建目录
+</span></span><span style="display:flex;"><span>mkdir -p /data/gluster_brick1 三个节点都执行
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>创建可以挂载的卷，任意一台机器执行 
+</span></span><span style="display:flex;"><span>gluster volume create gluster_vol1 replica <span style="color:#099">3</span> transport tcp tw19348:/data/gluster_brick1 tw19349:/data/gluster_brick1 tw19350:/data/gluster_brick1
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>启动卷 
+</span></span><span style="display:flex;"><span>gluster volume start gluster_vol1
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>客户端挂载
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">客户端安装yum install glusterfs glusterfs-fuse attr -y
-配置host,里面有服务器的节点
-mount -t glusterfs tw06a2888:/gluster_vol1 /mnt/gluster_test
-或者指定vip，内网ip，外网ip
-mount -t glusterfs 180.101.141.15:/gluster_vol1 /mnt/gluster_test
-或者
-mount -t glusterfs wxtest064vm16:/gluster_vol1 /mnt/gluster_test
-或者
-mount -t glusterfs -o acl 180.101.141.15:/gluster_vol1 /mnt/gluster_test
-停止挂载：先ps aux|grep fuse 查看进程号，然后kill 掉进程就不挂载了
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>客户端安装yum install glusterfs glusterfs-fuse attr -y
+</span></span><span style="display:flex;"><span>配置host,里面有服务器的节点
+</span></span><span style="display:flex;"><span>mount -t glusterfs tw06a2888:/gluster_vol1 /mnt/gluster_test
+</span></span><span style="display:flex;"><span>或者指定vip，内网ip，外网ip
+</span></span><span style="display:flex;"><span>mount -t glusterfs 180.101.141.15:/gluster_vol1 /mnt/gluster_test
+</span></span><span style="display:flex;"><span>或者
+</span></span><span style="display:flex;"><span>mount -t glusterfs wxtest064vm16:/gluster_vol1 /mnt/gluster_test
+</span></span><span style="display:flex;"><span>或者
+</span></span><span style="display:flex;"><span>mount -t glusterfs -o acl 180.101.141.15:/gluster_vol1 /mnt/gluster_test
+</span></span><span style="display:flex;"><span>停止挂载：先ps aux|grep fuse 查看进程号，然后kill 掉进程就不挂载了
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 <li>服务器运行两个服务
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">systemctl status glusterd.service 
-systemctl status glusterfsd.service
-
-基本操作:
-a. 查看卷状态 gluster volume status
-b. 不停机的情况下扩展卷
-gluster volume add-brick glustervol1  wxtest064vm15:/data/gluster_brick2 wxtest064vm16:/data/gluster_brick2 wxtest064vm17:/data/gluster_brick2  
-c. 查看卷信息 gluster volume info gluster_vol1
-d. 重新平衡扇区 gluster volume rebalance gluster_vol1 start
-e. 查看重新平衡的状况 gluster volume rebalance gluster_vol1 status
-f. 强制重启gluster volume start gluster_vol1 force
-数据是hash分布的，并且是复制的
-系统管理分成：节点管理，卷管理，brick管理
-设置 gluster volume <span style="color:#0086b3">set</span> gluster_vol1 performance.client-io-threads on
-设置nfs打开 gluster volume <span style="color:#0086b3">set</span> gluster_vol1 nfs.disable off
-
-客户端对 GlusterFS 设置ACL规则
-设置其他用户对目录有读写权限：
-setfacl -m o::rwx -R arfa_nfs/
-setfacl -m d:o:rwx arfa_nfs/ 
-
-mount -t glusterfs -o acl 10.33.35.116:/gluster_vol1 /mnt/gluster_test
-
-杀死进程：
-gluster volume stop gluster_vol1
-systemctl stop glusterd.service 
-systemctl disable glusterd.service 
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>systemctl status glusterd.service 
+</span></span><span style="display:flex;"><span>systemctl status glusterfsd.service
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>基本操作:
+</span></span><span style="display:flex;"><span>a. 查看卷状态 gluster volume status
+</span></span><span style="display:flex;"><span>b. 不停机的情况下扩展卷
+</span></span><span style="display:flex;"><span>gluster volume add-brick glustervol1  wxtest064vm15:/data/gluster_brick2 wxtest064vm16:/data/gluster_brick2 wxtest064vm17:/data/gluster_brick2  
+</span></span><span style="display:flex;"><span>c. 查看卷信息 gluster volume info gluster_vol1
+</span></span><span style="display:flex;"><span>d. 重新平衡扇区 gluster volume rebalance gluster_vol1 start
+</span></span><span style="display:flex;"><span>e. 查看重新平衡的状况 gluster volume rebalance gluster_vol1 status
+</span></span><span style="display:flex;"><span>f. 强制重启gluster volume start gluster_vol1 force
+</span></span><span style="display:flex;"><span>数据是hash分布的，并且是复制的
+</span></span><span style="display:flex;"><span>系统管理分成：节点管理，卷管理，brick管理
+</span></span><span style="display:flex;"><span>设置 gluster volume <span style="color:#0086b3">set</span> gluster_vol1 performance.client-io-threads on
+</span></span><span style="display:flex;"><span>设置nfs打开 gluster volume <span style="color:#0086b3">set</span> gluster_vol1 nfs.disable off
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>客户端对 GlusterFS 设置ACL规则
+</span></span><span style="display:flex;"><span>设置其他用户对目录有读写权限：
+</span></span><span style="display:flex;"><span>setfacl -m o::rwx -R arfa_nfs/
+</span></span><span style="display:flex;"><span>setfacl -m d:o:rwx arfa_nfs/ 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mount -t glusterfs -o acl 10.33.35.116:/gluster_vol1 /mnt/gluster_test
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>杀死进程：
+</span></span><span style="display:flex;"><span>gluster volume stop gluster_vol1
+</span></span><span style="display:flex;"><span>systemctl stop glusterd.service 
+</span></span><span style="display:flex;"><span>systemctl disable glusterd.service 
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ol>
@@ -483,7 +481,7 @@ systemctl disable glusterd.service
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        &copy; 2023 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的技术学习笔记 By liuzhongzhen</a>
         
     </div>
     <br />

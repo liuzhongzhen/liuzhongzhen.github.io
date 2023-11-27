@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>OpenResty 002openResty内置变量 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="OpenResty 002openResty内置变量 - Liuzhongzhen的博客">
+    <title>OpenResty 002openResty内置变量 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="OpenResty 002openResty内置变量 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2016-05-10T07:57:56&#43;08:00'>
@@ -49,7 +49,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="https://liuzhongzhen.github.io/">
-                        Liuzhongzhen的博客
+                        Liuzhongzhen的技术学习笔记
                     </a>
                 
                 <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
@@ -58,15 +58,13 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -211,197 +209,197 @@
         <div class="post-content">
             <h2 id="openresty变量">openResty变量</h2>
 <p>请求如下:http://baidu.com/liveroom?d=10&amp;b=20</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">ngx.var.uri          : <span style="color:#000;font-weight:bold">/</span>liveroom
-ngx.var.request      : GET <span style="color:#000;font-weight:bold">/</span>liveroom<span style="color:#a61717;background-color:#e3d2d2">?</span>d<span style="color:#000;font-weight:bold">=</span><span style="color:#099">10</span><span style="color:#000;font-weight:bold">&amp;</span>b<span style="color:#000;font-weight:bold">=</span><span style="color:#099">20</span> HTTP<span style="color:#000;font-weight:bold">/</span><span style="color:#099">1.1</span>
-ngx.var.time_local   : <span style="color:#099">30</span><span style="color:#000;font-weight:bold">/</span>Nov<span style="color:#000;font-weight:bold">/</span><span style="color:#099">2016</span>:<span style="color:#099">17</span>:<span style="color:#099">23</span>:<span style="color:#099">45</span> <span style="color:#000;font-weight:bold">+</span><span style="color:#099">0800</span>
-ngx.var.time_iso8601 : <span style="color:#099">2016</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">11</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">30</span>T17:<span style="color:#099">25</span>:<span style="color:#099">37</span><span style="color:#000;font-weight:bold">+</span><span style="color:#099">08</span>:<span style="color:#099">00</span>
-ngx.var.remote_addr  : <span style="color:#099">10.10.40.120</span>
-ngx.var.status       : <span style="color:#099">200</span>
-ngx.var.body_bytes_sent : <span style="color:#099">0</span>
-ngx.var.bytes_sent      : <span style="color:#099">216</span>
-ngx.var.request_length  : <span style="color:#099">200</span>
-ngx.var.request_time    : <span style="color:#099">0.000</span>s
-ngx.var.upstream_addr   : <span style="color:#000;font-weight:bold">nil</span>,
-ngx.var.upstream_response_time  : <span style="color:#000;font-weight:bold">nil</span>,
-ngx.var.remote_user             : <span style="color:#000;font-weight:bold">nil</span>,
-ngx.var.http_accept_language    : <span style="color:#000;font-weight:bold">nil</span>,
-ngx.var.http_user_agent         : curl<span style="color:#000;font-weight:bold">/</span><span style="color:#099">7.19.7</span> (x86_64<span style="color:#000;font-weight:bold">-</span>redhat<span style="color:#000;font-weight:bold">-</span>linux<span style="color:#000;font-weight:bold">-</span>gnu) ...
-ngx.var.http_host               : baidu.com
-ngx.var.http_referer            : <span style="color:#000;font-weight:bold">nil</span>,
-ngx.var.http_cookie             : <span style="color:#a61717;background-color:#e3d2d2">获取所有</span>cookie<span style="color:#a61717;background-color:#e3d2d2">，这里获取到的是一个字符串，如果不存在则返回</span><span style="color:#000;font-weight:bold">nil</span>
-ngx.var.cookie_username         : <span style="color:#a61717;background-color:#e3d2d2">获取单个</span>cookie<span style="color:#a61717;background-color:#e3d2d2">，</span>_后面的cookie的name<span style="color:#a61717;background-color:#e3d2d2">，如果不存在则返回</span><span style="color:#000;font-weight:bold">nil</span>
-ngx.var.connection              : <span style="color:#099">118</span>,
-ngx.var.connection_requests     : <span style="color:#099">1</span>,
-ngx.var.msec                    : <span style="color:#099">1480499093.377</span>
-ngx.var.pipe                    : . 
-ngx.var.request_filename        : <span style="color:#000;font-weight:bold">/</span>usr<span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">local</span><span style="color:#000;font-weight:bold">/</span>ngx_openresty_proxy<span style="color:#000;font-weight:bold">/</span>nginx<span style="color:#000;font-weight:bold">/</span>html<span style="color:#000;font-weight:bold">/</span>xyroom<span style="color:#000;font-weight:bold">/</span>ddm,
-ngx.var.server_protocol         : HTTP<span style="color:#000;font-weight:bold">/</span><span style="color:#099">1.1</span>
-ngx.var.arg_xxx                 : <span style="color:#a61717;background-color:#e3d2d2">获取</span>GET参数xxx的值
-ngx.req.get_headers(<span style="color:#a61717;background-color:#e3d2d2">）</span>          : <span style="color:#a61717;background-color:#e3d2d2">获取请求头信息</span>
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lua" data-lang="lua"><span style="display:flex;"><span>ngx.var.uri          : <span style="color:#000;font-weight:bold">/</span>liveroom
+</span></span><span style="display:flex;"><span>ngx.var.request      : GET <span style="color:#000;font-weight:bold">/</span>liveroom<span style="color:#a61717;background-color:#e3d2d2">?</span>d<span style="color:#000;font-weight:bold">=</span><span style="color:#099">10</span><span style="color:#000;font-weight:bold">&amp;</span>b<span style="color:#000;font-weight:bold">=</span><span style="color:#099">20</span> HTTP<span style="color:#000;font-weight:bold">/</span><span style="color:#099">1.1</span>
+</span></span><span style="display:flex;"><span>ngx.var.time_local   : <span style="color:#099">30</span><span style="color:#000;font-weight:bold">/</span>Nov<span style="color:#000;font-weight:bold">/</span><span style="color:#099">2016</span>:<span style="color:#099">17</span>:<span style="color:#099">23</span>:<span style="color:#099">45</span> <span style="color:#000;font-weight:bold">+</span><span style="color:#099">0800</span>
+</span></span><span style="display:flex;"><span>ngx.var.time_iso8601 : <span style="color:#099">2016</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">11</span><span style="color:#000;font-weight:bold">-</span><span style="color:#099">30</span>T17:<span style="color:#099">25</span>:<span style="color:#099">37</span><span style="color:#000;font-weight:bold">+</span><span style="color:#099">08</span>:<span style="color:#099">00</span>
+</span></span><span style="display:flex;"><span>ngx.var.remote_addr  : <span style="color:#099">10.10.40.120</span>
+</span></span><span style="display:flex;"><span>ngx.var.status       : <span style="color:#099">200</span>
+</span></span><span style="display:flex;"><span>ngx.var.body_bytes_sent : <span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span>ngx.var.bytes_sent      : <span style="color:#099">216</span>
+</span></span><span style="display:flex;"><span>ngx.var.request_length  : <span style="color:#099">200</span>
+</span></span><span style="display:flex;"><span>ngx.var.request_time    : <span style="color:#099">0.000</span>s
+</span></span><span style="display:flex;"><span>ngx.var.upstream_addr   : <span style="color:#000;font-weight:bold">nil</span>,
+</span></span><span style="display:flex;"><span>ngx.var.upstream_response_time  : <span style="color:#000;font-weight:bold">nil</span>,
+</span></span><span style="display:flex;"><span>ngx.var.remote_user             : <span style="color:#000;font-weight:bold">nil</span>,
+</span></span><span style="display:flex;"><span>ngx.var.http_accept_language    : <span style="color:#000;font-weight:bold">nil</span>,
+</span></span><span style="display:flex;"><span>ngx.var.http_user_agent         : curl<span style="color:#000;font-weight:bold">/</span><span style="color:#099">7.19.7</span> (x86_64<span style="color:#000;font-weight:bold">-</span>redhat<span style="color:#000;font-weight:bold">-</span>linux<span style="color:#000;font-weight:bold">-</span>gnu) ...
+</span></span><span style="display:flex;"><span>ngx.var.http_host               : baidu.com
+</span></span><span style="display:flex;"><span>ngx.var.http_referer            : <span style="color:#000;font-weight:bold">nil</span>,
+</span></span><span style="display:flex;"><span>ngx.var.http_cookie             : <span style="color:#a61717;background-color:#e3d2d2">获取所有</span>cookie<span style="color:#a61717;background-color:#e3d2d2">，这里获取到的是一个字符串，如果不存在则返回</span><span style="color:#000;font-weight:bold">nil</span>
+</span></span><span style="display:flex;"><span>ngx.var.cookie_username         : <span style="color:#a61717;background-color:#e3d2d2">获取单个</span>cookie<span style="color:#a61717;background-color:#e3d2d2">，</span>_后面的cookie的name<span style="color:#a61717;background-color:#e3d2d2">，如果不存在则返回</span><span style="color:#000;font-weight:bold">nil</span>
+</span></span><span style="display:flex;"><span>ngx.var.connection              : <span style="color:#099">118</span>,
+</span></span><span style="display:flex;"><span>ngx.var.connection_requests     : <span style="color:#099">1</span>,
+</span></span><span style="display:flex;"><span>ngx.var.msec                    : <span style="color:#099">1480499093.377</span>
+</span></span><span style="display:flex;"><span>ngx.var.pipe                    : . 
+</span></span><span style="display:flex;"><span>ngx.var.request_filename        : <span style="color:#000;font-weight:bold">/</span>usr<span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">local</span><span style="color:#000;font-weight:bold">/</span>ngx_openresty_proxy<span style="color:#000;font-weight:bold">/</span>nginx<span style="color:#000;font-weight:bold">/</span>html<span style="color:#000;font-weight:bold">/</span>xyroom<span style="color:#000;font-weight:bold">/</span>ddm,
+</span></span><span style="display:flex;"><span>ngx.var.server_protocol         : HTTP<span style="color:#000;font-weight:bold">/</span><span style="color:#099">1.1</span>
+</span></span><span style="display:flex;"><span>ngx.var.arg_xxx                 : <span style="color:#a61717;background-color:#e3d2d2">获取</span>GET参数xxx的值
+</span></span><span style="display:flex;"><span>ngx.req.get_headers(<span style="color:#a61717;background-color:#e3d2d2">）</span>          : <span style="color:#a61717;background-color:#e3d2d2">获取请求头信息</span>
+</span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="nginx日志可用变量内容详解">nginx日志可用变量内容详解</h2>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">日志变量            解释                                                  实例日志内容
-<span style="color:#008080">$time_local</span>       通用日志格式下的本地时间；（服务器时间）         <span style="color:#000;font-weight:bold">==</span>&gt; 20/Mar/2014:17:36:21 +0900
-<span style="color:#008080">$remote_addr</span>      客户端（用户）IP地址。                        <span style="color:#000;font-weight:bold">==</span>&gt; 118.000.72.00
-<span style="color:#008080">$status</span>           请求状态（状态码，200表示成功，404表示页面不存在，301表示永久重定向等；<span style="color:#000;font-weight:bold">==</span>&gt; <span style="color:#099">304</span>
-<span style="color:#008080">$body_bytes_sent</span>  发送给客户端的字节数，不包括响应头的大小； 该变量与Apache模块mod_log_config里的“%B”参数兼容；<span style="color:#000;font-weight:bold">==</span>&gt; <span style="color:#099">0</span>
-<span style="color:#008080">$bytes_sent</span>       发送给客户端的总字节数；                 <span style="color:#000;font-weight:bold">==</span>&gt; <span style="color:#099">204</span>
-<span style="color:#008080">$request_length</span>   请求的长度（包括请求行，请求头和请求正文）；<span style="color:#000;font-weight:bold">==</span>&gt; <span style="color:#099">609</span>
-<span style="color:#008080">$request_time</span>     请求处理时间，单位为秒，精度毫秒； 从读入客户端的第一个字节开始，直到把最后一个字符发送给客户端后进行日志写入为止；<span style="color:#000;font-weight:bold">==</span>&gt; 0.001
-<span style="color:#008080">$upstream_addr</span>    集群轮询地址；                                                             <span style="color:#000;font-weight:bold">==</span>&gt; 192.168.18.72:9080
-<span style="color:#008080">$upstream_response_time</span>   是指从Nginx向后端（php-cgi<span style="color:#000;font-weight:bold">)</span>建立连接开始到接受完数据然后关闭连接为止的时间；<span style="color:#000;font-weight:bold">==</span>&gt; 0.001
-<span style="color:#008080">$remote_user</span>     用来记录客户端用户名称；    <span style="color:#000;font-weight:bold">==</span>&gt; 空值 -
-<span style="color:#008080">$request</span>         请求方式（GET或者POST等）；<span style="color:#000;font-weight:bold">==</span>&gt; GET /ja/xxx.js HTTP/1.1
-<span style="color:#008080">$http_accept_language</span>    用户浏览器语言；  <span style="color:#000;font-weight:bold">==</span>&gt; zh-CN,zh;<span style="color:#008080">q</span><span style="color:#000;font-weight:bold">=</span>0.8,en;<span style="color:#008080">q</span><span style="color:#000;font-weight:bold">=</span>0.6
-<span style="color:#008080">$http_user_agent用户浏览器其他信息</span>，浏览器版本、浏览器类型等；<span style="color:#000;font-weight:bold">==</span>&gt; Mozilla/5.0 <span style="color:#000;font-weight:bold">(</span>Windows NT 6.1; WOW64<span style="color:#000;font-weight:bold">)</span> AppleWebKit/537.36 <span style="color:#000;font-weight:bold">(</span>KHTML, like Gecko<span style="color:#000;font-weight:bold">)</span> Chrome/33.0.1750.146 Safari/537.36
-<span style="color:#008080">$http_host</span>      请求的url地址（目标url地址）的host； <span style="color:#000;font-weight:bold">==</span>&gt; tzjs.ptmind.com
-<span style="color:#008080">$http_referer</span>   来源页面，即从哪个页面转到本页，专业名称叫做“referer”；<span style="color:#000;font-weight:bold">==</span>&gt; 直接访问值为空
-<span style="color:#008080">$connection</span>     接的序列号；<span style="color:#000;font-weight:bold">==</span>&gt; <span style="color:#099">8614960</span>
-<span style="color:#008080">$connection_requests</span>   当前通过一个连接获得的请求数量； <span style="color:#000;font-weight:bold">==</span>&gt; <span style="color:#099">1</span>
-<span style="color:#008080">$time_iso8601ISO8601</span>   标准格式下的本地时间；         <span style="color:#000;font-weight:bold">==</span>&gt; 2014-03-20T17:36:21+09:00
-<span style="color:#008080">$msec</span>           日志写入时间。单位为秒，精度是毫秒；     <span style="color:#000;font-weight:bold">==</span>&gt; 1395304581.680
-<span style="color:#008080">$pipe</span>           如果请求是通过HTTP流水线<span style="color:#000;font-weight:bold">(</span>pipelined<span style="color:#000;font-weight:bold">)</span>发送，pipe值为“p”，否则为“.”；<span style="color:#000;font-weight:bold">==</span>&gt; .
-<span style="color:#008080">$uri</span>            请求中的当前URI<span style="color:#000;font-weight:bold">(</span>不带请求参数，参数位于<span style="color:#008080">$args</span><span style="color:#000;font-weight:bold">)</span>，不同于浏览器传递的<span style="color:#008080">$request_uri的值</span>，它可以通过内部重定向，或者使用index指令进行修改。不包括协议和主机名，例如/foo/bar.html<span style="color:#000;font-weight:bold">==</span>&gt; /ja/xxx.js
-<span style="color:#008080">$request_filename</span>          当前连接请求的文件路径，由root或alias指令与URI请求生成。<span style="color:#000;font-weight:bold">==</span>&gt; /usr/local//nginx/html/ja/xxx.js
-<span style="color:#008080">$server_protocol</span>|<span style="color:#008080">$scheme</span>   请求使用的协议，通常是HTTP/1.0或HTTP/1.1。<span style="color:#000;font-weight:bold">==</span>&gt; http
-<span style="color:#008080">$geoip_country_code</span>        用户地理位置代码（国家代码）安装国家地理代码库可用；
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>日志变量            解释                                                  实例日志内容
+</span></span><span style="display:flex;"><span><span style="color:#008080">$time_local</span>       通用日志格式下的本地时间；（服务器时间）         <span style="color:#000;font-weight:bold">==</span>&gt; 20/Mar/2014:17:36:21 +0900
+</span></span><span style="display:flex;"><span><span style="color:#008080">$remote_addr</span>      客户端（用户）IP地址。                        <span style="color:#000;font-weight:bold">==</span>&gt; 118.000.72.00
+</span></span><span style="display:flex;"><span><span style="color:#008080">$status</span>           请求状态（状态码，200表示成功，404表示页面不存在，301表示永久重定向等；<span style="color:#000;font-weight:bold">==</span>&gt; <span style="color:#099">304</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">$body_bytes_sent</span>  发送给客户端的字节数，不包括响应头的大小； 该变量与Apache模块mod_log_config里的“%B”参数兼容；<span style="color:#000;font-weight:bold">==</span>&gt; <span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">$bytes_sent</span>       发送给客户端的总字节数；                 <span style="color:#000;font-weight:bold">==</span>&gt; <span style="color:#099">204</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">$request_length</span>   请求的长度（包括请求行，请求头和请求正文）；<span style="color:#000;font-weight:bold">==</span>&gt; <span style="color:#099">609</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">$request_time</span>     请求处理时间，单位为秒，精度毫秒； 从读入客户端的第一个字节开始，直到把最后一个字符发送给客户端后进行日志写入为止；<span style="color:#000;font-weight:bold">==</span>&gt; 0.001
+</span></span><span style="display:flex;"><span><span style="color:#008080">$upstream_addr</span>    集群轮询地址；                                                             <span style="color:#000;font-weight:bold">==</span>&gt; 192.168.18.72:9080
+</span></span><span style="display:flex;"><span><span style="color:#008080">$upstream_response_time</span>   是指从Nginx向后端（php-cgi<span style="color:#000;font-weight:bold">)</span>建立连接开始到接受完数据然后关闭连接为止的时间；<span style="color:#000;font-weight:bold">==</span>&gt; 0.001
+</span></span><span style="display:flex;"><span><span style="color:#008080">$remote_user</span>     用来记录客户端用户名称；    <span style="color:#000;font-weight:bold">==</span>&gt; 空值 -
+</span></span><span style="display:flex;"><span><span style="color:#008080">$request</span>         请求方式（GET或者POST等）；<span style="color:#000;font-weight:bold">==</span>&gt; GET /ja/xxx.js HTTP/1.1
+</span></span><span style="display:flex;"><span><span style="color:#008080">$http_accept_language</span>    用户浏览器语言；  <span style="color:#000;font-weight:bold">==</span>&gt; zh-CN,zh;<span style="color:#008080">q</span><span style="color:#000;font-weight:bold">=</span>0.8,en;<span style="color:#008080">q</span><span style="color:#000;font-weight:bold">=</span>0.6
+</span></span><span style="display:flex;"><span><span style="color:#008080">$http_user_agent用户浏览器其他信息</span>，浏览器版本、浏览器类型等；<span style="color:#000;font-weight:bold">==</span>&gt; Mozilla/5.0 <span style="color:#000;font-weight:bold">(</span>Windows NT 6.1; WOW64<span style="color:#000;font-weight:bold">)</span> AppleWebKit/537.36 <span style="color:#000;font-weight:bold">(</span>KHTML, like Gecko<span style="color:#000;font-weight:bold">)</span> Chrome/33.0.1750.146 Safari/537.36
+</span></span><span style="display:flex;"><span><span style="color:#008080">$http_host</span>      请求的url地址（目标url地址）的host； <span style="color:#000;font-weight:bold">==</span>&gt; tzjs.ptmind.com
+</span></span><span style="display:flex;"><span><span style="color:#008080">$http_referer</span>   来源页面，即从哪个页面转到本页，专业名称叫做“referer”；<span style="color:#000;font-weight:bold">==</span>&gt; 直接访问值为空
+</span></span><span style="display:flex;"><span><span style="color:#008080">$connection</span>     接的序列号；<span style="color:#000;font-weight:bold">==</span>&gt; <span style="color:#099">8614960</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">$connection_requests</span>   当前通过一个连接获得的请求数量； <span style="color:#000;font-weight:bold">==</span>&gt; <span style="color:#099">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#008080">$time_iso8601ISO8601</span>   标准格式下的本地时间；         <span style="color:#000;font-weight:bold">==</span>&gt; 2014-03-20T17:36:21+09:00
+</span></span><span style="display:flex;"><span><span style="color:#008080">$msec</span>           日志写入时间。单位为秒，精度是毫秒；     <span style="color:#000;font-weight:bold">==</span>&gt; 1395304581.680
+</span></span><span style="display:flex;"><span><span style="color:#008080">$pipe</span>           如果请求是通过HTTP流水线<span style="color:#000;font-weight:bold">(</span>pipelined<span style="color:#000;font-weight:bold">)</span>发送，pipe值为“p”，否则为“.”；<span style="color:#000;font-weight:bold">==</span>&gt; .
+</span></span><span style="display:flex;"><span><span style="color:#008080">$uri</span>            请求中的当前URI<span style="color:#000;font-weight:bold">(</span>不带请求参数，参数位于<span style="color:#008080">$args</span><span style="color:#000;font-weight:bold">)</span>，不同于浏览器传递的<span style="color:#008080">$request_uri的值</span>，它可以通过内部重定向，或者使用index指令进行修改。不包括协议和主机名，例如/foo/bar.html<span style="color:#000;font-weight:bold">==</span>&gt; /ja/xxx.js
+</span></span><span style="display:flex;"><span><span style="color:#008080">$request_filename</span>          当前连接请求的文件路径，由root或alias指令与URI请求生成。<span style="color:#000;font-weight:bold">==</span>&gt; /usr/local//nginx/html/ja/xxx.js
+</span></span><span style="display:flex;"><span><span style="color:#008080">$server_protocol</span>|<span style="color:#008080">$scheme</span>   请求使用的协议，通常是HTTP/1.0或HTTP/1.1。<span style="color:#000;font-weight:bold">==</span>&gt; http
+</span></span><span style="display:flex;"><span><span style="color:#008080">$geoip_country_code</span>        用户地理位置代码（国家代码）安装国家地理代码库可用；
+</span></span></code></pre></td></tr></table>
 </div>
 </div><p>nginx的配置文件中可以使用的内置变量以美元符$开始，也有人叫全局变量。其中，部分预定义的变量的值是可以改变的。</p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
 </span></code></pre></td>
 <td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008080">$arg_PARAMETER</span>      这个变量值为：GET请求中变量名PARAMETER参数的值。
-<span style="color:#008080">$args</span>               这个变量等于GET请求中的参数。例如，foo<span style="color:#000;font-weight:bold">=</span>123&amp;<span style="color:#008080">bar</span><span style="color:#000;font-weight:bold">=</span>blahblah;这个变量只可以被修改
-<span style="color:#008080">$binary_remote_addr</span> 二进制码形式的客户端地址。
-<span style="color:#008080">$body_bytes_sehnt</span>   传送页面的字节数
-<span style="color:#008080">$content_length</span>     请求头中的Content-length字段。
-<span style="color:#008080">$content_type</span>       请求头中的Content-Type字段。
-<span style="color:#008080">$cookie_COOKIE</span>      cookie COOKIE的值。
-<span style="color:#008080">$document_root</span>      当前请求在root指令中指定的值。
-<span style="color:#008080">$document_uri</span>       与<span style="color:#008080">$uri相同</span>。
-<span style="color:#008080">$host</span>               请求中的主机头<span style="color:#000;font-weight:bold">(</span>Host<span style="color:#000;font-weight:bold">)</span>字段，如果请求中的主机头不可用或者空，则为处理请求的server名称<span style="color:#000;font-weight:bold">(</span>处理请求的server的server_name指令的值<span style="color:#000;font-weight:bold">)</span>。值为小写，不包含端口。
-<span style="color:#008080">$hostname</span>           机器名使用 gethostname系统调用的值
-<span style="color:#008080">$http_HEADER</span>        HTTP请求头中的内容，HEADER为HTTP请求中的内容转为小写，-变为_<span style="color:#000;font-weight:bold">(</span>破折号变为下划线<span style="color:#000;font-weight:bold">)</span>，例如：<span style="color:#008080">$http_user_agent</span><span style="color:#000;font-weight:bold">(</span>Uaer-Agent的值<span style="color:#000;font-weight:bold">)</span>, <span style="color:#008080">$http_referer</span>...;
-<span style="color:#008080">$sent_http_HEADER</span>   HTTP响应头中的内容，HEADER为HTTP响应中的内容转为小写，-变为_<span style="color:#000;font-weight:bold">(</span>破折号变为下划线<span style="color:#000;font-weight:bold">)</span>，例如： <span style="color:#008080">$sent_http_cache_control</span>, <span style="color:#008080">$sent_http_content_type</span>...;
-<span style="color:#008080">$is_args</span>            如果<span style="color:#008080">$args设置</span>，值为<span style="color:#d14">&#34;?&#34;</span>，否则为<span style="color:#d14">&#34;&#34;</span>。
-<span style="color:#008080">$limit_rate</span>         这个变量可以限制连接速率。
-<span style="color:#008080">$nginx_version</span>      当前运行的nginx版本号。
-<span style="color:#008080">$query_string</span>       与<span style="color:#008080">$args相同</span>。
-<span style="color:#008080">$remote_addr</span>        客户端的IP地址。
-<span style="color:#008080">$remote_port</span>        客户端的端口。
-<span style="color:#008080">$remote_user</span>        已经经过Auth Basic Module验证的用户名。
-<span style="color:#008080">$request_filename</span>   当前连接请求的文件路径，由root或alias指令与URI请求生成。
-<span style="color:#008080">$request_body</span>       这个变量（0.7.58+）包含请求的主要信息。在使用proxy_pass或fastcgi_pass指令st的location中比较有意义。
-<span style="color:#008080">$request_body_file</span>  客户端请求主体信息的临时文件名。
-<span style="color:#008080">$request_completion</span> 如果请求成功，设为<span style="color:#d14">&#34;OK&#34;</span>；如果请求未完成或者不是一系列请求中最后一部分则设为空。
-<span style="color:#008080">$request_method</span>     这个变量是客户端请求的动作，通常为GET或POST。
-                    包括0.8.20及之前的版本中，这个变量总为main request中的动作，如果当前请求是一个子请求，并不使用这个当前请求的动作。
-<span style="color:#008080">$request_uri</span>        这个变量等于包含一些客户端请求参数的原始URI，它无法修改，请查看<span style="color:#008080">$uri更改或重写URI</span>。
-<span style="color:#008080">$scheme</span>             所用的协议，比如http或者是https，比如rewrite ^<span style="color:#000;font-weight:bold">(</span>.+<span style="color:#000;font-weight:bold">)</span>$ <span style="color:#008080">$scheme</span>://example.com<span style="color:#008080">$1</span> redirect;
-<span style="color:#008080">$server_addr</span>        服务器地址，在完成一次系统调用后可以确定这个值，如果要绕开系统调用，则必须在listen中指定地址并且使用bind参数。
-<span style="color:#008080">$server_name</span>        服务器名称。
-<span style="color:#008080">$server_port</span>        请求到达服务器的端口号。
-<span style="color:#008080">$server_protocol</span>    请求使用的协议，通常是HTTP/1.0或HTTP/1.1。
-<span style="color:#008080">$uri</span>                请求中的当前URI<span style="color:#000;font-weight:bold">(</span>不带请求参数，参数位于<span style="color:#008080">$args</span><span style="color:#000;font-weight:bold">)</span>，不同于浏览器传递的<span style="color:#008080">$request_uri的值</span>，它可以通过内部重定向，或者使用index指令进行修改。不包括协议和主机名，例如/foo/bar.html
-<span style="color:#008080">$http_host</span>          请求域名
-</code></pre></td></tr></table>
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#008080">$arg_PARAMETER</span>      这个变量值为：GET请求中变量名PARAMETER参数的值。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$args</span>               这个变量等于GET请求中的参数。例如，foo<span style="color:#000;font-weight:bold">=</span>123&amp;<span style="color:#008080">bar</span><span style="color:#000;font-weight:bold">=</span>blahblah;这个变量只可以被修改
+</span></span><span style="display:flex;"><span><span style="color:#008080">$binary_remote_addr</span> 二进制码形式的客户端地址。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$body_bytes_sehnt</span>   传送页面的字节数
+</span></span><span style="display:flex;"><span><span style="color:#008080">$content_length</span>     请求头中的Content-length字段。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$content_type</span>       请求头中的Content-Type字段。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$cookie_COOKIE</span>      cookie COOKIE的值。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$document_root</span>      当前请求在root指令中指定的值。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$document_uri</span>       与<span style="color:#008080">$uri相同</span>。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$host</span>               请求中的主机头<span style="color:#000;font-weight:bold">(</span>Host<span style="color:#000;font-weight:bold">)</span>字段，如果请求中的主机头不可用或者空，则为处理请求的server名称<span style="color:#000;font-weight:bold">(</span>处理请求的server的server_name指令的值<span style="color:#000;font-weight:bold">)</span>。值为小写，不包含端口。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$hostname</span>           机器名使用 gethostname系统调用的值
+</span></span><span style="display:flex;"><span><span style="color:#008080">$http_HEADER</span>        HTTP请求头中的内容，HEADER为HTTP请求中的内容转为小写，-变为_<span style="color:#000;font-weight:bold">(</span>破折号变为下划线<span style="color:#000;font-weight:bold">)</span>，例如：<span style="color:#008080">$http_user_agent</span><span style="color:#000;font-weight:bold">(</span>Uaer-Agent的值<span style="color:#000;font-weight:bold">)</span>, <span style="color:#008080">$http_referer</span>...;
+</span></span><span style="display:flex;"><span><span style="color:#008080">$sent_http_HEADER</span>   HTTP响应头中的内容，HEADER为HTTP响应中的内容转为小写，-变为_<span style="color:#000;font-weight:bold">(</span>破折号变为下划线<span style="color:#000;font-weight:bold">)</span>，例如： <span style="color:#008080">$sent_http_cache_control</span>, <span style="color:#008080">$sent_http_content_type</span>...;
+</span></span><span style="display:flex;"><span><span style="color:#008080">$is_args</span>            如果<span style="color:#008080">$args设置</span>，值为<span style="color:#d14">&#34;?&#34;</span>，否则为<span style="color:#d14">&#34;&#34;</span>。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$limit_rate</span>         这个变量可以限制连接速率。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$nginx_version</span>      当前运行的nginx版本号。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$query_string</span>       与<span style="color:#008080">$args相同</span>。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$remote_addr</span>        客户端的IP地址。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$remote_port</span>        客户端的端口。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$remote_user</span>        已经经过Auth Basic Module验证的用户名。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$request_filename</span>   当前连接请求的文件路径，由root或alias指令与URI请求生成。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$request_body</span>       这个变量（0.7.58+）包含请求的主要信息。在使用proxy_pass或fastcgi_pass指令st的location中比较有意义。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$request_body_file</span>  客户端请求主体信息的临时文件名。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$request_completion</span> 如果请求成功，设为<span style="color:#d14">&#34;OK&#34;</span>；如果请求未完成或者不是一系列请求中最后一部分则设为空。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$request_method</span>     这个变量是客户端请求的动作，通常为GET或POST。
+</span></span><span style="display:flex;"><span>                    包括0.8.20及之前的版本中，这个变量总为main request中的动作，如果当前请求是一个子请求，并不使用这个当前请求的动作。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$request_uri</span>        这个变量等于包含一些客户端请求参数的原始URI，它无法修改，请查看<span style="color:#008080">$uri更改或重写URI</span>。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$scheme</span>             所用的协议，比如http或者是https，比如rewrite ^<span style="color:#000;font-weight:bold">(</span>.+<span style="color:#000;font-weight:bold">)</span>$ <span style="color:#008080">$scheme</span>://example.com<span style="color:#008080">$1</span> redirect;
+</span></span><span style="display:flex;"><span><span style="color:#008080">$server_addr</span>        服务器地址，在完成一次系统调用后可以确定这个值，如果要绕开系统调用，则必须在listen中指定地址并且使用bind参数。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$server_name</span>        服务器名称。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$server_port</span>        请求到达服务器的端口号。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$server_protocol</span>    请求使用的协议，通常是HTTP/1.0或HTTP/1.1。
+</span></span><span style="display:flex;"><span><span style="color:#008080">$uri</span>                请求中的当前URI<span style="color:#000;font-weight:bold">(</span>不带请求参数，参数位于<span style="color:#008080">$args</span><span style="color:#000;font-weight:bold">)</span>，不同于浏览器传递的<span style="color:#008080">$request_uri的值</span>，它可以通过内部重定向，或者使用index指令进行修改。不包括协议和主机名，例如/foo/bar.html
+</span></span><span style="display:flex;"><span><span style="color:#008080">$http_host</span>          请求域名
+</span></span></code></pre></td></tr></table>
 </div>
 </div>
         </div>
@@ -454,7 +452,7 @@ ngx.req.get_headers(<span style="color:#a61717;background-color:#e3d2d2">）</sp
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        &copy; 2023 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的技术学习笔记 By liuzhongzhen</a>
         
     </div>
     <br />

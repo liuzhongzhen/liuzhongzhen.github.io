@@ -1,66 +1,55 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>大数据-003hive on Liuzhongzhen的博客</title>
+    <title>大数据-003hive on Liuzhongzhen的技术学习笔记</title>
     <link>https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/</link>
-    <description>Recent content in 大数据-003hive on Liuzhongzhen的博客</description>
+    <description>Recent content in 大数据-003hive on Liuzhongzhen的技术学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Tue, 01 Mar 2016 23:15:23 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Mar 2016 23:15:23 +0800</lastBuildDate>
+    <atom:link href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>大数据003hive基础知识2</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/</link>
       <pubDate>Tue, 01 Mar 2016 23:15:23 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%862/</guid>
       <description>1.大表join小表产生的问题，怎么解决？ mapjoin方案 join因为空值导致长尾(key为空值是</description>
     </item>
-    
     <item>
       <title>大数据003hive基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Tue, 01 Mar 2016 23:05:23 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>转载外部-数仓-hive核心知识点 1.什么是Hive Hive是由Facebook开源用于解决海量结构</description>
     </item>
-    
     <item>
       <title>大数据003hive概念原理</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E6%A6%82%E5%BF%B5%E5%8E%9F%E7%90%86/</link>
       <pubDate>Tue, 01 Mar 2016 13:05:23 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E6%A6%82%E5%BF%B5%E5%8E%9F%E7%90%86/</guid>
       <description>转载外部 技术背景 因为mapreduce继承类和重写方法的固定化，导致编程代码模板化而且非常繁琐， 学习</description>
     </item>
-    
     <item>
       <title>大数据003hive优化相关</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E4%BC%98%E5%8C%96%E7%9B%B8%E5%85%B3/</link>
       <pubDate>Sat, 27 Feb 2016 23:05:23 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E4%BC%98%E5%8C%96%E7%9B%B8%E5%85%B3/</guid>
       <description>一.HIVE执行过程 二.hive表优化 1.分区 静态分区 动态分区 set hive.exec.dynamic.partition=true; set hive.exec.dynamic.partltlon.mode=nonstrict; 2.分桶 - set hive.enforce.bucketing=true; - set hive.enforce.sorting=true; 表优化数据</description>
     </item>
-    
     <item>
       <title>大数据 003hive常用操作</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Sat, 02 Mar 2013 13:05:23 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
-      <description>Alter Column 1 2 3 4 5 6 7 8 9 10 -- 修改column属性（列名，列字段类型，列注释）： ALTERTABLEtable_nameCHANGE[COLUMN]col_old_namecol_new_namecolumn_type[COMMENTcol_comment][FIRST|AFTERcolumn_name]-- 增加/替换column</description>
+      <description>Alter Column 1 2 3 4 5 6 7 8 9 10 -- 修改column属性（列名，列字段类型，列注释）： ALTER TABLE table_name CHANGE [COLUMN] col_old_name col_new_name column_type [COMMENT col_comment] [FIRST|AFTER column_name]</description>
     </item>
-    
     <item>
       <title>大数据 003hive函数大全</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/</link>
       <pubDate>Fri, 01 Mar 2013 13:05:23 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-003hive%E5%87%BD%E6%95%B0%E5%A4%A7%E5%85%A8/</guid>
       <description>一、关系运算： 1. 等值比较: = 语法：A=B 操作类型：所有基本类型 描述: 如果表达式A与表达式B相等，则为</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>大数据-008hbase on Liuzhongzhen的博客</title>
+    <title>大数据-008hbase on Liuzhongzhen的技术学习笔记</title>
     <link>https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/</link>
-    <description>Recent content in 大数据-008hbase on Liuzhongzhen的博客</description>
+    <description>Recent content in 大数据-008hbase on Liuzhongzhen的技术学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 22 Mar 2019 08:42:41 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Mar 2019 08:42:41 +0800</lastBuildDate>
+    <atom:link href="https://liuzhongzhen.github.io/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>大数据 008hbase核心知识整理</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</link>
       <pubDate>Fri, 22 Mar 2019 08:42:41 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E6%95%B4%E7%90%86/</guid>
       <description>一.Hbase调优的方法 高可用 在HBase中Hmaster负责监控RegionServer的生命周期</description>
     </item>
-    
     <item>
       <title>大数据 008hbase基础知识</title>
       <link>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</link>
       <pubDate>Thu, 21 Mar 2019 08:42:41 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/%E5%A4%A7%E6%95%B0%E6%8D%AE-008hbase%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</guid>
       <description>转载外部-HBase 内部探险 一、数据模型 1、重要概念回顾 Namespace（表命名空间）：将多个表分</description>
     </item>
-    
   </channel>
 </rss>

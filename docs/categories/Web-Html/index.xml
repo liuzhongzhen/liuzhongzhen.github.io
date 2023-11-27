@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Web-Html on Liuzhongzhen的博客</title>
+    <title>Web-Html on Liuzhongzhen的技术学习笔记</title>
     <link>https://liuzhongzhen.github.io/categories/Web-Html/</link>
-    <description>Recent content in Web-Html on Liuzhongzhen的博客</description>
+    <description>Recent content in Web-Html on Liuzhongzhen的技术学习笔记</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>&amp;copy; 2021. All rights reserved.</copyright>
-    <lastBuildDate>Mon, 01 Apr 2013 23:14:31 +0800</lastBuildDate><atom:link href="https://liuzhongzhen.github.io/categories/Web-Html/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Apr 2013 23:14:31 +0800</lastBuildDate>
+    <atom:link href="https://liuzhongzhen.github.io/categories/Web-Html/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Html 001html常见问题</title>
       <link>https://liuzhongzhen.github.io/post/Html-001html%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
       <pubDate>Mon, 01 Apr 2013 23:14:31 +0800</pubDate>
-      
       <guid>https://liuzhongzhen.github.io/post/Html-001html%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
       <description>1.XHTML和HTML有什么区别 HTML是一种基本的WEB网页设计语言， XHTML是一个基于XML</description>
     </item>
-    
   </channel>
 </rss>

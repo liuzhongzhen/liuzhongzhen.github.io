@@ -9,8 +9,8 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>Http 001协议原理 | Liuzhongzhen的博客</title>
-    <meta property="og:title" content="Http 001协议原理 - Liuzhongzhen的博客">
+    <title>Http 001协议原理 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="Http 001协议原理 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
     <meta property="article:published_time" content='2015-01-01T22:47:56&#43;08:00'>
@@ -49,7 +49,7 @@
             <div class="site-name ">
                 
                     <a id="logo" href="https://liuzhongzhen.github.io/">
-                        Liuzhongzhen的博客
+                        Liuzhongzhen的技术学习笔记
                     </a>
                 
                 <p class="description">专注于大数据平台架构，平台开发、数据开发与分析、数据产品建设</p>
@@ -58,15 +58,13 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="current" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/leetcode/" title="leetcode">leetcode</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
-                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
-                    
                     <a  href="https://liuzhongzhen.github.io/products/" title="作品">作品</a>
+                    
+                    <a  href="https://liuzhongzhen.github.io/about/" title="关于">关于</a>
                     
                 </nav>
             </div>
@@ -373,7 +371,7 @@ TCP/IP协议栈</p>
 <p>
         <img class="mx-auto" alt="cgi" src="../../imgs/post/web/m012.png" />   
     </p>
-<p>上面只是 DNS 的简化版本，实际上 DNS 解析无法一步到位，比较复杂，要理解 DNS 的工作机制，首先我们要看懂域名的层级结构，类似 <a href="http://www.baidu.com">www.baidu.com</a> 这样的网址也叫域名，是一个有层次的结构, 最右边的被称为顶级域名，然后是二级域名，层级关系向左降低，最左边的是主机名，通常用来表示主机的用途，比如 「www」 表示提供万维网服务</p>
+<p>上面只是 DNS 的简化版本，实际上 DNS 解析无法一步到位，比较复杂，要理解 DNS 的工作机制，首先我们要看懂域名的层级结构，类似 <a href="https://www.baidu.com">www.baidu.com</a> 这样的网址也叫域名，是一个有层次的结构, 最右边的被称为顶级域名，然后是二级域名，层级关系向左降低，最左边的是主机名，通常用来表示主机的用途，比如 「www」 表示提供万维网服务</p>
 <p>
         <img class="mx-auto" alt="cgi" src="../../imgs/post/web/m013.png" />   
     </p>
@@ -382,17 +380,17 @@ TCP/IP协议栈</p>
 <ul>
 <li>根域名服务器（Root DNS Server）: 返回「com」,「cn」,「net」等顶级域名服务器的 IP 地址，</li>
 <li>顶级域名服务器（Top-level DNS Server）：管理各自域名下的权威域名服务器，比如 com 顶级域名服务器可以返回 apple.com 域名服务器的 IP 地址；</li>
-<li>权威域名服务器（Authoritative DNS Server）：管理自己域名下主机的 IP 地址，比如 apple.com 权威域名服务器可以返回 <a href="http://www.apple.com">www.apple.com</a> 的 IP 地址。</li>
+<li>权威域名服务器（Authoritative DNS Server）：管理自己域名下主机的 IP 地址，比如 apple.com 权威域名服务器可以返回 <a href="https://www.apple.com">www.apple.com</a> 的 IP 地址。</li>
 </ul>
 <p>
         <img class="mx-auto" alt="cgi" src="../../imgs/post/web/m014.png" />   
     
 DNS 核心系统层级结构</p>
-<p>根域名服务器是关键，必须是众所周知的，找到了它，下面的各级域名服务器才能找到，否则域名解析就无从谈起了。既然知道了 DNS 的层次之分，那么不难猜出请求 <a href="http://www.apple.com">www.apple.com</a> 的 DNS 解析如下</p>
+<p>根域名服务器是关键，必须是众所周知的，找到了它，下面的各级域名服务器才能找到，否则域名解析就无从谈起了。既然知道了 DNS 的层次之分，那么不难猜出请求 <a href="https://www.apple.com">www.apple.com</a> 的 DNS 解析如下</p>
 <ol>
 <li>首先访问根域名服务器，获取「com」顶级域名服务器的地址</li>
 <li>请求「com」顶级域名服务器，返回「apple.com」域名服务器的地址</li>
-<li>然后返回「apple.com」域名服务器，返回 <a href="http://www.apple.com">www.apple.com</a> 的地址</li>
+<li>然后返回「apple.com」域名服务器，返回 <a href="https://www.apple.com">www.apple.com</a> 的地址</li>
 </ol>
 <p>以上三层解析我们称为 DNS 核心解析系统，那么大家想想，全世界的 PC，app 等设备多如牛毛，如果每发一次请求都要按上面的 DNS 解析来获取 IP，那估计 DNS 解析系统就要炸了，如何缓解这种压力呢，答案是用缓存，事实上很多大公司，或网络运营商都会自建自己的 DNS 服务器，作为用户查询的代理，代替用户请求核心 DNS 系统，这样如果查到的话可以缓存查询记录，再次收到请求的号如果有缓存结果或者缓存未过期，则直接返回原来的缓存结果，大家可能听过 Google 的 8.8.8.8 DNS 解析服务器，这种就是 Google 自建的，我们一般称这种自建的为「非权威域名服务器」。</p>
 <p>
@@ -400,18 +398,18 @@ DNS 核心系统层级结构</p>
     
 配置 DNS Server</p>
 <p>除了非权威域名服务器，还有浏览器缓存，操作系统缓存（大家熟知的 /etc/hosts 就是操作系统 DSN 缓存的一种）</p>
-<p>这样的话如果请求 <a href="http://www.example.com">www.example.com</a>，dns 的完整解析流程如下:</p>
+<p>这样的话如果请求 <a href="https://www.example.com">www.example.com</a>，dns 的完整解析流程如下:</p>
 <p>
         <img class="mx-auto" alt="cgi" src="../../imgs/post/web/m016.png" />   
     </p>
-<p>1、 浏览器中输入 <a href="http://www.example.com">www.example.com</a> 后，会先查看 浏览器的 DNS 缓存是否过期，未过期直接取缓存的，已过期会继续请求操作系统的缓存（/etc/hosts 文件等），还未找到，进入步骤 2</p>
+<p>1、 浏览器中输入 <a href="https://www.example.com">www.example.com</a> 后，会先查看 浏览器的 DNS 缓存是否过期，未过期直接取缓存的，已过期会继续请求操作系统的缓存（/etc/hosts 文件等），还未找到，进入步骤 2</p>
 <p>2、 请求本地地址配置的 DNS resolver（非权威域名服务器），一般由用户的 Internet 服务提供商 (ISP) 进行管理，例如有线 Internet 服务提供商、DSL 宽带提供商或公司网，MAC 的同学可以打开网络配置中的 DNS Servers 来看下默认 ISP 提供的域名服务器（如果想用其他的非权威域名服务器，填入即可，这样就会覆盖 ISP 提供的默认地址）
 
         <img class="mx-auto" alt="cgi" src="../../imgs/post/web/m017.png" />   
     </p>
-<p>3、 DNS resolver 将 <a href="http://www.example.com">www.example.com</a> 的请求转发到 DNS 根名称服务器, 根服务器返回「.com」顶级域名服务器地址</p>
-<p>4、 DNS resolver 再次转发 <a href="http://www.example.com">www.example.com</a> 的请求，这次转发到步骤三获取到的 .com 域的一个 TLD 名称服务器。.com 域的名称服务器使用与 example.com 域相关的四个 Amazon Route 53 名称服务器的名称来响应该请求。</p>
-<p>5、Amazon Route 53 名称服务器在 example.com 托管区域中查找 <a href="http://www.example.com">www.example.com</a> 记录，获得相关值，例如，Web 服务器的 IP 地址 (192.0.2.44)，并将 IP 地址返回至 DNS 解析程序。</p>
+<p>3、 DNS resolver 将 <a href="https://www.example.com">www.example.com</a> 的请求转发到 DNS 根名称服务器, 根服务器返回「.com」顶级域名服务器地址</p>
+<p>4、 DNS resolver 再次转发 <a href="https://www.example.com">www.example.com</a> 的请求，这次转发到步骤三获取到的 .com 域的一个 TLD 名称服务器。.com 域的名称服务器使用与 example.com 域相关的四个 Amazon Route 53 名称服务器的名称来响应该请求。</p>
+<p>5、Amazon Route 53 名称服务器在 example.com 托管区域中查找 <a href="https://www.example.com">www.example.com</a> 记录，获得相关值，例如，Web 服务器的 IP 地址 (192.0.2.44)，并将 IP 地址返回至 DNS 解析程序。</p>
 <p>6、DNS resolver 最终获得用户需要的 IP 地址。解析程序将此值返回至 Web 浏览器。DNS 解析程序还会将 example.com 的 IP 地址缓存 (存储) 您指定的时长，以便它能够在下次有人浏览 example.com 时更快地作出响应。</p>
 <p>我们可以用 dig 工具来验证一下上面的请求流程</p>
 <p>
@@ -765,7 +763,7 @@ HTTP 1,2,3 三者对比</p>
 
                     <footer id="footer">
     <div>
-        &copy; 2022 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的博客 By liuzhongzhen</a>
+        &copy; 2023 <a href="https://liuzhongzhen.github.io/">Liuzhongzhen的技术学习笔记 By liuzhongzhen</a>
         
     </div>
     <br />
