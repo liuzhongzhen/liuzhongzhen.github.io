@@ -9,21 +9,24 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>Books | Liuzhongzhen的技术学习笔记</title>
-    <meta property="og:title" content="Books - Liuzhongzhen的技术学习笔记">
+    <title>Go语言高级编程 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="Go语言高级编程 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
+    <meta property="article:published_time" content='2023-05-01T10:19:32&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2023-05-01T10:19:32&#43;08:00'>
         
     <meta name="Keywords" content="java python php sql">
-    <meta name="description" content="Books">
+    <meta name="description" content="Go语言高级编程">
         
     <meta name="author" content="liuzhongzhen">
-    <meta property="og:url" content="https://liuzhongzhen.github.io/books/">
-    <link rel="shortcut icon" href='../../../favicon.ico'  type="image/x-icon">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/books/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
 
-    <link rel="stylesheet" href='../../../css/normalize.css'>
-    <link rel="stylesheet" href='../../../css/style.css'>
-    <link rel="alternate" type="application/rss+xml+https://liuzhongzhen.github.io/books/index.xml" href="Liuzhongzhen的技术学习笔记" title="%!s(MISSING)" />
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
     <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
@@ -32,9 +35,9 @@
     
     
     
-        <link rel="stylesheet" href='../../../css/douban.css'>
+        <link rel="stylesheet" href='../../css/douban.css'>
     
-        <link rel="stylesheet" href='../../../css/other.css'>
+        <link rel="stylesheet" href='../../css/other.css'>
     
 </head>
 
@@ -55,7 +58,7 @@
                 <nav id="nav-menu" class="clearfix">
                     <a class="" href="https://liuzhongzhen.github.io/">首页</a>
                     
-                    <a class="current" href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
+                    <a  href="https://liuzhongzhen.github.io/books/" title="读书">读书</a>
                     
                     <a  href="https://liuzhongzhen.github.io/archives/" title="归档">归档</a>
                     
@@ -76,163 +79,176 @@
                 <div class="col-8" id="main">
                     
 <div class="res-cons">
-    
-    
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents"></nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
     <article class="post">
         <header>
-            <h1 class="post-title">
-                <a href="https://liuzhongzhen.github.io/books/PHP%E8%B7%9F%E5%85%84%E5%BC%9F%E8%BF%9E%E5%AD%A6PHP/" title="跟兄弟连学PHP">跟兄弟连学PHP</a>
-            </h1>
+            <h1 class="post-title">Go语言高级编程</h1>
         </header>
         <date class="post-meta meta-date">
-            2014年1月10日
+            2023年5月1日
         </date>
         
-        <div class="post-content">
-            ……
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
         </div>
-        <p class="readmore"><a href="https://liuzhongzhen.github.io/books/PHP%E8%B7%9F%E5%85%84%E5%BC%9F%E8%BF%9E%E5%AD%A6PHP/">阅读全文</a></p>
+        
+        
+        <div class="post-content">
+            <p>
+        <img class="mx-auto" alt="bk" src="../../imgs/books/go_program_high.jpeg" />   
+    </p>
+<p>本书从实践出发讲解Go语言的进阶知识。<br>
+本书共6章，<br>
+第1章简单回顾Go语言的发展历史；<br>
+第2章和第3章系统地介绍CGO编程和Go汇编语言的用法；<br>
+第4章对RPC和Protobuf技术进行深入介绍，并讲述如何打造一个自己的RPC系统；<br>
+第5章介绍工业级环境的Web系统的设计和相关技术；<br>
+第6章介绍Go语言在分布式领域的一些编程技术。<br>
+书中还涉及CGO和汇编方面的知识，其中CGO能够帮助读者继承的软件遗产，而在深入学习Go运行时，汇编对于理解各种语法设计的底层实现是必不可少的知识。<br>
+此外，本书还包含一些紧跟潮流的内容，介绍开源界流行的gRPC及其相关应用，讲述Go Web框架中的基本实现原理和大型Web项目中的技术要点，引导读者对Go语言进行更深入的应用。<br>
+本书适合对Go语言的应用已经有一些心得，并希望能够深入理解底层实现原理或者是希望能够在Web开发方面结合Go语言来实现进阶学习的技术人员学习</p>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="../../books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90YARN%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/">Hadoop技术内幕之深入解析YARN架构设计与实现原理</a></li>
+        
+        <li><a href="../../books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90MapReduce%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/">Hadoop技术内幕之深入解析MapReduce架构设计与实现原理</a></li>
+        
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-Horizon%E5%8F%AF%E8%A7%86%E5%8C%96%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">网心-Horizon可视化系统设计</a></li>
+        
+        <li><a href="../../post/Php-013centos7%E5%AE%89%E8%A3%85php7%E7%89%88%E6%9C%AC/">Php 013centos7安装php7版本</a></li>
+        
+        <li><a href="../../post/Redis-002centos7%E6%90%AD%E5%BB%BAredis%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/">Redis 002centos7搭建redis集群</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
     </article>
     
     
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://liuzhongzhen.github.io/books/PHP6%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/" title="PHP6高级编程">PHP6高级编程</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2013年8月3日
-        </date>
-        
-        <div class="post-content">
-            ……
-        </div>
-        <p class="readmore"><a href="https://liuzhongzhen.github.io/books/PHP6%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://liuzhongzhen.github.io/books/PHP%E5%92%8CMySQL-WEB%E5%BC%80%E5%8F%91-4th/" title="PHP和MySQL WEB开发 4th">PHP和MySQL WEB开发 4th</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2013年5月1日
-        </date>
-        
-        <div class="post-content">
-            ……
-        </div>
-        <p class="readmore"><a href="https://liuzhongzhen.github.io/books/PHP%E5%92%8CMySQL-WEB%E5%BC%80%E5%8F%91-4th/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://liuzhongzhen.github.io/books/PHP%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%981200%E4%BE%8B/" title="PHP开发实战1200例">PHP开发实战1200例</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2012年11月3日
-        </date>
-        
-        <div class="post-content">
-            ……
-        </div>
-        <p class="readmore"><a href="https://liuzhongzhen.github.io/books/PHP%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%981200%E4%BE%8B/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://liuzhongzhen.github.io/books/PHP5%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/" title="PHP5高级应用开发实践">PHP5高级应用开发实践</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2012年10月3日
-        </date>
-        
-        <div class="post-content">
-            ……
-        </div>
-        <p class="readmore"><a href="https://liuzhongzhen.github.io/books/PHP5%E9%AB%98%E7%BA%A7%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91%E5%AE%9E%E8%B7%B5/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://liuzhongzhen.github.io/books/PHP%E7%BB%86%E8%AF%B4PHP-%E7%AC%AC2%E7%89%88/" title="细说PHP 第2版">细说PHP 第2版</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2012年9月10日
-        </date>
-        
-        <div class="post-content">
-            ……
-        </div>
-        <p class="readmore"><a href="https://liuzhongzhen.github.io/books/PHP%E7%BB%86%E8%AF%B4PHP-%E7%AC%AC2%E7%89%88/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://liuzhongzhen.github.io/books/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/" title="百年孤独">百年孤独</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2012年7月2日
-        </date>
-        
-        <div class="post-content">
-            作者 加西亚·马尔克斯 简介 背影是真的人是假的 没什么执著 一百年前你不是你我不是我 悲哀是真的泪是假的 本来没……
-        </div>
-        <p class="readmore"><a href="https://liuzhongzhen.github.io/books/%E7%99%BE%E5%B9%B4%E5%AD%A4%E7%8B%AC/">阅读全文</a></p>
-    </article>
-    
-    
-    
-
-
-
-<ol class="page-navigator">
-    
-    <li class="prev">
-        <a href="https://liuzhongzhen.github.io/books/page/2/">上一页</a>
-    </li>
-    
 
     
-    <li >
-        <a href="https://liuzhongzhen.github.io/books/">1</a>
-    </li>
     
-    <li >
-        <a href="https://liuzhongzhen.github.io/books/page/2/">2</a>
-    </li>
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
     
-    <li  class="current">
-        <a href="https://liuzhongzhen.github.io/books/page/3/">3</a>
-    </li>
-    
-
-    
-</ol>
-
-
-
 </div>
 
                     <footer id="footer">
@@ -255,9 +271,19 @@
 </footer>
 
 
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 <a id="rocket" href="#top"></a>
-<script type="text/javascript" src='../../../js/totop.js?v=0.0.0' async=""></script>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
 
 
 
@@ -266,7 +292,7 @@
 
 
 
-    <script src='../../../js/douban.js'></script>
+    <script src='../../js/douban.js'></script>
 
                 </div>
 
@@ -330,7 +356,7 @@
     
 
     <section class="widget">
-        <h3 class="widget-title"><a href='../../../categories/'>分类</a></h3>
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
 <ul class="widget-list">
     
     <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80001%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">CS基础001数据结构 (12)</a></li>
@@ -427,7 +453,7 @@
     </section>
 
     <section class="widget">
-        <h3 class="widget-title"><a href='../../../tags/'>标签</a></h3>
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
 <div class="tagcloud">
     
 </div>
