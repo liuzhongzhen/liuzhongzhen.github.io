@@ -10,6 +10,13 @@
     <lastBuildDate>Thu, 09 Nov 2023 20:57:56 +0800</lastBuildDate>
     <atom:link href="https://liuzhongzhen.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>个人简介</title>
+      <link>https://liuzhongzhen.github.io/about/</link>
+      <pubDate>Fri, 05 Sep 2025 20:42:01 +0800</pubDate>
+      <guid>https://liuzhongzhen.github.io/about/</guid>
+      <description>关于作者 性别：男 生日：1989.11 学历：本科 现居：广东省深圳市宝安区 籍贯：河北省衡水市故城县 地址：</description>
+    </item>
+    <item>
       <title>LNMP 001环境安装</title>
       <link>https://liuzhongzhen.github.io/post/LNMP-001%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/</link>
       <pubDate>Thu, 09 Nov 2023 20:57:56 +0800</pubDate>
@@ -330,13 +337,6 @@
       <pubDate>Wed, 01 Jan 2020 23:41:13 +0800</pubDate>
       <guid>https://liuzhongzhen.github.io/leetcode/0001-TwoSum/</guid>
       <description></description>
-    </item>
-    <item>
-      <title>个人简介</title>
-      <link>https://liuzhongzhen.github.io/about/</link>
-      <pubDate>Wed, 01 Jan 2020 20:42:01 +0800</pubDate>
-      <guid>https://liuzhongzhen.github.io/about/</guid>
-      <description>关于作者 性别：男 生日：1989.11 学历：本科 现居：广东省深圳市宝安区 籍贯：河北省衡水市故城县 地址：</description>
     </item>
     <item>
       <title>OpenResty 006logrotate日志切割使用</title>
