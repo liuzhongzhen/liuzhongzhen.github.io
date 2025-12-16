@@ -9,20 +9,24 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>404 Page not found | Liuzhongzhen的技术学习笔记</title>
-    <meta property="og:title" content="404 Page not found - Liuzhongzhen的技术学习笔记">
+    <title>网心-生态合作项目 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="网心-生态合作项目 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
+    <meta property="article:published_time" content='2025-10-16T12:10:14&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2025-10-16T12:10:14&#43;08:00'>
         
     <meta name="Keywords" content="java python php sql">
-    <meta name="description" content="404 Page not found">
+    <meta name="description" content="网心-生态合作项目">
         
     <meta name="author" content="liuzhongzhen">
-    <meta property="og:url" content="https://liuzhongzhen.github.io/404.html">
-    <link rel="shortcut icon" href='./favicon.ico'  type="image/x-icon">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E7%94%9F%E6%80%81%E5%90%88%E4%BD%9C%E9%A1%B9%E7%9B%AE/">
+    <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
 
-    <link rel="stylesheet" href='./css/normalize.css'>
-    <link rel="stylesheet" href='./css/style.css'>
+    <link rel="stylesheet" href='../../css/normalize.css'>
+    <link rel="stylesheet" href='../../css/style.css'>
     <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
@@ -31,9 +35,9 @@
     
     
     
-        <link rel="stylesheet" href='./css/douban.css'>
+        <link rel="stylesheet" href='../../css/douban.css'>
     
-        <link rel="stylesheet" href='./css/other.css'>
+        <link rel="stylesheet" href='../../css/other.css'>
     
 </head>
 
@@ -74,37 +78,225 @@
 
                 <div class="col-8" id="main">
                     
-<div class="body404">
-    <div class="info404">
-        <header id="header404" class="clearfix">
-            <div class="site-name404"><i>404</i></div>
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#角色">角色</a></li>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#目标">目标</a></li>
+    <li><a href="#项目架构">项目架构</a></li>
+    <li><a href="#项目介绍">项目介绍</a></li>
+    <li><a href="#关联系统">关联系统</a></li>
+    <li><a href="#开发工具和语言">开发工具和语言</a></li>
+    <li><a href="#项目成果">项目成果</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">网心-生态合作项目</h1>
         </header>
-        <section>
-            <div class="title404">
-                <p>每一个平凡的日常<br />都是连续发生中的奇迹</p>
-            </div>
-            
+        <date class="post-meta meta-date">
+            2025年10月16日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h2 id="角色">角色</h2>
+<p>项目负责人</p>
+<h2 id="背景">背景</h2>
+<p>随着pcdn市场的快速增长和门槛的降低，市场上出现大量pcdn厂商，大量的边缘节点和带宽分散在中小pcdn厂商手里，
+但是大量中小pcdn厂商没有对接cdn应用大客户的能力或者没有充足的B端业务导致手里的资源不能充分利用，为增加
+公司的节点数量和带宽储备，需要开发一套系统平台，对接各个中小pcdn厂商或者大的资源个人，提供基本的资源管理
+操作。</p>
+<h2 id="目标">目标</h2>
+<ol>
+<li>支持厂商进行api调用</li>
+<li>提供pc管理平台和小程序管理操作</li>
+<li>提供用户管理，子帐号管理，权限管理，设备管理，业务切换，账单管理，合作管理，OEM管理，收益提现等</li>
+<li>支持多个主体hyy,wty,kwyl,zhyj,qhwx,jxjd</li>
+</ol>
+<h2 id="项目架构">项目架构</h2>
+<p>
+        <img class="mx-auto" alt="jiagou" src="../../imgs/wxsea/jiagou.jpg" />   
+    </p>
+<h2 id="项目介绍">项目介绍</h2>
+<ol>
+<li>接入代理，基于openresty和lua开发，可以支持多个vhosts，配置多个主体，根据不同的访问模块做动态解析代理，
+做基础的限流限频控制</li>
+<li>用户和权限管理，支持用户注册，登入，个人信息管理；支持api ak，授权和访问控制管理；支持oem小程序，合作，
+导航菜单等配置管理；支持子帐号的增加删除，菜单权限控制；支持实名信息管理，个人和企业实名认证和实名信息查询</li>
+<li>设备管理，支持设备激活，设备信息查询，设备网络、业务、标签等配置</li>
+<li>业务管理，支持内控管理配置业务，设置业务招募要求，地区需求容量，招募价格等；提供报名业务，发起业务验收和部署，
+更新业务部署结果，提供给设备管理进行操作</li>
+<li>账单提现管理，支持各种粒度的账单同步和查询，下载；支持发票管理</li>
+<li>分成管理，支持配置oem的分成类型和分成比例，支持分成信息查询</li>
+<li>公告通知，支持配置公告和通知，查询通知公告。</li>
+</ol>
+<h2 id="关联系统">关联系统</h2>
+<ol>
+<li>终端节点接入，提供iso镜像，插件程序，docker等方式把节点注册进来</li>
+<li>资源注册激活，提供节点注册激活服务，生成设备序列号，写入注册信息表等</li>
+<li>仓库管理和OTA， 存放插件版本和镜像版本，提供插件在线升级能力</li>
+<li>通道服务，处理任务下发，数据上报</li>
+<li>心跳数据服务，处理节点基础信息的采集上报和接收</li>
+</ol>
+<h2 id="开发工具和语言">开发工具和语言</h2>
+<ol>
+<li>语言: go语言，gin和kratos框架，gorm框架</li>
+<li>前端: react语言</li>
+<li>存储: mysql/redis</li>
+<li>接入: openresty/lua</li>
+</ol>
+<h2 id="项目成果">项目成果</h2>
+<ol>
+<li>带来客户几百家，增加节点几十万，带宽好几T</li>
+</ol>
+
+        </div>
+
+        
+
+
+        
 
 <div class="post-archive">
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="./products/%E7%BD%91%E5%BF%83-%E7%94%9F%E6%80%81%E5%90%88%E4%BD%9C%E9%A1%B9%E7%9B%AE/">网心-生态合作项目</a></li>
+        <li><a href="../../about/">个人简介</a></li>
         
-        <li><a href="./about/">个人简介</a></li>
+        <li><a href="../../post/LNMP-001%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/">LNMP 001环境安装</a></li>
         
-        <li><a href="./post/LNMP-001%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/">LNMP 001环境安装</a></li>
+        <li><a href="../../books/Go%E4%B8%93%E5%AE%B6%E7%BC%96%E7%A8%8B/">Go专家编程</a></li>
         
-        <li><a href="./books/Go%E4%B8%93%E5%AE%B6%E7%BC%96%E7%A8%8B/">Go专家编程</a></li>
+        <li><a href="../../books/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/">Go语言高级编程</a></li>
         
-        <li><a href="./books/Go%E8%AF%AD%E8%A8%80%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B/">Go语言高级编程</a></li>
+        <li><a href="../../books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90YARN%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/">Hadoop技术内幕之深入解析YARN架构设计与实现原理</a></li>
         
     </ul>
 </div>
 
-            <a rel="nofollow" href="https://liuzhongzhen.github.io/" class="index404">回首页看看</a>
-        </section>
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "liuzhongzhen/liuzhongzhen.github.io"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
     </div>
+    
 </div>
 
                     <footer id="footer">
@@ -127,9 +319,19 @@
 </footer>
 
 
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 <a id="rocket" href="#top"></a>
-<script type="text/javascript" src='./js/totop.js?v=0.0.0' async=""></script>
+<script type="text/javascript" src='../../js/totop.js?v=0.0.0' async=""></script>
 
 
 
@@ -138,7 +340,7 @@
 
 
 
-    <script src='./js/douban.js'></script>
+    <script src='../../js/douban.js'></script>
 
                 </div>
 
@@ -202,7 +404,7 @@
     
 
     <section class="widget">
-        <h3 class="widget-title"><a href='./categories/'>分类</a></h3>
+        <h3 class="widget-title"><a href='../../categories/'>分类</a></h3>
 <ul class="widget-list">
     
     <li><a href="https://liuzhongzhen.github.io/categories/CS%E5%9F%BA%E7%A1%80001%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">CS基础001数据结构 (12)</a></li>
@@ -301,7 +503,7 @@
     </section>
 
     <section class="widget">
-        <h3 class="widget-title"><a href='./tags/'>标签</a></h3>
+        <h3 class="widget-title"><a href='../../tags/'>标签</a></h3>
 <div class="tagcloud">
     
 </div>
