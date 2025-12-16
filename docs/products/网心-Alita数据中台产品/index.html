@@ -9,17 +9,17 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>网心-Alita数据中台产品 | Liuzhongzhen的技术学习笔记</title>
-    <meta property="og:title" content="网心-Alita数据中台产品 - Liuzhongzhen的技术学习笔记">
+    <title>网心-大数据gateway系统 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="网心-大数据gateway系统 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2021-09-01T16:41:10&#43;08:00'>
+    <meta property="article:published_time" content='2022-10-01T16:41:10&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2021-09-01T16:41:10&#43;08:00'>
+    <meta property="article:modified_time" content='2022-10-01T16:41:10&#43;08:00'>
         
     <meta name="Keywords" content="java python php sql">
-    <meta name="description" content="网心-Alita数据中台产品">
+    <meta name="description" content="网心-大数据gateway系统">
         
     <meta name="author" content="liuzhongzhen">
     <meta property="og:url" content="https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-Alita%E6%95%B0%E6%8D%AE%E4%B8%AD%E5%8F%B0%E4%BA%A7%E5%93%81/">
@@ -145,15 +145,17 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#一目标">一、目标</a></li>
-    <li><a href="#二应用技术">二、应用技术</a>
+    <li><a href="#角色">角色</a></li>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#解决方案">解决方案</a></li>
+    <li><a href="#项目架构">项目架构</a></li>
+    <li><a href="#数据资产管理系统技术">数据资产管理系统技术</a>
       <ul>
         <li><a href="#后端技术架构">后端技术架构</a></li>
         <li><a href="#前端技术架构">前端技术架构</a></li>
       </ul>
     </li>
-    <li><a href="#三功能列表">三、功能列表</a></li>
-    <li><a href="#四项目截图">四、项目截图</a></li>
+    <li><a href="#查询引擎代理技术">查询引擎代理技术</a></li>
   </ul>
 </nav>
     </div>
@@ -187,10 +189,10 @@
 </script>
     <article class="post">
         <header>
-            <h1 class="post-title">网心-Alita数据中台产品</h1>
+            <h1 class="post-title">网心-大数据gateway系统</h1>
         </header>
         <date class="post-meta meta-date">
-            2021年9月1日
+            2022年10月1日
         </date>
         
         
@@ -201,9 +203,24 @@
         
         
         <div class="post-content">
-            <h2 id="一目标">一、目标</h2>
-<p>构建一站式数据采集、ETL、开发、应用、运维管理平台</p>
-<h2 id="二应用技术">二、应用技术</h2>
+            <h2 id="角色">角色</h2>
+<p>项目负责人</p>
+<h2 id="背景">背景</h2>
+<p>随着公司对大数据资产访问控制的严格管理，需要对访问大数据资产的用户进行鉴权，公司有各种大数据应用产品，
+horizon报表查询系统，api调用，superset即席查询，邮件推送等，后端的计算存储引擎也有多种，包括impala，
+hive，clickhouse，tidb，mysql，trino，如何在应用层查询鉴权成为一个问题。</p>
+<h2 id="解决方案">解决方案</h2>
+<ol>
+<li>改造公司的数据应用产品(horizon,superset)，在查询发出前对查询sql进行染色，增加操作用户名, 查询sql统一发生到大数据gateway</li>
+<li>分别改造hive/impala查询引擎代码，增加ckproxy，mysqlproxy，改造trino代码，拦截查询sql，解析用户名，sql操作类型，sql数据库表</li>
+<li>开发数据资产管理系统，同时提供用户授权和鉴权api</li>
+<li>在查询引擎代理层调用鉴权api进行鉴权</li>
+</ol>
+<h2 id="项目架构">项目架构</h2>
+<p>
+        <img class="mx-auto" alt="jiagou" src="../../imgs/wxgateway/gateway.jpg" />   
+    </p>
+<h2 id="数据资产管理系统技术">数据资产管理系统技术</h2>
 <h3 id="后端技术架构">后端技术架构</h3>
 <ol>
 <li>开发语言: java</li>
@@ -218,8 +235,12 @@
 <li>开发框架: element-plus</li>
 <li>打包工具: webback</li>
 </ol>
-<h2 id="三功能列表">三、功能列表</h2>
-<h2 id="四项目截图">四、项目截图</h2>
+<h2 id="查询引擎代理技术">查询引擎代理技术</h2>
+<ol>
+<li>impala/hive 修改引擎源代码，重新编译</li>
+<li>clickhouse 采用chproxy代理，解析sql并鉴权</li>
+<li>mysql 采用mycat代理，修改源码，解析sql并鉴权</li>
+</ol>
 
         </div>
 
@@ -232,15 +253,15 @@
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="../../books/Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B/">Go语言编程</a></li>
+        <li><a href="../../books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90YARN%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/">Hadoop技术内幕之深入解析YARN架构设计与实现原理</a></li>
         
-        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-015%E8%BF%90%E7%BB%B4%E7%AE%A1%E7%90%86/">大数据 015运维管理</a></li>
+        <li><a href="../../books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90MapReduce%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/">Hadoop技术内幕之深入解析MapReduce架构设计与实现原理</a></li>
         
-        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-016zookeeper%E4%BB%8B%E7%BB%8D/">大数据 016zookeeper介绍</a></li>
+        <li><a href="../../post/Php-013centos7%E5%AE%89%E8%A3%85php7%E7%89%88%E6%9C%AC/">Php 013centos7安装php7版本</a></li>
         
-        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-014%E6%95%B0%E6%8D%AE%E9%9B%86%E6%88%90%E8%B0%83%E7%A0%94/">大数据 014数据集成调研</a></li>
+        <li><a href="../../post/Redis-002centos7%E6%90%AD%E5%BB%BAredis%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/">Redis 002centos7搭建redis集群</a></li>
         
-        <li><a href="../../post/%E5%A4%A7%E6%95%B0%E6%8D%AE-006impala%E4%B8%8Ehive%E5%AF%B9%E6%AF%94%E8%AF%A6%E8%A7%A3/">大数据 006impala与hive对比详解</a></li>
+        <li><a href="../../books/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/">深入理解Java虚拟机之JVM高级特性与最佳实践（第3版）</a></li>
         
     </ul>
 </div>

@@ -9,20 +9,20 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>Hadoop技术内幕之深入解析MapReduce架构设计与实现原理 | Liuzhongzhen的技术学习笔记</title>
-    <meta property="og:title" content="Hadoop技术内幕之深入解析MapReduce架构设计与实现原理 - Liuzhongzhen的技术学习笔记">
+    <title>网心-网络攻防项目 | Liuzhongzhen的技术学习笔记</title>
+    <meta property="og:title" content="网心-网络攻防项目 - Liuzhongzhen的技术学习笔记">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2022-05-01T14:04:43&#43;08:00'>
+    <meta property="article:published_time" content='2024-11-10T12:10:14&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2022-05-01T14:04:43&#43;08:00'>
+    <meta property="article:modified_time" content='2024-11-10T12:10:14&#43;08:00'>
         
     <meta name="Keywords" content="java python php sql">
-    <meta name="description" content="Hadoop技术内幕之深入解析MapReduce架构设计与实现原理">
+    <meta name="description" content="网心-网络攻防项目">
         
     <meta name="author" content="liuzhongzhen">
-    <meta property="og:url" content="https://liuzhongzhen.github.io/books/Hadoop%E6%8A%80%E6%9C%AF%E5%86%85%E5%B9%95%E4%B9%8B%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90MapReduce%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/">
+    <meta property="og:url" content="https://liuzhongzhen.github.io/products/%E7%BD%91%E5%BF%83-%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E9%A1%B9%E7%9B%AE/">
     <link rel="shortcut icon" href='../../favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='../../css/normalize.css'>
@@ -143,7 +143,14 @@
 <div class="post-toc" style="position: absolute; top: 188px;">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#角色">角色</a></li>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#解决方案">解决方案</a></li>
+    <li><a href="#技术方案">技术方案</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 <script type="text/javascript">
@@ -175,10 +182,10 @@
 </script>
     <article class="post">
         <header>
-            <h1 class="post-title">Hadoop技术内幕之深入解析MapReduce架构设计与实现原理</h1>
+            <h1 class="post-title">网心-网络攻防项目</h1>
         </header>
         <date class="post-meta meta-date">
-            2022年5月1日
+            2024年11月10日
         </date>
         
         
@@ -189,9 +196,24 @@
         
         
         <div class="post-content">
-            <p>
-        <img class="mx-auto" alt="bk" src="../../imgs/books/hadoop-mr.jpeg" />   
-    </p>
+            <h2 id="角色">角色</h2>
+<p>项目负责人</p>
+<h2 id="背景">背景</h2>
+<p>随着运营商对pcdn厂商的限制加强，很多省份封禁了网心云的域名和服务，导致网心云官网，控制台和app打不开，边缘
+节点产品手机宝，电脑宝，容器魔方等无法使用，用户投诉增多。</p>
+<h2 id="解决方案">解决方案</h2>
+<ol>
+<li>开发网心云后端代理，可以方便扩展多个主体，多个域名，后端采用阿里云slb，可以方便更换ip地址</li>
+<li>app端开发代理插件，采用阿里云doh的方案，直接用ip和后端代理进行通信，防止域名污染和ip封禁</li>
+<li>边缘节点开发代理插件，通信统一通过代理插件和后端代理通信，防止域名污染和ip封禁</li>
+<li>开发h5简易版本的网心云</li>
+</ol>
+<h2 id="技术方案">技术方案</h2>
+<ol>
+<li>后端代理采用openresty和lua开发</li>
+<li>代理插件采用go语言开发</li>
+<li>采购阿里云的doh服务</li>
+</ol>
 
         </div>
 
@@ -204,15 +226,15 @@
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="../../post/Php-013centos7%E5%AE%89%E8%A3%85php7%E7%89%88%E6%9C%AC/">Php 013centos7安装php7版本</a></li>
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-%E7%BD%91%E5%BF%83%E4%BA%91%E6%B5%8B%E9%80%9F%E5%B0%8F%E7%A8%8B%E5%BA%8F/">网心-测速小程序</a></li>
         
-        <li><a href="../../post/Redis-002centos7%E6%90%AD%E5%BB%BAredis%E9%AB%98%E5%8F%AF%E7%94%A8%E9%9B%86%E7%BE%A4/">Redis 002centos7搭建redis集群</a></li>
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-%E8%8A%82%E7%82%B9%E4%B9%8B%E5%AE%B6%E5%B0%8F%E7%A8%8B%E5%BA%8F/">网心-节点之家小程序</a></li>
         
-        <li><a href="../../books/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA/">深入理解Java虚拟机之JVM高级特性与最佳实践（第3版）</a></li>
+        <li><a href="../../products/%E7%BD%91%E5%BF%83-%E7%BD%91%E5%BF%83%E4%BA%91%E5%BC%80%E5%8F%91leader/">网心-网心云开发leader</a></li>
         
-        <li><a href="../../post/HAProxy-002centos7%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/">HAProxy 002centos7编译安装</a></li>
+        <li><a href="../../post/LNMP-001%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/">LNMP 001环境安装</a></li>
         
-        <li><a href="../../books/Netty4%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86/">Netty4核心原理与手写RPC框架实战</a></li>
+        <li><a href="../../books/Go%E4%B8%93%E5%AE%B6%E7%BC%96%E7%A8%8B/">Go专家编程</a></li>
         
     </ul>
 </div>
